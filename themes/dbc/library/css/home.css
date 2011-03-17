@@ -1,0 +1,202 @@
+/**
+ * Home Stylesheet
+ * This is only loaded when using the page-template-home.php page template
+ *
+ * @since 0.1
+ */
+
+/* Slider CSS */
+@import('orbit.css');
+
+#main {
+	overflow: visible;
+}
+
+	#content {
+		float: right;
+		padding: 10px 10px 0 0;
+		width: 620px;
+	}
+	#main .wrap, #main #content { overflow: visible; }
+
+/**
+* myDBC
+************************************************/
+#mydbc {
+	font: 10px/33px "CartoGothicStdBook","Lucida Grande","Lucida Sans","Lucida Sans Unicode",Tahoma,Arial,Helvetica,sans-serif;	
+	margin: 0 0 15px;
+	overflow: hidden;
+	text-transform: uppercase;
+}
+	#mydbc .right {
+		margin-bottom: 0;
+	}
+	
+	#mydbc .big-button {
+		background: #e2e9ee;
+		border: 5px solid #91a1ad;
+		border-radius: 3px;
+		color: #6e6e6e;
+		display: inline-block;
+		font-size:14px;
+		line-height: 14px;
+		margin-right: 15px;
+		padding: 10px;
+		text-decoration: none;
+		text-shadow: 1px 1px 1px #fff;
+		text-transform: uppercase;
+		-moz-border-radius: 3px;
+	}
+		#mydbc .big-button:hover {
+			background: #91a1ad;
+			border: 5px solid #e2e9ee;
+			color: #fff;
+			text-shadow: 1px 1px 1px #6e6e6e;
+		}
+	#mydbc .big-button.green {
+		background: #E2E8D7;
+		border: 5px solid #C3CEB1;
+	}
+		#mydbc .big-button.green:hover {
+			background: #C3CEB1;
+			border: 5px solid #E2E8D7;
+		}
+		.mydbc-life-desc {
+			font-size: 12px;
+			text-transform: none;
+		}
+	#mydbc .league-gothic {
+		font: 32px/36px "LeagueGothicRegular";
+	}
+
+/**
+* This Week's Message
+************************************************/
+#latest-message {
+	border-left: 1px solid #D7D4CF;
+	border-top: 1px solid #D7D4CF;
+	margin-bottom: 15px;
+	padding: 10px;	
+	overflow: hidden;
+	text-shadow: 1px 1px 0 #fff;
+}
+.gecko #latest-message { background: -moz-linear-gradient(center bottom , rgb(255, 255, 255) 0%, rgb(239, 236, 231) 100%) repeat scroll 0% 0% transparent; }
+.chrome #latest-message { background:-webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(255,255,255)),color-stop(1, rgb(239,236,231))) repeat scroll 0% 0% transparent; }
+	.latest-message-left {
+		float: left;
+		width: 60%;
+	}
+	.latest-message-right {
+		float: right;
+		width: 40%;
+	}
+		.latest-message-title {
+			color: #605149;
+			font-size: 12px;
+			text-transform: uppercase;
+		}
+		.latest-message-message-title ul {
+			list-style: none;
+			margin: 0;
+		}
+			.latest-message-message-title a {
+				color: #486374;
+				font-size: 14px;
+			}
+		.latest-message-message-date {
+			color: #8b807a;
+			font-size: 10px;
+			text-transform: uppercase;
+		}
+		.latest-message-listen a {
+			background: url('../images/sprite.png') -10px -100px no-repeat;
+			display: block;
+			float: right;
+			height: 34px;
+			text-indent: -9999px;
+			width: 93px;
+		}
+		.latest-message-podcast a {
+			background: url('../images/sprite.png') -103px -100px no-repeat;
+			display: block;
+			float: right;
+			height: 34px;
+			text-indent: -9999px;
+			width: 135px;
+		}
+
+/**
+* Ads
+************************************************/
+.ad-note img {
+	margin-right: 16px;
+}		
+
+/**
+* Sidebar
+************************************************/
+
+/* Home Primary widget section */
+#sidebar-home {
+	color: #605149;
+	float: left;
+	padding: 10px 10px 0;
+	position: relative;			
+	width: 306px;
+}
+	#sidebar-home .widget_text {
+		margin-bottom: 10px;
+	}
+									
+/* Welcome */
+#welcome {
+	height: 203px;
+	margin-left: -20px;
+	width: 326px;
+}
+	.welcome-inner {
+		padding: 30px 30px 30px 20px;
+	}
+		#welcome .widget-title {
+			font: 20px/25px "CartoGothicStdBook";
+			text-align: left;
+		}
+		.welcome-visiting-information a {
+			display: block;
+			height: 37px;
+			text-indent: -9999px;
+			width: 284px;
+		}
+		.welcome-service-times {
+			font: 11px/15px "CartoGothicStdBook";
+			text-transform: uppercase;
+		}
+		.welcome-service-times-data {
+			font: 18px/22px "CartoGothicStdBook";
+		}
+		.welcome-directions {
+			font: 11px/20px "CartoGothicStdBook";
+		}
+		
+#primary-home .widget-title, .home h3 {
+	color: #94532d;
+	text-shadow: 1px 1px 1px #fff;
+}
+#welcome {
+	background: url('../images/welcome-bg.png');
+	}
+	.welcome-visiting-information a {
+		background: url('../images/sprite.png') -10px -10px no-repeat;
+	}
+	.welcome-service-times {
+		color: #486374;
+	}
+	.welcome-service-times-data {
+		color: #605149;
+	}
+	.welcome-directions {
+		color: #605149;
+	}
+		.welcome-directions a {
+			color: #94532d;
+		}
