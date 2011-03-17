@@ -44,8 +44,7 @@ function dbc_plugin_load_scripts() {
  */
 function dbc_plugin_load_styles() {
 	
-	if ( !is_admin() )
-		wp_enqueue_style( 'dbc-global-bar', get_bloginfo('url') . '/wp-content/plugins/dbc/style.css' );
+	wp_enqueue_style( 'dbc-global-bar', get_bloginfo('url') . '/wp-content/plugins/dbc/style.css' );
 	
 }
 
@@ -67,6 +66,8 @@ function dbc_admin_bar_menu() {
  * @since 0.1
  */
 function dbc_global_bar(){
+	global $blog_id;
+	
 ?>
 
 <div id="global-wrapper">
@@ -89,7 +90,16 @@ function dbc_global_bar(){
 	<div id="global-bar">
 			
 		<ul>
-			<li id="dbc-small"><a href="http://dentonbible.org/" title="Denton Bible Main Site Home Page">DBC Main Site</a></li>
+			<?php
+			
+			if ( $blog_id == 1 ) { // if main site
+				echo '';
+			} else {
+				echo '<li id="dbc-small"><a href="http://dentonbible.org/" title="Denton Bible Main Site Home Page">DBC Main Site</a></li>';
+			}
+			
+			?>			
+			
 			<li id="ministry-guide-link"><a href="">Ministry Guide</a></li>
 			<li id="contact"><a href="http://dentonbible.org/about-us/contact-us/">Contact DBC</a></li>			
 		</ul>
