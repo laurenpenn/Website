@@ -16,8 +16,6 @@ get_header(); // Loads the header.php template. ?>
 	<div id="content">
 
 		<?php do_atomic( 'open_content' ); // prototype_open_content ?>
-		
-<div id="cse" style="width:100%;"></div>
  
 		<div class="hfeed">
 
