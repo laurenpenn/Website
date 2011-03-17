@@ -1,0 +1,13 @@
+[12-May-2009 11:49:21] PHP Fatal error:  Call to undefined function  get_option() in /home/devdal1/public_html/clients/dbcmedia/wp-content/themes/malleable-0.1.2/custom-feed.php on line 8
+[12-May-2009 11:49:29] PHP Fatal error:  Call to undefined function  get_option() in /home/devdal1/public_html/clients/dbcmedia/wp-content/themes/malleable-0.1.2/custom-feed.php on line 8
+[12-May-2009 11:50:23] PHP Fatal error:  Call to undefined function  get_option() in /home/devdal1/public_html/clients/dbcmedia/wp-content/themes/malleable-0.1.2/custom-feed.php on line 8
+[12-May-2009 12:49:09] PHP Parse error:  syntax error, unexpected '}' in /home/devdal1/public_html/clients/dbcmedia/wp-content/themes/malleable-0.1.2/custom-feed.php on line 62
+[12-May-2009 12:49:11] PHP Parse error:  syntax error, unexpected '}' in /home/devdal1/public_html/clients/dbcmedia/wp-content/themes/malleable-0.1.2/custom-feed.php on line 62
+[12-May-2009 12:49:16] PHP Parse error:  syntax error, unexpected '}' in /home/devdal1/public_html/clients/dbcmedia/wp-content/themes/malleable-0.1.2/custom-feed.php on line 62
+[12-May-2009 12:49:17] PHP Parse error:  syntax error, unexpected '}' in /home/devdal1/public_html/clients/dbcmedia/wp-content/themes/malleable-0.1.2/custom-feed.php on line 62
+[12-May-2009 12:49:23] PHP Parse error:  syntax error, unexpected '}' in /home/devdal1/public_html/clients/dbcmedia/wp-content/themes/malleable-0.1.2/custom-feed.php on line 63
+[12-May-2009 12:49:24] PHP Parse error:  syntax error, unexpected '}' in /home/devdal1/public_html/clients/dbcmedia/wp-content/themes/malleable-0.1.2/custom-feed.php on line 63
+[12-May-2009 12:49:25] PHP Parse error:  syntax error, unexpected '}' in /home/devdal1/public_html/clients/dbcmedia/wp-content/themes/malleable-0.1.2/custom-feed.php on line 63
+[12-May-2009 12:49:43] PHP Parse error:  syntax error, unexpected '}' in /home/devdal1/public_html/clients/dbcmedia/wp-content/themes/malleable-0.1.2/custom-feed.php on line 53
+[12-May-2009 12:49:45] PHP Parse error:  syntax error, unexpected '}' in /home/devdal1/public_html/clients/dbcmedia/wp-content/themes/malleable-0.1.2/custom-feed.php on line 53
+[28-May-2009 09:35:07] PHP Fatal error:  Call to undefined function  get_header() in /home/devdal1/public_html/clients/dbcmedia/wp-content/themes/malleable-0.1.2/index.php on line 1
