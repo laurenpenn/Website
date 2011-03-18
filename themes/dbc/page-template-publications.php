@@ -54,13 +54,31 @@ get_header(); // Loads the header.php template. ?>
 			<?php endif; ?>
 
 		</div><!-- .hfeed -->
-		
-		
+				
 		<div id="publication-archive">
 		
-			<h2>First Cup - Weekly</h2>
-			<div id="first-cup" class="publications">				
+			<div id="starting-point" class="publications">
+				
+				<a href="http://dentonbible.org/wp-content/uploads/SP_v5_2011.pdf"><img src="http://dentonbible.org/wp-content/uploads/starting-point1.jpg" alt="Starting Point" class="alignleft" /></a>
+				
+				<h2>Starting Point - Quarterly</h2>
+								
+				<p>If you're looking for <strong>an easy guide to find your way around Denton Bible's many ministries</strong> start here. You'll find information on virtually all ministries of Denton Bible Church and contact information to get started.</p>
+				
+				<p>You can always find an up to date copy at any informaton booth throughout the DBC lobby.</p>
+				
+				<p><a href="http://dentonbible.org/wp-content/uploads/SP_v5_2011.pdf" class="link-out">View Starting Point</a></p>
 
+			</div>
+			
+			<div class="clear"></div>
+					
+			<h2>First Cup - Weekly</h2>
+
+			<p>First Cup is the weekly Sunday bulletin providing brief announcements for upcoming events. This bulletin is distributed before each Sunday service.</p>			
+
+			<div id="first-cup" class="publications">
+				
 				<div id="first-cup-publications-inner">
 					<?php
 					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -106,6 +124,9 @@ get_header(); // Loads the header.php template. ?>
 			</div><!-- #first-cup -->
 			
 			<h2>Common Ground - Monthly</h2>
+
+			<p>Common Ground is a monthly magazine providing a variety of ministry events and opportunities during the month it is published: It also includes articles about ministries, people, or current events relevant to our lives today. A new edition of the magazine is distributed around the first full week of each month.</p>				
+
 			<div id="common-ground" class="publications">
 				
 				<div id="common-ground-publications-inner">
@@ -152,52 +173,6 @@ get_header(); // Loads the header.php template. ?>
 				
 				</div>
 			</div><!-- #common-ground -->
-		
-			<div id="starting-point" class="publications">
-				
-				<h2>Starting Point - Quarterly</h2>
-				<div class="publications-inner">
-					<?php
-					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-					$args = array (
-						'paged' => $paged,
-						'posts_per_page' => 3,
-						'post_type' => 'publication',
-						'publication-type' => 'starting-point'
-					);
-					
-					query_posts( $args );
-					while ( have_posts() ) : the_post(); 
-						$args = array(
-							'post_type' => 'attachment',
-							'numberposts' => -1,
-							'post_status' => null,
-							'post_parent' => $post->ID
-							); 
-						$attachments = get_posts($args);
-						if ($attachments) {
-							foreach ($attachments as $attachment) {
-								if ( $attachment->post_mime_type == 'application/pdf')
-									$link = $attachment->guid;
-							}
-						}											
-						?>
-					
-						<div id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
-					
-							<div class="date"><?php the_time('F j, Y'); ?></div>
-							<a href="<?php echo $link; ?>"><?php get_the_image( array( 'default_image' => THEME_URI .'/library/images/starting-point.gif', 'link_to_post' => false ) ); ?></a>
-					
-						</div><!-- .hentry -->
-					
-					<?php endwhile; wp_reset_query();  ?>
-					
-					<div id="starting-point-pagination">
-						<?php loop_pagination(); ?>
-					</div>	
-			
-				</div>
-			</div>
 			
 		</div><!-- #publication-archive -->
 
