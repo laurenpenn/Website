@@ -1,0 +1,170 @@
+/* podPress CSS for the frontend */
+.podPress_imgicon {	
+	border: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+ 	vertical-align: middle;
+}
+.podPress_previewImage table td tr {
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+.podPress_previewImage img {
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	vertical-align: middle;
+}
+.podPress_content {
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	text-align: left;
+}
+.podPress_content img {
+	border: 0px !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	display:inline;
+}
+
+#podPress_footer {
+	text-align:center;
+}
+
+/* popup player window styles */
+#podpress_popupplayer_container {
+	display:block;
+	width:100%;
+	padding:0;
+	margin: 0 auto;
+}
+#podpress_backtoclose_container {
+	width:100%;
+	font-family:sans-serif;
+	font-size:1em;
+	margin-top:6px;
+	text-align:center;
+}
+#podpress_popup_backto, #podpress_popup_close {
+	display:block;
+	float:left;
+}
+#podpress_popup_backto {
+	width:70%;
+}
+#podpress_popup_backto span , #podpress_popup_close {
+	font-size:0.7em;
+}
+#podpress_popup_close {
+	width:29%;
+	padding-top:1.4em;
+	margin-left: 1%;
+}
+
+/* player container styles */
+.podpress_listenwrapper_container {
+	width:342px;
+	height:40px;
+	padding:0px;
+	margin: 0.5em 0px 0px 0px;
+}
+.podpress_listenwrapper_container div {
+	margin:0px;
+	padding:0px;
+}
+.podpress_mp3_borderleft {
+	width:45px;
+	height:40px;
+	padding:0px;
+	margin:0px;
+	display:block;
+	float:left;
+}
+.podpress_1pixelout_container {
+	width:290px;
+	height:40px;
+	line-height:40px;
+	padding:0px !important;
+	margin:0px !important;
+	border:0px !important;
+	vertical-align:middle;
+	float:left;
+}
+.podpress_1pixelout_container object, .podpress_1pixelout_container embed {
+	margin:8px 0px 0px 0px !important;
+	padding:0px !important;
+	border:0px !important;
+}
+.podPress_content object, .podPress_content embed {
+	margin: 0px;
+	padding:0px;
+	border:0px;
+	/* background-color:#ee9999; */
+} 
+.podpress_playerspace  {
+	/* clear:both; */
+	padding:0px !important;
+	margin: 15px 0px 0px 0px;
+	border:0px !important;
+	/* background-color:#ee9966; */
+}
+.podpress_playerspace img {
+	text-align:center !important;
+}
+.podpress_mp3player {
+	height:24px;
+}
+.podpress_mp3player  object, .podpress_mp3player  embed {
+	display:block;
+}
+.podPress_downloadlinks {
+	/*clear:both;
+	 background-color:#99ee99; */
+	margin:0.5em 0px 1em 0px;
+	padding:0px !important;
+	border:0px !important;
+	font-size: 75% !important;
+	line-height:15px !important;
+	height:15px;
+}
+
+/* uncomment this to hide the "Play Now" link
+.podPress_playerspace_playlink {
+	display:none;
+}
+*/
+.podPress_videoplayer_wrapper:hover {
+	cursor:pointer;
+}
+
+/* Navi
+***********************************************
+these CSS are now in podpress_admin_statistics.css
+*/
+
+/* Stats
+***********************************************
+these CSS are now in podpress_admin_statistics.css
+*/
+
+.podpress_feed_buttons {
+	border-style:none;
+}
+.podpress_feed_icon {
+	border-style:none;
+	vertical-align:middle;
+	background:orange;
+	color:white;
+	width:14px;
+	height:14px;
+}
+
+/* if you do not like the bullets in front of buttons list
+.podpress_feed_buttons_list li {
+	list-style-image:none;
+	list-style-type:none;
+	text-indent:-1em;
+}
+*/

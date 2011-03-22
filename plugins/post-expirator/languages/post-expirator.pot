@@ -1,0 +1,281 @@
+# Copyright (C) 2010 Post Expirator
+# This file is distributed under the same license as the Post Expirator package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Post Expirator 1.4.2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/post-expirator\n"
+"POT-Creation-Date: 2011-01-02 02:13:36+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: post-expirator.php:18
+msgid "l F jS, Y"
+msgstr ""
+
+#: post-expirator.php:19
+msgid "g:ia"
+msgstr ""
+
+#: post-expirator.php:20
+msgid "Post expires at EXPIRATIONTIME on EXPIRATIONDATE"
+msgstr ""
+
+#: post-expirator.php:41
+msgid "Once a Minute"
+msgstr ""
+
+#: post-expirator.php:53
+msgid "Post Expirator cron schedules need to be reset"
+msgstr ""
+
+#: post-expirator.php:55
+msgid "Click here to reset"
+msgstr ""
+
+#: post-expirator.php:137
+msgid "Expires"
+msgstr ""
+
+#: post-expirator.php:153
+msgid "Never"
+msgstr ""
+
+#. #-#-#-#-#  plugin.pot (Post Expirator 1.4.2)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: post-expirator.php:163 post-expirator.php:173 post-expirator.php:393
+msgid "Post Expirator"
+msgstr ""
+
+#: post-expirator.php:205
+msgid "Enable Post Expiration"
+msgstr ""
+
+#: post-expirator.php:207
+msgid "Year"
+msgstr ""
+
+#: post-expirator.php:208
+msgid "Month"
+msgstr ""
+
+#: post-expirator.php:209
+msgid "Day"
+msgstr ""
+
+#: post-expirator.php:231
+msgid "F"
+msgstr ""
+
+#: post-expirator.php:238
+msgid "Hour"
+msgstr ""
+
+#: post-expirator.php:239
+msgid "Minute"
+msgstr ""
+
+#: post-expirator.php:249
+msgid "H"
+msgstr ""
+
+#: post-expirator.php:365 post-expirator.php:393
+msgid "Post Expirator Options"
+msgstr ""
+
+#: post-expirator.php:368
+msgid "General Settings"
+msgstr ""
+
+#: post-expirator.php:369 post-expirator.php:603
+msgid "Upgrade"
+msgstr ""
+
+#: post-expirator.php:411
+msgid "Saved Options!"
+msgstr ""
+
+#: post-expirator.php:461
+msgid ""
+"The post expirator plugin sets a custom meta value, and then optionally "
+"allows you to select if you want the post changed to a draft status or "
+"deleted when it expires."
+msgstr ""
+
+#: post-expirator.php:464
+msgid "Valid [postexpiration] attributes:"
+msgstr ""
+
+#: post-expirator.php:466
+msgid "type - defaults to full - valid options are full,date,time"
+msgstr ""
+
+#: post-expirator.php:467
+msgid ""
+"dateformat - format set here will override the value set on the settings page"
+msgstr ""
+
+#: post-expirator.php:468
+msgid ""
+"timeformat - format set here will override the value set on the settings page"
+msgstr ""
+
+#: post-expirator.php:472
+msgid "Defaults"
+msgstr ""
+
+#: post-expirator.php:475
+msgid "Set Post To:"
+msgstr ""
+
+#: post-expirator.php:478 post-expirator.php:489
+msgid "Draft"
+msgstr ""
+
+#: post-expirator.php:479 post-expirator.php:490
+msgid "Delete"
+msgstr ""
+
+#: post-expirator.php:482
+msgid ""
+"Select whether the post should be deleted or changed to a draft at "
+"expiration time."
+msgstr ""
+
+#: post-expirator.php:486
+msgid "Set Page To:"
+msgstr ""
+
+#: post-expirator.php:493
+msgid ""
+"Select whether the page should be deleted or changed to a draft at "
+"expiration time."
+msgstr ""
+
+#: post-expirator.php:497
+msgid "Date Format:"
+msgstr ""
+
+#: post-expirator.php:501
+msgid ""
+"The default format to use when displaying the expiration date within a post "
+"using the [postexpirator] shortcode or within the footer.  For information "
+"on valid formatting options, see: <a href=\"http://us2.php.net/manual/en/"
+"function.date.php\" target=\"_blank\">PHP Date Function</a>."
+msgstr ""
+
+#: post-expirator.php:505
+msgid "Time Format:"
+msgstr ""
+
+#: post-expirator.php:509
+msgid ""
+"The default format to use when displaying the expiration time within a post "
+"using the [postexpirator] shortcode or within the footer.  For information "
+"on valid formatting options, see: <a href=\"http://us2.php.net/manual/en/"
+"function.date.php\" target=\"_blank\">PHP Date Function</a>."
+msgstr ""
+
+#: post-expirator.php:513
+msgid "Post Footer Display"
+msgstr ""
+
+#: post-expirator.php:514
+msgid ""
+"Enabling this below will display the expiration date automatically at the "
+"end of any post which is set to expire."
+msgstr ""
+
+#: post-expirator.php:517
+msgid "Show in post footer?"
+msgstr ""
+
+#: post-expirator.php:519
+msgid "Enabled"
+msgstr ""
+
+#: post-expirator.php:520
+msgid "Disabled"
+msgstr ""
+
+#: post-expirator.php:522
+msgid ""
+"This will enable or disable displaying the post expiration date in the post "
+"footer."
+msgstr ""
+
+#: post-expirator.php:526
+msgid "Footer Contents:"
+msgstr ""
+
+#: post-expirator.php:530
+msgid ""
+"Enter the text you would like to appear at the bottom of every post that "
+"will expire.  The following placeholders will be replaced with the post "
+"expiration date in the following format:"
+msgstr ""
+
+#: post-expirator.php:539
+msgid "Footer Style:"
+msgstr ""
+
+#: post-expirator.php:542
+msgid "This post will expire on"
+msgstr ""
+
+#: post-expirator.php:544
+msgid "The inline css which will be used to style the footer text."
+msgstr ""
+
+#: post-expirator.php:549
+msgid "Save"
+msgstr ""
+
+#: post-expirator.php:592
+msgid "Cron Schedules Reset!"
+msgstr ""
+
+#: post-expirator.php:597
+msgid "OK"
+msgstr ""
+
+#: post-expirator.php:599
+msgid "RESET NEEDED"
+msgstr ""
+
+#: post-expirator.php:606
+msgid "Reset Cron Schedules:"
+msgstr ""
+
+#: post-expirator.php:608
+msgid "Reset"
+msgstr ""
+
+#: post-expirator.php:609
+msgid "Status:"
+msgstr ""
+
+#: post-expirator.php:611
+msgid "Resets the cron scheduler and removes any old or stray entries."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/post-expirator/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Allows you to add an expiration date to posts which you can configure to "
+"either delete the post or change it to a draft."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Aaron Axelsen"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://postexpirator.tuxdocs.net/"
+msgstr ""

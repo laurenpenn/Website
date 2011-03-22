@@ -1,0 +1,322 @@
+/* podPress admin styles only for WP versions >= 2.7 */
+
+/*  general podPress admin CSS */
+.podpress_wide_text_field {
+	width:80%;
+}
+.podpress_full_width_text_field {
+	width:100%;
+}
+.podpress_msg {
+	padding:3px!important;
+	display:block;
+}
+
+.podpress_notice, .podpress_error {
+	border-style:solid;
+	border-width:1px;
+	-moz-border-radius:3px;
+	padding: 2px 0.6em 2px 0.6em;
+	margin: 0.5em 0;
+}
+.podpress_notice {
+	background-color: #FFFFE0;
+	border-color:#E6DB55;
+}
+.podpress_error {
+	background-color: #FFEBE8;
+	border-color:#CC0000;
+}
+
+#podpress-icon {
+	background-color: transparent;
+	background-image: url("./images/podpress_icon_r2_v2_32.png");
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+}
+.podpress_showhide_element {
+	padding:4px 0px 10px 0px;
+	display:block;
+} 
+
+/* post/page editor pages */
+div #podPressstuff  td {
+	font-size:1em;
+}
+.podpress_abbr {
+	cursor:help;
+	border-bottom-width:1px;
+	border-bottom-style:dotted;
+}
+.podpress_editor_table {
+	background-color:#fff;
+	border:none;
+	width:100%;
+}
+.podpress_editor_table th {
+	width:25%;
+	text-align:right;
+	padding:0 1em 0 0;
+	font-weight:normal;
+	vertical-align:middle;
+}
+.podpress_editor_table td {
+	vertical-align:middle;
+	width:75%;
+}
+.podpress_editor_table .podpress_wide_text_field {
+	width:100%;
+}
+#podpress_media_file_header {
+	text-align:left;
+}
+#podpress_media_file_buttons {
+	text-align:right;
+}
+.podPressMedia_URI_chrWarning {
+	display:none;
+	padding:3px;
+}
+.podpress_id3tag_details_table {
+	width:100%;
+}
+.podpress_id3tag_details_table th {
+	width:25%;
+	text-align:right;
+	padding-right:1em;
+}
+.podpress_id3tag_details_table td {
+	width:75%;
+	vertical-align:middle;
+}
+
+.podpress_ajax_loader_img {
+	display:none;
+}
+
+.options legend {
+	font-size:2em;
+	line-height:100%;
+	padding-top:0.5em;
+}
+
+/* widgets page */
+.podpress_widget_settings_title {
+	width: 250px;
+}
+.podpress_widget_settings_3digits {
+	width:3em;
+}
+.podpress_widget_settings_legend {
+	text-align: right;
+	font-weight:bold;
+}
+.podpress_widget_settings_row {
+	margin-top:1em!important;
+}
+*html div.podpress_widget_settings_row_div {
+	overflow-x:hidden;
+	overflow-y:hidden;
+}
+*html .podpress_feedbuttonsselectbox {
+	width:80%;
+	height:65px;
+	display:block;
+	overflow-x:hidden;
+	overflow-y:scroll;
+	vertical-align:middle;
+}
+.podpress_feedbuttonsselectbox {
+	height:65px;
+	display:block;
+	overflow-x:hidden;
+	overflow-y:scroll;
+	vertical-align:middle;
+	border:1px solid #dfdfdf;
+	padding:3px;
+}
+.podpress_feedbuttonsselectbox img {
+	vertical-align:middle;
+}
+*html .podpress_customfeedbuttonurl {
+	vertical-align:middle;
+	width:80%;
+}
+.podpress_customfeedbuttonurl {
+	vertical-align:middle;
+	width:90%;
+}
+
+/* CSS for the tables on the settings pages */
+.podpress_settings_table {
+	border:none;
+	width:100%;
+}
+.podpress_settings_table th {
+	width:22%;
+	text-align:right;
+	padding-right:1em;
+	vertical-align:middle;
+}
+.podpress_settings_table td {
+	vertical-align:middle;
+}
+.podpress_settings_narrow_col {
+	width:2.5em;
+}
+.podpress_settings_headerrow th {
+	padding:0.5em 0em 0.5em 0em;
+	width:100%;
+	text-align:left;
+}
+.podpress_settings_description_cell {
+	padding:0em 0em 1em 0em;
+}
+
+/* player settings */
+.podpress_player_color_cell {
+	width:18em;
+}
+.podpress_player_color_cell input {
+	width:15em;
+}
+.podpress_player_narrowmiddle_col {
+	width:5em;
+}
+.podpress_player_description_cell {
+	padding:0.5em 0em 0.5em 0em;
+}
+.podpress_player_color_cell_right_col {
+	padding-left:2em;
+}
+.podPress_videoplayer_wrapper:hover {
+	cursor:pointer;
+}
+
+/* player settings - color picker */
+#podpress_color_picker_box {
+	display:block;
+	width:234px;
+}
+.podpress_color_picker_row {
+	width:100%;
+	height:12px;
+	margin:0px;
+	padding:0px;
+}
+.podpress_color_picker_field {
+	display:block;
+	float:left;
+	width:10px;
+	height:10px;
+	margin:0px 2px 0px 0px;
+	padding:0px;
+}
+.podpress_color_picker_field img {
+	width:10px;
+	height:10px;
+}
+.podpress_color_picker_field  a {
+	text-decoration:none;
+}
+
+/* Feed/iTunes settings */
+.podpress_description {
+	font-size: 12px;
+	font-style: italic;
+	font-family: "Lucida Grande",Verdana,Arial,"Bitstream Vera Sans",sans-serif;
+	color: #666666;
+}
+.podpress_static_feed_settings {
+	font-size:1.2em!important;
+}
+.podpress_feed_gensettings {
+	width:100%;
+}
+.podpress_feed_gensettings th {
+	vertical-align:top;
+	width:18%;
+	text-align:right;
+	padding-right:1em;
+	padding-bottom:1em;
+}
+.podpress_feed_gensettings td {
+	vertical-align:top;
+	padding-bottom:1em;
+}
+
+.podpress_feed_settings_left_col, .podpress_feed_settings_right_col, .podpress_feed_settings_fullwidth_col {
+	margin-bottom:1em;
+}
+.podpress_feed_settings_left_col, .podpress_feed_settings_right_col {
+	width:49%;
+	display:block;
+}
+.podpress_feed_settings_left_col {
+	float:left;
+	clear:left;
+}
+.podpress_feed_settings_right_col {
+	float:left;
+	margin-left:2%;
+}
+.podpress_feed_settings_fullwidth_col {
+	clear:both;
+	width:100%;
+}
+.podpress_feeds_text_field {
+	width:100%;
+}
+.podpress_filetypefilter_select, .podpress_categoryfilter_select {
+	width:45%;
+	height:8em!important;
+	float:left;
+	margin-right:1em;
+	overflow:auto;
+}
+.podpress_itunesimage_preview, .podpress_rssimage_preview {
+	display:none;
+}
+*html .podpress_feed_settings_right_col {
+	margin-left:0;
+	padding-left:2%;
+}
+*html .podpress_feeds_text_field {
+	width:98%;
+}
+*html fieldset.options {
+	clear:left;
+}
+
+/* for the preview of the podcast repositories on Feed/iTunes settings */
+.podPress_statshead {
+	color: #fff;
+	font-size: 11px;
+	font-family: Lucida Sans, Helvetica, Arial;
+	font-weight: bold;
+	background-color: #333;
+	padding: 3px;
+}
+.podPress_statstable {
+	border: solid 1px #999;
+}
+.podPress_statscell {
+	font-size: 11px;
+	font-family: Lucida Sans, Helvetica, Arial;
+	padding: 3px;
+}
+.podPress_linkscell {
+	font-size: 11px;
+	padding: 2px 2px 10px 8px;
+}
+.podPress_captionstats {
+	color: #333;
+	font-size: 11px;
+	font-weight: bold;
+}
+.podPress_desccell { 
+	font-size: 11px;
+	font-family: "Lucida Sans", Helvetica, Arial;
+	line-height: 16px;
+	padding: 10px 2px 5px 5px;
+}

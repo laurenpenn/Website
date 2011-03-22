@@ -1,0 +1,50 @@
+#coauthors-table {
+	
+}
+div.dbx-content #coauthors-table {
+	width:100%;
+}
+#coauthors-table td {
+	padding-left:0;
+	padding-right:0;
+	vertical-align: middle;
+	background: #F9F9F9;
+}
+#coauthors-table td.select select {
+	margin-top:0;
+}
+div.dbx-content #coauthors-table td.select select {
+	width:100%;
+}
+
+span.author-tag {
+	display:block;
+	padding: 5px 3px;
+	color: #21759B;
+	border-bottom: 1px solid #21759B;
+	cursor: text;
+}
+span.author-tag:hover {
+	cursor: text;
+	background: #EAF2FA ;
+	color:#D54E21;
+}
+input.coauthor-suggest {
+	margin:5px 0;
+	color:#888;
+}
+input.coauthor-suggest:focus {
+	color: #333;
+}
+
+span.delete-coauthor {
+	padding: 3px;
+	text-decoration: underline;
+	color:#FF0000;
+	font-size:11px;
+}
+span.delete-coauthor:hover {
+	cursor: pointer;
+	background: #FF0000;
+	color: #fff;
+}

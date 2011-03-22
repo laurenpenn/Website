@@ -1,0 +1,8 @@
+# BEGIN podPress
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteRule ^feed/(.+)$ index.php?feed=$1
+RewriteRule ^play/(.+)$ index.php?play=$1
+RewriteRule ^web/(.+)$ index.php?web=$1
+</IfModule>
+# END podPress

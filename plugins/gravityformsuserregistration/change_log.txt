@@ -1,0 +1,13 @@
+-----------------------------------------------------------
+Version 1.0.beta3
+    - added support for creating MultiSite with user registration
+    - fixed issue where MultiSite was failing to return validation error for spaces in domain name
+    - disabled MultiSite options on User Resgistration feed view for child sites
+
+-----------------------------------------------------------
+Version 1.0.beta2
+
+-----------------------------------------------------------
+Version 1.0.beta1
+    - updated database name to be consistent with other Gravity Form Add-Ons
+    - updated permission required to view User Registration menu
