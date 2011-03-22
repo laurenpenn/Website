@@ -33,7 +33,7 @@ add_action( 'wp_footer', 'dbc_analytics', 13 );
  */
 function dbc_plugin_load_scripts() {
 	
-	wp_enqueue_script( 'dbc-global-bar', get_bloginfo('url') . '/wp-content/plugins/dbc/js/scripts.js', array( 'jquery' ), '0.3', true );	
+	wp_enqueue_script( 'dbc-global-bar', get_bloginfo('url') . '/wp-content/mu-plugins/dbc/js/scripts.js', array( 'jquery' ), '0.3', true );	
 	
 }
 
@@ -44,7 +44,7 @@ function dbc_plugin_load_scripts() {
  */
 function dbc_plugin_load_styles() {
 	
-	wp_enqueue_style( 'dbc-global-bar', get_bloginfo('url') . '/wp-content/plugins/dbc/style.css' );
+	wp_enqueue_style( 'dbc-global-bar', get_bloginfo('url') . '/wp-content/mu-plugins/dbc/style.css' );
 	
 }
 
