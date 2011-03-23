@@ -91,7 +91,7 @@ function generate_plugin_blog_list() {
 // Create a function to add a menu item for site admins
 function plugin_stats_add_page() {
 	// Add a submenu
-	if(is_site_admin()) {
+	if(is_super_admin()) {
 	$page=	add_submenu_page('wpmu-admin.php', 'Plugin Stats', 'Plugin Stats', 0, basename(__FILE__), array(&$this, 'plugin_stats_page'));
 	wp_enqueue_script('jquery');
 	
