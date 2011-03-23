@@ -325,6 +325,45 @@ img.alignleft, img.alignright { display: inline; }
 
 blockquote.alignleft, blockquote .alignright { width: 33%; }
 
+/* Columns */
+.col-1 {
+	float: left;
+	width: 48%;
+}
+.col-2 {
+	float: right;
+	width: 48%;
+}
+
+/* Login form */
+#loginform {
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    background: #E6E6E6 url('library/images/tile-grey.gif');
+    border: 1px solid #DDDDDD;
+    box-shadow: 1px 1px 3px #999;
+    -moz-box-shadow: 0 0 10px #999;
+    -webkit-box-shadow: 0 0 10px #999;
+    display: block;
+    margin: 10px 0 0;
+    padding: 15px;
+    text-shadow: 0 1px 0 #fff;
+}
+#loginform label {
+	display: block;
+	font-weight: bold;
+	margin: 0 0 5px;
+}
+#loginform input[type="text"], #loginform input[type="password"] {
+    font-family: inherit;
+    font-size: 18px;
+    letter-spacing: normal;
+    outline-style: none;
+    padding: 5px;
+    width: 97%;
+}
+
 /**
 * Images
 ************************************************/

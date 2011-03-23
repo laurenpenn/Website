@@ -1,5 +1,12 @@
 <?php
 
+if(!is_admin()) {
+    wp_enqueue_script("gforms_ui_datepicker", WP_PLUGIN_URL . "/gravityforms/js/jquery-ui/ui.datepicker.js", array("jquery"), "1.4", true);
+    wp_enqueue_script("gforms_datepicker", WP_PLUGIN_URL . "/gravityforms/js/datepicker.js", array("gforms_ui_datepicker"), "1.4", true);
+    wp_enqueue_script("gforms_conditional_logic_lib", WP_PLUGIN_URL . "/gravityforms/js/conditional_logic.js", array("gforms_ui_datepicker"), "1.4", true);
+    wp_enqueue_style("gforms_css", WP_PLUGIN_URL . "/gravityforms/css/forms.css");
+}
+
 /* Register post types. */
 add_action('init', 'dbc_admin_register_post_types');
 
@@ -29,6 +36,8 @@ add_filter('gform_field_value_user_email', create_function("", '$value = populat
 function dbc_child_disable_sidebars( $sidebars_widgets ) {
 
 	if ( hybrid_get_setting( 'info' ) == 'true' ) $sidebars_widgets['home'] = true;
+	
+	if (  is_page_template( 'page-template-private.php' ) ) $sidebars_widgets['primary'] = false;
 	
 	return $sidebars_widgets;
 }

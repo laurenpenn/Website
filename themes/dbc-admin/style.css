@@ -28,14 +28,6 @@
 .page-template-home #main #content .hentry {
 	clear: both;
 }
-.page-template-home #main #content .col-1 {
-	float: left;
-	width: 48%;
-}
-.page-template-home #main #content .col-2 {
-	float: right;
-	width: 48%;
-}
 .page-template-home #main #content .col-2 .links-list {
 	margin-left: 20px;
 }
