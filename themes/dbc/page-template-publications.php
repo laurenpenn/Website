@@ -67,7 +67,7 @@ get_header(); // Loads the header.php template. ?>
 				
 				<p>You can always find an up to date copy at any informaton booth throughout the DBC lobby.</p>
 				
-				<p><a href="http://dentonbible.org/wp-content/uploads/SP_v5_2011.pdf" class="link-out">View Starting Point</a></p>
+				<p><a href="http://dentonbible.org/wp-content/uploads/SP_v5_2011_noLogos.pdf" class="link-out">View Starting Point</a></p>
 
 			</div>
 			

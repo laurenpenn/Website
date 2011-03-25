@@ -204,6 +204,8 @@ function dbc_disable_sidebars( $sidebars_widgets ) {
 		$sidebars_widgets['secondary'] = false;
 	}
 	
+	if (  ( is_page_template( 'page-template-private.php' ) && !is_user_logged_in() ) ) $sidebars_widgets['primary'] = false;
+	
 	return $sidebars_widgets;
 }
 

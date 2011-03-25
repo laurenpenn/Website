@@ -60,6 +60,8 @@ get_header(); // Loads the header.php template. ?>
 				<p>The page you are trying to view requires that you log in.</p>
 				
 				<div class="col-1">
+					
+					<h2>Login</h2>
 								
 					<form method="post" action="<?php echo site_url() ?>/wp-login.php" id="loginform" name="loginform">
 			
@@ -78,11 +80,15 @@ get_header(); // Loads the header.php template. ?>
 							<input type="hidden" value="<?php the_permalink(); ?>" name="redirect_to">
 						</p>
 						
+						<p><a href="http://admin.dentonbible.org/wp-login.php?action=lostpassword">Lost your password?</a></p>
+						
 					</form>
 								
 				</div>
 				
 				<div class="col-2">
+					
+					<h2>Register</h2>
 				
 					<?php switch_to_blog(1); ?>
 					<?php gravity_form( 9, false, true, false, null, false); ?>
