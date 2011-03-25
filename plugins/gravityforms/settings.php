@@ -12,7 +12,7 @@ class GFSettings{
         $addon_name = RGForms::get("addon");
         $icon_path = empty($addon_name) ? "" : self::$addon_pages[$addon_name]["icon"];
         $page_title = empty($addon_name) ? __("Gravity Forms Settings", "gravityforms") : $addon_name . " " . __("Settings", "gravityforms");
-        $icon_path = empty($icon_path) ? GFCommon::get_base_url() . "/images/gravity-title-icon-32.png" : $icon_path;
+        $icon_path = empty($icon_path) ? GFCommon::get_base_url() . "/images/gravity-settings-icon-32.png" : $icon_path;
         echo GFCommon::get_remote_message();
         ?>
         <link rel="stylesheet" href="<?php echo GFCommon::get_base_url()?>/css/admin.css" />
@@ -26,8 +26,6 @@ class GFSettings{
             <ul class="subsubsub">
                 <li><a href="?page=gf_settings">Gravity Forms</a> |</li>
             <?php
-
-
             $count = sizeof(self::$addon_pages);
             for($i = 0; $i<$count; $i++){
                 $addon_keys = array_keys(self::$addon_pages);
@@ -109,7 +107,7 @@ class GFSettings{
             update_option('recently_activated', array($plugin => time()) + (array)get_option('recently_activated'));
 
             ?>
-            <div class="updated fade" style="padding:20px;"><?php _e(sprintf("Gravity Forms have been successfully uninstalled. It can be re-activated from the %splugins page%s.", "<a href='plugins.php'>","</a>"), "gravityforms")?></div>
+            <div class="updated fade" style="padding:20px;"><?php echo sprintf(__("Gravity Forms have been successfully uninstalled. It can be re-activated from the %splugins page%s.", "gravityforms"), "<a href='plugins.php'>","</a>")?></div>
             <?php
             return;
         }
@@ -119,6 +117,7 @@ class GFSettings{
         ?>
         <form method="post">
             <?php wp_nonce_field('gforms_update_settings', 'gforms_update_settings') ?>
+            <h3><?php _e("General Settings", "gravityforms"); ?></h3>
             <table class="form-table">
               <tr valign="top">
                    <th scope="row"><label for="gforms_key"><?php _e("Support License Key", "gravityforms"); ?></label>  <?php gform_tooltip("settings_license_key") ?></th>
@@ -127,9 +126,9 @@ class GFSettings{
                         $key = GFCommon::get_key();
                         $key_field = '<input type="password" name="gforms_key" id="gforms_key" style="width:350px;" value="' . $key . '" />';
                         if($version_info["is_valid_key"])
-                            $key_field .= "&nbsp;<img src='" . GFCommon::get_base_url() ."/images/tick.png'/>";
+                            $key_field .= "&nbsp;<img src='" . GFCommon::get_base_url() ."/images/tick.png' class='gf_keystatus_valid' alt='valid key' title='valid key'/>";
                         else if (!empty($key))
-                            $key_field .= "&nbsp;<img src='" . GFCommon::get_base_url() ."/images/stop.png'/>";
+                            $key_field .= "&nbsp;<img src='" . GFCommon::get_base_url() ."/images/cross.png' class='gf_keystatus_invalid' alt='invalid key' title='invalid key'/>";
 
                         echo apply_filters('gform_settings_key_field', $key_field);
                         ?>
@@ -198,56 +197,35 @@ class GFSettings{
 
               </table>
 
+           <?php if(GFCommon::current_user_can_any("gravityforms_edit_settings")){ ?>
+                <br/><br/>
+                <p class="submit" style="text-align: left;">
+                <?php
+                $save_button = '<input type="submit" name="submit" value="' . __("Save Settings", "gravityforms"). '" class="button-primary gf_settings_savebutton"/>';
+                echo apply_filters("gform_settings_save_button", $save_button);
+                ?>
+                </p>
+           <?php } ?>
+        </form>
+
+              <div id='gform_upgrade_license' style="display:none;"></div>
+              <script type="text/javascript">
+                jQuery(document).ready(function(){
+                    jQuery.post(ajaxurl,{
+                            action:"gf_upgrade_license",
+                            gf_upgrade_license: "<?php echo wp_create_nonce("gf_upgrade_license") ?>",
+                            cookie: encodeURIComponent(document.cookie)},
+
+                            function(data){
+                                if(data.trim().length > 0)
+                                    jQuery("#gform_upgrade_license").replaceWith(data);
+                            }
+                    );
+                });
+              </script>
+
               <div class="hr-divider"></div>
 
-              <?php
-
-              //$key_info = GFCommon::get_key_info($key);
-
-              if(in_array($key_info["product_code"], array("GFSINGLE", "GFMULTI")))
-              {
-                ?>
-                  <h3><?php _e("Upgrade License", "gravityforms"); ?></h3>
-
-                  <p style="text-align: left;">
-                    <?php echo sprintf(__("Below you will be able to upgrade your current license, %s to any of the available options.", "gravityforms"), "<strong>{$key_info["product_name"]}</strong>") ?>
-                  </p>
-
-                  <table class="form-table">
-                    <tr valign="top">
-                       <th scope="row">
-                            <?php _e("Developer License", "gravityforms"); ?>
-                       </th>
-                       <td>
-                            <?php _e("A Developer License gives you access to priority support, all Add-Ons and can be installed on unlimited sites.", "gravityforms") ?><br/>
-                            <div style="margin-top:8px;">
-                            <a href="<?php echo GRAVITY_MANAGER_URL . "/api.php?op=upgrade&key={$key}&to=GFDEV" ?>" class="button-primary">Upgrade to Developer License</a>
-                            </div>
-                       </td>
-                    </tr>
-                    <?php
-                    if($key_info["product_code"] == "GFSINGLE"){
-                        ?>
-                        <tr valign="top">
-                       <th scope="row">
-                            <?php _e("Business License", "gravityforms"); ?>
-                       </th>
-                       <td>
-                            <?php _e("A Business License gives you access to all Add-Ons and can be installed on 3 sites.", "gravityforms") ?>
-                            <div style="margin-top:8px;">
-                                <a href="<?php echo GRAVITY_MANAGER_URL . "/api.php?op=upgrade&key={$key}&to=GFMULTI" ?>" class="button-primary">Upgrade to Business License</a>
-                            </div>
-                       </td>
-                    </tr>
-                    <?php
-                    }
-                    ?>
-                  </table>
-
-                  <div class="hr-divider"></div>
-              <?php
-              }
-              ?>
               <h3><?php _e("Installation Status", "gravityforms"); ?></h3>
               <table class="form-table">
 
@@ -265,7 +243,7 @@ class GFSettings{
                             }
                             else{
                                 ?>
-                                <img src="<?php echo GFCommon::get_base_url() ?>/images/stop.png"/>
+                                <img src="<?php echo GFCommon::get_base_url() ?>/images/cross.png"/>
                                 <span class="installation_item_message"><?php _e("Gravity Forms requires PHP 5 or above.", "gravityforms"); ?></span>
                                 <?php
                             }
@@ -286,7 +264,7 @@ class GFSettings{
                             }
                             else{
                                 ?>
-                                <img src="<?php echo GFCommon::get_base_url() ?>/images/stop.png"/>
+                                <img src="<?php echo GFCommon::get_base_url() ?>/images/cross.png"/>
                                 <span class="installation_item_message"><?php _e("Gravity Forms requires MySQL 5 or above.", "gravityforms"); ?></span>
                                 <?php
                             }
@@ -307,7 +285,7 @@ class GFSettings{
                             }
                             else{
                                 ?>
-                                <img src="<?php echo GFCommon::get_base_url() ?>/images/stop.png"/>
+                                <img src="<?php echo GFCommon::get_base_url() ?>/images/cross.png"/>
                                 <span class="installation_item_message"><?php _e("Gravity Forms requires WordPress 2.8 or above.", "gravityforms"); ?></span>
                                 <?php
                             }
@@ -327,32 +305,23 @@ class GFSettings{
                                 <?php
                             }
                             else{
-                                _e(sprintf("New version %s available. Automatic upgrade available on the %splugins page%s", $version_info["version"], '<a href="plugins.php">', '</a>'), "gravityforms");
+                                echo sprintf(__("New version %s available. Automatic upgrade available on the %splugins page%s", "gravityforms"), $version_info["version"], '<a href="plugins.php">', '</a>');
                             }
                         ?>
                     </td>
                 </tr>
             </table>
 
-            <?php if(GFCommon::current_user_can_any("gravityforms_edit_settings")){ ?>
-                <br/><br/>
-                <p class="submit" style="text-align: left;">
-                <?php
-                $save_button = '<input type="submit" name="submit" value="' . __("Save Settings", "gravityforms"). '" class="button-primary"/>';
-                echo apply_filters("gform_settings_save_button", $save_button);
-                ?>
-                </p>
-           <?php } ?>
-        </form>
+
 
         <form action="" method="post">
             <?php if(GFCommon::current_user_can_any("gravityforms_uninstall") && (!function_exists("is_multisite") || !is_multisite() || is_super_admin())){ ?>
                 <div class="hr-divider"></div>
 
                 <h3><?php _e("Uninstall Gravity Forms", "gravityforms") ?></h3>
-                <div class="delete-alert"><?php _e("Warning! This operation deletes ALL Gravity Forms data.", "gravityforms") ?>
+                <div class="delete-alert alert_red"><h3><?php _e("Warning", "gravityforms") ?></h3><p><?php _e("This operation deletes ALL Gravity Forms data. If you continue, You will not be able to retrieve or restore your forms or entries.", "gravityforms") ?></p>
                     <?php
-                    $uninstall_button = '<input type="submit" name="uninstall" value="' . __("Uninstall Gravity Forms", "gravityforms") . '" class="button" onclick="return confirm(\'' . __("Warning! ALL Gravity Forms data will be deleted, including entries. This cannot be undone. \'OK\' to delete, \'Cancel\' to stop", "gravityforms") . '\');"/>';
+                    $uninstall_button = '<input type="submit" name="uninstall" value="' . __("Uninstall Gravity Forms", "gravityforms") . '" class="button" onclick="return confirm(\'' . __("Warning! ALL Gravity Forms data, including form entries will be deleted. This cannot be undone. \'OK\' to delete, \'Cancel\' to stop", "gravityforms") . '\');"/>';
                     echo apply_filters("gform_uninstall_button", $uninstall_button);
                     ?>
 
@@ -361,7 +330,36 @@ class GFSettings{
         </form>
 
         <?php
+    }
 
+    public static function upgrade_license(){
+        check_ajax_referer('gf_upgrade_license','gf_upgrade_license');
+
+        $key = GFCommon::get_key();
+        $body = "key=$key";
+        $options = array('method' => 'POST', 'timeout' => 3, 'body' => $body);
+        $options['headers'] = array(
+            'Content-Type' => 'application/x-www-form-urlencoded; charset=' . get_option('blog_charset'),
+            'Content-Length' => strlen($body),
+            'User-Agent' => 'WordPress/' . get_bloginfo("version"),
+            'Referer' => get_bloginfo("url")
+        );
+
+        $request_url = GRAVITY_MANAGER_URL . "/api.php?op=upgrade_message&key=" . GFCommon::get_key();
+        $raw_response = wp_remote_request($request_url, $options);
+
+        if ( is_wp_error( $raw_response ) || 200 != $raw_response['response']['code'] )
+            $message = "";
+        else
+            $message = $raw_response['body'];
+
+        //validating that message is a valid Gravity Form message. If message is invalid, don't display anything
+        if(substr($message, 0, 10) != "<!--GFM-->")
+            $message = "";
+
+        echo $message;
+
+        exit;
     }
 
 

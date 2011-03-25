@@ -28,6 +28,20 @@ class GFFormList{
             $form_ids = RGForms::post("form");
             RGFormsModel::delete_forms($form_ids);
         }
+        else if($bulk_action == "reset_views"){
+            check_admin_referer('gforms_update_forms', 'gforms_update_forms');
+            $form_ids = RGForms::post("form");
+            foreach($form_ids as $form_id){
+                RGFormsModel::delete_views($form_id);
+            }
+        }
+        else if($bulk_action == "delete_entries"){
+            check_admin_referer('gforms_update_forms', 'gforms_update_forms');
+            $form_ids = RGForms::post("form");
+            foreach($form_ids as $form_id){
+                RGFormsModel::delete_leads_by_form($form_id);
+            }
+        }
 
         $active = RGForms::get("active") == "" ? null : RGForms::get("active");
         $forms = RGFormsModel::get_forms($active, "title");
@@ -79,11 +93,23 @@ class GFFormList{
                 var count = parseInt(element.html()) + change
                 element.html(count + "");
             }
+
+            function gfConfirmBulkAction(element_id){
+                var element = "#" + element_id;
+                if(jQuery(element).val() == 'delete')
+                    return confirm('<?php echo __("WARNING: You are about to delete this form and ALL entries associated with it. ", "gravityforms") . __("\'Cancel\' to stop, \'OK\' to delete.", "gravityforms") ?>');
+                else if(jQuery(element).val() == 'reset_views')
+                    return confirm('<?php echo __("Are you sure you would like to reset the Views for the selected forms? ", "gravityforms") . __("\'Cancel\' to stop, \'OK\' to reset.", "gravityforms") ?>');
+                else if(jQuery(element).val() == 'delete_entries')
+                    return confirm('<?php echo __("WARNING: You are about to delete ALL entries associated with the selected forms. ", "gravityforms") . __("\'Cancel\' to stop, \'OK\' to delete.", "gravityforms") ?>');
+
+                return true;
+            }
         </script>
 
         <link rel="stylesheet" href="<?php echo GFCommon::get_base_url()?>/css/admin.css" />
         <div class="wrap">
-            <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" src="<?php echo GFCommon::get_base_url()?>/images/gravity-title-icon-32.png" style="float:left; margin:15px 7px 0 0;"/>
+            <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" src="<?php echo GFCommon::get_base_url()?>/images/gravity-edit-icon-32.png" style="float:left; margin:15px 7px 0 0;"/>
             <h2>
                 <?php _e("Edit Forms", "gravityforms"); ?>
                 <a class="button add-new-h2" href="admin.php?page=gf_new_form"><?php _e("Add New", "gravityforms") ?></a>
@@ -109,9 +135,11 @@ class GFFormList{
                             <select name="bulk_action" id="bulk_action">
                                 <option value=''> <?php _e("Bulk action", "gravityforms") ?> </option>
                                 <option value='delete'><?php _e("Delete", "gravityforms") ?></option>
+                                <option value='reset_views'><?php _e("Reset Views", "gravityforms") ?></option>
+                                <option value='delete_entries'><?php _e("Delete Entries", "gravityforms") ?></option>
                             </select>
                             <?php
-                            $apply_button = '<input type="submit" class="button" value="' . __("Apply", "gravityforms") . '" onclick="if( jQuery(\'#bulk_action\').val() == \'delete\' && !confirm(\'' . __("WARNING: You are about to delete this form and ALL entries associated with it. ", "gravityforms") . __("\'Cancel\' to stop, \'OK\' to delete.", "gravityforms") .'\')) { return false; } return true;"/>';
+                            $apply_button = '<input type="submit" class="button" value="' . __("Apply", "gravityforms") . '" onclick="return gfConfirmBulkAction(\'bulk_action\');"/>';
                             echo apply_filters("gform_form_apply_button", $apply_button);
                             ?>
 
@@ -242,7 +270,7 @@ class GFFormList{
                             ?>
                             <tr>
                                 <td colspan="6" style="padding:20px;">
-                                    <?php _e(sprintf("You don't have any forms. Let's go %screate one%s!", '<a href="admin.php?page=gf_new_form">', "</a>"), "gravityforms"); ?>
+                                    <?php echo sprintf(__("You don't have any forms. Let's go %screate one%s!", "gravityforms"), '<a href="admin.php?page=gf_new_form">', "</a>"); ?>
                                 </td>
                             </tr>
                             <?php
@@ -259,9 +287,11 @@ class GFFormList{
                             <select name="bulk_action2" id="bulk_action2">
                                 <option value=''> <?php _e("Bulk action", "gravityforms") ?> </option>
                                 <option value='delete'><?php _e("Delete", "gravityforms") ?></option>
+                                <option value='reset_views'><?php _e("Reset Views", "gravityforms") ?></option>
+                                <option value='delete_entries'><?php _e("Delete Entries", "gravityforms") ?></option>
                             </select>
                             <?php
-                            $apply_button = '<input type="submit" class="button" value="' . __("Apply", "gravityforms") . '" onclick="if( jQuery(\'#bulk_action2\').val() == \'delete\' && !confirm(\'' . __("WARNING: You are about to delete this form and ALL entries associated with it. ", "gravityforms") . __("\'Cancel\' to stop, \'OK\' to delete.", "gravityforms") .'\')) { return false; } return true;"/>';
+                            $apply_button = '<input type="submit" class="button" value="' . __("Apply", "gravityforms") . '" onclick="return gfConfirmBulkAction(\'bulk_action2\');"/>';
                             echo apply_filters("gform_form_apply_button", $apply_button);
                         }
                         ?>

@@ -5,14 +5,14 @@ class GFEntryList{
         if(!GFCommon::ensure_wp_version())
             return;
 
-        $forms = RGFormsModel::get_forms(true);
+        $forms = RGFormsModel::get_forms(null, "title");
         $id = RGForms::get("id");
 
         if(sizeof($forms) == 0)
         {
             ?>
             <div style="margin:50px 0 0 10px;">
-                <?php _e(sprintf("You don't have any active forms. Let's go %screate one%s", '<a href="?page=gravityforms.php&id=0">', '</a>'), "gravityforms"); ?>
+                <?php echo sprintf(__("You don't have any active forms. Let's go %screate one%s", "gravityforms"), '<a href="?page=gravityforms.php&id=0">', '</a>'); ?>
             </div>
             <?php
         }
@@ -196,10 +196,7 @@ class GFEntryList{
                 return true;
             }
 
-            function ChangeForm(){
-                var form_id = jQuery("#form_id").val();
-                document.location =  "?page=gf_entries&view=entries&id=" + form_id;
-            }
+
 
             jQuery(document).ready(function(){
                 jQuery("#lead_search").keyup(function(event){
@@ -221,8 +218,10 @@ class GFEntryList{
 
 
         <div class="wrap">
-            <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" src="<?php echo GFCommon::get_base_url()?>/images/gravity-title-icon-32.png" style="float:left; margin:15px 7px 0 0;"/>
+            <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" src="<?php echo GFCommon::get_base_url()?>/images/gravity-entry-icon-32.png" style="float:left; margin:15px 7px 0 0;"/>
             <h2><?php _e("Entries", "gravityforms"); ?> : <?php echo $form["title"] ?> </h2>
+
+            <?php RGForms::top_toolbar() ?>
 
             <form id="lead_form" method="post">
                 <?php wp_nonce_field('gforms_entry_list', 'gforms_entry_list') ?>
@@ -260,20 +259,7 @@ class GFEntryList{
                         $apply_button = '<input type="submit" class="button" value="' . __("Apply", "gravityforms") . '" onclick="jQuery(\'#action\').val(\'bulk\');" />';
                         echo apply_filters("gform_entry_apply_button", $apply_button);
                         ?>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <label for="form_id"><?php _e("Select a Form","gravityforms") ?></label>
-                        <select id="form_id" onchange="ChangeForm();">
-                            <?php
-                            $forms = RGFormsModel::get_forms(null, "title");
-                            foreach($forms as $current_form){
-                                ?>
-                                <option value="<?php echo $current_form->id ?>" <?php echo $current_form->id == $form_id ? "selected='selected'" : "" ?>>
-                                    <?php echo $current_form->title ?>
-                                </option>
-                                <?php
-                            }
-                            ?>
-                        </select>
+
                     </div>
 
                     <?php
@@ -301,7 +287,7 @@ class GFEntryList{
                             if($field_id == $sort_field) //reverting direction if clicking on the currently sorted field
                                 $dir = $sort_direction == "ASC" ? "DESC" : "ASC";
                             ?>
-                            <th scope="col" class="manage-column" onclick="Search('<?php echo $field_id ?>', '<?php echo $dir ?>', <?php echo $form_id ?>, '<?php echo $search ?>', '<?php echo $star ?>', '<?php echo $read ?>');" style="cursor:pointer;"><?php echo esc_html($field_info["label"]) ?></th>
+                            <th scope="col" class="manage-column entry_nowrap" onclick="Search('<?php echo $field_id ?>', '<?php echo $dir ?>', <?php echo $form_id ?>, '<?php echo $search ?>', '<?php echo $star ?>', '<?php echo $read ?>');" style="cursor:pointer;"><?php echo esc_html($field_info["label"]) ?></th>
                             <?php
                         }
                         ?>
@@ -320,7 +306,7 @@ class GFEntryList{
                             if($field_id == $sort_field) //reverting direction if clicking on the currently sorted field
                                 $dir = $sort_direction == "ASC" ? "DESC" : "ASC";
                             ?>
-                            <th scope="col" class="manage-column" onclick="Search('<?php echo $field_id ?>', '<?php echo $dir ?>', <?php echo $form_id ?>, '<?php echo $search ?>', '<?php echo $star ?>', '<?php echo $read ?>');" style="cursor:pointer;"><?php echo esc_html($field_info["label"]) ?></th>
+                            <th scope="col" class="manage-column entry_nowrap" onclick="Search('<?php echo $field_id ?>', '<?php echo $dir ?>', <?php echo $form_id ?>, '<?php echo $search ?>', '<?php echo $star ?>', '<?php echo $read ?>');" style="cursor:pointer;"><?php echo esc_html($field_info["label"]) ?></th>
                             <?php
                         }
                         ?>
@@ -346,7 +332,8 @@ class GFEntryList{
                                 </td>
                                 <?php
                                 $is_first_column = true;
-                                $nowrap_class = "";
+
+                                $nowrap_class="entry_nowrap";
                                 foreach($field_ids as $field_id){
                                     $value = RGForms::get($field_id, $lead);
 
@@ -393,7 +380,7 @@ class GFEntryList{
                                             if(!empty($url)){
                                                 //displaying thumbnail (if file is an image) or an icon based on the extension
                                                 $thumb = self::get_icon_url($url);
-                                                $value = "<a href='$url' target='_blank' title='" . __("Click to view", "gravityforms") . "'><img src='$thumb'/></a>";
+                                                $value = "<a href='" . esc_attr($url) . "' target='_blank' title='" . __("Click to view", "gravityforms") . "'><img src='$thumb'/></a>";
                                             }
                                         break;
 
@@ -414,7 +401,6 @@ class GFEntryList{
                                         case "textarea" :
                                         case "post_content" :
                                         case "post_excerpt" :
-                                            $nowrap_class="entry_nowrap";
                                             $value = esc_html($value);
                                         break;
 

@@ -3,10 +3,10 @@
 admin.css
 Gravity Forms Administration Form Styles
 http://www.gravityforms.com
-updated: January 11, 2011
+updated: February 28, 2011
 
-a rocketgenius project
-copyright 2011 rocketgenius llc.
+a Rocketgenius project
+copyright 2011 Rocketgenius llc.
 http://www.rocketgenius.com
 this may not be re-distrubited without the
 express written permission of the author.
@@ -28,8 +28,9 @@ li {list-style:none}
 ul#gform_fields {padding:0; margin:0}
 select {font-size:12px!important; font-family:verdana,sans-serif; padding:2px 0}
 table.xwidefat {width:99%!important}
+div.wrap {position: relative}
 .hr-divider {background-color:#fff; height:1px; overflow:hidden; border-top:1px solid #E6E6E6; border-bottom:1px solid #fff; margin:24px 0; clear:both}
-div.delete-alert {border:1px solid #EAAEAD; color:#f00; background-color:#FFE1E1; padding:10px; width:675px; margin-bottom:30px}
+div.delete-alert {padding:0 0 20px 20px; margin-bottom:30px;}
 div.gforms_help_alert {background-color:#FFFFE0; border:1px solid #E6DB55; padding:10px; margin:10px 0}
 div.gforms_helpbox {border:1px solid #C2D7EF; background-color:#E2EDFF; margin:10px 0; padding:10px; width:520px; font-size:13px}
 div.gforms_helpbox select {width:460px}
@@ -37,7 +38,7 @@ div.gforms_helpbox ul.resource_list {margin-top:4px}
 div.gforms_helpbox ul.resource_list li {margin:0 0 6px!important}
 div.gforms_code {border:1px solid #C2D7EF; background-color:#E2EDFF; margin:10px 0; padding:10px; width:700px; font-family:Consolas,"Bitstream Vera Sans Mono","Courier New",Courier,monospace!important; font-size:13px}
 div.gforms_code pre {display:block; font-family:Consolas,"Bitstream Vera Sans Mono","Courier New",Courier,monospace!important; font-size:13px; font-weight:normal!important; line-height:18px; margin:0; overflow:hidden; z-index:100; position:relative; white-space:pre-wrap; white-space:0; white-space:0; white-space:0; word-wrap:break-word; padding:6px 10px 6px 0}
-div.delete-alert input.button {border:1px solid #EAAEAD; margin-left:30px; color:red}
+div.delete-alert input.button {border:1px solid #CFADB3; color:#832525;}
 div.delete-alert input.button:hover {border:1px solid #dbadac}
 #field_settings {margin:0 0 12px; padding-top:6px}
 #field_settings ul li label {display:block; line-height:125%; margin:0 0 3px}
@@ -50,10 +51,10 @@ li.field_setting select {margin-top:4px}
 label.float_label {float:left; width:40px; padding:2px 0 0}
 #gform_fields li{border:1px solid transparent; padding:10px; overflow:hidden}
 .gforms_form_settings li {border:1px solid transparent; padding:10px 0px; overflow:hidden}
-.gform_page_names li {padding:5px 0px!important;}
+.gform_page_names li {padding:5px 0px!important}
 
-#gform_heading {border:1px solid transparent; padding:10px; width:480px!important; overflow:hidden; margin-bottom:10px; position:relative}
-.gform_settings_container {border:1px solid transparent; padding:10px; width:480px!important;}
+#gform_heading {border:1px solid transparent; padding:8px 10px 10px 10px; width:480px!important; overflow:hidden; margin-bottom:10px; position:relative}
+.gform_settings_container {border:1px solid transparent; padding:10px; width:480px!important}
 #gform_fields {width:500px!important}
 .gfield_time_hour,
 .gfield_time_minute {width:70px; float:left; margin-bottom:4px}
@@ -162,10 +163,8 @@ a.close_icon {position:absolute; left:100%; margin-left:-27px; top:9px; width:16
 .field_delete_icon,
 .form_delete_icon {display:none; float:right; font-size:10px; text-decoration:none; height:16px; line-height:16px; padding:0 0 0 18px; background-image:url(../images/delete.png); background-repeat:no-repeat}
 .option_header {margin:5px 0 2px; font-weight:bold}
-a.gforms_settings_button {position:relative; top:-30px; left:387px; height:22px; margin-bottom:-30px; font-size:13px; font-family:"Lucida Grande",Verdana,Arial,"Bitstream Vera Sans",sans-serif; text-decoration:none; line-height:22px; display:block; height:22px; width:110px; background-image:url(../images/form_options.png); background-repeat: no-repeat; background-position:0 50%; padding-left:20px;}
-a.gforms_settings_button:hover {}
-div.error + a.gforms_settings_button {top:-90px;}
-div.error + a.gforms_settings_button {*top:-80px;}
+div.error + a.gforms_settings_button {top:-90px}
+div.error + a.gforms_settings_button {*top:-80px}
 img.gtitle_icon {float:left; margin:15px 7px 0 0}
 td.pad_top {padding-top:10px}
 #form_settings {padding:5px; margin-top:10px}
@@ -186,10 +185,10 @@ div.new-form-option a:hover {color:#2B2B2B; border:1px solid #666}
 .installation_item_cell {width:40px}
 .installation_item_message {padding-left:15px; color:red}
 div#wpbody {position:relative}
-#floatMenu {position:absolute; width:280px; top:90px; z-index:99}
+#floatMenu {position:absolute; width:280px; top:130px; z-index:99}
 div.add-buttons-title {background-color:#636363; background-image:url(../images/expand_title.png); background-repeat:no-repeat; background-position:right 0; height:24px; overflow:hidden; cursor:pointer; font-size:13px; border-width:1px; border-style:solid; border-color:#636363; margin:0!important; padding:5px 12px 0; white-space:nowrap; -moz-border-radius-topleft:4px; -moz-border-radius-topright:4px; -webkit-border-top-right-radius:4px; -webkit-border-top-left-radius:4px; -khtml-border-top-right-radius:4px; -khtml-border-top-left-radius:4px; border-top-right-radius:4px; border-top-left-radius:4px}
 .button-title-link {color:#FFF; text-shadow:none; font-weight:bold; cursor:text!important}
-.add-buttons {border-width:0 1px 1px; border-style:none solid solid; -moz-border-radius-bottomleft:4px; -moz-border-radius-bottomright:4px; -webkit-border-bottom-right-radius:4px; -webkit-border-bottom-left-radius:4px; -khtml-border-bottom-right-radius:4px; -khtml-border-bottom-left-radius:4px; border-bottom-right-radius:4px; border-bottom-left-radius:4px; background-color:#F1F1F1; border-color:#DDD; padding:12px}
+.add-buttons {border-width:0 1px 1px; border-style:none solid solid; -moz-border-radius-bottomleft:4px; -moz-border-radius-bottomright:4px; -webkit-border-bottom-right-radius:4px; -webkit-border-bottom-left-radius:4px; -khtml-border-bottom-right-radius:4px; -khtml-border-bottom-left-radius:4px; border-bottom-right-radius:4px; border-bottom-left-radius:4px; background-color:#F1F1F1; border-color:#bbb; padding:12px}
 ul.menu li {margin-bottom:10px}
 ol.field_type {display:block; visibility:visible!important; overflow:hidden; margin:0; padding:0}
 div.push-alert-gold {padding:10px 6px; margin:30px 0 10px; text-align:center; line-height:150%; display:block!important; visibility:visible!important; min-width:800px; font-size:1.1em; background-color:#FFFBCC; border-top:1px solid #E6DB55; border-bottom:1px solid #E6DB55}
@@ -263,9 +262,9 @@ body #namediv table.entry-details input {width:99%}
 body #namediv .ginput_complex_admin.ginput_container span.ginput_left,
 body #namediv .ginput_complex_admin.ginput_container span.ginput_left_admin,
 body #namediv .ginput_complex_admin.ginput_container span.ginput_right,
-body #namediv .ginput_complex_admin.ginput_container span.ginput_right_admin {display: -moz-inline-stack; display: inline-block; zoom: 1; *display: inline; width:49%;}
+body #namediv .ginput_complex_admin.ginput_container span.ginput_right_admin {display: -moz-inline-stack; display: inline-block; zoom: 1; *display: inline; width:49%}
 body #namediv .ginput_complex_admin.ginput_container span.ginput_left,
-body #namediv .ginput_complex_admin.ginput_container span.ginput_left_admin {margin-right:1em;}
+body #namediv .ginput_complex_admin.ginput_container span.ginput_left_admin {margin-right:1em}
 body #namediv .ginput_left_admin label,
 body #namediv .ginput_right_admin label {display:block}
 
@@ -432,13 +431,13 @@ input.button-primary.gfbutton,
 button.button-primary.gfbutton,
 a.button-primary.gfbutton {margin:10px 0 20px 0; letter-spacing: 0.4pt; font-size:12px!important; font-weight:normal; -webkit-border-radius: 16px; -moz-border-radius: 16px; border-radius: 16px; padding:3px 8px 4px 8px!important  }
 
-.menu.collapsible ol.field_type li input.button:hover {color:#D54E21; border-color:#8f8f8f; -webkit-border-radius: 16px!important; -moz-border-radius: 16px!important; border-radius: 16px!important;}
+.menu.collapsible ol.field_type li input.button:hover {color:#D54E21; border-color:#8f8f8f; -webkit-border-radius: 16px!important; -moz-border-radius: 16px!important; border-radius: 16px!important}
 
 /* multi-page progress bar  ------------------------------------------------------*/
 
 h3.gf_progressbar_title {font-size:13px; line-height:1!important; margin:0 0 4px 0!important; padding:0!important; clear:both; filter:alpha(opacity=60); -moz-opacity:0.6; -khtml-opacity: 0.6; opacity: 0.6}
 .gform_wrapper .gf_progressbar_wrapper {clear:both; margin:0 0 14px 0}
-.gform_wrapper .gf_progressbar {width:100%; height:20px; overflow:hidden; line-height:20px!important; background-color:#fff; border:1px solid #acacac; border-right:1px solid #959595; border-bottom:1px solid #959595; background-image: url(images/percentbar_bg.png); background-repeat: repeat-x; background-position: bottom; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px}
+.gform_wrapper .gf_progressbar {width:100%; height:20px; overflow:hidden; line-height:20px!important; background-color:#fff; border:1px solid #acacac; border-right:1px solid #959595; border-bottom:1px solid #959595; background-image: url(images/percentbar_bg.png); background-repeat: repeat-x; background-position: bottom; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px}
 .gform_wrapper .gf_progressbar_percentage {background-repeat:repeat-x; height:20px; text-align:right;font-family:"helvetica",verdana,arial,sans-serif; font-size:13px!important; text-shadow: 0 1px 1px rgba(0,0,0,0.50)}
 	.gform_wrapper .gf_progressbar_percentage span {margin-right:5px}
 .gform_wrapper .percentbar_blue {background-image: url(../images/percentbar_blue.png); color:#fff; background-color:#0072BC}
@@ -456,4 +455,104 @@ h3.gf_progressbar_title {font-size:13px; line-height:1!important; margin:0 0 4px
 .gform_wrapper .gf_step.gf_step_active {filter:alpha(opacity=100); -moz-opacity:1.0; -khtml-opacity: 1.0; opacity: 1.0}
 
 /* password strength ----------------------------------------------------*/
-.gfield_password_strength {border-style: solid; border-width: 1px; float: left; margin: 12px 5px 5px 1px; padding: 3px 5px; text-align: center; width: 200px; background-color: #eee; border-color: #ddd !important;}
+
+.gfield_password_strength {border-style: solid; border-width: 1px; float: left; margin: 12px 5px 5px 1px; padding: 3px 5px; text-align: center; width: 200px; background-color: #eee; border-color: #ddd !important}
+
+/* form toolbar  ----------------------------------------------------*/
+
+#contextual-help-link-wrap {display:none}
+#gf_form_toolbar {margin:10px 0}
+ul#gf_form_toolbar_links {min-width:790px; padding:0 0 0 6px; border:1px solid #bbb; background-color:#e4e4e4; margin:0; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background-image:url(../images/gf_toolbar_bg.jpg); background-repeat: repeat-x}
+ul#gf_form_toolbar_links li {display: -moz-inline-stack; display: inline-block; zoom: 1; *display: inline; margin:0; padding:10px 6px; width:auto}
+ul#gf_form_toolbar_links li.gf_form_toolbar_selectform {background-image:url(../images/gf_toolbar_divider.jpg); background-repeat: repeat-y; background-position: right}
+ul#gf_form_toolbar_links li.gf_form_toolbar_settings a,
+ul#gf_form_toolbar_links li.gf_form_toolbar_editor a,
+ul#gf_form_toolbar_links li.gf_form_toolbar_notifications a,
+ul#gf_form_toolbar_links li.gf_form_toolbar_entries a ,
+ul#gf_form_toolbar_links li.gf_form_toolbar_preview a {background-image:url(../images/gf_toolbar_iconsprite.png); background-repeat: no-repeat; padding-left:20px; text-decoration: none; text-shadow: 0 1px 1px #fff; line-height:16px; white-space: nowrap}
+ul#gf_form_toolbar_links li a:hover,
+ul#gf_form_toolbar_links li a:focus,
+ul#gf_form_toolbar_links li a.gf_toolbar_active {color:#333}
+ul#gf_form_toolbar_links li a.gf_toolbar_active {font-weight:bold}
+ul#gf_form_toolbar_links li a.gf_toolbar_disabled {color:#333; filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity: 0.5; opacity: 0.5; -ms-filter:"alpha(opacity=50)"}
+ul#gf_form_toolbar_links li a.gf_toolbar_active,
+ul#gf_form_toolbar_links li a.gf_toolbar_disabled {cursor:default}
+ul#gf_form_toolbar_links li.gf_form_toolbar_settings {width:103px}
+ul#gf_form_toolbar_links li.gf_form_toolbar_settings a {background-position:0 0}
+ul#gf_form_toolbar_links li.gf_form_toolbar_settings a:hover,
+ul#gf_form_toolbar_links li.gf_form_toolbar_settings a.gf_toolbar_active {background-position:0 -96px}
+ul#gf_form_toolbar_links li.gf_form_toolbar_settings a.gf_toolbar_disabled:hover {background-position:0 0}
+ul#gf_form_toolbar_links li.gf_form_toolbar_editor a {background-position:0 -16px}
+ul#gf_form_toolbar_links li.gf_form_toolbar_editor a:hover,
+ul#gf_form_toolbar_links li.gf_form_toolbar_editor a.gf_toolbar_active {background-position:0 -112px}
+ul#gf_form_toolbar_links li.gf_form_toolbar_editor a.gf_toolbar_disabled:hover {background-position:0 -16px}
+ul#gf_form_toolbar_links li.gf_form_toolbar_notifications {padding:10px 6px 10px 4px}
+ul#gf_form_toolbar_links li.gf_form_toolbar_notifications a {background-position:0 -32px}
+ul#gf_form_toolbar_links li.gf_form_toolbar_notifications a:hover,
+ul#gf_form_toolbar_links li.gf_form_toolbar_notifications a.gf_toolbar_active {background-position:0 -128px}
+ul#gf_form_toolbar_links li.gf_form_toolbar_notifications a.gf_toolbar_disabled:hover {background-position:0 -32px}
+ul#gf_form_toolbar_links li.gf_form_toolbar_entries a {background-position:0 -48px}
+ul#gf_form_toolbar_links li.gf_form_toolbar_entries a:hover,
+ul#gf_form_toolbar_links li.gf_form_toolbar_entries a.gf_toolbar_active {background-position:0 -144px}
+ul#gf_form_toolbar_links li.gf_form_toolbar_entries a.gf_toolbar_disabled:hover {background-position:0 -48px}
+ul#gf_form_toolbar_links li.gf_form_toolbar_preview a {background-position:0 -64px}
+ul#gf_form_toolbar_links li.gf_form_toolbar_preview a:hover,
+ul#gf_form_toolbar_links li.gf_form_toolbar_preview a.gf_toolbar_active {background-position:0 -160px}
+ul#gf_form_toolbar_links li.gf_form_toolbar_preview a.gf_toolbar_disabled:hover {background-position:0 -64px}
+
+/* form switcher  ----------------------------------------------------*/
+
+ul#gf_form_toolbar_links {position: relative}
+li.gf_form_switcher {position:absolute; right:2px; top:-4px}
+li.gf_form_switcher label {display:none}
+li.gf_form_switcher select#form_switcher {max-width:200px}
+
+/* tidy up the title area  ----------------------------------------------------*/
+
+p.search-box {margin:12px 0 0 0}
+
+/* form settings panel  ----------------------------------------------------*/
+
+div#gform_heading.selectable.field_selected {background-image:url(../images/gf_formsettings_header.jpg); background-repeat: no-repeat; background-position: 0 0; padding-top:8px}
+div#gform_heading.selectable h3#gform_title {margin-top:2em}
+
+/* upgrade and renewal styles for settings page  ----------------------------------------------------*/
+
+div.gf_renew_license {border:1px solid #CFADB3; color:#832525; background-color:#FAF2F5; padding:0 0 20px 20px}
+p.gform_renew_expired strong {color:#790000}
+div.gf_upgrade_license h4 { font-size:14px; margin:0; padding:0}
+div.gf_upgrade_developer_license,
+div.gf_upgrade_business_license {padding:14px 0 0 140px; min-height:135px; background-repeat: no-repeat; background-position: 0 0}
+div.gf_upgrade_developer_license {background-image:url(../images/gravityforms_developer_upgrade.png); margin:30px 0 0 0}
+div.gf_upgrade_business_license {background-image:url(../images/gravityforms_business_upgrade.png); margin:0}
+p.gform_renew_expired,
+p.gform_renew_not_expired {padding-left:20px; background-image:url(../images/exclamation.png); background-repeat: no-repeat; background-position: 0 0}
+
+/* update page status styles  ----------------------------------------------------*/
+
+.gf_update_current,
+.gf_update_expired,
+.gf_update_outdated {padding:10px; margin-top:20px}
+
+/* alert styles to reuse ----------------------------------------------------*/
+
+.alert_green,
+.alert_red,
+.alert_yellow,
+.alert_gray,
+.alert_blue {background-image:url(../images/top_highlight.png); background-repeat: repeat-x; background-position: 0 0;  -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px}
+.alert_green {border:1px solid #97B48A; background-color:#CBECA0}
+.alert_red {border:1px solid #CFADB3; color:#832525; background-color:#FAF2F5}
+.alert_yellow {border:1px solid #E6DB55; background-color:#FFFBCC; color:#424242}
+.alert_gray {border:1px solid #CCC; color:#424242; background-color:#EEE}
+.alert_blue {border:1px solid #CFADB3; color:#832525; background-color:#FAF2F5}
+
+/* adjust key indicator positions ----------------------------------------------------*/
+
+img.gf_keystatus_invalid,
+img.gf_keystatus_valid {position: relative; top:2px}
+
+/* note for truncated radio and checkbox lists ----------------------------------------------------*/
+
+ul.gfield_radio li.gchoice_total,
+ul.gfield_checkbox li.gchoice_total {font-size:11px; color:#878787; padding-top:14px!important}

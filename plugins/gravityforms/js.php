@@ -3,8 +3,17 @@
 //INITIALIZING PAGE
 //-------------------------------------------------
 var gforms_dragging = 0;
-
+var gforms_original_json;
 jQuery(document).ready(function() {
+    gforms_original_json = jQuery.toJSON(form);
+
+    window.onbeforeunload = function(){
+        UpdateFormObject();
+        if (gforms_original_json != jQuery.toJSON(form)){
+            return "You have unsaved changes.";
+        }
+    }
+
     jQuery('#gform_fields').sortable({
         axis: 'y',
         cancel: '#field_settings',
@@ -227,11 +236,19 @@ function TogglePostCategoryInitialItem(isInit){
 
 }
 
+function PopulateContentTemplate(fieldName){
+    if(jQuery("#" + fieldName).val().length == 0){
+        var field = GetSelectedField();
+        jQuery("#" + fieldName).val("{" + field.label + ":" + field.id + "}");
+    }
+}
+
 function TogglePostContentTemplate(isInit){
     var speed = isInit ? "" : "slow";
 
     if(jQuery("#gfield_post_content_enabled").is(":checked")){
         jQuery("#gfield_post_content_container").show(speed);
+        PopulateContentTemplate("field_post_content_template");
     }
     else{
         jQuery("#gfield_post_content_container").hide(speed);
@@ -242,6 +259,7 @@ function TogglePostTitleTemplate(isInit){
     var speed = isInit ? "" : "slow";
     if(jQuery("#gfield_post_title_enabled").is(":checked")){
         jQuery("#gfield_post_title_container").show(speed);
+        PopulateContentTemplate("field_post_title_template");
     }
     else{
         jQuery("#gfield_post_title_container").hide(speed);
@@ -253,6 +271,7 @@ function ToggleCustomFieldTemplate(isInit){
 
     if(jQuery("#gfield_customfield_content_enabled").is(":checked")){
         jQuery("#gfield_customfield_content_container").show(speed);
+        PopulateContentTemplate("field_customfield_content_template");
     }
     else{
         jQuery("#gfield_customfield_content_container").hide(speed);
@@ -527,6 +546,31 @@ function SaveForm(){
 
     jQuery("#please_wait_container").show();
 
+    UpdateFormObject();
+
+    if(!ValidateForm()){
+        return false;
+    }
+
+    var mysack = new sack("<?php echo admin_url("admin-ajax.php")?>" );
+    mysack.execute = 1;
+    mysack.method = 'POST';
+    mysack.setVar( "action", "rg_save_form" );
+    mysack.setVar( "rg_save_form", "<?php echo wp_create_nonce("rg_save_form") ?>" );
+    mysack.setVar( "id", form.id );
+    mysack.setVar( "form", jQuery.toJSON(form) );
+    mysack.encVar( "cookie", document.cookie, false );
+    mysack.onError = function() { alert('<?php _e("Ajax error while saving form", "gravityforms") ?>' )};
+    mysack.runAJAX();
+
+    //updating original json. used when verifying if there has been any changes unsaved changed before leaving the page
+    gforms_original_json = jQuery.toJSON(form);
+
+    return true;
+}
+
+function UpdateFormObject(){
+
     form.title = jQuery("#form_title_input").val();
     form.description = jQuery("#form_description_input").val();
     form.labelPlacement = jQuery("#form_label_placement").val();
@@ -535,17 +579,20 @@ function SaveForm(){
     form.confirmation.url = jQuery("#form_confirmation_url").val() == "http://" ? "" : jQuery("#form_confirmation_url").val();
     form.confirmation.pageId = jQuery("#form_confirmation_page").val();
     form.confirmation.queryString = jQuery("#form_redirect_querystring").val();
+    form.confirmation.disableAutoformat = jQuery("#form_disable_autoformatting").is(":checked");
 
     if(jQuery("#form_confirmation_redirect").is(":checked") && form.confirmation.url.length > 0){
         form.confirmation.type = "redirect";
         form.confirmation.pageId = "";
         form.confirmation.message = "";
+        form.confirmation.disableAutoformat = false;
     }
     else if(jQuery("#form_confirmation_show_page").is(":checked") && form.confirmation.pageId != ""){
         form.confirmation.type = "page";
         form.confirmation.message = "";
         form.confirmation.url = "";
         form.confirmation.queryString = "";
+        form.confirmation.disableAutoformat = false;
     }
     else{
         form.confirmation.type = "message";
@@ -665,24 +712,7 @@ function SaveForm(){
 
     SortFields();
 
-    if(!ValidateForm()){
-        return false;
-    }
-
-    var mysack = new sack("<?php echo admin_url("admin-ajax.php")?>" );
-    mysack.execute = 1;
-    mysack.method = 'POST';
-    mysack.setVar( "action", "rg_save_form" );
-    mysack.setVar( "rg_save_form", "<?php echo wp_create_nonce("rg_save_form") ?>" );
-    mysack.setVar( "id", form.id );
-    mysack.setVar( "form", jQuery.toJSON(form) );
-    mysack.encVar( "cookie", document.cookie, false );
-    mysack.onError = function() { alert('<?php _e("Ajax error while setting post template", "gravityforms") ?>' )};
-    mysack.runAJAX();
-
-    return true;
 }
-
 
 function EndInsertForm(formId){
      jQuery("#please_wait_container").hide();
@@ -839,6 +869,7 @@ function InitializeForm(form){
     jQuery("#form_confirmation_message").text(form.confirmation.message);
     jQuery("#form_confirmation_url").val(form.confirmation.url == "" ? "http://" : form.confirmation.url);
     jQuery("#form_confirmation_page").val(form.confirmation.pageId);
+    jQuery("#form_disable_autoformatting").attr("checked", form.confirmation.disableAutoformat ? true : false);
 
     var hasQueryString = (form.confirmation.queryString != undefined && form.confirmation.queryString.length > 0);
     jQuery("#form_redirect_querystring").val(hasQueryString ? form.confirmation.queryString : "");
@@ -1170,8 +1201,11 @@ function SetDefaultValues(field){
             if(!field.inputType)
                 field.inputType = "donation";
 
+
             field.inputs = null;
-            field["enablePrice"] = null;
+            field.enablePrice = null;
+
+
             break;
 
         case "price" :
@@ -1367,6 +1401,18 @@ function StartChangeProductType(type){
     field = GetSelectedField();
     if(type != "singleproduct")
         field["enablePrice"] = true;
+    else
+        field["enablePrice"] = null;
+
+    return StartChangeInputType(type, field);
+}
+
+function StartChangeDonationType(type){
+    field = GetSelectedField();
+    if(type != "donation")
+        field["enablePrice"] = true;
+    else
+        field["enablePrice"] = null;
 
     return StartChangeInputType(type, field);
 }
@@ -1462,6 +1508,7 @@ function FieldClick(field){
         switch(field.id){
             case "gform_heading" :
                 element_id = "#form_settings";
+                jQuery('.gf_form_toolbar_settings a').removeClass("gf_toolbar_active");
             break;
 
             case "gform_last_page_settings" :
@@ -1499,6 +1546,9 @@ function FieldClick(field){
         //Displaying form settings
         ShowSettings("form_settings");
 
+        //highlighting toolbar item
+        jQuery('.gf_form_toolbar_settings a').addClass("gf_toolbar_active");
+
     }
     else if(field.id == "gform_last_page_settings"){
 
@@ -1520,6 +1570,7 @@ function FieldClick(field){
 
         //Displaying pagination settings
         ShowSettings("pagination_settings");
+
     }
     else{
 
@@ -2004,7 +2055,7 @@ function GetRuleValues(objectType, ruleIndex, selectedFieldId, selectedValue){
 
     var isAnySelected = false;
     var field = GetFieldById(selectedFieldId);
-    if(field){
+    if(field && field.choices){
         for(var i=0; i<field.choices.length; i++){
             var choiceValue = typeof field.choices[i].value == "undefined" || field.choices[i].value == null ? field.choices[i].text : field.choices[i].value;
             var isSelected = choiceValue == selectedValue;
@@ -2091,7 +2142,6 @@ function GetFieldChoices(field){
     for(var i=0; i<field.choices.length; i++){
         var checked = field.choices[i].isSelected ? "checked" : "";
 
-
         var type = GetInputType(field) == 'checkbox' ? 'checkbox' : 'radio';
 
         var value = field.enableChoiceValue ? field.choices[i].value : field.choices[i].text;
@@ -2100,15 +2150,16 @@ function GetFieldChoices(field){
             price = "";
 
         str += "<li><input type='" + type + "' class='gfield_choice_" + type + "' name='choice_selected' id='choice_selected_" + i + "' " + checked + " onclick='SetFieldChoice(" + i + ");' />";
-        str +=     "<input type='text' id='choice_text_" + i + "' value=\"" + field.choices[i].text.replace("\"", "&quot;") + "\" onkeyup=\"SetFieldChoice(" + i + ");\" class='field-choice-input field-choice-text' />";
-        str +=     "<input type='text' id='choice_value_" + i + "' value=\"" + value.replace("\"", "&quot;") + "\" onkeyup=\"SetFieldChoice(" + i + ");\" class='field-choice-input field-choice-value' />";
-        str +=     "<input type='text' id='choice_price_" + i + "' value=\"" + price.replace("\"", "&quot;") + "\" onchange=\"SetFieldChoice(" + i + ");\" class='field-choice-input field-choice-price' />";
+        str +=     "<input type='text' id='choice_text_" + i + "' value=\"" + field.choices[i].text.replace(/"/g, "&quot;") + "\" onkeyup=\"SetFieldChoice(" + i + ");\" class='field-choice-input field-choice-text' />";
+        str +=     "<input type='text' id='choice_value_" + i + "' value=\"" + value.replace(/"/g, "&quot;") + "\" onkeyup=\"SetFieldChoice(" + i + ");\" class='field-choice-input field-choice-value' />";
+        str +=     "<input type='text' id='choice_price_" + i + "' value=\"" + price.replace(/"/g, "&quot;") + "\" onchange=\"SetFieldChoice(" + i + ");\" class='field-choice-input field-choice-price' />";
         str +=     "<img src='" + imagesUrl + "/add.png' class='add_field_choice' title='add another choice' alt='add another choice' style='cursor:pointer; margin:0 3px;' onclick=\"InsertFieldChoice(" + (i+1) + ");\" />";
 
         if(field.choices.length > 1 )
             str += "<img src='" + imagesUrl + "/remove.png' title='remove this choice' alt='remove this choice' class='delete_field_choice' style='cursor:pointer;' onclick=\"DeleteFieldChoice(" + i + ");\" />";
 
         str += "</li>";
+
     }
     return str;
 }

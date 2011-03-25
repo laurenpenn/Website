@@ -1,12 +1,12 @@
 /*
 ----------------------------------------------------------------
 Gravity Forms Front End Form Styles
-Version 1.5.RC3.7
+Version 1.5
 http://www.gravityforms.com
-updated January 17, 2011
+updated March 22, 2011
 
 a Rocketgenius project
-copyright 2011 Rocketgenius llc.
+copyright 2011 Rocketgenius LLC.
 http://www.rocketgenius.com
 this may not be re-distrubited without the
 express written permission of the author.
@@ -35,13 +35,13 @@ to no.
 .gform_wrapper input[type=phone],
 .gform_wrapper input[type=number],
 .gform_wrapper input[type=password] {outline-style: none; font-size:11px; font-family:inherit; padding:2px 0 2px 0; letter-spacing:normal}
-.gform_wrapper textarea {outline-style: none; font-size:11px; font-family:inherit; letter-spacing:normal; padding:2px 0 2px 0; resize:none;} /* doesn't validate but added for Safari field resizing */
+.gform_wrapper textarea {outline-style: none; font-size:11px; font-family:inherit; letter-spacing:normal; padding:2px 0 2px 0; resize:none} /* doesn't validate but added for Safari field resizing */
 .gform_wrapper ul {margin:0; list-style-type:none}
 html>body .entry ul,
 .gform_wrapper ul {text-indent:0px}
 .gform_wrapper li,
 .gform_wrapper form li {list-style-type:none!important; list-style-image: none!important; overflow:hidden}
-.gform_wrapper ul li.gfield {clear: both;}
+.gform_wrapper ul li.gfield {clear: both}
 .gform_wrapper ul.gfield_radio li,
 .gform_wrapper ul.gfield_checkbox li {overflow:hidden}
 .gform_wrapper ul.right_label li,
@@ -51,7 +51,7 @@ html>body .entry ul,
 .gform_wrapper ul li:before,
 .gform_wrapper ul li:after,
 .entry ul li:before,
-.entry ul li:after {content:"";} /* for Safari */
+.entry ul li:after {content:""} /* for Safari */
 .gform_wrapper ul li:before,
 .gform_wrapper ul li:after,
 .entry ul li:before,
@@ -64,11 +64,11 @@ html>body .entry ul,
 .gform_wrapper .gfield_time_minute,
 .gform_wrapper .gfield_date_month,
 .gform_wrapper .gfield_date_day,
-.gform_wrapper .gfield_date_year {width:70px; display: -moz-inline-stack; display: inline-block; zoom: 1; *display: inline; vertical-align: top;}
+.gform_wrapper .gfield_date_year {width:70px; display: -moz-inline-stack; display: inline-block; zoom: 1; *display: inline; vertical-align: top}
 .gform_wrapper .gfield_date_month,
 .gform_wrapper .gfield_date_day,
 .gform_wrapper .gfield_date_year {margin-right:12px}
-.gform_wrapper .gfield_time_ampm {display: -moz-inline-stack; display: inline-block; zoom: 1; *display: inline; vertical-align: top; }
+.gform_wrapper .gfield_time_ampm {display: -moz-inline-stack; display: inline-block; zoom: 1; *display: inline; vertical-align: top}
 .gform_wrapper .gfield_time_ampm select {width:60px!important}
 .gform_wrapper .gfield_time_hour input,
 .gform_wrapper .gfield_time_minute input,
@@ -117,7 +117,7 @@ html>body .entry ul,
 .gform_wrapper .left_label ul.gfield_checkbox,
 .gform_wrapper .right_label ul.gfield_checkbox,
 .gform_wrapper .left_label ul.gfield_radio,
-.gform_wrapper .right_label ul.gfield_radio {margin-left:32%; overflow:hidden;}
+.gform_wrapper .right_label ul.gfield_radio {margin-left:32%; overflow:hidden}
 .gform_wrapper .top_label input.small,
 .gform_wrapper .top_label select.small {width:25%}
 .gform_wrapper .top_label input.medium,
@@ -209,7 +209,7 @@ html>body .entry ul,
 .gform_wrapper .gform_footer.right_label,
 .gform_wrapper .gform_footer.left_label {padding:16px 0 10px 31%}
 .gform_wrapper .gform_footer input.button,
-.gform_wrapper .gform_footer input[type=submit] {font-size:1em;}
+.gform_wrapper .gform_footer input[type=submit] {font-size:1em}
 #gforms_confirmation_message {background-color:#fffac6; border:1px solid #feda70; margin-top:10px; margin-bottom:10px; padding:20px 0; font-size:14px; color:#252525; text-align:center}
 .gform_wrapper .gform_edit_link {margin:20px 0; font-family:inherit; font-size:12px}
 .gform_wrapper .ginput_complex .ginput_left,
@@ -306,30 +306,6 @@ img.ui-datepicker-trigger {display: -moz-inline-stack; display: inline-block; zo
 #wrapper.hfeed #main #container #content .entry-content .gf_4col ul.gfield_radio li {min-height:1.5em}
 #wrapper.hfeed #main #container #content .entry-content .gform_wrapper .gfield_checkbox li label,
 #wrapper.hfeed #main #container #content .entry-content .gform_wrapper .gfield_radio li label {*display:inline-block!important; *margin: 2px 0 0 6px}/* for IE7 */
-
-
-/* Thesis theme specific styles updated November 5, 2010 ------------------------------------------------------*/
-/* very specific inheritance but if your theme is structured identical to the Thesis theme it will affect yours as well */
-
-body.custom #container #page #content_box .post_box .format_text ul.gfield_radio li input,
-body.custom #container #page #content_box .post_box .format_text ul.gfield_checkbox li input {width:auto!important; border:none!important; border-color:none!important; background-color:none!important; background:none!important}
-body.custom #container #page #content_box .post_box .format_text .gform_footer input[type=image] {border:none!important; border-color:none!important; background-color:none!important}
-body.custom #container #page #content_box .post_box .format_text .gform_footer input.button,
-body.custom #container #page #content_box .post_box .format_text .gform_page_footer .button.gform_button,
-body.custom #container #page #content_box .post_box .format_text .gform_page_footer .button.gform_previous_button,
-body.custom #container #page #content_box .post_box .format_text .gform_page_footer .button.gform_next_button {border-color:#CCC #999 #999 #CCC; border-right:3px double #999; border-style:double; border-width:3px; color:#111111; background-color:#E3E3E3; cursor:pointer; font-weight:bold; overflow:hidden; width:auto !important; font-family: Georgia, "Times New Roman", Times, serif; font-size:1.143em; padding:0.313em 0.25em}
-body.custom #container #page #content_box .post_box .format_text .gform_footer input[type=image] {width:auto!important; background:none!important; border:none!important; padding:0!important}
-body.custom #container #page #content_box .post_box .format_text .left_label ul.gfield_checkbox,
-body.custom #container #page #content_box .post_box .format_text .left_label ul.gfield_radio,
-body.custom #container #page #content_box .post_box .format_text .right_label ul.gfield_checkbox,
-body.custom #container #page #content_box .post_box .format_text .right_label ul.gfield_radio {margin-top:-.2em!important}
-body.custom #container #page #content_box .post_box .format_text input, body.custom #container #page #content_box .post_box .format_text select {font-size:1em; padding:0.214em}
-body.custom #container #page #content_box .post_box .format_text select {background-color:#eee; border-color:#AAA #DDD #DDD #AAA; border-style:solid; border-width:1px; color:#444; font-size:1em}
-body.custom #container #page #content_box .post_box .format_text .gform_wrapper .gfield_checkbox li input[type=checkbox],
-body.custom #container #page #content_box .post_box .format_text .gform_wrapper .gfield_radio li input[type=radio],
-body.custom #container #page #content_box .post_box .format_text .gform_wrapper .gfield_checkbox li input {float:left; margin-top:4px}
-body.custom #container #page #content_box .post_box .format_text .gform_wrapper .gfield_checkbox li label,
-body.custom #container #page #content_box .post_box .format_text .gform_wrapper .gfield_radio li label {display:inline-block\9; margin: 2px 0 0 6px\9}/* another hack for IE */
 
 
 /* HTML field default margins -----------------------------------------------------*/
@@ -473,14 +449,14 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {displa
 .gform_wrapper .top_label li.gfield.gf_inline select  {width:auto!important}
 .gform_wrapper .top_label li.gfield.gf_inline textarea {width:95%!important}
 .gform_wrapper .top_label li.gfield.gf_inline div.gfield_time_hour input[type=text],
-.gform_wrapper .top_label li.gfield.gf_inline div.gfield_time_minute input[type=text] {width:70%!important;}
+.gform_wrapper .top_label li.gfield.gf_inline div.gfield_time_minute input[type=text] {width:70%!important}
 .gform_wrapper .top_label li.gfield.gf_inline div.gfield_time_hour,
 .gform_wrapper .top_label li.gfield.gf_inline div.gfield_time_minute,
 .gform_wrapper .top_label li.gfield.gf_inline div.gfield_date_month,
 .gform_wrapper .top_label li.gfield.gf_inline div.gfield_date_day,
-.gform_wrapper .top_label li.gfield.gf_inline div.gfield_date_year {width:50px;}
-.gform_wrapper .top_label li.gfield.gf_inline div.gfield_time_ampm {width:auto;}
-.gform_wrapper li.gf_inline div.ginput_container {white-space: nowrap!important;}
+.gform_wrapper .top_label li.gfield.gf_inline div.gfield_date_year {width:50px}
+.gform_wrapper .top_label li.gfield.gf_inline div.gfield_time_ampm {width:auto}
+.gform_wrapper li.gf_inline div.ginput_container {white-space: nowrap!important}
 
 /* 2 column ready class ------------------------------------------------------*/
 
@@ -531,7 +507,7 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {displa
 .gform_wrapper .top_label li.gfield.gfield_error.gf_right_third {margin-right:1%}
 .gform_wrapper .top_label li.gfield.gf_left_third {float:left; clear:left!important}
 .gform_wrapper .top_label li.gfield.gf_middle_third {float:left; margin-left:2%; clear:none!important}
-.gform_wrapper .top_label li.gfield.gfield_error.gf_middle_third {margin-left:3%;}
+.gform_wrapper .top_label li.gfield.gfield_error.gf_middle_third {margin-left:3%}
 .gform_wrapper .top_label li.gfield.gf_right_third {float:right; clear:right!important}
 .gform_wrapper .top_label li.gfield.gf_left_third input.medium,
 .gform_wrapper .top_label li.gfield.gf_left_third input.large,
@@ -619,3 +595,13 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {displa
 .gform_wrapper li.gsection.gf_scroll_text {height:180px; width:96%; overflow:auto; border:1px solid #ccc; border-bottom:1px solid #ccc!important}
 	.gform_wrapper li.gsection.gf_scroll_text h2.gsection_title {margin:10px 10px 0 10px!important}
 	.gform_wrapper li.gsection.gf_scroll_text .gsection_description {margin:10px; font-size:0.8em}
+
+
+/* password strength indicator -----------------------------------------------------------------*/
+
+.gform_wrapper .gfield_password_strength {border:1px solid #ddd; margin:0; padding:3px 5px; text-align:center; width:200px; background-color:#eee}
+    .gform_wrapper .gfield_password_strength.bad {background-color:#ffb78c; border-color:#ff853c}
+    .gform_wrapper .gfield_password_strength.good {background-color:#ffec8b; border-color:#fc0}
+    .gform_wrapper .gfield_password_strength.short,
+    .gform_wrapper .gfield_password_strength.mismatch {background-color:#ffa0a0; border-color:#f04040}
+    .gform_wrapper .gfield_password_strength.strong {background-color:#c3ff88; border-color:#8dff1c}

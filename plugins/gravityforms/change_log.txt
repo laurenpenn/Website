@@ -1,8 +1,82 @@
 -------------------------------------------------------------------------------------------------------------------
+Version 1.5.RC7
+    - Added "Disable Auto-formatting" option to form confirmations
+    - Added "Reset Views" and "Delete Entries" to the form list bulk action drop down
+    - Added "Settings" link to the plugins page
+    - Removed Thesis (theme) specific CSS rules from default forms.css file
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.RC6
+    - Added styles to admin.css for new toolbar element
+    - Implemented toolbar on Form editor, Notification and Entry list pages
+    - Added gform_countries filter to allow manipulation of the address field's country list
+    - Added gform_duplicate_message filter to allow customization of the default duplicate value validation message
+    - Populating content templates with the field's variable by default (applies to Post Title, Post Body and Post Custom Field)
+    - Fixed issue with Single Product and User Defined Product not displaying the Rule Settings
+    - Implemented Renew section on Settings page
+    - Limiting the number of items displayed in the admin for checkbox and multiple choice fields
+    - Fixed issue with user defined product field not formatting the entered value as currency
+    - Fixed issue with <form action attribute including port twice
+    - Using label instead of value for {all_fields} variable.
+    - Allowing HTML for checkboxes and radio button items
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.RC4.2
+    - Fixed issue with the tab index on single product fields
+    - Cleaned up some debugging notices
+    - Fixed issue with donation field not accepting price input
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.RC4.1
+    - Fixed issue with "gform_anchor_confirmation" hook where hook was not working when form ID was specified
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.RC4
+    - Fixed issue with {all_field} variable replacement ignoring fields that had the value "0" in them
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.RC3.15
+    - Fixed issue with Post Custom Field (File upload) not working properly on multi-page forms.
+    - Fixed Javascript error when clicking Next on a multi-page form with conditional logic
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.RC3.14
+    - Fixed issue with Next Button conditional logic not firing properly
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.RC3.13
+    - Fixed issue with post image field not uploading images with spaces in the file name
+    - Fixed issue with post image field not displaying images with single quotes in the file name
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.RC3.12
+    - Fixed issue with currency conversion on currencies that use comma as a decimal separator
+    - Suppressing confirmation div when confirmation text is empty
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.RC3.11
+    - Fixed jQuery error when using AJAX
+    - Fixed an issue with the AJAX spinner image that wasn't getting displayed and was throwing errors on Chrome
+    - Fixed issue with password field not maintaining state after failing validation
+    - Fixed issue with AJAX forms not displaying validation errors.
+    - Added password strength CSS classes
+    - Removed empty forms_widget.css file
+    - Fixed issue with image button not submitting the form when a target of conditional logic
+    - Fixed javascript error when trying to delete a file upload field on a non multi-page form
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.RC3.10
+    - Fixed issue when converting text to a number when there were more than 2 decimal cases
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.RC3.9
+    - Moved form processing code to from the "wp_loaded" hook to the "wp" hook in order to make sure the global $post variable is available.
+
+-------------------------------------------------------------------------------------------------------------------
 Version 1.5.RC3.8
     - Fixed issue with page conditional logic throwing a javascript error
     - Added form tag action to current page to prevent HTML5 validation errors
-    
+
 -------------------------------------------------------------------------------------------------------------------
 Version 1.5.RC3.7
     - Fixed issue with product fields (checkboxes) failing state validation on items after the tenth in the list

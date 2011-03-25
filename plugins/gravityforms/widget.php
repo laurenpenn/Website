@@ -12,7 +12,7 @@ class GFWidget extends WP_Widget {
 
     function GFWidget() {
         $this->WP_Widget( 'gform_widget', 'Form',
-                            array( 'classname' => 'gform_widget', 'description' => 'Gravity Forms Widget' ),
+                            array( 'classname' => 'gform_widget', 'description' => __('Gravity Forms Widget', "gravityforms") ),
                             array( 'width' => 200, 'height' => 250, 'id_base' => 'gform_widget' )
                             );
     }
@@ -60,7 +60,7 @@ class GFWidget extends WP_Widget {
 
     function form( $instance ) {
 
-        $instance = wp_parse_args( (array) $instance, array('title' => "Contact Us", 'tabindex' => '1') );
+        $instance = wp_parse_args( (array) $instance, array('title' => __("Contact Us", "gravityforms"), 'tabindex' => '1') );
         ?>
         <p>
             <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e("Title", "gravityforms"); ?>:</label>

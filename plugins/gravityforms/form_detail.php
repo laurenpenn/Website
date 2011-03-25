@@ -138,12 +138,13 @@ class GFFormDetail{
 
         ?>
 
+        <?php echo GFCommon::get_remote_message(); ?>
         <div class="wrap gforms_edit_form">
 
-            <?php echo GFCommon::get_remote_message(); ?>
-            <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" src="<?php echo GFCommon::get_base_url()?>/images/gravity-title-icon-32.png" class="gtitle_icon"/>
-            <h2><?php _e("Form Editor", "gravityforms"); ?></h2>
-            <a class="gforms_settings_button" href="javascript:FieldClick(jQuery('#gform_heading')[0]);"><?php _e("Form Settings", "gravityforms"); ?></a>
+            <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" src="<?php echo GFCommon::get_base_url()?>/images/gravity-edit-icon-32.png" class="gtitle_icon"/>
+            <h2><?php echo empty($form_id) ? __("New Form", "gravityforms") : __("Form Editor :", "gravityforms") . " " . esc_html($form["title"]) ?></h2>
+
+            <?php RGForms::top_toolbar() ?>
 
             <table width="100%">
             <tr>
@@ -377,6 +378,9 @@ class GFFormDetail{
                                                     <?php GFCommon::insert_variables($form["fields"], "form_confirmation_message"); ?>
                                                 </div>
                                                 <textarea id="form_confirmation_message" style="width:400px; height:300px;" /></textarea>
+                                                <div style="margin-top:5px;">
+                                                    <input type="checkbox" id="form_disable_autoformatting" /> <label for="form_disable_autoformatting"><?php _e("Disable Auto-formatting", "gravityforms") ?> <?php gform_tooltip("form_confirmation_autoformat") ?></label>
+                                                </div>
                                             </div>
 
                                             <div id="form_confirmation_page_container" style="margin-top:5px;">
@@ -706,7 +710,7 @@ class GFFormDetail{
                                     <?php _e("Field Type", "gravityforms"); ?>
                                     <?php gform_tooltip("form_field_type") ?>
                                 </label>
-                                <select id="donation_field_type" onchange="if(jQuery(this).val() == '') return; jQuery('#field_settings').slideUp(function(){StartChangeInputType(jQuery('#donation_field_type').val());});">
+                                <select id="donation_field_type" onchange="if(jQuery(this).val() == '') return; jQuery('#field_settings').slideUp(function(){StartChangeDonationType(jQuery('#donation_field_type').val());});">
                                     <option value="select"><?php _e("Drop Down", "gravityforms"); ?></option>
                                     <option value="donation"><?php _e("User Defined Price", "gravityforms"); ?></option>
                                     <option value="radio"><?php _e("Multiple Choice", "gravityforms"); ?></option>
@@ -1442,24 +1446,6 @@ class GFFormDetail{
                             <?php
                             do_action("gform_field_standard_settings", 1500, $form_id);
                             ?>
-                            <li class="rules_setting field_setting">
-                                <?php _e("Rules", "gravityforms"); ?><br/>
-                                <input type="checkbox" id="field_required" onclick="SetFieldRequired(this.checked);"/>
-                                <label for="field_required" class="inline">
-                                    <?php _e("Required", "gravityforms"); ?>
-                                    <?php gform_tooltip("form_field_required") ?>
-                                </label><br/>
-                                <div class="duplicate_setting field_setting">
-                                    <input type="checkbox" id="field_no_duplicates" onclick="SetFieldProperty('noDuplicates', this.checked);"/>
-                                    <label for="field_no_duplicates" class="inline">
-                                        <?php _e("No Duplicates", "gravityforms"); ?>
-                                        <?php gform_tooltip("form_field_no_duplicate") ?>
-                                    </label>
-                                </div>
-                            </li>
-                            <?php
-                            do_action("gform_field_standard_settings", 1550, $form_id);
-                            ?>
                             <li class="range_setting field_setting">
                                 <div style="clear:both;"><?php _e("Range", "gravityforms"); ?>
                                 <?php gform_tooltip("form_field_number_range") ?>
@@ -1479,6 +1465,25 @@ class GFFormDetail{
                                 </div>
                                 <br class="clear" />
                             </li>
+                            <?php
+                            do_action("gform_field_standard_settings", 1550, $form_id);
+                            ?>
+                            <li class="rules_setting field_setting">
+                                <?php _e("Rules", "gravityforms"); ?><br/>
+                                <input type="checkbox" id="field_required" onclick="SetFieldRequired(this.checked);"/>
+                                <label for="field_required" class="inline">
+                                    <?php _e("Required", "gravityforms"); ?>
+                                    <?php gform_tooltip("form_field_required") ?>
+                                </label><br/>
+                                <div class="duplicate_setting field_setting">
+                                    <input type="checkbox" id="field_no_duplicates" onclick="SetFieldProperty('noDuplicates', this.checked);"/>
+                                    <label for="field_no_duplicates" class="inline">
+                                        <?php _e("No Duplicates", "gravityforms"); ?>
+                                        <?php gform_tooltip("form_field_no_duplicate") ?>
+                                    </label>
+                                </div>
+                            </li>
+
                             <?php
                             do_action("gform_field_standard_settings", -1, $form_id);
                             ?>

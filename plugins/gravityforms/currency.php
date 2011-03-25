@@ -1,4 +1,6 @@
 <?php
+if(!class_exists("RGCurrency")){
+
 class RGCurrency{
     private $currency;
 
@@ -9,7 +11,7 @@ class RGCurrency{
             $this->currency = self::get_currency($currency);
     }
 
-    public static function to_number($text){
+    public function to_number($text){
         $text = strval($text);
 
         //Removing symbol in unicode format (i.e. &#4444;)
@@ -27,6 +29,8 @@ class RGCurrency{
                 $is_negative = true;
         }
 
+        $decimal_separator = $this->currency && $this->currency["decimal_separator"] ? $this->currency["decimal_separator"] : ".";
+
         //Removing thousand separators but keeping decimal point
         $array = str_split($clean_number);
         $float_number = "";
@@ -36,7 +40,7 @@ class RGCurrency{
 
             if ($char >= '0' && $char <= '9')
                 $float_number .= $char;
-            else if(($char == "." || $char == ",") && strlen($clean_number) - $i <= 3)
+            else if($char == $decimal_separator)
                 $float_number .= ".";
         }
 
@@ -47,7 +51,10 @@ class RGCurrency{
     }
 
     public function to_money($number, $do_encode=false){
-        $number = $this->to_number($number);
+
+        if(!is_numeric($number))
+            $number = $this->to_number($number);
+
         if($number === false)
             return "";
 
@@ -103,5 +110,7 @@ class RGCurrency{
 
         return apply_filters("gform_currencies", $currencies);
     }
+}
+
 }
 ?>

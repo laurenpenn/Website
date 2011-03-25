@@ -543,7 +543,7 @@ class GFEntryDetail{
                     if(!empty($products["products"])){
                         ?>
                         <tr>
-                            <td colspan="2" class="entry-view-field-name"><?php _e("Order", "gravityforms") ?></td>
+                            <td colspan="2" class="entry-view-field-name"><?php echo apply_filters("gform_order_label_{$form["id"]}", apply_filters("gform_order_label", __("Order", "gravityforms"), $form["id"]), $form["id"]) ?></td>
                         </tr>
                         <tr>
                             <td colspan="2" class="entry-view-field-value lastrow">

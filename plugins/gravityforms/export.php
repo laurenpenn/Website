@@ -14,7 +14,7 @@ class GFExport{
             header('Content-Description: File Transfer');
             header("Content-Disposition: attachment; filename=$filename");
             header('Content-Type: text/plain; charset=' . $charset, true);
-
+            ob_clean();
             GFExport::start_export($form);
 
             die();
@@ -250,7 +250,7 @@ class GFExport{
         ?>
         <link rel="stylesheet" href="<?php echo GFCommon::get_base_url()?>/css/admin.css"/>
         <div class="wrap">
-            <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" style="margin: 15px 7px 0pt 0pt; float: left;" src="<?php echo GFCommon::get_base_url() ?>/images/gravity-title-icon-32.png"/>
+            <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" style="margin: 15px 7px 0pt 0pt; float: left;" src="<?php echo GFCommon::get_base_url() ?>/images/gravity-import-icon-32.png"/>
             <h2><?php _e("Import Forms", "gravityforms") ?></h2>
 
 
@@ -289,7 +289,7 @@ class GFExport{
         ?>
         <link rel="stylesheet" href="<?php echo GFCommon::get_base_url()?>/css/admin.css"/>
         <div class="wrap">
-            <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" style="margin: 15px 7px 0pt 0pt; float: left;" src="<?php echo GFCommon::get_base_url() ?>/images/gravity-title-icon-32.png"/>
+            <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" style="margin: 15px 7px 0pt 0pt; float: left;" src="<?php echo GFCommon::get_base_url() ?>/images/gravity-export-icon-32.png"/>
             <h2><?php _e("Export Forms", "gravityforms") ?></h2>
             <?php
             self::export_links();
@@ -368,7 +368,7 @@ class GFExport{
         <link rel="stylesheet" href="<?php echo GFCommon::get_base_url()?>/css/admin.css"/>
 
         <div class="wrap">
-            <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" style="margin: 15px 7px 0pt 0pt; float: left;" src="<?php echo GFCommon::get_base_url() ?>/images/gravity-title-icon-32.png"/>
+            <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" style="margin: 15px 7px 0pt 0pt; float: left;" src="<?php echo GFCommon::get_base_url() ?>/images/gravity-export-icon-32.png"/>
             <h2><?php _e("Export Form Entries", "gravityforms") ?></h2>
             <?php
             self::export_links();
@@ -459,11 +459,14 @@ class GFExport{
         array_push($form["fields"],array("id" => "transaction_id" , "label" => __("Transaction Id", "gravityforms")));
 
         $entry_count = RGFormsModel::get_lead_count($form_id, "", null, null, $start_date, $end_date);
-        $page_size = 2;
+
+        $page_size = 200;
         $offset = 0;
 
         //Adding BOM marker for UTF-8
-        $lines=chr(239) . chr(187) . chr(191);
+        $lines= chr(239) . chr(187) . chr(191);
+
+        echo $entry_count . "\n";
 
         //writing header
         foreach($fields as $field_id){

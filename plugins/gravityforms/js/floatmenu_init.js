@@ -2,12 +2,12 @@
 window.onscroll = function()
 {
     if( window.XMLHttpRequest ) {
-        if (document.documentElement.scrollTop > 140 || self.pageYOffset > 140) {
+        if (document.documentElement.scrollTop > 160 || self.pageYOffset > 160) {
             jQuery('#floatMenu').css('position','fixed');
             jQuery('#floatMenu').css('top','5px');
-        } else if (document.documentElement.scrollTop < 90 || self.pageYOffset < 90) {
+        } else if (document.documentElement.scrollTop < 120 || self.pageYOffset < 120) {
             jQuery('#floatMenu').css('position','absolute');
-            jQuery('#floatMenu').css('top','90px');
+            jQuery('#floatMenu').css('top','120px');
         }
     }
 }

@@ -1,3 +1,5 @@
+
+
 //------------------------------------------------
 //---------- CURRENCY ----------------------------
 //------------------------------------------------
@@ -24,14 +26,16 @@ function Currency(currency){
 
         //Removing thousand separators but keeping decimal point
         var float_number = "";
+        var decimal_separator = this.currency && this.currency["decimal_separator"] ? this.currency["decimal_separator"] : ".";
 
         for(var i=0; i<clean_number.length; i++)
         {
             var char = clean_number.substr(i,1);
             if (char >= '0' && char <= '9')
                 float_number += char;
-            else if((char == "." || char == ",") && clean_number.length - i <= 3)
+            else if(char == decimal_separator){
                 float_number += ".";
+            }
         }
 
         if(is_negative)
@@ -41,7 +45,9 @@ function Currency(currency){
     };
 
     this.toMoney = function(number){
-        number = this.toNumber(number);
+        if(!this.isNumeric(number))
+            number = this.toNumber(number);
+
         if(number === false)
             return "";
 
@@ -273,8 +279,8 @@ function gformGetBasePrice(formId, productFieldId){
         if(gformIsHidden(productField)){
             price = 0;
         }
-        else if(productField.parents(".gfield_donation" + suffix).length > 0){
-            //Formatting open text donation field
+        else if(productField.parents(".gfield_donation" + suffix).length > 0 || productField.parents(".gfield_product" + suffix).length > 0){
+            //Formatting open text donation and product fields
             var currency = new Currency(window['gf_currency_config']);
             productField.val(currency.toMoney(price));
         }
@@ -294,7 +300,7 @@ function gformGetBasePrice(formId, productFieldId){
 
     }
 
-    var c = new Currency();
+    var c = new Currency(window['gf_currency_config']);
     price = c.toNumber(price);
     return price === false ? 0 : price;
 }
@@ -308,7 +314,7 @@ function gformFormatMoney(text){
 }
 
 function gformToNumber(text){
-    var currency = new Currency();
+    var currency = new Currency(window['gf_currency_config']);
     return currency.toNumber(text);
 }
 
@@ -453,3 +459,4 @@ function gformPasswordStrength(password1, password2) {
 
     return "strong";
 }
+

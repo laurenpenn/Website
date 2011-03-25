@@ -67,7 +67,21 @@ Class GFNotification{
         <script type="text/javascript" src="<?php echo GFCommon::get_base_url()?>/js/forms.js?ver=<?php echo GFCommon::$version ?>"></script>
         <script src="<?php echo GFCommon::get_base_url() ?>/js/jquery.json-1.3.js?ver=<?php echo GFCommon::$version ?>"></script>
 
-        <script>
+        <script type="text/javascript">
+        var gform_has_unsaved_changes = false;
+        jQuery(document).ready(function(){
+
+            jQuery("#entry_form input, #entry_form textarea, #entry_form select").change(function(){
+                gform_has_unsaved_changes = true;
+            });
+
+            window.onbeforeunload = function(){
+                if (gform_has_unsaved_changes){
+                    return "You have unsaved changes.";
+                }
+            }
+        });
+
         <?php
         if(empty($form["notification"]))
             $form["notification"] = array();
@@ -92,7 +106,6 @@ Class GFNotification{
             else {
                 messageElement.val(variable + messageElement.val());
             }
-
             jQuery('#' + element_id + '_variable_select')[0].selectedIndex = 0;
         }
 
@@ -232,13 +245,17 @@ Class GFNotification{
 
 
         </script>
+        <?php echo GFCommon::get_remote_message(); ?>
 
-        <form method="post" id="entry_form" onsubmit="jQuery('#gform_routing_meta').val(jQuery.toJSON(form.notification.routing));">
+        <form method="post" id="entry_form" onsubmit="gform_has_unsaved_changes = false; jQuery('#gform_routing_meta').val(jQuery.toJSON(form.notification.routing));">
             <?php wp_nonce_field('gforms_save_notification', 'gforms_save_notification') ?>
             <input type="hidden" id="gform_routing_meta" name="gform_routing_meta" />
             <div class="wrap">
-                <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" src="<?php echo GFCommon::get_base_url()?>/images/gravity-title-icon-32.png" style="float:left; margin:15px 7px 0 0;"/>
-                <h2><?php echo esc_html($form["title"])?> : <?php _e("Notifications", "gravityforms"); ?></h2>
+                <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" src="<?php echo GFCommon::get_base_url()?>/images/gravity-notification-icon-32.png" style="float:left; margin:15px 7px 0 0;"/>
+                <h2><?php _e("Notifications", "gravityforms"); ?> : <?php echo esc_html($form["title"])?></h2>
+
+                <?php RGForms::top_toolbar() ?>
+
                 <div id="poststuff" class="metabox-holder">
                     <div id="submitdiv" class="stuffbox">
                         <h3><span class="hndle"><?php _e("Notification to Administrator", "gravityforms"); ?></span></h3>
@@ -481,9 +498,9 @@ Class GFNotification{
                                     if(empty($email_fields)){
                                         ?>
                                         <div class="gold_notice">
-                                        <p><?php _e(sprintf("Your form does not have any %semail%s field.", "<strong>", "</strong>"), "gravityforms"); ?></p>
+                                        <p><?php echo sprintf(__("Your form does not have any %semail%s field.", "gravityforms"), "<strong>", "</strong>"); ?></p>
                                         <p>
-                                        <?php _e(sprintf("Sending notifications to users require that the form has at least one email field. %sEdit your form%s",'<a href="?page=gf_edit_forms&id=' . absint($form_id) . '">', '</a>'), "gravityforms"); ?>
+                                        <?php echo sprintf(__("Sending notifications to users require that the form has at least one email field. %sEdit your form%s", "gravityforms"),'<a href="?page=gf_edit_forms&id=' . absint($form_id) . '">', '</a>'); ?>
                                         </p>
                                         </div>
                                         <?php

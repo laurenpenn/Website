@@ -1,4 +1,47 @@
 -----------------------------------------------------------
+Version 1.0
+    - Updated version to 1.0
+
+-----------------------------------------------------------
+Version 1.0.beta5.3
+    - Updated reference to "gforms_paypal_save_config" to use the renamed hook: "gform_paypal_save_config"
+    - Localized add-on
+    - Added gravityformsuserregistration.pot file
+
+-----------------------------------------------------------
+Version 1.0.beta5.2
+    - Added hook to allow User Registration validation messages to be updated
+        Example:
+        add_filter("gform_user_registration_validation_message", "update_validation_msgs", 10, 2);
+
+        function update_validation_msgs($message, $form){
+
+            if($message == 'This username is already registered')
+                $message = 'We\'re sorry, this username is already registered. Try submitting with a different username.';
+            
+            return $message;
+        }
+
+-----------------------------------------------------------
+Version 1.0.beta5.1
+    - Updated gf_create_user() code to abort user registration if username already exists; beneficial to prevent existing user data being overwritten if username validation is overriden
+
+-----------------------------------------------------------
+Version 1.0.beta5
+    - Added support for all BP field types
+    - Rewrote function to better retrieve values from the $_POST and $entry object
+
+-----------------------------------------------------------
+Version 1.0.beta4
+    - fixed validation issue for multi-page forms where the site address MU registration field was being validated regardless of current page
+    - fixed "Cancel" button on Edit page to return the user to the List page
+    - update multisite registration validation to check if site name (domain) already exists
+
+-----------------------------------------------------------
+Version 1.0.beta3.2
+    - fixed IE issue where selecting a form on the PayPal addon was generating an error when no User Registration feeds existed
+
+-----------------------------------------------------------
 Version 1.0.beta3
     - added support for creating MultiSite with user registration
     - fixed issue where MultiSite was failing to return validation error for spaces in domain name
