@@ -64,7 +64,7 @@ function dbc_theme_setup() {
 	/* Add filters */
 	add_filter( 'body_class', 'dbc_body_class' );
 	add_filter( 'stylesheet_uri', 'dbc_debug_stylesheet', 10, 2 );
-	add_filter( 'login_redirect','change_login_redirect', 10, 3 );
+	//add_filter( 'login_redirect','change_login_redirect', 10, 3 );
 	add_filter( 'sidebars_widgets', 'dbc_disable_sidebars' );
 
 	/* Add shortcodes */
