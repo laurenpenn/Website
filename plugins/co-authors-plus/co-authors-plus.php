@@ -3,10 +3,10 @@
 Plugin Name: Co-Authors Plus
 Plugin URI: http://wordpress.org/extend/plugins/co-authors-plus/
 Description: Allows multiple authors to be assigned to a post. This plugin is an extended version of the Co-Authors plugin developed by Weston Ruter.
-Version: 2.1.1
+Version: 2.5.1
 Author: Mohammad Jangda
 Author URI: http://digitalize.ca
-Copyright: Some parts (C) 2009, Mohammad Jangda; Other parts (C) 2008, Weston Ruter
+Copyright: Some parts (C) 2009-2011, Mohammad Jangda; Other parts (C) 2008, Weston Ruter
 
 GNU General Public License, Free Software Foundation <http://creativecommons.org/licenses/GPL/2.0/>
 This program is free software; you can redistribute it and/or modify
@@ -25,23 +25,29 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 */
 
-$plugin_dir = basename( dirname( __FILE__ ) );
-// TODO: Use plugins_dir
-load_plugin_textdomain( 'co-authors-plus', 'wp-content/plugins/' . $plugin_dir, $plugin_dir );
+if( ! defined( 'COAUTHORS_PLUS_DEBUG' ) )
+	define( 'COAUTHORS_PLUS_DEBUG', false );
 
-define( 'COAUTHORS_DEBUG', false );
-define( 'COAUTHORS_FILE_PATH', '' );
-define( 'COAUTHORS_DEFAULT_BEFORE', '' );
-define( 'COAUTHORS_DEFAULT_BETWEEN', ', ' );
-define( 'COAUTHORS_DEFAULT_BETWEEN_LAST', __( ' and ', 'co-authors-plus' ) );
-define( 'COAUTHORS_DEFAULT_AFTER', '' );
-define( 'COAUTHORS_PLUS_VERSION', '2.1' );
+if( ! defined( 'COAUTHORS_DEFAULT_BEFORE' ) )
+	define( 'COAUTHORS_DEFAULT_BEFORE', '' );
+
+if( ! defined( 'COAUTHORS_DEFAULT_BETWEEN' ) )
+	define( 'COAUTHORS_DEFAULT_BETWEEN', ', ' );
+
+if( ! defined( 'COAUTHORS_DEFAULT_BETWEEN_LAST' ) )
+	define( 'COAUTHORS_DEFAULT_BETWEEN_LAST', __( ', and ', 'co-authors-plus' ) );
+
+if( ! defined( 'COAUTHORS_DEFAULT_AFTER' ) )
+	define( 'COAUTHORS_DEFAULT_AFTER', '' );
+
+define( 'COAUTHORS_PLUS_PATH', dirname( __FILE__ ) );
+define( 'COAUTHORS_PLUS_URL', plugin_dir_url( __FILE__ ) );
+
+define( 'COAUTHORS_PLUS_VERSION', '2.5.1' );
 
 class coauthors_plus {
 	
-	// Name for the post type we're using to store coauthors (3.0+)
-	var $coauthor_post_type = 'coauthor';
-	// Name for the taxonomy we're using to store coauthors (2.x)
+	// Name for the taxonomy we're using to store coauthors
 	var $coauthor_taxonomy = 'author';
 	// Unique identified added as a prefix to all options
 	var $options_group = 'coauthors_plus_';
@@ -55,11 +61,16 @@ class coauthors_plus {
 	
 	var $gravatar_size = 25;
 	
+	var $_pages_whitelist = array( 'post.php', 'post-new.php' );
+		
+	/**
+	 * __construct()
+	 */
 	function __construct() {
 		global $pagenow;
 		
 		// Load admin_init function
-		add_action( 'admin_init', array( &$this,'admin_init' ) );
+		add_action( 'admin_init', array( $this,'admin_init' ) );
 		
 		// Load plugin options
 		$this->load_options();
@@ -68,50 +79,40 @@ class coauthors_plus {
 		register_taxonomy( $this->coauthor_taxonomy, 'post', array('hierarchical' => false, 'update_count_callback' => '_update_post_term_count', 'label' => false, 'query_var' => false, 'rewrite' => false, 'sort' => true, 'show_ui' => false ) );
 		
 		// Modify SQL queries to include coauthors
-		add_filter('posts_where', array(&$this, 'posts_where_filter'));
-		add_filter('posts_join', array(&$this, 'posts_join_filter'));
-		add_filter('posts_groupby', array(&$this, 'posts_groupby_filter'));
-		
-		// Hooks to add additional coauthors to author column to Edit Posts page
-		if($pagenow == 'edit.php') {
-			add_filter('manage_posts_columns', array(&$this, '_filter_manage_posts_columns'));
-			add_action('manage_posts_custom_column', array(&$this, '_filter_manage_posts_custom_column'));
-		}
+		add_filter( 'posts_where', array( $this, 'posts_where_filter' ) );
+		add_filter( 'posts_join', array( $this, 'posts_join_filter' ) );
+		add_filter( 'posts_groupby', array( $this, 'posts_groupby_filter' ) );
 		
 		// Action to set users when a post is saved
-		add_action( 'save_post', array( &$this, 'coauthors_update_post' ), 10, 2 );
+		add_action( 'save_post', array( $this, 'coauthors_update_post' ), 10, 2 );
 		// Filter to set the post_author field when wp_insert_post is called
-		add_filter( 'wp_insert_post_data', array( &$this, 'coauthors_set_post_author_field' ) );
+		add_filter( 'wp_insert_post_data', array( $this, 'coauthors_set_post_author_field' ) );
 		
 		// Action to reassign posts when a user is deleted
-		add_action( 'delete_user',  array( &$this, 'delete_user_action' ) );
+		add_action( 'delete_user',  array( $this, 'delete_user_action' ) );
 		
-		add_filter( 'get_usernumposts', array( &$this, 'filter_count_user_posts' ) );
+		add_filter( 'get_usernumposts', array( $this, 'filter_count_user_posts' ), 10, 2 );
 		
 		// Action to set up author auto-suggest
-		add_action('wp_ajax_coauthors_ajax_suggest', array(&$this, 'ajax_suggest') );
+		add_action( 'wp_ajax_coauthors_ajax_suggest', array( $this, 'ajax_suggest' ) );
 		
 		// Filter to allow coauthors to edit posts
-		add_filter('user_has_cap', array(&$this, 'add_coauthor_cap'), 10, 3 );
+		add_filter( 'user_has_cap', array( $this, 'add_coauthor_cap' ), 10, 3 );
 		
-		add_filter('comment_notification_headers', array( &$this, 'notify_coauthors'), 10, 3);
-		
-		// Add the main JS script and CSS file
-		add_action( 'admin_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
-		
-		// Add necessary JS variables
-		add_action( 'admin_print_scripts', array( &$this, 'js_vars' ) );
+		add_filter( 'comment_notification_headers', array( $this, 'notify_coauthors' ), 10, 3 );
 		
 		// Add the necessary pages for the plugin 
-		add_action( 'admin_menu', array( &$this, 'add_menu_items' ) );
+		add_action( 'admin_menu', array( $this, 'add_menu_items' ) );
 		
 		// Handle the custom author meta box
-		add_action( 'add_meta_boxes', array( &$this, 'add_coauthors_box' ) );
-		add_action( 'add_meta_boxes', array( &$this, 'remove_authors_box' ) );
+		add_action( 'add_meta_boxes', array( $this, 'add_coauthors_box' ) );
+		add_action( 'add_meta_boxes', array( $this, 'remove_authors_box' ) );
 		
 		// Removes the author dropdown from the post quick edit 
-		add_action( 'load-edit.php', array( &$this, 'remove_quick_edit_authors_box' ) );
+		add_action( 'load-edit.php', array( $this, 'remove_quick_edit_authors_box' ) );
 		
+		// Fix for author info not properly displaying on author pages
+		add_action( 'the_post', array( $this, 'fix_author_page' ) );
 	}
 	
 	function coauthors_plus() {
@@ -122,10 +123,36 @@ class coauthors_plus {
 	 * Initialize the plugin for the admin 
 	 */
 	function admin_init() {
+		global $pagenow;
+		
 		// Register all plugin settings so that we can change them and such
-		foreach($this->options as $option => $value) {
-	    	register_setting($this->options_group, $this->get_plugin_option_fullname($option));
+		// Not really being used
+		/*
+		foreach( $this->options as $option => $value ) {
+	    	register_setting( $this->options_group, $this->get_plugin_option_fullname( $option ) );
 	    }
+	    */
+	    
+		// Hook into load to initialize custom columns
+		if( $this->is_valid_page() ) {
+			add_action( 'load-' . $pagenow, array( $this, 'admin_load_page' ) );
+		}
+		
+		// Hooks to add additional coauthors to author column to Edit page
+		add_filter( 'manage_posts_columns', array( $this, '_filter_manage_posts_columns' ) );
+		add_filter( 'manage_pages_columns', array( $this, '_filter_manage_posts_columns' ) );
+		add_action( 'manage_posts_custom_column', array( $this, '_filter_manage_posts_custom_column' ) );
+		add_action( 'manage_pages_custom_column', array( $this, '_filter_manage_posts_custom_column' ) );
+	}
+	
+	function admin_load_page() {
+		
+		// Add the main JS script and CSS file
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		
+		// Add necessary JS variables
+		add_action( 'admin_print_scripts', array( $this, 'js_vars' ) );
+
 	}
 	
 	/** 
@@ -133,7 +160,11 @@ class coauthors_plus {
 	 */
 	function authors_supported( $post_type ) {
 		
-		if( !function_exists( 'post_type_supports' ) && in_array( $post_type, array( 'post', 'page' ) ) )
+		if( ! function_exists( 'post_type_supports' ) && in_array( $post_type, array( 'post', 'page' ) ) )
+			return true;
+		
+		// Hacky way to prevent issues on the Edit page
+		if( isset( $this->_edit_page_post_type_supported ) && $this->_edit_page_post_type_supported )
 			return true;
 		
 		if( post_type_supports( $post_type, 'author' ) )
@@ -148,16 +179,23 @@ class coauthors_plus {
 	function get_current_post_type() {
 		global $post, $typenow, $current_screen;
 		
+		// "Cache" it!
+		if( isset( $this->_current_post_type ) )
+			return $this->_current_post_type;
+		
 		if( $post && $post->post_type )
 			$post_type = $post->post_type;
 		elseif( $typenow )
 			$post_type = $typenow;
-		elseif( $current_screen && $current_screen->post_type )
+		elseif( $current_screen && isset( $current_screen->post_type ) )
 			$post_type = $current_screen->post_type;
-		elseif( $_REQUEST['post_type'] )
+		elseif( isset( $_REQUEST['post_type'] ) )
 			$post_type = sanitize_key( $_REQUEST['post_type'] );
 		else
 			$post_type = '';
+		
+		if( $post_type )
+			$this->_current_post_type = $post_type;
 		
 		return $post_type;
 	}
@@ -211,7 +249,7 @@ class coauthors_plus {
 						<?php echo get_avatar( $coauthor->user_email, $this->gravatar_size ); ?>
 						<span id="coauthor-readonly-<?php echo $count; ?>" class="coauthor-tag">
 							<input type="text" name="coauthorsinput[]" readonly="readonly" value="<?php echo esc_attr( $coauthor->display_name ); ?>" />
-							<input type="text" name="coauthors[]" value="<?php echo esc_attr( $coauthor->ID ); ?>" />
+							<input type="text" name="coauthors[]" value="<?php echo esc_attr( $coauthor->user_login ); ?>" />
 							<input type="text" name="coauthorsemails[]" value="<?php echo esc_attr( $coauthor->user_email ); ?>" />
 						</span>
 					</li>
@@ -236,11 +274,15 @@ class coauthors_plus {
 	}
 	
 	/**
-	 * Removes the author dropdown from the post quick edit 
+	 * Removes the author dropdown from the post quick edit
+	 * It's a bit hacky, but the only way I can figure out :( 
 	 */
 	function remove_quick_edit_authors_box() {
 		$post_type = $this->get_current_post_type();
-		remove_post_type_support( $post_type, 'author' );
+		if( post_type_supports( $post_type, 'author' )) {
+			$this->_edit_page_post_type_supported = true;
+			remove_post_type_support( $post_type, 'author' );
+		}
 	}
 	
 	/**
@@ -248,7 +290,7 @@ class coauthors_plus {
 	 */
 	function add_menu_items ( ) {
 		// Add sub-menu page for Custom statuses		
-		add_options_page(__('Co-Authors Plus', 'co-authors-plus'), __('Co-Authors Plus', 'co-authors-plus'), 8, __FILE__, array(&$this, 'settings_page'));
+		//add_options_page(__( 'Co-Authors Plus', 'co-authors-plus' ), __( 'Co-Authors Plus', 'co-authors-plus' ), 'manage_options', 'co-authors-plus', array( $this, 'settings_page' ) );
 	}
 	
 	/**
@@ -257,12 +299,14 @@ class coauthors_plus {
 	 */
 	function _filter_manage_posts_columns($posts_columns) {
 		$new_columns = array();
+		
 		foreach ($posts_columns as $key => $value) {
 			$new_columns[$key] = $value;
-			if ($key == 'author') {
+			if( $key == 'title' )
+				$new_columns['coauthors'] = __( 'Authors', 'co-authors-plus' );
+			
+			if ( $key == 'author' )
 				unset($new_columns[$key]);
-				$new_columns['coauthors'] = __('Authors', 'co-authors-plus');
-			}
 		}
 		return $new_columns;
 	} // END: _filter_manage_posts_columns
@@ -274,12 +318,12 @@ class coauthors_plus {
 	function _filter_manage_posts_custom_column($column_name) {
 		if ($column_name == 'coauthors') {
 			global $post;
-			$authors = get_coauthors($post->ID);
+			$authors = get_coauthors( $post->ID );
 			
 			$count = 1;
-			foreach($authors as $author) :
+			foreach( $authors as $author ) :
 				?>
-				<a href="edit.php?author=<?php echo $author->ID; ?>"><?php echo $author->display_name ?></a><?php echo ($count < count($authors)) ? ',' : ''; ?>
+				<a href="edit.php?author=<?php echo $author->ID; ?>"><?php echo $author->display_name ?></a><?php echo ( $count < count( $authors ) ) ? ',' : ''; ?>
 				<?php
 				$count++;
 			endforeach;
@@ -289,48 +333,46 @@ class coauthors_plus {
 	/**
 	 * Modify the author query posts SQL to include posts co-authored
 	 */
-	function posts_join_filter($join){
-		global $wpdb,$wp_query;
+	function posts_join_filter( $join ){
+		global $wpdb, $wp_query;
 				
-		if(is_author()){
-			//$join .= " INNER JOIN $wpdb->term_relationships ON ($wpdb->posts.ID = $wpdb->term_relationships.object_id) INNER JOIN $wpdb->term_taxonomy ON ($wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id)";
+		if( is_author() ){
+			// Check to see that JOIN hasn't already been added. Props michaelingp
+			$join_string = " INNER JOIN {$wpdb->term_relationships} ON ( {$wpdb->posts}.ID = {$wpdb->term_relationships}.object_id) INNER JOIN {$wpdb->term_taxonomy} ON ( {$wpdb->term_relationships}.term_taxonomy_id = {$wpdb->term_taxonomy}.term_taxonomy_id )";
+			
+			if( strpos( $join, $join_string ) === false ) {
+				$join .= $join_string;
+			}
 		}
+		
 		return $join;
 	}
+	
 	/**
 	 * Modify
 	 */
-	function posts_where_filter($where){
+	function posts_where_filter( $where ){
 		global $wpdb, $wp_query;
 		
-		if(is_author()) {
-			$author = get_userdata( get_query_var('author') );
-			$author_id = $author->ID;
-			
-			echo '<p>pre-where: ' . $where;
-			
-			$coauthor_posts_query = $wpdb->prepare( "SELECT DISTINCT(post_parent) FROM $wpdb->posts WHERE post_type = %s AND post_author = %d", $this->coauthor_post_type, $author_id );
-			$where = preg_replace( '/(\b(?:' . $wpdb->posts . '\.)?post_author\s*=\s*(\d+))/', '' . $wpdb->posts . '.ID IN ( ' . $coauthor_posts_query .' )', $where, 1);
-			
-			echo '<p>post-where: ' . $where;
-			/*
-			$term = get_term_by('name', $author->user_login, $this->coauthor_taxonomy);
+		if( is_author() ) {
+			$author = get_userdata( $wp_query->query_vars['author'] );
+			$term = get_term_by( 'name', $author->user_login, $this->coauthor_taxonomy );
 				
-			if($author) {
-				$where = preg_replace('/(\b(?:' . $wpdb->posts . '\.)?post_author\s*=\s*(\d+))/', '($1 OR (' . $wpdb->term_taxonomy . '.taxonomy = \''. $this->coauthor_taxonomy.'\' AND '. $wpdb->term_taxonomy .'.term_id = \''. $term->term_id .'\'))', $where, 1); #' . $wpdb->postmeta . '.meta_id IS NOT NULL AND 
+			if( $author ) {
+				$where = preg_replace( '/(\b(?:' . $wpdb->posts . '\.)?post_author\s*=\s*(\d+))/', '($1 OR (' . $wpdb->term_taxonomy . '.taxonomy = \''. $this->coauthor_taxonomy.'\' AND '. $wpdb->term_taxonomy .'.term_id = \''. $term->term_id .'\'))', $where, 1 ); #' . $wpdb->postmeta . '.meta_id IS NOT NULL AND 
+
 			}
-			*/
-			
 		}
 		return $where;
 	}
+	
 	/**
 	 * 
 	 */
-	function posts_groupby_filter($groupby){
+	function posts_groupby_filter( $groupby ) {
 		global $wpdb;
 		
-		if(is_author()) {
+		if( is_author() ) {
 			$groupby = $wpdb->posts .'.ID';
 		}
 		return $groupby;
@@ -340,17 +382,16 @@ class coauthors_plus {
 	 * Filters post data before saving to db to set post_author
 	 */
 	function coauthors_set_post_author_field( $data ) {
-		$post_type = $data['post_type'];
-		
-		if ( ( !defined( DOING_AUTOSAVE ) || !DOING_AUTOSAVE ) && $post_type != $this->coauthor_post_type ) {
+		if ( !defined( 'DOING_AUTOSAVE' ) || !DOING_AUTOSAVE ) {
 			if( isset( $_REQUEST['coauthors-nonce'] ) && is_array( $_POST['coauthors'] ) ) {
-				$author_id = $_POST['coauthors'][0];
+				$author = $_POST['coauthors'][0];
 				if( $author ) {
-					$data['post_author'] = $author_id;
+					$author_data = get_user_by( 'login', $author );
+					$data['post_author'] = $author_data->ID;
 				}
 			} else {
 				// If for some reason we don't have the coauthors fields set
-				if( !$data['post_author'] ) {
+				if( ! isset( $data['post_author'] ) ) {
 					$user = wp_get_current_user();
 					$data['post_author'] = $user->ID;
 				}
@@ -367,13 +408,13 @@ class coauthors_plus {
 	function coauthors_update_post( $post_id, $post ) {
 		$post_type = $post->post_type;
 		
-		if ( ( !defined( DOING_AUTOSAVE ) || !DOING_AUTOSAVE ) && $post_type != $this->coauthor_post_type ) {
+		if ( !defined( 'DOING_AUTOSAVE' ) || !DOING_AUTOSAVE ) {
 			
 			if( isset( $_REQUEST['coauthors-nonce'] ) ) {
 				check_admin_referer( 'coauthors-edit', 'coauthors-nonce' );
 				
 				if( $this->current_user_can_set_authors() ){
-					$coauthors = array_map( 'intval', $_POST['coauthors'] );
+					$coauthors = array_map( 'sanitize_key', $_POST['coauthors'] );
 					return $this->add_coauthors( $post_id, $coauthors );
 				}
 			}
@@ -386,40 +427,31 @@ class coauthors_plus {
 	function add_coauthors( $post_id, $coauthors, $append = false ) {
 		global $current_user;
 		
-		// TODO: need to respect $append
-		
 		$post_id = (int) $post_id;
+		$insert = false;
 		
 		// if an array isn't returned, create one and populate with default author
 		if ( !is_array( $coauthors ) || 0 == count( $coauthors ) || empty( $coauthors ) ) {
-			$coauthors = array( $current_user->ID );
+			$coauthors = array( $current_user->user_login );
 		}
 		
-		// Delete all existing coauthors, if we're not just appending
-		if( !$append ) $this->delete_coauthors( $post_id );	
-		
-		// Default values for author as post
-		$coauthor_as_post = array(
-			'post_type' => $this->coauthor_post_type
-			, 'post_parent' => $post_id
-			, 'post_status' => 'publish'
-			, 'post_title' => ' ' // TODO: Can use this to enable bylines
-			, 'post_content' => ' '
-		);
-		
-		// Add each co-author
-		foreach( array_unique( $coauthors ) as $coauthor ) {
-			$coauthor_as_post['post_author'] = $coauthor;
-			$insert = wp_insert_post( $coauthor_as_post );
+		// Add each co-author to the post meta
+		foreach( array_unique( $coauthors ) as $author ){
+			
+			// Name and slug of term are the username; 
+			$name = $author;
+			
+			// Add user as a term if they don't exist
+			if( !term_exists( $name, $this->coauthor_taxonomy ) ) {
+				$args = array( 'slug' => sanitize_title( $name ) );
+				$insert = wp_insert_term( $name, $this->coauthor_taxonomy, $args );
+			}
 		}
-	}
-	
-	function delete_coauthors( $post_id ) {
-		// get post ids for all coauthors
-		$coauthors_as_posts = _coauthors_get_as_posts( $post_id );
 		
-		foreach( $coauthors_as_posts as $coauthors_as_post )
-			wp_delete_post( $coauthors_as_post->ID, true );
+		// Add authors as post terms
+		if( !is_wp_error( $insert ) ) {
+			$set = wp_set_post_terms( $post_id, $coauthors, $this->coauthor_taxonomy, $append );
+		}
 	}
 	
 	/**
@@ -428,32 +460,44 @@ class coauthors_plus {
 	 * - Option to specify alternate user in place for each post
 	 * @param delete_id
 	 */
-	function delete_user_action( $delete_id ) {
+	function delete_user_action($delete_id){
 		global $wpdb;
 		
-		// TODO: change this to work with new system!
 		$reassign_id = absint( $_POST['reassign_user'] );
 		
-		// If reassign posts, do that
-		if( $reassign_id ) {
-			// Swap post_author entries with reassigned user
-			$wpdb->update( $wpdb->posts, array( 'post_author' => $reassign_id ), array( 'post_author' => $delete_id, 'post_type' => $this->coauthor_post_type ), array( '%d' ), array( '%d', '%s' ) );
+		// If reassign posts, do that -- use coauthors_update_post
+		if($reassign_id) {
+			// Get posts belonging to deleted author
+			$reassign_user = get_profile_by_id( 'user_login', $reassign_id );
+			// Set to new author
+			if( $reassign_user ) {
+				$post_ids = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_author = %d", $delete_id ) );
+
+				if ( $post_ids ) {
+					foreach ( $post_ids as $post_id ) {
+						$this->add_coauthors( $post_id, array( $reassign_user ), true );
+					}
+				}
+			}
 		}
 		
-		// Delete any coauthor entries we missed
-		$delete_query = $wpdb->prepare( "DELETE FROM $wpdb->posts WHERE post_type = %s AND post_author = %d", $this->coauthor_post_type, $delete_id );
-		$wpdb->query( $delete_query );
+		$delete_user = get_profile_by_id( 'user_login', $delete_id );
+		if( $delete_user ) {
+			// Delete term
+			wp_delete_term( $delete_user, $this->coauthor_taxonomy );
+		}
 	}
 	
 	function filter_count_user_posts( $count, $user_id ) {
-		global $wpdb;
+		$user = get_userdata( $user_id );
 		
-		// TODO: Find a way to optimize this
-		$query = $wpdb->prepare( "SELECT COUNT(ID) FROM $wpdb->posts WHERE post_parent IN (SELECT ID FROM $wpdb->posts WHERE post_type NOT IN ('revision', 'attachment', 'auto-save')) AND post_type = %s AND post_author = %d", $this->coauthor_post_type, $user_id );
-		$count = $wpdb->get_var( $query );
+		$term = get_term_by( 'slug', $user->user_login, $this->coauthor_taxonomy );
 		
-		if( !$count || is_wp_error( $count ) )
+		if( ! $term || is_wp_error( $term ) ) {
 			$count = 0;
+		} else {
+			$count = $term->count;
+		}
 		
 		return $count;
 	}
@@ -468,21 +512,35 @@ class coauthors_plus {
 		
 		$post_type = $this->get_current_post_type();
 		// TODO: need to fix this; shouldn't just say no if don't have post_type
-		if( !$post_type ) return false;
+		if( ! $post_type ) return false;
 		
 		$post_type_object = get_post_type_object( $post_type );
 		$can_set_authors = current_user_can( $post_type_object->cap->edit_others_posts );
 		
-		return $can_set_authors;
+		return apply_filters( 'coauthors_plus_edit_authors', $can_set_authors );
 	}
 	
-	function filter_search_by_editable_users( &$query ) {
-		global $current_user, $user_ID;
-		
-		if( COAUTHORS_DOING_USER_SEARCH == true ) {
-			// TODO: post type support
-			$authors = get_editable_user_ids( $current_user->id, true, 'post' );
-			$query->query_where .= ' AND ID IN ( '. implode( $authors , ',' ) .' )';
+	/**
+	 * Fix for author info not properly displaying on author pages
+	 *
+	 * On an author archive, if the first story has coauthors and
+	 * the first author is NOT the same as the author for the archive,
+	 * the query_var is changed.
+	 *
+	 */
+	function fix_author_page( &$post ) {
+
+		if( is_author() ) {
+			global $wp_query, $authordata;
+	
+			// Get the id of the author whose page we're on
+			$author_id = $wp_query->get( 'author' );
+	
+			// Check that the the author matches the first author of the first post
+			if( $author_id != $authordata->ID ) {
+				// The IDs don't match, so we need to force the $authordata to the one we want		
+				$authordata = get_userdata( $author_id );
+			}
 		}
 	}
 	
@@ -494,85 +552,55 @@ class coauthors_plus {
 		
 		global $user_level;
 		
-		if( !wp_verify_nonce( $_REQUEST['_wpnonce'], 'coauthors-search' ) )
-			die('');
+		if( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'coauthors-search' ) )
+			die();
 		
-		if( $this->current_user_can_set_authors() ) {
-			$q = strtolower( $_REQUEST["q"] );
-			if ( !$q ) return;
-			
-			/**/ // Option 1: wp_user_search
-			add_action( 'pre_user_search', array( &$this, 'filter_search_by_editable_users' ) );
-			
-			define( 'COAUTHORS_DOING_USER_SEARCH', true );
-			
-			$user_search = new WP_User_Search( $q );
-			$user_ids = $user_search->get_results();
-			
-			//echo '<p>results:';
-			//print_r($user_ids);
-			
-			if( count( $user_ids ) ) {
-				foreach( $user_ids as $user_id ) {
-					$user = new WP_User( $user_id );
-					echo $user->ID ." | ". $user->user_login ." | ". $user->display_name ." | ". $user->user_email ."\n";
-				}
-			}
-			/**/
-			
-			/* // Option 2: get_editable_authors
-			$search_fields = array( 'user_login', 'user_nicename', 'display_name', 'user_email' );
-			$authors = get_editable_authors( $current_user->ID );
-			if( is_array( $authors ) ) {
-				foreach( $authors as $author ) {
-					foreach( $search_fields as $search_field ) {
-						//echo 'strpos:';
-						//print_r(strpos( $author->$search_field, $q )); echo "\n";
-						if( strpos( strtolower( $author->$search_field ), $q ) !== false ) {
-							echo $author->ID ." | ". $author->user_login ." | ". $author->display_name ." | ". $author->user_email ."\n";
-							break;
-						}
-					}
-				}
-			}
-			/*
-			
-			/* // Option 3: custom query
-			$q = '%' . $q . '%';
-			
-			// Set the minimum level of users to return
-			if(!$this->get_plugin_option('allow_subscribers_as_authors')) {
-				$user_level_where = "WHERE meta_key = '".$wpdb->prefix."user_level' AND meta_value >= 1";
-			}
-	
-			$authors_query = $wpdb->prepare("SELECT DISTINCT u.ID, u.user_login, u.display_name, u.user_email FROM $wpdb->users AS u"
-											." INNER JOIN $wpdb->usermeta AS um ON u.ID = um.user_id"
-											." WHERE ID = ANY (SELECT user_id FROM $wpdb->usermeta $user_level_where)"
-											." AND (um.meta_key = 'first_name' OR um.meta_key = 'last_name' OR um.meta_key = 'nickname')"
-											." AND (u.user_login LIKE %s"
-												." OR u.user_nicename LIKE %s"
-												." OR u.display_name LIKE %s"
-												." OR u.user_email LIKE %s"
-												." OR um.meta_value LIKE %s)",$q,$q,$q,$q,$q);
-												
-			//echo $authors_query;
-			$authors = $wpdb->get_results($authors_query, ARRAY_A);
+		if( empty( $_REQUEST['q'] ) )
+			die();
 		
-			if(is_array($authors)) {
-				foreach ($authors as $author) {
-					echo $author['ID'] ." | ". $author['user_login']." | ". $author['display_name'] ." | ".$author['user_email'] ."\n";
-				}
-			}
-		/**/
+		if( ! $this->current_user_can_set_authors() )
+			die();
+		
+		$search = esc_html( strtolower( $_REQUEST['q'] ) );
+		
+		$authors = $this->search_authors( $search );
+				
+		foreach( $authors as $author ) {
+			echo $author->ID ." | ". $author->user_login ." | ". $author->display_name ." | ". $author->user_email ."\n";		
 		}
 		
-		echo 'queries:' . get_num_queries() ."\n";
-		echo 'timer: ';
-		timer_stop(1);
-		echo "seconds\n";
+		if( COAUTHORS_PLUS_DEBUG ) {		
+			echo 'queries:' . get_num_queries() ."\n";
+			echo 'timer: ' . timer_stop(1) . "sec\n";
+		}
 		
 		die();
 			
+	}
+	
+	function search_authors( $search = '' ) {
+		$authors = array();
+		$author_fields = array( 'ID', 'display_name', 'user_login', 'user_email' );
+		
+		if ( function_exists( 'get_users' ) ) {			
+			$search = sprintf( '*%s*',  $search ); // Enable wildcard searching
+			$authors = get_users( array( 'search' => $search, 'who' => 'authors', 'fields' => $author_fields ) );			
+		} else {
+			// Pre 3.1 support
+			// This might not be the most eloquent way of doing things, but it's better than a nasty SQL query
+			$matching_authors = get_editable_authors( get_current_user_id() );
+			
+			foreach( $matching_authors as $matching_author ) {
+				foreach( $author_fields as $author_field ) {
+					if( isset( $matching_author->$author_field ) && strpos( strtolower( $matching_author->$author_field ), $search ) !== false ) {
+						$authors[] = $matching_author;
+						break;
+					}
+				}
+			}
+		}
+		
+		return (array) $authors;
 	}
 	
 	/**
@@ -583,36 +611,43 @@ class coauthors_plus {
 		
 		$post_type = $this->get_current_post_type();
 		
+		// TODO: Check if user can set authors? $this->current_user_can_set_authors()
 		if( $this->is_valid_page() && $this->authors_supported( $post_type ) ) {
-			wp_enqueue_style( 'co-authors-plus-css', plugins_url('co-authors-plus/css/co-authors-plus.css'), false, COAUTHORS_PLUS_VERSION, 'all');
-			wp_enqueue_script( 'co-authors-plus-js', plugins_url('co-authors-plus/js/co-authors-plus.js'), array('jquery', 'suggest'), COAUTHORS_PLUS_VERSION, true);
+		
+			wp_enqueue_style( 'co-authors-plus-css', COAUTHORS_PLUS_URL . 'css/co-authors-plus.css', false, COAUTHORS_PLUS_VERSION, 'all' );
+			wp_enqueue_script( 'co-authors-plus-js', COAUTHORS_PLUS_URL . 'js/co-authors-plus.js', array('jquery', 'suggest'), COAUTHORS_PLUS_VERSION, true);
+			
+			$js_strings = array(
+				'edit_label' => __( 'Edit', 'co-authors-plus' ),
+				'delete_label' => __( 'Delete', 'co-authors-plus' ), 
+				'confirm_delete' => __( 'Are you sure you want to delete this author?', 'co-authors-plus' ),
+				'input_box_title' => __( 'Click to change this author', 'co-authors-plus' ),
+				'search_box_text' => __( 'Search for an author', 'co-authors-plus' ),
+				'help_text' => __( 'Click on an author to change them. Click on <strong>Delete</strong> to remove them.', 'co-authors-plus' ),
+			);
+			wp_localize_script( 'co-authors-plus-js', 'coAuthorsPlusStrings', $js_strings );
+			
 		}
 	}	
 	
 	/**
-	 * Adds necessary javascript variables to admin pages 
+	 * Adds necessary javascript variables to admin pages
 	 */
 	function js_vars() {
-		global $current_user, $post, $post_ID;
-
-		get_currentuserinfo();
 		
-		if( $this->is_valid_page() && $this->authors_supported( $post->post_type ) && $this->current_user_can_set_authors() ) {
+		$post_type = $this->get_current_post_type();
+		
+		if( $this->is_valid_page() && $this->authors_supported( $post_type ) && $this->current_user_can_set_authors() ) {
 			?>
 			<script type="text/javascript">
-			
 				// AJAX link used for the autosuggest
-				var coauthor_ajax_suggest_link = '<?php echo wp_nonce_url( 'admin-ajax.php', 'coauthors-search' ) . '&action=coauthors_ajax_suggest' . '&post_type=' . $post->post_type ?>';
-				
-				if(!i18n || i18n == 'undefined') var i18n = {};
-				i18n.coauthors = {};
-				i18n.coauthors.edit_label = "<?php _e('Edit', 'co-authors-plus')?>";
-				i18n.coauthors.delete_label = "<?php _e('Delete', 'co-authors-plus')?>";
-				i18n.coauthors.confirm_delete = "<?php _e('Are you sure you want to delete this author?', 'co-authors-plus')?>";
-				i18n.coauthors.input_box_title = "<?php _e('Click to change this author', 'co-authors-plus')?>";
-				i18n.coauthors.search_box_text = "<?php _e('Search for an author', 'co-authors-plus')?>";				
-				i18n.coauthors.help_text = "<?php _e('Click on an author to change them. Click on <strong>Delete</strong> to remove them.', 'co-authors-plus')?>";
-				
+				var coAuthorsPlus_ajax_suggest_link = '<?php echo add_query_arg(
+					array(
+						'action' => 'coauthors_ajax_suggest',
+						'post_type' => $post_type,
+					),
+					wp_nonce_url( 'admin-ajax.php', 'coauthors-search' )
+				); ?>';
 			</script>
 			<?php
 		}
@@ -624,31 +659,70 @@ class coauthors_plus {
 	function is_valid_page() {
 		global $pagenow;
 		
-		$pages = array('edit.php', 'post.php', 'post-new.php', 'page.php', 'page-new.php');
-		
-		if(in_array($pagenow, $pages)) return true;
-		
-		return false;
+		return in_array( $pagenow, $this->_pages_whitelist );
 	} 
+	
+	function get_post_id() {
+		global $post;
+		$post_id = 0;
+		
+		if ( is_object( $post ) ) {
+			$post_id = $post->ID;
+		}
+		
+		if( ! $post_id ) {
+			if ( isset( $_GET['post'] ) )
+				$post_id = (int) $_GET['post'];
+			elseif ( isset( $_POST['post_ID'] ) )
+				$post_id = (int) $_POST['post_ID'];
+		}
+		
+		return $post_id;
+	}
 	
 	/**
 	 * Allows coauthors to edit the post they're coauthors of
+	 * Pieces of code borrowed from http://pastebin.ca/1909968
+	 * 
 	 */
 	function add_coauthor_cap( $allcaps, $caps, $args ) {
-		// TODO: custom post type support
 		
-		if(in_array('edit_post', $args) || in_array('edit_others_posts', $args) || in_array('edit_page', $args) || in_array('edit_others_pages', $args)) {
-			// @TODO: Fix this disgusting hardcodedness. Ew.
-			$user_id = $args[1];
-			$post_id = $args[2];
-			if(is_coauthor_for_post($user_id, $post_id)) {
-				// @TODO check to see if can edit publish posts if post is published
-				// @TODO check to see if can edit posts at all
-				foreach($caps as $cap) {
-					$allcaps[$cap] = 1;
-				}
+		// Load the post data:
+		$user_id = isset( $args[1] ) ? $args[1] : 0;
+		$post_id = isset( $args[2] ) ? $args[2] : 0;
+		
+		if( ! $post_id )
+			$post_id = $this->get_post_id();
+		
+		if( ! $post_id )
+			return $allcaps;
+		
+		$post = get_post( $post_id );
+		
+		if( ! $post )
+			return $allcaps;
+		
+		$post_type_object = get_post_type_object( $post->post_type );
+		
+		// Bail out if we're not asking about a post
+		if ( ! in_array( $args[0], array( $post_type_object->cap->edit_post, $post_type_object->cap->edit_others_posts ) ) )
+			return $allcaps;
+		
+		// Bail out for users who can already edit others posts
+		if ( isset( $allcaps[$post_type_object->cap->edit_others_posts] ) && $allcaps[$post_type_object->cap->edit_others_posts] )
+			return $allcaps;
+		
+		// Bail out for users who can't publish posts if the post is already published
+		if ( 'publish' == $post->post_status && ( ! isset( $allcaps[$post_type_object->cap->publish_posts] ) || ! $allcaps[$post_type_object->cap->publish_posts] ) )
+			return $allcaps;
+		
+		// Finally, double check that the user is a coauthor of the post
+		if( is_coauthor_for_post( $user_id, $post_id ) ) {
+			foreach($caps as $cap) {
+				$allcaps[$cap] = true;
 			}
 		}
+		
 		return $allcaps;
 	}
 	
@@ -686,11 +760,11 @@ class coauthors_plus {
 		
 		$new_options = array();
 		
-		foreach($this->options as $option => $value) {
-			$name = $this->get_plugin_option_fullname($option);
-			$return = get_option($name);
-			if($return === false) {
-				add_option($name, $value);
+		foreach( $this->options as $option => $value ) {
+			$name = $this->get_plugin_option_fullname( $option );
+			$return = get_option( $name );
+			if( $return === false ) {
+				add_option( $name, $value );
 				$new_array[$option] = $value;
 			} else {
 				$new_array[$option] = $return;
@@ -711,7 +785,7 @@ class coauthors_plus {
 	 *
 	 */
 	function get_plugin_option ( $name ) {
-		if(is_array($this->options) && $option = $this->options[$name])
+		if( is_array( $this->options ) && $option = $this->options[$name] )
 			return $option;
 		else 
 			return null;
@@ -761,6 +835,16 @@ class coauthors_plus {
 			</div>
 		<?php 
 	}
+	
+	function debug($msg, $object) {
+		if( COAUTHORS_PLUS_DEBUG ) {
+			echo '<hr />';
+			echo sprintf('<p>%s</p>', $msg);
+			echo '<pre>';
+			var_dump($object);
+			echo '</pre>';
+		}
+	}
 }
 
 /** Helper Functions **/
@@ -770,23 +854,27 @@ class coauthors_plus {
  * Returns a the specified column value for the specified user
  */
  // TODO: Remove this function
-if(!function_exists('get_profile_by_id')) {
-	function get_profile_by_id($field, $user_id) {
+if( ! function_exists( 'get_profile_by_id' ) ) {
+	function get_profile_by_id( $field, $user_id ) {
 		global $wpdb;
-		if($field && $user_id) return $wpdb->get_var( $wpdb->prepare("SELECT $field FROM $wpdb->users WHERE ID = %d", $user_id) );
+		
+		if( $field && $user_id )
+			return $wpdb->get_var( $wpdb->prepare( "SELECT $field FROM $wpdb->users WHERE ID = %d", $user_id ) );
+		
 		return false;
 	}
 }
 
 function coauthors_plus_init() {
+	
+	$plugin_dir = dirname( plugin_basename( __FILE__ ) ) . '/languages/';
+	load_plugin_textdomain( 'co-authors-plus', null, $plugin_dir );
+
 	// Check if we're running 3.0
 	if( function_exists( 'post_type_exists' ) ) {
 		// Create new instance of the coauthors_plus object
 		global $coauthors_plus;
 		$coauthors_plus = new coauthors_plus();
-		
-		// 	Core hooks to initialize the plugin
-		add_action('init', array(&$coauthors_plus,'init'));
 		
 		// Add template tags
 		require_once('template-tags.php');
@@ -807,5 +895,3 @@ add_action( 'init', 'coauthors_plus_init' );
 
 // Hook to perform action when plugin activated
 register_activation_hook( __FILE__, 'coauthors_plus_activate_plugin' );
-
-?>

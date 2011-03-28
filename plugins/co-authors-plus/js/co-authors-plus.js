@@ -5,7 +5,7 @@ jQuery(document).ready(function () {
 	 * @param event
 	 */
 	var coauthors_delete_onclick = function(e){
-		if(confirm(i18n.coauthors.confirm_delete)) {
+		if(confirm(coAuthorsPlusStrings.confirm_delete)) {
 			return coauthors_delete(this);
 		}
 		return false;
@@ -142,7 +142,7 @@ jQuery(document).ready(function () {
 		if(options.addEdit) {
 			var editBtn = jQuery('<span></span>')
 							.addClass('edit-coauthor')
-							.text(i18n.coauthors.edit_label)
+							.text(coAuthorsPlusStrings.edit_label)
 							.bind('click', coauthors_edit_onclick)
 							;
 			td.append(editBtn);
@@ -151,7 +151,7 @@ jQuery(document).ready(function () {
 		if(options.addDelete) {
 			var deleteBtn = jQuery('<span/>')
 								.addClass('delete-coauthor')
-								.text(i18n.coauthors.delete_label)
+								.text(coAuthorsPlusStrings.delete_label)
 								.bind('click', coauthors_delete_onclick)
 								;
 			$options.append(deleteBtn);
@@ -177,7 +177,15 @@ jQuery(document).ready(function () {
 			, 'name': inputName
 			})
 			.appendTo($coauthors_div)
-			.suggest(coauthor_ajax_suggest_link, {
+			/*
+			.autocomplete(coauthors_all, {
+				matchContains: true
+				, scroll: false
+				, formatItem: function(row) { return row[2] + ' ' + row[0] + ' | ' + row[1] }
+				, formatResult: function(row) { return row[1]; }
+			})
+			*/
+			.suggest(coAuthorsPlus_ajax_suggest_link, {
 				onSelect: coauthors_autosuggest_select
 			})
 			.keydown(coauthors_autosuggest_keydown)
@@ -186,9 +194,9 @@ jQuery(document).ready(function () {
 		if(authorName)
 			$co.attr( 'value', unescape( authorName ) );
 		else
-			$co.attr( 'value', i18n.coauthors.search_box_text )
+			$co.attr( 'value', coAuthorsPlusStrings.search_box_text )
 				.focus( function(){ $co.val( '' ) } )
-				.blur( function(){ $co.val( i18n.coauthors.search_box_text ) } )
+				.blur( function(){ $co.val( coAuthorsPlusStrings.search_box_text ) } )
 				;
 				
 		return $co;
@@ -245,7 +253,7 @@ jQuery(document).ready(function () {
 		
 		var $tag = jQuery('<span></span>')
 							.html(unescape(author.name))
-							.attr('title', i18n.coauthors.input_box_title)
+							.attr('title', coAuthorsPlusStrings.input_box_title)
 							.addClass('coauthor-tag')
 							// Add Click event to edit
 							.click(coauthors_edit_onclick);
@@ -284,7 +292,7 @@ jQuery(document).ready(function () {
 							'type': 'hidden',
 							'id': 'coauthors_hidden_input',
 							'name': 'coauthors[]',
-							'value': author.id//unescape(author.login)
+							'value': unescape(author.login)
 							})
 						;
 		
@@ -377,8 +385,7 @@ jQuery(document).ready(function () {
 	
 	for(var i = 0; i < $post_coauthor_logins.length; i++) {
 		post_coauthors.push({
-			id: $post_coauthor_logins[i].value,
-			//login: $post_coauthor_logins[i].value,
+			login: $post_coauthor_logins[i].value,
 			name: $post_coauthor_names[i].value,
 			email: $post_coauthor_emails[i].value,
 		});
@@ -414,13 +421,13 @@ jQuery(document).ready(function () {
 	}
 	// Show laoding cursor for autocomplete ajax requests
 	jQuery(document).ajaxSend(function(e, xhr, settings) {
-		if( settings.url.indexOf(coauthor_ajax_suggest_link) != -1 ) {
+		if( settings.url.indexOf(coAuthorsPlus_ajax_suggest_link) != -1 ) {
 			show_loading();
 		}
 	});
 	// Hide laoding cursor when autocomplete ajax requests are finished
 	jQuery(document).ajaxComplete(function(e, xhr, settings) {
-		if( settings.url.indexOf(coauthor_ajax_suggest_link) != -1 )
+		if( settings.url.indexOf(coAuthorsPlus_ajax_suggest_link) != -1 )
 			hide_loading();
 	});
 

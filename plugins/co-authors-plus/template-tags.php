@@ -4,87 +4,31 @@ function get_coauthors( $post_id = 0, $args = array() ) {
 	global $post, $post_ID, $coauthors_plus, $wpdb;
 	
 	$coauthors = array();
-	$post_id = (int) $post_id;
-	if( !$post_id && $post_ID ) $post_id = $post_ID;
-	if( !$post_id && $post ) $post_id = $post->ID;
+	$post_id = (int)$post_id;
+	if(!$post_id && $post_ID) $post_id = $post_ID;
+	if(!$post_id && $post) $post_id = $post->ID;
 
-	$defaults = array( 'orderby'=>'term_order', 'order'=>'ASC' );
+	$defaults = array('orderby'=>'term_order', 'order'=>'ASC');
 	$args = wp_parse_args( $args, $defaults );
 	
-	if( $post_id ) {
+	if($post_id) {
+		$coauthor_terms = wp_get_post_terms( $post_id, $coauthors_plus->coauthor_taxonomy, $args );
 		
-		// 3.0: Get as custom_post_type
-		$coauthors = _coauthors_get_as_posts( $post_id, $args, true );
-		
-		/*
-		// 2.1: Get as term
-		if( !$coauthors || empty( $coauthors ) ) {
-			$coauthors = _coauthors_get_as_terms( $post_id, $args );
-		}
-		*/
-		
-		// Fallback to core
-		if( !$coauthors || empty( $coauthors ) ) {
-			$coauthors = _coauthors_get_as_core( $post_id );
-		}
-		
-	}
-	return $coauthors;
-}
-
-function _coauthors_get_as_posts( $post_id, $args = array(), $convert_to_user = false ) {
-	global $coauthors_plus;
-	
-	$args['post_parent'] = $post_id;
-	$args['post_type'] = $coauthors_plus->coauthor_post_type;
-
-	$coauthors = get_children( $args );
-	
-	if( !$coauthors || is_wp_error( $coauthors ) )
-		return array();
-	
-	if( $convert_to_user ) {
-		$coauthors_as_users = array();
-		foreach( $coauthors as $coauthor_as_post ) {
-			$coauthors_as_users[] = get_userdata( $coauthor_as_post->post_author );
-		}
-		$coauthors = $coauthors_as_users;
-	}
-	
-	return $coauthors;
-}
-
-function _coauthors_get_as_terms( $post_id, $args = array() ) {
-	global $coauthors_plus;
-	
-	$coauthor_terms = wp_get_post_terms( $post_id, $coauthors_plus->coauthor_taxonomy, $args );
-		
-	if( is_array( $coauthor_terms) && !empty( $coauthor_terms ) ) {
-		foreach( $coauthor_terms as $coauthor ) {
-			$post_author =  get_userdatabylogin( $coauthor->name );
-			// In case the user has been deleted while plugin was deactivated
-			if( !empty( $post_author ) ) $coauthors[] = $post_author;
+		if(is_array($coauthor_terms) && !empty($coauthor_terms)) {
+			foreach($coauthor_terms as $coauthor) {
+				$post_author =  get_userdatabylogin($coauthor->name);
+				// In case the user has been deleted while plugin was deactivated
+				if(!empty($post_author)) $coauthors[] = $post_author;
+			}
+		} else {
+			if($post) {
+				$post_author = get_userdata($post->post_author);
+			} else {
+				$post_author = get_userdata($wpdb->get_var($wpdb->prepare("SELECT post_author FROM $wpdb->posts WHERE ID = %d", $post_id)));
+			}
+			if(!empty($post_author)) $coauthors[] = $post_author;
 		}
 	}
-	return $coauthors;
-}
-
-function _coauthors_get_as_core( $post_id ) {
-	global $post, $wpdb;
-	
-	$coauthors = array();
-	
-	if( $post ) {
-		$author_id = $post->post_author;
-	} else {
-		$author_id = $wpdb->get_var($wpdb->prepare("SELECT post_author FROM $wpdb->posts WHERE ID = %d", $post_id));
-	}
-	
-	$author = get_userdata( $author_id );
-	
-	if( $author )
-		$coauthors[] = $author;
-	
 	return $coauthors;
 }
 
@@ -96,8 +40,8 @@ function _coauthors_get_as_core( $post_id ) {
 function is_coauthor_for_post( $user, $post_id = 0 ) {
 	global $post;
 	
-	if( !$post_id ) $post_id = $post->ID;
-	if( !$post_id ) return false;
+	if( ! $post_id && $post ) $post_id = $post->ID;
+	if( ! $post_id ) return false;
 	
 	$coauthors = get_coauthors( $post_id );
 	if( is_numeric( $user ) ) {
@@ -114,6 +58,7 @@ function is_coauthor_for_post( $user, $post_id = 0 ) {
 class CoAuthorsIterator {
 	var $position = -1;
 	var $original_authordata;
+	var $current_author;
 	var $authordata_array;
 	var $count;
 	
@@ -125,7 +70,7 @@ class CoAuthorsIterator {
 		if(!$postID)
 			trigger_error(__('No post ID provided for CoAuthorsIterator constructor. Are you not in a loop or is $post not set?', 'co-authors-plus')); //return null;
 
-		$this->original_authordata = $authordata;
+		$this->original_authordata = $this->current_author = $authordata;
 		$this->authordata_array = get_coauthors($postID);
 		
 		$this->count = count($this->authordata_array);
@@ -137,7 +82,7 @@ class CoAuthorsIterator {
 		
 		//At the end of the loop
 		if($this->position > $this->count-1){
-			$authordata = $this->original_authordata;
+			$authordata = $this->current_author = $this->original_authordata;
 			$this->position = -1;
 			return false;
 		}
@@ -146,7 +91,7 @@ class CoAuthorsIterator {
 		if($this->position == 0 && !empty($authordata))
 			$this->original_authordata = $authordata;
 		
-		$authordata = $this->authordata_array[$this->position];
+		$authordata = $this->current_author = $this->authordata_array[$this->position];
 		
 		return true;
 	}
@@ -171,125 +116,141 @@ class CoAuthorsIterator {
 }
 
 //Helper function for the following new template tags
-function coauthors__echo($tag, $between, $betweenLast, $before, $after){
+function coauthors__echo( $tag, $type = 'tag', $separators = array(), $tag_args = null, $echo = true ) {
+	if( ! isset( $separators['between'] ) || $separators['between'] === NULL )
+		$separators['between'] = COAUTHORS_DEFAULT_BETWEEN;
+	if( ! isset( $separators['betweenLast'] ) || $separators['betweenLast'] === NULL )
+		$separators['betweenLast'] = COAUTHORS_DEFAULT_BETWEEN_LAST;
+	if( ! isset( $separators['before'] ) || $separators['before'] === NULL )
+		$separators['before'] = COAUTHORS_DEFAULT_BEFORE;
+	if( ! isset( $separators['after'] ) || $separators['after'] === NULL )
+		$separators['after'] = COAUTHORS_DEFAULT_AFTER;
+	
+	$output = '';
+	
 	$i = new CoAuthorsIterator();
-	echo $before;
-	if($i->iterate())
-		$tag();
-	while($i->iterate()){
-		echo $i->is_last() ? $betweenLast : $between;
-		$tag();
+	$output .= $separators['before'];
+	if( $i->iterate() ) {
+		if( $type == 'tag' )
+			$output .= $tag( $tag_args );
+		elseif( $type == 'field' && isset( $i->current_author->$tag ) )
+			$output .= $i->current_author->$tag;
+		elseif( $type == 'callback' && is_callable( $tag ) )
+			$output .= call_user_func( $tag, $i->current_author );
 	}
-	echo $after;
-}
-function coauthors__return($tag){
-	$return = array();
-	$i = new CoAuthorsIterator();
-	if($i->iterate())
-		$return[] = $tag();
-	while($i->iterate()){
-		$return[] = $tag();
+	while( $i->iterate() ){
+		$output .= $i->is_last() ? $separators['betweenLast'] : $separators['between'];
+		if( $type == 'tag' )
+			$output .= $tag( $tag_args );
+		elseif( $type == 'field' && isset( $i->current_author->$tag ) )
+			$output .= $i->current_author->$tag;
+		elseif( $type == 'callback' && is_callable( $tag ) )
+			$output .= call_user_func( $tag, $i->current_author );
 	}
-	echo $after;
+	$output .= $separators['after'];
+	
+	if( $echo )
+		echo $output;
+	
+	return $output;
 }
 
 //Provide co-author equivalents to the existing author template tags
-function coauthors($between = null, $betweenLast = null, $before = null, $after = null){
-	if($between === NULL)
-		$between = __(COAUTHORS_DEFAULT_BETWEEN, 'co-authors-plus');
-	if($betweenLast === NULL)
-		$betweenLast = __(COAUTHORS_DEFAULT_BETWEEN_LAST, 'co-authors-plus');
-	if($before === NULL)
-		$before = COAUTHORS_DEFAULT_BEFORE; //__(COAUTHORS_DEFAULT_BEFORE, 'co-authors-plus');
-	if($after === NULL)
-		$after = COAUTHORS_DEFAULT_AFTER; //__(COAUTHORS_DEFAULT_AFTER, 'co-authors-plus');
-	coauthors__echo('the_author', $between, $betweenLast, $before, $after);
+function coauthors( $between = null, $betweenLast = null, $before = null, $after = null, $echo = true ){
+	return coauthors__echo('display_name', 'field', array(
+		'between' => $between,
+		'betweenLast' => $betweenLast,
+		'before' => $before,
+		'after' => $after
+	), null, $echo );
 }
-function coauthors_posts_links($between = null, $betweenLast = null, $before = null, $after = null){
-	if($between === NULL)
-		$between = __(COAUTHORS_DEFAULT_BETWEEN, 'co-authors-plus');
-	if($betweenLast === NULL)
-		$betweenLast = __(COAUTHORS_DEFAULT_BETWEEN_LAST, 'co-authors-plus');
-	if($before === NULL)
-		$before = COAUTHORS_DEFAULT_BEFORE; //__(COAUTHORS_DEFAULT_BEFORE, 'co-authors');
-	if($after === NULL)
-		$after = COAUTHORS_DEFAULT_AFTER; //__(COAUTHORS_DEFAULT_AFTER, 'co-authors');
-	coauthors__echo('the_author_posts_link', $between, $betweenLast, $before, $after);
+function coauthors_posts_links( $between = null, $betweenLast = null, $before = null, $after = null, $echo = true ){
+	return coauthors__echo('coauthors_posts_links_single', 'callback', array(
+		'between' => $between,
+		'betweenLast' => $betweenLast,
+		'before' => $before,
+		'after' => $after
+	), null, $echo );
 }
-function coauthors_firstnames($between = null, $betweenLast = null, $before = null, $after = null){
-	if($between === NULL)
-		$between = __(COAUTHORS_DEFAULT_BETWEEN, 'co-authors-plus');
-	if($betweenLast === NULL)
-		$betweenLast = __(COAUTHORS_DEFAULT_BETWEEN_LAST, 'co-authors-plus');
-	if($before === NULL)
-		$before = COAUTHORS_DEFAULT_BEFORE; //__(COAUTHORS_DEFAULT_BEFORE, 'co-authors');
-	if($after === NULL)
-		$after = COAUTHORS_DEFAULT_AFTER; //__(COAUTHORS_DEFAULT_AFTER, 'co-authors');
-	coauthors__echo('the_author_firstname', $between, $betweenLast, $before, $after);
-}
-function coauthors_lastnames($between = null, $betweenLast = null, $before = null, $after = null){
-	if($between === NULL)
-		$between = __(COAUTHORS_DEFAULT_BETWEEN, 'co-authors-plus');
-	if($betweenLast === NULL)
-		$betweenLast = __(COAUTHORS_DEFAULT_BETWEEN_LAST, 'co-authors-plus');
-	if($before === NULL)
-		$before = COAUTHORS_DEFAULT_BEFORE; 
-	if($after === NULL)
-		$after = COAUTHORS_DEFAULT_AFTER;
-	coauthors__echo('the_author_lastname', $between, $betweenLast, $before, $after);
-}
-function coauthors_nicknames($between = null, $betweenLast = null, $before = null, $after = null){
-	if($between === NULL)
-		$between = __(COAUTHORS_DEFAULT_BETWEEN, 'co-authors-plus');
-	if($betweenLast === NULL)
-		$betweenLast = __(COAUTHORS_DEFAULT_BETWEEN_LAST, 'co-authors-plus');
-	if($before === NULL)
-		$before = COAUTHORS_DEFAULT_BEFORE;
-	if($after === NULL)
-		$after = COAUTHORS_DEFAULT_AFTER; 
-	coauthors__echo('the_author_nickname', $between, $betweenLast, $before, $after);
-}
-function coauthors_links($between = null, $betweenLast = null, $before = null, $after = null){
-	if($between === NULL)
-		$between = __(COAUTHORS_DEFAULT_BETWEEN, 'co-authors-plus');
-	if($betweenLast === NULL)
-		$betweenLast = __(COAUTHORS_DEFAULT_BETWEEN_LAST, 'co-authors-plus');
-	if($before === NULL)
-		$before = COAUTHORS_DEFAULT_BEFORE; //__(COAUTHORS_DEFAULT_BEFORE, 'co-authors');
-	if($after === NULL)
-		$after = COAUTHORS_DEFAULT_AFTER; //__(COAUTHORS_DEFAULT_AFTER, 'co-authors');
-	coauthors__echo('the_author_link', $between, $betweenLast, $before, $after);
-}
-function coauthors_IDs($between = null, $betweenLast = null, $before = null, $after = null){
-	if($between === NULL)
-		$between = __(COAUTHORS_DEFAULT_BETWEEN, 'co-authors-plus');
-	if($betweenLast === NULL)
-		$betweenLast = __(COAUTHORS_DEFAULT_BETWEEN_LAST, 'co-authors-plus');
-	if($before === NULL)
-		$before = COAUTHORS_DEFAULT_BEFORE;
-	if($after === NULL)
-		$after = COAUTHORS_DEFAULT_AFTER; 
-		coauthors__echo('the_author_ID', $between, $betweenLast, $before, $after);
+function coauthors_posts_links_single( $author ) {
+	return sprintf(
+		'<a href="%1$s" title="%2$s">%3$s</a>',
+		get_author_posts_url( $author->ID, $author->user_nicename ),
+		esc_attr( sprintf( __( 'Posts by %s', 'co-authors-plus' ), get_the_author() ) ),
+		get_the_author()
+	);
 }
 
-// @TODO: fix this function
-function get_the_coauthor_meta( $field, $user_id = 0 ) {
+function coauthors_firstnames($between = null, $betweenLast = null, $before = null, $after = null, $echo = true ){
+	return coauthors__echo('get_the_author_meta', 'tag', array(
+		'between' => $between,
+		'betweenLast' => $betweenLast,
+		'before' => $before,
+		'after' => $after
+	), 'first_name', $echo );
+}
+function coauthors_lastnames($between = null, $betweenLast = null, $before = null, $after = null, $echo = true ) {
+	return coauthors__echo('get_the_author_meta', 'tag', array(
+		'between' => $between,
+		'betweenLast' => $betweenLast,
+		'before' => $before,
+		'after' => $after
+	), 'last_name', $echo );
+}
+function coauthors_nicknames($between = null, $betweenLast = null, $before = null, $after = null, $echo = true ) {
+	return coauthors__echo('get_the_author_meta', 'tag', array(
+		'between' => $between,
+		'betweenLast' => $betweenLast,
+		'before' => $before,
+		'after' => $after
+	), 'nickname', $echo );
+}
+function coauthors_links($between = null, $betweenLast = null, $before = null, $after = null, $echo = true ) {
+	return coauthors__echo('coauthors_links_single', 'callback', array(
+		'between' => $between,
+		'betweenLast' => $betweenLast,
+		'before' => $before,
+		'after' => $after
+	), null, $echo );
+}
+function coauthors_links_single( $author ) {
+	if ( get_the_author_meta('url') ) {
+		return sprintf( '<a href="%s" title="%s" rel="external">%s</a>',
+			get_the_author_meta('url'),
+			esc_attr( sprintf(__("Visit %s&#8217;s website"), get_the_author()) ),
+			get_the_author()
+		);
+	} else {
+		return get_the_author();
+	}
+}
+function coauthors_IDs($between = null, $betweenLast = null, $before = null, $after = null, $echo = true ) {
+	return coauthors__echo('ID', 'field', array(
+		'between' => $between,
+		'betweenLast' => $betweenLast,
+		'before' => $before,
+		'after' => $after
+	), null, $echo );
+}
+
+function get_the_coauthor_meta( $field ) {
 	global $wp_query, $post;
 	
 	$coauthors = get_coauthors();
 	$meta = array();
 	
 	foreach( $coauthors as $coauthor ) {
-		// TODO: build this
+		$user_id = $coauthor->ID;
+		$meta[$user_id] = get_the_author_meta( $field, $user_id );
 	}
+	return $meta;
 }
 
 function the_coauthor_meta( $field, $user_id = 0 ) {
-	// need before after options
+	// TODO: need before after options
 	echo get_the_coauthor_meta($field, $user_id);
 }
 
-//customized wp_list_authors() from WP core
 /**
  * List all the *co-authors* of the blog, with several options available.
  * optioncount (boolean) (false): Show the count in parenthesis next to the author's name.
@@ -301,8 +262,11 @@ function the_coauthor_meta( $field, $user_id = 0 ) {
  * echo (boolean) (true): Set to false to return the output, instead of echoing.
  * @param array $args The argument array.
  * @return null|string The output, if echo is set to false.
+ * 
+ * NOTE: This is not perfect and probably won't work that well. 
+ *
  */
- /*
+
 function coauthors_wp_list_authors($args = '') {
 	global $wpdb, $coauthors_plus;
 
@@ -317,23 +281,11 @@ function coauthors_wp_list_authors($args = '') {
 	extract($r, EXTR_SKIP);
 	$return = '';
 
-	// @todo Move select to get_authors()
-	$authors = $wpdb->get_results("SELECT ID, user_nicename from $wpdb->users " . ($exclude_admin ? "WHERE user_login <> 'admin' " : '') . "ORDER BY display_name");
-
-	$author_count = array();
-		
-	$query  = "SELECT DISTINCT $wpdb->users.ID AS post_author, $wpdb->terms.name AS user_name, $wpdb->term_taxonomy.count AS count";
-	$query .= " FROM $wpdb->posts";
-	$query .= " INNER JOIN $wpdb->term_relationships ON ($wpdb->posts.ID = $wpdb->term_relationships.object_id)";
-	$query .= " INNER JOIN $wpdb->term_taxonomy ON ($wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id)";
-	$query .= " INNER JOIN $wpdb->terms ON ($wpdb->term_taxonomy.term_id = $wpdb->terms.term_id)";
-	$query .= " INNER JOIN $wpdb->users ON ($wpdb->terms.name = $wpdb->users.user_login)";
-	$query .= " WHERE post_type = 'post' AND " . get_private_posts_cap_sql( 'post' );
-	$query .= " AND $wpdb->term_taxonomy.taxonomy = '$coauthors_plus->coauthor_taxonomy'";
-	$query .= " GROUP BY post_author"; 
-
-	foreach ((array) $wpdb->get_results($query) as $row) {
-		$author_count[$row->post_author] = $row->count;
+	$authors = $coauthors_plus->search_authors();
+	$author_terms = get_terms( 'author' );
+	
+	foreach ( (array) $author_terms as $author_term ) {
+		$author_count[$author_term->slug] = $author_term->count;
 	}
 
 	foreach ( (array) $authors as $author ) {
@@ -341,7 +293,7 @@ function coauthors_wp_list_authors($args = '') {
 		$link = '';
 
 		$author = get_userdata( $author->ID );
-		$posts = (isset($author_count[$author->ID])) ? $author_count[$author->ID] : 0;
+		$posts = (isset($author_count[$author->user_login])) ? $author_count[$author->user_login] : 0;
 		$name = $author->display_name;
 
 		if ( $show_fullname && ($author->first_name != '' && $author->last_name != '') )
@@ -409,113 +361,3 @@ function coauthors_wp_list_authors($args = '') {
 		return $return;
 	echo $return;
 }
-*/
-
-function coauthors_wp_list_authors($args = '') {
-	global $wpdb;
-
-	$defaults = array(
-		'optioncount' => false, 'exclude_admin' => true,
-		'show_fullname' => false, 'hide_empty' => true,
-		'feed' => '', 'feed_image' => '', 'feed_type' => '', 'echo' => true,
-		'style' => 'list', 'html' => true
-	);
-
-	$r = wp_parse_args( $args, $defaults );
-	extract($r, EXTR_SKIP);
-	$return = '';
-
-	/** @todo Move select to get_authors(). */
-	$users = get_users_of_blog();
-	$author_ids = array();
-	foreach ( (array) $users as $user )
-		$author_ids[] = $user->user_id;
-	if ( count($author_ids) > 0  ) {
-		$author_ids = implode(',', $author_ids );
-		$authors = $wpdb->get_results( "SELECT ID, user_login, user_nicename from $wpdb->users WHERE ID IN($author_ids) " . ($exclude_admin ? "AND user_login <> 'admin' " : '') . "ORDER BY display_name" );
-	} else {
-		$authors = array();
-	}
-
-	$author_count = array();
-	
-	$post_counts_query = "SELECT DISTINCT post_author, COUNT(ID) AS count FROM $wpdb->posts WHERE post_type = 'post' AND " . get_private_posts_cap_sql( 'post' ) . " GROUP BY post_author";
-	
-	$post_counts = $wpdb->get_results($post_counts_query);
-	
-	foreach ( (array) $post_counts as $row )
-		$author_count[$row->post_author] = $row->count;
-
-	foreach ( (array) $authors as $author ) {
-
-		$link = '';
-
-		$author = get_userdata( $author->ID );
-		$posts = (isset($author_count[$author->ID])) ? $author_count[$author->ID] : 0;
-		$name = $author->display_name;
-
-		if ( $show_fullname && ($author->first_name != '' && $author->last_name != '') )
-			$name = "$author->first_name $author->last_name";
-
-		if( !$html ) {
-			if ( $posts == 0 ) {
-				if ( ! $hide_empty )
-					$return .= $name . ', ';
-			} else
-				$return .= $name . ', ';
-
-			// No need to go further to process HTML.
-			continue;
-		}
-
-		if ( !($posts == 0 && $hide_empty) && 'list' == $style )
-			$return .= '<li>';
-		if ( $posts == 0 ) {
-			if ( ! $hide_empty )
-				$link = $name;
-		} else {
-			$link = '<a href="' . get_author_posts_url($author->ID, $author->user_nicename) . '" title="' . esc_attr( sprintf(__("Posts by %s"), $author->display_name) ) . '">' . $name . '</a>';
-
-			if ( (! empty($feed_image)) || (! empty($feed)) ) {
-				$link .= ' ';
-				if (empty($feed_image))
-					$link .= '(';
-				$link .= '<a href="' . get_author_feed_link($author->ID) . '"';
-
-				if ( !empty($feed) ) {
-					$title = ' title="' . esc_attr($feed) . '"';
-					$alt = ' alt="' . esc_attr($feed) . '"';
-					$name = $feed;
-					$link .= $title;
-				}
-
-				$link .= '>';
-
-				if ( !empty($feed_image) )
-					$link .= "<img src=\"" . esc_url($feed_image) . "\" style=\"border: none;\"$alt$title" . ' />';
-				else
-					$link .= $name;
-
-				$link .= '</a>';
-
-				if ( empty($feed_image) )
-					$link .= ')';
-			}
-
-			if ( $optioncount )
-				$link .= ' ('. $posts . ')';
-
-		}
-
-		if ( $posts || ! $hide_empty )
-			$return .= $link . ( ( 'list' == $style ) ? '</li>' : ', ' );
-	}
-
-	$return = trim($return, ', ');
-
-	if ( ! $echo )
-		return $return;
-	echo $return;
-}
-
-?>

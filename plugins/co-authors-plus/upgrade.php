@@ -2,10 +2,7 @@
 function coauthors_plus_upgrade( $from ) {
 	// TODO: handle upgrade failures
 	
-	//if( $from < 2.0 ) coauthors_plus_upgrade_20();
-	
-	if( $from < 3.0 ) coauthors_plus_upgrade_30();
-	
+	if( $from < 2.0 ) coauthors_plus_upgrade_20();
 	
 	// Update to the current global version
 	coauthors_plus_update_version(COAUTHORS_PLUS_VERSION);
@@ -50,25 +47,7 @@ function coauthors_plus_upgrade_20 () {
 	coauthors_plus_update_version( '2.0' );
 }
 
-/** 
- * Upgrade to 2.0
- * Updates coauthors from old meta-based storage to taxonomy-based
- */
-function coauthors_plus_upgrade_20 () {
-	global $coauthors_plus;
-	
-	// Get all posts with meta_key _coauthor
-	$all_posts = get_posts(array('numberposts' => '-1'));
-
-	// get_coauthors
-	// add_coauthor
-
-	coauthors_plus_update_version( '3.0' );
-}
-
 function coauthors_plus_update_version( $version ) {
 	global $coauthors_plus;
 	update_option($co_authors_plus->get_plugin_option_fullname('version'), $version);
 }
-
-?>

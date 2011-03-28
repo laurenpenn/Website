@@ -1,31 +1,41 @@
 === Co-Authors Plus ===
-Contributors: batmoo
+Contributors: batmoo, danielbachhuber
 Donate link: http://digitalize.ca/donate
 Tags: authors, users, multiple authors, coauthors, multi-author
-Tested up to: 2.8
-Requires at least: 2.8
-Stable tag: 2.1.1
+Tested up to: 3.1
+Requires at least: 3.0
+Stable tag: 2.5.1
 
-Allows multiple authors to be assigned to a Post or Page via search-as-you-type input boxes.
+Allows multiple authors to be assigned to a Posts via search-as-you-type input boxes.
 
 == Description ==
 
-Allows multiple authors to be assigned to a Post or Page via the search-as-you-type inputs. Co-authored posts appear on a co-author's posts page and feed. New template tags allow listing of co-authors. Editors and Administrators may assign co-authors to a post. Additionally, co-authors may edit the posts they are associated with, and co-authors who are contributors may only edit posts if they have not been published (as is usual).
+Allows multiple authors to be assigned to a Post, Pages, or Custom Post Types via the search-as-you-type inputs. Co-authored posts appear on a co-author's posts page and feed. New template tags allow listing of co-authors. Editors and Administrators may assign co-authors to a post. Additionally, co-authors may edit the posts they are associated with, and co-authors who are contributors may only edit posts if they have not been published (as is usual).
 
-This plugin is an almost complete rewrite of the Co-Authors plugin originally developed at [Shepherd Interactive](http://www.shepherd-interactive.com/ "Shepherd Interactive specializes in web design and development in Portland, Oregon") (2007). The original plugin was inspired by the 'Multiple Authors' plugin by Mark Jaquith (2005).
+This plugin is an almost complete rewrite of the Co-Authors plugin originally developed at [Shepherd Interactive](http://www.shepherd-interactive.com/) (2007). The original plugin was inspired by the 'Multiple Authors' plugin by Mark Jaquith (2005).
 
-The extended version is created by [Mohammad Jangda](http://digitalize.ca), and incorporates search-as-you-type functionality for adding users, which aims to make easy the task of adding multiple users to posts and pages, especially when dealing with a system with hundreds of users (typical of newspaper and magazine sites).
-
-Version 2.0 is a major re-write of the plugin to utilize the WordPress taxonomy system instead of post meta.
+The extended version incorporates search-as-you-type functionality for adding users, which aims to make easy the task of adding multiple users to posts and pages, especially when dealing with a system with hundreds of users (typical of newspaper and magazine sites).
 
 > *See "Other Notes" section for Template Tags and usage information*
 
 == Changelog ==
 
+= 2011-03-26 / 2.5.1 =
+
+* Fix with author post count (throwing errors)
+
+= 2011-03-26 / 3.0 =
+
+* Custom Post Type Support
+* Compatibility with WP 3.0 and 3.1
+* Gravatars
+* Lots and lots and lots of bug fixes
+* Thanks to everyone who submitted bugs, fixes, and suggestions! And for your patience!
+
 = 2009-10-16 / 2.1.1 =
 
 * Fix for coauthors not being added if their username is different from display name
-* Fixes to readme.txt (fixes for textual and puntuation errors, language clarification, minor formatting changes) courtesy of [Waldo Jaquith](http://www.vqronline.org)
+* Fixes to readme.txt (fixes for textual and punctuation errors, language clarification, minor formatting changes) courtesy of [Waldo Jaquith](http://www.vqronline.org)
 
 = 2009-10-11 / 2.1 =
 
@@ -77,7 +87,7 @@ Version 2.0 is a major re-write of the plugin to utilize the WordPress taxonomy 
 
 = 2009-04-15 / 1.1.1 =
 
-* Changed SQL query to return only contributer-level and above users.
+* Changed SQL query to return only contributor-level and above users.
 
 = 2009-04-14: 1.1.0 =
 
@@ -168,7 +178,7 @@ Note: The $field variable corresponds with the same values accepted by the [the 
 
 *	<code>get_coauthors( [$post_id], [$args] )</code>
 
-This function returns an array of coauthors for the specified post, or if used inside the Loop, the current post active in the Loop. the $args paramater is an array that allows you to specify the order in which the authors should be returned.
+This function returns an array of coauthors for the specified post, or if used inside the Loop, the current post active in the Loop. the $args parameter is an array that allows you to specify the order in which the authors should be returned.
 
 = is coauthor for post =
 
