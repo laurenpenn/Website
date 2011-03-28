@@ -1,0 +1,190 @@
+/* Custom CSS */
+#wlcms-footer-container {
+	float: left;
+	line-height: 30px;
+	padding-top: 10px;
+	margin-left: 15px;
+}
+p#safari-fix {
+	display: none;
+}
+#wlcms-footer-logo {
+	float:left;
+	padding-right: 10px;
+}
+
+.video-container {
+	margin-right: 20px;
+	float: left;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.video-container img {
+	margin-bottom: 6px;
+}
+.wlcms_wrap{
+	width:740px;
+}
+
+.wlcms_section{
+	border:1px solid #ddd;
+	border-bottom:0;
+	background:#f9f9f9;
+}
+.wlcms_opts label{
+	font-size:12px;
+	font-weight:700;
+	width:200px;
+	display:block;
+	float:left;	
+}
+.wlcms_input {
+	padding:30px 10px;
+	border-bottom:1px solid #ddd;
+	border-top:1px solid #fff;
+}
+.wlcms_input_profile {
+	padding:30px 10px 10px 10px;
+}
+.wlcms_checkbox_last {
+	padding:10px 10px 30px 10px;
+	border-bottom:1px solid #ddd;
+}
+.wlcms_input_local_video {
+	padding: 10px;
+}
+.wlcms_input_message {
+	padding: 10px 10px 0;
+	border-bottom: none;
+}
+.wlcms_input_welcome_last {
+	padding:10px 10px 30px 10px;
+	border-bottom:1px solid #ddd;
+}
+.wlcms_opts small{
+	display:block;
+	float:right;
+	width:200px;
+	color:#999;
+}
+.wlcms_opts input[type="text"], .wlcms_opts select{
+	width:280px;
+	font-size:12px;
+	padding:4px;
+	color:#333;
+	line-height:1em;
+	background:#f3f3f3;
+}
+.wlcms_input input:focus, .wlcms_input_welcome_last textarea:focus{
+		background:#fff;
+}
+.wlcms_input_welcome_last textarea{
+	width:280px;
+	height:280px;
+	font-size:10px;
+	padding:4px;
+	color:#333;
+	line-height:1.5em;
+	background:#f3f3f3;
+}
+.wlcms_title h3 {
+	cursor:pointer;
+	font-size:1em;
+	text-transform: uppercase;
+	margin:0;
+	font-weight:bold;
+	color:#232323;
+	float:left;
+	width:80%;
+	padding:14px 4px;
+}
+
+.wlcms_title{
+	cursor:pointer;
+	border-bottom:1px solid #ddd;
+	background:#eee;
+	padding:0;
+	}
+
+.wlcms_title h3 img.inactive{
+	margin:-8px 10px 0 2px;
+	width:32px;
+	height:32px;	
+	background:url('../images/pointer.png') no-repeat 0 0;
+	float:left;
+	-moz-border-radius:6px;
+	border:1px solid #ccc;
+}
+
+.wlcms_title h3 img.active{
+	margin:-8px 10px 0 2px;
+	width:32px;
+	height:32px;	
+	background:url('../images/pointer.png') no-repeat  0 -32px;
+	float:left;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border:1px solid #ccc;
+}
+		
+.wlcms_title h3:hover img{
+	border:1px solid #999;
+}
+.wlcms_options h4 {
+	font-size: 1.1em;
+	padding: 1.33em 0 1em 10px;
+	margin: 0;
+}
+
+.wlcms_title span.submit{
+	display:block;
+	float:right;
+	margin:0;
+	padding:0;
+	width:15%;
+	padding:14px 0;
+}
+
+.clearfix{
+	clear:both;
+}
+
+.wlcms_table th, .wlcms_table td{
+	border:1px solid #bbb;
+	padding:10px;
+	text-align:center;
+}
+
+.wlcms_table th, .wlcms_table td.feature{
+	border-color:#888;
+	}
+.wlcms_opts label.radioyesno {
+	width: 50px;
+}
+.wlcms_opts label.radioCustom {
+	width: 80px;
+}
+.wlcms_opts label.radioWebsite {
+	width: 80px;
+}
+.wlcms_opts label.radioBlog {
+	width: 60px;
+}
+.pretty-hover {
+	background-color: #EEEEEE;
+}
+#vVideoVariables .wlcms_input {
+border-bottom: none;
+border-top:none;
+padding:10px 10px;
+}
+#wlcm-reset {
+	margin: 0;
+	padding-top: 0;
+}
+.wlcms-icon32 {
+float:left;
+height:36px;
+margin:0 6px 0 0;
+width:36px;
+}
