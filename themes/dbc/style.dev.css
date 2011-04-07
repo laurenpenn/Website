@@ -290,6 +290,8 @@ table {
 		vertical-align: middle;
 		-moz-border-radius: 2px;
 	}
+	.msie a.button { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#E4E4E4); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#E4E4E4)"; }
+		.msie a.button:hover { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#E7E9EA, endColorstr=#D4D6D7); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#E7E9EA, endColorstr=#D4D6D7)"; }
 		a.button:hover {
 			background: none repeat scroll 0 0 #C6D1B4;
 			background: -moz-linear-gradient(top,#E7E9EA,#E7E9EA 55%,#D4D6D7);
@@ -727,7 +729,8 @@ img.wp-smiley {
 			body.chrome .link-out:hover { background: -webkit-gradient(linear,left bottom,left top,color-stop(0.42, rgb(137,77,40)),color-stop(0.71, rgb(99,52,24))) }
 		body.gecko .link-out { background: -moz-linear-gradient(center bottom , #633418 38%, #894D28 69%) repeat scroll 0 0 transparent; }
 			body.gecko .link-out:hover { background: -moz-linear-gradient(center bottom,rgb(137,77,40) 42%,rgb(99,52,24) 71%)	 }
-		
+		body.msie .link-out { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#894D28, endColorstr=#633418); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#894D28, endColorstr=#633418)"; }
+			body.msie .link-out:hover { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#633418, endColorstr=#894D28); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#633418, endColorstr=#894D28)"; }
 
 #publication-archive .publications {
 	clear: both;

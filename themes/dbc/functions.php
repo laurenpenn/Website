@@ -1,13 +1,10 @@
 <?php
-
-//if ( !current_user_can('level_10'))
-	//die( 'We are making some updates to the site. Try back in an hour!' );
 	
 /* Load the core theme framework. */
 require_once( trailingslashit( TEMPLATEPATH ) . 'hybrid-core/hybrid.php' );
 $theme = new Hybrid();
 
-/* Theme PHP code will go here. */
+/* Execute all functions after the theme is setup. */
 add_action( 'after_setup_theme', 'dbc_theme_setup', 10 );
 
 function dbc_theme_setup() {
@@ -19,7 +16,7 @@ function dbc_theme_setup() {
 	require_once( trailingslashit( TEMPLATEPATH ) . 'library/admin/theme-settings.php' );
      
      /* Load the custom admin settings. */
-    require_once( trailingslashit( TEMPLATEPATH ) . 'library/admin/admin-theme.php' );
+	require_once( trailingslashit( TEMPLATEPATH ) . 'library/admin/admin-theme.php' );
 	
 	/* Load the BuddyPress functions for the theme. */
 	require_once( trailingslashit( TEMPLATEPATH ) . 'buddypress/functions-buddypress.php' );
@@ -57,14 +54,12 @@ function dbc_theme_setup() {
 	add_action( 'widgets_init', 'dbc_register_widgets' );
 	add_action( "{$prefix}_before_html", 'dbc_ie6_detection', 11 );
 	add_action( "{$prefix}_header", 'dbc_get_sidebar_header', 11 );
-	//add_action( "{$prefix}_header", 'dbc_subsite_title', 12 );
 	add_action( "{$prefix}_open_body", 'dbc_facebook_sdk', 12 );
 	add_action( "{$prefix}_footer", 'dbc_footer', 11 );
 	
 	/* Add filters */
 	add_filter( 'body_class', 'dbc_body_class' );
 	add_filter( 'stylesheet_uri', 'dbc_debug_stylesheet', 10, 2 );
-	//add_filter( 'login_redirect','change_login_redirect', 10, 3 );
 	add_filter( 'sidebars_widgets', 'dbc_disable_sidebars' );
 
 	/* Add shortcodes */
@@ -79,7 +74,7 @@ function dbc_theme_setup() {
  */
 function dbc_load_scripts() {
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'jquery-functions', trailingslashit( THEME_URI ) . 'library/js/jquery.functions.js', array( 'jquery' ), '0.2.1', true );
+	wp_enqueue_script( 'jquery-functions', trailingslashit( THEME_URI ) . 'library/js/scripts.js', array( 'jquery' ), '0.2.1', true );
 	
 	if ( is_page_template( 'page-template-home.php' ) || is_page_template( 'page-media-home.php' ) ) {
 		wp_enqueue_style( 'front-page', trailingslashit( THEME_URI ) . 'library/css/home.css', false, '0.2.1', 'screen' );

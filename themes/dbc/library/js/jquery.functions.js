@@ -87,37 +87,20 @@ expires='; expires='+date.toUTCString();}
 var path=options.path?'; path='+(options.path):'';var domain=options.domain?'; domain='+(options.domain):'';var secure=options.secure?'; secure':'';document.cookie=[name,'=',encodeURIComponent(value),expires,path,domain,secure].join('');}else{var cookieValue=null;if(document.cookie&&document.cookie!=''){var cookies=document.cookie.split(';');for(var i=0;i<cookies.length;i++){var cookie=jQuery.trim(cookies[i]);if(cookie.substring(0,name.length+1)==(name+'=')){cookieValue=decodeURIComponent(cookie.substring(name.length+1));break;}}}
 return cookieValue;}};
 
-
 /* 
  * Equal Columns with JavaScript
  * http://www.impressivewebs.com/equal-height-columns-with-javascript-full-version/
  */
-addLoadListener(equalHeight);function equalHeight(){var myLeftColumn=document.getElementById("content");var myRightColumn=document.getElementById("sidebar-primary");var myLeftHeight=myLeftColumn.offsetHeight;var myRightHeight=myRightColumn.offsetHeight;var myLeftBorderTopPixels=retrieveComputedStyle(myLeftColumn,"borderTopWidth");var myLeftBorderBottomPixels=retrieveComputedStyle(myLeftColumn,"borderBottomWidth");var myLeftPaddingTopPixels=retrieveComputedStyle(myLeftColumn,"paddingTop");var myLeftPaddingBottomPixels=retrieveComputedStyle(myLeftColumn,"paddingBottom");var myRightBorderTopPixels=retrieveComputedStyle(myRightColumn,"borderTopWidth");var myRightBorderBottomPixels=retrieveComputedStyle(myRightColumn,"borderBottomWidth");var myRightPaddingTopPixels=retrieveComputedStyle(myRightColumn,"paddingTop");var myRightPaddingBottomPixels=retrieveComputedStyle(myRightColumn,"paddingBottom");var myLeftBorderNumber=Number(myLeftBorderTopPixels.replace("px",""))+Number(myLeftBorderBottomPixels.replace("px",""));var myLeftPaddingNumber=Number(myLeftPaddingTopPixels.replace("px",""))+Number(myLeftPaddingBottomPixels.replace("px",""));var myLeftExtras=myLeftBorderNumber+myLeftPaddingNumber;var myRightBorderNumber=Number(myRightBorderTopPixels.replace("px",""))+Number(myRightBorderBottomPixels.replace("px",""));var myRightPaddingNumber=Number(myRightPaddingTopPixels.replace("px",""))+Number(myRightPaddingBottomPixels.replace("px",""));var myRightExtras=myRightBorderNumber+myRightPaddingNumber;if(myLeftHeight>myRightHeight){myRightColumn.style.height=(myLeftHeight-myRightExtras)+"px";}
-else{myLeftColumn.style.height=(myRightHeight-myLeftExtras)+"px";}}
-function retrieveComputedStyle(element,styleProperty)
-{var computedStyle=null;if(typeof element.currentStyle!="undefined")
-{computedStyle=element.currentStyle;}
-else
-{computedStyle=document.defaultView.getComputedStyle(element,null);}
-return computedStyle[styleProperty];}
-function addLoadListener(fn)
-{if(typeof window.addEventListener!='undefined')
-{window.addEventListener('load',fn,false);}
-else if(typeof document.addEventListener!='undefined')
-{document.addEventListener('load',fn,false);}
-else if(typeof window.attachEvent!='undefined')
-{window.attachEvent('onload',fn);}
-else
-{var oldfn=window.onload;if(typeof window.onload!='function')
-{window.onload=fn;}
-else
-{window.onload=function()
-{oldfn();fn();};}}}
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('d 2(i,p){0 g=r;9(e i.l!=="f"){g=i.l}8{g=c.R.O(i,r)}V g[p]}d U(a){9(e 4.h!==\'f\'){4.h(\'q\',a,n)}8 9(e c.h!==\'f\'){c.h(\'q\',a,n)}8 9(e 4.s!==\'f\'){4.s(\'b\',a)}8{0 t=4.b;9(e 4.b!==\'d\'){4.b=a}8{4.b=d(){t();a()}}}}d T(){0 7=c.m("S");0 6=c.m("Q-P");0 k=7.o;0 j=6.o;0 J=2(7,"y");0 K=2(7,"H");0 M=2(7,"u");0 L=2(7,"N");0 G=2(6,"y");0 x=2(6,"H");0 w=2(6,"u");0 v=2(6,"N");0 I=3(J.5("1",""))+3(K.5("1",""));0 F=3(M.5("1",""))+3(L.5("1",""));0 B=I+F;0 z=3(G.5("1",""))+3(x.5("1",""));0 A=3(w.5("1",""))+3(v.5("1",""));0 E=z+A;9(k>j){6.D.C=(k-E)+"1"}8{7.D.C=(j-B)+"1"}}',58,58,'var|px|retrieveComputedStyle|Number|window|replace|myRightColumn|myLeftColumn|else|if|fn|onload|document|function|typeof|undefined|computedStyle|addEventListener|element|myRightHeight|myLeftHeight|currentStyle|getElementById|false|offsetHeight|styleProperty|load|null|attachEvent|oldfn|paddingTop|myRightPaddingBottomPixels|myRightPaddingTopPixels|myRightBorderBottomPixels|borderTopWidth|myRightBorderNumber|myRightPaddingNumber|myLeftExtras|height|style|myRightExtras|myLeftPaddingNumber|myRightBorderTopPixels|borderBottomWidth|myLeftBorderNumber|myLeftBorderTopPixels|myLeftBorderBottomPixels|myLeftPaddingBottomPixels|myLeftPaddingTopPixels|paddingBottom|getComputedStyle|primary|sidebar|defaultView|content|equalHeight|addLoadListener|return'.split('|'),0,{}))
+
 
 /*
  * Gentlemen, start your engines!
  */
 jQuery(document).ready(function($) {
+
+	// Equal column heights
+	addLoadListener(equalHeight);
 
 	// for PDF auto-detection
 		$('a[href$=".pdf"]').addClass('fancybox-pdf');
@@ -186,73 +169,7 @@ jQuery(document).ready(function($) {
          		'advanceSpeed' : 7000,
          		'bullets' : true,
          		'startClockOnMouseOut': true,
-         		'startClockOnMouseOutAfter': 0, 
+         		'startClockOnMouseOutAfter': 0
          });
-
-
-		/*
-		$('#slider').cycle({
-			fx: 'scrollHorz',
-			pause: 1,
-			timeout: 7000,
-			speed: 800,
-			pager:  '#slider-nav',
-			slideExpr: 'img'
-		});
-
-		$( '.slideshow-caption' ).css( 'opacity', 0.85 );
-
-		$('div.slideshow-items').cycle( {
-				fx: 'scrollHorz',
-				prev: 'a.slider-prev',
-				next: 'a.slider-next',
-				pager: '.slideshow-pager',
-				timeout: 0,
-				speed: 800
-			}
-		);
-
-		$('.slideshow-caption-control').toggle( 
-			function() {
-				$('.slideshow-caption').animate(
-					{ marginTop: '-79px' }, 'slow', function() {} 
-				);
-				$(this).addClass( 'slideshow-caption-control-open' );
-			}, 
-			function() {
-				$('.slideshow-caption').animate( 
-					{ marginTop: '0' }, 'slow', function() {} 
-				);
-				$(this).removeClass( 'slideshow-caption-control-open' );
-			}
-		);
-		*/		
-	//Video
-		$( '.video-slideshow-caption' ).css( 'opacity', 0.85 );
-
-		$('div.video-slideshow-items').cycle( {
-				fx: 'scrollHorz',
-				prev: 'a.video-slider-prev',
-				next: 'a.video-slider-next',
-				pager: '.video-slideshow-pager',
-				timeout: 0,
-				speed: 800
-			}
-		);
-
-		$('.video-slideshow-caption-control').toggle( 
-			function() {
-				$('.video-slideshow-caption').animate(
-					{ marginTop: '-79px' }, 'slow', function() {} 
-				);
-				$(this).addClass( 'video-slideshow-caption-control-open' );
-			}, 
-			function() {
-				$('.video-slideshow-caption').animate( 
-					{ marginTop: '0' }, 'slow', function() {} 
-				);
-				$(this).removeClass( 'video-slideshow-caption-control-open' );
-			}
-		);
 		
 });

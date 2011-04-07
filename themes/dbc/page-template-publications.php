@@ -68,12 +68,13 @@ get_header(); // Loads the header.php template. ?>
 			while ( have_posts() ) : the_post(); 
 				$args = array(
 					'post_type' => 'attachment',
-					'numberposts' => 1,
+					'numberposts' => -1, // get all attachments
 					'post_status' => null,
 					'post_parent' => $post->ID
 					); 
 				$attachments = get_posts($args);
 				if ($attachments) {
+					
 					foreach ($attachments as $attachment) {
 						if ( $attachment->post_mime_type == 'application/pdf')
 							$link = $attachment->guid;

@@ -6,18 +6,26 @@
 
 /* CONTAINER
    ================================================== */
-   
+
+
+
 #slider-container {
-	background: url('../images/slider-bg.png') top right no-repeat;
+	/*background: url('../images/slider-bg.png') top right no-repeat;*/
 	height: 215px;
 	margin: 0 0 5px;
 	overflow: hidden;
 	width: 655px;	
 }
+	/* IE doesn't support box shadow, so I guess we'll use an image. *sigh* */
+	.msie #slider-container { background: url('../images/slider-bg.png') top right no-repeat; }
+	
 	#slider-container.widescreen {
 		background: url('../images/slider-bg.png') right 172px no-repeat;
 		width: 655px;		
 	}
+	/* IE doesn't support box shadow, so I guess we'll use an image. *sigh* */
+	.msie #slider-container.widescreen { background: url('../images/slider-bg.png') right 172px no-repeat; }
+	
 #slider .post {
 	overflow: hidden;
 	width: 635px;
@@ -41,15 +49,23 @@
 	}
 
 div.orbit-wrapper {
-    width: 1px;
-    height: 1px;
-    position: relative; }
+	border-radius: 70px;
+	-moz-border-radius: 70px;
+	-webkit-border-radius: 70px;
+	box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.25);
+	-webkit-box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.25);
+	height: 1px;
+	position: relative;
+	width: 1px;
+}
 
 div.orbit {
     width: 1px;
     height: 1px;
     position: relative;
-    overflow: hidden }
+    overflow: hidden
+}
 
 div.orbit>img {
     position: absolute;
@@ -211,3 +227,7 @@ div.slider-nav span.left {
 .orbit-bullets li.active.has-thumb {
     background-position: 0 0;
     border-top: 2px solid #000; }
+    
+/* IE Fixes */
+.msie .timer { display: none !important; }
+.msi div.caption { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);zoom: 1; }
