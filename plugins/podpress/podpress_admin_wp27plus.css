@@ -11,7 +11,6 @@
 	padding:3px!important;
 	display:block;
 }
-
 .podpress_notice, .podpress_error {
 	border-style:solid;
 	border-width:1px;
@@ -27,7 +26,6 @@
 	background-color: #FFEBE8;
 	border-color:#CC0000;
 }
-
 #podpress-icon {
 	background-color: transparent;
 	background-image: url("./images/podpress_icon_r2_v2_32.png");
@@ -170,7 +168,7 @@ div #podPressstuff  td {
 	text-align:left;
 }
 .podpress_settings_description_cell {
-	padding:0em 0em 1em 0em;
+	padding:0.5em 0em 0.5em 0em;
 }
 
 /* player settings */
@@ -274,6 +272,13 @@ div #podPressstuff  td {
 	margin-right:1em;
 	overflow:auto;
 }
+.podpress_customposttype_select {
+	width:20em;
+	height:8em!important;
+	margin-right:1em;
+	overflow:auto;
+}
+
 .podpress_itunesimage_preview, .podpress_rssimage_preview {
 	display:none;
 }

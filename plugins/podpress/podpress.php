@@ -1,16 +1,16 @@
 <?php
-define('PODPRESS_VERSION', '8.8.9.2');
+define('PODPRESS_VERSION', '8.8.10.2');
 /*
 Info for WordPress:
 ==============================================================================
 Plugin Name: podPress
-Version: 8.8.9.2
+Version: 8.8.10.2
 Plugin URI: http://www.mightyseek.com/podpress/
 Description: The podPress plugin gives you everything you need in one easy plugin to use WordPress for Podcasting. Set it up in <a href="admin.php?page=podpress/podpress_feed.php">'podPress'->Feed/iTunes Settings</a>. If this plugin works for you, send us a comment.
 Author: Dan Kuykendall (Seek3r)
 Author URI: http://www.mightyseek.com/
-Min WP Version: 2.1
-Max WP Version: 3.1 RC 3
+Min WP Version: 2.2
+Max WP Version: 3.1
 
 podPress - Podcasting made easy for WordPress
 ==============================================================================
@@ -40,7 +40,7 @@ Contributors:
 Developer					Dan Kuykendall (seek3r)	http://www.mightyseek.com/
 Developer					David Maciejewski (macx)	http://www.macx.de/
 Forum Support/BugBoy			Jeff Norris (iscfi)		http://www.iscifi.tv/
-Maintenance / Development 2010		Tim Berger (ntm)		http://undeuxoutrois.de/
+Maintenance/Development 2010/2011	Tim Berger (ntm)		http://undeuxoutrois.de/
 
 WP Audio Player				Martin Laine			http://www.1pixelout.net/
 WP-iPodCatter				Garrick Van Buren		http://garrickvanburen.com/
@@ -92,17 +92,6 @@ if ( ! defined( 'PODPRESS_OPTIONS_DIR' ) ) { define( 'PODPRESS_OPTIONS_DIR', WP_
 if (!defined('PLUGINDIR')) { define('PLUGINDIR', 'wp-content/plugins'); }
 if (!defined('PODPRESSPLUGINDIR')) { define('PODPRESSPLUGINDIR', ABSPATH.PLUGINDIR); }
 
-// to (de-)activate the Podango Integration (default: FALSE) - Leave this feature deactivated because the Podango platform and all coresponding feature are offline for a long time (since end of 2008) now.
-if ( ! defined( 'PODPRESS_ACTIVATE_PODANGO_INTEGRATION' ) ) { define( 'PODPRESS_ACTIVATE_PODANGO_INTEGRATION', FALSE ); }
-// to (de-)activate the 3rd party stats "feature" (default: FALSE)
-if ( ! defined( 'PODPRESS_ACTIVATE_3RD_PARTY_STATS' ) ) { define( 'PODPRESS_ACTIVATE_3RD_PARTY_STATS', FALSE ); }
-
-// You can log some of the procedures of podPress if you define this constant as true. The log file is podpress_log.dat.
-if ( ! defined( 'PODPRESS_DEBUG_LOG' ) ) { define( 'PODPRESS_DEBUG_LOG', FALSE ); }
-
-// maximum number of the additional podPress Feeds
-if ( ! defined( 'PODPRESS_FEEDS_MAX_NUMBER' ) ) { define( 'PODPRESS_FEEDS_MAX_NUMBER', 5 ); }
-
 
 // ####  podPress INIT ####
 // some things like the widgets need be initiated before init see http://codex.wordpress.org/Plugin_API/Action_Reference#Actions_Run_During_an_Admin_Page_Request
@@ -123,9 +112,26 @@ function podPress_init() {
 	$podPress_feedHooksAdded = false;
 	$GLOBALS['podPressPlayer'] = 0;  // Global counter of Players
 	
+	// Look if there is a podPress config file and import it if it is readable.
+	if (is_readable(PODPRESS_OPTIONS_DIR.'/podpress_config.php')) {
+		require_once(PODPRESS_OPTIONS_DIR.'/podpress_config.php');
+	}
+	
+	// Variables which you can overwrite with definitions in the podpress_config.php file
+	// to (de-)activate the Podango Integration (default: FALSE) - Leave this feature deactivated because the Podango platform and all coresponding feature are offline for a long time (since end of 2008) now.
+	if ( ! defined( 'PODPRESS_ACTIVATE_PODANGO_INTEGRATION' ) ) { define( 'PODPRESS_ACTIVATE_PODANGO_INTEGRATION', FALSE ); }
+	// to (de-)activate the 3rd party stats "feature" (default: FALSE)
+	if ( ! defined( 'PODPRESS_ACTIVATE_3RD_PARTY_STATS' ) ) { define( 'PODPRESS_ACTIVATE_3RD_PARTY_STATS', FALSE ); }
+
+	// You can log some of the procedures of podPress if you define this constant as true. The log file is podpress_log.dat.
+	if ( ! defined( 'PODPRESS_DEBUG_LOG' ) ) { define( 'PODPRESS_DEBUG_LOG', FALSE ); }
+
+	// maximum number of the additional podPress Feeds
+	if ( ! defined( 'PODPRESS_FEEDS_MAX_NUMBER' ) ) { define( 'PODPRESS_FEEDS_MAX_NUMBER', 5 ); }
+	
 	// Begin - import the XSPF Jukebox player configuration:
 	// If you want to use custom skins for the XSPF players then edit the podpress_xspf_config-sample.php file and rename it to podpress_xspf_config.php, create a folder called podpress_options as a sub folder of the plugins folder e.g. /wp-content/plugins/podpress_options and copy this file to this folder.
-	if (is_file(PODPRESS_OPTIONS_DIR.'/podpress_xspf_config.php')) {
+	if (is_readable(PODPRESS_OPTIONS_DIR.'/podpress_xspf_config.php')) {
 		require_once(PODPRESS_OPTIONS_DIR.'/podpress_xspf_config.php');
 	}
 	// End - import the XSPF Jukebox player configuration
@@ -303,6 +309,7 @@ function podPress_class_init() {
 	add_action('xmlrpc-mw_newPost', array(&$podPress, 'xmlrpc_post_addMedia'));
 	add_action('xmlrpc-mw_editPost', array(&$podPress, 'xmlrpc_post_addMedia'));
 	
+	add_filter('posts_distinct', array(&$podPress, 'posts_distinct'));
 	add_filter('posts_join', array(&$podPress, 'posts_join'));
 	add_filter('posts_where', array(&$podPress, 'posts_where'));
 	
@@ -489,7 +496,7 @@ function podpress_print_frontend_js() {
 	
 	// ntm: this way of loading a localized JS scripts is probably not very elegant but it works in WP version older than 2.3
 	// I know that since WP 2.3 the function wp_localize_script() exists and when it is decided to raise the minimum WP requirement of this plugin then this method will be used.
-	require_once(PODPRESS_DIR.'/podpress_js_i18.php');
+	require_once(PODPRESS_DIR.'/podpress_js_i18n.php');
 	podpress_print_localized_frontend_js_vars();
 	
 	podpress_print_js_vars();
@@ -510,7 +517,7 @@ function podPress_wp_head() {
 	
 	// ntm: this way of loading a localized Js scripts is probably not very elegant but it works in WP version older than 2.3
 	// I know that since WP 2.3 the function wp_localize_script() exists and when it is decided to raise the minimum WP requirement of this plugin then this method will be used.
-	require_once(PODPRESS_DIR.'/podpress_js_i18.php');
+	require_once(PODPRESS_DIR.'/podpress_js_i18n.php');
 	podpress_print_localized_frontend_js_vars();
 
 	podpress_print_js_vars();
@@ -605,27 +612,27 @@ function podpress_print_admin_js() { // ntm: some of these scripts are not neces
 		
 		// ntm: this way of loading a localized Js scripts is probably not very elegant but it works in WP version older than 2.3
 		// I know that since WP 2.3 the function wp_localize_script() exists and when it is decided to raise the minimum WP requirement of this plugin then this method will be used.
-		require_once(PODPRESS_DIR.'/podpress_admin_js_i18.php');
+		require_once(PODPRESS_DIR.'/podpress_admin_js_i18n.php');
 		podpress_print_localized_admin_js_vars();
 		
 		podpress_print_js_vars();
 	}
 		
 	if ( 'admin.php' == $pagenow AND 'podpress/podpress_feed.php' == $_GET['page'] ) {
-		wp_register_script( 'podpress_jquery_ui',  PODPRESS_URL.'/js/jquery/podpress_jquery142_ui_feedssettings.js' );
+		wp_register_script( 'podpress_jquery_ui',  PODPRESS_URL.'/js/jquery/podpress_jquery_ui_feedssettings.js' );
 	}
 	if ( 'widgets.php' == $pagenow ) {
 		if ( TRUE == version_compare($wp_version, '2.9', '>=') ) {
-			wp_register_script( 'podpress_jquery_ui',  PODPRESS_URL.'/js/jquery/podpress_jquery142_ui_widgetssettings.js' );
+			wp_register_script( 'podpress_jquery_ui',  PODPRESS_URL.'/js/jquery/podpress_jquery_ui_widgetssettings.js' );
 		} elseif ( TRUE == version_compare($wp_version, '2.8', '>=') AND TRUE == version_compare($wp_version, '2.9', '<') ) {
-			wp_register_script( 'podpress_jquery_ui',  PODPRESS_URL.'/js/jquery/podpress_jquery142_ui_widgetssettings_wp28.js' );
+			wp_register_script( 'podpress_jquery_ui',  PODPRESS_URL.'/js/jquery/podpress_jquery_ui_widgetssettings_wp28.js' );
 		} elseif (TRUE == version_compare($wp_version, '2.8', '<')) {
-			wp_register_script( 'podpress_jquery_ui',  PODPRESS_URL.'/js/jquery/podpress_jquery142_ui_widgetssettings_pre_wp28.js' );
+			wp_register_script( 'podpress_jquery_ui',  PODPRESS_URL.'/js/jquery/podpress_jquery_ui_widgetssettings_pre_wp28.js' );
 		}
 	}
 	if ( ('admin.php' == $pagenow AND 'podpress/podpress_feed.php' == $_GET['page']) OR 'widgets.php' == $pagenow ) {
 		wp_register_script( 'podpress-jquery-ui-core',  PODPRESS_URL.'/js/jquery/jquery-1.4.2.min.js' );
-		wp_register_script( 'podpress_jquery_init',  PODPRESS_URL.'/js/jquery/podpress_jquery142_init.js' );
+		wp_register_script( 'podpress_jquery_init',  PODPRESS_URL.'/js/jquery/podpress_jquery_init.js' );
 		wp_register_script( 'jquery-ui-accordion-dialog',  PODPRESS_URL.'/js/jquery/jquery-ui-1.8.5.accordion_dialog.min.js' );
 		wp_enqueue_script( 'podpress-jquery-ui-core' );
 		wp_enqueue_script( 'podpress_jquery_init' );
@@ -656,7 +663,7 @@ function podPress_print_admin_js_and_css_old_wp() {
 	
 		// ntm: this way of loading a localized Js scripts is probably not very elegant but it works in WP version older than 2.3
 		// I know that since WP 2.3 the function wp_localize_script() exists and when it is decided to raise the minimum WP requirement of this plugin then this method will be used.
-		require_once(PODPRESS_DIR.'/podpress_admin_js_i18.php');
+		require_once(PODPRESS_DIR.'/podpress_admin_js_i18n.php');
 		podpress_print_localized_admin_js_vars();
 		
 		podpress_print_js_vars();
@@ -677,12 +684,12 @@ function podPress_print_admin_js_and_css_old_wp() {
 	
 	if ( ('admin.php' == $pagenow AND 'podpress/podpress_feed.php' == $_GET['page']) OR 'widgets.php' == $pagenow ) {
 		echo '<script type="text/javascript" src="'.PODPRESS_URL.'/js/jquery/jquery-1.4.2.min.js"></script>'."\n";
-		echo '<script type="text/javascript" src="'.PODPRESS_URL.'/js/jquery/podpress_jquery142_init.js"></script>'."\n";
+		echo '<script type="text/javascript" src="'.PODPRESS_URL.'/js/jquery/podpress_jquery_init.js"></script>'."\n";
 		echo '<script type="text/javascript" src="'.PODPRESS_URL.'/js/jquery/jquery-ui-1.8.5.accordion_dialog.min.js"></script>'."\n";
 		if ( 'widgets.php' == $pagenow ) {
-			echo '<script type="text/javascript" src="'.PODPRESS_URL.'/js/jquery/podpress_jquery142_ui_widgetssettings_pre_wp28.js"></script>'."\n";
+			echo '<script type="text/javascript" src="'.PODPRESS_URL.'/js/jquery/podpress_jquery_ui_widgetssettings_pre_wp28.js"></script>'."\n";
 		} else {
-			echo '<script type="text/javascript" src="'.PODPRESS_URL.'/js/jquery/podpress_jquery142_ui_feedssettings.js"></script>'."\n";
+			echo '<script type="text/javascript" src="'.PODPRESS_URL.'/js/jquery/podpress_jquery_ui_feedssettings.js"></script>'."\n";
 		}
 		echo '<link rel="stylesheet" href="'.PODPRESS_URL.'/js/jquery/css/custom-theme/jquery-ui-1.8.5.custom.css" type="text/css" />'."\n";
 	}
@@ -697,7 +704,7 @@ function podPress_print_admin_js_and_css_old_wp() {
 
 function podpress_print_js_vars() {
 	GLOBAL $podPress;
-	// Set the player settings which are not part of $podPress->settings['player']. This for instance important after an podPress resp. 1PixelOut player update (if there are new settings)
+	// Set the player settings which are not part of $podPress->settings['player']. This is important after an podPress resp. 1PixelOut player update (if there are new settings)
 	foreach ($podPress->PlayerDefaultSettings() as $key => $value) {
 		if ( FALSE === isset($podPress->settings['player'][$key]) ) {
 			$podPress->settings['player'][$key] = $value;
@@ -757,6 +764,16 @@ function podpress_print_js_vars() {
 		echo 'var podPressOverwriteTitleandArtist = true;'."\n";
 	} else {
 		echo 'var podPressOverwriteTitleandArtist = false;'."\n";
+	}
+	if ( TRUE == isset($podPress->settings['use_html5_media_tags']) AND FALSE === $podPress->settings['use_html5_media_tags'] ) {
+		echo 'var podPressHTML5 = false;'."\n";
+	} else {
+		echo 'var podPressHTML5 = true;'."\n";
+	}
+	if ( TRUE == isset($podPress->settings['showhtml5playersonpageload']) AND TRUE === $podPress->settings['showhtml5playersonpageload'] ) {
+		echo 'var podPressHTML5_showplayersdirectly = true;'."\n";
+	} else {
+		echo 'var podPressHTML5_showplayersdirectly = false;'."\n";
 	}
 	echo 'var podPressText_PlayNow = "'.__('Play Now', 'podpress').'";'."\n";
 	echo 'var podPressText_HidePlayer = "'.__('Hide Player', 'podpress').'";'."\n";
@@ -940,7 +957,7 @@ function podpress_get_IDs_of_posts_with_allowed_exts($allowed_ext = array()) {
 	global $wpdb;
 	$IDs = Array();
 	if ( FALSE == empty($allowed_ext) AND TRUE == is_array($allowed_ext) ) {
-		$querystring = "SELECT post_id, meta_value FROM ".$wpdb->postmeta." WHERE meta_key = 'podPressMedia'";
+		$querystring = "SELECT post_id, meta_value FROM ".$wpdb->postmeta." WHERE meta_key = '_podPressMedia'";
 		$meta_values = $wpdb->get_results($querystring, ARRAY_A);
 		$nr_meta_values = count($meta_values);
 		foreach ($meta_values as $meta_value) {
@@ -1163,9 +1180,16 @@ if (!function_exists('podPress_shutdown')) {
 
 // adding the podPress box to the post / page editor pages
 function add_podpress_form_box_for_modern_wp() {
+	global $podPress;
 	add_meta_box( 'podPressstuff', __('podPress - podcasting settings of this post', 'podpress'), 'podpress_box_content_post', 'post', 'advanced' );
 	add_meta_box( 'podPressstuff', __('podPress - podcasting settings of this page', 'podpress'), 'podpress_box_content_page', 'page', 'advanced' );
+	if ( TRUE == isset($podPress->settings['metaboxforcustomposttypes']) AND TRUE == is_array($podPress->settings['metaboxforcustomposttypes']) ) {
+		foreach ( $podPress->settings['metaboxforcustomposttypes'] as $customposttype ) {
+			add_meta_box( 'podPressstuff', __('podPress - podcasting settings of this page', 'podpress'), 'podpress_box_content_post', $customposttype, 'advanced' );
+		}
+	}
 }
+
 function podpress_box_content_post() {
 	global $podPress;
 	echo "\n<!-- podPress dbx for modern WP versions - post -->\n";

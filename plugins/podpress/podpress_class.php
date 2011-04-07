@@ -55,10 +55,12 @@ License:
 			
 			// load up podPress general config
 			$this->settings = podPress_get_option('podPress_config');
+			
 			// make sure things look current, if not run the settings checker
-			if(!is_array($this->settings) || PODPRESS_VERSION > $this->settings['lastChecked']) {
+			if(!is_array($this->settings) OR TRUE == version_compare(PODPRESS_VERSION, $this->settings['lastChecked'], '>') ) {
 				$this->checkSettings();
 			}
+			
 			if(is_object($GLOBALS['wp_rewrite'])
 				&& is_array($GLOBALS['wp_object_cache']) 
 				&& is_array($GLOBALS['wp_object_cache']['cache']) 
@@ -208,24 +210,20 @@ License:
 		*/
 		function checkLocalPathToMediaFiles() {
 			unset($this->settings['autoDetectedMediaFilePath']);
-			if (!file_exists($this->settings['mediaFilePath'])) {
+
+			$mediaFilePath = stripslashes($this->settings['mediaFilePath']);
+			
+			if ( FALSE == isset($this->settings['mediaFilePath']) OR FALSE == file_exists( $mediaFilePath ) ) {
 				$this->settings['autoDetectedMediaFilePath'] = $this->uploadPath;
-				
-				//~ //$this->settings['autoDetectedMediaFilePath'] = str_replace(get_option('siteurl'), '', $this->settings['mediaWebPath']);
-				//~ $this->settings['autoDetectedMediaFilePath'] = str_replace(get_option('siteurl'), '', $this->settings['mediaWebPath']);
-				//~ $this->settings['autoDetectedMediaFilePath'] = ABSPATH.$this->settings['autoDetectedMediaFilePath'];
-				//~ $this->settings['autoDetectedMediaFilePath'] = str_replace('\\\\', '\\', $this->settings['autoDetectedMediaFilePath']);
-				//~ $this->settings['autoDetectedMediaFilePath'] = str_replace('//', '/', $this->settings['autoDetectedMediaFilePath']);
-				//~ $this->settings['autoDetectedMediaFilePath'] = str_replace('//', '/', $this->settings['autoDetectedMediaFilePath']);
-				if(!file_exists($this->settings['autoDetectedMediaFilePath'])) {
-					$this->settings['autoDetectedMediaFilePath'] .= ' ('.__('Auto Detection Failed.', 'podpress').') -'.strval($this->uploadPath).'-';
+				if (!file_exists($this->settings['autoDetectedMediaFilePath'])) {
+					$this->settings['autoDetectedMediaFilePath'] .= ' ('.__('Auto Detection Failed.', 'podpress').') '.strval($this->uploadPath);
 				} 
 			}
 		}
 
 		function checkSettings() {
-			GLOBAL $wp_object_cache, $wp_rewrite;
-			if(!is_array($this->settings)) {
+			GLOBAL $wp_object_cache, $wp_rewrite, $wp_version;
+			if ( !is_array($this->settings) ) {
 				$this->settings = podPress_get_option('podPress_config');
 				if(!is_array($this->settings)) {
 					$this->settings = array();
@@ -262,7 +260,6 @@ License:
 			$this->settings['compatibilityChecks']['wp_head'] = TRUE;
 			$this->settings['compatibilityChecks']['wp_footer'] = TRUE;
 
-
 			if(!is_bool($this->settings['enableStats'])) {
 				if($this->settings['enableStats']== 'true') {
 					$this->settings['enableStats'] = true;
@@ -285,7 +282,7 @@ License:
 
 			if(!$this->settings['statLogging'] || empty($this->settings['statLogging']))
 			{
-				$this->settings['statLogging'] = 'Counts';
+				$this->settings['statLogging'] = 'Full';
 			}
 
 			if(empty($this->settings['enable3rdPartyStats'])) {
@@ -334,14 +331,15 @@ License:
 
 			if(empty($this->settings['podcastFeedURL'])) {
 				if(podPress_WPVersionCheck('2.1')) {
-					$this->settings['podcastFeedURL'] = get_option('siteurl').'/?feed=podcast';
+					//~ $this->settings['podcastFeedURL'] = get_option('siteurl').'/?feed=podcast';
+					$this->settings['podcastFeedURL'] = get_feed_link('podcast');
 				} else {
 					$this->settings['podcastFeedURL'] = get_option('siteurl').'/?feed=rss2';
 				}
 			}
 
-			if(empty($this->settings['mediaWebPath'])) {
-				$this->settings['mediaWebPath'] = $this->uploadURL;//get_option('siteurl').'/wp-content/uploads';
+			if ( FALSE == isset($this->settings['mediaWebPath']) OR TRUE == empty($this->settings['mediaWebPath']) ) {
+				$this->settings['mediaWebPath'] = $this->uploadURL;
 			}
 			
 			$this->checkLocalPathToMediaFiles();
@@ -407,6 +405,10 @@ License:
 				$this->settings['contentDuration'] = 'enabled';
 			}
 
+			if ( FALSE == isset($this->settings['contentfilesize']) OR TRUE == empty($this->settings['contentfilesize'])) {
+				$this->settings['contentfilesize'] = 'disabled';
+			}
+			
 			if ( FALSE == isset($this->settings['incontentandexcerpt']) ) {
 				$this->settings['incontentandexcerpt'] = 'in_content_and_excerpt';
 			}
@@ -591,37 +593,40 @@ License:
 						'itunes-block' => $this->settings['iTunes']['block'],
 						'use_headerlink' => FALSE
 					);
-					$this->settings['podpress_feeds'][3] = array(
-						'use' => TRUE, 
-						'premium' => TRUE,
-						'name' => __('Premium Feed', 'podpress'),
-						'slug' => 'premium',
-						'feedtitle' => 'append',
-						'subtitle' => $tagline,
-						'itunes-newfeedurl' => 'Disable',
-						'descr' => $this->settings['iTunes']['summary'],
-						'itunes-category' => $itunescategory,
-						'rss_category' => $this->settings['rss_category'],
-						'itunes-keywords' => $this->settings['iTunes']['keywords'],
-						'itunes-author' => $this->settings['iTunes']['author'],
-						'email' => $email,
-						'itunes-image' => $this->settings['iTunes']['image'],
-						'rss_image' => $rss_image,
-						'copyright' => $this->settings['rss_copyright'],
-						'license_url' => $this->settings['rss_license_url'],
-						'language' => $rss_language,
-						'charset' => $blog_charset,
-						'FileTypes' => Array(),
-						'inclCategories' => Array(),
-						'show_only_podPress_podcasts' => TRUE,
-						'bypass_incl_selection' => FALSE,
-						'itunes-explicit' => $this->settings['iTunes']['explicit'],
-						'feedtype' => 'rss',
-						'ttl' => $ttl,
-						'itunes-feedid' => $this->settings['iTunes']['FeedID'],
-						'itunes-block' => $this->settings['iTunes']['block'],
-						'use_headerlink' => FALSE
-					);
+					
+					if ( FALSE == defined('PODPRESS_DEACTIVATE_PREMIUM') OR FALSE === constant('PODPRESS_DEACTIVATE_PREMIUM') ) {
+						$this->settings['podpress_feeds'][3] = array(
+							'use' => TRUE, 
+							'premium' => TRUE,
+							'name' => __('Premium Feed', 'podpress'),
+							'slug' => 'premium',
+							'feedtitle' => 'append',
+							'subtitle' => $tagline,
+							'itunes-newfeedurl' => 'Disable',
+							'descr' => $this->settings['iTunes']['summary'],
+							'itunes-category' => $itunescategory,
+							'rss_category' => $this->settings['rss_category'],
+							'itunes-keywords' => $this->settings['iTunes']['keywords'],
+							'itunes-author' => $this->settings['iTunes']['author'],
+							'email' => $email,
+							'itunes-image' => $this->settings['iTunes']['image'],
+							'rss_image' => $rss_image,
+							'copyright' => $this->settings['rss_copyright'],
+							'license_url' => $this->settings['rss_license_url'],
+							'language' => $rss_language,
+							'charset' => $blog_charset,
+							'FileTypes' => Array(),
+							'inclCategories' => Array(),
+							'show_only_podPress_podcasts' => TRUE,
+							'bypass_incl_selection' => FALSE,
+							'itunes-explicit' => $this->settings['iTunes']['explicit'],
+							'feedtype' => 'rss',
+							'ttl' => $ttl,
+							'itunes-feedid' => $this->settings['iTunes']['FeedID'],
+							'itunes-block' => $this->settings['iTunes']['block'],
+							'use_headerlink' => FALSE
+						);
+					}
 				//~ } else {
 					//~ // in case it is a first time installation
 					//~ $this->settings['podpress_feeds'][0] = array(
@@ -880,7 +885,7 @@ License:
 		/* Load up the plugin values and get ready to action         */
 		/*************************************************************/
 		function addPostData($input, $forEdit = false) {
-			$input->podPressMedia = podPress_get_post_meta($input->ID, 'podPressMedia', true);
+			$input->podPressMedia = podPress_get_post_meta($input->ID, '_podPressMedia', true);
 			if(!is_array($input->podPressMedia)) {
 				$x = maybe_unserialize($input->podPressMedia);
 				if(is_array($x)) {
@@ -930,7 +935,7 @@ License:
 				}
 			}
 
-			$input->podPressPostSpecific = podPress_get_post_meta($input->ID, 'podPressPostSpecific', true);
+			$input->podPressPostSpecific = podPress_get_post_meta($input->ID, '_podPressPostSpecific', true);
 			if(!is_array($input->podPressPostSpecific)) {
 				$input->podPressPostSpecific = array();
 			}
@@ -969,21 +974,47 @@ License:
 			}
 			return $input;
 		}
-
+		
+		/**
+		* posts_distinct - filter function which return 'DISTINCT' while it is a search query. because joining the postmeta data leads to duplicate posts in the result list.
+		*
+		* @package podPress
+		* @since 8.8.10 beta 2
+		*
+		* @param str $input 
+		*
+		* @return str $input - is 'DISTINCT' or an empty string
+		*/
+		function posts_distinct($input) {
+			if ( is_search() AND isset($this->settings['activate_podpressmedia_search']) AND TRUE === $this->settings['activate_podpressmedia_search'] ) {
+				$input = "DISTINCT";
+			}
+			return apply_filters('podpress_posts_distinct', $input);
+		}
+		
 		function posts_join($input) {
 			GLOBAL $wpdb;
-			if ( defined('PODPRESS_PODCASTSONLY') AND FALSE !== constant('PODPRESS_PODCASTSONLY') ) {
+			if ( is_search() AND isset($this->settings['activate_podpressmedia_search']) AND TRUE === $this->settings['activate_podpressmedia_search'] ) {
 				$input .= " JOIN ".$wpdb->prefix."postmeta ON ".$wpdb->prefix."posts.ID=".$wpdb->prefix."postmeta.post_id ";
+			} else {
+				if ( defined('PODPRESS_PODCASTSONLY') AND FALSE !== constant('PODPRESS_PODCASTSONLY') ) {
+					$input .= " JOIN ".$wpdb->prefix."postmeta ON ".$wpdb->prefix."posts.ID=".$wpdb->prefix."postmeta.post_id ";
+				}
 			}
-			return $input;
+			return apply_filters('podpress_posts_join', $input);
 		}
 
 		function posts_where($input) {
-			GLOBAL $wpdb;
-			if ( defined('PODPRESS_PODCASTSONLY') AND FALSE !== constant('PODPRESS_PODCASTSONLY') ) {
-				$input .= " AND ".$wpdb->prefix."postmeta.meta_key='podPressMedia' ";
+			GLOBAL $wpdb, $wp;
+			if ( is_search() AND isset($this->settings['activate_podpressmedia_search']) AND TRUE === $this->settings['activate_podpressmedia_search'] ) {
+				// search in the URI and title for the term
+				$input .= " OR (".$wpdb->prefix."postmeta.meta_key='_podPressMedia' AND ( 1 = (".$wpdb->prefix."postmeta.meta_value REGEXP 's:5:\"title\";s:[0-9]+:\".*".$wpdb->escape($wp->query_vars['s'])."') OR 1 = (".$wpdb->prefix."postmeta.meta_value REGEXP 's:3:\"URI\";s:[0-9]+:\".*".$wp->query_vars['s']."')) )";
+			} else {
+				if ( defined('PODPRESS_PODCASTSONLY') AND FALSE !== constant('PODPRESS_PODCASTSONLY') ) {
+					$input .= " AND ".$wpdb->prefix."postmeta.meta_key='_podPressMedia' ";
+				}
 			}
-			return $input;
+			return apply_filters('podpress_posts_where', $input);
 		}
 
 		function insert_the_excerpt($content = '') {
@@ -1094,6 +1125,7 @@ License:
 			$podPressTemplateData['showDownloadText'] = $this->settings['contentDownloadText'];
 			$podPressTemplateData['showDownloadStats'] = $this->settings['contentDownloadStats'];
 			$podPressTemplateData['showDuration'] = $this->settings['contentDuration'];
+			$podPressTemplateData['showfilesize'] = $this->settings['contentfilesize'];
 			$this->playerCount++;
 			$podPressTemplateData['files'] = array();
 			$podPressTemplateData['player'] = array();
@@ -1122,7 +1154,7 @@ License:
 					$filename = substr($post->podPressMedia[$key]['URI'], $pos);
 					if($this->settings['statLogging'] == 'Full' || $this->settings['statLogging'] == 'FullPlus') {
 						$where = $this->wherestr_to_exclude_bots('', 'AND');
-						$query_string="SELECT method, COUNT(DISTINCT id) as downloads FROM ".$wpdb->prefix."podpress_stats WHERE postID='".$post->ID."' AND media='".urlencode($filename)."' ".$where."GROUP BY method ORDER BY method ASC";
+						$query_string="SELECT method, COUNT(DISTINCT id) as downloads FROM ".$wpdb->prefix."podpress_stats WHERE postID='".$post->ID."' AND media='".rawurlencode($filename)."' ".$where."GROUP BY method ORDER BY method ASC";
 						$stats = $wpdb->get_results($query_string);
 						if (0 < count($stats)) {
 							$feed = intval($stats[0]->downloads);
@@ -1131,14 +1163,14 @@ License:
 							$post->podPressMedia[$key]['stats'] = array('feed'=>$feed, 'web'=>$web, 'play'=>$play, 'total'=>($feed+$play+$web));
 						}
 					} else {
-						$sql = "SELECT * FROM ".$wpdb->prefix."podpress_statcounts WHERE media = '".urlencode($filename)."'";
+						$sql = "SELECT * FROM ".$wpdb->prefix."podpress_statcounts WHERE media = '".rawurlencode($filename)."'";
 						$stats = $wpdb->get_results($sql);
 						if($stats) {
 							$post->podPressMedia[$key]['stats'] = array('feed'=>intval($stats[0]->feed), 'web'=>intval($stats[0]->web), 'play'=>intval($stats[0]->play), 'total'=>intval($stats[0]->total));
 						}
 					}
 				}
-				$supportedMediaTypes = array('audio_mp3', 'audio_ogg', 'audio_m4a', 'audio_mp4', 'audio_m3u', 'video_mp4', 'video_m4v', 'video_mov', 'video_qt', 'video_avi', 'video_mpg', 'video_asf', 'video_wmv', 'audio_wma', 'video_flv', 'video_swf', 'video_ogv', 'ebook_pdf', 'embed_youtube', 'misc_torrent');
+				$supportedMediaTypes = array('audio_mp3', 'audio_ogg', 'audio_m4a', 'audio_mp4', 'audio_m3u', 'video_mp4', 'video_m4v', 'video_mov', 'video_qt', 'video_avi', 'video_mpg', 'video_asf', 'video_wmv', 'audio_wma', 'video_flv', 'video_swf', 'video_ogv', 'ebook_pdf', 'ebook_epub', 'embed_youtube', 'misc_torrent');
 				if(!in_array($post->podPressMedia[$key]['type'], $supportedMediaTypes)) {
 					$post->podPressMedia[$key]['type'] = 'misc_other';
 				}
@@ -1247,6 +1279,7 @@ License:
 							case 'audio_m3u':
 								$post->podPressMedia[$key]['enableDownload'] = true;
 							case 'ebook_pdf':
+							case 'ebook_epub':
 							default:
 								$post->podPressMedia[$key]['enablePlayer'] = false;
 								$post->podPressMedia[$key]['enablePopup'] = false;
@@ -1323,8 +1356,8 @@ License:
 					$media[0]['rss'] = true;
 				}	
 
-				delete_post_meta($postdata['ID'], 'podPressMedia');
-				podPress_add_post_meta($postdata['ID'], 'podPressMedia', $media, true) ;
+				delete_post_meta($postdata['ID'], '_podPressMedia');
+				podPress_add_post_meta($postdata['ID'], '_podPressMedia', $media, true) ;
 			}
 			return true;
 		}
@@ -1462,7 +1495,7 @@ License:
 	}
 
 	// This function gives the milliseconds value back in the format h:m:s or in a given format.
-	function millisecondstostring($duration, $format = 'h:m:s', $dimensionchr = ':', $decimals = 2, $dec_point = '.') {
+	function millisecondstostring($duration, $format = 'h:m:s', $dimensionchr = ':', $decimals = 3, $dec_point = '.') {
 		if ( FALSE == is_string($format) OR empty($format) ) {
 			$format = 'h:m:s';
 			$parts = 3;
@@ -1478,7 +1511,7 @@ License:
 		}
 		// control the dimension character (/ divider) 
 		if ( is_array($dimensionchr) AND (empty($dimensionchr) OR $parts > count($dimensionchr)) ) {
-			$dimensionchr = Array('h' => __('h', 'podpress'), 'm' => __('m', 'podpress'), 's' => __('s', 'podpress'), 'ms' => __('ms', 'podpress'));
+			$dimensionchr = Array('h' => __('h', 'podpress'), 'm' => __('min', 'podpress'), 's' => __('s', 'podpress'), 'ms' => __('ms', 'podpress'));
 		}
 		Switch ($format) {
 			default :
@@ -1486,30 +1519,30 @@ License:
 				$dur['h'] = intval($duration / 3600000);
 				$dur['m'] = intval($duration / (60000) % 60);
 				$dur['s'] = intval($duration / (1000) % 60);
-				return $this->millisecondstostring_print($dur, $duration, $dimensionchr);
+				return $this->millisecondstostring_print($dur, $duration, $this->podpress_build_dimchr($dur, $dimensionchr));
 			break;
 			case 'm:s' :
 				$dur['m'] = intval($duration / 60000);
 				$dur['s'] = intval($duration / (1000) % 60);
-				return $this->millisecondstostring_print($dur, $duration, $dimensionchr);
+				return $this->millisecondstostring_print($dur, $duration, $this->podpress_build_dimchr($dur, $dimensionchr));
 			break;
 			case 'h:m:s:ms' :
 				$dur['h'] = intval($duration / 3600000);
 				$dur['m'] = intval($duration / (60000) % 60);
 				$dur['s'] = intval($duration / (1000) % 60);
 				$dur['ms'] = intval($duration % 1000);
-				return $this->millisecondstostring_print($dur, $duration, $dimensionchr);
+				return $this->millisecondstostring_print($dur, $duration, $this->podpress_build_dimchr($dur, $dimensionchr));
 			break;
 			case 'm:s:ms' :
 				$dur['m'] = intval($duration / 60000);
 				$dur['s'] = intval($duration / (1000) % 60);
 				$dur['ms'] = intval($duration % 1000);
-				return $this->millisecondstostring_print($dur, $duration, $dimensionchr);
+				return $this->millisecondstostring_print($dur, $duration, $this->podpress_build_dimchr($dur, $dimensionchr));
 			break;
 			case 's:ms' :
 				$dur['s'] = intval($duration / 1000);
 				$dur['ms'] = intval($duration % 1000);
-				return $this->millisecondstostring_print($dur, $duration, $dimensionchr);
+				return $this->millisecondstostring_print($dur, $duration, $this->podpress_build_dimchr($dur, $dimensionchr));
 			break;
 			case 'h' :
 				$hours = ($duration / 3600000);
@@ -1518,6 +1551,7 @@ License:
 				} else {
 					$duration_str = number_format($hours);
 				}
+				$dimensionchr = $this->podpress_build_dimchr($dur, $dimensionchr);
 				if ( is_array($dimensionchr) AND isset($dimensionchr['h']) ) {
 					return $duration_str.' '.$dimensionchr['h'];
 				} else {
@@ -1531,6 +1565,7 @@ License:
 				} else {
 					$duration_str = number_format($minutes);
 				}
+				$dimensionchr = $this->podpress_build_dimchr($dur, $dimensionchr);
 				if ( is_array($dimensionchr) AND isset($dimensionchr['m']) ) {
 					return $duration_str.' '.$dimensionchr['m'];
 				} else {
@@ -1544,6 +1579,7 @@ License:
 				} else {
 					$duration_str = number_format($seconds);
 				}
+				$dimensionchr = $this->podpress_build_dimchr($dur, $dimensionchr);
 				if ( is_array($dimensionchr) AND isset($dimensionchr['s']) ) {
 					return $duration_str.' '.$dimensionchr['s'];
 				} else {
@@ -1551,6 +1587,7 @@ License:
 				}
 			break;
 			case 'ms' :
+				$dimensionchr = $this->podpress_build_dimchr($dur, $dimensionchr);
 				if ( is_array($dimensionchr) AND isset($dimensionchr['ms']) ) {
 					return $duration.' '.$dimensionchr['ms'];
 				} else {
@@ -1607,6 +1644,45 @@ License:
 				$dur_parts--;
 			}
 			return implode(':', $dur_str_ar);
+		}
+	}
+	
+	function podpress_build_dimchr($dur, $dimensionchr) {
+		global $wp_version;
+		if ( TRUE == is_array($dimensionchr) ) {
+			return $dimensionchr;
+		} else {
+			if ( FALSE == isset($dur['h']) ) {
+				$dur['h'] = 0;
+			}
+			if ( FALSE == isset($dur['m']) ) {
+				$dur['m'] = 0;
+			}
+			if ( FALSE == isset($dur['s']) ) {
+				$dur['s'] = 0;
+			}
+			if ( FALSE == isset($dur['ms']) ) {
+				$dur['ms'] = 0;
+			}
+			switch ( $dimensionchr ) {
+				case 'hminsms' :
+					return Array('h' => __('h', 'podpress'), 'm' => __('min', 'podpress'), 's' => __('s', 'podpress'), 'ms' => __('ms', 'podpress'));
+				break;
+				case 'hrminsecmsec' :
+					return Array('h' => __('hr.', 'podpress'), 'm' => __('min.', 'podpress'), 's' => __('sec.', 'podpress'), 'ms' => __('msec.', 'podpress'));
+				break;
+				case 'hoursminutessecondsmilliseconds' :
+					if (version_compare($wp_version, '2.8', '<')) {
+						return Array('h' => __ngettext('hour', 'hours', $dur['h'], 'podpress'), 'm' => __ngettext('minute', 'minutes', $dur['m'], 'podpress'), 's' => __ngettext('second', 'seconds', $dur['s'], 'podpress'), 'ms' => __ngettext('millisecond', 'milliseconds', $dur['ms'], 'podpress') );
+					} else {
+						return Array('h' => _n('hour', 'hours', $dur['h'], 'podpress'), 'm' => _n('minute', 'minutes', $dur['m'], 'podpress'), 's' => _n('second', 'seconds', $dur['s'], 'podpress'), 'ms' => _n('millisecond', 'milliseconds', $dur['ms'], 'podpress') );
+					}
+				break;
+				case 'colon' :
+				default :
+					return ':';
+				break;
+			}
 		}
 	}
 }

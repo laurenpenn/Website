@@ -25,7 +25,7 @@ License:
 			GLOBAL $wpdb, $wp_version, $blog_id;
 			
 			// $current is the version from the DB if this function was called from podpress.php
-			$result = @preg_match('/^(\d+\.)?(\d+\.)?(\d+\.)?(\*|\d+)(\s((alpha)|(beta)|(RC)|(final)))?(\s\d+)?$/', $current, $b); // is it a version string like 8.8.6.3 beta 2 (max. for numeric values separated by dots, eventually followed by a whitespace and "alpha", "beta" or "RC", eventually followed by a whitespace and a further numeric value)
+			$result = @preg_match('/^(\d+\.)?(\d+\.)?(\d+\.)?(\*|\d+)(\s((alpha)|(beta)|(RC)|(final)))?(\s\d+)?$/i', $current, $b); // is it a version string like 8.8.6.3 beta 2 (max. for numeric values separated by dots, eventually followed by a whitespace and "alpha", "beta" or "RC", eventually followed by a whitespace and a further numeric value)
 			if ( empty($b) ) {
 				$current = '0';
 			}
@@ -41,10 +41,8 @@ License:
 				wp_cache_flush();
 			}
 			
-			//~ $firsttime = FALSE;
 			if ( '0' == $current ) { // if no version number was in the db or if something is wrong with it.
 				$this->activate();
-				//~ $firsttime = TRUE;
 			}
 
 			// upgrade from a podPress version which is older than 8.8 to podPress v8.8
@@ -57,6 +55,10 @@ License:
 			$create_table = "ALTER TABLE ".$wpdb->prefix."podpress_stats ADD COLUMN completed TINYINT(1) UNSIGNED DEFAULT 0";
 			podPress_maybe_add_column($wpdb->prefix.'podpress_stats', 'completed', $create_table);
 			
+			// rename the post specific settings and the media meta keys. 
+			$wpdb->query( $wpdb->prepare( "UPDATE ".$wpdb->prefix."postmeta SET meta_key = '_podPressPostSpecific' WHERE meta_key = 'podPressPostSpecific'" ) );
+			$wpdb->query( $wpdb->prepare( "UPDATE ".$wpdb->prefix."postmeta SET meta_key = '_podPressMedia' WHERE meta_key = 'podPressMedia'" ) );
+			
 			if ( TRUE === version_compare('8.8.8', $current, '>') ) {
 				// remove the portectedMediaFile setting because it was and it is not in use and the option has been removed from the podPress general options in 8.8.8 (again) 
 				$settings = podPress_get_option('podPress_config');
@@ -64,11 +66,6 @@ License:
 					unset($settings['protectedMediaFilePath']);
 					podPress_update_option('podPress_config', $settings);
 				}
-				
-				// also if the previous version is older than 8.8.8 and it is no first time installation then take over the Feed Settings for all podPress Feeds
-				//~ if (FALSE === $firsttime) {
-					//~ define('PODPRESS_TAKEOVER_OLD_SETTINGS', TRUE);
-				//~ }
 			}
 			
 			// update the version number in the db
@@ -603,6 +600,9 @@ License:
 					break;
 				case 'pdf':
 					$result['type'] = 'ebook_pdf';
+					break;
+				case 'epub':
+					$result['type'] = 'ebook_epub';
 					break;
 				default:
 					$result['type'] = 'misc_other';

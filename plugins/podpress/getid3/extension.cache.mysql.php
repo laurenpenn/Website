@@ -82,26 +82,28 @@ class getID3_cached_mysql extends getID3
 
 		// Check for mysql support
 		if (!function_exists('mysql_pconnect')) {
-			die('PHP not compiled with mysql support.');
+			throw new Exception('PHP not compiled with mysql support.');
 		}
 
 		// Connect to database
 		$this->connection = mysql_pconnect($host, $username, $password);
 		if (!$this->connection) {
-			die('mysql_pconnect() failed - check permissions and spelling.');
+			throw new Exception('mysql_pconnect() failed - check permissions and spelling.');
 		}
 
 		// Select database
 		if (!mysql_select_db($database, $this->connection)) {
-			die('Cannot use database '.$database);
+			throw new Exception('Cannot use database '.$database);
 		}
 
 		// Create cache table if not exists
 		$this->create_table();
 
 		// Check version number and clear cache if changed
-		$this->cursor = mysql_query("SELECT `value` FROM `getid3_cache` WHERE (`filename` = '".GETID3_VERSION."') AND (`filesize` = '-1') AND (`filetime` = '-1') AND (`analyzetime` = '-1')", $this->connection);
-		list($version) = @mysql_fetch_array($this->cursor);
+		$version = '';
+		if ($this->cursor = mysql_query("SELECT `value` FROM `getid3_cache` WHERE (`filename` = '".mysql_real_escape_string(GETID3_VERSION)."') AND (`filesize` = '-1') AND (`filetime` = '-1') AND (`analyzetime` = '-1')", $this->connection)) {
+			list($version) = mysql_fetch_array($this->cursor);
+		}
 		if ($version != GETID3_VERSION) {
 			$this->clear_cache();
 		}
@@ -130,11 +132,10 @@ class getID3_cached_mysql extends getID3
 			$filesize = filesize($filename);
 
 			// Loopup file
-			$this->cursor = mysql_query("SELECT `value` FROM `getid3_cache` WHERE (`filename` = '".mysql_real_escape_string($filename)."') AND (`filesize` = '".mysql_real_escape_string($filesize)."') AND (`filetime` = '".mysql_real_escape_string($filetime)."')", $this->connection);
-			list($result) = @mysql_fetch_array($this->cursor);
-
-			// Hit
-			if ($result) {
+			$result = '';
+			if ($this->cursor = mysql_query("SELECT `value` FROM `getid3_cache` WHERE (`filename` = '".mysql_real_escape_string($filename)."') AND (`filesize` = '".mysql_real_escape_string($filesize)."') AND (`filetime` = '".mysql_real_escape_string($filetime)."')", $this->connection)) {
+				// Hit
+				list($result) = mysql_fetch_array($this->cursor);
 				return unserialize(base64_decode($result));
 			}
 		}

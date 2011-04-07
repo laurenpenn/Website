@@ -53,7 +53,6 @@ if (FALSE !== strpos((__FILE__), 'wp-content')) {
 *
 */
 function podpress_xspf_jukebox_skin_xml($width = 170, $height = 210, $blog_id=1) {
-	GLOBAL $wp_version;
 	if (1000 < $width) {
 		$width = 600;
 	} elseif (150 > $width) {
@@ -185,7 +184,6 @@ function podpress_xspf_jukebox_skin_xml($width = 170, $height = 210, $blog_id=1)
 *
 */
 function podpress_xspf_jukebox_slim_skin_xml($width = 170, $height = 30, $blog_id=1) {
-	GLOBAL $wp_version;
 	if (1000 < $width) {
 		$width = 1000;
 	} elseif (150 > $width) {

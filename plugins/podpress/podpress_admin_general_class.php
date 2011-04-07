@@ -224,11 +224,12 @@ License:
 			echo '					'.$usingpi_str."\n";
 			echo '					'.$podpress_trac_str."\n";
 			echo '				</td>'."\n";
-			echo '				<td>'.__('This will enable the podPress statistics features and give possibility to use the statistics from <a href="http://www.blubrry.com/podpress/" target="_blank">blubrry</a> or <a href="http://www.podtrac.com/" target="_blank">Podtrac</a> the included stats support in podPress.', 'podpress').' '.$perm.'</td>'."\n";
+			echo '				<td>'.__('This will enable the podPress statistics features.', 'podpress').' '.$perm.'</td>'."\n";
+			//echo '				<td>'.__('This will enable the podPress statistics features and give possibility to use the statistics from <a href="http://www.blubrry.com/podpress/" target="_blank">blubrry</a> or <a href="http://www.podtrac.com/" target="_blank">Podtrac</a> the included stats support in podPress.', 'podpress').' '.$perm.'</td>'."\n";
 			echo '			</tr> '."\n";
 			
 			echo '			<tr id="statWarning" '.$showStatsOptions.'>'."\n";
-			echo '				<th>&nbsp;</th>'."\n";
+			echo '				<th></th>'."\n";
 			echo '				<td colspan="2">'."\n";
 			echo '					<div id="permalinksWarning" '.$showPermalinksWarning.'>'."\n";
 			echo '						<p class="podpress_error">'.sprintf(__('<strong>Warning:</strong> It appears you are not using WordPress permalinks or at least not a non-default permalink setting. If you want to use this statistic method, you need to choose a permalink structure which is different to the default setting. Go to the <a href="%1$s">Permalink Settings of your blog</a> and change that first. Otherwise enabling this statistics feature will most likely cause downloads of media files which were added with podPress to fail.', 'podpress'), $permalinksettingsurl).'</p>'."\n";
@@ -252,17 +253,17 @@ License:
 			echo '				<th><label for="statMethod">'.__('Stat Method', 'podpress').':</label></th>'."\n";
 			echo '				<td colspan="2">';
 			echo '					<select name="statMethod" id="statMethod" onchange="podpress_check_method_requirements(this.value);">'."\n";
-			echo '						<option value="permalinks" '; if($this->settings['statMethod'] == 'permalinks') { echo 'selected="selected"'; } echo '>'.__('Use WP Permalinks', 'podpress').'</option>'."\n";
+			echo '						<option value="permalinks" '; if($this->settings['statMethod'] == 'permalinks') { echo 'selected="selected"'; } echo '>'.__('Use WP Permalinks (recommended)', 'podpress').'</option>'."\n";
 			echo '						<option value="podpress_trac_dir" '; if($this->settings['statMethod'] == 'podpress_trac_dir') { echo 'selected="selected"'; } echo '>'.__('Optional Files podpress_trac directory', 'podpress').'</option>'."\n";
 			echo '						<option value="download.mp3" '; if($this->settings['statMethod'] == 'download.mp3') { echo 'selected="selected"'; } echo '>'.__('Use download.mp3', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
 			echo '				</td>'."\n";
 			echo '			</tr> '."\n";
 			echo '			<tr id="statMethodHelp" '.$showStatsOptions.'>'."\n";
-			echo '				<th>&nbsp;</th>'."\n";
+			echo '				<th></th>'."\n";
 			echo '				<td colspan="2" class="podpress_settings_description_cell">';
 			echo '				<ul>'."\n";
-			echo '				<li>'.sprintf(__('"Use WP Permalinks" - (recommended) Requires a non-default permalink structure (go to <a href="%1$s">Settings > Permalinks</a>). Activating any non-default permalink setting in Wordpress will create an <a href="http://en.wikipedia.org/wiki/.htaccess" target="_blank" title="en.Wikipedia: .htaccess">.htaccess</a> file (or <a href="http://en.wikipedia.org/wiki/Web.config" target="_blank" title="en.Wikipedia: Web.config">web.config</a> file on some web-servers) in the base directory of your blog which podpress needs to support tracking statistics. If enabling permalinks in Wordpress breaks your download links or results in a "File not found" error when using the media player, then you should look into using one of the other methods for tracking statistics.', 'podpress'), $permalinksettingsurl).'</li>';
+			echo '				<li>'.sprintf(__('"Use WP Permalinks" (recommended) - Requires a non-default permalink structure (go to <a href="%1$s">Settings > Permalinks</a>). Activating any non-default permalink setting in Wordpress will create an <a href="http://en.wikipedia.org/wiki/.htaccess" target="_blank" title="en.Wikipedia: .htaccess">.htaccess</a> file (or <a href="http://en.wikipedia.org/wiki/Web.config" target="_blank" title="en.Wikipedia: Web.config">web.config</a> file on some web-servers) in the base directory of your blog which podpress needs to support tracking statistics. If enabling permalinks in Wordpress breaks your download links or results in a "File not found" error when using the media player, then you should look into using one of the other methods for tracking statistics.', 'podpress'), $permalinksettingsurl).'</li>';
 			echo '				<li>'.__('"Optional Files podpress_trac directory" - If you cannot use WP permalinks and you run <a href="http://en.wikipedia.org/wiki/Apache_HTTP_Server" target="_blank" title="en.Wikipedia: Apache HTTP Server">Apache</a>, this option may work (depending on the webserver configuration - see details below*). If you choose this option then you need to copy the folder podpress_trac/ including the two files (index.php and .htaccess) to the root folder of your blog. After copying these files the root folder should contain wp-config.php and four subdirectories; wp-admin, wp-content, wp-includes and podpress_trac. The podpress_trac folder contains an .htaccess file and an index.php file which enable podpress to resolve URLs of the media files which will be tracked by the statistics features in podPress. The copied folder and the files should be given the same filesystem permissions as the other folders and files in your WordPress install.<br />*If this method fails after copying the required files and setting the permissions it could be that your server is configured to ignore directory-level .htaccess files. Shared hosting users may need to contact their support to allow these files. If you are configuring your own Apache server the podpress_trac folder needs to have <code>AllowOverride FileInfo Options</code> or <code>AllowOverride All</code>. You can find the necessary configuration details here: <a href="http://httpd.apache.org/docs/2.0/mod/core.html#allowoverride" target="_blank">http://httpd.apache.org/docs/2.0/mod/core.html#allowoverride</a>.', 'podpress').'</li>';
 			echo '				<li>'.__('"Use download.mp3" - This is an alternative to using an .htaccess file. This is provided for sites which run webservers that do not use the .htaccess file for configuration, such as Microsoft Internet Information Server (IIS).<br />To use this option, you will need to configure your web server to process .mp3 files the same way it does .php files. This is only necessary for the podPress directory, so that the download.mp3 file will be processed as a .php file.<br />If you do not know the type or version of the webserver you are using you can retrieve the information by using WP plugins like <a href="http://wordpress.org/extend/plugins/wp-system-health/" target="_blank">WP System Health</a> or <a href="http://wordpress.org/extend/plugins/system-information/" target="_blank">System information</a>.', 'podpress').'</li>';
 			echo '				<ul>'."\n";
@@ -277,7 +278,7 @@ License:
 			echo '				</td>'."\n";
 			echo '			</tr> '."\n";
 			echo '			<tr id="statsmethodtesthelp" '.$showStatsOptions.'>'."\n";
-			echo '				<th>&nbsp;</th>'."\n";
+			echo '				<th></th>'."\n";
 			echo '				<td colspan="2" class="podpress_settings_description_cell">';
 			echo '				'.__('This test can help you to determine whether your podPress statistics method setting will work under the current circumstances or not.', 'podpress')."\n";
 			echo '				</td>'."\n";
@@ -288,18 +289,18 @@ License:
 			echo '				<td colspan="2">';
 			echo '					<select name="statLogging" id="statLogging">'."\n";
 			echo '						<option value="Counts" '; if($this->settings['statLogging'] == 'Counts') { echo 'selected="selected"'; } echo '>'.__('Counts Only', 'podpress').'</option>'."\n";
-			echo '						<option value="Full" '; if($this->settings['statLogging'] == 'Full') { echo 'selected="selected"'; } echo '>'.__('Full', 'podpress').'</option>'."\n";
+			echo '						<option value="Full" '; if($this->settings['statLogging'] == 'Full') { echo 'selected="selected"'; } echo '>'.__('Full (recommended)', 'podpress').'</option>'."\n";
 			echo '						<option value="FullPlus" '; if($this->settings['statLogging'] == 'FullPlus') { echo 'selected="selected"'; } echo '>'.__('Full+', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
 			unset($x);
 			echo '				</td>'."\n";
 			echo '			</tr> '."\n";
 			echo '			<tr id="statLoggingHelp" '.$showStatsOptions.'>'."\n";
-			echo '				<th>&nbsp;</th>'."\n";
+			echo '				<th></th>'."\n";
 			echo '				<td colspan="2" class="podpress_settings_description_cell">';
 			echo '				<ul>'."\n";
 			echo '				<li>'.__('"Counts Only" - podPress counts only how many times a media was downloaded from the website, the feeds and how often the player of this file was started. Your media files should have unique file names. (The db table name is e.g. wp_podpress_statcounts.)', 'podpress').'</li>';
-			echo '				<li>'.__('"Full" - With this option podPress will log how many times a media was downloaded from the website, the feeds and how often the player of this file was started. It will also log on each download the ID of the post (or page), the IP address, the referrer, the browser type (User Agent) and the time of the download. Furthermore podPress parses the referer and user agent information and store the information in separate columns in the database.<br />Full includes also the posssibility to mark downloads on the basis of user agent names and IP addresses as downloads of <a href="http://en.wikipedia.org/wiki/Internet_bot" target="_blank" title="en.Wikipedia: Internet bot">Internets bots</a> and filter the statistic tables and graphs. (The db table name is e.g. wp_podpress_stats.) If you add more than one media file to a post (with podPress) then these files should have different file names.', 'podpress').'</li>';
+			echo '				<li>'.__('"Full" (recommended) - With this option podPress will log how many times a media was downloaded from the website, the feeds and how often the player of this file was started. It will also log on each download the ID of the post (or page), the IP address, the referrer, the browser type (User Agent) and the time of the download. Furthermore podPress parses the referer and user agent information and store the information in separate columns in the database.<br />Full includes also the posssibility to mark downloads on the basis of user agent names and IP addresses as downloads of <a href="http://en.wikipedia.org/wiki/Internet_bot" target="_blank" title="en.Wikipedia: Internet bot">Internets bots</a> and filter the statistic tables and graphs. (The db table name is e.g. wp_podpress_stats.) If you add more than one media file to a post (with podPress) then these files should have different file names.', 'podpress').'</li>';
 			echo '				<li>'.__('"Full+" - If you would like to know all the information "Full" gives you and additionally whether a download has been completed or not. podPress can only try to find out whether a file transfer was complete, if the file is on the same server as your blog (if it is a local file for the script). If you add more than one media file to a post (with podPress) then these files should have different file names. In order to get the information whetehr a download was complete or not podPress (or at least a PHP script of podPress) needs to run during the whole download. But this may lead to problems if the file is relative big or the maximum execution time for PHP scripts is relative short on the server of your blog. If the time limit is reached the download stops. So if you are not allowed to change the max_execution_time setting of the PHP configuration on the server of your blog or if you are unsure what this all means then please use the "Full" method (as recommended).', 'podpress').'</li>';
 			echo '				<ul>'."\n";
 			echo '				'.__('Note that if you enable the statistics, the Counts Only counter counts always even if you choose Full or Full+ but not vice versa.', 'podpress')."\n";
@@ -338,7 +339,7 @@ License:
 					default :
 						$podtrac_checked = ''; 
 						$blubrry_checked = ''; 
-						$disable3rdparty_checked = ' checked="checked"'; 
+						$disable3rdparty_checked = ' checked="checked"';
 					break;
 				}
 				$podtrac_disabled = '';
@@ -352,11 +353,12 @@ License:
 				$blubrry_checked = '';
 				$disable3rdparty_checked = ' checked="checked"';
 			}
-
-			echo '			<tr id="3rdpartyinfo" class="podpress_settings_headerrow" '.$showStatsOptions.'>'."\n";
-			echo '				<th colspan="3">'.__('In addition to the podPress own counter mechanisms, you can use one from a company:', 'podpress').'</th>'."\n";
-			echo '			</tr> '."\n";
 			
+			// ntm: reactivate this feature with the constant PODPRESS_ACTIVATE_3RD_PARTY_STATS in the podpress.php files
+			if ( TRUE == defined('PODPRESS_ACTIVATE_3RD_PARTY_STATS') AND TRUE === constant('PODPRESS_ACTIVATE_3RD_PARTY_STATS') ) {
+			echo '			<tr id="3rdpartyinfo" class="podpress_settings_headerrow" '.$showStatsOptions.'>'."\n";
+			echo '				<th colspan="3"'.$thirdpartystats_class.'>'.__('In addition to the podPress own counter mechanisms, you can use one from a company:', 'podpress').'</th>'."\n";
+			echo '			</tr> '."\n";
 			echo '			<tr id="podtracrow" '.$showStatsOptions.'>'."\n";
 			echo '				<th><label for="enablePodTracStats">'.__('Enable Podtrac Statistics', 'podpress').':</label></th>'."\n";
 			echo '				<td>'."\n";
@@ -364,7 +366,6 @@ License:
 			echo '				</td>'."\n";
 			echo '				<td>'.__('This will use the Podtrac service. <a href="http://www.podtrac.com/" target="_new">More info ...</a>', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
-
 			echo '			<tr id="blubrryrow" '.$showStatsOptions.'>'."\n";
 			echo '				<th><label for="enableBlubrryStats">'.__('Enable blubrry Statistics', 'podpress').':</label></th>'."\n";
 			echo '				<td>'."\n";
@@ -380,7 +381,8 @@ License:
 			echo '					<input type="input" name="statBluBrryProgramKeyword" id="statBluBrryProgramKeyword" ' . $blubrry_readonly . ' value="'.$this->settings['statBluBrryProgramKeyword'].'"/>';
 			echo '				</td>'."\n";
 			echo '			</tr> '."\n";
-
+			}
+			
 			echo '			<tr id="3rdpartystatsrow" '.$showStatsOptions.'>'."\n";
 			echo '				<th><label for="disable3rdPartyStats">'.__('Disable 3rd Party Statistics', 'podpress').':</label></th>'."\n";
 			echo '				<td>'."\n";
@@ -396,7 +398,7 @@ License:
 			if ( TRUE == defined('PODPRESS_ACTIVATE_3RD_PARTY_STATS') AND TRUE === constant('PODPRESS_ACTIVATE_3RD_PARTY_STATS') ) {
 				echo '					'.__('You can use only one of these services together with the podPress statistics at the same time. If you want to have more or different statistics then you could use the service of e.g. Feedburner or eventually Libsyn.', 'podpress')."\n";
 			} else {
-				echo '					<span class="nonessential">'.__('This feature is deactivated and will maybe be removed in one of a future versions. If you want to activate this feature despite then ask for help in <a href="http://wordpress.org/tags/podpress?forum_id=10" target="_blank">this WP.org Forum</a>.', 'podpress').'</span>'."\n";
+				echo '					<span class="nonessential">'.__('This feature is deactivated and will maybe be removed in one of a future versions. If you want to activate this feature then ask for help in <a href="http://wordpress.org/tags/podpress?forum_id=10" target="_blank">this WP.org Forum</a>.', 'podpress').'</span>'."\n";
 			}
 			echo '				</td>'."\n";
 			echo '			</tr> '."\n";
@@ -410,20 +412,81 @@ License:
 			echo '			<tr>'."\n";
 			echo '				<th><label for="maxMediaFiles">'.__('max. number of media files', 'podpress').':</label></th>'."\n";
 			echo '				<td>'."\n";
-			echo '					<input type="text" maxlength="3" size="3" name="maxMediaFiles" id="maxMediaFiles" value="'.$this->settings['maxMediaFiles'].'"'."/>\n";
+			echo '					<input type="text" maxlength="3" size="3" name="maxMediaFiles" id="maxMediaFiles" value="'.$this->settings['maxMediaFiles'].'"'." />\n";
 			echo '				</td>'."\n";
 			echo '				<td>'.__('which you want to add to single posts (or pages). The higher the number, the bigger the performance impact when loading the Posts editor. (default: 10)', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
+			if ( TRUE == version_compare($wp_version, '2.9', '>=') ) {
+				$selected_types = $this->settings['metaboxforcustomposttypes'];
+				if ( FALSE === is_array($selected_types) ) {
+					$selected_types = array();
+				}
+				$args = array(
+					'public'   => true,
+					'_builtin' => false
+				);
+				$output = 'objects'; // names or objects
+				$post_types = get_post_types($args, $output);
+				echo '			<tr>'."\n";
+				echo '				<th>'."\n";
+				echo ' 					'.__('podPress meta box for custom post types', 'podpress');
+				echo '				</th>'."\n";			
+				echo '				<td>'."\n";
+				if (TRUE == is_array($post_types) AND FALSE == empty($post_types) ) {
+					echo '				<select name="metaboxforcustomposttypes[]" size="4" multiple="multiple" class="podpress_customposttype_select">'."\n";
+					echo '					<optgroup label="'.esc_attr(__('public custom post types:', 'podpress')).'">'."\n";
+					foreach ($post_types as $post_type ) {
+						if ( TRUE == in_array($post_type->name, $selected_types) ) {
+							$selected = ' selected="selected"';
+						} else {
+							$selected = '';
+						}
+						echo '				<option value="'.$post_type->name.'"'.$selected.'>'.$post_type->label. ' (' .$post_type->name.')</option>';
+					}
+					echo '					</optgroup>'."\n";
+					echo '				</select>'."\n";
+				} else {
+					echo '				<em class="nonessential">('.__('Currently are no custom post types defined.', 'podpress').')</em>'."\n";
+				}
+				echo '				</td>'."\n";
+				echo '				<td class="podpress_settings_description_cell">'."\n";
+				echo ' 					'.__('Show a podPress meta box below or at the side of the editor of post of a custom post type. This makes it possbile to add podcasts with podPress to posts of a custom post type.', 'podpress');		
+				echo '					<br /><span class="podpress_description">'.__('Hold the key [SHIFT] or [CTRL] and use the left mouse button to select more than one value.<br />Hold [CTRL] and use the left mouse button to deselect values.', 'podpress').'</span>';
+				echo '				</td>'."\n";
+				echo '			</tr> '."\n";
+			}
 			echo '		</table>'."\n";
 			echo '	</fieldset>'."\n";
 
 			echo '	<fieldset class="options">'."\n";
+			echo '		<legend>'.__('Blog Search', 'podpress').'</legend>'."\n";
+			echo '		<table class="editform podpress_settings_table">'."\n";
+			echo '			<tr>'."\n";
+			echo '				<th><label for="activate_podpressmedia_search">'.__('expand the search to podPress media files', 'podpress').':</label></th>'."\n";
+			echo '				<td class="podpress_settings_narrow_col">'."\n";
+			if ( TRUE == isset($this->settings['activate_podpressmedia_search']) AND TRUE === $this->settings['activate_podpressmedia_search'] ) {
+			echo '					<input type="checkbox" name="activate_podpressmedia_search" id="activate_podpressmedia_search" value="true" checked="checked" />'."\n";
+			} else {
+			echo '					<input type="checkbox" name="activate_podpressmedia_search" id="activate_podpressmedia_search" value="true" />'."\n";
+			}
+			echo '				</td>'."\n";
+			echo '				<td>'.__('Expand the blog search (which searches by default only through titles and content of posts, pages and attachments) to the titles and URLs (location) of the media files which have been attached with podPress.', 'podpress').'</td>'."\n";
+			echo '			</tr> '."\n";
+			echo '		</table>'."\n";
+			echo '	</fieldset>'."\n";
+
+			// ntm: reactivate this feature with the constant PODPRESS_ACTIVATE_PODANGO_INTEGRATION in the podpress.php files
+			if ( TRUE == defined('PODPRESS_ACTIVATE_PODANGO_INTEGRATION') AND TRUE === constant( 'PODPRESS_ACTIVATE_PODANGO_INTEGRATION') ) {
+			echo '	<fieldset class="options">'."\n";
+			} else {
+			echo '	<fieldset class="options nonessential">'."\n";
+			}
 			echo '		<legend>'.__('Podango Integration', 'podpress').'</legend>'."\n";
 			echo '          	<p class="podpress_error">'.__('Podango Integration does not work anymore and causes probably long page loading times e.g. on the post/page editor pages of this blog. Since 2008/2009 Podango <a href="http://sites.google.com/site/podangohibernate/">is currently on vacation</a> and the API which podPress tries to use is unavailable. That is why it is most likely that you will experience a lot of warning and error messages if you activate this feature.', 'podpress').'</p>';
 			echo '		<table class="editform podpress_settings_table">'."\n";
 			echo '			<tr>'."\n";
 			echo '				<th><label for="enablePodangoIntegration">'.__('Enable Podango Integration', 'podpress').':</label></th>'."\n";
-			echo '				<td>'."\n";
+			echo '				<td class="podpress_settings_narrow_col">'."\n";
 			// ntm: reactivate this feature with the constant PODPRESS_ACTIVATE_PODANGO_INTEGRATION in the podpress.php files
 			if ( TRUE == defined('PODPRESS_ACTIVATE_PODANGO_INTEGRATION') AND TRUE === constant( 'PODPRESS_ACTIVATE_PODANGO_INTEGRATION') ) {
 				echo '					<input type="checkbox" name="enablePodangoIntegration" id="enablePodangoIntegration" '; if($this->settings['enablePodangoIntegration']) { echo 'checked="checked"'; } echo " />\n";
@@ -442,76 +505,77 @@ License:
 			echo '		</table>'."\n";
 			echo '	</fieldset>'."\n";
 
-			echo '	<fieldset class="options">'."\n";
-			echo '		<legend>'.__('Premium Content', 'podpress').'</legend>'."\n";
-			if (!$this->settings['enablePremiumContent']) {
-					$showPremiumOptions = 'style="display: none;"';
+			if ( FALSE == defined('PODPRESS_DEACTIVATE_PREMIUM') OR FALSE === constant('PODPRESS_DEACTIVATE_PREMIUM') ) {
+				echo '	<fieldset class="options">'."\n";
+				echo '		<legend>'.__('Premium Content', 'podpress').'</legend>'."\n";
+				if (!$this->settings['enablePremiumContent']) {
+						$showPremiumOptions = 'style="display: none;"';
+				}
+				$premiumcontenthelp = '		<tr id="premiumPodcastingHelp" '.$showPremiumOptions.'>'."\n";
+				$premiumcontenthelp .= '			<th>&nbsp;</th>'."\n";
+				$premiumcontenthelp .= '			<td colspan="2">';
+				$premiumcontenthelp .= '				'.sprintf(__('<p>If you want use this part of the plugin then you should <a href="http://codex.wordpress.org/Roles_and_Capabilities" target="_blank">read more about roles and capabilities</a> and you need to get and install a roles and capabilities management plugin like <a href="http://wordpress.org/extend/plugins/members/" target="_blank">Members</a> or <a href="http://wordpress.org/extend/plugins/capsman/" target="_blank">Capability Manager</a> (The former recommendation was the <a href="http://redalt.com/wiki/Role+Manager" target="_blank">Role Manager</a> plugin. But it is unclear whether it works with current WP version or not.)</p><p>Anyone that should have access to the premium podcasting files need to have the Premium Content role, which can be done by making them Premium Subscribers.<br />Then just in each post set the media file as premium content and normal visitors will not be able to see the content via the web or from the feed.</p><p>If you are using a WordPress version which is newer than v2.1, then users can just use <a href="%1$s">%1$s</a> for their premium content needs. User will be asked for their user/pass before giving the RSS feed. For instance Juice and iTunes support this fine.</p><p>Keep in mind, that this does NOT protect your content if someone discovers the URLs, it only hides the location from showing up on the site or in the feed. To fully protect your files you can use this feature in combination with an external service like the one from <a href="http://www.amember.com/" target="_blank">aMemberPro</a> which should work with podPress. aMemberPro will protect the files from being downloaded at all, unless authorized. It also handles monthly subscription issues through <a href="http://en.wikipedia.org/wiki/Paypal" target="_blank" title="en.Wikipedia: PayPal">PayPal</a> and such. If you combine such a service with WordPress and podPress you can have your own premium content podcasting service.</p>', 'podpress'), get_feed_link('premium'))."\n";
+				// ntm: Parts of this text are obviously aut dated and I took the chance to modify it 
+				//$premiumcontenthelp .= '				'.__('Full documentation is still under development on <a href="http://podcasterswiki.com/index.php?title=PodPress_Documentation#Premium_Podcasting">the wiki</a><br /><br />This is the short of it is that you need to get and install the <a href="http://redalt.com/wiki/Role+Manager">Role Manager plugin</a><br />Anyone that should have access to the premium podcasting files need to have the Premium Content role, which can be done by making them Premium Subscribers<br /><br />Then just in each post set the media file as premium content and normal visitors will not be able to see the content via the web or from the feed.<br />If your using Wordpress 2.1, then users can just use http://www.yoursite.com/?feed=premium for their premium content needs.<br />If your using WP 1.5 or 2.0.x, then you need to put premiumcast.php in your main wordpress dir and then have your subscribers use this file as their rss feed.<br />These will cause the site to ask for their user/pass before giving the RSS feed. Juice and iTunes supports this fine.<br /><br />Keep in mine, that this does NOT protect your content if someone discovers the URLS, it only hides the location from showing up on the site or in the feed. To fully protect your files I have also been able to get this working with <a href="http://www.amember.com/">aMemberPro</a><br />aMemberPro will protect the files from being downloaded at all, unless authorized. It also handles monthly subscription issues thru paypal and such. Its a great tool, and combines with WordPress and podPress you can have a full blown premium content podcasting service.', 'podpress')."\n";
+				$premiumcontenthelp .= '			</td>'."\n";
+				$premiumcontenthelp .= '		</tr> '."\n";
+				echo '		<table class="editform podpress_settings_table">'."\n";
+				echo '			<tr>'."\n";
+				echo '				<th><label for="enablePremiumContent">'.__('Enable Premium Content:', 'podpress').'</label></th>'."\n";
+				if(!podPress_WPVersionCheck('2.0.0')) {
+					echo '			<td>&nbsp;</td>'."\n";
+					echo '			<td>'.__('Only available in WordPress 2.0.0 or greater', 'podpress').'</td>'."\n";
+					echo '		</tr> '."\n";
+					
+					echo $premiumcontenthelp;
+					
+				} else {
+					echo '			<td colspan="2">'."\n";
+					echo '				<input type="checkbox" name="enablePremiumContent" id="enablePremiumContent" '; if($this->settings['enablePremiumContent']) { echo 'checked="checked"'; } echo " onclick=\"javascript: podPressShowHideRow('premiumPodcastingHelp'); podPressShowHideRow('premiumMethodWrapper'); podPressShowHideRow('premiumContentFakeEnclosureWrapper');\" />\n";
+					//ntm: with the podPressShowHideRow('protectedMediaFilePathWrapper'); podPressShowHideRow('protectedMediaFilePathHelp');
+					//~ echo '				<input type="checkbox" name="enablePremiumContent" id="enablePremiumContent" '; if($this->settings['enablePremiumContent']) { echo 'checked="checked"'; } echo " onclick=\"javascript: podPressShowHideRow('premiumPodcastingHelp'); podPressShowHideRow('protectedMediaFilePathWrapper'); podPressShowHideRow('protectedMediaFilePathHelp'); podPressShowHideRow('premiumMethodWrapper'); podPressShowHideRow('premiumContentFakeEnclosureWrapper');\" />\n";
+					echo '			</td>'."\n";
+					echo '		</tr> '."\n";
+					
+					echo $premiumcontenthelp;
+					
+					// ntm: there is nothing behind this input that is why is deactivated
+					//~ echo '		<tr id="protectedMediaFilePathWrapper" '.$showPremiumOptions.'>'."\n";
+					//~ echo '			<th><label for="protectedMediaFilePath">'.__('Absolute path to protected media', 'podpress').':</label></th>'."\n";
+					//~ echo '			<td colspan="2">'."\n";
+					//~ echo '				<input type="text" id="protectedMediaFilePath" name="protectedMediaFilePath" class="podpress_wide_text_field" size="40" value="'.attribute_escape($this->settings['protectedMediaFilePath']).'" />'."\n";
+					//~ echo '			</td>'."\n";
+					//~ echo '		</tr>'."\n";
+					//~ echo '		<tr id="protectedMediaFilePathHelp" '.$showPremiumOptions.'>'."\n";
+					//~ echo '			<th>&nbsp;</th>'."\n";
+					//~ echo '			<td colspan="2">';
+					//~ echo '				'.sprintf(__('Insert here the complete path name of the folder which contains the premium meda files. This folder needs to be on the same server as your blog. But it should NOT be in a dir under your web root. It should be a dir outside of the web root so that users cannot simply browse to the dir and get access to the files. For example this could be <code>%1$s/premium_mp3s/</code> or maybe with random number as folder name: <code>%1$s/%2$s/premium_mp3s/</code>. Create this folder before you start to use this feature.', 'podpress'), $this->uploadPath, rand(10000, 99999))."\n";
+					//~ echo '			</td>'."\n";
+					//~ echo '		</tr> '."\n";
+
+					echo '		<tr id="premiumMethodWrapper" '.$showPremiumOptions.'>'."\n";
+					echo '			<th><label for="premiumMethod">'.__('Method', 'podpress').':</label></th>'."\n";
+					echo '			<td>'."\n";
+					echo '				<select name="premiumMethod" id="premiumMethod">'."\n";
+					echo '					<option value="Digest" '; if($this->settings['premiumMethod'] != 'Basic') { echo 'selected="selected"'; } echo '>'.__('Digest', 'podpress').'</option>'."\n";
+					echo '					<option value="Basic" '; if($this->settings['premiumMethod'] == 'Basic') { echo 'selected="selected"'; }  echo '>'.__('Basic', 'podpress').'</option>'."\n";
+					echo '				</select>'."\n";
+					echo '			</td>'."\n";
+					echo '			<td>'.__('Digest auth is MUCH better than Basic, which is easily unencrypted.', 'podpress').'</td>'."\n";
+					echo '		</tr> '."\n";
+					
+					echo '		<tr id="premiumContentFakeEnclosureWrapper" '.$showPremiumOptions.'>'."\n";
+					echo '			<th><label for="premiumContentFakeEnclosure">'.__('Use fake enclosure', 'podpress').':</label></th>'."\n";
+					echo '			<td>'."\n";
+					echo '				<input type="checkbox" name="premiumContentFakeEnclosure" id="premiumContentFakeEnclosure" '; if($this->settings['premiumContentFakeEnclosure']) { echo 'checked="checked"'; } echo "/>\n";
+					echo '			</td>'."\n";
+					echo '			<td>'.__('If you want the <a href="http://en.wikipedia.org/wiki/RSS_enclosure" target="_blank" title="en.Wikipedia: RSS enclosures">enclosures</a> (elements of the news feeds which contain usually links to the media files) to always exist (so the feed will show up in iTunes) then check this. A fake enclosure contains a place holder URL and not the real one.', 'podpress').'</td>'."\n";
+					echo '		</tr> '."\n";
+				}
+				echo '		</table>'."\n";
+				echo '	</fieldset>'."\n";
 			}
-			$premiumcontenthelp = '		<tr id="premiumPodcastingHelp" '.$showPremiumOptions.'>'."\n";
-			$premiumcontenthelp .= '			<th>&nbsp;</th>'."\n";
-			$premiumcontenthelp .= '			<td colspan="2">';
-			$premiumcontenthelp .= '				'.sprintf(__('<p>If you want use this part of the plugin then you should <a href="http://codex.wordpress.org/Roles_and_Capabilities" target="_blank">read more about roles and capabilities</a> and you need to get and install a roles and capabilities management plugin like <a href="http://wordpress.org/extend/plugins/members/" target="_blank">Members</a> or <a href="http://wordpress.org/extend/plugins/capsman/" target="_blank">Capability Manager</a> (The former recommendation was the <a href="http://redalt.com/wiki/Role+Manager" target="_blank">Role Manager</a> plugin. But it is unclear whether it works with current WP version or not.)</p><p>Anyone that should have access to the premium podcasting files need to have the Premium Content role, which can be done by making them Premium Subscribers.<br />Then just in each post set the media file as premium content and normal visitors will not be able to see the content via the web or from the feed.</p><p>If you are using a WordPress version which is newer than v2.1, then users can just use <a href="%1$s">%1$s</a> for their premium content needs. User will be asked for their user/pass before giving the RSS feed. For instance Juice and iTunes support this fine.</p><p>Keep in mind, that this does NOT protect your content if someone discovers the URLs, it only hides the location from showing up on the site or in the feed. To fully protect your files you can use this feature in combination with an external service like the one from <a href="http://www.amember.com/" target="_blank">aMemberPro</a> which should work with podPress. aMemberPro will protect the files from being downloaded at all, unless authorized. It also handles monthly subscription issues through <a href="http://en.wikipedia.org/wiki/Paypal" target="_blank" title="en.Wikipedia: PayPal">PayPal</a> and such. If you combine such a service with WordPress and podPress you can have your own premium content podcasting service.</p>', 'podpress'), get_feed_link('premium'))."\n";
-			// ntm: Parts of this text are obviously aut dated and I took the chance to modify it 
-			//$premiumcontenthelp .= '				'.__('Full documentation is still under development on <a href="http://podcasterswiki.com/index.php?title=PodPress_Documentation#Premium_Podcasting">the wiki</a><br /><br />This is the short of it is that you need to get and install the <a href="http://redalt.com/wiki/Role+Manager">Role Manager plugin</a><br />Anyone that should have access to the premium podcasting files need to have the Premium Content role, which can be done by making them Premium Subscribers<br /><br />Then just in each post set the media file as premium content and normal visitors will not be able to see the content via the web or from the feed.<br />If your using Wordpress 2.1, then users can just use http://www.yoursite.com/?feed=premium for their premium content needs.<br />If your using WP 1.5 or 2.0.x, then you need to put premiumcast.php in your main wordpress dir and then have your subscribers use this file as their rss feed.<br />These will cause the site to ask for their user/pass before giving the RSS feed. Juice and iTunes supports this fine.<br /><br />Keep in mine, that this does NOT protect your content if someone discovers the URLS, it only hides the location from showing up on the site or in the feed. To fully protect your files I have also been able to get this working with <a href="http://www.amember.com/">aMemberPro</a><br />aMemberPro will protect the files from being downloaded at all, unless authorized. It also handles monthly subscription issues thru paypal and such. Its a great tool, and combines with WordPress and podPress you can have a full blown premium content podcasting service.', 'podpress')."\n";
-			$premiumcontenthelp .= '			</td>'."\n";
-			$premiumcontenthelp .= '		</tr> '."\n";
-			echo '		<table class="editform podpress_settings_table">'."\n";
-			echo '			<tr>'."\n";
-			echo '				<th><label for="enablePremiumContent">'.__('Enable Premium Content:', 'podpress').'</label></th>'."\n";
-			if(!podPress_WPVersionCheck('2.0.0')) {
-				echo '			<td>&nbsp;</td>'."\n";
-				echo '			<td>'.__('Only available in WordPress 2.0.0 or greater', 'podpress').'</td>'."\n";
-				echo '		</tr> '."\n";
-				
-				echo $premiumcontenthelp;
-				
-			} else {
-				echo '			<td colspan="2">'."\n";
-				echo '				<input type="checkbox" name="enablePremiumContent" id="enablePremiumContent" '; if($this->settings['enablePremiumContent']) { echo 'checked="checked"'; } echo " onclick=\"javascript: podPressShowHideRow('premiumPodcastingHelp'); podPressShowHideRow('premiumMethodWrapper'); podPressShowHideRow('premiumContentFakeEnclosureWrapper');\" />\n";
-				//ntm: with the podPressShowHideRow('protectedMediaFilePathWrapper'); podPressShowHideRow('protectedMediaFilePathHelp');
-				//~ echo '				<input type="checkbox" name="enablePremiumContent" id="enablePremiumContent" '; if($this->settings['enablePremiumContent']) { echo 'checked="checked"'; } echo " onclick=\"javascript: podPressShowHideRow('premiumPodcastingHelp'); podPressShowHideRow('protectedMediaFilePathWrapper'); podPressShowHideRow('protectedMediaFilePathHelp'); podPressShowHideRow('premiumMethodWrapper'); podPressShowHideRow('premiumContentFakeEnclosureWrapper');\" />\n";
-				echo '			</td>'."\n";
-				echo '		</tr> '."\n";
-				
-				echo $premiumcontenthelp;
-				
-				// ntm: there is nothing behind this input that is why is deactivated
-				//~ echo '		<tr id="protectedMediaFilePathWrapper" '.$showPremiumOptions.'>'."\n";
-				//~ echo '			<th><label for="protectedMediaFilePath">'.__('Absolute path to protected media', 'podpress').':</label></th>'."\n";
-				//~ echo '			<td colspan="2">'."\n";
-				//~ echo '				<input type="text" id="protectedMediaFilePath" name="protectedMediaFilePath" class="podpress_wide_text_field" size="40" value="'.attribute_escape($this->settings['protectedMediaFilePath']).'" />'."\n";
-				//~ echo '			</td>'."\n";
-				//~ echo '		</tr>'."\n";
-				//~ echo '		<tr id="protectedMediaFilePathHelp" '.$showPremiumOptions.'>'."\n";
-				//~ echo '			<th>&nbsp;</th>'."\n";
-				//~ echo '			<td colspan="2">';
-				//~ echo '				'.sprintf(__('Insert here the complete path name of the folder which contains the premium meda files. This folder needs to be on the same server as your blog. But it should NOT be in a dir under your web root. It should be a dir outside of the web root so that users cannot simply browse to the dir and get access to the files. For example this could be <code>%1$s/premium_mp3s/</code> or maybe with random number as folder name: <code>%1$s/%2$s/premium_mp3s/</code>. Create this folder before you start to use this feature.', 'podpress'), $this->uploadPath, rand(10000, 99999))."\n";
-				//~ echo '			</td>'."\n";
-				//~ echo '		</tr> '."\n";
-
-				echo '		<tr id="premiumMethodWrapper" '.$showPremiumOptions.'>'."\n";
-				echo '			<th><label for="premiumMethod">'.__('Method', 'podpress').':</label></th>'."\n";
-				echo '			<td>'."\n";
-				echo '				<select name="premiumMethod" id="premiumMethod">'."\n";
-				echo '					<option value="Digest" '; if($this->settings['premiumMethod'] != 'Basic') { echo 'selected="selected"'; } echo '>'.__('Digest', 'podpress').'</option>'."\n";
-				echo '					<option value="Basic" '; if($this->settings['premiumMethod'] == 'Basic') { echo 'selected="selected"'; }  echo '>'.__('Basic', 'podpress').'</option>'."\n";
-				echo '				</select>'."\n";
-				echo '			</td>'."\n";
-				echo '			<td>'.__('Digest auth is MUCH better than Basic, which is easily unencrypted.', 'podpress').'</td>'."\n";
-				echo '		</tr> '."\n";
-				
-				echo '		<tr id="premiumContentFakeEnclosureWrapper" '.$showPremiumOptions.'>'."\n";
-				echo '			<th><label for="premiumContentFakeEnclosure">'.__('Use fake enclosure', 'podpress').':</label></th>'."\n";
-				echo '			<td>'."\n";
-				echo '				<input type="checkbox" name="premiumContentFakeEnclosure" id="premiumContentFakeEnclosure" '; if($this->settings['premiumContentFakeEnclosure']) { echo 'checked="checked"'; } echo "/>\n";
-				echo '			</td>'."\n";
-				echo '			<td>'.__('If you want the <a href="http://en.wikipedia.org/wiki/RSS_enclosure" target="_blank" title="en.Wikipedia: RSS enclosures">enclosures</a> (elements of the news feeds which contain usually links to the media files) to always exist (so the feed will show up in iTunes) then check this. A fake enclosure contains a place holder URL and not the real one.', 'podpress').'</td>'."\n";
-				echo '		</tr> '."\n";
-			}
-
-			echo '		</table>'."\n";
-			echo '	</fieldset>'."\n";
-
+			
 			echo '	<fieldset class="options">'."\n";
 			echo '		<legend>'.__('Post Content', 'podpress').'</legend>'."\n";
 			echo '		<table class="editform podpress_settings_table">'."\n";
@@ -523,7 +587,7 @@ License:
 			echo '						<option value="end" '; if($this->settings['contentLocation'] != 'start') { echo 'selected="selected"'; }  echo '>'.__('End', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
 			echo '				</td>'."\n";
-			echo '				<td>'.__('Part of the Post where the podPress content (Player, and links) will go. Default is at the end.', 'podpress').'</td>'."\n";
+			echo '				<td class="podpress_settings_description_cell">'.__('Part of the Post where the podPress content (Player, and links) will go. Default is at the end.', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
 			echo '			<tr>'."\n";
 			echo '				<th><label for="contentPlayer">'.__('Player:', 'podpress').'</label></th>'."\n";
@@ -535,7 +599,7 @@ License:
 			echo '						<option value="disabled" '; if($this->settings['contentPlayer'] == 'disabled') { echo 'selected="selected"'; } echo '>'.__('Disabled', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
 			echo '				</td>'."\n";
-			echo '				<td>'.__('Allow users to make use of the web players for your content / Popup Only - Only the Popup Player is available and it is not possible to use the player in the posts. / Inline Only - The Popup player is not available and it is only possible to use the player in the posts.', 'podpress').'</td>'."\n";
+			echo '				<td class="podpress_settings_description_cell">'.__('Allow users to make use of the web players for your content / Popup Only - Only the Popup Player is available and it is not possible to use the player in the posts. / Inline Only - The Popup player is not available and it is only possible to use the player in the posts.', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
 			echo '			<tr>'."\n";
 			echo '				<th><label for="contentImage">'.__('Image:', 'podpress').'</label></th>'."\n";
@@ -546,7 +610,7 @@ License:
 			echo '						<option value="none" '; if($this->settings['contentImage'] == 'none') { echo 'selected="selected"'; } echo '>'.__('None', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
 			echo '				</td>'."\n";
-			echo '				<td>'.__('The image that shows up before links for the media file.', 'podpress').'</td>'."\n";
+			echo '				<td class="podpress_settings_description_cell">'.__('The image that shows up before links for the media file.', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
 			echo '			<tr>'."\n";
 			echo '				<th><label for="contentHidePlayerPlayNow">'.__('Hide Player/Play Now:', 'podpress').'</label></th>'."\n";
@@ -556,7 +620,7 @@ License:
 			echo '						<option value="disabled" '; if($this->settings['contentHidePlayerPlayNow'] == 'disabled') { echo 'selected="selected"'; } echo '>'.__('Hide', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
 			echo '				</td>'."\n";
-			echo '				<td>'.__('Show the Hide Player/Play Now link', 'podpress').'</td>'."\n";
+			echo '				<td class="podpress_settings_description_cell">'.__('Show the Hide Player/Play Now link', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
 
 			echo '			<tr>'."\n";
@@ -567,7 +631,7 @@ License:
 			echo '						<option value="disabled" '; if($this->settings['contentDownload'] == 'disabled') { echo 'selected="selected"'; } echo '>'.__('Disabled', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
 			echo '				</td>'."\n";
-			echo '				<td>'.__('Allow users to download the media files directly from the website.', 'podpress').'</td>'."\n";
+			echo '				<td class="podpress_settings_description_cell">'.__('Allow users to download the media files directly from the website.', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
 
 			echo '			<tr>'."\n";
@@ -578,7 +642,7 @@ License:
 			echo '						<option value="disabled" '; if($this->settings['contentDownloadText'] == 'disabled') { echo 'selected="selected"'; } echo '>'.__('Disabled', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
 			echo '				</td>'."\n";
-			echo '				<td>'.__('If disabled, users can still download using the icon link.', 'podpress').'</td>'."\n";
+			echo '				<td class="podpress_settings_description_cell">'.__('If disabled, users can still download using the icon link.', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
 
 			echo '			<tr>'."\n";
@@ -589,55 +653,84 @@ License:
 			echo '						<option value="disabled" '; if($this->settings['contentDownloadStats'] == 'disabled') { echo 'selected="selected"'; } echo '>'.__('Disabled', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
 			echo '				</td>'."\n";
-			echo '				<td>'.__('Display download stats for each media file for everyone to see at the end of the podPress line. This will cause a performance hit of 2 extra SQL queries per post being displayed. Disable this feature if your site is slowing down when podpress is enabled.', 'podpress').'</td>'."\n";
+			echo '				<td class="podpress_settings_description_cell">'.__('Display download stats for each media file for everyone to see at the end of the podPress line. This will cause a performance hit of 2 extra SQL queries per post being displayed. Disable this feature if your site is slowing down when podpress is enabled.', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
 
 			echo '			<tr>'."\n";
 			echo '				<th><label for="contentDuration">'.__('Show Duration:', 'podpress').'</label></th>'."\n";
-			echo '				<td>'."\n";
+			echo '				<td colspan="2" class="podpress_settings_description_cell">'."\n";
 			echo '					<select name="contentDuration" id="contentDuration">'."\n";
-			echo '						<option value="enabled" '; if($this->settings['contentDuration'] == 'enabled') { echo 'selected="selected"'; }  echo '>'.__('Enabled', 'podpress').'</option>'."\n";
+			if ( $this->settings['contentDuration'] == 'enabled' ) {
+				$this->settings['contentDuration'] = 'h:m:s';
+			}
+			$duration_schemes = Array('h:m:s' => __('1:23:45 (h:m:s)', 'podpress'), 'm:s' => __('83:45 (m:s)', 'podpress'), 'h:m:s:ms' => __('1:23:45:30 (h:m:s:ms)', 'podpress'), 'm:s:ms' => __('83:45:30 (m:s:ms)', 'podpress'), 's:ms' => __('5025:30 (s:ms)', 'podpress'), 'h' => __('1.40 (h)', 'podpress'), 'm' => __('83.75 (m)', 'podpress'), 's' => __('5025.03 (s)', 'podpress'), 'ms' => __('5025030 (ms)', 'podpress'));
+			foreach ($duration_schemes as $duration_scheme => $scheme_name) {
+				if ( $this->settings['contentDuration'] == $duration_scheme ) {
+					echo '						<option value="'.$duration_scheme.'" selected="selected">'.$scheme_name.'</option>'."\n";
+				} else {
+					echo '						<option value="'.$duration_scheme.'">'.$scheme_name.'</option>'."\n";
+				}
+			}
 			echo '						<option value="disabled" '; if($this->settings['contentDuration'] == 'disabled') { echo 'selected="selected"'; } echo '>'.__('Disabled', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
+			echo '				'.__('Display the duration for each media file. (The milliseconds value will only be visible if it is bigger than zero.)', 'podpress');
+			echo '					<br /><label for="contentDurationdivider">'.__('Choose a duration format:', 'podpress').'</label> <select name="contentDurationdivider" id="contentDurationdivider">'."\n";
+			if (version_compare($wp_version, '2.8', '<')) {
+				$duration_dividers = Array(
+				'colon' => '1:23:45:30', 
+				'hminsms' => '1 '.__('h', 'podpress').' 23 '.__('min', 'podpress').' 45 '.__('s', 'podpress').' 30 '.__('ms', 'podpress'), 
+				'hrminsecmsec' => '1 '.__('hr.', 'podpress').' 23 '.__('min.', 'podpress').' 45 '.__('sec.', 'podpress').' 30 '.__('msec.', 'podpress'), 
+				'hoursminutessecondsmilliseconds' => '1 '.__ngettext('hour', 'hours', 1, 'podpress').' 23 '. __ngettext('minute', 'minutes', 23, 'podpress').' 45 '. __ngettext('second', 'seconds', 45, 'podpress').' 30 '. __ngettext('millisecond', 'milliseconds', 30, 'podpress') 
+				);
+			} else {
+				$duration_dividers = Array(
+				'colon' => '1:23:45:30',
+				'hminsms' => '1 '.__('h', 'podpress').' 23 '.__('min', 'podpress').' 45 '.__('s', 'podpress').' 30 '.__('ms', 'podpress'),
+				'hrminsecmsec' => '1 '.__('hr.', 'podpress').' 23 '.__('min.', 'podpress').' 45 '.__('sec.', 'podpress').' 30 '.__('msec.', 'podpress'),
+				'hoursminutessecondsmilliseconds' => '1 '._n('hour', 'hours', 1, 'podpress').' 23 '. _n('minute', 'minutes', 23, 'podpress').' 45 '. _n('second', 'seconds', 45, 'podpress').' 30 '. _n('millisecond', 'milliseconds', 30, 'podpress')
+				);
+			}
+//			$duration_dividers = Array('colon' => '1:23:45:30', 'hminsms' => __('1 h 23 min 45 s 30 ms', 'podpress'), 'hrminsecmsec' => __('1 hr 23 min 45 sec 30 msec', 'podpress'), 'hoursminutessecondsmilliseconds' => __('1 hour 23 minutes 45 seconds 30 milliseconds', 'podpress'));
+			if ( FALSE == isset($this->settings['contentDurationdivider']) ) {
+				$this->settings['contentDurationdivider'] = 'colon';
+			}
+			foreach ($duration_dividers as $duration_divider => $divider_name) {
+				if ( $this->settings['contentDurationdivider'] == $duration_divider ) {
+					echo '						<option value="'.$duration_divider.'" selected="selected">'.$divider_name.'</option>'."\n";
+				} else {
+					echo '						<option value="'.$duration_divider.'">'.$divider_name.'</option>'."\n";
+				}
+			}
+			echo '					</select>'."\n";
 			echo '				</td>'."\n";
-			echo '				<td>'.__('Display the duration for each media file.', 'podpress').'</td>'."\n";
+			echo '			</tr> '."\n";
+			
+			echo '			<tr>'."\n";
+			echo '				<th><label for="contentfilesize">'.__('Show File Size:', 'podpress').'</label></th>'."\n";
+			echo '				<td>'."\n";
+			echo '					<select name="contentfilesize" id="contentfilesize">'."\n";
+			echo '						<option value="enabled" '; if($this->settings['contentfilesize'] == 'enabled') { echo 'selected="selected"'; }  echo '>'.__('Enabled', 'podpress').'</option>'."\n";
+			echo '						<option value="disabled" '; if(FALSE == isset($this->settings['contentfilesize']) OR $this->settings['contentfilesize'] == 'disabled') { echo 'selected="selected"'; } echo '>'.__('Disabled', 'podpress').'</option>'."\n";
+			echo '					</select>'."\n";
+			echo '				</td>'."\n";
+			echo '				<td class="podpress_settings_description_cell">'.__('Display the file size (in MB) for each media file.', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
 
 			echo '			<tr>'."\n";
 			echo '				<th><label for="contentBeforeMore">'.__('Always before the &lt;!- More -&gt; tag:', 'podpress').'</label></th>'."\n";
-			echo '				<td>'."\n";
+			echo '				<td class="podpress_settings_description_cell">'."\n";
 			echo '					<select name="contentBeforeMore" id="contentBeforeMore">'."\n";
 			echo '						<option value="yes" '; if($this->settings['contentBeforeMore'] == 'yes') { echo 'selected="selected"'; } echo '>'.__('Yes', 'podpress').'</option>'."\n";
 			echo '						<option value="no" '; if($this->settings['contentBeforeMore'] != 'yes') { echo 'selected="selected"'; }  echo '>'.__('No', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
 			echo '				</td>'."\n";
-			echo '				<td>'.__('This defines that the player and the download links will always be visible on the short version of a post.', 'podpress').'</td>'."\n";
+			echo '				<td class="podpress_settings_description_cell">'.__('This defines that the player and the download links will always be visible on the short version of a post.', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
 			
-			
-			//~ switch ($this->settings['incontentandexcerpt']) {
-				//~ default :
-				//~ case 'in_content_and_excerpt' :
-					//~ $selected_cae = ' selected="selected"';
-					//~ $selected_co = '';
-					//~ $selected_eo = '';
-				//~ break;
-				//~ case 'in_content_only' :
-					//~ $selected_cae = '';
-					//~ $selected_co = ' selected="selected"';
-					//~ $selected_eo = '';
-				//~ break;
-				//~ case 'in_excerpt_only' :
-					//~ $selected_cae = '';
-					//~ $selected_co = '';
-					//~ $selected_eo = ' selected="selected"';
-				//~ break;
-			//~ }
 			$incontentandexcerpt_vals = Array('in_content_and_excerpt' => __('in content sections and excerpts', 'podpress'), 'in_content_only' => __('in content sections only', 'podpress'), 'in_excerpt_only' => __('in excerpts only', 'podpress'));
-
 			echo '			<tr>'."\n";
 			echo '				<th><label for="incontentandexcerpt">'.__('Show the podPress elements in the content sections and the excerpts?', 'podpress').'</label></th>'."\n";
-			echo '				<td>'."\n";
+			echo '				<td colspan="2" class="podpress_settings_description_cell">'."\n";
 			echo '					<select name="incontentandexcerpt" id="incontentandexcerpt">'."\n";
 			foreach ($incontentandexcerpt_vals as $value => $optiontext) {
 				if ( $this->settings['incontentandexcerpt'] == $value ) {
@@ -646,12 +739,8 @@ License:
 					echo '						<option value="'.$value.'">'.$optiontext.'</option>'."\n";
 				}
 			}
-			//~ echo '						<option value="in_content_and_excerpt"'.$selected_cea.'>'.__('in the content and the excerpt', 'podpress').'</option>'."\n";
-			//~ echo '						<option value="in_content_only"'.$selected_co.'>'.__('in the content only', 'podpress').'</option>'."\n";
-			//~ echo '						<option value="in_excerpt_only"'.$selected_eo.'>'.__('in the excerpt only', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
-			echo '				</td>'."\n";
-			echo '				<td>'.sprintf(__('Determine whether the podPress elements (player or player preview, download link, icon, etc.) should be visible in the content sections and the excerpts of posts and pages. (default: %1$s)', 'podpress'), __('in content sections and excerpts', 'podpress')).'</td>'."\n";
+			echo '				'.sprintf(__('Determine whether the podPress elements (player or player preview, download link, icon, etc.) should be visible in the content sections and the excerpts of posts and pages. (default: %1$s)', 'podpress'), __('in content sections and excerpts', 'podpress')).'</td>'."\n";
 			echo '			</tr> '."\n";
 			
 			if ( TRUE == isset($this->settings['do_not_use_the_target_attribute']) AND TRUE === $this->settings['do_not_use_the_target_attribute'] ) {
@@ -664,7 +753,7 @@ License:
 			echo '				<td>'."\n";
 			echo '					<input type="checkbox" name="do_not_use_the_target_attribute" id="do_not_use_the_target_attribute" value="yes"'.$checked.' />'."\n";
 			echo '				</td>'."\n";
-			echo '				<td>'.__('If your theme uses a <a href="http://en.wikipedia.org/wiki/Document_Type_Declaration" target="_blank" title="en.Wikipedia: Document Type Declaration">DOCTYPE</a> which does not allow "target" attributes in hyper links (e.g. XHTML 1.0 Strict) then you can use this option to prompt podPress to create valid code for your theme. (default: not checked)', 'podpress').'</td>'."\n";
+			echo '				<td class="podpress_settings_description_cell">'.__('If your theme uses a <a href="http://en.wikipedia.org/wiki/Document_Type_Declaration" target="_blank" title="en.Wikipedia: Document Type Declaration">DOCTYPE</a> which does not allow "target" attributes in hyper links (e.g. XHTML 1.0 Strict) then you can use this option to prompt podPress to create valid code for your theme. (default: not checked)', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
 			echo '		</table>'."\n";
 			echo '	</fieldset>'."\n";
@@ -685,7 +774,7 @@ License:
 			echo '		</table>'."\n";
 			echo '	</fieldset>'."\n";
 			*/
-
+			
 			echo '	<fieldset class="options">'."\n";
 			echo '		<legend>'.__('System Information', 'podpress').'</legend>'."\n";
 			echo '		<table class="editform podpress_settings_table">'."\n";
@@ -698,7 +787,7 @@ License:
 			echo '				</td>'."\n";
 			echo '			</tr> '."\n";
 			echo '			<tr>'."\n";
-			echo '				<th>&nbsp;</th>'."\n";
+			echo '				<th></th>'."\n";
 			echo '				<td>'.__('If you are using the index.php from optional_files in your main WordPress directory then you should set this value to match the $podPressFeedCacheDir value.', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
 			echo '			<tr>'."\n";
@@ -719,6 +808,45 @@ License:
 			}
 			echo ' '.sprintf(__('By default this constant is set to %2$s and is defined in the podpress.php file. If it is defined as %1$s then podPress logs its activities during the process of the detection of the file size, duration and ID3 tag information to a file with the name podpress_log.dat in the podPress folder.', 'podpress'), 'TRUE', 'FALSE').'</p>'.$errormsg.'</td>'."\n";
 			echo '			</tr> '."\n";
+			$version_from_db = get_option('podPress_version');
+			if ( TRUE == version_compare($version_from_db, constant('PODPRESS_VERSION'), '>') ) {
+				$set_version_back_to = '8.8.9';
+				echo '			<tr>'."\n";
+				echo '				<th><span class="podpress_error">'.__('Version Conflict', 'podpress').'</span></th>'."\n";
+				echo '				<td>'.sprintf(__('The current podPress version is smaller than the version number which has been stored previously in the db: %1$s &lt; %2$s. You have had probably installed a podPress version with a higher version number. (Maybe you have tested a Development Version.) The difference between these two version numbers indicates that maybe some db entries are not up to date or settings are not right because the update procedure has not been started. This may cause various problems with the Feeds and the appearance of the podcast episodes in the posts.', 'podpress'), constant('PODPRESS_VERSION'), $version_from_db).'<br /><label for="version_set_back_to">'.sprintf(__('Set the version number in the db back to %1$s (to start possibly necessary upgrade actions):', 'podpress'), $set_version_back_to).'</label> <input type="checkbox" id="version_set_back_to" name="podpress_version_set_back_to" value="'.$set_version_back_to.'" /></td>'."\n";
+				echo '			</tr> '."\n";
+			} elseif ( TRUE == version_compare($version_from_db, constant('PODPRESS_VERSION'), '<') ) {
+				echo '			<tr>'."\n";
+				echo '				<th><span class="podpress_error">'.__('Version Conflict', 'podpress').'</span></th>'."\n";
+				echo '				<td>'.sprintf(__('The version number in the db is smaller than the current podPress version: %1$s &lt; %2$s. That means most likely that the upgrade process is uncomplete. Because of that, it is possible that you experience problems with the Feeds and the appearance of the podcast episode in the posts. You may ask in the <a href="http://wordpress.org/tags/podpress" target="_blank">WordPress.org Forum</a> for help (Please, use "podpress" as a tag).', 'podpress'), $version_from_db, constant('PODPRESS_VERSION')).'</td>'."\n";
+				echo '			</tr> '."\n";
+			} else {
+				echo '			<tr>'."\n";
+				echo '				<th>'.__('current podPress version', 'podpress').'</th>'."\n";
+				echo '				<td>'.constant('PODPRESS_VERSION').'</td>'."\n";
+				echo '			</tr> '."\n";
+			}
+			
+			$all_plugins = get_plugins();
+			$podpress_version = $all_plugins[plugin_basename(dirname(__FILE__).'/podpress.php')]['Version'];
+			if ( TRUE == version_compare($podpress_version, '8.8.10', '>=') ) {
+				$nr_old_meta_keys_podPressMedia = intval($wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) as old_meta_keys FROM ".$wpdb->prefix."postmeta WHERE meta_key = 'podPressMedia'" )));
+				$nr_old_meta_keys_podPressPostSpecific = intval($wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) as old_meta_keys FROM ".$wpdb->prefix."postmeta WHERE meta_key = 'podPressPostSpecific'" )));
+				if ( ($nr_old_meta_keys_podPressMedia + $nr_old_meta_keys_podPressPostSpecific) > 0 ) {
+					echo '			<tr>'."\n";
+					echo '				<th><span class="podpress_error">'.__('old meta_key names detected', 'podpress').'</span></th>'."\n";
+					echo '				<td><p>podPressMedia: '.$nr_old_meta_keys_podPressMedia.'<br />podPressPostSpecific: '.$nr_old_meta_keys_podPressPostSpecific.'</p><input type="checkbox" id="add_underscore_to_old_meta_keys" name="podpress_add_underscore_to_old_meta_keys" value="yes" /> <label for="add_underscore_to_old_meta_keys">'.sprintf(__('Rename all meta_keys with the values podPressMedia to _podPressMedia and podPressPostSpecific to _podPressPostSpecific', 'podpress'), $set_version_back_to).'</label></td>'."\n";
+					echo '			</tr> '."\n";
+				}
+			}
+			
+			if ( TRUE == version_compare($podpress_version, constant('PODPRESS_VERSION'), '!=') ) {
+				echo '			<tr>'."\n";
+				echo '				<th><span class="podpress_error">'.__('Version Conflict', 'podpress').'</span></th>'."\n";
+				echo '				<td><p>'.sprintf(__('podPress version: %1$s','podpress'), $podpress_version).'<br />PODPRESS_VERSION: '.constant('PODPRESS_VERSION').'<br />'.sprintf(__('version number from the db: %1$s','podpress'), $version_from_db).'</p></td>'."\n";
+				echo '			</tr> '."\n";
+			}
+
 			echo '		</table>'."\n";
 			echo '	</fieldset>'."\n";
 
@@ -745,7 +873,7 @@ License:
 			echo '			<tr>'."\n";
 			echo '				<th><label for="donation_button">'.__('Donations Appreciated:', 'podpress').'</label></th>'."\n";
 			echo '				<td>'."\n";
-			echo '					<a id="donation_button" href="http://www.mightyseek.com/podpress_donate.php"><img alt="'.__('Donate to support the original author of this project', 'podpress').'" border="0" src="https://www.paypal.com/en_US/i/btn/x-click-but04.gif" /></a>'."\n";
+			echo '					<a id="donation_button" href="http://www.mightyseek.com/podpress_donate.php" title="'.__('Donation button of the original author of this project Dan Kuykendall (seek3r)', 'podpress').'" target="_blank"><img alt="'.__('Donation button of the original author of this project Dan Kuykendall (seek3r)', 'podpress').'" border="0" src="'.PODPRESS_URL.'/images/x-click-but04.gif" /></a>'."\n";
 			echo '				</td>'."\n";
 			echo '			</tr> '."\n";
 			echo '			<tr>'."\n";
@@ -819,7 +947,7 @@ License:
 			if(function_exists('wp_cache_flush')) {
 				wp_cache_flush();
 			}
-			// settings for the player
+			
 			if(isset($_POST['mediaWebPath'])) {
 				$mediaWebPath = trim($_POST['mediaWebPath']);
 				$mediaWebPath = rtrim($mediaWebPath, '/');
@@ -830,7 +958,7 @@ License:
 				$mediaFilePath = trim($_POST['mediaFilePath']);
 				$mediaFilePath = rtrim($mediaFilePath, '/');
 				$mediaFilePath = rtrim($mediaFilePath, '\\');
-				$this->settings['mediaFilePath'] = htmlspecialchars(strip_tags($mediaFilePath), ENT_QUOTES, $blog_charset);
+				$this->settings['mediaFilePath'] = strip_tags($mediaFilePath);
 			}
 
 			if(isset($_POST['enableStats'])) {
@@ -869,7 +997,13 @@ License:
 			if(isset($_POST['maxMediaFiles'])) {
 				$this->settings['maxMediaFiles'] = intval(preg_replace('/[^0-9]/', '', $_POST['maxMediaFiles']));
 			}
-
+			
+			if ( TRUE == isset($_POST['activate_podpressmedia_search']) AND 'true' == $_POST['activate_podpressmedia_search'] ) {
+				$this->settings['activate_podpressmedia_search'] = TRUE;
+			} else {
+				$this->settings['activate_podpressmedia_search'] = FALSE;
+			}
+			
 			if(isset($_POST['enablePodangoIntegration'])) {
 				$this->settings['enablePodangoIntegration'] = true;
 			} else {
@@ -892,7 +1026,7 @@ License:
 				$this->settings['enablePremiumContent'] = false;
 			}
 
-			// ntm: this not active because there is no further line of code outside this file which uses this protectedMediaFilePath
+			// ntm: this is not active because there is no further line of code outside this file which uses this protectedMediaFilePath
 			//~ if(isset($_POST['protectedMediaFilePath'])) {
 				//~ $this->settings['protectedMediaFilePath'] = $_POST['protectedMediaFilePath'];
 			//~ }
@@ -951,21 +1085,50 @@ License:
 				$this->settings['contentDownloadStats'] = $_POST['contentDownloadStats'];
 			}
 
-			if(isset($_POST['contentDuration'])) {
-				$this->settings['contentDuration'] = $_POST['contentDuration'];
+			if ( TRUE == isset($_POST['contentDuration'])) {
+				$duration_schemes = Array('h:m:s', 'm:s', 'h:m:s:ms', 'm:s:ms', 's:ms', 'h', 'm', 's', 'ms');
+				if ( TRUE == in_array($_POST['contentDuration'], $duration_schemes) OR 'disabled' == $_POST['contentDuration']) {
+					$this->settings['contentDuration'] = $_POST['contentDuration'];
+				} else {
+					$this->settings['contentDuration'] = 'h:m:s';
+				}
 			}
 			
-			$incontentandexcerpt_vals = Array('in_content_and_excerpt', 'in_content_only', 'in_excerpt_only');
-			if ( isset($_POST['incontentandexcerpt']) AND TRUE == in_array($_POST['incontentandexcerpt'], $incontentandexcerpt_vals) ) {
-				$this->settings['incontentandexcerpt'] = $_POST['incontentandexcerpt'];
-			} else {
-				$this->settings['incontentandexcerpt'] = 'in_content_and_excerpt';
+			if ( TRUE == isset($_POST['contentDurationdivider']) ) {
+				$duration_dividers = Array('colon', 'hminsms', 'hrminsecmsec', 'hoursminutessecondsmilliseconds');
+				if ( TRUE == in_array($_POST['contentDurationdivider'], $duration_dividers)) {
+					$this->settings['contentDurationdivider'] = $_POST['contentDurationdivider'];
+				} else {
+					$this->settings['contentDurationdivider'] = 'colon';
+				}
+			}
+			
+			if ( TRUE == isset($_POST['contentfilesize']) AND ('disabled' === $_POST['contentfilesize'] OR 'enabled' === $_POST['contentfilesize']) ) {
+				$this->settings['contentfilesize'] = $_POST['contentfilesize'];
+			}
+			
+			if ( TRUE == isset($_POST['incontentandexcerpt']) ) {
+				$incontentandexcerpt_vals = Array('in_content_and_excerpt', 'in_content_only', 'in_excerpt_only');
+				if (TRUE == in_array($_POST['incontentandexcerpt'], $incontentandexcerpt_vals) ) {
+					$this->settings['incontentandexcerpt'] = $_POST['incontentandexcerpt'];
+				} else {
+					$this->settings['incontentandexcerpt'] = 'in_content_and_excerpt';
+				}
 			}
 			
 			if ( isset($_POST['do_not_use_the_target_attribute']) ) {
 				$this->settings['do_not_use_the_target_attribute'] = TRUE;
 			} else {
 				$this->settings['do_not_use_the_target_attribute'] = FALSE;
+			}
+			
+			if ( TRUE == isset($_POST['metaboxforcustomposttypes']) AND TRUE == is_array($_POST['metaboxforcustomposttypes']) ) {
+				$this->settings['metaboxforcustomposttypes'] = $_POST['metaboxforcustomposttypes'];
+			} else {
+				$this->settings['metaboxforcustomposttypes'] = Array();
+				if ( FALSE == isset($_POST['metaboxforcustomposttypes']) ) {
+					unset($this->settings['metaboxforcustomposttypes']);
+				}
 			}
 			
 			if(isset($_POST['enableFooter'])) {
@@ -997,8 +1160,22 @@ License:
 				$wpdb->query($sql);
 			}
 			
+			if ( TRUE == isset($_POST['podpress_add_underscore_to_old_meta_keys']) ) {
+				// rename the post specific settings and the media meta keys. 
+				$wpdb->query( $wpdb->prepare( "UPDATE ".$wpdb->prefix."postmeta SET meta_key = '_podPressPostSpecific' WHERE meta_key = 'podPressPostSpecific'" ) );
+				$wpdb->query( $wpdb->prepare( "UPDATE ".$wpdb->prefix."postmeta SET meta_key = '_podPressMedia' WHERE meta_key = 'podPressMedia'" ) );
+				
+				// update the version number in the db
+				$current = constant('PODPRESS_VERSION');
+				update_option('podPress_version', $current);
+			}
+			
+			if ( TRUE == isset($_POST['podpress_version_set_back_to']) ) {
+				update_option( 'podPress_version', strip_tags(trim($_POST['podpress_version_set_back_to'])) );
+			}
+			
 			$result = podPress_update_option('podPress_config', $this->settings);
-			if ( TRUE === $result ) {
+			if ( FALSE !== $result ) {
 				$location = get_option('siteurl') . '/wp-admin/admin.php?page=podpress/podpress_general.php&updated=true';
 			} else {
 				$location = get_option('siteurl') . '/wp-admin/admin.php?page=podpress/podpress_general.php&updated=false';

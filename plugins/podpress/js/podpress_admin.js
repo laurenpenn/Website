@@ -56,13 +56,28 @@ function podPressCheckForNotSafeFilenameChr( VarNum, str ) {
 }
 
 /**
+* podPress_show_HTML5_player_always - deactivate this option when "Use HTML5 tags" is deactivated (used in podpress_admin_player_class.php)
+* @package podPress
+* @since 8.8.10
+* @param String id_o - the id of the main checkbox
+* @param String id_t - the id of the target element
+*/
+function podPress_show_HTML5_player_always(id_o, id_t) {
+	if ( document.getElementById(id_o).checked == false ) {
+		document.getElementById(id_t).checked = false;
+		document.getElementById(id_t).disabled = true;
+	} else {
+		document.getElementById(id_t).disabled = false;
+	}
+}
+
+
+/**
 * podPress_getfileinfo - retrieve information about a media file with AJAX
-*
 * @package podPress
 * @since 8.8.9.2
-*
 * @param String rqtype - the identifier of the action
-* @param Numeric rqtype - the index of the 
+* @param Numeric VarNum - the index of the 
 */
 function podPress_getfileinfo(rqtype, VarNum) {
 	var mediaUrlField = document.getElementById('podPressMedia_'+VarNum+'_URI');
@@ -380,13 +395,13 @@ function podPress_set_CategoryPreview(val) {
 }
 
 function podPress_updateFeedSettings() {
-	//~ podPress_set_blognamePreview(document.getElementById('blogname').value);
+	podPress_set_blognamePreview(document.getElementById('blogname').innerHTML);
 
 	if(document.getElementById('iTunesSummary').value == '') {
-		if(document.getElementById('blogdescription').value == '') {
+		if(document.getElementById('blogdescription').innerHTML == '') {
 			podPress_set_descriptionPreview(podpressL10.noiTunesSummary);
 		} else {
-			podPress_set_descriptionPreview(document.getElementById('blogdescription').value);
+			podPress_set_descriptionPreview(document.getElementById('blogdescription').innerHTML);
 		}
 	} else {
 		podPress_set_descriptionPreview(document.getElementById('iTunesSummary').value);
@@ -872,6 +887,8 @@ function podPressDetectType(VarNum) {
 		var extOfMedia = podPressMediaFiles[VarNum]['URI'].substring(lenOfMedia-2, lenOfMedia);
 	} else if(podPressMediaFiles[VarNum]['URI'].substring(lenOfMedia-4, lenOfMedia-3) == '.') {
 		var extOfMedia = podPressMediaFiles[VarNum]['URI'].substring(lenOfMedia-3, lenOfMedia);
+	} else if(podPressMediaFiles[VarNum]['URI'].substring(lenOfMedia-5, lenOfMedia-4) == '.') {
+		var extOfMedia = podPressMediaFiles[VarNum]['URI'].substring(lenOfMedia-4, lenOfMedia);
 	} else {
 		var extOfMedia = '';
 	}
@@ -897,6 +914,7 @@ function podPressDetectType(VarNum) {
 		case 'flv': result = 'video_flv'; break
 		case 'swf': result = 'video_swf'; break
 		case 'pdf': result = 'ebook_pdf'; break
+		case 'epub': result = 'ebook_epub'; break
 		case 'torrent': result = 'misc_torrent'; break
 		case 'youtube': result = 'embed_youtube'; break
 		default: result = 'misc_other';

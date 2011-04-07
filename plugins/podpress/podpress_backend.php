@@ -38,7 +38,6 @@ if ( isset($_GET['action']) OR isset($_POST['action']) ) {
 			$action_param = strtolower($_GET['action']);
 			podpress_var_dump('podpress_backend.php - param filename: '.var_export(stripslashes($_GET['filename']), TRUE));
 		}
-
 		
 		switch( $action_param ) {
 			case 'size':

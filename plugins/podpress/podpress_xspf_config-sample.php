@@ -1,7 +1,15 @@
 <?php
-/* podPress Options File for podPress v8.8.9 or higher */
-/* file rev. 2.0 */
-// If you want to use custom skins for the XSPF players then edit this file and rename it to podpress_xspf_config.php, create a folder called podpress_options as a sub folder of the plugins folder e.g. /wp-content/plugins/podpress_options (by default part of the PODPRESS_OPTIONS_URL) and copy this file to this folder.
+/** 
+* podPress XSPF options file for podPress v8.8.9 or higher 
+* - If you want to use custom skin files or custom variables for the XSPF players then use this file.
+* rev. 2.1 
+*/
+
+// Usage:
+// - Create a new folder in the plugins folder of your blog with the name podpress_options (e.g. /wp-content/plugins/podpress_options/).
+// - Copy the podpress_xspf_config-sample.php file to this folder.
+// - Rername the file to podpress_xspf_config.php.
+// - Configure the settings in this file.
 
 // Begin - XSPF Jukebox player configuration:
 // It is possible to define these constants for each blog in a multi site blog installation. All of these constants are ending with an underscore and a number. This number is the blog ID. 1 is the ID of the first resp. main blog. In a single blog installation the blog as the ID 1.
@@ -41,7 +49,7 @@ if ( ! defined( 'PODPRESS_XSPF_BACKGROUND_COLOR_1' ) ) { define( 'PODPRESS_XSPF_
 if ( ! defined('PODPRESS_XSPF_SHOW_PREVIEW_IMAGE_1') ) { define('PODPRESS_XSPF_SHOW_PREVIEW_IMAGE_1', TRUE); }
 
 // podPress uses the parameters: &autoload=true&autoplay=false&loaded=true to load the XSPF player
-// If you want to use custom parameters then uncomment the following lines and edit or replace the variables.txt files in the folders /podpress/players/xspf_jukebox/dynamic/ and /podpress/players/xspf_jukebox/dynamic_slim/.
+// If you want to use custom parameters then uncomment the following lines and edit or replace the variables_{blog ID}.txt (e.g. variables_1.txt) files in the folders /wp-content/plugins/podpress_options/xspf_options/variables and /wp-content/plugins/podpress_options/xspf_options/variables_slim/.
 //~ if ( ! defined('PODPRESS_XSPF_USE_CUSTOM_VARIABLES_1') ) { define('PODPRESS_XSPF_USE_CUSTOM_VARIABLES_1', TRUE); }
 //~ if ( ! defined('PODPRESS_XSPF_SLIM_USE_CUSTOM_VARIABLES_1') ) { define('PODPRESS_XSPF_SLIM_USE_CUSTOM_VARIABLES_1', TRUE); }
 

@@ -29,6 +29,34 @@
 	display:inline;
 }
 
+a.podpress_play_button {
+	display:block;
+	width:32px;
+	height:32px;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+a.podpress_play_button:hover, a.podpress_play_button:focus, a.podpress_play_button:active { 
+	background-repeat: no-repeat;
+	background-position: -32px 0px;
+}
+
+.podpress_notice, .podpress_error {
+	border-style:solid;
+	border-width:1px;
+	-moz-border-radius:3px;
+	padding: 2px 0.6em 2px 0.6em;
+	margin: 0.5em 0;
+}
+.podpress_notice {
+	background-color: #FFFFE0;
+	border-color:#E6DB55;
+}
+.podpress_error {
+	background-color: #FFEBE8;
+	border-color:#CC0000;
+}
+
 #podPress_footer {
 	text-align:center;
 }
@@ -101,14 +129,11 @@
 	margin: 0px;
 	padding:0px;
 	border:0px;
-	/* background-color:#ee9999; */
 } 
 .podpress_playerspace  {
-	/* clear:both; */
 	padding:0px !important;
-	margin: 15px 0px 0px 0px;
+	margin: 15px 0px 0em 0px;
 	border:0px !important;
-	/* background-color:#ee9966; */
 }
 .podpress_playerspace img {
 	text-align:center !important;
@@ -119,24 +144,30 @@
 .podpress_mp3player  object, .podpress_mp3player  embed {
 	display:block;
 }
-.podPress_downloadlinks {
-	/*clear:both;
-	 background-color:#99ee99; */
-	margin:0.5em 0px 1em 0px;
-	padding:0px !important;
-	border:0px !important;
-	font-size: 75% !important;
-	line-height:15px !important;
-	height:15px;
-}
-
-/* uncomment this to hide the "Play Now" link
-.podPress_playerspace_playlink {
-	display:none;
-}
-*/
 .podPress_videoplayer_wrapper:hover {
 	cursor:pointer;
+}
+
+/* downloadlink styles (the elements below the player)  */
+.podPress_downloadlinks {
+	display:block;
+	width:100%;
+	margin:0.5em 0px 1em 0px;
+	padding:1px 0px 0px 0px !important;
+	border:0px !important;
+	font-size: 0.75em !important;
+	line-height:15px !important;
+}
+.podPress_downloadlinks img {
+	padding:0px !important;
+	margin:0px !important;
+}
+.podpress_mediafile_title {
+	margin-left:0.4em;
+	margin-right:0.4em;
+}
+.podpress_mediafile_dursize {
+	margin-right:0.4em;
 }
 
 /* Navi
@@ -149,6 +180,7 @@ these CSS are now in podpress_admin_statistics.css
 these CSS are now in podpress_admin_statistics.css
 */
 
+/* widget styles */
 .podpress_feed_buttons {
 	border-style:none;
 }

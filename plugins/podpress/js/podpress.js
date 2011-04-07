@@ -225,9 +225,13 @@
 					var strAutoPlay = ' autoplay="autoplay"';
 				} else {
 					var strAutoPlay = '';
-				}				
-				strResult = '<' + strTag + ' controls="controls"' + strAutoPlay + '>';
-				strResult += '<source src="'+strMediaFile+'" type="' + strTag + '/ogg" />';
+				}
+				// Gecko since 1.9.1 and Presto since 2.5 support OGG Audio and Video in the HTML 5 <audio> and <video> element.
+				if ( podPressHTML5 == true && (-1 != navigator.userAgent.search(/rv:([0-9]\.*[0-9]*\.*[0-9]*\.*[0-9]*)\) Gecko/gi) && true == podPress_is_v1_gtoreq_v2(RegExp.$1, '1.9.1')) || (-1 != navigator.userAgent.search(/Presto\/([0-9]\.*[0-9]*\.*[0-9]*\.*[0-9]*)/gi) && true == podPress_is_v1_gtoreq_v2(RegExp.$1, '2.5')) ) {
+					strResult = '<' + strTag + ' controls="controls" preload="none"' + strAutoPlay + '>';
+					strResult += '<source src="'+strMediaFile+'" type="' + strTag + '/ogg" />';
+					var use_html5 = true;
+				} else {
 					strResult += '<object class="podpress_player_object" classid="clsid:CAFEEFAC-0015-0000-0000-ABCDEFFEDCBA" type="application/x-java-applet;jpi-version=1.5.0" width="'+numWidth+'" height="'+numHeight+'">';
 						strResult += '<param name="code" value="com.fluendo.player.Cortado.class" />';
 						if ( true == podPress_cortado_signed ) {
@@ -255,7 +259,11 @@
 							strResult += '</embed>';
 						strResult += '</comment>';
 					strResult += '</object>';
-				strResult += '</' + strTag + '><br />';
+					var use_html5 = false;
+				}
+				if ( true == use_html5 ) {
+					strResult += '</' + strTag + '><br />';
+				}
 				break;
 			case 'youtube':
 				if(strAutoStart == 'true') {
@@ -366,29 +374,60 @@
 			}
 			refPlayerDiv.style.display='none';
 		}
-
-		if ( strExt == 'mp3' && podPressPlayerFile == '1pixelout_player.swf' ) {
-			if(strAutoStart == 'true') {
-				var valAutostart = 'yes'; 
-			} else {
-				var valAutostart = 'no'; 
+		
+		// WebKit supports since 525.x and Internet Explorer since 9.0 MP3 in the HTML 5 <audio> element.
+		if ( strExt == 'mp3' && podPressHTML5 == true && ( (-1 != navigator.userAgent.search(/Webkit\/([0-9]+\.[0-9]+)/gi) && true == podPress_is_v1_gtoreq_v2(RegExp.$1, '525')) ||  true == podPress_is_modern_ie() ) ) {
+			if ( strExt == 'mp3' && podPressPlayerFile == '1pixelout_player.swf' && true == podPressMP3PlayerWrapper ) {
+				var pobj = document.getElementById('podpress_lwc_' + strPlayerDiv);
+				pobj.innerHTML = '<div id="podPressPlayerSpace_' + strPlayerDiv + '"><!-- podPress --></div>';
+				pobj.removeAttribute('class');
+				pobj.style.backgroundImage = '';
 			}
-
-			if ( podPressOverwriteTitleandArtist == true && typeof strTitle != 'undefined' && typeof strArtist != 'undefined' && strTitle != 'undefined' && strArtist != 'undefined' && strTitle != '' && strArtist !='' ) {
-				podpressAudioPlayer.embed("podPressPlayerSpace_" + strPlayerDiv, { soundFile: encodeSource(strMediaFile), origSource: decodeURI(strMediaFile), encode: 'yes', width: 290, height: 24, autostart: valAutostart, titles: strTitle, artists: strArtist});
+			if ( strExt == 'mp3' && podPressPlayerFile == '1pixelout_player.swf' && false == podPressMP3PlayerWrapper ) {
+				document.getElementById('podPressPlayerSpace_' + strPlayerDiv).parentNode.setAttribute('class', 'podpress_playerspace');
+			}
+			if ( podPressHTML5_showplayersdirectly == true || -1 != navigator.userAgent.search(/iPhone|iPod|iPad/gi) ) {
+				podPressenprintHTML5audio(strPlayerDiv, strMediaFile);
 			} else {
-				podpressAudioPlayer.embed("podPressPlayerSpace_" + strPlayerDiv, { soundFile: encodeSource(strMediaFile), origSource: decodeURI(strMediaFile), encode: 'yes', width: 290, height: 24, autostart: valAutostart });
+				document.getElementById('podPressPlayerSpace_' + strPlayerDiv).innerHTML = '<a id="podpress_html5_play_'+ strPlayerDiv+'" href="javascript:void(null);" onclick="podPressenprintHTML5audio(\''+strPlayerDiv+'\', \'' + strMediaFile + '\', true);" class="podpress_play_button" title="' + podpressL10.playbutton + '" style="background-image:url('+podPressBackendURL+'images/play_button_dyn_v4_32.png);"></a>';
 			}
 		} else {
-			refPlayerDiv.innerHTML=podPressGeneratePlayer(strPlayerDiv, strMediaFile, numWidth, numHeight, strAutoStart, strPreviewImg);
+			if ( strExt == 'mp3' && podPressPlayerFile == '1pixelout_player.swf' ) {
+				if (strAutoStart == 'true') {
+					var valAutostart = 'yes'; 
+				} else {
+					var valAutostart = 'no'; 
+				}
+				if ( podPressOverwriteTitleandArtist == true && typeof strTitle != 'undefined' && typeof strArtist != 'undefined' && strTitle != 'undefined' && strArtist != 'undefined' && strTitle != '' && strArtist !='' ) {
+					podpressAudioPlayer.embed("podPressPlayerSpace_" + strPlayerDiv, { soundFile: podPressencodeSource(strMediaFile), origSource: decodeURI(strMediaFile), encode: 'yes', width: 290, height: 24, autostart: valAutostart, titles: strTitle, artists: strArtist});
+				} else {
+					podpressAudioPlayer.embed("podPressPlayerSpace_" + strPlayerDiv, { soundFile: podPressencodeSource(strMediaFile), origSource: decodeURI(strMediaFile), encode: 'yes', width: 290, height: 24, autostart: valAutostart });
+				}
+			} else {
+				refPlayerDiv.innerHTML=podPressGeneratePlayer(strPlayerDiv, strMediaFile, numWidth, numHeight, strAutoStart, strPreviewImg);
+			}
 		}
 	}
 
-	//~ Encodes the given string
-	//~ This function is the JS equivalent of the function with the same name of the WP Audio Player plugin (http://wpaudioplayer.com/standalone)
-	//~ @return the encoded string
-	//~ @param str String the string to encode
-	function encodeSource(str) {
+	/**podPressenprintHTML5audio - inserts the HTML5 audio element
+	* @param strPlayerDiv String - ID number of the target element
+	* @param strMediaFile String - URL of the media file
+	*/
+	function podPressenprintHTML5audio(strPlayerDiv, strMediaFile, playnow) {
+		if (typeof playnow != 'boolean') { var playnow = false; }
+		if ( playnow == true ) {
+			document.getElementById('podPressPlayerSpace_' + strPlayerDiv).innerHTML = '<audio id="podpresshtml5_'+strPlayerDiv+'" controls="controls" preload="auto" autoplay="true"><source src="' + decodeURI(strMediaFile) + '" type="audio/mpeg" /></audio>';
+		} else {
+			document.getElementById('podPressPlayerSpace_' + strPlayerDiv).innerHTML = '<audio id="podpresshtml5_'+strPlayerDiv+'" controls="controls" preload="none"><source src="' + decodeURI(strMediaFile) + '" type="audio/mpeg" /></audio>';
+		}
+	}
+	
+	
+	/** podPressencodeSource - Encodes the given string. This function is the JS equivalent of the function with the same name of the WP Audio Player plugin (http://wpaudioplayer.com/standalone)
+	* @param str String - the string to encode
+	* @return String - the encoded string
+	*/
+	function podPressencodeSource(str) {
 		var str = unescape(str);
 		var str = encodeURIComponent(str);
 		var str = unescape(str);
@@ -404,6 +443,62 @@
 			str += codekey.substr( parseInt(ntexto.substr( i, 6), 2), 1 );
 		}
 		return str;
+	}
+	
+	/** podPress_compare_v1_v2 - compares to version strings or numbers
+	* @param v1 String or Number
+	* @param v2 String or Number
+	* @return mixed - returns "lt" in case v1 is lower than v2, "gt" in case v1 is greater than v2, "eq" in case v1 is equal to v2 or false in case v1 and v2 are a string (which is not empty) or a number
+	*/
+	function podPress_compare_v1_v2(v1, v2) {
+		if ( ((typeof v1 == 'string' && false == podPress_is_emptystr(v1)) || typeof v1 == 'number') && ((typeof v2 == 'string' && false == podPress_is_emptystr(v1)) || typeof v2 == 'number') ) {
+			var v1_parts = String(v1).split('.');
+			var v2_parts = String(v2).split('.');
+			var l1 = v1_parts.length;
+			var l2 = v2_parts.length;
+			var minl = Math.min(l1, l2);
+			for (var i = 0; i < minl; i++ ) {
+				var l1int = parseInt(v1_parts[i]);
+				var l2int = parseInt(v2_parts[i]);
+				if ( l1int < l2int ) {
+					return 'lt';
+				} else if ( l1int > l2int ) {
+					return 'gt';
+				}
+			}
+			return 'eq';
+		} else {
+			return false;
+		}
+	}
+	
+	/** podPress_is_v1_gtoreq_v2 - checks whether v1 is greater than or equal to v2 or not
+	* @param v1 string or number
+	* @param v2 string or number
+	* @return bool - if v1 <= v2 then it is true else it is false
+	*/
+	function podPress_is_v1_gtoreq_v2(v1, v2) {
+		var vc = podPress_compare_v1_v2(v1, v2);
+		if ('gt' == vc || 'eq' == vc) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/** podPress_is_emptystr - checks whether a given value is an empty string or not
+	* @param val string 
+	* @return bool - if v1 <= v2 then it is true else it is false
+	*/	
+	function podPress_is_emptystr( val ) {
+		var str = String(val);
+		var str_trim = str.replace(/\s+$/, '');
+		str_trim = str_trim.replace(/^\s+/, '');
+		if (str_trim.length > 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}	
 	
 	function podPressPopupPlayer(strPlayerDiv, strMediaFile, numWidth, numHeight, windowName, postID, strTitle, strArtist) {
@@ -444,7 +539,20 @@
 		strResult += '<HEAD>\n';
 		strResult += '<TITLE>'+windowName+' - Popup Player</TITLE>\n';
 		strResult += '<link rel="stylesheet" id="podpress_frontend_styles-css"  href="'+podPressBackendURL+'podpress.css" type="text/css" media="all" />\n';
-		if ( strExt == 'mp3' && podPressPlayerFile == '1pixelout_player.swf' ) {
+		// WebKit supports since 525.x and Internet Explorer since 9.0 MP3 in the HTML 5 <audio> element.
+		if ( strExt == 'mp3' && podPressHTML5 == true && podPress_is_modern_ie() == true ) {
+			var is_modern_ie = true;
+			numWidth = numWidth + 200;
+			numHeight = numHeight + 50;
+		} else {
+			var is_modern_ie = false;
+		}
+		if ( strExt == 'mp3' && podPressHTML5 == true && ((-1 != navigator.userAgent.search(/Webkit\/([0-9]+\.[0-9]+)/gi) && true == podPress_is_v1_gtoreq_v2(RegExp.$1, '525')) || true == is_modern_ie ) ) {
+			var use_html5 = true;
+		} else {
+			var use_html5 = false;
+		}
+		if ( strExt == 'mp3' && podPressPlayerFile == '1pixelout_player.swf' && false == use_html5) {
 			strResult += '<script type="text/javascript" src="'+podPressBackendURL+'players/1pixelout/1pixelout_audio-player.js"></script>\n';
 			strResult += '<script type="text/javascript">\n//<![CDATA[\n';
 			strResult += '	podpressAudioPlayer.setup("'+podPressBackendURL+'players/1pixelout/'+podPressPlayerFile+'", {bg:"' + podPressPopupPlayerOpt.bg+ '", text:"' + podPressPopupPlayerOpt.text+ '", leftbg:"' + podPressPopupPlayerOpt.leftbg+ '", lefticon:"' + podPressPopupPlayerOpt.lefticon+ '", voltrack:"' + podPressPopupPlayerOpt.voltrack+ '", volslider:"' + podPressPopupPlayerOpt.volslider+ '", rightbg:"' + podPressPopupPlayerOpt.rightbg+ '", rightbghover:"' + podPressPopupPlayerOpt.rightbghover+ '", righticon:"' + podPressPopupPlayerOpt.righticon+ '", righticonhover:"' + podPressPopupPlayerOpt.righticonhover+ '", loader:"' + podPressPopupPlayerOpt.loader+ '", track:"' + podPressPopupPlayerOpt.track+ '", border:"' + podPressPopupPlayerOpt.border+ '", tracker:"' + podPressPopupPlayerOpt.tracker+ '", skip:"' + podPressPopupPlayerOpt.skip+ '", slider:"' + podPressPopupPlayerOpt.slider+ '", initialvolume:"' + podPressPopupPlayerOpt.initialvolume+ '", buffer:"' + podPressPopupPlayerOpt.buffer+ '", checkpolicy:"' + podPressPopupPlayerOpt.checkpolicy+ '", pagebg:"FFFFFF", transparentpagebg:"yes"} );\n';
@@ -456,21 +564,25 @@
 		strResult += '</HEAD>\n';
 		strResult += '<BODY>\n';
 		strResult += '<div id="podpress_popupplayer_container">\n';
-		if ( strExt == 'mp3' && podPressPlayerFile == '1pixelout_player.swf' ) {
-			if ( true == podPressMP3PlayerWrapper ) {
-				strResult += '<div class="podpress_listenwrapper_container" style="background-image:url('+podPressBackendURL+'images/listen_wrapper.gif);"><div class="podpress_mp3_borderleft"></div><div class="podpress_1pixelout_container"><div id="podPressPlayerSpace_1"></div></div></div>\n';
-			} else {
-				strResult += '<div id="podPressPlayerSpace_popup"></div>\n';
-			}
-			strResult += '<script type="text/javascript">\n//<![CDATA[\n';
-			if ( podPressOverwriteTitleandArtist == true && typeof strTitle != 'undefined' && typeof strArtist != 'undefined' && strTitle != 'undefined' && strArtist != 'undefined' && strTitle != '' && strArtist !='' ) {
-				strResult += '	podpressAudioPlayer.embed("podPressPlayerSpace_popup", { soundFile: "' + encodeSource(strMediaFile) + '", origSource: "' + decodeURI(strMediaFile) + '", encode: "yes", width: 290, height: 24, autostart: "yes", titles: "'+escape(strTitle)+'", artists: "'+escape(strArtist)+'" });\n';
-			} else {
-				strResult += '	podpressAudioPlayer.embed("podPressPlayerSpace_popup", { soundFile: "' + encodeSource(strMediaFile) + '", origSource: "' + decodeURI(strMediaFile) + '", encode: "yes", width: 290, height: 24, autostart: "yes" }); \n';
-			}
-			strResult += '//]]>\n</script>\n';
+		if ( true == use_html5 ) {
+			strResult += '<div id="podPressPlayerSpace_popup"><audio controls="controls" preload="metadata" autoplay="autoplay"><source src="' + decodeURI(strMediaFile) + '" type="audio/mpeg" /></audio></div>\n';
 		} else {
-			strResult +=  podPressGeneratePlayer('popup', strMediaFile, numWidth, numHeight, 'true');
+			if ( strExt == 'mp3' && podPressPlayerFile == '1pixelout_player.swf' ) {
+				if ( true == podPressMP3PlayerWrapper ) {
+					strResult += '<div class="podpress_listenwrapper_container" style="background-image:url('+podPressBackendURL+'images/listen_wrapper.gif);"><div class="podpress_mp3_borderleft"></div><div class="podpress_1pixelout_container"><div id="podPressPlayerSpace_popup"></div></div></div>\n';
+				} else {
+					strResult += '<div id="podPressPlayerSpace_popup"></div>\n';
+				}
+				strResult += '<script type="text/javascript">\n//<![CDATA[\n';
+				if ( podPressOverwriteTitleandArtist == true && typeof strTitle != 'undefined' && typeof strArtist != 'undefined' && strTitle != 'undefined' && strArtist != 'undefined' && strTitle != '' && strArtist !='' ) {
+					strResult += '	podpressAudioPlayer.embed("podPressPlayerSpace_popup", { soundFile: "' + podPressencodeSource(strMediaFile) + '", origSource: "' + decodeURI(strMediaFile) + '", encode: "yes", width: 290, height: 24, autostart: "yes", titles: "'+escape(strTitle)+'", artists: "'+escape(strArtist)+'" });\n';
+				} else {
+					strResult += '	podpressAudioPlayer.embed("podPressPlayerSpace_popup", { soundFile: "' + podPressencodeSource(strMediaFile) + '", origSource: "' + decodeURI(strMediaFile) + '", encode: "yes", width: 290, height: 24, autostart: "yes" }); \n';
+				}
+				strResult += '//]]>\n</script>\n';
+			} else {
+				strResult +=  podPressGeneratePlayer('popup', strMediaFile, numWidth, numHeight, 'true');
+			}
 		}
 		strResult += '</div>\n';
 		strResult += '<div id="podpress_backtoclose_container"><span id="podpress_popup_backto"><span>' + podpressL10.openblogagain + '</span><br /><a href="' + backlink + '" target="_blank">' +  backto_name + '</a></span><span id="podpress_popup_close"><a href="#close" onclick="closepopupwindow();">' + podpressL10.close + '</a></span></div>\n';
@@ -497,7 +609,18 @@
 			podpresswindow.location.reload();
 		}
 	}
-
+	
+	/** podPress_is_modern_ie - checks the current browser is an Internet Explorer 9.0 or newer
+	* @return bool
+	*/	
+	function podPress_is_modern_ie() {
+		if ( -1 != navigator.userAgent.search(/Trident\/([0-9]+\.[0-9]+)/gi) && true == podPress_is_v1_gtoreq_v2(RegExp.$1, '5') && -1 != navigator.userAgent.search(/MSIE\s([0-9]+\.[0-9]+)/gi)  && true == podPress_is_v1_gtoreq_v2(RegExp.$1, '9') ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	function podPressGetBaseName(file) {
 		var Parts = file.split('\\');
 		if( Parts.length < 2 ) {

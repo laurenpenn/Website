@@ -91,13 +91,35 @@ if (!function_exists('podPress_webContent')) {
 				$podPressDownloadlinks .= '</a>';
 			}
 
-			$podPressDownloadlinks .= ' &nbsp;';
-			$podPressDownloadlinks .= $podPressEpisodeTitle;
+			$podPressDownloadlinks .= ' ';
+			$podPressDownloadlinks .= '<span class="podpress_mediafile_title">'.$podPressEpisodeTitle.'</span>';
 
-			if ( $podPressTemplateData['showDuration'] == 'enabled' && !empty($val['duration']) ) {
-				$podPressDownloadlinks .= ' ['.$podPress->millisecondstostring($podPress->strtomilliseconds($val['duration']), 'h:m:s:ms').']';
-			}			
-
+			if ( isset($podPressTemplateData['showDuration']) AND 'disabled' != $podPressTemplateData['showDuration'] AND FALSE == empty($val['duration'])) {
+				if ( empty($podPressTemplateData['showDuration']) OR 'enabled' == $podPressTemplateData['showDuration'] ) {
+					$podPressTemplateData['showDuration'] = 'colon';
+				}
+				if ( isset($podPress->settings['contentDurationdivider']) ) {
+					$podPressDownloadlinks .= ' <span class="podpress_mediafile_dursize">[ '.$podPress->millisecondstostring($podPress->strtomilliseconds($val['duration']), 'h:m:s:ms', $podPress->settings['contentDurationdivider']);
+				} else {
+					$podPressDownloadlinks .= ' <span class="podpress_mediafile_dursize">[ '.$podPress->millisecondstostring($podPress->strtomilliseconds($val['duration']), 'h:m:s:ms');
+				}
+				$durationfilesizeseparator = ' | ';
+			} else {
+				$durationfilesizeseparator = ' <span class="podpress_mediafile_dursize">[ ';
+			}
+			
+			if ( 'enabled' == $podPressTemplateData['showfilesize'] AND FALSE == empty($val['size']) AND FALSE === stristr($val['type'], 'embed_') ) {
+				$size_mb = round(($val['size']/1048576), 2);
+				if ( 0.01 > $size_mb ) {
+					$size_mb = 0.01;
+				}
+				$podPressDownloadlinks .= $durationfilesizeseparator.$size_mb.' '.__('MB', 'podpress').' ]</span>';
+			} else {
+				if ( ' <span class="podpress_mediafile_dursize">[ ' != $durationfilesizeseparator) {
+					$podPressDownloadlinks .= ' ]</span>';
+				}
+			}
+			
 			if($val['enablePlayer'] || $val['enablePopup'] || $val['enableDownload'] || !$val['authorized']) {
 				$podPressDownloadlinks .= ' ';
 			}
@@ -131,7 +153,7 @@ if (!function_exists('podPress_webContent')) {
 					}
 				}
 
-				if($val['enablePopup']) {
+				if ( $val['enablePopup'] AND FALSE === strpos($val['type'], 'ebook_') ) {
 					if($dividerNeeded) {
 						$podPressDownloadlinks .= $divider;
 					}
@@ -170,8 +192,7 @@ if (!function_exists('podPress_webContent')) {
 			$podPressContentAll .= $podPressContent.apply_filters('podpress_downloadlinks', $podPressDownloadlinks);
 		}
 		if ($podPress->settings['contentAutoDisplayPlayer']) {
-			$podPressPlayBlockScripts = '<script type="text/javascript">'."\n".'<!--'.$podPressPlayBlockScripts;
-			$podPressPlayBlockScripts .= "\n".'-->'."\n".'</script>';
+			$podPressPlayBlockScripts = '<script type="text/javascript">'."\n".'<!--'.$podPressPlayBlockScripts."\n".'-->'."\n".'</script>';
 		}
 		return apply_filters('podpress_post_content', "<!-- Begin: podPress -->\n".'<div class="podPress_content">'.$podPressContentAll.'</div>'."\n".$podPressPlayBlockScripts."\n<!-- End: podPress -->\n");
 	}
@@ -219,6 +240,7 @@ if (!function_exists('podPress_defaultTitles')) {
 				return  __('YouTube', 'podpress');
 				break;
 			case 'ebook_pdf':
+			case 'ebook_epub':
 				return  __('eBook', 'podpress');
 				break;
 			case 'misc_torrent':

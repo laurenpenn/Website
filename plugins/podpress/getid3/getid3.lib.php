@@ -32,14 +32,6 @@ class getid3_lib
 		return $returnstring;
 	}
 
-	static function SafeStripSlashes($text) {
-		if (get_magic_quotes_gpc()) {
-			return stripslashes($text);
-		}
-		return $text;
-	}
-
-
 	static function trunc($floatnumber) {
 		// truncates a floating-point number at the decimal point
 		// returns int (if possible, otherwise float)
@@ -50,12 +42,21 @@ class getid3_lib
 		} else {
 			$truncatednumber = 0;
 		}
-		if ($truncatednumber <= 1073741824) { // 2^30
+		if (getid3_lib::intValueSupported($truncatednumber)) {
 			$truncatednumber = (int) $truncatednumber;
 		}
 		return $truncatednumber;
 	}
 
+
+	static function safe_inc(&$variable, $increment=1) {
+		if (isset($variable)) {
+			$variable += $increment;
+		} else {
+			$variable = $increment;
+		}
+		return true;
+	}
 
 	static function CastAsInt($floatnum) {
 		// convert to float if not already
@@ -64,7 +65,7 @@ class getid3_lib
 		// convert a float to type int, only if possible
 		if (getid3_lib::trunc($floatnum) == $floatnum) {
 			// it's not floating point
-			if ($floatnum <= 2147483647) { // 2^31
+			if (getid3_lib::intValueSupported($floatnum)) {
 				// it's within int range
 				$floatnum = (int) $floatnum;
 			}
@@ -72,6 +73,21 @@ class getid3_lib
 		return $floatnum;
 	}
 
+	public static function intValueSupported($num) {
+		// check if integers are 64-bit
+		static $hasINT64 = null;
+		if ($hasINT64 === null) { // 10x faster than is_null()
+			$hasINT64 = is_int(pow(2, 31)); // 32-bit int are limited to (2^31)-1
+			if (!$hasINT64 && !defined('PHP_INT_MIN')) {
+				define('PHP_INT_MIN', ~PHP_INT_MAX);
+			}
+		}
+		// if integers are 64-bit - no other check required
+		if ($hasINT64 || (($num <= PHP_INT_MAX) && ($num >= PHP_INT_MIN))) {
+			return true;
+		}
+		return false;
+	}
 
 	static function DecimalizeFraction($fraction) {
 		list($numerator, $denominator) = explode('/', $fraction);
@@ -169,8 +185,8 @@ class getid3_lib
 
 		$bitword = getid3_lib::BigEndian2Bin($byteword);
 		if (!$bitword) {
-            return 0;
-        }
+			return 0;
+		}
 		$signbit = $bitword{0};
 
 		switch (strlen($byteword) * 8) {
@@ -255,20 +271,14 @@ class getid3_lib
 		}
 		if ($signed && !$synchsafe) {
 			// synchsafe ints are not allowed to be signed
-			switch ($bytewordlen) {
-				case 1:
-				case 2:
-				case 3:
-				case 4:
-					$signMaskBit = 0x80 << (8 * ($bytewordlen - 1));
-					if ($intvalue & $signMaskBit) {
-						$intvalue = 0 - ($intvalue & ($signMaskBit - 1));
-					}
-					break;
-
-				default:
-					die('ERROR: Cannot have signed integers larger than 32-bits ('.strlen($byteword).') in getid3_lib::BigEndian2Int()');
-					break;
+			if ($bytewordlen <= PHP_INT_SIZE) {
+				$signMaskBit = 0x80 << (8 * ($bytewordlen - 1));
+				if ($intvalue & $signMaskBit) {
+					$intvalue = 0 - ($intvalue & ($signMaskBit - 1));
+				}
+			} else {
+				throw new Exception('ERROR: Cannot have signed integers larger than '.(8 * PHP_INT_SIZE).'-bits ('.strlen($byteword).') in getid3_lib::BigEndian2Int()');
+				break;
 			}
 		}
 		return getid3_lib::CastAsInt($intvalue);
@@ -292,13 +302,13 @@ class getid3_lib
 
 	static function BigEndian2String($number, $minbytes=1, $synchsafe=false, $signed=false) {
 		if ($number < 0) {
-			return false;
+			throw new Exception('ERROR: getid3_lib::BigEndian2String() does not support negative numbers');
 		}
 		$maskbyte = (($synchsafe || $signed) ? 0x7F : 0xFF);
 		$intstring = '';
 		if ($signed) {
-			if ($minbytes > 4) {
-				die('ERROR: Cannot have signed integers larger than 32-bits in getid3_lib::BigEndian2String()');
+			if ($minbytes > PHP_INT_SIZE) {
+				throw new Exception('ERROR: Cannot have signed integers larger than '.(8 * PHP_INT_SIZE).'-bits in getid3_lib::BigEndian2String()');
 			}
 			$number = $number & (0x80 << (8 * ($minbytes - 1)));
 		}
@@ -430,29 +440,6 @@ class getid3_lib
 	}
 
 
-	static function image_type_to_mime_type($imagetypeid) {
-		// only available in PHP v4.3.0+
-		static $image_type_to_mime_type = array();
-		if (empty($image_type_to_mime_type)) {
-			$image_type_to_mime_type[1]  = 'image/gif';                     // GIF
-			$image_type_to_mime_type[2]  = 'image/jpeg';                    // JPEG
-			$image_type_to_mime_type[3]  = 'image/png';                     // PNG
-			$image_type_to_mime_type[4]  = 'application/x-shockwave-flash'; // Flash
-			$image_type_to_mime_type[5]  = 'image/psd';                     // PSD
-			$image_type_to_mime_type[6]  = 'image/bmp';                     // BMP
-			$image_type_to_mime_type[7]  = 'image/tiff';                    // TIFF: little-endian (Intel)
-			$image_type_to_mime_type[8]  = 'image/tiff';                    // TIFF: big-endian (Motorola)
-			//$image_type_to_mime_type[9]  = 'image/jpc';                   // JPC
-			//$image_type_to_mime_type[10] = 'image/jp2';                   // JPC
-			//$image_type_to_mime_type[11] = 'image/jpx';                   // JPC
-			//$image_type_to_mime_type[12] = 'image/jb2';                   // JPC
-			$image_type_to_mime_type[13] = 'application/x-shockwave-flash'; // Shockwave
-			$image_type_to_mime_type[14] = 'image/iff';                     // IFF
-		}
-		return (isset($image_type_to_mime_type[$imagetypeid]) ? $image_type_to_mime_type[$imagetypeid] : 'application/octet-stream');
-	}
-
-
 	static function DateMac2Unix($macdate) {
 		// Macintosh timestamp: seconds since 00:00h January 1, 1904
 		// UNIX timestamp:      seconds since 00:00h January 1, 1970
@@ -472,7 +459,7 @@ class getid3_lib
 
 	static function FixedPoint2_30($rawdata) {
 		$binarystring = getid3_lib::BigEndian2Bin($rawdata);
-		return getid3_lib::Bin2Dec(substr($binarystring, 0, 2)) + (float) (getid3_lib::Bin2Dec(substr($binarystring, 2, 30)) / 1073741824);
+		return getid3_lib::Bin2Dec(substr($binarystring, 0, 2)) + (float) (getid3_lib::Bin2Dec(substr($binarystring, 2, 30)) / pow(2, 30));
 	}
 
 
@@ -523,81 +510,12 @@ class getid3_lib
 	}
 
 
-	static function md5_file($file) {
-
-		// md5_file() exists in PHP 4.2.0+.
-		if (function_exists('md5_file')) {
-			return md5_file($file);
-		}
-
-		if (GETID3_OS_ISWINDOWS) {
-
-			$RequiredFiles = array('cygwin1.dll', 'md5sum.exe');
-			foreach ($RequiredFiles as $required_file) {
-				if (!is_readable(GETID3_HELPERAPPSDIR.$required_file)) {
-					die(implode(' and ', $RequiredFiles).' are required in '.GETID3_HELPERAPPSDIR.' for getid3_lib::md5_file() to function under Windows in PHP < v4.2.0');
-				}
-			}
-			$commandline = GETID3_HELPERAPPSDIR.'md5sum.exe "'.str_replace('/', DIRECTORY_SEPARATOR, $file).'"';
-			if (preg_match("#^[\\]?([0-9a-f]{32})#", strtolower(`$commandline`), $r)) {
-				return $r[1];
-			}
-
-		} else {
-
-			// The following works under UNIX only
-			$file = str_replace('`', '\\`', $file);
-			if (preg_match("#^([0-9a-f]{32})[ \t\n\r]#i", `md5sum "$file"`, $r)) {
-				return $r[1];
-			}
-
-		}
-		return false;
-	}
-
-
-	static function sha1_file($file) {
-
-		// sha1_file() exists in PHP 4.3.0+.
-		if (function_exists('sha1_file')) {
-			return sha1_file($file);
-		}
-
-		$file = str_replace('`', '\\`', $file);
-
-		if (GETID3_OS_ISWINDOWS) {
-
-			$RequiredFiles = array('cygwin1.dll', 'sha1sum.exe');
-			foreach ($RequiredFiles as $required_file) {
-				if (!is_readable(GETID3_HELPERAPPSDIR.$required_file)) {
-					die(implode(' and ', $RequiredFiles).' are required in '.GETID3_HELPERAPPSDIR.' for getid3_lib::sha1_file() to function under Windows in PHP < v4.3.0');
-				}
-			}
-			$commandline = GETID3_HELPERAPPSDIR.'sha1sum.exe "'.str_replace('/', DIRECTORY_SEPARATOR, $file).'"';
-			if (preg_match("#^sha1=([0-9a-f]{40})#", strtolower(`$commandline`), $r)) {
-				return $r[1];
-			}
-
-		} else {
-
-			$commandline = 'sha1sum '.escapeshellarg($file).'';
-			if (preg_match("#^([0-9a-f]{40})[ \t\n\r]#", strtolower(`$commandline`), $r)) {
-				return $r[1];
-			}
-
-		}
-
-		return false;
-	}
-
-
 	// Allan Hansen <ahØartemis*dk>
 	// getid3_lib::md5_data() - returns md5sum for a file from startuing position to absolute end position
 	static function hash_data($file, $offset, $end, $algorithm) {
-		if ($end >= pow(2, 31)) {
+		if (!getid3_lib::intValueSupported($end)) {
 			return false;
 		}
-
 		switch ($algorithm) {
 			case 'md5':
 				$hash_function = 'md5_file';
@@ -614,7 +532,7 @@ class getid3_lib
 				break;
 
 			default:
-				die('Invalid algorithm ('.$algorithm.') in getid3_lib::hash_data()');
+				throw new Exception('Invalid algorithm ('.$algorithm.') in getid3_lib::hash_data()');
 				break;
 		}
 		$size = $end - $offset;
@@ -653,7 +571,7 @@ class getid3_lib
 		}
 
 		// try to create a temporary file in the system temp directory - invalid dirname should force to system temp dir
-		if (($data_filename = tempnam((function_exists('sys_get_temp_dir') ? sys_get_temp_dir() : ini_get('upload_tmp_dir')), 'getID3')) === false) {
+		if (($data_filename = tempnam(GETID3_TEMP_DIR, 'getID3')) === false) {
 			// can't find anywhere to create a temp file, just die
 			return false;
 		}
@@ -662,10 +580,11 @@ class getid3_lib
 		$result = false;
 
 		// copy parts of file
-		if ($fp = @fopen($file, 'rb')) {
-
-			if ($fp_data = @fopen($data_filename, 'wb')) {
-
+		ob_start();
+		if ($fp = fopen($file, 'rb')) {
+			ob_end_clean();
+			ob_start();
+			if ($fp_data = fopen($data_filename, 'wb')) {
 				fseek($fp, $offset, SEEK_SET);
 				$byteslefttowrite = $end - $offset;
 				while (($byteslefttowrite > 0) && ($buffer = fread($fp, GETID3_FREAD_BUFFER_SIZE))) {
@@ -673,10 +592,15 @@ class getid3_lib
 					$byteslefttowrite -= $byteswritten;
 				}
 				fclose($fp_data);
-				$result = getid3_lib::$hash_function($data_filename);
-
+				$result = $hash_function($data_filename);
+			} else {
+				$errormessage = ob_get_contents();
+				ob_end_clean();
 			}
 			fclose($fp);
+		} else {
+			$errormessage = ob_get_contents();
+			ob_end_clean();
 		}
 		unlink($data_filename);
 		return $result;
@@ -689,18 +613,18 @@ class getid3_lib
 			$newcharstring = chr($charval);
 		} elseif ($charval < 2048) {
 			// 110bbbbb 10bbbbbb
-			$newcharstring  = chr(($charval >> 6) | 0xC0);
+			$newcharstring  = chr(($charval >>   6) | 0xC0);
 			$newcharstring .= chr(($charval & 0x3F) | 0x80);
 		} elseif ($charval < 65536) {
 			// 1110bbbb 10bbbbbb 10bbbbbb
-			$newcharstring  = chr(($charval >> 12) | 0xE0);
-			$newcharstring .= chr(($charval >>  6) | 0xC0);
+			$newcharstring  = chr(($charval >>  12) | 0xE0);
+			$newcharstring .= chr(($charval >>   6) | 0xC0);
 			$newcharstring .= chr(($charval & 0x3F) | 0x80);
 		} else {
 			// 11110bbb 10bbbbbb 10bbbbbb 10bbbbbb
-			$newcharstring  = chr(($charval >> 18) | 0xF0);
-			$newcharstring .= chr(($charval >> 12) | 0xC0);
-			$newcharstring .= chr(($charval >>  6) | 0xC0);
+			$newcharstring  = chr(($charval >>  18) | 0xF0);
+			$newcharstring .= chr(($charval >>  12) | 0xC0);
+			$newcharstring .= chr(($charval >>   6) | 0xC0);
 			$newcharstring .= chr(($charval & 0x3F) | 0x80);
 		}
 		return $newcharstring;
@@ -765,20 +689,20 @@ class getid3_lib
 			if ((ord($string{$offset}) | 0x07) == 0xF7) {
 				// 11110bbb 10bbbbbb 10bbbbbb 10bbbbbb
 				$charval = ((ord($string{($offset + 0)}) & 0x07) << 18) &
-				           ((ord($string{($offset + 1)}) & 0x3F) << 12) &
-				           ((ord($string{($offset + 2)}) & 0x3F) <<  6) &
-				            (ord($string{($offset + 3)}) & 0x3F);
+						   ((ord($string{($offset + 1)}) & 0x3F) << 12) &
+						   ((ord($string{($offset + 2)}) & 0x3F) <<  6) &
+							(ord($string{($offset + 3)}) & 0x3F);
 				$offset += 4;
 			} elseif ((ord($string{$offset}) | 0x0F) == 0xEF) {
 				// 1110bbbb 10bbbbbb 10bbbbbb
 				$charval = ((ord($string{($offset + 0)}) & 0x0F) << 12) &
-				           ((ord($string{($offset + 1)}) & 0x3F) <<  6) &
-				            (ord($string{($offset + 2)}) & 0x3F);
+						   ((ord($string{($offset + 1)}) & 0x3F) <<  6) &
+							(ord($string{($offset + 2)}) & 0x3F);
 				$offset += 3;
 			} elseif ((ord($string{$offset}) | 0x1F) == 0xDF) {
 				// 110bbbbb 10bbbbbb
 				$charval = ((ord($string{($offset + 0)}) & 0x1F) <<  6) &
-				            (ord($string{($offset + 1)}) & 0x3F);
+							(ord($string{($offset + 1)}) & 0x3F);
 				$offset += 2;
 			} elseif ((ord($string{$offset}) | 0x7F) == 0x7F) {
 				// 0bbbbbbb
@@ -808,20 +732,20 @@ class getid3_lib
 			if ((ord($string{$offset}) | 0x07) == 0xF7) {
 				// 11110bbb 10bbbbbb 10bbbbbb 10bbbbbb
 				$charval = ((ord($string{($offset + 0)}) & 0x07) << 18) &
-				           ((ord($string{($offset + 1)}) & 0x3F) << 12) &
-				           ((ord($string{($offset + 2)}) & 0x3F) <<  6) &
-				            (ord($string{($offset + 3)}) & 0x3F);
+						   ((ord($string{($offset + 1)}) & 0x3F) << 12) &
+						   ((ord($string{($offset + 2)}) & 0x3F) <<  6) &
+							(ord($string{($offset + 3)}) & 0x3F);
 				$offset += 4;
 			} elseif ((ord($string{$offset}) | 0x0F) == 0xEF) {
 				// 1110bbbb 10bbbbbb 10bbbbbb
 				$charval = ((ord($string{($offset + 0)}) & 0x0F) << 12) &
-				           ((ord($string{($offset + 1)}) & 0x3F) <<  6) &
-				            (ord($string{($offset + 2)}) & 0x3F);
+						   ((ord($string{($offset + 1)}) & 0x3F) <<  6) &
+							(ord($string{($offset + 2)}) & 0x3F);
 				$offset += 3;
 			} elseif ((ord($string{$offset}) | 0x1F) == 0xDF) {
 				// 110bbbbb 10bbbbbb
 				$charval = ((ord($string{($offset + 0)}) & 0x1F) <<  6) &
-				            (ord($string{($offset + 1)}) & 0x3F);
+							(ord($string{($offset + 1)}) & 0x3F);
 				$offset += 2;
 			} elseif ((ord($string{$offset}) | 0x7F) == 0x7F) {
 				// 0bbbbbbb
@@ -851,20 +775,20 @@ class getid3_lib
 			if ((ord($string{$offset}) | 0x07) == 0xF7) {
 				// 11110bbb 10bbbbbb 10bbbbbb 10bbbbbb
 				$charval = ((ord($string{($offset + 0)}) & 0x07) << 18) &
-				           ((ord($string{($offset + 1)}) & 0x3F) << 12) &
-				           ((ord($string{($offset + 2)}) & 0x3F) <<  6) &
-				            (ord($string{($offset + 3)}) & 0x3F);
+						   ((ord($string{($offset + 1)}) & 0x3F) << 12) &
+						   ((ord($string{($offset + 2)}) & 0x3F) <<  6) &
+							(ord($string{($offset + 3)}) & 0x3F);
 				$offset += 4;
 			} elseif ((ord($string{$offset}) | 0x0F) == 0xEF) {
 				// 1110bbbb 10bbbbbb 10bbbbbb
 				$charval = ((ord($string{($offset + 0)}) & 0x0F) << 12) &
-				           ((ord($string{($offset + 1)}) & 0x3F) <<  6) &
-				            (ord($string{($offset + 2)}) & 0x3F);
+						   ((ord($string{($offset + 1)}) & 0x3F) <<  6) &
+							(ord($string{($offset + 2)}) & 0x3F);
 				$offset += 3;
 			} elseif ((ord($string{$offset}) | 0x1F) == 0xDF) {
 				// 110bbbbb 10bbbbbb
 				$charval = ((ord($string{($offset + 0)}) & 0x1F) <<  6) &
-				            (ord($string{($offset + 1)}) & 0x3F);
+							(ord($string{($offset + 1)}) & 0x3F);
 				$offset += 2;
 			} elseif ((ord($string{$offset}) | 0x7F) == 0x7F) {
 				// 0bbbbbbb
@@ -974,22 +898,27 @@ class getid3_lib
 		// iconv() availble
 		if (function_exists('iconv')) {
 
-		    if ($converted_string = @iconv($in_charset, $out_charset.'//TRANSLIT', $string)) {
-    			switch ($out_charset) {
-    				case 'ISO-8859-1':
-    					$converted_string = rtrim($converted_string, "\x00");
-    					break;
-    			}
-    			return $converted_string;
-    		}
+			ob_start();
+			if ($converted_string = iconv($in_charset, $out_charset.'//TRANSLIT', $string)) {
+				ob_end_clean();
+				switch ($out_charset) {
+					case 'ISO-8859-1':
+						$converted_string = rtrim($converted_string, "\x00");
+						break;
+				}
+				return $converted_string;
+			} else {
+				$errormessage = ob_get_contents();
+				ob_end_clean();
+			}
 
-    		// iconv() may sometimes fail with "illegal character in input string" error message
-    		// and return an empty string, but returning the unconverted string is more useful
-    		return $string;
-    	}
+			// iconv() may sometimes fail with "illegal character in input string" error message
+			// and return an empty string, but returning the unconverted string is more useful
+			return $string;
+		}
 
 
-        // iconv() not available
+		// iconv() not available
 		static $ConversionFunctionList = array();
 		if (empty($ConversionFunctionList)) {
 			$ConversionFunctionList['ISO-8859-1']['UTF-8']    = 'iconv_fallback_iso88591_utf8';
@@ -1011,7 +940,7 @@ class getid3_lib
 			$ConversionFunction = $ConversionFunctionList[strtoupper($in_charset)][strtoupper($out_charset)];
 			return getid3_lib::$ConversionFunction($string);
 		}
-		die('PHP does not have iconv() support - cannot convert from '.$in_charset.' to '.$out_charset);
+		throw new Exception('PHP does not have iconv() support - cannot convert from '.$in_charset.' to '.$out_charset);
 	}
 
 
@@ -1019,33 +948,33 @@ class getid3_lib
 		$HTMLstring = '';
 
 		switch ($charset) {
-			case 'ISO-8859-1':
-			case 'ISO8859-1':
-			case 'ISO-8859-15':
-			case 'ISO8859-15':
-			case 'cp866':
-			case 'ibm866':
-			case '866':
-			case 'cp1251':
-			case 'Windows-1251':
-			case 'win-1251':
 			case '1251':
-			case 'cp1252':
-			case 'Windows-1252':
 			case '1252':
+			case '866':
+			case '932':
+			case '936':
+			case '950':
+			case 'BIG5':
+			case 'BIG5-HKSCS':
+			case 'cp1251':
+			case 'cp1252':
+			case 'cp866':
+			case 'EUC-JP':
+			case 'EUCJP':
+			case 'GB2312':
+			case 'ibm866':
+			case 'ISO-8859-1':
+			case 'ISO-8859-15':
+			case 'ISO8859-1':
+			case 'ISO8859-15':
 			case 'KOI8-R':
 			case 'koi8-ru':
 			case 'koi8r':
-			case 'BIG5':
-			case '950':
-			case 'GB2312':
-			case '936':
-			case 'BIG5-HKSCS':
 			case 'Shift_JIS':
 			case 'SJIS':
-			case '932':
-			case 'EUC-JP':
-			case 'EUCJP':
+			case 'win-1251':
+			case 'Windows-1251':
+			case 'Windows-1252':
 				$HTMLstring = htmlentities($string, ENT_COMPAT, $charset);
 				break;
 
@@ -1164,11 +1093,19 @@ class getid3_lib
 
 	static function GetDataImageSize($imgData, &$imageinfo) {
 		$GetDataImageSize = false;
-		if ($tempfilename = tempnam((function_exists('sys_get_temp_dir') ? sys_get_temp_dir() : ini_get('upload_tmp_dir')), 'getID3')) {
-			if ($tmp = @fopen($tempfilename, 'wb')) {
+		if ($tempfilename = tempnam(GETID3_TEMP_DIR, 'getID3')) {
+			ob_start();
+			if ($tmp = fopen($tempfilename, 'wb')) {
+				ob_end_clean();
 				fwrite($tmp, $imgData);
 				fclose($tmp);
-				$GetDataImageSize = @GetImageSize($tempfilename, $imageinfo);
+				ob_start();
+				$GetDataImageSize = GetImageSize($tempfilename, $imageinfo);
+				$errormessage = ob_get_contents();
+				ob_end_clean();
+			} else {
+				$errormessage = ob_get_contents();
+				ob_end_clean();
 			}
 			unlink($tempfilename);
 		}
@@ -1219,7 +1156,7 @@ class getid3_lib
 									}
 								}
 
-							} else {
+							} elseif (!is_array($value)) {
 
 								$newvaluelength = strlen(trim($value));
 								foreach ($ThisFileInfo['comments'][$tagname] as $existingkey => $existingvalue) {
@@ -1231,8 +1168,9 @@ class getid3_lib
 								}
 
 							}
-							if (empty($ThisFileInfo['comments'][$tagname]) || !in_array(trim($value), $ThisFileInfo['comments'][$tagname])) {
-								$ThisFileInfo['comments'][$tagname][] = trim($value);
+							if (is_array($value) || empty($ThisFileInfo['comments'][$tagname]) || !in_array(trim($value), $ThisFileInfo['comments'][$tagname])) {
+								$value = (is_string($value) ? trim($value) : $value);
+								$ThisFileInfo['comments'][$tagname][] = $value;
 							}
 						}
 					}
@@ -1240,11 +1178,15 @@ class getid3_lib
 			}
 
 			// Copy to ['comments_html']
-    		foreach ($ThisFileInfo['comments'] as $field => $values) {
-    		    foreach ($values as $index => $value) {
-    		        $ThisFileInfo['comments_html'][$field][$index] = str_replace('&#0;', '', getid3_lib::MultiByteCharString2HTML($value, $ThisFileInfo['encoding']));
-    		    }
-            }
+			foreach ($ThisFileInfo['comments'] as $field => $values) {
+				foreach ($values as $index => $value) {
+					if (is_array($value)) {
+						$ThisFileInfo['comments_html'][$field][$index] = $value;
+					} else {
+						$ThisFileInfo['comments_html'][$field][$index] = str_replace('&#0;', '', getid3_lib::MultiByteCharString2HTML($value, $ThisFileInfo['encoding']));
+					}
+				}
+			}
 		}
 	}
 
@@ -1254,7 +1196,7 @@ class getid3_lib
 		// Cached
 		static $cache;
 		if (isset($cache[$file][$name])) {
-			return @$cache[$file][$name][$key];
+			return (isset($cache[$file][$name][$key]) ? $cache[$file][$name][$key] : '');
 		}
 
 		// Init
@@ -1284,20 +1226,22 @@ class getid3_lib
 
 			// METHOD B: cache all keys in this lookup - more memory but faster on next lookup of not-previously-looked-up key
 			//$cache[$file][$name][substr($line, 0, $keylength)] = trim(substr($line, $keylength + 1));
-			@list($ThisKey, $ThisValue) = explode("\t", $line, 2);
+			$explodedLine = explode("\t", $line, 2);
+			$ThisKey   = (isset($explodedLine[0]) ? $explodedLine[0] : '');
+			$ThisValue = (isset($explodedLine[1]) ? $explodedLine[1] : '');
 			$cache[$file][$name][$ThisKey] = trim($ThisValue);
 		}
 
 		// Close and return
 		fclose($fp);
-		return @$cache[$file][$name][$key];
+		return (isset($cache[$file][$name][$key]) ? $cache[$file][$name][$key] : '');
 	}
 
 	static function IncludeDependency($filename, $sourcefile, $DieOnFailure=false) {
 		global $GETID3_ERRORARRAY;
 
 		if (file_exists($filename)) {
-			if (@include_once($filename)) {
+			if (include_once($filename)) {
 				return true;
 			} else {
 				$diemessage = basename($sourcefile).' depends on '.$filename.', which has errors';
@@ -1306,7 +1250,7 @@ class getid3_lib
 			$diemessage = basename($sourcefile).' depends on '.$filename.', which is missing';
 		}
 		if ($DieOnFailure) {
-			die($diemessage);
+			throw new Exception($diemessage);
 		} else {
 			$GETID3_ERRORARRAY[] = $diemessage;
 		}

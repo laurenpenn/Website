@@ -71,11 +71,6 @@ License:
 			
 			$podPress_url = podPress_url();
 			
-			//~ echo "\n <!-- \n";
-			//~ var_dump($this->settings);
-			//~ var_dump($this->settings['mp3Player']);
-			//~ echo "\n --> \n";
-			
 			echo '	<fieldset class="options">'."\n";
 			echo '		<legend>'.__('MP3 Player', 'podpress').'</legend>'."\n";
 			echo '		<table class="editform podpress_settings_table">'."\n";
@@ -626,7 +621,6 @@ License:
 			echo "--></script>\n";
 			echo '	</fieldset>'."\n";
 			
-			
 			echo '	<fieldset class="options">'."\n";
 			echo '		<legend>'.__('All Players', 'podpress').'</legend>'."\n";
 			echo '		<table class="editform podpress_settings_table">'."\n";
@@ -635,8 +629,33 @@ License:
 			echo '				<td class="podpress_player_narrowmiddle_col">'."\n";
 			echo '					<input type="checkbox" name="contentAutoDisplayPlayer" id="contentAutoDisplayPlayer" '; if($this->settings['contentAutoDisplayPlayer']) { echo 'checked="checked"'; } echo "/>\n";
 			echo '				</td>'."\n";
-			echo '				<td>'.__('When checked the player/preview will be visible by default.', 'podpress').'</td>'."\n";
+			echo '				<td class="podpress_player_description_cell">'.__('When checked the player/preview will be visible by default.', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
+			echo '			<tr>'."\n";
+			echo '				<th><label for="use_html5_media_tags">'.__('Use HTML5 tags', 'podpress').':</label></th>'."\n";
+			echo '				<td class="podpress_player_narrowmiddle_col">'."\n";
+			$showhtml5playeralways_disabled = ' disabled="disabled"';
+			if ( TRUE == isset($this->settings['use_html5_media_tags']) AND FALSE === $this->settings['use_html5_media_tags'] ) {
+				echo '					<input type="checkbox" name="use_html5_media_tags" id="use_html5_media_tags" value="yes" onclick="podPress_show_HTML5_player_always(this.id, \'showhtml5playersonpageload\')" />'."\n";
+				$this->settings['showhtml5playersonpageload'] = FALSE;
+			} else {
+				echo '					<input type="checkbox" name="use_html5_media_tags" id="use_html5_media_tags" checked="checked" value="yes" onclick="podPress_show_HTML5_player_always(this.id, \'showhtml5playersonpageload\')" />'."\n";
+				$showhtml5playeralways_disabled = '';		
+			}
+			echo '				</td>'."\n";
+			echo '				<td class="podpress_player_description_cell">'.__('If this option is active (recommended) then podPress will embed MP3, OGG and OGV media files by using HTML5 elements, but only if the visitor of your blog uses a web browser which supports this. Otherwise podPress will embed the files as before with Flash-based players (e.g. the 1PixelOut player) or as objects which require other browser plugins.<br />The Listen Wrapper background image for the MP3 players works only in combination with the Flash-based players.<br /><a href="http://en.wikipedia.org/wiki/Comparison_of_layout_engines_%28HTML5_Media%29#Audio_format_support" title="en.Wikipedia: Comparison of layout engines HTML5 (audio)">Some web browsers support the HTML5 &lt;audio&gt;</a> and <a href="http://en.wikipedia.org/wiki/HTML5_video#Browser_support" title="en.Wikipedia: HTML5 (video)">&lt;video&gt;</a> elements. These browsers show their native players instead of <a href="http://en.wikipedia.org/wiki/Adobe_Flash" title="en.Wikipedia: Adobe Flash">Flash</a>-based or other plugin players. Currently (03/2011) the browsers with the <a href="http://en.wikipedia.org/wiki/WebKit" title="en.Wikipedia: WebKit">WebKit</a> (>= 525) engine like Safari and Chrome or the Internet Explorer since version 9 support HTML5 &lt;audio&gt; and MP3. (The Safari browser on iPhones, iPads and iPod Touch supports especially the HTML5 &lt;audio&gt; and &lt;video&gt; elements but not Flash-based players.) Browsers with the <a href="http://en.wikipedia.org/wiki/Gecko_%28layout_engine%29" title="en.Wikipedia: Gecko layout engine">Gecko</a> (>= 1.9.1) or <a href="http://en.wikipedia.org/wiki/Presto_%28layout_engine%29" title="en.Wikipedia: Presto layout engine">Presto</a> (>= 2.5) engine like FireFox and Opera support HTML5 &lt;audio&gt;/&lt;video&gt; elements and OGG/OGV.', 'podpress').'</p>'."\n";
+			echo '			</tr>'."\n";
+			echo '			<tr>'."\n";
+			echo '				<th><label for="showhtml5playersonpageload">'.__('show HTML5 players always on page load', 'podpress').':</label></th>'."\n";
+			echo '				<td class="podpress_player_narrowmiddle_col">'."\n";
+			if ( TRUE == isset($this->settings['showhtml5playersonpageload']) AND TRUE === $this->settings['showhtml5playersonpageload'] ) {
+				echo '					<input type="checkbox" name="showhtml5playersonpageload" id="showhtml5playersonpageload" checked="checked" value="yes"'.$showhtml5playeralways_disabled.' />'."\n";
+			} else {
+				echo '					<input type="checkbox" name="showhtml5playersonpageload" id="showhtml5playersonpageload" value="yes"'.$showhtml5playeralways_disabled.' />'."\n";
+			}
+			echo '				</td>'."\n";
+			echo '				<td class="podpress_player_description_cell">'.sprintf(__('Some of the web browsers (e.g. Safari and Chrome except Safari on iPhones, iPads, iPods) which support HTML5 &lt;audio&gt; (and &lt;video&gt;) elements start to download (to buffer) all media files which are embedded with HTML5 elements after the blog page is loaded. This may cause a lot of <a href="http://en.wikipedia.org/wiki/Web_traffic" title="en.Wikipedia: web traffic">traffic</a> which could lead to higher costs. Because of these possible consequences podPress shows by default a Play button and only a click on such a button activates the HTML5 player in those browsers. But if you activate this option then podPress will always show the HTML5 players directly. This option works only in combination with "%1$s". (default: not checked)', 'podpress'), __('Use HTML5 tags', 'podpress')).'</p>'."\n";
+			echo '			</tr>'."\n";
 			echo '		</table>'."\n";
 			echo '	</fieldset>'."\n";
 			echo '	<input type="hidden" name="podPress_submitted" value="players" />'."\n";
@@ -700,8 +719,20 @@ License:
 				$this->settings['player']['overwriteTitleandArtist'] = 'no';
 			}
 			
+			if ( TRUE == isset($_POST['use_html5_media_tags']) ) {
+				$this->settings['use_html5_media_tags'] = TRUE;
+			} else {
+				$this->settings['use_html5_media_tags'] = FALSE;
+			}
+			
+			if ( TRUE == isset($_POST['showhtml5playersonpageload']) ) {
+				$this->settings['showhtml5playersonpageload'] = TRUE;
+			} else {
+				$this->settings['showhtml5playersonpageload'] = FALSE;
+			}
+			
 			$result = podPress_update_option('podPress_config', $this->settings);
-			if ( TRUE === $result ) {
+			if ( FALSE !== $result ) {
 				$location = get_option('siteurl') . '/wp-admin/admin.php?page=podpress/podpress_players.php&updated=true';
 			} else {
 				$location = get_option('siteurl') . '/wp-admin/admin.php?page=podpress/podpress_players.php&updated=false';

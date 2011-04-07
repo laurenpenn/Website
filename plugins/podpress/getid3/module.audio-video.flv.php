@@ -274,8 +274,9 @@ class getid3_flv
 			$tagParsed++;
 		}
 
-		if ($ThisFileInfo['playtime_seconds'] = $Duration / 1000) {
-		    $ThisFileInfo['bitrate'] = ($ThisFileInfo['avdataend'] - $ThisFileInfo['avdataoffset']) / $ThisFileInfo['playtime_seconds'];
+		$ThisFileInfo['playtime_seconds'] = $Duration / 1000;
+		if ($ThisFileInfo['playtime_seconds'] > 0) {
+			$ThisFileInfo['bitrate'] = (($ThisFileInfo['avdataend'] - $ThisFileInfo['avdataoffset']) * 8) / $ThisFileInfo['playtime_seconds'];
 		}
 
 		if ($ThisFileInfo['flv']['header']['hasAudio']) {
@@ -287,7 +288,7 @@ class getid3_flv
 			$ThisFileInfo['audio']['lossless']   = ($ThisFileInfo['flv']['audio']['audioFormat'] ? false : true); // 0=uncompressed
 			$ThisFileInfo['audio']['dataformat'] = 'flv';
 		}
-		if (@$ThisFileInfo['flv']['header']['hasVideo']) {
+		if (!empty($ThisFileInfo['flv']['header']['hasVideo'])) {
 			$ThisFileInfo['video']['codec']      = $this->FLVvideoCodec($ThisFileInfo['flv']['video']['videoCodec']);
 			$ThisFileInfo['video']['dataformat'] = 'flv';
 			$ThisFileInfo['video']['lossless']   = false;
@@ -296,6 +297,7 @@ class getid3_flv
 		// Set information from meta
 		if (isset($ThisFileInfo['flv']['meta']['onMetaData']['duration'])) {
 			$ThisFileInfo['playtime_seconds'] = $ThisFileInfo['flv']['meta']['onMetaData']['duration'];
+			$ThisFileInfo['bitrate'] = (($ThisFileInfo['avdataend'] - $ThisFileInfo['avdataoffset']) * 8) / $ThisFileInfo['playtime_seconds'];
 		}
 		if (isset($ThisFileInfo['flv']['meta']['onMetaData']['audiocodecid'])) {
 			$ThisFileInfo['audio']['codec'] = $this->FLVaudioFormat($ThisFileInfo['flv']['meta']['onMetaData']['audiocodecid']);
@@ -326,7 +328,7 @@ class getid3_flv
 			14 => 'mp3 8kHz',
 			15 => 'Device-specific sound',
 		);
-		return (@$FLVaudioFormat[$id] ? @$FLVaudioFormat[$id] : false);
+		return (isset($FLVaudioFormat[$id]) ? $FLVaudioFormat[$id] : false);
 	}
 
 	function FLVaudioRate($id) {
@@ -336,7 +338,7 @@ class getid3_flv
 			2 => 22050,
 			3 => 44100,
 		);
-		return (@$FLVaudioRate[$id] ? @$FLVaudioRate[$id] : false);
+		return (isset($FLVaudioRate[$id]) ? $FLVaudioRate[$id] : false);
 	}
 
 	function FLVaudioBitDepth($id) {
@@ -344,7 +346,7 @@ class getid3_flv
 			0 =>  8,
 			1 => 16,
 		);
-		return (@$FLVaudioBitDepth[$id] ? @$FLVaudioBitDepth[$id] : false);
+		return (isset($FLVaudioBitDepth[$id]) ? $FLVaudioBitDepth[$id] : false);
 	}
 
 	function FLVvideoCodec($id) {
@@ -356,7 +358,7 @@ class getid3_flv
 			GETID3_FLV_VIDEO_SCREENV2     => 'Screen video v2',
 			GETID3_FLV_VIDEO_H264         => 'Sorenson H.264',
 		);
-		return (@$FLVvideoCodec[$id] ? @$FLVvideoCodec[$id] : false);
+		return (isset($FLVvideoCodec[$id]) ? $FLVvideoCodec[$id] : false);
 	}
 }
 
@@ -633,7 +635,7 @@ class AVCSequenceParameterSetReader {
 						$lastScale = 8;
 						$nextScale = 8;
 						for ($j = 0; $j < $size; $j++) {
-					        if ($nextScale != 0) {
+							if ($nextScale != 0) {
 								$deltaScale = $this->expGolombUe();
 								$nextScale = ($lastScale + $deltaScale + 256) % 256;
 							}
@@ -668,13 +670,13 @@ class AVCSequenceParameterSetReader {
 	function skipBits($bits) {
 		$newBits = $this->currentBits + $bits;
 		$this->currentBytes += (int)floor($newBits / 8);
-    	$this->currentBits = $newBits % 8;
+		$this->currentBits = $newBits % 8;
 	}
 
 	function getBit() {
 		$result = (getid3_lib::BigEndian2Int(substr($this->sps, $this->currentBytes, 1)) >> (7 - $this->currentBits)) & 0x01;
 		$this->skipBits(1);
-	    return $result;
+		return $result;
 	}
 
 	function getBits($bits) {
@@ -692,7 +694,7 @@ class AVCSequenceParameterSetReader {
 			$significantBits++;
 			$bit = $this->getBit();
 		}
-    	return (1 << $significantBits) + $this->getBits($significantBits) - 1;
+		return (1 << $significantBits) + $this->getBits($significantBits) - 1;
 	}
 
 	function expGolombSe() {

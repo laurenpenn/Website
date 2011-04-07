@@ -69,9 +69,11 @@ License:
 		if($podPress->settings['enablePremiumContent']) {
 			podPress_reloadCurrentUser();
 		}
+		
+		// more info about $post_meta_cache see http://ifacethoughts.net/2006/06/14/post_meta_cache/
 		if(is_array($post_meta_cache[$blog_id])) {
 			foreach($post_meta_cache[$blog_id] as $key=>$val) {
-				if(isset($post_meta_cache[$blog_id][$key]['enclosure']) && isset($post_meta_cache[$blog_id][$key]['podPressMedia'])) {
+				if(isset($post_meta_cache[$blog_id][$key]['enclosure']) && isset($post_meta_cache[$blog_id][$key]['_podPressMedia'])) {
 					$post_meta_cache[$blog_id][$key]['enclosure_podPressHold'] = $post_meta_cache[$blog_id][$post->ID]['enclosure'];
 					unset($post_meta_cache[$blog_id][$key]['enclosure']);
 				}
@@ -184,7 +186,7 @@ License:
 			echo '	<webMaster>'.podPress_feedSafeContent($data['admin_email']).$admin_name.'</webMaster>'."\n";
 		}
 		
-		if (FALSE === empty($podPress->settings['rss_category'])) {
+		if (FALSE === empty($data['rss_category'])) {
 			echo '	<category>'.podPress_feedSafeContent($data['rss_category']).'</category>'."\n";
 		}		
 
@@ -269,16 +271,35 @@ License:
 			if($post->podPressPostSpecific['itunes:keywords'] == '##WordPressCats##') {
 				$categories = get_the_category();
 				$post->podPressPostSpecific['itunes:keywords'] = '';
-				if(is_array($categories)) {
+				if ( TRUE == is_array($categories) AND FALSE == empty($categories) ) {
+					$category_names = Array();
+					$b = '';
 					foreach ($categories as $category) {
-						$category_names[] = $category->cat_name;
+						$result = preg_match('/\S+\s+\S+/', $category->cat_name, $b);
+						// take the category name only if it does not contain inner white spaces (if it does not consist of more than one word)
+						if (TRUE == empty($b)) {
+							$category_names[] = $category->cat_name;
+						}
 					}
-					$post->podPressPostSpecific['itunes:keywords'] = implode(', ', $category_names);
+					if ( TRUE == is_array($category_names) AND FALSE == empty($category_names) ) {
+						$nr_category_names = count($category_names);
+						if ( $nr_category_names > 1 ) {
+							for ($i=0; $i < min($nr_category_names, 12); $i++) { // max. 12 keywords are allowed
+								if ( 0 == $i ) {
+									$post->podPressPostSpecific['itunes:keywords'] = $category_names[$i];
+								} else {
+									$post->podPressPostSpecific['itunes:keywords'] .= ', '.$category_names[$i];
+								}
+							}
+						} elseif ( $nr_category_names === 1 ) {
+							$post->podPressPostSpecific['itunes:keywords'] = $category_names[0];
+						}
+					}
 				}
 			} elseif ($post->podPressPostSpecific['itunes:keywords'] == '##Global##') {
 				$post->podPressPostSpecific['itunes:keywords'] = $podPress->settings['iTunes']['keywords'];
 			}
-			echo '		<itunes:keywords>'.podPress_stringLimiter(podPress_feedSafeContent($post->podPressPostSpecific['itunes:keywords']), 255).'</itunes:keywords>'."\n";
+			echo '		<itunes:keywords>'.podPress_feedSafeContent($post->podPressPostSpecific['itunes:keywords']).'</itunes:keywords>'."\n";
 
 			if($post->podPressPostSpecific['itunes:author'] == '##Global##') {
 				$post->podPressPostSpecific['itunes:author'] = $podPress->settings['iTunes']['author'];
@@ -525,11 +546,11 @@ License:
 							$result .= "\t\t".'<track>'."\n";
 							$result .= "\t\t\t".'<location>'.$post->podPressMedia[$key]['URI']."</location>\n";
 							if (!empty($post->podPressMedia[$key]['title'])) {
-								$result .= "\t\t\t".'<annotation>'.podPress_feedSafeContent($post->podPressMedia[$key]['title'])."</annotation>\n";
-								$result .= "\t\t\t".'<title>'.podPress_feedSafeContent($post->podPressMedia[$key]['title'])."</title>\n";
+								$result .= "\t\t\t".'<annotation>'.podPress_feedSafeContent(html_entity_decode($post->podPressMedia[$key]['title']))."</annotation>\n";
+								$result .= "\t\t\t".'<title>'.podPress_feedSafeContent(html_entity_decode($post->podPressMedia[$key]['title']))."</title>\n";
 							} else {
-								$result .= "\t\t\t".'<annotation>'.podPress_feedSafeContent($post->post_title)."</annotation>\n";
-								$result .= "\t\t\t".'<title>'.podPress_feedSafeContent($post->post_title)."</title>\n";
+								$result .= "\t\t\t".'<annotation>'.podPress_feedSafeContent(html_entity_decode($post->post_title))."</annotation>\n";
+								$result .= "\t\t\t".'<title>'.podPress_feedSafeContent(html_entity_decode($post->post_title))."</title>\n";
 							}
 							if ( '##Global##' == $post->podPressPostSpecific['itunes:author']) {
 								if (empty($podPress->settings['iTunes']['author'])) {
@@ -537,9 +558,9 @@ License:
 								} else {
 									$creator = $podPress->settings['iTunes']['author'];
 								}
-								$result .= "\t\t\t".'<creator>'.podPress_feedSafeContent($creator).'</creator>'."\n";
+								$result .= "\t\t\t".'<creator>'.podPress_feedSafeContent(html_entity_decode($creator)).'</creator>'."\n";
 							} else {
-								$result .= "\t\t\t".'<creator>'.podPress_feedSafeContent($post->podPressPostSpecific['itunes:author']).'</creator>'."\n";
+								$result .= "\t\t\t".'<creator>'.podPress_feedSafeContent(html_entity_decode($post->podPressPostSpecific['itunes:author'])).'</creator>'."\n";
 							}
 							if ( 'UNKNOWN' != $post->podPressMedia[$key]['duration'] AND FALSE === empty($post->podPressMedia[$key]['duration'])) {
 								$result .= "\t\t\t".'<duration>'.$podPress->strtomilliseconds($post->podPressMedia[$key]['duration']).'</duration>'."\n";
@@ -759,6 +780,7 @@ License:
 								if(empty($podPress->settings['category_data']['blogname'])) {
 									return $input;
 								} else {
+									add_filter('wp_title_rss', 'podPress_customfeedtitleonly'); // this filter works since WP 2.2
 									return stripslashes($podPress->settings['category_data']['blogname']);
 								}
 							break;
@@ -837,7 +859,10 @@ License:
 	function podPress_feedBlogName ($input) {
 		return podPress_getCategoryCastingFeedData('blogname', $input);
 	}
-
+	function podPress_customfeedtitleonly($input) {
+		return '';
+	}
+	
 	function podPress_feedBlogDescription ($input) {
 		return podPress_getCategoryCastingFeedData('blogdescription', $input);
 	}

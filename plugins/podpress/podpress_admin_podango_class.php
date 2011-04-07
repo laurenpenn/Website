@@ -148,7 +148,7 @@ License:
 
 					$sql = "SELECT *
 					        FROM ".$wpdb->prefix."postmeta 
-									WHERE meta_key = 'podPressMedia'";
+									WHERE meta_key = '_podPressMedia'";
 									
 					$metadata = $wpdb->get_results($sql);
 					if($metadata) {
@@ -174,7 +174,7 @@ License:
 			} elseif(isset($_POST['podangoUnMigration'])) {
 					$sql = "SELECT *
 					        FROM ".$wpdb->prefix."postmeta 
-									WHERE meta_key = 'podPressMedia'";
+									WHERE meta_key = '_podPressMedia'";
 									
 					$metadata = $wpdb->get_results($sql);
 					if($metadata) {
@@ -231,3 +231,4 @@ License:
 			exit;
 		}
 	}
+?>

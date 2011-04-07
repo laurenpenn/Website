@@ -347,6 +347,7 @@ License:
 		$options['video_flv'] = __('FLV - Flash Video', 'podpress');
 		$options['video_swf'] = __('SWF - Flash content', 'podpress');
 		$options['ebook_pdf'] = __('PDF - eBook', 'podpress');
+		$options['ebook_epub'] = __('EPUB - eBook', 'podpress');
 		$options['misc_torrent'] = __('Torrent - P2P', 'podpress');
 		return $options;
 	}
@@ -408,103 +409,248 @@ License:
 	}
 
 	function podPress_itunesLanguageArray() {
+		// two-letter codes from the ISO 639-2 (http://www.loc.gov/standards/iso639-2/) languages list combined with the RSS language codes (http://www.rssboard.org/rss-language-codes#table)
 		$langs = array();
-		$langs['af'] = 'Afrikaans';
+		$langs['ab'] = 'Abkhazian';
+		$langs['aa'] = 'Afar';
+			$langs['af'] = 'Afrikaans';
+		$langs['ak'] = 'Akan';
 		$langs['sq'] = 'Albanian';
+		$langs['am'] = 'Amharic';
+		$langs['ar'] = 'Arabic';
+		$langs['an'] = 'Aragonese';
+		$langs['hy'] = 'Armenian';
+		$langs['as'] = 'Assamese';
+		$langs['av'] = 'Avaric';
+		$langs['ae'] = 'Avestan';
+		$langs['ay'] = 'Aymara';
+		$langs['az'] = 'Azerbaijani';
+		$langs['bm'] = 'Bambara';
+		$langs['ba'] = 'Bashkir';
 		$langs['eu'] = 'Basque';
 		$langs['be'] = 'Belarusian';
+		$langs['bn'] = 'Bengali';
+		$langs['bh'] = 'Bihari languages';
+		$langs['bi'] = 'Bislama';
+		$langs['nb'] = htmlentities('Bokmål, Norwegian; Norwegian Bokmål');
+		$langs['bs'] = 'Bosnian';
+		$langs['br'] = 'Breton';
 		$langs['bg'] = 'Bulgarian';
-		$langs['ca'] = 'Catalan';
-		$langs['zh-cn'] = 'Chinese (Simplified)';
-		$langs['zh-tw'] = 'Chinese (Traditional)';
+		$langs['my'] = 'Burmese';
+		$langs['ca'] = 'Catalan; Valencian';
+		$langs['km'] = 'Central Khmer';
+		$langs['ch'] = 'Chamorro';
+		$langs['ce'] = 'Chechen';
+		$langs['ny'] = 'Chichewa; Chewa; Nyanja';
+		$langs['zh'] = 'Chinese';
+			$langs['zh-cn'] = 'Chinese (Simplified)';
+			$langs['zh-tw'] = 'Chinese (Traditional)';
+		$langs['cu'] = 'Church Slavic; Old Bulgarian;';
+		$langs['cv'] = 'Chuvash';
+		$langs['kw'] = 'Cornish';
+		$langs['co'] = 'Corsican';
+		$langs['cr'] = 'Cree';
 		$langs['hr'] = 'Croatian';
 		$langs['cs'] = 'Czech';
 		$langs['da'] = 'Danish';
-		$langs['nl'] = 'Dutch';
-		$langs['nl-be'] = 'Dutch (Belgium)';
-		$langs['nl-nl'] = 'Dutch (Netherlands)';
+		$langs['dv'] = 'Divehi; Dhivehi; Maldivian';
+		$langs['nl'] = 'Dutch; Flemish';
+			$langs['nl-be'] = 'Dutch (Belgium)';
+			$langs['nl-nl'] = 'Dutch (Netherlands)';
+		$langs['dz'] = 'Dzongkha';
 		$langs['en'] = 'English';
-		$langs['en-au'] = 'English (Australia)';
-		$langs['en-bz'] = 'English (Belize)';
-		$langs['en-ca'] = 'English (Canada)';
-		$langs['en-ie'] = 'English (Ireland)';
-		$langs['en-jm'] = 'English (Jamaica)';
-		$langs['en-nz'] = 'English (New Zealand)';
-		$langs['en-ph'] = 'English (Phillipines)';
-		$langs['en-za'] = 'English (South Africa)';
-		$langs['en-tt'] = 'English (Trinidad)';
-		$langs['en-gb'] = 'English (United Kingdom)';
-		$langs['en-us'] = 'English (United States)';
-		$langs['en-zw'] = 'English (Zimbabwe)';
+			$langs['en-au'] = 'English (Australia)';
+			$langs['en-bz'] = 'English (Belize)';
+			$langs['en-ca'] = 'English (Canada)';
+			$langs['en-ie'] = 'English (Ireland)';
+			$langs['en-jm'] = 'English (Jamaica)';
+			$langs['en-nz'] = 'English (New Zealand)';
+			$langs['en-ph'] = 'English (Phillipines)';
+			$langs['en-za'] = 'English (South Africa)';
+			$langs['en-tt'] = 'English (Trinidad)';
+			$langs['en-gb'] = 'English (United Kingdom)';
+			$langs['en-us'] = 'English (United States)';
+			$langs['en-zw'] = 'English (Zimbabwe)';
+		$langs['eo'] = 'Esperanto';
 		$langs['et'] = 'Estonian';
-		$langs['fo'] = 'Faeroese';
+		$langs['ee'] = 'Ewe';
+		$langs['fo'] = 'Faroese';
+		$langs['fj'] = 'Fijian';
 		$langs['fi'] = 'Finnish';
 		$langs['fr'] = 'French';
-		$langs['fr-be'] = 'French (Belgium)';
-		$langs['fr-ca'] = 'French (Canada)';
-		$langs['fr-fr'] = 'French (France)';
-		$langs['fr-lu'] = 'French (Luxembourg)';
-		$langs['fr-mc'] = 'French (Monaco)';
-		$langs['fr-ch'] = 'French (Switzerland)';
+			$langs['fr-be'] = 'French (Belgium)';
+			$langs['fr-ca'] = 'French (Canada)';
+			$langs['fr-fr'] = 'French (France)';
+			$langs['fr-lu'] = 'French (Luxembourg)';
+			$langs['fr-mc'] = 'French (Monaco)';
+			$langs['fr-ch'] = 'French (Switzerland)';
+		$langs['ff'] = 'Fulah';
+		$langs['gd'] = 'Gaelic; Scottish Gaelic';
 		$langs['gl'] = 'Galician';
-		$langs['gd'] = 'Gaelic';
+		$langs['lg'] = 'Ganda';
+		$langs['ka'] = 'Georgian';
 		$langs['de'] = 'German';
-		$langs['de-at'] = 'German (Austria)';
-		$langs['de-de'] = 'German (Germany)';
-		$langs['de-li'] = 'German (Liechtenstein)';
-		$langs['de-lu'] = 'German (Luxembourg)';
-		$langs['de-ch'] = 'German (Switzerland)';
-		$langs['el'] = 'Greek';
-		$langs['haw'] = 'Hawaiian';
+			$langs['de-at'] = 'German (Austria)';
+			$langs['de-de'] = 'German (Germany)';
+			$langs['de-li'] = 'German (Liechtenstein)';
+			$langs['de-lu'] = 'German (Luxembourg)';
+			$langs['de-ch'] = 'German (Switzerland)';
+		$langs['el'] = 'Greek, Modern';
+		$langs['gn'] = 'Guarani';
+		$langs['gu'] = 'Gujarati';
+		$langs['ht'] = 'Haitian; Haitian Creole';
+		$langs['ha'] = 'Hausa';
+		$langs['he'] = 'Hebrew';
+		$langs['hz'] = 'Herero';
+		$langs['hi'] = 'Hindi';
+		$langs['ho'] = 'Hiri Motu';
 		$langs['hu'] = 'Hungarian';
 		$langs['is'] = 'Icelandic';
-		$langs['in'] = 'Indonesian';
+		$langs['io'] = 'Ido';
+		$langs['ig'] = 'Igbo';
+		$langs['id'] = 'Indonesian';
+		$langs['ia'] = 'Interlingua';
+		$langs['ie'] = 'Interlingue; Occidental';
+		$langs['iu'] = 'Inuktitut';
+		$langs['ik'] = 'Inupiaq';
 		$langs['ga'] = 'Irish';
 		$langs['it'] = 'Italian';
-		$langs['it-it'] = 'Italian (Italy)';
-		$langs['it-ch'] = 'Italian (Switzerland)';
+			$langs['it-it'] = 'Italian (Italy)';
+			$langs['it-ch'] = 'Italian (Switzerland)';
 		$langs['ja'] = 'Japanese';
+		$langs['jv'] = 'Javanese';
+		$langs['kl'] = 'Kalaallisut; Greenlandic';
+		$langs['kn'] = 'Kannada';
+		$langs['kr'] = 'Kanuri';
+		$langs['ks'] = 'Kashmiri';
+		$langs['kk'] = 'Kazakh';
+		$langs['ki'] = 'Kikuyu; Gikuyu';
+		$langs['rw'] = 'Kinyarwanda';
+		$langs['ky'] = 'Kirghiz; Kyrgyz';
+		$langs['kv'] = 'Komi';
+		$langs['kg'] = 'Kongo';
 		$langs['ko'] = 'Korean';
+		$langs['kj'] = 'Kuanyama; Kwanyama';
+		$langs['ku'] = 'Kurdish';
+		$langs['lo'] = 'Lao';
+		$langs['la'] = 'Latin';
+		$langs['lv'] = 'Latvian';
+		$langs['li'] = 'Limburgan; Limburger; Limburgish';
+		$langs['ln'] = 'Lingala';
+		$langs['lt'] = 'Lithuanian';
+		$langs['lu'] = 'Luba-Katanga';
+		$langs['lb'] = 'Luxembourgish; Letzeburgesch';
 		$langs['mk'] = 'Macedonian';
+		$langs['mg'] = 'Malagasy';
+		$langs['ms'] = 'Malay';
+		$langs['ml'] = 'Malayalam';
+		$langs['mt'] = 'Maltese';
+		$langs['gv'] = 'Manx';
+		$langs['mi'] = 'Maori';
+		$langs['mr'] = 'Marathi';
+		$langs['mh'] = 'Marshallese';
+		$langs['mn'] = 'Mongolian';
+		$langs['na'] = 'Nauru';
+		$langs['nv'] = 'Navajo; Navaho';
+		$langs['nd'] = 'Ndebele, North; North Ndebele';
+		$langs['nr'] = 'Ndebele, South; South Ndebele';
+		$langs['ng'] = 'Ndonga';
+		$langs['ne'] = 'Nepali';
+		$langs['se'] = 'Northern Sami';
 		$langs['no'] = 'Norwegian';
+		$langs['nn'] = 'Norwegian Nynorsk; Nynorsk, Norwegian';
+		$langs['oc'] = 'Occitan (post 1500)';
+		$langs['oj'] = 'Ojibwa';
+		$langs['or'] = 'Oriya';
+		$langs['om'] = 'Oromo';
+		$langs['os'] = 'Ossetian; Ossetic';
+		$langs['pi'] = 'Pali';
+		$langs['pa'] = 'Panjabi; Punjabi';
+		$langs['fa'] = 'Persian';
 		$langs['pl'] = 'Polish';
 		$langs['pt'] = 'Portuguese';
-		$langs['pt-br'] = 'Portuguese (Brazil)';
-		$langs['pt-pt'] = 'Portuguese (Portugal)';
-		$langs['ro'] = 'Romanian';
-		$langs['ro-mo'] = 'Romanian (Moldova)';
-		$langs['ro-ro'] = 'Romanian (Romania)';
+			$langs['pt-br'] = 'Portuguese (Brazil)';
+			$langs['pt-pt'] = 'Portuguese (Portugal)';
+		$langs['ps'] = 'Pushto; Pashto';
+		$langs['qu'] = 'Quechua';
+		$langs['ro'] = 'Romanian; Moldavian; Moldovan';
+		$langs['rm'] = 'Romansh';
+			$langs['ro-mo'] = 'Romanian (Moldova)';
+			$langs['ro-ro'] = 'Romanian (Romania)';
+		$langs['rn'] = 'Rundi';
 		$langs['ru'] = 'Russian';
-		$langs['ru-mo'] = 'Russian (Moldova)';
-		$langs['ru-ru'] = 'Russian (Russia)';
+			$langs['ru-mo'] = 'Russian (Moldova)';
+			$langs['ru-ru'] = 'Russian (Russia)';
+		$langs['sm'] = 'Samoan';
+		$langs['sg'] = 'Sango';
+		$langs['sa'] = 'Sanskrit';
+		$langs['sc'] = 'Sardinian';
 		$langs['sr'] = 'Serbian';
+		$langs['sn'] = 'Shona';
+		$langs['ii'] = 'Sichuan Yi; Nuosu';
+		$langs['sd'] = 'Sindhi';
+		$langs['si'] = 'Sinhala; Sinhalese';
 		$langs['sk'] = 'Slovak';
 		$langs['sl'] = 'Slovenian';
-		$langs['es'] = 'Spanish';
-		$langs['es-ar'] = 'Spanish (Argentina)';
-		$langs['es-bo'] = 'Spanish (Bolivia)';
-		$langs['es-cl'] = 'Spanish (Chile)';
-		$langs['es-co'] = 'Spanish (Colombia)';
-		$langs['es-cr'] = 'Spanish (Costa Rica)';
-		$langs['es-do'] = 'Spanish (Dominican Republic)';
-		$langs['es-ec'] = 'Spanish (Ecuador)';
-		$langs['es-sv'] = 'Spanish (El Salvador)';
-		$langs['es-gt'] = 'Spanish (Guatemala)';
-		$langs['es-hn'] = 'Spanish (Honduras)';
-		$langs['es-mx'] = 'Spanish (Mexico)';
-		$langs['es-ni'] = 'Spanish (Nicaragua)';
-		$langs['es-pa'] = 'Spanish (Panama)';
-		$langs['es-py'] = 'Spanish (Paraguay)';
-		$langs['es-pe'] = 'Spanish (Peru)';
-		$langs['es-pr'] = 'Spanish (Puerto Rico)';
-		$langs['es-es'] = 'Spanish (Spain)';
-		$langs['es-uy'] = 'Spanish (Uruguay)';
-		$langs['es-ve'] = 'Spanish (Venezuela)';
+		$langs['so'] = 'Somali';
+		$langs['st'] = 'Sotho, Southern';
+		$langs['es'] = 'Spanish; Castilian';
+			$langs['es-ar'] = 'Spanish (Argentina)';
+			$langs['es-bo'] = 'Spanish (Bolivia)';
+			$langs['es-cl'] = 'Spanish (Chile)';
+			$langs['es-co'] = 'Spanish (Colombia)';
+			$langs['es-cr'] = 'Spanish (Costa Rica)';
+			$langs['es-do'] = 'Spanish (Dominican Republic)';
+			$langs['es-ec'] = 'Spanish (Ecuador)';
+			$langs['es-sv'] = 'Spanish (El Salvador)';
+			$langs['es-gt'] = 'Spanish (Guatemala)';
+			$langs['es-hn'] = 'Spanish (Honduras)';
+			$langs['es-mx'] = 'Spanish (Mexico)';
+			$langs['es-ni'] = 'Spanish (Nicaragua)';
+			$langs['es-pa'] = 'Spanish (Panama)';
+			$langs['es-py'] = 'Spanish (Paraguay)';
+			$langs['es-pe'] = 'Spanish (Peru)';
+			$langs['es-pr'] = 'Spanish (Puerto Rico)';
+			$langs['es-es'] = 'Spanish (Spain)';
+			$langs['es-uy'] = 'Spanish (Uruguay)';
+			$langs['es-ve'] = 'Spanish (Venezuela)';
+		$langs['su'] = 'Sundanese';
+		$langs['sw'] = 'Swahili';
+		$langs['ss'] = 'Swati';
 		$langs['sv'] = 'Swedish';
-		$langs['sv-fi'] = 'Swedish (Finland)';
-		$langs['sv-se'] = 'Swedish (Sweden)';
+			$langs['sv-fi'] = 'Swedish (Finland)';
+			$langs['sv-se'] = 'Swedish (Sweden)';
+		$langs['tl'] = 'Tagalog';
+		$langs['ty'] = 'Tahitian';
+		$langs['tg'] = 'Tajik';
+		$langs['ta'] = 'Tamil';
+		$langs['tt'] = 'Tatar';
+		$langs['te'] = 'Telugu';
+		$langs['th'] = 'Thai';
+		$langs['bo'] = 'Tibetan';
+		$langs['ti'] = 'Tigrinya';
+		$langs['to'] = 'Tonga (Tonga Islands)';
+		$langs['ts'] = 'Tsonga';
+		$langs['tn'] = 'Tswana';
 		$langs['tr'] = 'Turkish';
-		$langs['uk'] = 'Ukranian';
+		$langs['tk'] = 'Turkmen';
+		$langs['tw'] = 'Twi';
+		$langs['ug'] = 'Uighur; Uyghur';
+		$langs['uk'] = 'Ukrainian';
+		$langs['ur'] = 'Urdu';
+		$langs['uz'] = 'Uzbek';
+		$langs['ve'] = 'Venda';
+		$langs['vi'] = 'Vietnamese';
+		$langs['vo'] = htmlentities('Volapük');
+		$langs['wa'] = 'Walloon';
+		$langs['cy'] = 'Welsh';
+		$langs['fy'] = 'Western Frisian';
+		$langs['wo'] = 'Wolof';
+		$langs['xh'] = 'Xhosa';
+		$langs['yi'] = 'Yiddish';
+		$langs['yo'] = 'Yoruba';
+		$langs['za'] = 'Zhuang; Chuang';
+		$langs['zu'] = 'Zulu';
 		return $langs;
 	}
 
@@ -1054,57 +1200,63 @@ License:
 			return '';
 		}
 		
-		podPress_var_dump('start of the ID3 tag retrieval - '.$mediafile);
-		$fileinfo = podPress_getID3tags($mediafile, FALSE, FALSE, FALSE);
-		podPress_var_dump('end of the ID3 tag retrieval');
-		
-		if(!is_array($fileinfo) OR FALSE == isset($fileinfo['comments']) ) {
-			return '<div class="updated message">'.__('The file has probably no information like artist, genre, album, etc.', 'podpress').'<br /><pre class="podpress_id3tags_error">'.var_export($fileinfo, true).'</pre></div>';
-		}
-		
-		if(isset($_GET['keynum'])) {
-			$randID = $_GET['keynum'];
-		} else {
-			mt_srand(crc32(microtime()));
-			$randID = mt_rand(1, 9999);
-		}
-		$result .= '<table class="the-list-x widefat podpress_id3tag_details_table">'."\n";
-		$result .= '	<tr class="alternate">'."\n";
-		$result .= '		<th>'.__('Artist', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagArtist">'.(!empty($fileinfo['comments']['artist'][0]) ? htmlentities($fileinfo['comments']['artist'][0]) : '&nbsp;').'</span></td>'."\n";
-		$result .= '	</tr>'."\n";
-		$result .= '	<tr>'."\n";
-		$result .= '		<th>'.__('Album', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagAlbum">'.(!empty($fileinfo['comments']['album'][0]) ? htmlentities($fileinfo['comments']['album'][0]) : '&nbsp;').'</span></td>'."\n";
-		$result .= '	</tr>'."\n";
-		$result .= '	<tr class="alternate">'."\n";
-		$result .= '		<th>'.__('Title', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagTitle">'.(!empty($fileinfo['comments']['title'][0]) ? htmlentities($fileinfo['comments']['title'][0]) : '&nbsp;').'</span></td>'."\n";
-		$result .= '	</tr>'."\n";
-		$result .= '	<tr>'."\n";
-		$result .= '		<th>'.__('Description', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagDescription">'.(!empty($fileinfo['comments']['comment'][0])  ? htmlentities($fileinfo['comments']['comment'][0]) : '&nbsp;').'</span></td>'."\n";
-		$result .= '	</tr>'."\n";
-		$result .= '	<tr class="alternate">'."\n";
-		$result .= '		<th>'.__('Genre', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagGenre">'.(!empty($fileinfo['comments']['genre'][0]) ? htmlentities($fileinfo['comments']['genre'][0]) : '&nbsp;').'</span></td>'."\n";
-		$result .= '	</tr>'."\n";
-		$result .= '	<tr>'."\n";
-		$result .= '		<th>'.__('Length', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagLength">'.(!empty($fileinfo['playtime_string']) ? $fileinfo['playtime_string'] : '&nbsp;').'</span></td>'."\n";
-		$result .= '	</tr>'."\n";
-		$result .= '	<tr class="alternate">'."\n";
-		
-		// The # + time() in the URL of the covert art should make the server show always the current image and not a cached version.
-		if ( isset($fileinfo['podpress_tmp_download_exists']) AND TRUE === $fileinfo['podpress_tmp_download_exists'] ) {
-			$result .= '		<th>'.__('Cover Art', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagCoverArt"><img src="'.PODPRESS_URL.'/podpress_backend.php?action=id3image&filename='.rawurlencode($fileinfo['filenamepath']).'&tmpdownloadexists=yes#'.time().'" alt="" /></span></td>'."\n";
-			podPress_var_dump('podPress_showID3tags - podpress_tmp_download_exists = TRUE');
-		} else {
-			$result .= '		<th>'.__('Cover Art', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagCoverArt"><img src="'.PODPRESS_URL.'/podpress_backend.php?action=id3image&filename='.rawurlencode($fileinfo['filenamepath']).'&tmpdownloadexists=no#'.time().'" alt="" /></span></td>'."\n";
-			podPress_var_dump('podPress_showID3tags - podpress_tmp_download_exists = FALSE');
-		}
-		
-		$result .= '	</tr>'."\n";
-		//~ $result .= '	<tr>'."\n";
-		//~ $result .= '		<td colspan="2"><a href="#" onclick="podPressID3ToPost(\''.$randID.'\'); return false;">'.__('Copy contents to post details', 'podpress').'</a></td>'."\n";
-		//~ $result .= '	</tr>'."\n";
-		$result .= '</table>'."\n";
+		//~ $allowed_ext = array('mp3', 'ogg', 'ogv', 'asf', 'avi', 'mov', 'qt', 'mp4', 'm4v', 'm4a', 'wma', 'wmv', 'mpg', 'mpeg', 'flv', 'swf');
+		//~ $ext = strtolower(end(explode('.', $mediafile)));
+		//~ if (TRUE == in_array($ext, $allowed_ext)) {
+			podPress_var_dump('start of the ID3 tag retrieval - '.$mediafile);
+			$fileinfo = podPress_getID3tags($mediafile, FALSE, FALSE, FALSE);
+			podPress_var_dump('end of the ID3 tag retrieval');
+			
+			if(!is_array($fileinfo) OR FALSE == isset($fileinfo['comments']) ) {
+				return '<div class="updated message">'.__('The file has probably no information like artist, genre, album, etc.', 'podpress').'<br /><pre class="podpress_id3tags_error">'.var_export($fileinfo, true).'</pre></div>';
+			}
+			
+			if(isset($_GET['keynum'])) {
+				$randID = $_GET['keynum'];
+			} else {
+				mt_srand(crc32(microtime()));
+				$randID = mt_rand(1, 9999);
+			}
+			$result .= '<table class="the-list-x widefat podpress_id3tag_details_table">'."\n";
+			$result .= '	<tr class="alternate">'."\n";
+			$result .= '		<th>'.__('Artist', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagArtist">'.(!empty($fileinfo['comments']['artist'][0]) ? htmlentities($fileinfo['comments']['artist'][0]) : '&nbsp;').'</span></td>'."\n";
+			$result .= '	</tr>'."\n";
+			$result .= '	<tr>'."\n";
+			$result .= '		<th>'.__('Album', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagAlbum">'.(!empty($fileinfo['comments']['album'][0]) ? htmlentities($fileinfo['comments']['album'][0]) : '&nbsp;').'</span></td>'."\n";
+			$result .= '	</tr>'."\n";
+			$result .= '	<tr class="alternate">'."\n";
+			$result .= '		<th>'.__('Title', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagTitle">'.(!empty($fileinfo['comments']['title'][0]) ? htmlentities($fileinfo['comments']['title'][0]) : '&nbsp;').'</span></td>'."\n";
+			$result .= '	</tr>'."\n";
+			$result .= '	<tr>'."\n";
+			$result .= '		<th>'.__('Description', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagDescription">'.(!empty($fileinfo['comments']['comment'][0])  ? htmlentities($fileinfo['comments']['comment'][0]) : '&nbsp;').'</span></td>'."\n";
+			$result .= '	</tr>'."\n";
+			$result .= '	<tr class="alternate">'."\n";
+			$result .= '		<th>'.__('Genre', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagGenre">'.(!empty($fileinfo['comments']['genre'][0]) ? htmlentities($fileinfo['comments']['genre'][0]) : '&nbsp;').'</span></td>'."\n";
+			$result .= '	</tr>'."\n";
+			$result .= '	<tr>'."\n";
+			$result .= '		<th>'.__('Length', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagLength">'.(!empty($fileinfo['playtime_string']) ? $fileinfo['playtime_string'] : '&nbsp;').'</span></td>'."\n";
+			$result .= '	</tr>'."\n";
+			$result .= '	<tr class="alternate">'."\n";
+			
+			// The # + time() in the URL of the covert art should make the server show always the current image and not a cached version.
+			if ( isset($fileinfo['podpress_tmp_download_exists']) AND TRUE === $fileinfo['podpress_tmp_download_exists'] ) {
+				$result .= '		<th>'.__('Cover Art', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagCoverArt"><img src="'.PODPRESS_URL.'/podpress_backend.php?action=id3image&filename='.rawurlencode($fileinfo['filenamepath']).'&tmpdownloadexists=yes#'.time().'" alt="" /></span></td>'."\n";
+				podPress_var_dump('podPress_showID3tags - podpress_tmp_download_exists = TRUE');
+			} else {
+				$result .= '		<th>'.__('Cover Art', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagCoverArt"><img src="'.PODPRESS_URL.'/podpress_backend.php?action=id3image&filename='.rawurlencode($fileinfo['filenamepath']).'&tmpdownloadexists=no#'.time().'" alt="" /></span></td>'."\n";
+				podPress_var_dump('podPress_showID3tags - podpress_tmp_download_exists = FALSE');
+			}
+			
+			$result .= '	</tr>'."\n";
+			//~ $result .= '	<tr>'."\n";
+			//~ $result .= '		<td colspan="2"><a href="#" onclick="podPressID3ToPost(\''.$randID.'\'); return false;">'.__('Copy contents to post details', 'podpress').'</a></td>'."\n";
+			//~ $result .= '	</tr>'."\n";
+			$result .= '</table>'."\n";
 
-		return $result;
+			return $result;
+		//~ } else {
+			//~ return __('unknown', 'podpress');
+		//~ }
 	}
 
 	function podPress_getCoverArt($mediafile, $tmp_download_exists = FALSE) {
@@ -1152,8 +1304,9 @@ License:
 				$mediafile = 'http://download.podango.com/mediatracker/555/'.$fileNameParts[3].'/'.$fileNameParts[4];
 			}
 		}
-		$id3formats = array('mp3', 'ogg', 'avi', 'mov', '.qt', 'mp4', 'm4v', 'm4a', 'wma', 'wmv', 'mpg', 'peg', 'flv', 'swf');
-		if(in_array(strtolower(substr($mediafile, -3, 3)), $id3formats)) {
+		$allowed_ext = array('mp3', 'ogg', 'ogv', 'avi', 'mov', 'qt', 'mp4', 'm4v', 'm4a', 'wma', 'wmv', 'mpg', 'mpeg', 'flv', 'swf');
+		$ext = strtolower(end(explode('.', $mediafile)));
+		if (TRUE == in_array($ext, $allowed_ext)) {
 			podPress_var_dump('start of the duration retrieval');
 			$systemFileName = $podPress->convertPodcastFileNameToSystemPath($mediafile);
 			if(file_exists($systemFileName)) {
@@ -1172,6 +1325,8 @@ License:
 			podPress_var_dump('end of the duration retrieval');
 
 			return $fileinfo['playtime_string'];
+		} else {
+			return __('UNKNOWN', 'podpress');
 		}
 	}
 
@@ -1236,7 +1391,6 @@ License:
 		
 		if ( function_exists('fsockopen') ) {
 			$fpRemote = @fsockopen($sHost, $nPort, $errno, $errstr, 30);
-		//~ $fpRemote = FALSE;
 		} else {
 			$fpRemote = FALSE;
 		}
@@ -1246,16 +1400,7 @@ License:
 				podPress_var_dump('podPress_downloadFile - ' . $sHost . $sFilepath);
 
 				$sHeaders = "HEAD " . $sFilepath . " HTTP/1.1\r\n";
-				//$sHeaders = "HEAD /wp30en/wp-content/uploads/2011/01/hall%FC%20mit%20l%FCcke.mp3 HTTP/1.1\r\n";
-				//$sHeaders = "HEAD " . rawurlencode(utf8_decode($sFilepath)) . " HTTP/1.1\r\n";
-				//$sHeaders = "HEAD " . iconv(get_bloginfo('charset'), 'ASCII//TRANSLIT', $sFilepath) . " HTTP/1.1\r\n";
 				$sHeaders .= "Host: ". $sHost . "\r\n";
-				//~ $sHeaders .= "Accept-Charset: ISO-8859-1 \r\n";
-				//~ $sHeaders .= "Accept-Language: de-DE \r\n";
-				//~ $sHeaders .= "Content-Type: text/plain; charset=ISO-8859-1 \r\n";
-				//~ $sHeaders .= "Content-Type: text/plain; charset=UTF-8 \r\n";
-				//$sHeaders .= "Content-Type: application/x-www-form-urlencoded; charset=UTF-8  \r\n";
-				//$sHeaders .= "Content-Language: de \r\n";
 				$sHeaders .= "Connection: Close\r\n\r\n";
 				podPress_var_dump($sHeaders);
 				
@@ -1377,14 +1522,6 @@ License:
 		} else {
 			if ( TRUE === $getHeaders ) {
 				podPress_var_dump('podPress_downloadFile - fpRemote = false | getHeaders = true');
-
-				//~ if ($fp_remote = @fopen($uriFileName, 'rb')) {
-					//~ $content = fread($fp_remote, 2048);
-					//~ fclose($fp_remote);
-					//~ if(!empty($content)) {
-						//~ return $content;
-					//~ }
-				//~ }
 
 				if ( TRUE == function_exists('curl_init') ) {
 					$ch = curl_init($uriFileName);

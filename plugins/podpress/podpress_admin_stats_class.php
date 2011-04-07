@@ -34,7 +34,7 @@ class podPressAdmin_class extends podPress_class {
 		// since 8.8.5 beta 3
 		parent::wherestr_to_exclude_bots();
 		
-		$this->wpdb                 = $wpdb;
+		$this->wpdb = $wpdb;
 
 		/* set default language for graphs */
 		$languages        = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
@@ -608,9 +608,9 @@ class podPressAdmin_class extends podPress_class {
 					}
 					foreach ($posts_with_podpressmedia as $post) {
 						if ($i == $nr_postswpm) {
-							$where_posts .= "'".$post->media."'";
+							$where_posts .= "'".$wpdb->escape($post->media)."'";
 						} else {
-							$where_posts .= "'".$post->media."', ";
+							$where_posts .= "'".$wpdb->escape($post->media)."', ";
 						}
 						$i++;
 					}
@@ -670,8 +670,8 @@ class podPressAdmin_class extends podPress_class {
 				}
 				
 				// sort the media files by their 'total' value
-				if (is_array($stats)) {
-					uasort($stats, array(self, 'sort_downloads_per_media_desc'));
+				if ( is_array($stats) AND FALSE == empty($stats) AND method_exists($this, 'sort_downloads_per_media_desc') ) {
+					uasort($stats, array($this, 'sort_downloads_per_media_desc'));
 				}
 				echo '	<div class="wrap">'."\n";
 				echo '		<fieldset class="options">'."\n";
@@ -899,9 +899,17 @@ class podPressAdmin_class extends podPress_class {
 				$where = $this->wherestr_to_exclude_bots('pod');
 				
 				// get the number of all post with podPress podcasts
-				$query_string = "SELECT COUNT(DISTINCT postID) as posts FROM ".$wpdb->prefix."podpress_stats ".$where;
+				//~ $query_string = "SELECT COUNT(DISTINCT postID) as posts FROM ".$wpdb->prefix."podpress_stats ".$where;
+				
+				// take only posts which are still in the wp_posts table. It is possible that the stats table contains stats of file which were only in posts which are deleted.
+				if ( TRUE == empty($where) ) {
+					$where_ID .= " WHERE p.ID = pod.postID";
+				} else {
+					$where_ID .= " AND p.ID = pod.postID";
+				}
+				
 				// get all post with podPress podcasts
-				$query_string="SELECT DISTINCT(pod.postID), p.post_title FROM ".$wpdb->prefix."podpress_stats AS pod LEFT JOIN ".$wpdb->prefix."posts AS p ON pod.postID = p.ID ".$where." ORDER BY pod.postID DESC";
+				$query_string = "SELECT DISTINCT(pod.postID), p.post_title FROM ".$wpdb->prefix."podpress_stats AS pod LEFT JOIN ".$wpdb->prefix."posts AS p ON pod.postID = p.ID ".$where.$where_ID." ORDER BY pod.postID DESC";
 				$posts_with_podpressmedia = $wpdb->get_results($query_string);
 				
 				echo '	<div class="wrap">'."\n";
@@ -978,8 +986,9 @@ class podPressAdmin_class extends podPress_class {
 					}
 				
 					// sort the media files by their 'total' value
-					uasort($stats, array(self, 'sort_downloads_per_media_desc'));
-
+					if ( is_array($stats) AND FALSE == empty($stats) AND method_exists($this, 'sort_downloads_per_media_desc') ) {
+						uasort($stats, array($this, 'sort_downloads_per_media_desc'));
+					}
 					echo '	<div class="wrap">'."\n";
 					echo '		<fieldset class="options">'."\n";
 					echo '			<legend>'.__('Post:', 'podpress')." ".$post_titles[$_POST['post_with_podpressmedia']]." - ".__('Downloads Per Media File', 'podpress').'</legend>'."\n";
@@ -1080,7 +1089,7 @@ class podPressAdmin_class extends podPress_class {
 						} else {
 							$where_instr = $where_instr_ar[0];
 						} 
-						$where = 'pm.meta_key="podPressMedia" AND ('.$where_instr.')';
+						$where = 'pm.meta_key="_podPressMedia" AND ('.$where_instr.')';
 						$sql = 'SELECT pm.post_id, pm.meta_key, pm.meta_value, p.post_title FROM '.$wpdb->prefix.'postmeta AS pm LEFT JOIN '.$wpdb->prefix.'posts AS p ON pm.post_id = p.ID WHERE '.$where.' ORDER BY pm.post_id DESC';
 						$postmeta_data = $wpdb->get_results($sql);
 						

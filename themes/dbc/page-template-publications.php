@@ -54,37 +54,71 @@ get_header(); // Loads the header.php template. ?>
 			<?php endif; ?>
 
 		</div><!-- .hfeed -->
-				
-		<div id="publication-archive">
 		
-			<div id="starting-point" class="publications">
-				
-				<a href="http://dentonbible.org/wp-content/uploads/SP_v5_2011.pdf"><img src="http://dentonbible.org/wp-content/uploads/starting-point1.jpg" alt="Starting Point" class="alignleft" /></a>
-				
-				<h2>Starting Point - Quarterly</h2>
-								
-				<p>If you're looking for <strong>an easy guide to find your way around Denton Bible's many ministries</strong> start here. You'll find information on virtually all ministries of Denton Bible Church and contact information to get started.</p>
-				
-				<p>You can always find an up to date copy at any informaton booth throughout the DBC lobby.</p>
-				
-				<p><a href="http://dentonbible.org/wp-content/uploads/SP_v5_2011_noLogos.pdf" class="link-out">View Starting Point</a></p>
+		<div id="starting-point" class="publications">
 
-			</div>
+			<?php
+			$args = array (
+				'posts_per_page' => 1,
+				'post_type' => 'publication',
+				'publication-type' => 'starting-point'
+			);
 			
-			<div class="clear"></div>
+			query_posts( $args );
+			while ( have_posts() ) : the_post(); 
+				$args = array(
+					'post_type' => 'attachment',
+					'numberposts' => 1,
+					'post_status' => null,
+					'post_parent' => $post->ID
+					); 
+				$attachments = get_posts($args);
+				if ($attachments) {
+					foreach ($attachments as $attachment) {
+						if ( $attachment->post_mime_type == 'application/pdf')
+							$link = $attachment->guid;
+					}
+				}											
+				?>
+			
+				<div id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
+			
+					<p><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/starting-point-cover.jpg" alt="Starting Point" class="alignleft" height="320" width="250" /></p>
 					
-			<h2>First Cup - Weekly</h2>
+					<h2>Starting Point - Quarterly</h2>
+									
+					<p>If you're looking for <strong>an easy guide to find your way around Denton Bible's many ministries</strong> start here. You'll find information on virtually all ministries of Denton Bible Church and contact information to get started.</p>
+					
+					<p>You can always find an up to date copy at any informaton booth throughout the DBC lobby.</p>
+					
+					<p><a href="<?php echo $link; ?>" class="link-out">View Starting Point</a></p>
+			
+				</div><!-- .hentry -->
+				
+				<?php endwhile; ?>
+						
+				<?php wp_reset_query(); ?>
+				
+		</div>									
+			
+		<div class="clear"></div>
 
-			<p>First Cup is the weekly Sunday bulletin providing brief announcements for upcoming events. This bulletin is distributed before each Sunday service.</p>			
+		<div id="publication-archive">
 
 			<div id="first-cup" class="publications">
-				
-				<div id="first-cup-publications-inner">
+
+				<p><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/first-cup-cover.gif" alt="First Cup" class="alignleft" height="320" width="250" /></p>
+								
+				<h2>First Cup - Weekly</h2>
+	
+				<p>First Cup is the weekly Sunday bulletin providing brief announcements for upcoming events. This bulletin is distributed before each Sunday service.</p>			
+												
+				<ul id="first-cup-publications-inner">
 					<?php
 					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 					$args = array (
 						'paged' => $paged,
-						'posts_per_page' => 9,
+						'posts_per_page' => 5,
 						'post_type' => 'publication',
 						'publication-type' => 'first-cup'
 					);
@@ -93,7 +127,7 @@ get_header(); // Loads the header.php template. ?>
 					while ( have_posts() ) : the_post(); 
 						$args = array(
 							'post_type' => 'attachment',
-							'numberposts' => -1,
+							'numberposts' => 51,
 							'post_status' => null,
 							'post_parent' => $post->ID
 							); 
@@ -106,35 +140,32 @@ get_header(); // Loads the header.php template. ?>
 						}											
 						?>
 					
-						<div id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
+						<li id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
 					
-							<div class="date"><?php the_time('F j, Y'); ?></div>
-							<a href="<?php echo $link; ?>"><?php get_the_image( array( 'default_image' => THEME_URI .'/library/images/first-cup.gif', 'link_to_post' => false ) ); ?></a>
+							<a href="<?php echo $link; ?>" class="date"><?php the_time('F j, Y'); ?></a>
 					
-						</div><!-- .hentry -->
+						</li><!-- .hentry -->
 					
-					<?php endwhile; ?>
-	
-					<div id="first-cup-pagination">
-						<?php loop_pagination(); ?>
-					</div>	
+					<?php endwhile; ?>	
 							
 					<?php wp_reset_query(); ?>
-				</div>
+				</ul>
 			</div><!-- #first-cup -->
 			
-			<h2>Common Ground - Monthly</h2>
-
-			<p>Common Ground is a monthly magazine providing a variety of ministry events and opportunities during the month it is published: It also includes articles about ministries, people, or current events relevant to our lives today. A new edition of the magazine is distributed around the first full week of each month.</p>				
-
 			<div id="common-ground" class="publications">
-				
-				<div id="common-ground-publications-inner">
+
+				<p><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/common-ground-cover.gif" alt="Common Ground" class="alignleft" height="320" width="250" /></p>
+								
+				<h2>Common Ground - Monthly</h2>
+	
+				<p>Common Ground is a monthly magazine providing a variety of ministry events and opportunities during the month it is published: It also includes articles about ministries, people, or current events relevant to our lives today. A new edition of the magazine is distributed around the first full week of each month.</p>			
+												
+				<ul id="common-ground-publications-inner">
 					<?php
 					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 					$args = array (
 						'paged' => $paged,
-						'posts_per_page' => 6,
+						'posts_per_page' => 5,
 						'post_type' => 'publication',
 						'publication-type' => 'common-ground'
 					);
@@ -143,7 +174,7 @@ get_header(); // Loads the header.php template. ?>
 					while ( have_posts() ) : the_post(); 
 						$args = array(
 							'post_type' => 'attachment',
-							'numberposts' => -1,
+							'numberposts' => 51,
 							'post_status' => null,
 							'post_parent' => $post->ID
 							); 
@@ -156,23 +187,17 @@ get_header(); // Loads the header.php template. ?>
 						}											
 						?>
 					
-						<div id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
+						<li id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
 					
-							<div class="date"><?php the_time('F Y'); ?></div>
-							<a href="<?php echo $link; ?>"><?php get_the_image( array( 'default_image' => THEME_URI .'/library/images/common-ground.gif', 'link_to_post' => false ) ); ?></a>
+							<a href="<?php echo $link; ?>" class="date"><?php the_time('F Y'); ?></a>
 					
-						</div><!-- .hentry -->
+						</li><!-- .hentry -->
 					
-					<?php endwhile; ?>
-					
-					<div id="common-ground-pagination">
-						<?php loop_pagination(); ?>
-					</div>
+					<?php endwhile; ?>	
 							
 					<?php wp_reset_query(); ?>
-				
-				</div>
-			</div><!-- #common-ground -->
+				</ul>
+			</div><!-- #commoun-ground -->
 			
 		</div><!-- #publication-archive -->
 

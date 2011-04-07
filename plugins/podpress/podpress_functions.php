@@ -29,20 +29,9 @@ License:
 
 	function podPress_WPVersionCheck($input = '2.0.0') {
 		GLOBAL $wp_version;
-		//~ printphpnotices_var_dump('podPress_WPVersionCheck');
-		//~ $wp_version_test = '3.0.4';
-		//~ printphpnotices_var_dump($input);
-		//~ printphpnotices_var_dump($wp_version);
 		if ( substr($wp_version, 0, 12) == 'wordpress-mu' ) {
 			return true;
 		}
-		//~ printphpnotices_var_dump('podPress_WPVersionCheck b');
-		//~ printphpnotices_var_dump($input.' <= '.$wp_version_test);
-		//~ printphpnotices_var_dump( version_compare($input, $wp_version_test, '<=') );
-		//~ printphpnotices_var_dump( (float) $input <= (float) $wp_version_test );
-		//~ printphpnotices_var_dump($input.' <= '.$wp_version);
-		//~ printphpnotices_var_dump( (float) $input <= (float) $wp_version );
-		//~ printphpnotices_var_dump('podPress_WPVersionCheck c');
 		return ( (float) $input <= (float) $wp_version );
 	}
 
@@ -296,6 +285,7 @@ License:
 			'rtf' => 'application/rtf',
 			'js' => 'application/javascript',
 			'pdf' => 'application/pdf',
+			'epub' => 'document/x-epub',
 			'doc' => 'application/msword',
 			'pot' => 'application/vnd.ms-powerpoint',
 			'pps' => 'application/vnd.ms-powerpoint',
@@ -515,7 +505,7 @@ License:
 					foreach ($podPress->settings['podpress_feeds'] as $feed) {
 						if ( TRUE === $feed['use'] AND FALSE == empty($feed['slug']) ) {
 							if ( FALSE == empty($feed['descr']) ) {
-								$descr = '<br /><span class="nonessential">'.$feed['descr'].'</span>';
+								$descr = '<br /><span class="nonessential">'.stripslashes($feed['descr']).'</span>';
 							} else {
 								$descr = '';
 							}
@@ -539,9 +529,10 @@ License:
 							} else {
 								$podpressfeed_checked = '';
 							}
-							echo '<h5><a href="">'.$feed['name'].'</a></h5>'."\n";
+							$feedname = stripslashes($feed['name']);
+							echo '<h5><a href="">'.$feedname.'</a></h5>'."\n";
 							echo '<div class="podpress_widget_settings_row_div">'."\n";
-							echo '<input type="checkbox"'.$podpressfeed_checked.' id="podPressFeedButtons-'.$feed['slug'].'_use" name="podpressfeeds['.$feed['slug'].'][use]" value="yes" /> <label for="podPressFeedButtons-'.$feed['slug'].'_use">'.sprintf(__('Show %1$s button', 'podpress'), $feed['name']).'</label>'."\n";
+							echo '<input type="checkbox"'.$podpressfeed_checked.' id="podPressFeedButtons-'.$feed['slug'].'_use" name="podpressfeeds['.$feed['slug'].'][use]" value="yes" /> <label for="podPressFeedButtons-'.$feed['slug'].'_use">'.sprintf(__('Show %1$s button', 'podpress'), $feedname).'</label>'."\n";
 							echo $descr."\n";
 							echo '<br />'.__('Select a feed button:', 'podpress').'<br />'."\n";
 							echo '<span class="podpress_feedbuttonsselectbox">'."\n";
@@ -696,14 +687,14 @@ License:
 										$feed_link = get_feed_link($feed_slug);
 									}
 									if ( FALSE == empty($feed['slug']) ) {
-										$descr = $feed['descr'];
+										$descr = stripslashes($feed['descr']);
 									} else {
 										$descr = __('Subscribe to this Feed with any feed reader', 'podpress');
 									}
 									if ( FALSE == empty($feed_options['buttonurl']) ) {
-										echo '	<li><a href="'.$feed_link.'" title="'.attribute_escape($descr).'"><img src="'.$feed_options['buttonurl'].'" class="podpress_feed_buttons" alt="'.attribute_escape($feed['name']).'" /></a></li>'."\n";
+										echo '	<li><a href="'.$feed_link.'" title="'.attribute_escape($descr).'"><img src="'.$feed_options['buttonurl'].'" class="podpress_feed_buttons" alt="'.attribute_escape(stripslashes($feed['name'])).'" /></a></li>'."\n";
 									} else {
-										echo '	<li><a href="'.$feed_link.'" title="'.attribute_escape($descr).'">'.$feed_icon.' '.$feed['name'].'</a></li>'."\n";
+										echo '	<li><a href="'.$feed_link.'" title="'.attribute_escape($descr).'">'.$feed_icon.' '.stripslashes($feed['name']).'</a></li>'."\n";
 									}
 								}
 							}
@@ -805,11 +796,11 @@ License:
 										$feed_link = get_feed_link($feed_slug);
 									}
 									if ( FALSE == empty($feed['slug']) ) {
-										$descr = $feed['descr'];
+										$descr = stripslashes($feed['descr']);
 									} else {
 										$descr = __('Subscribe to this Feed with any feed reader', 'podpress');
 									}
-									echo '	<li><a href="'.$feed_link.'" title="'.attribute_escape($descr).'">'.$feed_icon.' '.$feed['name'].'</a></li>'."\n";
+									echo '	<li><a href="'.$feed_link.'" title="'.attribute_escape($descr).'">'.$feed_icon.' '.stripslashes($feed['name']).'</a></li>'."\n";
 								}
 							}
 						}
@@ -891,6 +882,7 @@ License:
 			$options['PlayerHeight'] = intval(preg_replace('/[^0-9]/', '',$_POST['podPressXspfPlayer-height'])); // only numeric values are allowed
 			$options['useSlimPlayer'] = isset($_POST['podPressXspfPlayer-useSlimPlayer']);
 			$options['SlimPlayerHeight'] = intval(preg_replace('/[^0-9]/', '',$_POST['podPressXspfPlayer-heightslim'])); // only numeric values are allowed
+			$options['trackinfoformat'] = strip_tags($_POST['podPressXspfPlayer-trackinfoformat']);
 		}
 		
 		if ( 150 > intval($options['PlayerWidth']) ) {
@@ -928,6 +920,29 @@ License:
 		<p><label for="podPressXspfPlayer-height"><?php _e('Player Height:', 'podpress'); ?></label> <input type="text" id="podPressXspfPlayer-height" name="podPressXspfPlayer-height" maxlength="3" value="<?php echo $options['PlayerHeight']; ?>" class="podpress_widget_settings_3digits" /> <?php _e('px', 'podpress'); ?> <?php echo '<span class="nonessential">'.__('(100 <= h < 1000)', 'podpress').'</span>'; ?></p>
 		<p><label for="podPressXspfPlayer-useSlimPlayer"><?php _e('Use Slim Player', 'podpress'); ?></label> <input type="checkbox" id="podPressXspfPlayer-useSlimPlayer" name="podPressXspfPlayer-useSlimPlayer"<?php echo $useSlimPlayer; ?> class="checkbox" /></p>
 		<p><label for="podPressXspfPlayer-heightslim"><?php _e('Slim Player Height:', 'podpress'); ?></label> <input type="text" id="podPressXspfPlayer-heightslim" name="podPressXspfPlayer-heightslim" maxlength="3" value="<?php echo $options['SlimPlayerHeight']; ?>" class="podpress_widget_settings_3digits" /> <?php _e('px', 'podpress'); ?> <?php echo '<span class="nonessential">'.__('(30 <= h <= 100)', 'podpress').'</span>'; ?></p>
+		<p><label for="podPressXspfPlayer-trackinfoformat"><?php _e('Choose the format of the playlist entires:', 'podpress'); ?></label> 
+		<select id="podPressXspfPlayer-trackinfoformat" name="podPressXspfPlayer-trackinfoformat"> 
+			<?php				
+			$trackinfoformats = Array(
+			Array('val' => '-title - -creator', 'name'=>__('episode title', 'podpress').' - '.__('artist', 'podpress')), 
+			Array('val' => '-title : -creator', 'name'=>__('episode title', 'podpress').' : '.__('artist', 'podpress')), 
+			Array('val' => '-creator - -title', 'name'=>__('artist', 'podpress').' - '.__('episode title', 'podpress')),
+			Array('val' => '-creator : -title', 'name'=>__('artist', 'podpress').' : '.__('episode title', 'podpress')),
+			Array('val' => '-title', 'name'=>__('episode title', 'podpress'))
+			);
+			if ( FALSE == isset($options['trackinfoformat']) OR TRUE == empty($options['trackinfoformat']) ) {
+				$options['trackinfoformat'] = '-creator : -title';
+			}
+			foreach ($trackinfoformats as $format) {
+				if ($options['trackinfoformat'] == $format['val']) {
+					echo '<option value="'.$format['val'].'" selected="selected">'.$format['name'].'</option>';
+				} else {
+					echo '<option value="'.$format['val'].'">'.$format['name'].'</option>';
+				}
+			}
+			?>
+		</select>
+		</p>
 		<?php
 		if ( defined('PODPRESS_CUSTOM_XSPF_URL_'.$blog_id) AND '' !== constant('PODPRESS_CUSTOM_XSPF_URL_'.$blog_id) ) {
 			$xspf_custom_playlist_url_readonly = ' readonly="readonly"';
@@ -949,7 +964,7 @@ License:
 		echo '<p><label for="xspf_use_custom_playlist">'.__('use a custom XSPF playlist:', 'podpress').'</label> <input type="checkbox" name="podPressXspfPlayer-xspf_use_custom_playlist" id="xspf_use_custom_playlist"'.$xspf_use_custom_playlist_checked.$xspf_use_custom_playlist_disabled.' /></p>'."\n";
 		echo '<p><label for="xspf_custom_playlist_url">'.__('custom playlist URL:', 'podpress').'</label><br /><input type="text" name="podPressXspfPlayer-xspf_custom_playlist_url" id="xspf_custom_playlist_url" class="podpress_full_width_text_field" size="40" value="'.$xspf_custom_playlist_url.'"'.$xspf_custom_playlist_url_readonly.' /><span class="nonessential">'.__('The custom playlist URL has to be an URL to a playlist which is on the same domain/server as your blog. The files in the playlist can be located some where else.', 'podpress').'</span></p>'.$xspf_custom_playlist_msg."\n";
 		if ( TRUE == defined('PODPRESS_XSPF_PLAYER_USE_CUSTOM_SKINFILE_'.$blog_id) AND TRUE === constant('PODPRESS_XSPF_PLAYER_USE_CUSTOM_SKINFILE_'.$blog_id) ) { 
-			echo '<p class="podpress_notice">'.sprintf(__('<strong>Notice:</strong> PODPRESS_XSPF_PLAYER_USE_CUSTOM_SKINFILE_%1$s is defined. This widget uses custom skin files. Make sure that there is a custom skin file for these dimensions (see podpress_xspf_config.php).', 'podpress'), $blog_id).'</p>';
+			echo '<p class="podpress_notice podpress_msg">'.sprintf(__('<strong>Notice:</strong> PODPRESS_XSPF_PLAYER_USE_CUSTOM_SKINFILE_%1$s is defined. This widget uses custom skin files. Make sure that there is a custom skin file for these dimensions (see podpress_xspf_config.php).', 'podpress'), $blog_id).'</p>';
 		}
 		?>
 		<input type="hidden" id="podPressXspfPlayer-submit" name="podPressXspfPlayer-submit" value="1" />
@@ -975,8 +990,9 @@ License:
 		
 		$skin_variables_url = PODPRESS_OPTIONS_URL.'/xspf_options/variables';
 		$skin_variables_dir = PODPRESS_OPTIONS_DIR.'/xspf_options/variables';
-		$skin_file = PODPRESS_URL.'/podpress_xspfskinfile.php';		
 		
+		$skin_file = PODPRESS_URL.'/podpress_xspfskinfile.php';
+
 		echo $before_widget."\n";
 		echo $before_title . $options['title'] . $after_title."\n";
 		if ( TRUE === $options['useSlimPlayer'] ) {
@@ -991,11 +1007,16 @@ License:
 			if ( TRUE === defined('PODPRESS_XSPF_SLIM_USE_CUSTOM_VARIABLES_'.$blog_id) AND TRUE === constant('PODPRESS_XSPF_SLIM_USE_CUSTOM_VARIABLES_'.$blog_id) AND TRUE == is_readable($skin_variables_dir.'/variables_'.$blog_id.'.txt')) { 
 				$variables = '&skin_url='.$skin_file.'&loadurl='.$skin_variables_url.'/variables_'.$blog_id.'.txt';
 			} else {
-				$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true';
+				if ( FALSE == isset($options['trackinfoformat']) OR (TRUE == isset($options['trackinfoformat']) AND '-creator : -title' == $options['trackinfoformat']) ) {
+					$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true';
+				} else {
+					$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true&format='.$options['trackinfoformat'];
+				}
 			}
 			$data_string = PODPRESS_URL.'/players/xspf_jukebox/xspf_jukebox.swf?playlist_url='.(PODPRESS_URL.'/podpress_xspfplaylist.php').$variables;
 			$data_string = htmlspecialchars($data_string);
-			echo '<object type="application/x-shockwave-flash" width="'.$options['PlayerWidth'].'" height="'.$options['PlayerHeight'].'" id="podpress_xspf_player_slim" data="'.$data_string.'">'."\n";
+			echo '<object type="application/x-shockwave-flash" classid="CLSID:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'.$options['PlayerWidth'].'" height="'.$options['PlayerHeight'].'" id="podpress_xspf_player_slim">'."\n";
+			$height = $options['SlimPlayerHeight'];
 		} else {
 			if ( 100 > intval($options['PlayerHeight']) ) {
 				$options['PlayerHeight'] = 100; // min height
@@ -1006,11 +1027,16 @@ License:
 			if ( TRUE === defined('PODPRESS_XSPF_USE_CUSTOM_VARIABLES_'.$blog_id) AND TRUE === constant('PODPRESS_XSPF_USE_CUSTOM_VARIABLES_'.$blog_id) AND TRUE == is_readable($skin_variables_dir.'/variables_'.$blog_id.'.txt')) {
 				$variables = '&skin_url='.$skin_file.'&loadurl='.$skin_variables_url.'/variables_'.$blog_id.'.txt';
 			} else {
-				$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true';
+				if ( FALSE == isset($options['trackinfoformat']) OR (TRUE == isset($options['trackinfoformat']) AND '-creator : -title' == $options['trackinfoformat']) ) {
+					$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true';
+				} else {
+					$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true&format='.$options['trackinfoformat'];
+				}
 			}
 			$data_string = PODPRESS_URL.'/players/xspf_jukebox/xspf_jukebox.swf?playlist_url='.(PODPRESS_URL.'/podpress_xspfplaylist.php').$variables;
 			$data_string = htmlspecialchars($data_string);
-			echo '<object type="application/x-shockwave-flash" width="'.$options['PlayerWidth'].'" height="'.$options['PlayerHeight'].'" id="podpress_xspf_player" data="'.$data_string.'">'."\n";
+			echo '<object type="application/x-shockwave-flash" classid="CLSID:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'.$options['PlayerWidth'].'" height="'.$options['PlayerHeight'].'" id="podpress_xspf_player">'."\n";
+			$height = $options['PlayerHeight'];
 		}
 		echo '	<param name="movie" value="'.$data_string.'" />'."\n";
 		if ( defined('PODPRESS_XSPF_BACKGROUND_COLOR_'.$blog_id) AND '' !== constant('PODPRESS_XSPF_BACKGROUND_COLOR_'.$blog_id) ) {
@@ -1018,6 +1044,10 @@ License:
 		} else {
 			echo '	<param name="bgcolor" value="#FFFFFF" />'."\n";
 		}
+		echo '	<param name="menu" value="true" />';
+		echo '	<param name="wmode" value="transparent" />';
+		echo '	<param name="quality" value="high" />';
+		echo '	<embed src="'.$data_string.'" type="application/x-shockwave-flash" width="'.$options['PlayerWidth'].'" height="'.$height.'" wmode="transparent" quality="high" />';
 		echo '</object>'."\n";
 		echo $after_widget;
 	}
@@ -1079,14 +1109,14 @@ License:
 												$feed_link = get_feed_link($feed_slug);
 											}
 											if ( FALSE == empty($feed['slug']) ) {
-												$descr = $feed['descr'];
+												$descr = stripslashes($feed['descr']);
 											} else {
 												$descr = __('Subscribe to this Feed with any feed reader', 'podpress');
 											}
 											if ( FALSE == empty($feed_options['buttonurl']) ) {
-												echo '	<li><a href="'.$feed_link.'" title="'.$descr.'"><img src="'.$feed_options['buttonurl'].'" class="podpress_feed_buttons" alt="'.$feed['name'].'" /></a></li>'."\n";
+												echo '	<li><a href="'.$feed_link.'" title="'.esc_attr($descr).'"><img src="'.$feed_options['buttonurl'].'" class="podpress_feed_buttons" alt="'.esc_attr(stripslashes($feed['name'])).'" /></a></li>'."\n";
 											} else {
-												echo '	<li><a href="'.$feed_link.'" title="'.$descr.'">'.$feed_icon.' '.$feed['name'].'</a></li>'."\n";
+												echo '	<li><a href="'.$feed_link.'" title="'.esc_attr($descr).'">'.$feed_icon.' '.stripslashes($feed['name']).'</a></li>'."\n";
 											}
 										}
 									}
@@ -1185,11 +1215,11 @@ License:
 												$feed_link = get_feed_link($feed_slug);
 											}
 											if ( FALSE == empty($feed['slug']) ) {
-												$descr = $feed['descr'];
+												$descr = stripslashes($feed['descr']);
 											} else {
 												$descr = __('Subscribe to this Feed with any feed reader', 'podpress');
 											}
-											echo '	<li><a href="'.$feed_link.'" title="'.$descr.'">'.$feed_icon.' '.$feed['name'].'</a></li>'."\n";
+											echo '	<li><a href="'.$feed_link.'" title="'.esc_attr($descr).'">'.$feed_icon.' '.stripslashes($feed['name']).'</a></li>'."\n";
 										}
 									}
 								}
@@ -1380,7 +1410,7 @@ License:
 				if(!isset($instance['title'])) {
 					$instance['title'] = __('Podcast Feeds', 'podpress');
 				}
-				$title = esc_attr($instance['title']);
+				$title = esc_attr(stripslashes($instance['title']));
 				?>
 				<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'podpress'); ?></label> <input class="podpress_widget_settings_title" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 				<p><?php _e('Show the buttons for the following feeds:', 'podpress'); ?></p>
@@ -1399,7 +1429,7 @@ License:
 					foreach ($podPress->settings['podpress_feeds'] as $feed) {
 						if ( TRUE === $feed['use'] AND FALSE == empty($feed['slug']) ) {
 							if ( FALSE == empty($feed['descr']) ) {
-								$descr = '<br /><span class="nonessential">'.$feed['descr'].'</span>';
+								$descr = '<br /><span class="nonessential">'.stripslashes($feed['descr']).'</span>';
 							} else {
 								$descr = '';
 							}
@@ -1423,9 +1453,9 @@ License:
 							} else {
 								$podpressfeed_checked = '';
 							}
-							echo '<h5><a href="">'.$feed['name'].'</a></h5>'."\n";
+							echo '<h5><a href="">'.stripslashes($feed['name']).'</a></h5>'."\n";
 							echo '<div class="podpress_widget_settings_row_div">'."\n";
-							echo '<input type="checkbox"'.$podpressfeed_checked.' id="'.$this->get_field_id($feed['slug'].'_use').'" name="'.$this->get_field_name('podpressfeeds').'['.$feed['slug'].'][use]" value="yes" /> <label for="'.$this->get_field_id($feed['slug'].'_use').'">'.sprintf(__('Show %1$s button', 'podpress'), $feed['name']).'</label>'."\n";
+							echo '<input type="checkbox"'.$podpressfeed_checked.' id="'.$this->get_field_id($feed['slug'].'_use').'" name="'.$this->get_field_name('podpressfeeds').'['.$feed['slug'].'][use]" value="yes" /> <label for="'.$this->get_field_id($feed['slug'].'_use').'">'.sprintf(__('Show %1$s button', 'podpress'), stripslashes($feed['name'])).'</label>'."\n";
 							echo $descr."\n";
 							echo '<br />'.__('Select a feed button:', 'podpress').'<br />'."\n";
 							echo '<span class="podpress_feedbuttonsselectbox">'."\n";
@@ -1604,12 +1634,12 @@ License:
 				$skin_variables_url = PODPRESS_OPTIONS_URL.'/xspf_options/variables';
 				$skin_variables_dir = PODPRESS_OPTIONS_DIR.'/xspf_options/variables';
 				$skin_file = PODPRESS_URL.'/podpress_xspfskinfile.php';
-				
+
 				echo $before_widget."\n";
 				echo $before_title . $title . $after_title."\n";
 				
 				if (defined('PODPRESS_ONE_XSPF_IS_ACTIVE')) {
-					echo '<div class="message error"><p>'.__('Please use this widget only once per page.', 'podpress').'</p></div>';
+					echo '<div class="podpress_error"><p>'.__('Please use this widget only once per page.', 'podpress').'</p></div>';
 				} else {
 					define('PODPRESS_ONE_XSPF_IS_ACTIVE', TRUE);
 					if ( TRUE === $instance['useSlimPlayer'] ) {
@@ -1626,11 +1656,16 @@ License:
 						if ( TRUE === defined('PODPRESS_XSPF_SLIM_USE_CUSTOM_VARIABLES_'.$blog_id) AND TRUE === constant('PODPRESS_XSPF_SLIM_USE_CUSTOM_VARIABLES_'.$blog_id) AND TRUE == is_readable($skin_variables_dir.'/variables_'.$blog_id.'.txt')) {
 							$variables = '&skin_url='.$skin_file.'&loadurl='.$skin_variables_url.'/variables_'.$blog_id.'.txt';
 						} else {
-							$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true';
+							if ( FALSE == isset($instance['trackinfoformat']) OR (TRUE == isset($instance['trackinfoformat']) AND '-creator : -title' == $instance['trackinfoformat']) ) {
+								$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true';
+							} else {
+								$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true&format='.$instance['trackinfoformat'];
+							}
 						}
 						$data_string = PODPRESS_URL.'/players/xspf_jukebox/xspf_jukebox.swf?playlist_url='.(PODPRESS_URL.'/podpress_xspfplaylist.php').$variables;
 						$data_string = htmlspecialchars($data_string);
-						echo '<object type="application/x-shockwave-flash" width="'.$instance['PlayerWidth'].'" height="'.$instance['SlimPlayerHeight'].'" id="podpress_xspf_player_slim" data="'.$data_string.'">'."\n";
+						echo '<object type="application/x-shockwave-flash" classid="CLSID:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'.$instance['PlayerWidth'].'" height="'.$instance['SlimPlayerHeight'].'" id="podpress_xspf_player_slim">'."\n";
+						$height = $instance['SlimPlayerHeight'];
 					} else {
 						if ( 100 > intval($instance['PlayerHeight']) ) {
 							$instance['PlayerHeight'] = 100; // min height
@@ -1642,19 +1677,27 @@ License:
 						if ( TRUE === defined('PODPRESS_XSPF_USE_CUSTOM_VARIABLES_'.$blog_id) AND TRUE === constant('PODPRESS_XSPF_USE_CUSTOM_VARIABLES_'.$blog_id) AND TRUE == is_readable($skin_variables_dir.'/variables_'.$blog_id.'.txt')) {
 							$variables = '&skin_url='.$skin_file.'&loadurl='.$skin_variables_url.'/variables_'.$blog_id.'.txt';
 						} else {
-							$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true';
+							if ( FALSE == isset($instance['trackinfoformat']) OR (TRUE == isset($instance['trackinfoformat']) AND '-creator : -title' == $instance['trackinfoformat']) ) {
+								$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true';
+							} else {
+								$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true&format='.$instance['trackinfoformat'];
+							}
 						}
-						
 						$data_string = PODPRESS_URL.'/players/xspf_jukebox/xspf_jukebox.swf?playlist_url='.(PODPRESS_URL.'/podpress_xspfplaylist.php').$variables;
 						$data_string = htmlspecialchars($data_string);
-						echo '<object type="application/x-shockwave-flash" width="'.$instance['PlayerWidth'].'" height="'.$instance['PlayerHeight'].'" id="podpress_xspf_player" data="'.$data_string.'">'."\n";
+						echo '<object type="application/x-shockwave-flash" classid="CLSID:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'.$instance['PlayerWidth'].'" height="'.$instance['PlayerHeight'].'" id="podpress_xspf_player">'."\n";
+						$height = $instance['PlayerHeight'];
 					}
-					echo '	<param name="movie" value="'.$data_string.'" />'."\n";			
+					echo '	<param name="movie" value="'.$data_string.'" />'."\n";	
 					if ( defined('PODPRESS_XSPF_BACKGROUND_COLOR_'.$blog_id) AND '' !== constant('PODPRESS_XSPF_BACKGROUND_COLOR_'.$blog_id) ) {
 						echo '	<param name="bgcolor" value="#'.constant('PODPRESS_XSPF_BACKGROUND_COLOR_'.$blog_id).'" />'."\n";
 					} else {
 						echo '	<param name="bgcolor" value="#FFFFFF" />'."\n";
 					}
+					echo '	<param name="menu" value="true" />'."\n";
+					echo '	<param name="wmode" value="transparent" />'."\n";
+					echo '	<param name="quality" value="high" />'."\n";
+					echo '	<embed src="'.$data_string.'" type="application/x-shockwave-flash" width="'.$instance['PlayerWidth'].'" height="'.$height.'" wmode="transparent" quality="high" />'."\n";
 					echo '</object>'."\n";
 				}
 				echo $after_widget;
@@ -1686,6 +1729,7 @@ License:
 				} else {
 					$instance['xspf_use_custom_playlist'] = FALSE;
 				}
+				$instance['trackinfoformat'] = $new_instance['trackinfoformat'];
 				$instance['xspf_custom_playlist_url'] = clean_url($new_instance['xspf_custom_playlist_url'], array('http', 'https'), 'db');
 				
 				// delete the old widget settings
@@ -1709,6 +1753,7 @@ License:
 					$instance['PlayerHeight'] = $old_widget_options['PlayerHeight'];
 					$instance['useSlimPlayer'] = $old_widget_options['useSlimPlayer'];
 					$instance['SlimPlayerHeight'] = $old_widget_options['SlimPlayerHeight'];
+					$instance['trackinfoformat'] = $old_widget_options['trackinfoformat'];
 				}
 				
 				if(!isset($instance['title'])) {
@@ -1735,6 +1780,29 @@ License:
 				<p><label for="<?php echo $this->get_field_id('height'); ?>"><?php _e('Player Height:', 'podpress'); ?></label> <input type="text" id="<?php echo $this->get_field_id('height'); ?>" name="<?php echo $this->get_field_name('height'); ?>" maxlength="3" value="<?php echo $instance['PlayerHeight']; ?>" class="podpress_widget_settings_3digits" /> <?php _e('px', 'podpress'); ?> <?php echo '<span class="nonessential">'.__('(100 <= h < 1000)', 'podpress').'</span>'; ?></p>
 				<p><label for="<?php echo $this->get_field_id('useSlimPlayer'); ?>"><?php _e('Use Slim Player:', 'podpress'); ?></label> <input type="checkbox" id="<?php echo $this->get_field_id('useSlimPlayer'); ?>" name="<?php echo $this->get_field_name('useSlimPlayer'); ?>"<?php echo $useSlimPlayer; ?> /></p>
 				<p><label for="<?php echo $this->get_field_id('heightslim'); ?>"><?php _e('Slim Player Height:', 'podpress'); ?></label> <input type="text" id="<?php echo $this->get_field_id('heightslim'); ?>" name="<?php echo $this->get_field_name('heightslim'); ?>" maxlength="3" value="<?php echo $instance['SlimPlayerHeight']; ?>" class="podpress_widget_settings_3digits" /> <?php _e('px', 'podpress'); ?> <?php echo '<span class="nonessential">'.__('(30 <= h <= 100)', 'podpress').'</span>'; ?></p>
+				<p><label for="<?php echo $this->get_field_id('trackinfoformat'); ?>"><?php _e('Choose the format of the playlist entires:', 'podpress'); ?></label> 
+				<select id="<?php echo $this->get_field_id('trackinfoformat'); ?>" name="<?php echo $this->get_field_name('trackinfoformat'); ?>"> 
+				<?php				
+				$trackinfoformats = Array(
+				Array('val' => '-title - -creator', 'name'=>__('episode title', 'podpress').' - '.__('artist', 'podpress')), 
+				Array('val' => '-title : -creator', 'name'=>__('episode title', 'podpress').' : '.__('artist', 'podpress')), 
+				Array('val' => '-creator - -title', 'name'=>__('artist', 'podpress').' - '.__('episode title', 'podpress')),
+				Array('val' => '-creator : -title', 'name'=>__('artist', 'podpress').' : '.__('episode title', 'podpress')),
+				Array('val' => '-title', 'name'=>__('episode title', 'podpress'))
+				);
+				if ( FALSE == isset($instance['trackinfoformat']) OR TRUE == empty($instance['trackinfoformat']) ) {
+					$instance['trackinfoformat'] = '-creator : -title';
+				}
+				foreach ($trackinfoformats as $format) {
+					if ($instance['trackinfoformat'] == $format['val']) {
+						echo '<option value="'.$format['val'].'" selected="selected">'.$format['name'].'</option>';
+					} else {
+						echo '<option value="'.$format['val'].'">'.$format['name'].'</option>';
+					}
+				}
+				?>
+				</select>
+				</p>
 				<?php
 				if ( defined('PODPRESS_CUSTOM_XSPF_URL_'.$blog_id) AND '' !== constant('PODPRESS_CUSTOM_XSPF_URL_'.$blog_id) ) {
 					$xspf_custom_playlist_url_readonly = ' readonly="readonly"';
@@ -1756,7 +1824,7 @@ License:
 				echo '<p><label for="'.$this->get_field_id('xspf_use_custom_playlist').'">'.__('use a custom XSPF playlist:', 'podpress').'</label> <input type="checkbox" name="'.$this->get_field_name('xspf_use_custom_playlist').'" id="'.$this->get_field_id('xspf_use_custom_playlist').'"'.$xspf_use_custom_playlist_checked.$xspf_use_custom_playlist_disabled.' /></p>'."\n";
 				echo '<p><label for="'.$this->get_field_id('xspf_custom_playlist_url').'">'.__('custom playlist URL:', 'podpress').'</label><br /><input type="text" name="'.$this->get_field_name('xspf_custom_playlist_url').'" id="'.$this->get_field_id('xspf_custom_playlist_url').'" class="podpress_full_width_text_field" size="40" value="'.$xspf_custom_playlist_url.'"'.$xspf_custom_playlist_url_readonly.' /><span class="nonessential">'.__('The custom playlist URL has to be an URL to a playlist which is on the same domain/server as your blog. The files in the playlist can be located some where else.', 'podpress').'</span></p>'.$xspf_custom_playlist_msg."\n";
 				if ( TRUE == defined('PODPRESS_XSPF_PLAYER_USE_CUSTOM_SKINFILE_'.$blog_id) AND TRUE === constant('PODPRESS_XSPF_PLAYER_USE_CUSTOM_SKINFILE_'.$blog_id) ) { 
-					echo '<p class="podpress_notice">'.sprintf(__('<strong>Notice:</strong> PODPRESS_XSPF_PLAYER_USE_CUSTOM_SKINFILE_%1$s is defined. This widget uses custom skin files. Make sure that there is a custom skin file for these dimensions (see podpress_xspf_config.php).', 'podpress'), $blog_id).'</p>';
+					echo '<p class="podpress_notice podpress_msg">'.sprintf(__('<strong>Notice:</strong> PODPRESS_XSPF_PLAYER_USE_CUSTOM_SKINFILE_%1$s is defined. This widget uses custom skin files. Make sure that there is a custom skin file for these dimensions (see podpress_xspf_config.php).', 'podpress'), $blog_id).'</p>';
 				}
 			}
 		} // class podPress XSPF Player Widget
@@ -1987,7 +2055,7 @@ License:
 		}
 
 		if (in_array($method, $allowedMethods) && is_numeric($postID) && is_numeric($mediaNum)) {
-			$mediaFiles = podPress_get_post_meta($postID, 'podPressMedia', true);
+			$mediaFiles = podPress_get_post_meta($postID, '_podPressMedia', true);
 			if(isset($mediaFiles[$mediaNum])) {			
 				if($mediaFiles[$mediaNum]['URI'] == urldecode($filename)) {
 					$realURL = $filename;
@@ -2131,7 +2199,8 @@ License:
 				$value = serialize($value);
 			}
 		}
-		return add_option($name, $value, $description, $autoload);
+		$result = add_option($name, $value, $description, $autoload);
+		return $result;
 	}
 
 	function podPress_get_option($option) {

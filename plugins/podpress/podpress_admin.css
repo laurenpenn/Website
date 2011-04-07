@@ -1,5 +1,6 @@
 /* ######## CSS for the post and page editor pages in the WP backend - for WP versions older than v2.7 ######## */
 
+/*  general podPress admin CSS */
 .podpress_wide_text_field {
 	width:80%;
 }
@@ -170,6 +171,9 @@
 }
 .podpress_player_color_cell input {
 	width:15em;
+}
+.podpress_player_narrowmiddle_col {
+	width:5em;
 }
 .podpress_player_description_cell {
 	padding:0.5em 0em 0.5em 0em;

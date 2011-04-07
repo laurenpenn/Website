@@ -54,10 +54,11 @@ License:
 			}
 
 			$files = array();
-			if(@is_dir($this->settings['mediaFilePath'])) {
-				$dh  = opendir($this->settings['mediaFilePath']);
+			$mediaFilePath = stripslashes($this->settings['mediaFilePath']);
+			if(@is_dir($mediaFilePath)) {
+				$dh  = opendir($mediaFilePath);
 				while (false !== ($filename = readdir($dh))) {
-					if($filename != '.' && $filename != '..' && !is_dir($this->settings['mediaFilePath'].'/'.$filename) && !in_array(podPress_getFileExt($filename), array('php', 'html'))) {
+					if($filename != '.' && $filename != '..' && !is_dir($mediaFilePath.'/'.$filename) && !in_array(podPress_getFileExt($filename), array('php', 'html'))) {
 						$files[] = $filename;
 					}
 				}
@@ -311,7 +312,7 @@ License:
 				}
 				echo '					<tr>'."\n";
 				echo '						<td>'."\n";
-				echo '							<label for="podPressMedia_'.$num.'_title">'.__('Title', 'podpress').'</label> ('.__('optional', 'podpress').'): '."\n";
+				echo '							<label for="podPressMedia_'.$num.'_title">'.__('Title', 'podpress').'</label>: '."\n";
 				echo '						</td>'."\n";
 				echo '						<td>'."\n";
 				echo '							<input type="text" id="podPressMedia_'.$num.'_title" name="podPressMedia['.$num.'][title]" size="40" value="'.attribute_escape($thisMedia['title']).'" onchange="javascript: podPressMediaFiles['.$num.'][\'title\'] = this.value;" />'."\n";
@@ -630,10 +631,11 @@ License:
 			}
 
 			$files = array();
-			if(@is_dir($this->settings['mediaFilePath'])) {
-				$dh  = opendir($this->settings['mediaFilePath']);
+			$mediaFilePath = stripslashes($this->settings['mediaFilePath']);
+			if(@is_dir($mediaFilePath)) {
+				$dh  = opendir($mediaFilePath);
 				while (false !== ($filename = readdir($dh))) {
-					if($filename != '.' && $filename != '..' && !is_dir($this->settings['mediaFilePath'].'/'.$filename) && !in_array(podPress_getFileExt($filename), array('php', 'html'))) {
+					if($filename != '.' && $filename != '..' && !is_dir($mediaFilePath.'/'.$filename) && !in_array(podPress_getFileExt($filename), array('php', 'html'))) {
 						$files[] = $filename;
 					}
 				}
@@ -687,6 +689,9 @@ License:
 			$newMediaDefaults['showme'] = 'false';
 			echo "newMediaDefaults['showme'] = ".$newMediaDefaults['showme'].";\n";
 
+			//~ printphpnotices_var_dump($post);
+			//~ printphpnotices_var_dump($post->podPressMedia);
+			//~ printphpnotices_var_dump($post->podPressPostSpecific);
 			if ( FALSE !== empty($post->podPressMedia) ) {
 				$num = 0;
 			} else {
@@ -883,7 +888,7 @@ License:
 				}
 				echo '					<tr>'."\n";
 				echo '						<th>'."\n";
-				echo '							<label for="podPressMedia_'.$num.'_title">'.__('Title', 'podpress').'</label> ('.__('optional', 'podpress').'): '."\n";
+				echo '							<label for="podPressMedia_'.$num.'_title">'.__('Title', 'podpress').'</label>: '."\n";
 				echo '						</th>'."\n";
 				echo '						<td>'."\n";
 				echo '							<input type="text" id="podPressMedia_'.$num.'_title" name="podPressMedia['.$num.'][title]" class="podpress_wide_text_field" size="40" value="'.attribute_escape($thisMedia['title']).'" onchange="javascript: podPressMediaFiles['.$num.'][\'title\'] = this.value;" />'."\n";
@@ -1250,7 +1255,7 @@ License:
 						}
 						$i++;
 					}
-					delete_post_meta($post_id, 'podPressMedia');
+					delete_post_meta($post_id, '_podPressMedia');
 					if(!empty($verifiedMedia)) {
 						if($this->settings['enablePodangoIntegration']) {
 							foreach ($verifiedMedia as $key=>$val) {
@@ -1280,7 +1285,7 @@ License:
 								}
 							}
 						}
-						podPress_add_post_meta($post_id, 'podPressMedia', $verifiedMedia, true) ;
+						podPress_add_post_meta($post_id, '_podPressMedia', $verifiedMedia, true) ;
 					}
 				}
 				if(isset($_POST['iTunesSubtitleChoice']) AND $_POST['iTunesSummaryChoice'] AND $_POST['iTunesKeywordsChoice'] AND $_POST['iTunesAuthorChoice'] AND $_POST['iTunesExplicit'] AND $_POST['iTunesBlock']) {
@@ -1324,8 +1329,8 @@ License:
 						$podPressPostSpecific['itunes:block'] = 'No';
 					}
 					
-					delete_post_meta($post_id, 'podPressPostSpecific');
-					podPress_add_post_meta($post_id, 'podPressPostSpecific', $podPressPostSpecific, true);
+					delete_post_meta($post_id, '_podPressPostSpecific');
+					podPress_add_post_meta($post_id, '_podPressPostSpecific', $podPressPostSpecific, true);
 				}
 				$post->podPressPostSpecific = $podPressPostSpecific;
 
@@ -1358,7 +1363,6 @@ License:
 			$blog_charset = get_bloginfo('charset');
 			if (empty($data['podcastFeedURL'])) {
 				if (TRUE == version_compare($wp_version, '2.9.3','>') ) { // since WP 3.0 the cat_ID isreplaced by tag_ID
-					//$data['podcastFeedURL'] = get_option('siteurl').'/?feed=rss2&cat='.$_GET['tag_ID'];
 					$data['podcastFeedURL'] = get_term_feed_link($_GET['tag_ID']);
 				} elseif ( TRUE == version_compare($wp_version, '2.9.3','<=') AND TRUE == version_compare($wp_version, '2.4','>') ) {
 					$data['podcastFeedURL'] = get_category_feed_link($_GET['cat_ID']);
@@ -1417,7 +1421,6 @@ License:
 			echo '				</th>';
 			echo '				<td colspan="2">';
 			echo '					<input name="iTunesFeedID" id="iTunesFeedID" type="text" value="'.attribute_escape($data['iTunesFeedID']).'" size="10" />';
-			echo '					<input type="button" name="Ping_iTunes_update" value="'.__('Ping iTunes Update', 'podpress').'" onclick="javascript: if(document.getElementById(\'iTunesFeedID\').value != \'\') { window.open(\'https://phobos.apple.com/WebObjects/MZFinance.woa/wa/pingPodcast?id=\'+document.getElementById(\'iTunesFeedID\').value); }"/>'."\n";
 			echo '				</td>'."\n";
 			echo '			</tr>'."\n";
 
