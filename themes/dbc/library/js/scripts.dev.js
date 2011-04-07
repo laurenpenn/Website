@@ -1715,85 +1715,22 @@ jQuery.cookie = function (key, value, options) {
 };
 
 
-/* 
- * Equal Columns with JavaScript
- * http://www.impressivewebs.com/equal-height-columns-with-javascript-full-version/
- */
-function retrieveComputedStyle(element, styleProperty){
-	var computedStyle = null;
-	
-	if (typeof element.currentStyle !== "undefined")	{
-		computedStyle = element.currentStyle;
-	} else {
-		computedStyle = document.defaultView.getComputedStyle(element, null);
-	}
-	return computedStyle[styleProperty];
-}
-function addLoadListener(fn){
-	if (typeof window.addEventListener !== 'undefined'){
-		window.addEventListener('load', fn, false);
-	}
-	else if (typeof document.addEventListener !== 'undefined'){
-		document.addEventListener('load', fn, false);
-	}
-	else if (typeof window.attachEvent !== 'undefined'){
-		window.attachEvent('onload', fn);
-	}
-	else	{
-		var oldfn = window.onload;
-		if (typeof window.onload !== 'function')		{
-			window.onload = fn;
-		}else{
-			window.onload = function(){
-				oldfn();
-				fn();
-			};
-		}
-	}
-}
-function equalHeight() {
-
-	var myLeftColumn = document.getElementById("content");
-	var myRightColumn = document.getElementById("sidebar-primary");
-	
-	var myLeftHeight = myLeftColumn.offsetHeight;
-	var myRightHeight = myRightColumn.offsetHeight;
-	
-	var myLeftBorderTopPixels = retrieveComputedStyle(myLeftColumn, "borderTopWidth");
-	var myLeftBorderBottomPixels = retrieveComputedStyle(myLeftColumn, "borderBottomWidth");
-	var myLeftPaddingTopPixels = retrieveComputedStyle(myLeftColumn, "paddingTop");
-	var myLeftPaddingBottomPixels = retrieveComputedStyle(myLeftColumn, "paddingBottom");
-	
-	var myRightBorderTopPixels = retrieveComputedStyle(myRightColumn, "borderTopWidth");
-	var myRightBorderBottomPixels = retrieveComputedStyle(myRightColumn, "borderBottomWidth");
-	var myRightPaddingTopPixels = retrieveComputedStyle(myRightColumn, "paddingTop");
-	var myRightPaddingBottomPixels = retrieveComputedStyle(myRightColumn, "paddingBottom");
-	
-	var myLeftBorderNumber = Number(myLeftBorderTopPixels.replace("px", "")) + Number(myLeftBorderBottomPixels.replace("px", ""));
-	var myLeftPaddingNumber = Number(myLeftPaddingTopPixels.replace("px", "")) + Number(myLeftPaddingBottomPixels.replace("px", ""));
-	var myLeftExtras = myLeftBorderNumber + myLeftPaddingNumber;
-	
-	var myRightBorderNumber = Number(myRightBorderTopPixels.replace("px", "")) + Number(myRightBorderBottomPixels.replace("px", ""));
-	var myRightPaddingNumber = Number(myRightPaddingTopPixels.replace("px", "")) + Number(myRightPaddingBottomPixels.replace("px", ""));
-	var myRightExtras = myRightBorderNumber + myRightPaddingNumber;
-	
-	if (myLeftHeight > myRightHeight) {
-		myRightColumn.style.height = (myLeftHeight - myRightExtras) + "px";
-	}
-	
-	else {
-		myLeftColumn.style.height = (myRightHeight - myLeftExtras) + "px";
-	}
-	
-}
-
 /*
  * Gentlemen, start your engines!
  */
 jQuery(document).ready(function($) {
 
 	// Equal column heights
-	addLoadListener(equalHeight);
+	    // get the heights
+	    l = $('#sidebar-primary').height();
+	    r = $('#content').height();
+	
+	    // get maximum heights of all columns
+	    h = Math.max(Math.max(l, r));
+	
+	    // apply it
+	    $('#sidebar-primary').height(h);
+	    $('#content').height(h);
 
 	// for PDF auto-detection
 		$('a[href$=".pdf"]').addClass('fancybox-pdf');
