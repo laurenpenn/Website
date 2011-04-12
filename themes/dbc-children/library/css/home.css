@@ -1,0 +1,14 @@
+/**
+ * Home Stylesheet
+ * This is only loaded when using the page-template-home.php page template
+ *
+ * @since 0.1
+ */
+
+/* Slider CSS */
+@import('orbit.css');
+
+#main {
+	overflow: visible;
+}
+
