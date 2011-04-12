@@ -310,7 +310,7 @@ function dbc_footer() {
 		<div class="footer-left">
 	
 			<p class="copyright">Copyright &#169; <?php echo date('Y'); ?> <a href="http://dentonbible.org">Denton Bible Church</a>, all rights reserved.</p>
-			<p class="credit">Designed by <a href="http://eddierenz.com/" class="highlight">Eddie Renz</a> &amp; built by <a href="http://developdaly.com/" class="highlight">Develop Daly</a>. <a href="http://dentonbible.org/staff-registration/">Staff Registration</a> | <?php wp_loginout(); ?></p>
+			<p class="credit">Designed by <a href="http://eddierenz.com/" class="highlight">Eddie Renz</a> &amp; built by <a href="http://developdaly.com/" class="highlight">Develop Daly</a>. <a href="http://dentonbible.org/staff-registration/" rel="nofollow">Staff Registration</a> | <?php wp_loginout(); ?></p>
 			
 		</div>
 	
