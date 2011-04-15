@@ -61,6 +61,12 @@ if ( post_password_required() || ( !have_comments() && !comments_open() && !ping
 		</div><!-- #comments -->
 
 		<?php comment_form(); // Loads the comment form. ?>
+		
+		<div id="comments-notice">
+			
+			<p>Note that we moderate all comments, so while some may not be published we do read and appreciate all feedback.</p>
+			
+		</div><!-- #comments-notice -->
 
 	</div><!-- .comments-wrap -->
 

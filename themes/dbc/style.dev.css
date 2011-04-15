@@ -678,7 +678,7 @@ img.wp-smiley {
 			}
 	
 		/* Archives */
-		.taxonomy .hentry,
+		.archive .hentry,
 		.search .hentry {
 			border-left: 1px solid #D7D4CF;
 			border-top: 1px solid #D7D4CF;
@@ -686,17 +686,17 @@ img.wp-smiley {
 			overflow: hidden;
 			padding: 18px 18px 0;
 		}
-			.taxonomy .hentry .thumbnail,
+			.archive .hentry .thumbnail,
 			.search .hentry .thumbnail {
 				border: 1px solid #D7D4CF;
 				float: left;
 				margin: 0 18px 18px 0;
 			}
-			.taxonomy .hentry.odd,
+			.archive .hentry.odd,
 			.search .hentry.odd {
 				background: url('library/images/grad-horz-graywhite.gif') repeat-x;
 			}
-			.taxonomy .hentry .entry-meta,
+			.archive .hentry .entry-meta,
 			.search .hentry .entry-meta {
 				margin: 0;
 			}
@@ -975,24 +975,25 @@ img.wp-smiley {
 		margin: 0;
 	}
 	ol.comment-list {
-		border: 1px solid #000;
+		background: #f9f9f9;
+		border: 1px solid #999;
 		margin: 0 0 40px;
 	}
 	.comment-list .depth-1 {
-		border-bottom: 1px solid #333;
+		border-bottom: 1px solid #ccc;
 		padding: 20px 20px 0;
 	}		
 	.comment-list .depth-2,
 	.comment-list .depth-3,
 	.comment-list .depth-4,
 	.comment-list .depth-5 {
-		border-top: 1px solid #000;
-		padding: 20px 0 0 40px;
+		border: 1px solid #ccc;
+		padding: 20px 20px 0 20px;
 	}			
 	ol.comment-list .avatar {
 		float: left;
-		width: 60px;
-		height: 60px;
+		width: 40px;
+		height: 40px;
 		margin: 0;
 		padding: 4px;
 		background: #fff;
@@ -1000,7 +1001,7 @@ img.wp-smiley {
 	}
 	
 	.comment-meta {
-		margin: 0 0 10px 90px;
+		margin: 0 0 10px 70px;
 		overflow: hidden;
 		padding: 0 0 10px 0;
 		font: normal normal normal 11px/20px Arial, Verdana, sans-serif;
@@ -1009,7 +1010,6 @@ img.wp-smiley {
 	}
 		.comment-meta .permalink { color: #999; }
 		
-	.comment-author { float: left; }
 		.comment-author {
 			font: normal normal bold 12px/20px Arial, Verdana, sans-serif;
 			color: #666;
@@ -1017,21 +1017,49 @@ img.wp-smiley {
 			.comment-author cite { font-style: normal; }
 
 	.comment-meta .published { text-align: right; }
-	.comment-reply-link {
-		float: right;
-	}
 	.comment-text {
-		margin: 0 0 0 90px;
+		margin: 0 0 0 70px;
 		font-size: 12px;
 		line-height: 20px;
-		color: #ccc;
 	}
 	.comment-text p { margin-bottom: 20px; }
+	.comment-list .children {
+		margin: 0 0 20px;
+	}
 
-	#respond textarea {
+	#commentform textarea, .contact-form textarea {
+		display: block;
+		width: 98.5%;
+	}
+	#commentform input, #commentform textarea {
+		border: 1px solid #ccc;
 		font: 12px/20px Arial, Helvetica, sans-serif;
 		padding: 5px;
-		width: 95%;
+	}
+	#commentform p.form-author {
+		float: left;
+		width: 45%;
+		margin-right: 9%;
+	}
+	#commentform p.form-email {
+		float: right;
+		width: 45%;
+		margin-right: 1%;
+	}
+	#commentform input[type="text"], .contact-form input[type="text"] {
+		display: block;
+		width: 98%;
+	}
+	span.required {
+		font-size: 16px;
+		font-weight: bold;
+		color: #FF4B33;
+	}
+	#comments-notice {
+		background: #f9f9f9;
+		border: 1px solid #ccc;
+		font-size: 12px;
+		padding: 20px 20px 0;
 	}
 
 	/**
