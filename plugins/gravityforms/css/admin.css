@@ -3,10 +3,10 @@
 admin.css
 Gravity Forms Administration Form Styles
 http://www.gravityforms.com
-updated: February 28, 2011
+updated: April 4, 2011
 
 a Rocketgenius project
-copyright 2011 Rocketgenius llc.
+copyright 2011 Rocketgenius LLC.
 http://www.rocketgenius.com
 this may not be re-distrubited without the
 express written permission of the author.
@@ -121,6 +121,7 @@ h3.gf_add_fields {margin:0 0 .5em 0!important}
 .gsection {border-bottom:1px dotted #ccc!important}
 
 /* updated radio and checkbox styling - justifies lenghty labels ------------------------------------------------------*/
+
 ul.gfield_checkbox, ul.gfield_radio {margin:6px 0}
 .gfield_checkbox li,
 .gfield_radio li {position:relative; padding:0!important}
@@ -469,7 +470,7 @@ ul#gf_form_toolbar_links li.gf_form_toolbar_settings a,
 ul#gf_form_toolbar_links li.gf_form_toolbar_editor a,
 ul#gf_form_toolbar_links li.gf_form_toolbar_notifications a,
 ul#gf_form_toolbar_links li.gf_form_toolbar_entries a ,
-ul#gf_form_toolbar_links li.gf_form_toolbar_preview a {background-image:url(../images/gf_toolbar_iconsprite.png); background-repeat: no-repeat; padding-left:20px; text-decoration: none; text-shadow: 0 1px 1px #fff; line-height:16px; white-space: nowrap}
+ul#gf_form_toolbar_links li.gf_form_toolbar_preview a {background-image:url(../images/gf_toolbar_iconsprite.png); background-repeat: no-repeat; padding:1px 0 0 20px; text-decoration: none; text-shadow: 0 1px 1px #fff; line-height:16px; white-space: nowrap}
 ul#gf_form_toolbar_links li a:hover,
 ul#gf_form_toolbar_links li a:focus,
 ul#gf_form_toolbar_links li a.gf_toolbar_active {color:#333}

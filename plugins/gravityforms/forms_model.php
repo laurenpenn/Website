@@ -49,7 +49,7 @@ class RGFormsModel{
         return $wpdb->prefix . "rg_lead_view";
     }
 
-    public static function get_forms($is_active = null, $sort=""){
+    public static function get_forms($is_active = null, $sort="title ASC"){
         global $wpdb;
         $form_table_name =  self::get_form_table_name();
         $lead_table_name = self::get_lead_table_name();
@@ -525,6 +525,8 @@ class RGFormsModel{
 
         $form = self::get_form_meta($form_id);
 
+        $field_type = "";
+
         //Deleting field from form meta
         $count = sizeof($form["fields"]);
         for($i = $count-1; $i >= 0; $i--){
@@ -622,6 +624,8 @@ class RGFormsModel{
         if(!GFCommon::current_user_can_any("gravityforms_delete_entries"))
             die(__("You don't have adequate permission to delete entries.", "gravityforms"));
 
+        do_action("gform_delete_lead", $lead_id);
+
         $lead_table = self::get_lead_table_name();
         $lead_notes_table = self::get_lead_notes_table_name();
         $lead_detail_table = self::get_lead_details_table_name();
@@ -645,6 +649,7 @@ class RGFormsModel{
         //Delete from lead
         $sql = $wpdb->prepare("DELETE FROM $lead_table WHERE id=%d", $lead_id);
         $wpdb->query($sql);
+
     }
 
     public static function add_note($lead_id, $user_id, $user_name, $note){
@@ -677,9 +682,9 @@ class RGFormsModel{
     }
 
     public static function get_ip(){
-        $ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+        $ip = rgget("HTTP_X_FORWARDED_FOR", $_SERVER);
         if (!$ip)
-            $ip = $_SERVER["REMOTE_ADDR"];
+            $ip = rgget("REMOTE_ADDR", $_SERVER);
 
         $ip_array = explode(",", $ip); //HTTP_X_FORWARDED_FOR can return a comma separated list of IPs. Using the first one.
         return $ip_array[0];
@@ -709,12 +714,12 @@ class RGFormsModel{
         }
 
         $current_fields = $wpdb->get_results($wpdb->prepare("SELECT id, field_number FROM $lead_detail_table WHERE lead_id=%d", $lead["id"]));
-        $original_post_id = $lead["post_id"];
+        $original_post_id = rgget("post_id", $lead);
 
         foreach($form["fields"] as $field){
 
             //Ignore fields that are marked as display only
-            if($field["displayOnly"] && $field["type"] != "password"){
+            if(rgget("displayOnly", $field) && $field["type"] != "password"){
                 continue;
             }
 
@@ -834,7 +839,7 @@ class RGFormsModel{
     }
 
     public static function get_field_value($field, $field_values = array()){
-
+        $value = array();
         switch(RGFormsModel::get_input_type($field)){
             case "post_image" :
                 $value[$field["id"] . ".1"] = self::get_input_value($field, "input_" . $field["id"] . "_1");
@@ -850,7 +855,7 @@ class RGFormsModel{
                 $choice_index = 0;
                 foreach($field["inputs"] as $input){
                     if(!empty($_POST["is_submit_" . $field["formId"]])){
-                        $value[strval($input["id"])] = stripslashes($_POST["input_" . str_replace('.', '_', strval($input["id"]))]);
+                        $value[strval($input["id"])] = stripslashes(rgpost("input_" . str_replace('.', '_', strval($input["id"]))));
                     }
                     else{
                         foreach($parameter_values as $item){
@@ -897,9 +902,9 @@ class RGFormsModel{
     }
 
     private static function get_parameter_value($name, $field_values){
-        $value = stripslashes($_GET[$name]);
+        $value = stripslashes(rgget($name));
         if(empty($value))
-            $value = $field_values[$name];
+            $value = rgget($name, $field_values);
 
         return apply_filters("gform_field_value_$name", $value);
     }
@@ -994,7 +999,12 @@ class RGFormsModel{
                 break;
 
                 case "post_image" :
-                    list($url, $title, $caption, $description) = !empty($value) ? explode("|:|", $value) : array();
+                    $ary = !empty($value) ? explode("|:|", $value) : array();
+                    $url = count($ary) > 0 ? $ary[0] : "";
+                    $title = count($ary) > 1 ? $ary[1] : "";
+                    $caption = count($ary) > 2 ? $ary[2] : "";
+                    $description = count($ary) > 3 ? $ary[3] : "";
+
                     array_push($images, array("field_id" => $field["id"], "url" => $url, "title" => $title, "description" => $description, "caption" => $caption));
                 break;
             }
@@ -1138,7 +1148,7 @@ class RGFormsModel{
             }
         }
 
-        return $_gf_uploaded_files[$input_name];
+        return rgget($input_name, $_gf_uploaded_files);
     }
 
     public static function get_form_unique_id($form_id){
@@ -1153,7 +1163,7 @@ class RGFormsModel{
         $uploaded_filename = !empty($_FILES[$input_name]["name"]) ? $_FILES[$input_name]["name"] : "";
 
         if(empty($uploaded_filename) && isset(self::$uploaded_files[$form_id]))
-            $uploaded_filename = self::$uploaded_files[$form_id][$input_name];
+            $uploaded_filename = rgget($input_name, self::$uploaded_files[$form_id]);
 
         if(empty($uploaded_filename))
             return false;
@@ -1185,7 +1195,7 @@ class RGFormsModel{
         if($choice["value"] == $value){
            return true;
         }
-        else if($field["enablePrice"]){
+        else if(rgget("enablePrice", $field)){
             list($val, $price) = explode("|", $value);
             if($val == $choice["value"])
                 return true;
@@ -1256,7 +1266,7 @@ class RGFormsModel{
                 $custom_field = self::get_custom_field($form, $meta_name, $meta_index);
 
                 //replacing template variables if template is enabled
-                if($custom_field && $custom_field["customFieldTemplateEnabled"]){
+                if($custom_field && rgget("customFieldTemplateEnabled", $custom_field)){
                     //replacing post image variables
                     $value = GFCommon::replace_variables_post_image($custom_field["customFieldTemplate"], $post_images, $lead);
 
@@ -1422,7 +1432,14 @@ class RGFormsModel{
         $lead_detail_long_table = self::get_lead_details_long_table_name();
 
         $input_name = "input_" . str_replace('.', '_', $input_id);
-        $value = $_POST[$input_name];
+        $value = rgpost($input_name);
+
+        //ignore file upload when nothing was sent in the admin
+        //ignore post fields in the admin
+        if(RG_CURRENT_VIEW == "entry" && self::get_input_type($field) == "fileupload" && empty($_FILES[$input_name]["name"]))
+            return;
+        else if(RG_CURRENT_VIEW == "entry" && in_array($field["type"], array("post_category","post_title","post_content","post_excerpt","post_tags","post_custom_field","post_image")))
+            return;
 
         if(empty($value) && $field["adminOnly"] && !IS_ADMIN){
             $value = self::get_default_value($field, $input_id);
@@ -1432,7 +1449,7 @@ class RGFormsModel{
         $value = self::prepare_value($form["id"], $field, $value, $input_name);
 
         //ignore fields that have not changed
-        if($lead != null && $value == $lead[$input_id])
+        if($lead != null && $value == rgget($input_id, $lead))
             return;
 
         if(!empty($value) || $value === "0"){
@@ -1700,7 +1717,7 @@ class RGFormsModel{
             return;
 
         $max_length = GFORMS_MAX_FIELD_LENGTH;
-
+        $value = array();
         if(is_array($field["inputs"])){
             //making sure values submitted are sent in the value even if
             //there isn't an input associated with it
@@ -1713,7 +1730,7 @@ class RGFormsModel{
             }
         }
         else{
-            $val = $lead[$field["id"]];
+            $val = rgget($field["id"], $lead);
 
             //To save a database call to get long text, only getting long text if regular field is "somewhat" large (i.e. max - 50)
             if(strlen($val) >= ($max_length - 50))
@@ -1867,14 +1884,14 @@ class RGFormsModel{
         $leads = array();
         $lead = array();
         if(is_array($results) && sizeof($results) > 0){
-            $lead = array("id" => $results[0]->id, "form_id" => $results[0]->form_id, "date_created" => $results[0]->date_created, "is_starred" => intval($results[0]->is_starred), "is_read" => intval($results[0]->is_read), "ip" => $results[0]->ip, "source_url" => $results[0]->source_url, "post_id" => $results[0]->post_id, "currency" => $results[0]->currency, "payment_status" => $results[0]->payment_status, "payment_date" => $results[0]->payment_date, "transaction_id" => $results[0]->transaction_id, "payment_amount" => $results[0]->payment_amount, "is_fulfilled" => $results[0]->is_fulfilled, "created_by" => $results[0]->created_by, "transaction_type" => $results[0]->transaction_type);
+            $lead = array("id" => $results[0]->id, "form_id" => $results[0]->form_id, "date_created" => $results[0]->date_created, "is_starred" => intval($results[0]->is_starred), "is_read" => intval($results[0]->is_read), "ip" => $results[0]->ip, "source_url" => $results[0]->source_url, "post_id" => $results[0]->post_id, "currency" => $results[0]->currency, "payment_status" => $results[0]->payment_status, "payment_date" => $results[0]->payment_date, "transaction_id" => $results[0]->transaction_id, "payment_amount" => $results[0]->payment_amount, "is_fulfilled" => $results[0]->is_fulfilled, "created_by" => $results[0]->created_by, "transaction_type" => $results[0]->transaction_type, "user_agent" => $results[0]->user_agent);
         }
 
         $prev_lead_id=0;
         foreach($results as $result){
             if($prev_lead_id <> $result->id && $prev_lead_id > 0){
                 array_push($leads, $lead);
-                $lead = array("id" => $result->id, "form_id" => $result->form_id,     "date_created" => $result->date_created,     "is_starred" => intval($result->is_starred),     "is_read" => intval($result->is_read),     "ip" => $result->ip,     "source_url" => $result->source_url,     "post_id" => $result->post_id,     "currency" => $result->currency,     "payment_status" => $result->payment_status,     "payment_date" => $result->payment_date,     "transaction_id" => $result->transaction_id,     "payment_amount" => $result->payment_amount,     "is_fulfilled" => $result->is_fulfilled,     "created_by" => $result->created_by,     "transaction_type" => $result->transaction_type);
+                $lead = array("id" => $result->id, "form_id" => $result->form_id,     "date_created" => $result->date_created,     "is_starred" => intval($result->is_starred),     "is_read" => intval($result->is_read),     "ip" => $result->ip,     "source_url" => $result->source_url,     "post_id" => $result->post_id,     "currency" => $result->currency,     "payment_status" => $result->payment_status,     "payment_date" => $result->payment_date,     "transaction_id" => $result->transaction_id,     "payment_amount" => $result->payment_amount,     "is_fulfilled" => $result->is_fulfilled,     "created_by" => $result->created_by,     "transaction_type" => $result->transaction_type,     "user_agent" => $result->user_agent);
             }
 
             $field_value = $result->value;
@@ -2007,7 +2024,7 @@ class RGFormsModel{
     public static function get_label($field, $input_id = 0, $input_only = false){
         $field_label = (IS_ADMIN || RG_CURRENT_PAGE == "select_columns.php") && !empty($field["adminLabel"]) ? $field["adminLabel"] : $field["label"];
         $input = self::get_input($field, $input_id);
-        if($field["type"] == "checkbox" && $input != null)
+        if(rgget("type", $field) == "checkbox" && $input != null)
             return $input["label"];
         else if($input != null)
             return $input_only ? $input["label"] : $field_label . ' (' . $input["label"] . ')';
@@ -2016,7 +2033,7 @@ class RGFormsModel{
     }
 
     public static function get_input($field, $id){
-        if(is_array($field["inputs"])){
+        if(isset($field["inputs"]) && is_array($field["inputs"])){
             foreach($field["inputs"] as $input)
             {
                 if($input["id"] == $id)
@@ -2074,7 +2091,7 @@ class RGFormsModel{
 
         if(!is_array($form["fields"]))
             return null;
-            
+
         foreach($form["fields"] as $field){
             if($field["id"] == $field_id)
                 return $field;

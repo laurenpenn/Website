@@ -39,7 +39,7 @@ class GFEntryDetail{
                 RGFormsModel::add_note($lead["id"], $current_user->ID, $user_data->display_name, stripslashes($_POST["new_note"]));
 
                 //emailing notes if configured
-                if($_POST["gentry_email_notes_to"])
+                if(rgpost("gentry_email_notes_to"))
                 {
                     $email_to = $_POST["gentry_email_notes_to"];
                     $email_from = $current_user->user_email;
@@ -133,7 +133,7 @@ class GFEntryDetail{
         <form method="post" id="entry_form" enctype='multipart/form-data'>
             <?php wp_nonce_field('gforms_save_entry', 'gforms_save_entry') ?>
             <input type="hidden" name="action" id="action" value=""/>
-            <input type="hidden" name="screen_mode" id="screen_mode" value="<?php echo $_POST["screen_mode"] ?>" />
+            <input type="hidden" name="screen_mode" id="screen_mode" value="<?php echo esc_attr(rgpost("screen_mode")) ?>" />
 
             <div class="wrap">
             <img alt="<?php _e("Gravity Forms", "gravityforms") ?>" src="<?php echo GFCommon::get_base_url()?>/images/gravity-title-icon-32.png" style="float:left; margin:15px 7px 0 0;"/>
@@ -301,7 +301,7 @@ class GFEntryDetail{
         </form>
         <?php
 
-         if($_POST["action"] == "update"){
+         if(rgpost("action") == "update"){
             ?>
             <div class="updated fade" style="padding:6px;">
                 <?php _e("Entry Updated.", "gravityforms"); ?>
@@ -464,8 +464,9 @@ class GFEntryDetail{
     }
 
     public static function lead_detail_grid($form, $lead, $allow_display_empty_fields=false){
+        $display_empty_fields = false;
         if($allow_display_empty_fields){
-            $display_empty_fields = $_COOKIE["gf_display_empty_fields"];
+            $display_empty_fields = rgget("gf_display_empty_fields", $_COOKIE);
         }
         ?>
         <table cellspacing="0" class="widefat fixed entry-detail-view">
@@ -505,7 +506,8 @@ class GFEntryDetail{
                         case "captcha":
                         case "html":
                         case "password":
-                            //ignore captcha field
+                        case "page":
+                            //ignore captcha, html, password, page field
                         break;
 
 

@@ -1004,13 +1004,13 @@ function SetDefaultValues(field){
             switch(field.nameFormat)
             {
                 case "extended" :
-                    field.inputs = [new Input(field.id + 0.2, '<?php echo apply_filters("gform_name_prefix_{$_GET["id"]}", apply_filters("gform_name_prefix", __("Prefix", "gravityforms"), $_GET["id"]), $_GET["id"]); ?>'), new Input(field.id + 0.3, '<?php echo apply_filters("gform_name_first_{$_GET["id"]}",apply_filters("gform_name_first",__("First", "gravityforms"), $_GET["id"]), $_GET["id"]); ?>'), new Input(field.id + 0.6, '<?php echo apply_filters("gform_name_last_{$_GET["id"]}", apply_filters("gform_name_last",__("Last", "gravityforms"), $_GET["id"]), $_GET["id"]); ?>'), new Input(field.id + 0.8, '<?php echo apply_filters("gform_name_suffix_{$_GET["id"]}", apply_filters("gform_name_suffix",__("Suffix", "gravityforms"), $_GET["id"]), $_GET["id"]); ?>')];
+                    field.inputs = [new Input(field.id + 0.2, '<?php echo apply_filters("gform_name_prefix_" . rgget("id"), apply_filters("gform_name_prefix", __("Prefix", "gravityforms"), rgget("id")), rgget("id")); ?>'), new Input(field.id + 0.3, '<?php echo apply_filters("gform_name_first_" . rgget("id"),apply_filters("gform_name_first",__("First", "gravityforms"), rgget("id")), rgget("id")); ?>'), new Input(field.id + 0.6, '<?php echo apply_filters("gform_name_last_" . rgget("id"), apply_filters("gform_name_last",__("Last", "gravityforms"), rgget("id")), rgget("id")); ?>'), new Input(field.id + 0.8, '<?php echo apply_filters("gform_name_suffix_" . rgget("id"), apply_filters("gform_name_suffix",__("Suffix", "gravityforms"), rgget("id")), rgget("id")); ?>')];
                 break;
                 case "simple" :
                     field.inputs = null;
                 break;
                 default :
-                    field.inputs = [new Input(field.id + 0.3, '<?php echo apply_filters("gform_name_first_{$_GET["id"]}", apply_filters("gform_name_first",__("First", "gravityforms"), $_GET["id"]), $_GET["id"]); ?>'), new Input(field.id + 0.6, '<?php echo apply_filters("gform_name_last_{$_GET["id"]}", apply_filters("gform_name_last",__("Last", "gravityforms"), $_GET["id"]), $_GET["id"]); ?>')];
+                    field.inputs = [new Input(field.id + 0.3, '<?php echo apply_filters("gform_name_first_" . rgget("id"), apply_filters("gform_name_first",__("First", "gravityforms"), rgget("id")), rgget("id")); ?>'), new Input(field.id + 0.6, '<?php echo apply_filters("gform_name_last_" . rgget("id"), apply_filters("gform_name_last",__("Last", "gravityforms"), rgget("id")), rgget("id")); ?>')];
                 break;
             }
             break;
@@ -1047,8 +1047,8 @@ function SetDefaultValues(field){
 
             if(!field.label)
                 field.label = "<?php _e("Address", "gravityforms"); ?>";
-            field.inputs = [new Input(field.id + 0.1, '<?php echo apply_filters("gform_address_street_{$_GET["id"]}", apply_filters("gform_address_street",__("Street Address", "gravityforms"), $_GET["id"]), $_GET["id"]); ?>'), new Input(field.id + 0.2, '<?php echo apply_filters("gform_address_street2_{$_GET["id"]}", apply_filters("gform_address_street2",__("Address Line 2", "gravityforms"), $_GET["id"]), $_GET["id"]); ?>'), new Input(field.id + 0.3, '<?php echo apply_filters("gform_address_city_{$_GET["id"]}", apply_filters("gform_address_city",__("City", "gravityforms"), $_GET["id"]), $_GET["id"]); ?>'),
-                            new Input(field.id + 0.4, '<?php echo apply_filters("gform_address_state_{$_GET["id"]}", apply_filters("gform_address_state",__("State / Province", "gravityforms"), $_GET["id"]), $_GET["id"]); ?>'), new Input(field.id + 0.5, '<?php echo apply_filters("gform_address_zip_{$_GET["id"]}", apply_filters("gform_address_zip",__("Zip / Postal Code", "gravityforms"), $_GET["id"]), $_GET["id"]); ?>'), new Input(field.id + 0.6, '<?php echo apply_filters("gform_address_country_{$_GET["id"]}", apply_filters("gform_address_country",__("Country", "gravityforms"), $_GET["id"]), $_GET["id"]); ?>')];
+            field.inputs = [new Input(field.id + 0.1, '<?php echo apply_filters("gform_address_street_" . rgget("id"), apply_filters("gform_address_street",__("Street Address", "gravityforms"), rgget("id")), rgget("id")); ?>'), new Input(field.id + 0.2, '<?php echo apply_filters("gform_address_street2_" . rgget("id"), apply_filters("gform_address_street2",__("Address Line 2", "gravityforms"), rgget("id")), rgget("id")); ?>'), new Input(field.id + 0.3, '<?php echo apply_filters("gform_address_city_" . rgget("id"), apply_filters("gform_address_city",__("City", "gravityforms"), rgget("id")), rgget("id")); ?>'),
+                            new Input(field.id + 0.4, '<?php echo apply_filters("gform_address_state_" . rgget("id"), apply_filters("gform_address_state",__("State / Province", "gravityforms"), rgget("id")), rgget("id")); ?>'), new Input(field.id + 0.5, '<?php echo apply_filters("gform_address_zip_" . rgget("id"), apply_filters("gform_address_zip",__("Zip / Postal Code", "gravityforms"), rgget("id")), rgget("id")); ?>'), new Input(field.id + 0.6, '<?php echo apply_filters("gform_address_country_" . rgget("id"), apply_filters("gform_address_country",__("Country", "gravityforms"), rgget("id")), rgget("id")); ?>')];
             break;
         case "email" :
             field.inputs = null;
@@ -2247,7 +2247,7 @@ function InsertFieldChoice(index){
     field = GetSelectedField();
     field.choices.splice(index, 0, new Choice(""));
     LoadFieldChoices(field);
-    UpdateFieldChoices(field.type);
+    UpdateFieldChoices(GetInputType(field));
 }
 
 function InsertBulkChoices(choices){
@@ -2286,7 +2286,7 @@ function DeleteFieldChoice(index){
     field = GetSelectedField();
     field.choices.splice(index, 1);
     LoadFieldChoices(field);
-    UpdateFieldChoices(field.type);
+    UpdateFieldChoices(GetInputType(field));
 }
 
 function GetFieldType(fieldId){

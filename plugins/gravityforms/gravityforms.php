@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms
 Plugin URI: http://www.gravityforms.com
 Description: Easily create web forms and manage form entries within the WordPress admin.
-Version: 1.5
+Version: 1.5.1.1
 Author: rocketgenius
 Author URI: http://www.rocketgenius.com
 
@@ -53,6 +53,7 @@ $gf_recaptcha_public_key = "";
 //define('GF_RECAPTCHA_PUBLIC_KEY','YOUR_PUBLIC_KEY_GOES_HERE');
 //------------------------------------------------------------------------------------------------------------------
 
+
 if(!defined("RG_CURRENT_PAGE"))
     define("RG_CURRENT_PAGE", basename($_SERVER['PHP_SELF']));
 
@@ -65,11 +66,13 @@ define("GF_SUPPORTED_WP_VERSION", version_compare(get_bloginfo("version"), '2.8.
 if(!defined("GRAVITY_MANAGER_URL"))
     define("GRAVITY_MANAGER_URL", "http://www.gravityhelp.com/wp-content/plugins/gravitymanager");
 
+require_once(WP_PLUGIN_DIR . "/" . basename(dirname(__FILE__)) . "/common.php");
+require_once(WP_PLUGIN_DIR . "/" . basename(dirname(__FILE__)) . "/forms_model.php");
+require_once(WP_PLUGIN_DIR . "/" . basename(dirname(__FILE__)) . "/widget.php");
+
 add_action('init',  array('RGForms', 'init'));
 add_action('wp',  array('RGForms', 'maybe_process_form'), 9);
 add_action('parse_request', array("RGForms", "drop_cache"));
-
-require_once(WP_PLUGIN_DIR . "/" . basename(dirname(__FILE__)) . "/widget.php");
 
 class RGForms{
 
@@ -84,12 +87,6 @@ class RGForms{
 
     //Plugin starting point. Will load appropriate files
     public static function init(){
-
-        if(!class_exists("GFCommon"))
-            require_once(WP_PLUGIN_DIR . "/" . basename(dirname(__FILE__)) . "/common.php");
-
-        if(!class_exists("RGFormsModel"))
-            require_once(WP_PLUGIN_DIR . "/" . basename(dirname(__FILE__)) . "/forms_model.php");
 
         load_plugin_textdomain( 'gravityforms', FALSE, '/gravityforms/languages' );
 
@@ -860,9 +857,9 @@ class RGForms{
     }
 
     public static function get_addon_info($api, $action, $args){
-        if($action == "plugin_information" && empty($api) && strpos($args->slug, "gravity") !== false ){
+        if($action == "plugin_information" && empty($api) && !rgempty("rg", $_GET)){
             $request_url = GRAVITY_MANAGER_URL . "/api.php?op=get_plugin&slug={$args->slug}";
-            $raw_response = wp_remote_post($request_url, $options);
+            $raw_response = wp_remote_post($request_url);
 
             if ( is_wp_error( $raw_response ) || $raw_response['response']['code'] != 200)
                 return false;
@@ -1196,13 +1193,7 @@ function gravity_form($id, $display_title=true, $display_description=true, $disp
 
 function gravity_form_enqueue_scripts($form_id, $is_ajax=false){
     if(!is_admin()){
-
-        if(!class_exists("GFFormDisplay"))
-            require_once(GFCommon::get_base_path() . "/form_display.php");
-
-        if(!class_exists("RGFormsModel"))
-            require_once(GFCommon::get_base_path() . "/forms_model.php");
-
+        require_once(GFCommon::get_base_path() . "/form_display.php");
         $form = RGFormsModel::get_form_meta($form_id);
         GFFormDisplay::enqueue_form_scripts($form, $is_ajax);
     }
@@ -1230,6 +1221,16 @@ function rgpost($name){
 }
 }
 
+if(!function_exists("rgar")){
+function rgar($array, $name){
+    if(isset($array[$name]))
+        return $array[$name];
+
+    return '';
+}
+}
+
+
 if(!function_exists("rgempty")){
 function rgempty($name, $array = null){
     if(!$array)
@@ -1239,5 +1240,4 @@ function rgempty($name, $array = null){
     return empty($val);
 }
 }
-
 ?>

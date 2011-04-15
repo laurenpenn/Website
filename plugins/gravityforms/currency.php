@@ -14,6 +14,9 @@ class RGCurrency{
     public function to_number($text){
         $text = strval($text);
 
+        if(is_numeric($text))
+            return floatval($text);
+
         //Removing symbol in unicode format (i.e. &#4444;)
         $text = preg_replace("/&.*?;/", "", $text);
 

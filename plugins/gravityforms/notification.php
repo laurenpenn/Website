@@ -3,31 +3,33 @@ Class GFNotification{
     public static function notification_page($form_id){
         $form = RGFormsModel::get_form_meta($form_id);
 
-        if($_POST["save"]){
+        $invalid_tab = "";
+
+        if(rgpost("save")){
 
             check_admin_referer('gforms_save_notification', 'gforms_save_notification');
 
-            $form["notification"]["to"] = stripslashes($_POST["form_notification_to"]);
-            $form["notification"]["bcc"] = stripslashes($_POST["form_notification_bcc"]);
-            $form["notification"]["subject"] = stripslashes($_POST["form_notification_subject"]);
-            $form["notification"]["message"] = stripslashes($_POST["form_notification_message"]);
-            $form["notification"]["from"] = empty($_POST["form_notification_from_field"]) ? stripslashes($_POST["form_notification_from"]) : "";
-            $form["notification"]["fromField"] = stripslashes($_POST["form_notification_from_field"]);
-            $form["notification"]["fromName"] = empty($_POST["form_notification_from_name_field"]) ? stripslashes($_POST["form_notification_from_name"]) : "";
-            $form["notification"]["fromNameField"] = stripslashes($_POST["form_notification_from_name_field"]);
-            $form["notification"]["replyTo"] = empty($_POST["form_notification_reply_to_field"]) ? stripslashes($_POST["form_notification_reply_to"]) : "";
-            $form["notification"]["replyToField"] = stripslashes($_POST["form_notification_reply_to_field"]);
-            $form["notification"]["routing"] = !empty($_POST["gform_routing_meta"]) ? GFCommon::json_decode(stripslashes($_POST["gform_routing_meta"]), true) : null;
-            $form["notification"]["disableAutoformat"] = $_POST["form_notification_disable_autoformat"];
+            $form["notification"]["to"] = stripslashes(rgpost("form_notification_to"));
+            $form["notification"]["bcc"] = stripslashes(rgpost("form_notification_bcc"));
+            $form["notification"]["subject"] = stripslashes(rgpost("form_notification_subject"));
+            $form["notification"]["message"] = stripslashes(rgpost("form_notification_message"));
+            $form["notification"]["from"] = rgempty("form_notification_from_field") ? stripslashes(rgpost("form_notification_from")) : "";
+            $form["notification"]["fromField"] = stripslashes(rgpost("form_notification_from_field"));
+            $form["notification"]["fromName"] = rgempty("form_notification_from_name_field") ? stripslashes(rgpost("form_notification_from_name")) : "";
+            $form["notification"]["fromNameField"] = stripslashes(rgpost("form_notification_from_name_field"));
+            $form["notification"]["replyTo"] = rgempty("form_notification_reply_to_field") ? stripslashes(rgpost("form_notification_reply_to")) : "";
+            $form["notification"]["replyToField"] = stripslashes(rgpost("form_notification_reply_to_field"));
+            $form["notification"]["routing"] = !rgempty("gform_routing_meta") ? GFCommon::json_decode(stripslashes(rgpost("gform_routing_meta")), true) : null;
+            $form["notification"]["disableAutoformat"] = rgpost("form_notification_disable_autoformat");
 
-            $form["autoResponder"]["toField"] = stripslashes($_POST["form_autoresponder_to"]);
-            $form["autoResponder"]["bcc"] = stripslashes($_POST["form_autoresponder_bcc"]);
-            $form["autoResponder"]["fromName"] = stripslashes($_POST["form_autoresponder_from_name"]);
-            $form["autoResponder"]["from"] = stripslashes($_POST["form_autoresponder_from"]);
-            $form["autoResponder"]["replyTo"] = stripslashes($_POST["form_autoresponder_reply_to"]);
-            $form["autoResponder"]["subject"] = stripslashes($_POST["form_autoresponder_subject"]);
-            $form["autoResponder"]["message"] = stripslashes($_POST["form_autoresponder_message"]);
-            $form["autoResponder"]["disableAutoformat"] = $_POST["form_autoresponder_disable_autoformat"];
+            $form["autoResponder"]["toField"] = stripslashes(rgpost("form_autoresponder_to"));
+            $form["autoResponder"]["bcc"] = stripslashes(rgpost("form_autoresponder_bcc"));
+            $form["autoResponder"]["fromName"] = stripslashes(rgpost("form_autoresponder_from_name"));
+            $form["autoResponder"]["from"] = stripslashes(rgpost("form_autoresponder_from"));
+            $form["autoResponder"]["replyTo"] = stripslashes(rgpost("form_autoresponder_reply_to"));
+            $form["autoResponder"]["subject"] = stripslashes(rgpost("form_autoresponder_subject"));
+            $form["autoResponder"]["message"] = stripslashes(rgpost("form_autoresponder_message"));
+            $form["autoResponder"]["disableAutoformat"] = rgpost("form_autoresponder_disable_autoformat");
 
             //validating input...
             $invalid_tab = self::validate_notification();
@@ -293,7 +295,7 @@ Class GFNotification{
                                                 <div id="notification_to_email_container" style="margin-top:5px; display:<?php echo $is_routing_enabled ? "none" : "block"?>;">
                                                     <input type="text" name="form_notification_to" id="form_notification_to" value="<?php echo esc_attr($form["notification"]["to"]) ?>" class="fieldwidth-1" />
 
-                                                    <?php if($_POST["notification_to"] == "email" && $is_invalid_email_to){ ?>
+                                                    <?php if(rgpost("notification_to") == "email" && $is_invalid_email_to){ ?>
                                                         <span class="validation_message"><?php _e("Please enter a valid email address") ?></span>
                                                     <?php } ?>
                                                 </div>
@@ -356,7 +358,7 @@ Class GFNotification{
                                                     <?php _e("From Name", "gravityforms"); ?>
                                                     <?php gform_tooltip("notification_from_name") ?>
                                                 </label>
-                                                <input type="text" class="fieldwidth-2" name="form_notification_from_name" id="form_notification_from_name" onkeydown="jQuery('#form_notification_from_name_field').val('');" onchange="jQuery('#form_notification_from_name_field').val('');" value="<?php echo esc_attr($form["notification"]["fromName"]) ?>"/>
+                                                <input type="text" class="fieldwidth-2" name="form_notification_from_name" id="form_notification_from_name" onkeydown="jQuery('#form_notification_from_name_field').val('');" onchange="jQuery('#form_notification_from_name_field').val('');" value="<?php echo esc_attr(rgget("fromName", $form["notification"])) ?>"/>
                                                 <?php
                                                 if(!empty($name_fields)){
                                                 ?>
@@ -365,7 +367,7 @@ Class GFNotification{
                                                         <option value=""><?php _e("Select a name field", "gravityforms"); ?></option>
                                                         <?php
                                                         foreach($name_fields as $field){
-                                                            $selected = $form["notification"]["fromNameField"] == $field["id"] ? "selected='selected'" : "";
+                                                            $selected = rgget("fromNameField", $form["notification"]) == $field["id"] ? "selected='selected'" : "";
                                                             ?>
                                                             <option value="<?php echo $field["id"]?>" <?php echo $selected ?>><?php echo GFCommon::get_label($field)?></option>
                                                             <?php
@@ -390,7 +392,7 @@ Class GFNotification{
                                                         <option value=""><?php _e("Select an email field", "gravityforms"); ?></option>
                                                         <?php
                                                         foreach($email_fields as $field){
-                                                            $selected = $form["notification"]["fromField"] == $field["id"] ? "selected='selected'" : "";
+                                                            $selected = rgget("fromField", $form["notification"]) == $field["id"] ? "selected='selected'" : "";
                                                             ?>
                                                             <option value="<?php echo $field["id"]?>" <?php echo $selected ?>><?php echo GFCommon::get_label($field)?></option>
                                                             <?php
@@ -407,7 +409,7 @@ Class GFNotification{
                                                     <?php _e("Reply To", "gravityforms"); ?>
                                                     <?php gform_tooltip("notification_reply_to") ?>
                                                 </label>
-                                                <input type="text" name="form_notification_reply_to" id="form_notification_reply_to" onkeydown="jQuery('#form_notification_reply_to_field').val('');" onchange="jQuery('#form_notification_reply_to_field').val('');" value="<?php echo esc_attr($form["notification"]["replyTo"]) ?>" class="fieldwidth-2" />
+                                                <input type="text" name="form_notification_reply_to" id="form_notification_reply_to" onkeydown="jQuery('#form_notification_reply_to_field').val('');" onchange="jQuery('#form_notification_reply_to_field').val('');" value="<?php echo esc_attr(rgget("replyTo", $form["notification"])) ?>" class="fieldwidth-2" />
                                                 <?php
                                                 if(!empty($email_fields)){
                                                 ?>
@@ -432,7 +434,7 @@ Class GFNotification{
                                                     <?php _e("BCC", "gravityforms"); ?>
                                                     <?php gform_tooltip("notification_bcc") ?>
                                                 </label>
-                                                <input type="text" name="form_notification_bcc" id="form_notification_bcc" value="<?php echo esc_attr($form["notification"]["bcc"]) ?>" class="fieldwidth-1" />
+                                                <input type="text" name="form_notification_bcc" id="form_notification_bcc" value="<?php echo esc_attr(rgget("bcc", $form["notification"])) ?>" class="fieldwidth-1" />
                                             </li>
                                             <?php
                                                 $is_invalid_subject = $invalid_tab == 1 && empty($_POST["form_notification_subject"]);
@@ -494,6 +496,8 @@ Class GFNotification{
                             <div id="submitcomment" class="submitbox">
                                 <div id="minor-publishingx" style="padding:10px;">
                                     <?php
+                                    if(!isset($form["autoResponder"]))
+                                        $form["autoResponder"] = array();
 
                                     if(empty($email_fields)){
                                         ?>
@@ -521,7 +525,7 @@ Class GFNotification{
                                                     <select name="form_autoresponder_to" id="form_autoresponder_to">
                                                         <?php
                                                         foreach($email_fields as $field){
-                                                            $selected = $form["autoResponder"]["toField"] == $field["id"] ? "selected='selected'" : "";
+                                                            $selected = rgget("toField", $form["autoResponder"]) == $field["id"] ? "selected='selected'" : "";
                                                             ?>
                                                             <option value="<?php echo $field["id"]?>" <?php echo $selected ?>><?php echo esc_html(GFCommon::get_label($field)) ?></option>
                                                             <?php
@@ -534,32 +538,32 @@ Class GFNotification{
                                                         <?php _e("From Name", "gravityforms"); ?>
                                                         <?php gform_tooltip("autoresponder_from_name") ?>
                                                     </label>
-                                                    <input type="text" name="form_autoresponder_from_name" id="form_autoresponder_from_name" value="<?php echo esc_attr($form["autoResponder"]["fromName"]) ?>" class="fieldwidth-2" />
+                                                    <input type="text" name="form_autoresponder_from_name" id="form_autoresponder_from_name" value="<?php echo esc_attr(rgget("fromName", $form["autoResponder"])) ?>" class="fieldwidth-2" />
                                                 </li>
                                                 <li>
                                                     <label for="form_autoresponder_from">
                                                         <?php _e("From Email", "gravityforms"); ?>
                                                         <?php gform_tooltip("autoresponder_from") ?>
                                                     </label>
-                                                    <input type="text" name="form_autoresponder_from" id="form_autoresponder_from" value="<?php echo empty($form["autoResponder"]["from"]) ? esc_attr($wp_email) : esc_attr($form["autoResponder"]["from"]) ?>" class="fieldwidth-2" />
+                                                    <input type="text" name="form_autoresponder_from" id="form_autoresponder_from" value="<?php echo rgempty("from", $form["autoResponder"]) ? esc_attr($wp_email) : esc_attr(rgget("from", $form["autoResponder"])) ?>" class="fieldwidth-2" />
                                                 </li>
                                                 <li>
                                                     <label for="form_autoresponder_reply_to" style="display:block;">
                                                         <?php _e("Reply To (optional)", "gravityforms"); ?>
                                                         <?php gform_tooltip("autoresponder_reply_to") ?>
                                                     </label>
-                                                    <input type="text" name="form_autoresponder_reply_to" id="form_autoresponder_reply_to" value="<?php echo esc_attr($form["autoResponder"]["replyTo"]) ?>" class="fieldwidth-2" />
+                                                    <input type="text" name="form_autoresponder_reply_to" id="form_autoresponder_reply_to" value="<?php echo esc_attr(rgget("replyTo", $form["autoResponder"])) ?>" class="fieldwidth-2" />
                                                 </li>
                                                 <li>
                                                     <label for="form_autoresponder_bcc">
                                                         <?php _e("BCC", "gravityforms"); ?>
                                                         <?php gform_tooltip("autoresponder_bcc") ?>
                                                     </label>
-                                                    <input type="text" name="form_autoresponder_bcc" id="form_autoresponder_bcc" value="<?php echo esc_attr($form["autoResponder"]["bcc"]) ?>" class="fieldwidth-1" />
+                                                    <input type="text" name="form_autoresponder_bcc" id="form_autoresponder_bcc" value="<?php echo esc_attr(rgget("bcc", $form["autoResponder"])) ?>" class="fieldwidth-1" />
                                                 </li>
 
                                                 <?php
-                                                    $is_invalid_subject = $invalid_tab == 2 && empty($_POST["form_autoresponder_subject"]);
+                                                    $is_invalid_subject = $invalid_tab == 2 && rgempty("form_autoresponder_subject");
                                                     $class = $is_invalid_subject ? "class='gfield_error'" : "";
                                                 ?>
                                                 <li <?php echo $class ?>>
@@ -570,7 +574,7 @@ Class GFNotification{
                                                     <div>
                                                         <?php GFCommon::insert_variables($form["fields"], "form_autoresponder_subject", true); ?>
                                                     </div>
-                                                    <input type="text" name="form_autoresponder_subject" id="form_autoresponder_subject" value="<?php echo esc_attr($form["autoResponder"]["subject"]) ?>" class="fieldwidth-1" />
+                                                    <input type="text" name="form_autoresponder_subject" id="form_autoresponder_subject" value="<?php echo esc_attr(rgget("subject", $form["autoResponder"])) ?>" class="fieldwidth-1" />
 
                                                     <?php if($is_invalid_subject){ ?>
                                                         <span class="validation_message"><?php _e("Please enter a subject for the user notification email") ?></span>
@@ -578,7 +582,7 @@ Class GFNotification{
 
                                                  </li>
                                                  <?php
-                                                    $is_invalid_message = $invalid_tab == 2 && empty($_POST["form_autoresponder_message"]);
+                                                    $is_invalid_message = $invalid_tab == 2 && rgempty("form_autoresponder_message");
                                                     $class = $is_invalid_message ? "class='gfield_error'" : "";
                                                 ?>
                                                 <li <?php echo $class ?>>
@@ -589,7 +593,7 @@ Class GFNotification{
                                                         <div>
                                                             <?php GFCommon::insert_variables($form["fields"], "form_autoresponder_message"); ?>
                                                         </div>
-                                                        <textarea name="form_autoresponder_message" id="form_autoresponder_message" class="fieldwidth-1 fieldheight-1"><?php echo esc_html($form["autoResponder"]["message"]) ?></textarea>
+                                                        <textarea name="form_autoresponder_message" id="form_autoresponder_message" class="fieldwidth-1 fieldheight-1"><?php echo esc_html(rgget("message", $form["autoResponder"])) ?></textarea>
 
                                                         <?php if($is_invalid_message){ ?>
                                                             <span class="validation_message"><?php _e("Please enter a message for the user notification email") ?></span>
@@ -598,7 +602,7 @@ Class GFNotification{
                                                 </li>
                                                 <li>
                                                     <div>
-                                                        <input type="checkbox" name="form_autoresponder_disable_autoformat" id="form_autoresponder_disable_autoformat" value="1" <?php echo empty($form["autoResponder"]["disableAutoformat"]) ? "" : "checked='checked'" ?>/>
+                                                        <input type="checkbox" name="form_autoresponder_disable_autoformat" id="form_autoresponder_disable_autoformat" value="1" <?php echo rgempty("disableAutoformat", $form["autoResponder"]) ? "" : "checked='checked'" ?>/>
                                                         <label for="form_notification_disable_autoformat" class="inline">
                                                             <?php _e("Disable Auto-formatting", "gravityforms"); ?>
                                                             <?php gform_tooltip("notification_autoformat") ?>
@@ -627,7 +631,7 @@ Class GFNotification{
         </form>
         <?php
 
-        if($_POST["save"]){
+        if(rgpost("save")){
             if($invalid_tab == 0){
                 ?>
                 <div class="updated fade" style="padding:6px;">

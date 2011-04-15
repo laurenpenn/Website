@@ -1159,10 +1159,10 @@ class GFFormDetail{
                                         <input type="hidden" id="field_address_country_<?php echo $key ?>" value="<?php echo isset($addressType["country"]) ? $addressType["country"] : "" ?>" />
                                         <input type="hidden" id="field_address_zip_label_<?php echo $key ?>" value="<?php echo isset($addressType["zip_label"]) ? $addressType["zip_label"] : __("Postal Code", "gravityforms") ?>" />
                                         <input type="hidden" id="field_address_state_label_<?php echo $key ?>" value="<?php echo $state_label ?>" />
-                                        <input type="hidden" id="field_address_has_states_<?php echo $key ?>" value="<?php echo is_array($addressType["states"]) ? "1" : "" ?>" />
+                                        <input type="hidden" id="field_address_has_states_<?php echo $key ?>" value="<?php echo is_array(rgget("states", $addressType)) ? "1" : "" ?>" />
 
                                         <?php
-                                        if(is_array($addressType["states"]))
+                                        if(isset($addressType["states"]) && is_array($addressType["states"]))
                                         {
                                             ?>
                                             <label for="field_address_default_state_<?php echo $key; ?>">

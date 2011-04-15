@@ -1,4 +1,33 @@
 -------------------------------------------------------------------------------------------------------------------
+Version 1.5.1.1
+    - Fixed error caused by GFCommon not being included when calling enqueue_function from functions.php
+    - Updated portuguese translation file
+    - Added gform_delete_lead hook
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.1
+    - Fixed problem with getting embed_post for {custom_field} variables
+    - Added rules to forms.css file to reset unordered list styles to defaults inside HTML blocks
+    - Cleaned up Notice messages
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.0.2
+    - Updated GFFormsModel::get_forms() to sort by "title ASC" by default
+    - Added autocomplete="off" to honeypot field when HTML5 is on
+    - Added shortcode support to entry limit and expired form messages
+    - Updated POT file
+    - Fixed File Upload and Post Field bug deleting field data when editing entry
+    - Fixed typo in validation message
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.0.1
+    - Localized string "of" in character counter message.
+    - Fixed issue with option field where checkbox and radio buttons items where not getting refreshed when the + and - button were clicked
+    - Fixed issue with currency formatting for currencies with commas as decimal points
+    - Added form specific version of "gform_validation" hook
+    - Fixed issue with gform_unique_id not escaping result before displaying
+
+-------------------------------------------------------------------------------------------------------------------
 Version 1.5.RC7
     - Added "Disable Auto-formatting" option to form confirmations
     - Added "Reset Views" and "Delete Entries" to the form list bulk action drop down

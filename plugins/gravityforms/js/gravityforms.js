@@ -7,6 +7,9 @@ function Currency(currency){
     this.currency = currency;
 
     this.toNumber = function(text){
+        if(this.isNumeric(text))
+            return parseFloat(text);
+
         //converting to a string if a number as passed
         text = text + " ";
 

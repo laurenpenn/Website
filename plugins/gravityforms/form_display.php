@@ -243,10 +243,10 @@ class GFFormDisplay{
         $submission_info = isset(self::$submission[$form_id]) ? self::$submission[$form_id] : false;
         if($submission_info){
             $is_postback = true;
-            $is_valid = $submission_info["is_valid"] || $submission_info["is_confirmation"];
+            $is_valid = $submission_info["is_valid"] || rgget("is_confirmation", $submission_info);
             $form = $submission_info["form"];
             $lead = $submission_info["lead"];
-            $confirmation_message = $submission_info["confirmation_message"];
+            $confirmation_message = rgget("confirmation_message", $submission_info);
 
             if($is_valid && !RGForms::get("is_confirmation", $submission_info)){
 
@@ -281,7 +281,7 @@ class GFFormDisplay{
         GFCommon::$tab_index = apply_filters("gform_tabindex_{$form_id}",apply_filters("gform_tabindex", 1, $form), $form);
 
         //Don't display inactive forms
-        if(!$force_display){
+        if(!$force_display && !$is_postback){
 
             $form_info = RGFormsModel::get_form($form_id);
             if(!$form_info->is_active)
@@ -296,14 +296,14 @@ class GFFormDisplay{
                 $now = current_time("timestamp");
 
                 if( (!empty($form["scheduleStart"]) && $now < $timestamp_start) || (!empty($form["scheduleEnd"]) && $now > $timestamp_end))
-                    return  empty($form["scheduleMessage"]) ? "<p>" . __("Sorry. This form is no longer available.", "gravityforms") . "</p>" : "<p>" . $form["scheduleMessage"] . "</p>";
+                    return  empty($form["scheduleMessage"]) ? "<p>" . __("Sorry. This form is no longer available.", "gravityforms") . "</p>" : "<p>" . do_shortcode($form["scheduleMessage"]) . "</p>";
             }
 
             //If form has a limit of entries, check current entry count
             if($form["limitEntries"]) {
                 $entry_count = RGFormsModel::get_lead_count($form_id, "");
                 if($entry_count >= $form["limitEntriesCount"])
-                    return  empty($form["limitEntriesMessage"]) ? "<p>" . __("Sorry. This form is no longer accepting new submissions.", "gravityforms"). "</p>" : "<p>" . $form["limitEntriesMessage"] . "</p>";
+                    return  empty($form["limitEntriesMessage"]) ? "<p>" . __("Sorry. This form is no longer accepting new submissions.", "gravityforms"). "</p>" : "<p>" . do_shortcode($form["limitEntriesMessage"]) . "</p>";
             }
         }
 
@@ -382,7 +382,7 @@ class GFFormDisplay{
 
 
             if($is_postback && !$is_valid){
-                $validation_message = "<div class='validation_error'>" . __("There was a problem with your submission.", "gravityforms") . " " . __("Errors have been highlighted below ", "gravityforms") . "</div>";
+                $validation_message = "<div class='validation_error'>" . __("There was a problem with your submission.", "gravityforms") . " " . __("Errors have been highlighted below.", "gravityforms") . "</div>";
                 $form_string .= apply_filters("gform_validation_message_{$form["id"]}", apply_filters("gform_validation_message", $validation_message, $form), $form);
             }
 
@@ -546,8 +546,7 @@ class GFFormDisplay{
         $footer .="
             <input type='hidden' class='gform_hidden' name='is_submit_{$form_id}' value='1' />
             <input type='hidden' class='gform_hidden' name='gform_submit' value='{$form_id}' />
-            <input type='hidden' class='gform_hidden' name='gform_unique_id' value='" . RGFormsModel::get_form_unique_id($form_id) . "' />
-
+            <input type='hidden' class='gform_hidden' name='gform_unique_id' value='" . esc_attr(RGFormsModel::get_form_unique_id($form_id)) . "' />
             <input type='hidden' class='gform_hidden' name='state_{$form_id}' value='" . self::get_state($form, $field_values) . "' />
             <input type='hidden' class='gform_hidden' name='gform_target_page_number_{$form_id}' id='gform_target_page_number_{$form_id}' value='" . $next_page . "' />
             <input type='hidden' class='gform_hidden' name='gform_source_page_number_{$form_id}' id='gform_source_page_number_{$form_id}' value='" . $current_page . "' />
@@ -652,7 +651,7 @@ class GFFormDisplay{
 
     private static function validate_honeypot($form){
         $honeypot_id = self::get_max_field_id($form);
-        return empty($_POST["input_{$honeypot_id}"]);
+        return rgempty("input_{$honeypot_id}");
     }
 
     public static function handle_submission($form, &$lead, $ajax=false){
@@ -821,8 +820,8 @@ class GFFormDisplay{
                                 $field["validation_message"] = empty($field["errorMessage"]) ? __("Please enter a valid email address.", "gravityforms"): $field["errorMessage"];
                                 $is_valid = false;
                             }
-                            else if($field["emailConfirmEnabled"] && !empty($value)){
-                                $confirm = $_POST["input_" . $field["id"] . "_2"];
+                            else if(rgget("emailConfirmEnabled", $field) && !empty($value)){
+                                $confirm = rgpost("input_" . $field["id"] . "_2");
                                 if($confirm != $value){
                                     $field["failed_validation"] = true;
                                     $field["validation_message"] = __("Your emails do not match.", "gravityforms");
@@ -1007,7 +1006,7 @@ class GFFormDisplay{
                         case "post_image" :
                             $info = pathinfo($_FILES["input_" . $field["id"]]["name"]);
                             $allowedExtensions = self::clean_extensions(explode(",", strtolower($field["allowedExtensions"])));
-                            $extension = strtolower($info["extension"]);
+                            $extension = strtolower(rgget("extension",$info));
 
                             if(empty($field["allowedExtensions"]) && in_array($extension, array("php", "asp", "exe", "com", "htaccess"))){
                                 $field["failed_validation"] = true;
@@ -1022,7 +1021,7 @@ class GFFormDisplay{
                         break;
 
                         case "singleproduct" :
-                            $quantity = $value[$field["id"] . "3"];
+                            $quantity = rgget($field["id"] . "3", $value);
                             if(empty($quantity))
                                 $quantity = 0;
 
@@ -1039,7 +1038,7 @@ class GFFormDisplay{
             }
         }
 
-        $validation_result = apply_filters("gform_validation", array("is_valid" => $is_valid, "form" => $form));
+        $validation_result = apply_filters("gform_validation_{$form["id"]}", apply_filters("gform_validation", array("is_valid" => $is_valid, "form" => $form)) );
         $is_valid = $validation_result["is_valid"];
         $form = $validation_result["form"];
 
@@ -1365,7 +1364,7 @@ class GFFormDisplay{
     }
 
     public static function get_field($field, $value="", $force_frontend_label = false, $form=null, $field_values=null){
-        $custom_class = $field["cssClass"];
+        $custom_class = rgget("cssClass", $field);
 
         if($field["type"] == "page"){
             if(IS_ADMIN && RG_CURRENT_VIEW == "entry"){
@@ -1400,18 +1399,18 @@ class GFFormDisplay{
 
         $id = $field["id"];
         $type = $field["type"];
-        $error_class = $field["failed_validation"] ? "gfield_error" : "";
-        $admin_only_class =  $field["adminOnly"] ? "field_admin_only" : "";
+        $error_class = rgget("failed_validation", $field) ? "gfield_error" : "";
+        $admin_only_class =  rgget("adminOnly", $field) ? "field_admin_only" : "";
         $selectable_class = IS_ADMIN ? "selectable" : "";
         $hidden_class = RGFormsModel::get_input_type($field) == "hidden" ? "gform_hidden" : "";
 
         $section_class = $field["type"] == "section" ? "gsection" : "";
         $page_class = $field["type"] == "page" ? "gpage" : "";
         $html_block_class = $field["type"] == "html" ? "gfield_html" : "";
-        $html_formatted_class = $field["type"] == "html" && !IS_ADMIN && !$field["disableMargins"] ? "gfield_html_formatted" : "";
+        $html_formatted_class = $field["type"] == "html" && !IS_ADMIN && !rgget("disableMargins", $field) ? "gfield_html_formatted" : "";
         $html_no_follows_desc_class = $field["type"] == "html" && !IS_ADMIN && !self::prev_field_has_description($form, $field["id"]) ? "gfield_no_follows_desc" : "";
 
-        $product_suffix = "_{$form["id"]}_{$field["productField"]}";
+        $product_suffix = "_{$form["id"]}_" . rgget("productField", $field);
         $option_class = $field["type"] == "option" ? "gfield_price gfield_price{$product_suffix} gfield_option{$product_suffix}" : "";
         $quantity_class = $field["type"] == "quantity" ? "gfield_price gfield_price{$product_suffix} gfield_quantity{$product_suffix}" : "";
         $shipping_class = $field["type"] == "shipping" ? "gfield_price gfield_shipping gfield_shipping_{$form["id"]}" : "";
@@ -1445,7 +1444,7 @@ class GFFormDisplay{
     public static function get_field_content($field, $value="", $force_frontend_label = false, $form_id=0){
         $id = $field["id"];
         $size = $field["size"];
-        $validation_message = ($field["failed_validation"] && !empty($field["validation_message"])) ? sprintf("<div class='gfield_description validation_message'>%s</div>", $field["validation_message"]) : "";
+        $validation_message = (rgget("failed_validation", $field) && !empty($field["validation_message"])) ? sprintf("<div class='gfield_description validation_message'>%s</div>", $field["validation_message"]) : "";
 
         $delete_field_link = "<a class='field_delete_icon' id='gfield_delete_$id' title='" . __("click to delete this field", "gravityforms") . "' href='javascript:void(0);' onclick='StartDeleteField(this);'>" . __("Delete", "gravityforms") . "</a>";
         $delete_field_link = apply_filters("gform_delete_field_link", $delete_field_link);
@@ -1459,7 +1458,7 @@ class GFFormDisplay{
         $target_input_id = "";
         switch(RGFormsModel::get_input_type($field)){
             case "section" :
-                $description = self::get_description($field["description"], "gsection_description");
+                $description = self::get_description(rgget("description", $field), "gsection_description");
                 $field_content = sprintf("%s<h2 class='gsection_title'>%s</h2>%s", $admin_buttons,  esc_html($field_label), $description);
             break;
 
@@ -1477,7 +1476,7 @@ class GFFormDisplay{
             break;
             case "checkbox":
             case "radio":
-                $description = self::get_description($field["description"],"gfield_description");
+                $description = self::get_description(rgget("description", $field),"gfield_description");
                 $field_content = sprintf("%s<label class='gfield_label'>%s%s</label>{FIELD}%s%s", $admin_buttons, esc_html($field_label), $required_div , $description, $validation_message);
             break;
             case "name" :
@@ -1488,13 +1487,13 @@ class GFFormDisplay{
             default :
                 if(empty($target_input_id))
                     $target_input_id = $field_id;
-                $description = self::get_description($field["description"],"gfield_description");
+                $description = self::get_description(rgget("description", $field),"gfield_description");
                 $field_content = sprintf("%s<label class='gfield_label' for='%s'>%s%s</label>{FIELD}%s%s", $admin_buttons, $target_input_id, esc_html($field_label), $required_div , $description, $validation_message);
             break;
         }
 
         if(empty($value))
-            $value = IS_ADMIN ? $field["defaultValue"] : GFCommon::replace_variables_prepopulate($field["defaultValue"]);
+            $value = IS_ADMIN ? rgget("defaultValue", $field) : GFCommon::replace_variables_prepopulate(rgget("defaultValue", $field));
 
         $field_content = str_replace("{FIELD}", GFCommon::get_field_input($field, $value, 0, $form_id), $field_content);
 

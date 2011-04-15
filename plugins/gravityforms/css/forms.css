@@ -1,9 +1,9 @@
 /*
 ----------------------------------------------------------------
 Gravity Forms Front End Form Styles
-Version 1.5
+Version 1.5.1.1
 http://www.gravityforms.com
-updated March 22, 2011
+updated April 7, 2011
 
 a Rocketgenius project
 copyright 2011 Rocketgenius LLC.
@@ -605,3 +605,11 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {displa
     .gform_wrapper .gfield_password_strength.short,
     .gform_wrapper .gfield_password_strength.mismatch {background-color:#ffa0a0; border-color:#f04040}
     .gform_wrapper .gfield_password_strength.strong {background-color:#c3ff88; border-color:#8dff1c}
+
+
+/* reset the default list styles for the HTML blocks -----------------------------------------------------------------*/
+
+body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html ul li,
+body .gform_wrapper form div.gform_body ul.gform_fields li.gfield.gfield_html ul li {list-style-type: disc!important; overflow:visible}
+body .gform_wrapper div.gform_body ul.gform_fields li.gfield.gfield_html ul,
+body .gform_wrapper form div.gform_body ul.gform_fields li.gfield.gfield_html ul {list-style-type: disc!important; margin: 0 0 1.5em 1.5em}

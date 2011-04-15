@@ -416,6 +416,7 @@ class GFEntryList{
 
                                         case "radio" :
                                         case "select" :
+                                            $field = RGFormsModel::get_field($form, $field_id);
                                             $value = GFCommon::selection_display($value, $field, $lead["currency"]);
                                         break;
 

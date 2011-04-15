@@ -60,7 +60,7 @@ function ConditionalRule(){
 }
 
 var fieldSettings = {
-    "html" :        ".label_setting, .content_setting, .conditional_logic_field_setting, .disable_margins_setting",
+    "html" :        ".label_setting, .content_setting, .conditional_logic_field_setting, .disable_margins_setting, .css_class_setting",
     "hidden" :      ".prepopulate_field_setting, .label_setting, .default_value_setting",
     "section" :     ".conditional_logic_field_setting, .label_setting, .description_setting, .visibility_setting, .css_class_setting",
     "page" :        ".next_button_setting, .previous_button_setting, .css_class_setting, .conditional_logic_page_setting, .conditional_logic_nextbutton_setting",
