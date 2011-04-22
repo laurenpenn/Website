@@ -41,7 +41,7 @@
 		display: inline-block;
 		font-size:14px;
 		line-height: 14px;
-		margin-right: 11px;
+		margin-right: 10px;
 		padding: 10px;
 		text-decoration: none;
 		text-shadow: 1px 1px 1px #fff;
@@ -200,4 +200,9 @@
 #primary-home .widget-title, .home h3 {
 	color: #94532d;
 	text-shadow: 1px 1px 1px #fff;
+}
+
+/* IE7 hack. */
+*:first-child+html .msie #mydbc .big-button.green .icon {
+	line-height: 20px;
 }
