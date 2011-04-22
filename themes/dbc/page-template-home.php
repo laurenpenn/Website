@@ -19,9 +19,9 @@ get_header(); ?>
 		<?php get_template_part( 'slider-home' ); // loads slider-home.php ?>
 
 		<div id="mydbc">
-			<a class="big-button" href="https://secure.accessacs.com/access/login_guest.aspx?sn=92231">Checkout Upcoming<br /><span class="league-gothic">Events</span></a>
+			<a class="big-button" href="https://secure.accessacs.com/access/login_guest.aspx?sn=92231">Check Out Upcoming<br /><span class="league-gothic">Events</span></a>
 			<a class="big-button" href="https://secure.accessacs.com/access/login_guest.aspx?sn=92231&amp;sc=sgguest">Sign Up Today For<br /><span class="league-gothic">Small Groups</span></a>
-			<a class="big-button green" href="http://dentonbible.org/admin/mydbc-life-faq/"><span class="mydbc-life-desc">Are you a member? Click to learn more</span><br /><span class="league-gothic">Join MyDBC Life</span></a>
+			<a class="big-button green" href="http://dentonbible.org/admin/mydbc-life-faq/">Connect to<br /><span class="league-gothic">MyDBC Life</span> <span class="icon">MyDBC Life</span></a>
 		</div><!-- #mydbc -->
 	
 		<?php get_template_part( 'latest-message' ); // loads latest-message.php ?>

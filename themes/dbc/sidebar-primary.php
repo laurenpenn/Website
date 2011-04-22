@@ -28,7 +28,7 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 			
 		<p>Denton Bible Church archives sermons from each Sunday and makes them available online. Watch, listen, download and share!</p>
 		
-		<p><a href="http://dbcmedia.org/" class="button" title="Denton Bible Media">Checkout DBC Media</a></p>
+		<p><a href="http://dbcmedia.org/" class="button" title="Denton Bible Media">Check Out DBC Media</a></p>
 		
 		<p>What better way to connect online with others in the church than Facebook?</p>
 		
