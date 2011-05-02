@@ -1,5 +1,7 @@
 <?php
 
+add_action( 'wp_head', 'dbc_custom_background', 11 );
+
 add_filter( 'sidebars_widgets', 'dbc_child_disable_sidebars' );
 add_filter( 'hybrid_site_title', 'dbc_child_site_title', 12 );
 
@@ -29,6 +31,25 @@ function dbc_child_site_title() {
 		echo '<div id="site-title"><a href="'. $url .'" title="'. $title .'"><img src="'. hybrid_get_setting( 'logo_src' ) .'" alt="'. $title .'" /></div></a>';
 	else
 		echo '<div id="site-title"><a href="'. $url .'" title="'. $title .'" class="test">'. $title . '</div></a>';		
+}
+
+/**
+* If a custom background image exists use this CSS to hide
+* images that shouldn't be displayed over the background.
+*
+* @since 0.1
+*/
+function dbc_custom_background() {
+	$background = get_background_image();
+	if ( $background ) {
+		?>
+		<style type="text/css">
+			#container {
+				background: none;
+			}
+		</style>
+		<?php
+	}
 }
 
 ?>
