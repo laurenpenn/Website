@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms User Registration Add-On
 Plugin URI: http://www.gravityforms.com
 Description: Allows WordPress users to be automatically created upon submitting a Gravity Form
-Version: 1.0
+Version: 1.2
 Author: rocketgenius
 Author URI: http://www.rocketgenius.com
 
@@ -33,7 +33,7 @@ class GFUser {
     private static $path = "gravityformsuserregistration/userregistration.php";
     private static $url = "http://www.gravityforms.com";
     private static $slug = "gravityformsuserregistration";
-    private static $version = "1.0";
+    private static $version = "1.2";
     private static $min_gravityforms_version = "1.5";
 
     //Plugin starting point. Will load appropriate files
@@ -54,7 +54,7 @@ class GFUser {
 
         if(is_admin()){
             // loading translations
-            load_plugin_textdomain('gravityforms_user_registration', FALSE, '/gravityformsuserregistration/languages' );
+            load_plugin_textdomain('gravityformsuserregistration', FALSE, '/gravityformsuserregistration/languages' );
 
             // automatic upgrade hooks
             add_filter("transient_update_plugins", array('GFUser', 'check_update'));
@@ -442,8 +442,8 @@ class GFUser {
 
             .user_registration_validation_error{ background-color:#FFDFDF; margin-top:4px; margin-bottom:6px; padding-top:6px; padding-bottom:6px; border:1px dotted #C89797;}
             .user_registration_validation_error span {color: red;}
-            .left_header{float:left; width:200px;}
-            .column_right { margin-left: 200px; }
+            .left_header { float:left; width: 260px;}
+            .column_right { margin-left: 260px; }
             .margin_vertical_10{margin: 10px 0; padding-left:5px;}
             .margin_vertical_30{margin: 30px 0; padding-left:5px;}
             .width-1{width:300px;}
@@ -459,13 +459,14 @@ class GFUser {
 
             option.label { font-style: italic; color: #999; }
             .metaname, .metavalue { float: left; }
-            .metaname .width-1 { margin-right: 10px; width: 190px; }
+            .metavalue { margin-left: 30px; }
+            .metaname .width-1 { margin-right: 10px; width: 220px; }
             .add_field_choice, .delete_field_choice { margin: 3px 0 4px 3px; }
             .custom_usermeta .margin_vertical_10 { overflow: hidden; margin-bottom: 0; }
             .custom_usermeta option.custom { font-weight: bold; }
             .custom_metaname { float: left; }
             .notice { font-size: 12px; font-style: italic; color: #aaa; }
-            .system-option, .password-field option:first-child { font-style: italic; }
+            .system-option, .password-field option:last-child { font-style: italic; }
             .checkbox-label { font-size: 12px; }
             
         </style>
@@ -503,9 +504,9 @@ class GFUser {
 
             // registration condition
             $config['meta']['reg_condition_enabled'] = RGForms::post('gf_user_registration_enabled');
-            $config["meta"]["reg_condition_field_id"] = RGForms::post('gf_user_registration_field_id');
-            $config["meta"]["reg_condition_operator"] = RGForms::post('gf_user_registration_operator');
-            $config["meta"]["reg_condition_value"] = RGForms::post('gf_user_registration_value');
+            $config['meta']['reg_condition_field_id'] = RGForms::post('gf_user_registration_field_id');
+            $config['meta']['reg_condition_operator'] = RGForms::post('gf_user_registration_operator');
+            $config['meta']['reg_condition_value'] = RGForms::post('gf_user_registration_value');
             
             // additional meta options
             $config['meta']['notification'] = RGForms::post('gf_user_registration_notification');
@@ -532,6 +533,8 @@ class GFUser {
         }
 
         $form = (isset($config["form_id"]) && $config["form_id"]) ? RGFormsModel::get_form_meta($config["form_id"]) : array();
+        $form_fields = $email_fields = $selection_fields = $password_fields = array();
+        
         if(!empty($form)) {
             $set_author_style = (GFCommon::has_post_field($form['fields'])) ? 'display:block' : 'display:none';
             $form_fields = self::get_form_fields($form);
@@ -541,7 +544,7 @@ class GFUser {
             // add custom option to password fields
             $password_default = array(array('', __('Auto Generate Password', 'gravityformsuserregistration') ));
             $password_fields = self::get_fields_by_type($form, 'password');
-            $password_fields = array_merge($password_default, $password_fields);
+            $password_fields = array_merge($password_fields, $password_default);
         }
         
         ?>
@@ -565,7 +568,7 @@ class GFUser {
             <div id="user_registration_form_container" valign="top" class="margin_vertical_10">
                 <label for="gf_user_registration_form" class="left_header"><?php _e("Gravity Form", "gravityformsuserregistration"); ?> <?php gform_tooltip("user_registration_gravity_form") ?></label>
 
-                <select id="gf_user_registration_form" name="gf_user_registration_form" onchange="SelectForm(jQuery(this).val(), '<?php echo $config["id"]?>');">
+                <select id="gf_user_registration_form" name="gf_user_registration_form" onchange="SelectForm(jQuery(this).val(), '<?php echo rgar($config, 'id') ?>');">
                     <option value=""><?php _e("Select a form", "gravityformsuserregistration"); ?> </option>
                     <?php
 
@@ -599,27 +602,27 @@ class GFUser {
                     
                     <div class="margin_vertical_10 <?php echo ($is_validation_error && empty($config['meta']['username'])) ? 'user_registration_validation_error' : ''; ?>">
                         <label class="left_header" for="gf_user_registration_username"><?php _e("Username", "gravityformsuserregistration"); ?> <span class="description">(<?php _e("required", "gravityformsuserregistration"); ?>)</span> <?php gform_tooltip("user_registration_username") ?></label>
-                        <?php echo self::get_field_drop_down("gf_user_registration_username", $form_fields, $config['meta']['username'], "width-1 standard-meta"); ?>
+                        <?php echo self::get_field_drop_down("gf_user_registration_username", $form_fields, rgar($config['meta'], 'username'), "width-1 standard-meta"); ?>
                     </div>
 
                     <div class="margin_vertical_10">
                         <label class="left_header" for="gf_user_registration_firstname"><?php _e("First Name", "gravityformsuserregistration"); ?> <?php gform_tooltip("user_registration_firstname") ?></label>
-                        <?php echo self::get_field_drop_down("gf_user_registration_firstname", $form_fields, $config['meta']['firstname'], "width-1 standard-meta"); ?>
+                        <?php echo self::get_field_drop_down("gf_user_registration_firstname", $form_fields, rgar($config['meta'], 'firstname'), "width-1 standard-meta"); ?>
                     </div>
 
                     <div class="margin_vertical_10">
                         <label class="left_header" for="gf_user_registration_lastname"><?php _e("Last Name", "gravityformsuserregistration"); ?> <?php gform_tooltip("user_registration_lastname") ?></label>
-                        <?php echo self::get_field_drop_down("gf_user_registration_lastname", $form_fields, $config['meta']['lastname'], "width-1 standard-meta"); ?>
+                        <?php echo self::get_field_drop_down("gf_user_registration_lastname", $form_fields, rgar($config['meta'], 'lastname'), "width-1 standard-meta"); ?>
                     </div>
 
                     <div class="margin_vertical_10 <?php echo ($is_validation_error && empty($config['meta']['email'])) ? 'user_registration_validation_error' : ''; ?>">
                         <label class="left_header" for="gf_user_registration_email"><?php _e("Email Address", "gravityformsuserregistration"); ?> <span class="description">(<?php _e("required", "gravityformsuserregistration"); ?>)</span> <?php gform_tooltip("user_registration_email") ?></label>
-                        <?php echo self::get_field_drop_down("gf_user_registration_email", $email_fields, $config['meta']['email'], "width-1 email-field"); ?>
+                        <?php echo self::get_field_drop_down("gf_user_registration_email", $email_fields, rgar($config['meta'], 'email'), "width-1 email-field"); ?>
                     </div>
 
                     <div class="margin_vertical_10">
                         <label class="left_header" for="gf_user_registration_password"><?php _e("Password", "gravityformsuserregistration"); ?> <?php gform_tooltip("user_registration_password") ?></label>
-                        <?php echo self::get_field_drop_down("gf_user_registration_password", $password_fields, $config['meta']['password'], "width-1 password-field", false); ?>
+                        <?php echo self::get_field_drop_down("gf_user_registration_password", $password_fields, rgar($config['meta'], 'password'), "width-1 password-field", false); ?>
                     </div>
                     
                     <?php 
@@ -632,7 +635,7 @@ class GFUser {
                             <?php foreach($roles as $role) {
                                 $role_name = ucfirst($role);
                                 ?>
-                                <option value="<?php echo $role ?>" <?php echo $config["meta"]["role"] == $role ? "selected='selected'" : ""?>><?php echo $role_name; ?></option>
+                                <option value="<?php echo $role ?>" <?php echo rgar($config['meta'], 'role') == $role ? "selected='selected'" : ""?>><?php echo $role_name; ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -656,14 +659,14 @@ class GFUser {
                     <div class="margin_vertical_10">
                         <label class="left_header"><?php _e("Send Email?", "gravityformsuserregistration"); ?> <?php gform_tooltip("user_registration_notification") ?></label>
                         
-                        <input type="checkbox" id="gf_user_registration_notification" name="gf_user_registration_notification" value="1" <?php echo ($config["meta"]["notification"] == 1 || !isset($config["meta"]["notification"])) ? "checked='checked'" : ""?>/>
+                        <input type="checkbox" id="gf_user_registration_notification" name="gf_user_registration_notification" value="1" <?php echo (rgar($config['meta'], 'notification') == 1 || !isset($config["meta"]["notification"])) ? "checked='checked'" : ""?>/>
                         <label for="gf_user_registration_notification" class="checkbox-label"><?php _e("Send this password to the new user by email.", "gravityformsuserregistration"); ?></label>
                     </div> <!-- / send email? -->
                     
                     <div id="gf_user_registration_set_post_author_container" class="margin_vertical_10" style="<?php echo $set_author_style; ?>">
                         <label class="left_header"><?php _e("Set As Post Author", "gravityformsuserregistration"); ?> <?php gform_tooltip("user_registration_set_post_author") ?></label>
                         
-                        <input type="checkbox" id="gf_user_registration_set_post_author" name="gf_user_registration_set_post_author" value="1" <?php echo ($config["meta"]["set_post_author"] == 1 || !isset($config["meta"]["set_post_author"])) ? "checked='checked'" : ""?>/>
+                        <input type="checkbox" id="gf_user_registration_set_post_author" name="gf_user_registration_set_post_author" value="1" <?php echo (rgar($config['meta'], 'set_post_author') == 1 || !isset($config["meta"]["set_post_author"])) ? "checked='checked'" : ""?>/>
                         <label for="gf_user_registration_set_post_author" class="checkbox-label"><?php _e("Enable", "gravityformsuserregistration"); ?></label>
                     </div> <!-- / set post author -->
                     
@@ -671,7 +674,7 @@ class GFUser {
                         <label for="gf_user_registration_optin" class="left_header"><?php _e("Registration Condition", "gravityformsuserregistration"); ?> <?php gform_tooltip("user_registration_condition") ?></label>
 
                         <div id="gf_user_registration_option" class="column_right">
-                            <input type="checkbox" id="gf_user_registration_enabled" name="gf_user_registration_enabled" value="1" onclick="if(this.checked){jQuery('#gf_user_registration_container').fadeIn('fast');} else{jQuery('#gf_user_registration_container').fadeOut('fast');}" <?php echo $config["meta"]["reg_condition_enabled"] ? "checked='checked'" : ""?>/>
+                            <input type="checkbox" id="gf_user_registration_enabled" name="gf_user_registration_enabled" value="1" onclick="if(this.checked){jQuery('#gf_user_registration_container').fadeIn('fast');} else{jQuery('#gf_user_registration_container').fadeOut('fast');}" <?php echo rgar($config['meta'], 'reg_condition_enabled') ? "checked='checked'" : ""?>/>
                             <label for="gf_user_registration_enabled" class="checkbox-label"><?php _e("Enable", "gravityformsuserregistration"); ?></label>
 
                             <div id="gf_user_registration_container" style="padding-top:5px; <?php echo !$config["meta"]["reg_condition_enabled"] ? "display:none" : ""?>">
@@ -683,8 +686,8 @@ class GFUser {
                                         <?php echo $selection_fields ?>
                                     </select>
                                     <select id="gf_user_registration_operator" name="gf_user_registration_operator">
-                                        <option value="is" <?php echo $config["meta"]["reg_condition_operator"] == "is" ? "selected='selected'" : "" ?>><?php _e("is", "gravityformsuser_registration") ?></option>
-                                        <option value="isnot" <?php echo $config["meta"]["reg_condition_operator"] == "isnot" ? "selected='selected'" : "" ?>><?php _e("is not", "gravityformsuser_registration") ?></option>
+                                        <option value="is" <?php echo rgar($config['meta'], 'reg_condition_operator') == 'is' ? 'selected="selected"' : '' ?>><?php _e("is", "gravityformsuser_registration") ?></option>
+                                        <option value="isnot" <?php echo rgar($config['meta'], 'reg_condition_operator') == "isnot" ? 'selected="selected"' : '' ?>><?php _e("is not", "gravityformsuser_registration") ?></option>
                                     </select>
                                     <select id="gf_user_registration_value" name="gf_user_registration_value" class='optin_select'></select>
 
@@ -715,12 +718,14 @@ class GFUser {
         </div> <!-- / wrap -->
 
         <script type="text/javascript">
-
+            
+            <?php $user_meta = rgar($config['meta'], 'user_meta'); ?>
+            
             var GFUser = {
-                form: <?php echo (!empty($form)) ? GFCommon::json_encode($form) : "new Array()"; ?>,
+                form: <?php echo !empty($form) ? GFCommon::json_encode($form) : 'new Array()'; ?>,
                 form_fields: <?php echo (!empty($form_fields)) ? GFCommon::json_encode($form_fields) : "new Array()"; ?>,
-                form_id: <?php echo ($config['form_id']) ? $config['form_id'] : "''" ?>,
-                user_meta: <?php echo (!empty($config['meta']['user_meta'])) ? GFCommon::json_encode($config['meta']['user_meta']) : "[new MetaOption()]"; ?>,
+                form_id: <?php echo rgar($config, 'form_id') ? rgar($config, 'form_id') : "''" ?>,
+                user_meta: <?php echo !empty($user_meta) ? GFCommon::json_encode($user_meta) : "[new MetaOption()]"; ?>,
                 bp_gform_options: <?php echo (!empty($form)) ? GFCommon::json_encode(self::get_bp_gform_fields($form)) : "''"; ?>,
                 meta_names: [
                     { 'name': 'Website', 'value': 'user_url' },
@@ -757,7 +762,7 @@ class GFUser {
 
             function EndSelectForm(form_meta, form_fields, field_options, password_options, email_options, options_meta, bp_gform_options){
                 
-                if(email_options == "<option value=''></option>") {
+                if(email_options == '<option value=""></option>') {
                     jQuery(".gf_user_registration_invalid_form").show();
                     jQuery("#user_registration_wait").hide();
                     return;
@@ -777,7 +782,7 @@ class GFUser {
                 });
 
                 jQuery.each(jQuery("select.password-field"), function(){
-                    jQuery(this).html('<option class="system-option">Auto Generate Password</option>' + password_options);
+                    jQuery(this).html(password_options + '<option class="system-option">Auto Generate Password</option>');
                 });
 
                 jQuery.each(jQuery("select.email-field"), function(){
@@ -1007,8 +1012,8 @@ class GFUser {
 
                 // initializing registration condition drop downs
                 jQuery(document).ready(function(){
-
-                    form = <?php echo GFCommon::json_encode($form_meta)?> ;
+                    
+                    //form = [] <?php //echo GFCommon::json_encode($form_meta) ?>;
 
                     var selectedField = "<?php echo str_replace('"', '\"', $config["meta"]["reg_condition_field_id"])?>";
                     var selectedValue = "<?php echo str_replace('"', '\"', $config["meta"]["reg_condition_value"])?>";
@@ -1144,8 +1149,10 @@ class GFUser {
 
     private static function get_field_drop_down_items($fields, $selected_field, $empty_option = true){
         
+        $str = '';
+        
         if($empty_option == true)
-            $str = "<option value=''></option>";
+            $str = '<option value=""></option>';
         
         if(is_array($fields)){
             foreach($fields as $field){
@@ -1358,10 +1365,8 @@ class GFUser {
         
         $form_fields = self::get_form_fields($form);
         $multisite_options = $config['meta']['multisite_options'];
-        $parent_blog = get_dashboard_blog();
-        $current_blog = $GLOBALS['blog_id'];
         
-        if($parent_blog->blog_id != $current_blog)
+        if(!self::is_root_site())
             return;
         
         ?>
@@ -1520,6 +1525,17 @@ class GFUser {
         
     }
     
+    public static function is_root_site() {
+        
+        $parent_blog = get_dashboard_blog();
+        $current_blog = $GLOBALS['blog_id'];
+        
+        if($parent_blog->blog_id != $current_blog)
+            return false;
+        
+        return true;
+    }
+    
     // Hook into Gravity Forms
 
     public static function gf_create_user($entry, $form, $fulfilled = false) {
@@ -1541,12 +1557,16 @@ class GFUser {
                 return;
         }
         
+        $name_fields = array(); // meet be unncessary, needs review
         $username_field = RGFormsModel::get_field($form, $user_config['meta']['username']);
         $useremail_field = RGFormsModel::get_field($form, $user_config['meta']['email']);
         
         $user_name = self::get_prepared_value($username_field, $user_config['meta']['username'], $entry, true);
         $user_email = self::get_prepared_value($useremail_field, $user_config['meta']['email'], $entry);
-        $password = $entry[$user_config['meta']['password']];
+        
+        $password_field_id = rgar($user_config['meta'], 'password');
+        $password = rgar($entry, $password_field_id);
+        
         $role = $user_config['meta']['role'];
         
         if(empty($user_name) || empty($user_email))
@@ -1857,7 +1877,9 @@ class GFUser {
         // activate user registration tooltips for integration with PayPal plugin
         add_filter('gform_tooltips', array('GFUser', 'tooltips'));
         
-        $registration_config = self::get_config($config['form_id']);
+        $id = rgget('id');
+        
+        $registration_config = self::get_config(rgar($config, 'form_id'));
         $registration_feeds = GFUserData::get_feeds();
         $registration_forms = array();
         
@@ -1865,13 +1887,15 @@ class GFUser {
             $registration_forms[] = $feed['form_id'];
         }
         
-        $json_registration_forms = json_encode($registration_forms);
+        $json_registration_forms = GFCommon::json_encode($registration_forms);
         
         if(empty($json_registration_forms))
             $json_registration_forms = '[]';    
         
         $roles = array_keys($wp_roles->roles);
-
+        $display_registration_options = !empty($registration_config) ? '' : 'display:none;';
+        $display_multisite_options = (is_multisite() && self::is_root_site() && $config['meta']['type'] == 'subscription') ? '' : 'display:none;';
+        
         ?>
         
         <script type="text/javascript">
@@ -1882,8 +1906,9 @@ class GFUser {
                     var transaction_type = $("#gf_paypal_type").val();
                     var form = form;
                     var has_registration = false;
+                    var display_multisite_options = <?php echo (is_multisite() && self::is_root_site()) ? 'true' : 'false' ?>;
                     
-                    if($.inArray(form['id'], registration_form_ids) != -1)
+                    if($.inArray(String(form['id']), registration_form_ids) != -1)
                         has_registration = true;
                     
                     if(has_registration == true) {
@@ -1892,17 +1917,19 @@ class GFUser {
                         $("#gf_paypal_user_registration_options").hide();
                     }
                     
-                    if(transaction_type == "subscription") {
-                        $("#gf_paypal_update_user_option, #gf_paypal_update_site_option").show();
-                    } else {
-                        $("#gf_paypal_update_user_option, #gf_paypal_update_site_option").hide();
-                    }
+                    $("#gf_paypal_update_user_option, #gf_paypal_update_site_option").hide();
+                    
+                    if(transaction_type == "subscription")
+                        $("#gf_paypal_update_user_option").show();
+                    
+                    if(transaction_type == "subscription" && display_multisite_options)
+                        $("#gf_paypal_update_site_option").show();
                     
                 });
             });
         </script>
         
-        <div id="gf_paypal_user_registration_options" class="margin_vertical_10">
+        <div id="gf_paypal_user_registration_options" class="margin_vertical_10" style="<?php echo $display_registration_options; ?>">
             <label class="left_header"><?php _e("User Registration", "gravityformsuserregistration"); ?> <?php gform_tooltip("user_registration_paypal_user_options") ?></label>
 
             <ul style="overflow:hidden;">
@@ -1910,7 +1937,7 @@ class GFUser {
                 <!-- Standard Options -->
                 
                 <li>
-                    <input type="checkbox" name="gf_paypal_delay_registration" id="gf_paypal_delay_registration" value="1" <?php echo $config["meta"]["delay_registration"] ? "checked='checked'" : ""?> />
+                    <input type="checkbox" name="gf_paypal_delay_registration" id="gf_paypal_delay_registration" value="1" <?php echo rgar($config['meta'], 'delay_registration') ? "checked='checked'" : ""?> />
                     <label class="inline" for="gf_paypal_delay_registration">
                         <?php 
                         if(!is_multisite()){
@@ -1937,7 +1964,7 @@ class GFUser {
                 
                 <!-- Multisite Options -->
                 
-                <li id="gf_paypal_update_site_option" <?php echo $config["meta"]["type"] == "subscription" ? "" : "style='display:none;'" ?>>
+                <li id="gf_paypal_update_site_option" style="<?php echo $display_multisite_options; ?>">
                     <input type="checkbox" name="gf_paypal_update_site" id="gf_paypal_update_site" value="1" <?php echo $config["meta"]["update_site_action"] ? "checked='checked'" : ""?> onclick="var action = this.checked ? 'deactivate' : ''; jQuery('#gf_paypal_update_site_action').val(action);" />
                     <label class="inline" for="gf_paypal_update_site"><?php _e("Update <strong>site</strong> when subscription is cancelled.", "gravityformsuserregistration"); ?></label>
                     <select id="gf_paypal_update_site_action" name="gf_paypal_update_site_action" onchange="var checked = jQuery(this).val() ? 'checked' : false; jQuery('#gf_paypal_update_site').attr('checked', checked);">
@@ -2096,7 +2123,8 @@ class GFUser {
                         $fields[] =  array($input["id"], GFCommon::get_label($field, $input["id"]));
                     
                 }
-                else if(!$field["displayOnly"]){
+                //else if(!$field["displayOnly"]){
+                else if(!rgar($field, 'displayOnly')){
                     $fields[] =  array($field["id"], GFCommon::get_label($field));
                 }
                 
@@ -2152,7 +2180,8 @@ class GFUser {
                         $fields[] =  array($input["id"], GFCommon::get_label($field, $input["id"]));
                     
                 }
-                else if(!$field["displayOnly"]){
+                //else if(!$field["displayOnly"]){
+                else if(!rgar($field, 'displayOnly')){
                     $fields[] =  array($field["id"], GFCommon::get_label($field));
                 }
                 

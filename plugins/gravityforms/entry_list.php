@@ -177,7 +177,7 @@ class GFEntryList{
                 mysack.setVar( "name", name);
                 mysack.setVar( "value", value);
                 mysack.encVar( "cookie", document.cookie, false );
-                mysack.onError = function() { alert('<?php _e("Ajax error while setting lead property", "gravityforms") ?>' )};
+                mysack.onError = function() { alert('<?php echo esc_js(__("Ajax error while setting lead property", "gravityforms")) ?>' )};
                 mysack.runAJAX();
 
                 return true;
@@ -384,6 +384,13 @@ class GFEntryList{
                                             }
                                         break;
 
+                                        case "post_category" :
+                                            $ary = explode(":", $value);
+                                            $cat_name = count($ary) > 0 ? $ary[0] : "";
+
+                                            $value = $cat_name;
+                                        break;
+
                                         case "fileupload" :
                                             $file_path = $value;
                                             if(!empty($file_path)){
@@ -543,7 +550,6 @@ class GFEntryList{
         </div>
         <?php
     }
-
 
     private static function get_icon_url($path){
         $info = pathinfo($path);

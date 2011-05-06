@@ -1,14 +1,17 @@
 
-function gf_apply_rules(formId, fields, isInit){
-    for(var i=0; i < fields.length; i++)
-        gf_apply_field_rule(formId, fields[i], isInit);
 
-    if(window["gformCalculateTotalPrice"]){
-        window["gformCalculateTotalPrice"](formId);
+function gf_apply_rules(formId, fields, isInit){
+    var rule_applied = 0;
+    for(var i=0; i < fields.length; i++){
+        gf_apply_field_rule(formId, fields[i], isInit, function(){
+            rule_applied++;
+            if(rule_applied == fields.length && window["gformCalculateTotalPrice"])
+                window["gformCalculateTotalPrice"](formId);
+        });
     }
 }
 
-function gf_apply_field_rule(formId, fieldId, isInit){
+function gf_apply_field_rule(formId, fieldId, isInit, callback){
 
     var conditionalLogic = window["gf_form_conditional_logic"][formId]["logic"][fieldId];
 
@@ -18,7 +21,7 @@ function gf_apply_field_rule(formId, fieldId, isInit){
     if(action != "hide")
         action = gf_get_field_action(formId, conditionalLogic["field"]);
 
-    gf_do_field_action(formId, action, fieldId, isInit);
+    gf_do_field_action(formId, action, fieldId, isInit, callback);
 
     //perform conditional logic for the next button
     if(conditionalLogic["nextButton"]){
@@ -67,19 +70,21 @@ function gf_is_value_selected(formId, fieldId, value){
 function gf_get_value(val){
     if(!val)
         return "";
-        
+
     var val = val.split("|");
     return val[0];
 }
 
-function gf_do_field_action(formId, action, fieldId, isInit){
+function gf_do_field_action(formId, action, fieldId, isInit, callback){
     var conditional_logic = window["gf_form_conditional_logic"][formId];
     var dependent_fields = conditional_logic["dependents"][fieldId];
 
     for(var i=0; i < dependent_fields.length; i++){
         var targetId = fieldId == 0 ? "#gform_submit_button_" + formId : "#field_" + formId + "_" + dependent_fields[i];
 
-        gf_do_action(action, targetId, conditional_logic["animation"], isInit);
+        //calling callback function on the last dependent field, to make sure it is only called once
+        do_callback = (i+1) == dependent_fields.length ? callback : null;
+        gf_do_action(action, targetId, conditional_logic["animation"], isInit, do_callback);
     }
 }
 
@@ -90,17 +95,25 @@ function gf_do_next_button_action(formId, action, fieldId, isInit){
     gf_do_action(action, targetId, conditional_logic["animation"], isInit);
 }
 
-function gf_do_action(action, targetId, useAnimation, isInit){
+function gf_do_action(action, targetId, useAnimation, isInit, callback){
     if(action == "show"){
-        if(useAnimation && !isInit)
-            jQuery(targetId).slideDown();
-        else
+        if(useAnimation && !isInit){
+            jQuery(targetId).slideDown(callback);
+        }
+        else{
             jQuery(targetId).show();
+            if(callback)
+                callback();
+        }
     }
     else{
-        if(useAnimation && !isInit)
-            jQuery(targetId).slideUp();
-        else
+        if(useAnimation && !isInit){
+            jQuery(targetId).slideUp(callback);
+        }
+        else{
             jQuery(targetId).hide();
+            if(callback)
+                callback();
+        }
     }
 }

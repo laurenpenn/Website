@@ -1,9 +1,22 @@
 -------------------------------------------------------------------------------------------------------------------
-Version 1.5.1.1
+Version 1.5.2
+    - Updated reCAPTCHA API file
+    - Fixed issue with Post Category fields storing the wrong post when sub categories have the same name
+    - Fixed issue with Post Category field not displaying all categories in the form editor
+    - Fixed issue with drop downs not keeping selected item upon validation error when value is set to 0 (zero) and other item is selected by default
+    - Fixed issue with number of entries being written to the export files
+    - Fixed javascript error on Form Editor when "Enable Content Template" is checked, but nothing is entered in the template field
+    - Added JS escaping to prevent javascript error on Form Editor when translated AJAX error messages contain a single quote.
+    - Fixed issue drop downs not keeping selected item upon validation error when value is set to 0 (zero)
+    - Fixed issue with price calculation when conditional logic animation was enabled
+    - Added gform_validation_error in wrapper div when form fails validation
+    - Updated POT file
     - Fixed error caused by GFCommon not being included when calling enqueue_function from functions.php
     - Updated portuguese translation file
     - Added gform_delete_lead hook
-
+    - Fixed problem with exporting/importing routing rules
+    - Fixed issue with product field validation when using Euro as currency
+    
 -------------------------------------------------------------------------------------------------------------------
 Version 1.5.1
     - Fixed problem with getting embed_post for {custom_field} variables

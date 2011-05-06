@@ -91,7 +91,7 @@ class GFEntryDetail{
                     mysack.setVar( "lead_id", leadId );
                     mysack.setVar( "field_id", fieldId );
                     mysack.encVar( "cookie", document.cookie, false );
-                    mysack.onError = function() { alert('<?php _e("Ajax error while deleting field.", "gravityforms") ?>' )};
+                    mysack.onError = function() { alert('<?php echo esc_js(__("Ajax error while deleting field.", "gravityforms")) ?>' )};
                     mysack.runAJAX();
 
                     return true;
@@ -576,7 +576,7 @@ class GFEntryDetail{
                                                     <ul class="product_options">
                                                         <?php
                                                         $price = GFCommon::to_number($product["price"]);
-                                                        if(is_array($product["options"])){
+                                                        if(is_array(rgar($product,"options"))){
                                                             $count = sizeof($product["options"]);
                                                             $index = 1;
                                                             foreach($product["options"] as $option){

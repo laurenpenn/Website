@@ -9,26 +9,26 @@ Class GFNotification{
 
             check_admin_referer('gforms_save_notification', 'gforms_save_notification');
 
-            $form["notification"]["to"] = stripslashes(rgpost("form_notification_to"));
-            $form["notification"]["bcc"] = stripslashes(rgpost("form_notification_bcc"));
-            $form["notification"]["subject"] = stripslashes(rgpost("form_notification_subject"));
-            $form["notification"]["message"] = stripslashes(rgpost("form_notification_message"));
-            $form["notification"]["from"] = rgempty("form_notification_from_field") ? stripslashes(rgpost("form_notification_from")) : "";
-            $form["notification"]["fromField"] = stripslashes(rgpost("form_notification_from_field"));
-            $form["notification"]["fromName"] = rgempty("form_notification_from_name_field") ? stripslashes(rgpost("form_notification_from_name")) : "";
-            $form["notification"]["fromNameField"] = stripslashes(rgpost("form_notification_from_name_field"));
-            $form["notification"]["replyTo"] = rgempty("form_notification_reply_to_field") ? stripslashes(rgpost("form_notification_reply_to")) : "";
-            $form["notification"]["replyToField"] = stripslashes(rgpost("form_notification_reply_to_field"));
-            $form["notification"]["routing"] = !rgempty("gform_routing_meta") ? GFCommon::json_decode(stripslashes(rgpost("gform_routing_meta")), true) : null;
+            $form["notification"]["to"] = rgpost("form_notification_to");
+            $form["notification"]["bcc"] = rgpost("form_notification_bcc");
+            $form["notification"]["subject"] = rgpost("form_notification_subject");
+            $form["notification"]["message"] = rgpost("form_notification_message");
+            $form["notification"]["from"] = rgempty("form_notification_from_field") ? rgpost("form_notification_from") : "";
+            $form["notification"]["fromField"] = rgpost("form_notification_from_field");
+            $form["notification"]["fromName"] = rgempty("form_notification_from_name_field") ? rgpost("form_notification_from_name") : "";
+            $form["notification"]["fromNameField"] = rgpost("form_notification_from_name_field");
+            $form["notification"]["replyTo"] = rgempty("form_notification_reply_to_field") ? rgpost("form_notification_reply_to") : "";
+            $form["notification"]["replyToField"] = rgpost("form_notification_reply_to_field");
+            $form["notification"]["routing"] = !rgempty("gform_routing_meta") ? GFCommon::json_decode(rgpost("gform_routing_meta"), true) : null;
             $form["notification"]["disableAutoformat"] = rgpost("form_notification_disable_autoformat");
 
-            $form["autoResponder"]["toField"] = stripslashes(rgpost("form_autoresponder_to"));
-            $form["autoResponder"]["bcc"] = stripslashes(rgpost("form_autoresponder_bcc"));
-            $form["autoResponder"]["fromName"] = stripslashes(rgpost("form_autoresponder_from_name"));
-            $form["autoResponder"]["from"] = stripslashes(rgpost("form_autoresponder_from"));
-            $form["autoResponder"]["replyTo"] = stripslashes(rgpost("form_autoresponder_reply_to"));
-            $form["autoResponder"]["subject"] = stripslashes(rgpost("form_autoresponder_subject"));
-            $form["autoResponder"]["message"] = stripslashes(rgpost("form_autoresponder_message"));
+            $form["autoResponder"]["toField"] = rgpost("form_autoresponder_to");
+            $form["autoResponder"]["bcc"] = rgpost("form_autoresponder_bcc");
+            $form["autoResponder"]["fromName"] = rgpost("form_autoresponder_from_name");
+            $form["autoResponder"]["from"] = rgpost("form_autoresponder_from");
+            $form["autoResponder"]["replyTo"] = rgpost("form_autoresponder_reply_to");
+            $form["autoResponder"]["subject"] = rgpost("form_autoresponder_subject");
+            $form["autoResponder"]["message"] = rgpost("form_autoresponder_message");
             $form["autoResponder"]["disableAutoformat"] = rgpost("form_autoresponder_disable_autoformat");
 
             //validating input...

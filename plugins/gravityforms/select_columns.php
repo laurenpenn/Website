@@ -101,7 +101,7 @@ $form = RGFormsModel::get_form_meta($form_id);
                 <ul id="sortable_available" class="sortable_connected">
                     <?php
                     foreach($form["fields"] as $field){
-                        if(is_array($field["inputs"])){
+                        if(is_array(rgar($field, "inputs"))){
                             foreach($field["inputs"] as $input){
                                 if(!in_array($input["id"], $field_ids)){
                                     ?>
@@ -110,7 +110,7 @@ $form = RGFormsModel::get_form_meta($form_id);
                                 }
                             }
                         }
-                        else if(!$field["displayOnly"] && !in_array($field["id"], $field_ids)){
+                        else if(!rgar($field, "displayOnly") && !in_array($field["id"], $field_ids)){
                             ?>
                             <li id="<?php echo $field["id"]?>"><?php echo  esc_html($field["label"]) ?></li>
                             <?php

@@ -2,7 +2,7 @@
 /*
 +----------------------------------------------------------------+
 |																							|
-|	WordPress 2.8 Plugin: WP-DBManager 2.60								|
+|	WordPress 2.8 Plugin: WP-DBManager 2.62								|
 |	Copyright (c) 2009 Lester "GaMerZ" Chan									|
 |																							|
 |	File Written By:																	|
@@ -39,6 +39,7 @@ if($_POST['do']) {
 	// Decide What To Do
 	switch($_POST['do']) {
 		case __('Run', 'wp-dbmanager'):
+			check_admin_referer('wp-dbmanager_run');
 			$sql_queries2 = trim($_POST['sql_query']);
 			$totalquerycount = 0;
 			$successquery = 0;
@@ -82,6 +83,7 @@ if($_POST['do']) {
 <?php if(!empty($text)) { echo '<!-- Last Action --><div id="message" class="updated fade"><p>'.$text.'</p></div>'; } ?>
 <!-- Run SQL Query -->
 <form method="post" action="<?php echo admin_url('admin.php?page='.plugin_basename(__FILE__)); ?>">
+	<?php wp_nonce_field('wp-dbmanager_run'); ?>
 	<div class="wrap">
 		<div id="icon-wp-dbmanager" class="icon32"><br /></div>
 		<h2><?php _e('Run SQL Query', 'wp-dbmanager'); ?></h2>

@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms
 Plugin URI: http://www.gravityforms.com
 Description: Easily create web forms and manage form entries within the WordPress admin.
-Version: 1.5.1.1
+Version: 1.5.2
 Author: rocketgenius
 Author URI: http://www.rocketgenius.com
 
@@ -53,7 +53,6 @@ $gf_recaptcha_public_key = "";
 //define('GF_RECAPTCHA_PUBLIC_KEY','YOUR_PUBLIC_KEY_GOES_HERE');
 //------------------------------------------------------------------------------------------------------------------
 
-
 if(!defined("RG_CURRENT_PAGE"))
     define("RG_CURRENT_PAGE", basename($_SERVER['PHP_SELF']));
 
@@ -72,7 +71,6 @@ require_once(WP_PLUGIN_DIR . "/" . basename(dirname(__FILE__)) . "/widget.php");
 
 add_action('init',  array('RGForms', 'init'));
 add_action('wp',  array('RGForms', 'maybe_process_form'), 9);
-add_action('parse_request', array("RGForms", "drop_cache"));
 
 class RGForms{
 
@@ -1051,11 +1049,11 @@ class RGForms{
 
         if(is_array($form["fields"])){
             foreach($form["fields"] as $field){
-                if(is_array($field["inputs"])){
+                if(is_array(rgar($field,"inputs"))){
                     foreach($field["inputs"] as $input)
                         $fields[] =  array($input["id"], GFCommon::get_label($field, $input["id"]));
                 }
-                else if(!$field["displayOnly"]){
+                else if(!rgar($field,"displayOnly")){
                     $fields[] =  array($field["id"], GFCommon::get_label($field));
                 }
             }
@@ -1065,12 +1063,6 @@ class RGForms{
         die("EndSelectExportForm($field_json);");
     }
 
-    public static function drop_cache(){
-        if(rgget("page") == "gf_drop_cache"){
-            GFCommon::cache_remote_message();
-            GFCommon::get_version_info(false);
-        }
-    }
     public static function top_toolbar(){
         ?>
         <script type="text/javascript">
@@ -1121,7 +1113,7 @@ class RGForms{
             <ul id="gf_form_toolbar_links">
                 <?php
                 $forms = RGFormsModel::get_forms(null, "title");
-                $id = rgempty("id", $_GET) ? $forms[0]->id : rgget("id");
+                $id = rgempty("id", $_GET) ? count($forms) > 0 ? $forms[0]->id : "0" : rgget("id");
                 ?>
                 <li class="gf_form_toolbar_editor"><a href="?page=gf_edit_forms&id=<?php echo $id ?>"  <?php echo self::toolbar_class("editor"); ?>><?php _e("Form Editor", "gravityforms"); ?></a></li>
                 <li class="gf_form_toolbar_settings"><a href="javascript: if(jQuery('#gform_heading.selectable').length > 0){FieldClick(jQuery('#gform_heading')[0]);} else{document.location = '?page=gf_edit_forms&id=<?php echo $id ?>&display_settings';}" <?php echo self::toolbar_class("settings"); ?>><?php _e("Form Settings", "gravityforms"); ?></a></li>
@@ -1213,9 +1205,9 @@ function rgget($name, $array=null){
 }
 
 if(!function_exists("rgpost")){
-function rgpost($name){
+function rgpost($name, $do_stripslashes=true){
     if(isset($_POST[$name]))
-        return $_POST[$name];
+        return $do_stripslashes ? stripslashes_deep($_POST[$name]) : $_POST[$name];
 
     return "";
 }
@@ -1240,4 +1232,12 @@ function rgempty($name, $array = null){
     return empty($val);
 }
 }
+
+
+if(!function_exists("rgblank")){
+function rgblank($text){
+    return empty($text) && strval($text) != "0";
+}
+}
+
 ?>

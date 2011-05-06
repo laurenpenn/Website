@@ -130,23 +130,28 @@ function coauthors__echo( $tag, $type = 'tag', $separators = array(), $tag_args 
 	
 	$i = new CoAuthorsIterator();
 	$output .= $separators['before'];
-	if( $i->iterate() ) {
+	$i->iterate();
+	do {
+		$author_text = '';
+		
 		if( $type == 'tag' )
-			$output .= $tag( $tag_args );
+			$author_text = $tag( $tag_args );
 		elseif( $type == 'field' && isset( $i->current_author->$tag ) )
-			$output .= $i->current_author->$tag;
+			$author_text = $i->current_author->$tag;
 		elseif( $type == 'callback' && is_callable( $tag ) )
-			$output .= call_user_func( $tag, $i->current_author );
-	}
-	while( $i->iterate() ){
-		$output .= $i->is_last() ? $separators['betweenLast'] : $separators['between'];
-		if( $type == 'tag' )
-			$output .= $tag( $tag_args );
-		elseif( $type == 'field' && isset( $i->current_author->$tag ) )
-			$output .= $i->current_author->$tag;
-		elseif( $type == 'callback' && is_callable( $tag ) )
-			$output .= call_user_func( $tag, $i->current_author );
-	}
+			$author_text = call_user_func( $tag, $i->current_author );
+		
+		// Fallback to user_login if we get something empty
+		if( empty( $author_text ) )
+			$author_text = $i->current_author->user_login;
+		
+		// Append separators
+		if( ! $i->is_first() )
+			$output .= $i->is_last() ? $separators['betweenLast'] : $separators['between'];
+		
+		$output .= $author_text;
+	} while( $i->iterate() );
+	
 	$output .= $separators['after'];
 	
 	if( $echo )

@@ -4,7 +4,7 @@ Donate link: http://digitalize.ca/donate
 Tags: authors, users, multiple authors, coauthors, multi-author
 Tested up to: 3.1
 Requires at least: 3.0
-Stable tag: 2.5.1
+Stable tag: 2.5.2
 
 Allows multiple authors to be assigned to a Posts via search-as-you-type input boxes.
 
@@ -20,11 +20,18 @@ The extended version incorporates search-as-you-type functionality for adding us
 
 == Changelog ==
 
+= 2011-04-23 / 2.5.2 =
+
+* Bug: Couldn't query terms and authors at the same time (props nbaxley)
+* Bug: Authors with empty fields (e.g. first name) were displaying blank in some cases
+* Bug: authors with spaces in usernames not getting saved (props MLmsw, Ruben S. and others!)
+* Bug: revisions getting wrong user attached (props cliquenoir!)
+
 = 2011-03-26 / 2.5.1 =
 
 * Fix with author post count (throwing errors)
 
-= 2011-03-26 / 3.0 =
+= 2011-03-26 / 2.5 =
 
 * Custom Post Type Support
 * Compatibility with WP 3.0 and 3.1

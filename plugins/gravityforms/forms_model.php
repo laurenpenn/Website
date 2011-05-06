@@ -838,13 +838,13 @@ class RGFormsModel{
         return $is_hidden ? "hide" : "show";
     }
 
-    public static function get_field_value($field, $field_values = array()){
+    public static function get_field_value($field, $field_values = array(), $get_from_post=true){
         $value = array();
         switch(RGFormsModel::get_input_type($field)){
             case "post_image" :
-                $value[$field["id"] . ".1"] = self::get_input_value($field, "input_" . $field["id"] . "_1");
-                $value[$field["id"] . ".4"] = self::get_input_value($field, "input_" . $field["id"] . "_4");
-                $value[$field["id"] . ".7"] = self::get_input_value($field, "input_" . $field["id"] . "_7");
+                $value[$field["id"] . ".1"] = self::get_input_value($field, "input_" . $field["id"] . "_1", $get_from_post);
+                $value[$field["id"] . ".4"] = self::get_input_value($field, "input_" . $field["id"] . "_4", $get_from_post);
+                $value[$field["id"] . ".7"] = self::get_input_value($field, "input_" . $field["id"] . "_7", $get_from_post);
             break;
             case "checkbox" :
                 $parameter_values = explode(",", self::get_parameter_value($field["inputName"], $field_values));
@@ -854,8 +854,8 @@ class RGFormsModel{
 
                 $choice_index = 0;
                 foreach($field["inputs"] as $input){
-                    if(!empty($_POST["is_submit_" . $field["formId"]])){
-                        $value[strval($input["id"])] = stripslashes(rgpost("input_" . str_replace('.', '_', strval($input["id"]))));
+                    if(!empty($_POST["is_submit_" . $field["formId"]]) && $get_from_post){
+                        $value[strval($input["id"])] = rgpost("input_" . str_replace('.', '_', strval($input["id"])));
                     }
                     else{
                         foreach($parameter_values as $item){
@@ -876,11 +876,11 @@ class RGFormsModel{
 
                 if(is_array($field["inputs"])){
                     foreach($field["inputs"] as $input){
-                        $value[strval($input["id"])] = self::get_input_value($field, "input_" . str_replace('.', '_', strval($input["id"])), RGForms::get("name", $input), $field_values);
+                        $value[strval($input["id"])] = self::get_input_value($field, "input_" . str_replace('.', '_', strval($input["id"])), RGForms::get("name", $input), $field_values, $get_from_post);
                     }
                 }
                 else{
-                    $value = self::get_input_value($field, "input_" . $field["id"], $field["inputName"], $field_values);
+                    $value = self::get_input_value($field, "input_" . $field["id"], $field["inputName"], $field_values, $get_from_post);
                 }
             break;
         }
@@ -888,8 +888,8 @@ class RGFormsModel{
         return $value;
     }
 
-    private static function get_input_value($field, $standard_name, $custom_name = "", $field_values=array()){
-        if(!empty($_POST["is_submit_" . $field["formId"]])){
+    private static function get_input_value($field, $standard_name, $custom_name = "", $field_values=array(), $get_from_post=true){
+        if(!empty($_POST["is_submit_" . $field["formId"]]) && $get_from_post){
             $value = RGForms::post($standard_name);
             if(!is_array($value))
                 $value = stripslashes($value);
@@ -994,8 +994,9 @@ class RGFormsModel{
                 break;
 
                 case "post_category" :
-                    $category = get_term_by( 'name', $value, 'category' );
-                    array_push($categories, $category->term_id);
+                    list($cat_name, $cat_id) = explode(":", $value);
+                    //$category = get_term_by( 'name', $value, 'category' );
+                    array_push($categories, $cat_id);
                 break;
 
                 case "post_image" :
@@ -1054,7 +1055,7 @@ class RGFormsModel{
         {
             case "post_category" :
                 $cat = get_category($value);
-                $value = $cat->name;
+                $value = $cat->name . ":" . $value; //format-> name:id
             break;
 
             case "phone" :

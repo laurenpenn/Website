@@ -53,7 +53,7 @@ class RGXML{
         $xml .= ">";
 
         //for a regular array, the child element (if not specified in the options) will be the singular vesion of the parent element(i.e. <forms><form>...</form><form>...</form></forms>)
-        $child_node_name = isset($this->options["array_tag"]) ? $this->options["array_tag"] : $this->to_singular($parent_node_name);
+        $child_node_name = isset($this->options[$path]["array_tag"]) ? $this->options[$path]["array_tag"] : $this->to_singular($parent_node_name);
 
         //adding other properties as elements
         foreach($data as $key => $obj){
@@ -77,7 +77,7 @@ class RGXML{
 
     public function unserialize($xml_string){
         $xml_string = trim($xml_string);
-        
+
         $xml_parser = xml_parser_create();
         $values = array();
         xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, false);

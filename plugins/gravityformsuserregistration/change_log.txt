@@ -1,4 +1,15 @@
 -----------------------------------------------------------
+Version 1.2
+    - Fixed issue with localization
+    - Updated UI to support longer translation verbiage
+    
+-----------------------------------------------------------
+Version 1.1
+    - Fixed issue where all User Registration options were displaying for PayPal Feeds even when no User Registration Feed existed for the selected form
+    - Fixed issue where User Registration options were not available on a PayPal Feed until after saving the PayPal Feed was saved.
+    - Feed password field now defaults to a form password field (if available)
+    
+-----------------------------------------------------------
 Version 1.0
     - Updated version to 1.0
 

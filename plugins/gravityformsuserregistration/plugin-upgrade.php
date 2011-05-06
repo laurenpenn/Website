@@ -43,6 +43,9 @@ class RGUserUpgrade{
 
 
     public static function display_plugin_message($message, $is_error = false){
+        
+        $style = '';
+        
         if($is_error)
             $style = 'style="background-color: #ffebe8;"';
 

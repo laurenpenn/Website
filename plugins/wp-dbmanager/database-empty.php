@@ -2,7 +2,7 @@
 /*
 +----------------------------------------------------------------+
 |																							|
-|	WordPress 2.8 Plugin: WP-DBManager 2.60								|
+|	WordPress 2.8 Plugin: WP-DBManager 2.62								|
 |	Copyright (c) 2009 Lester "GaMerZ" Chan									|
 |																							|
 |	File Written By:																	|
@@ -42,6 +42,7 @@ if($_POST['do']) {
 	// Decide What To Do
 	switch($_POST['do']) {
 		case __('Empty/Drop', 'wp-dbmanager'):
+			check_admin_referer('wp-dbmanager_empty');
 			$empty_tables = array();
 			if(!empty($emptydrop)) {
 				foreach($emptydrop as $key => $value) {
@@ -76,6 +77,7 @@ $tables = $wpdb->get_col("SHOW TABLES");
 <?php if(!empty($text)) { echo '<!-- Last Action --><div id="message" class="updated fade"><p>'.$text.'</p></div>'; } ?>
 <!-- Empty/Drop Tables -->
 <form method="post" action="<?php echo admin_url('admin.php?page='.plugin_basename(__FILE__)); ?>">
+	<?php wp_nonce_field('wp-dbmanager_empty'); ?>
 	<div class="wrap">
 		<div id="icon-wp-dbmanager" class="icon32"><br /></div>
 		<h2><?php _e('Empty/Drop Tables', 'wp-dbmanager'); ?></h2>	

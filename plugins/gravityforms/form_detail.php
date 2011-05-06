@@ -1824,7 +1824,7 @@ class GFFormDetail{
             if ( $count >= $start )
                 self::_cat_row( $category, $level, $output );
 
-            unset($categories[$i]); // Prune the working set
+            //unset($categories[$i]); // Prune the working set
             $count++;
 
             if ( isset($children[$category->term_id]) )

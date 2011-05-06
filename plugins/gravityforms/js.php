@@ -248,7 +248,9 @@ function TogglePostContentTemplate(isInit){
 
     if(jQuery("#gfield_post_content_enabled").is(":checked")){
         jQuery("#gfield_post_content_container").show(speed);
-        PopulateContentTemplate("field_post_content_template");
+        if(!isInit){
+            PopulateContentTemplate("field_post_content_template");
+        }
     }
     else{
         jQuery("#gfield_post_content_container").hide(speed);
@@ -259,7 +261,9 @@ function TogglePostTitleTemplate(isInit){
     var speed = isInit ? "" : "slow";
     if(jQuery("#gfield_post_title_enabled").is(":checked")){
         jQuery("#gfield_post_title_container").show(speed);
-        PopulateContentTemplate("field_post_title_template");
+        if(!isInit)
+            PopulateContentTemplate("field_post_title_template");
+
     }
     else{
         jQuery("#gfield_post_title_container").hide(speed);
@@ -271,7 +275,8 @@ function ToggleCustomFieldTemplate(isInit){
 
     if(jQuery("#gfield_customfield_content_enabled").is(":checked")){
         jQuery("#gfield_customfield_content_container").show(speed);
-        PopulateContentTemplate("field_customfield_content_template");
+        if(isInit)
+            PopulateContentTemplate("field_customfield_content_template");
     }
     else{
         jQuery("#gfield_customfield_content_container").hide(speed);
@@ -560,7 +565,7 @@ function SaveForm(){
     mysack.setVar( "id", form.id );
     mysack.setVar( "form", jQuery.toJSON(form) );
     mysack.encVar( "cookie", document.cookie, false );
-    mysack.onError = function() { alert('<?php _e("Ajax error while saving form", "gravityforms") ?>' )};
+    mysack.onError = function() { alert('<?php echo esc_js(__("Ajax error while saving form", "gravityforms")) ?>' )};
     mysack.runAJAX();
 
     //updating original json. used when verifying if there has been any changes unsaved changed before leaving the page
@@ -771,7 +776,7 @@ function DeleteField(fieldId){
         mysack.setVar( "form_id", form.id );
         mysack.setVar( "field_id", fieldId );
         mysack.encVar( "cookie", document.cookie, false );
-        mysack.onError = function() { alert('<?php _e("Ajax error while deleting field.", "gravityforms") ?>' )};
+        mysack.onError = function() { alert('<?php echo esc_js(__("Ajax error while deleting field.", "gravityforms")) ?>' )};
         mysack.runAJAX();
 
         return true;
@@ -1336,7 +1341,7 @@ function StartAddField(type){
     mysack.setVar( "rg_add_field", "<?php echo wp_create_nonce("rg_add_field") ?>" );
     mysack.setVar( "field", jQuery.toJSON(field) );
     mysack.encVar( "cookie", document.cookie, false );
-    mysack.onError = function() { alert('<?php _e("Ajax error while adding field", "gravityforms") ?>' )};
+    mysack.onError = function() { alert('<?php echo esc_js(__("Ajax error while adding field", "gravityforms")) ?>' )};
     mysack.runAJAX();
 
     return true;
@@ -1444,7 +1449,7 @@ function StartChangeInputType(type, field){
     mysack.setVar( "rg_change_input_type", "<?php echo wp_create_nonce("rg_change_input_type") ?>" );
     mysack.setVar( "field", jQuery.toJSON(field));
     mysack.encVar( "cookie", document.cookie, false );
-    mysack.onError = function() { alert('<?php _e("Ajax error while changing input type", "gravityforms") ?>' )};
+    mysack.onError = function() { alert('<?php echo esc_js(__("Ajax error while changing input type", "gravityforms")) ?>' )};
     mysack.runAJAX();
 
     return true;

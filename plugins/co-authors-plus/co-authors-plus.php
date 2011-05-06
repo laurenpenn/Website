@@ -3,7 +3,7 @@
 Plugin Name: Co-Authors Plus
 Plugin URI: http://wordpress.org/extend/plugins/co-authors-plus/
 Description: Allows multiple authors to be assigned to a post. This plugin is an extended version of the Co-Authors plugin developed by Weston Ruter.
-Version: 2.5.1
+Version: 2.5.2
 Author: Mohammad Jangda
 Author URI: http://digitalize.ca
 Copyright: Some parts (C) 2009-2011, Mohammad Jangda; Other parts (C) 2008, Weston Ruter
@@ -25,6 +25,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 */
 
+define( 'COAUTHORS_PLUS_VERSION', '2.5.2' );
+
 if( ! defined( 'COAUTHORS_PLUS_DEBUG' ) )
 	define( 'COAUTHORS_PLUS_DEBUG', false );
 
@@ -42,8 +44,6 @@ if( ! defined( 'COAUTHORS_DEFAULT_AFTER' ) )
 
 define( 'COAUTHORS_PLUS_PATH', dirname( __FILE__ ) );
 define( 'COAUTHORS_PLUS_URL', plugin_dir_url( __FILE__ ) );
-
-define( 'COAUTHORS_PLUS_VERSION', '2.5.1' );
 
 class coauthors_plus {
 	
@@ -337,11 +337,15 @@ class coauthors_plus {
 		global $wpdb, $wp_query;
 				
 		if( is_author() ){
-			// Check to see that JOIN hasn't already been added. Props michaelingp
-			$join_string = " INNER JOIN {$wpdb->term_relationships} ON ( {$wpdb->posts}.ID = {$wpdb->term_relationships}.object_id) INNER JOIN {$wpdb->term_taxonomy} ON ( {$wpdb->term_relationships}.term_taxonomy_id = {$wpdb->term_taxonomy}.term_taxonomy_id )";
+			// Check to see that JOIN hasn't already been added. Props michaelingp and nbaxley
+			$term_relationship_join = " INNER JOIN {$wpdb->term_relationships} ON ({$wpdb->posts}.ID = {$wpdb->term_relationships}.object_id)";
+			$term_taxonomy_join = " INNER JOIN {$wpdb->term_taxonomy} ON ( {$wpdb->term_relationships}.term_taxonomy_id = {$wpdb->term_taxonomy}.term_taxonomy_id )";
 			
-			if( strpos( $join, $join_string ) === false ) {
-				$join .= $join_string;
+			if( strpos( $join, trim( $term_relationship_join ) ) === false ) {
+				$join .= $term_relationship_join;
+			}
+			if( strpos( $join, trim( $term_taxonomy_join ) ) === false ) {
+				$join .= $term_taxonomy_join;
 			}
 		}
 		
@@ -382,21 +386,29 @@ class coauthors_plus {
 	 * Filters post data before saving to db to set post_author
 	 */
 	function coauthors_set_post_author_field( $data ) {
-		if ( !defined( 'DOING_AUTOSAVE' ) || !DOING_AUTOSAVE ) {
-			if( isset( $_REQUEST['coauthors-nonce'] ) && is_array( $_POST['coauthors'] ) ) {
-				$author = $_POST['coauthors'][0];
-				if( $author ) {
-					$author_data = get_user_by( 'login', $author );
-					$data['post_author'] = $author_data->ID;
-				}
-			} else {
-				// If for some reason we don't have the coauthors fields set
-				if( ! isset( $data['post_author'] ) ) {
-					$user = wp_get_current_user();
-					$data['post_author'] = $user->ID;
-				}
+		
+		// Bail on autosave
+		if ( defined( 'DOING_AUTOSAVE' ) && !DOING_AUTOSAVE )
+			return $data;
+		
+		// Bail on revisions
+		if( $data['post_type'] == 'revision' )
+			return $data;
+		
+		if( isset( $_REQUEST['coauthors-nonce'] ) && is_array( $_POST['coauthors'] ) ) {
+			$author = $_POST['coauthors'][0];
+			if( $author ) {
+				$author_data = get_user_by( 'login', $author );
+				$data['post_author'] = $author_data->ID;
+			}
+		} else {
+			// If for some reason we don't have the coauthors fields set
+			if( ! isset( $data['post_author'] ) ) {
+				$user = wp_get_current_user();
+				$data['post_author'] = $user->ID;
 			}
 		}
+		
 		return $data;
 	}
 	
@@ -408,15 +420,16 @@ class coauthors_plus {
 	function coauthors_update_post( $post_id, $post ) {
 		$post_type = $post->post_type;
 		
-		if ( !defined( 'DOING_AUTOSAVE' ) || !DOING_AUTOSAVE ) {
+		if ( defined( 'DOING_AUTOSAVE' ) && !DOING_AUTOSAVE )
+			return;
 			
-			if( isset( $_REQUEST['coauthors-nonce'] ) ) {
-				check_admin_referer( 'coauthors-edit', 'coauthors-nonce' );
-				
-				if( $this->current_user_can_set_authors() ){
-					$coauthors = array_map( 'sanitize_key', $_POST['coauthors'] );
-					return $this->add_coauthors( $post_id, $coauthors );
-				}
+		if( isset( $_POST['coauthors-nonce'] ) && isset( $_POST['coauthors'] ) ) {
+			check_admin_referer( 'coauthors-edit', 'coauthors-nonce' );
+			
+			if( $this->current_user_can_set_authors() ){
+				$coauthors = (array) $_POST['coauthors'];
+				$coauthors = array_map( 'esc_html', $coauthors );
+				return $this->add_coauthors( $post_id, $coauthors );
 			}
 		}
 	}

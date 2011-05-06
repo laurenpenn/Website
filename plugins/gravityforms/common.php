@@ -1,7 +1,7 @@
 <?php
 class GFCommon{
 
-    public static $version = "1.5.1.1";
+    public static $version = "1.5.2";
     public static $tab_index = 1;
 
     public static function get_selection_fields($form, $selected_field_id){
@@ -654,7 +654,7 @@ class GFCommon{
                                                         <ul style="margin:0">';
 
                                                             $price = self::to_number($product["price"]);
-                                                            if(is_array($product["options"])){
+                                                            if(is_array(rgar($product,"options"))){
                                                                 foreach($product["options"] as $option){
                                                                     $price += self::to_number($option["price"]);
                                                                     $field_data .= '<li style="padding:4px 0 4px 0">' . $option["option_label"] .'</li>';
@@ -1180,8 +1180,8 @@ class GFCommon{
                     $field_value .= "|" . GFCommon::to_number($choice["price"]);
 
 
-                if(empty($value) && RG_CURRENT_VIEW != "entry"){
-                    $checked = $choice["isSelected"] ? "checked='checked'" : "";
+                if(rgblank($value) && RG_CURRENT_VIEW != "entry"){
+                    $checked = rgar($choice,"isSelected") ? "checked='checked'" : "";
                 }
                 else{
                     $checked = RGFormsModel::choice_value_match($field, $choice, $value) ? "checked='checked'" : "";
@@ -1217,8 +1217,8 @@ class GFCommon{
                 if(rgget("enablePrice", $field))
                     $field_value .= "|" . GFCommon::to_number($choice["price"]);
 
-                if(empty($value) && RG_CURRENT_VIEW != "entry"){
-                    $selected = $choice["isSelected"] ? "selected='selected'" : "";
+                if(rgblank($value) && RG_CURRENT_VIEW != "entry"){
+                    $selected = rgar($choice,"isSelected") ? "selected='selected'" : "";
                 }
                 else{
                     $selected = RGFormsModel::choice_value_match($field, $choice, $value) ? "selected='selected'" : "";
@@ -1463,7 +1463,7 @@ class GFCommon{
             __('ZAMBIA', 'gravityforms') => "ZM" ,
             __('ZIMBABWE', 'gravityforms') => "ZW" );
 
-            return $codes[strtoupper($country_name)];
+            return rgar($codes, strtoupper($country_name));
     }
 
     public static function get_us_states(){
@@ -2032,6 +2032,7 @@ class GFCommon{
                 $street_address = sprintf("<span class='ginput_full$class_suffix' id='" . $field_id . "_1_container'><input type='text' name='input_%d.1' id='%s_1' value='%s' $tabindex %s/><label for='%s_1' id='" . $field_id . "_1_label'>" . apply_filters("gform_address_street_{$form_id}", apply_filters("gform_address_street",__("Street Address", "gravityforms"), $form_id), $form_id) . "</label></span>", $id, $field_id, $street_value, $disabled_text, $field_id);
 
                 //address line 2 field
+                $street_address2 = "";
                 $style = (IS_ADMIN && rgget("hideAddress2", $field)) ? "style='display:none;'" : "";
                 if(IS_ADMIN || !rgget("hideAddress2", $field)){
                     $tabindex = self::get_tabindex();
@@ -2547,6 +2548,8 @@ class GFCommon{
             case "checkbox" :
                 if(is_array($value)){
 
+                    $items = '';
+
                     foreach($value as $key => $item){
                         if(!empty($item)){
                             $items .= "<li>" . GFCommon::selection_display($item, $field, $currency, $use_text) . "</li>";
@@ -2574,6 +2577,13 @@ class GFCommon{
                     $value .= !empty($description) ? "<div>Description: $description</div>": "";
                 }
                 return $value;
+
+            case "post_category" :
+                $ary = explode(":", $value);
+                $cat_name = count($ary) > 0 ? $ary[0] : "";
+
+                return $cat_name;
+
             case "fileupload" :
                 $file_path = $value;
                 if(!empty($file_path)){

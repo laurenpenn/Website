@@ -59,6 +59,7 @@ class GFExport{
                 "version" => GFCommon::$version,
                 "forms/form/id" => array("is_hidden" => true),
                 "forms/form/nextFieldId" => array("is_hidden" => true),
+                "forms/form/notification/routing" => array("array_tag" => "routing_item"),
                 "forms/form/useCurrentUserAsAuthor" => array("is_attribute" => true),
                 "forms/form/postAuthor" => array("is_attribute" => true),
                 "forms/form/postCategory" => array("is_attribute" => true),
@@ -186,7 +187,9 @@ class GFExport{
                         "field"=> array("unserialize_as_array" => true),
                         "rule"=> array("unserialize_as_array" => true),
                         "choice"=> array("unserialize_as_array" => true),
-                        "input"=> array("unserialize_as_array" => true)
+                        "input"=> array("unserialize_as_array" => true),
+                        "routing_item"=> array("unserialize_as_array" => true),
+                        "routin"=> array("unserialize_as_array" => true) //routin is for backwards compatibility
                         );
         $xml = new RGXML($options);
         $forms = $xml->unserialize($xmlstr);
@@ -342,7 +345,7 @@ class GFExport{
                 mysack.setVar( "rg_select_export_form", "<?php echo wp_create_nonce("rg_select_export_form") ?>" );
                 mysack.setVar( "form_id", formId);
                 mysack.encVar( "cookie", document.cookie, false );
-                mysack.onError = function() { alert('<?php _e("Ajax error while selecting a form", "gravityforms") ?>' )};
+                mysack.onError = function() { alert('<?php echo esc_js(__("Ajax error while selecting a form", "gravityforms")) ?>' )};
                 mysack.runAJAX();
 
                 return true;
@@ -465,8 +468,6 @@ class GFExport{
 
         //Adding BOM marker for UTF-8
         $lines= chr(239) . chr(187) . chr(191);
-
-        echo $entry_count . "\n";
 
         //writing header
         foreach($fields as $field_id){

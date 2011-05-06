@@ -112,7 +112,7 @@ class GFFormDisplay{
         $product_fields = array();
         foreach($form["fields"] as $field){
             if(GFCommon::is_product_field($field["type"]) || $field["type"] == "donation"){
-                $value = RGFormsModel::get_field_value($field, $field_values);
+                $value = RGFormsModel::get_field_value($field, $field_values, false);
 
                 switch($field["inputType"]){
                     case "singleproduct" :
@@ -120,12 +120,16 @@ class GFFormDisplay{
                         if(empty($price))
                             $price = 0;
 
+                        $price = GFCommon::to_number($price);
+
                         $product_name = !is_array($value) || empty($value[$field["id"] . ".1"]) ? $field["label"] : $value[$field["id"] . ".1"];
                         $product_fields[$field["id"]. ".1"] = wp_hash($product_name);
                         $product_fields[$field["id"]. ".2"] = wp_hash($price);
                     break;
                     case "singleshipping" :
                         $price = !empty($value) ? $value : $field["basePrice"];
+                        $price = GFCommon::to_number($price);
+
                         $product_fields[$field["id"]] = wp_hash($price);
                     break;
                     case "radio" :
@@ -266,7 +270,7 @@ class GFFormDisplay{
             RGFormsModel::insert_form_view($form_id, $_SERVER['REMOTE_ADDR']);
         }
 
-        if($form["enableHoneypot"])
+        if(rgar($form,"enableHoneypot"))
             $form["fields"][] = self::get_honeypot_field($form);
 
         //Fired right before the form rendering process. Allow users to manipulate the form object before it gets displayed in the front end
@@ -288,7 +292,7 @@ class GFFormDisplay{
                 return "";
 
             //If form has a schedule, make sure it is within the configured start and end dates
-            if($form["scheduleForm"]){
+            if(rgar($form, "scheduleForm")){
                 $local_time_start = sprintf("%s %02d:%02d %s", $form["scheduleStart"], $form["scheduleStartHour"], $form["scheduleStartMinute"], $form["scheduleStartAmpm"]);
                 $local_time_end = sprintf("%s %02d:%02d %s", $form["scheduleEnd"], $form["scheduleEndHour"], $form["scheduleEndMinute"], $form["scheduleEndAmpm"]);
                 $timestamp_start = strtotime($local_time_start . ' +0000');
@@ -300,7 +304,7 @@ class GFFormDisplay{
             }
 
             //If form has a limit of entries, check current entry count
-            if($form["limitEntries"]) {
+            if(rgar($form,"limitEntries")) {
                 $entry_count = RGFormsModel::get_lead_count($form_id, "");
                 if($entry_count >= $form["limitEntriesCount"])
                     return  empty($form["limitEntriesMessage"]) ? "<p>" . __("Sorry. This form is no longer accepting new submissions.", "gravityforms"). "</p>" : "<p>" . do_shortcode($form["limitEntriesMessage"]) . "</p>";
@@ -314,10 +318,14 @@ class GFFormDisplay{
         self::enqueue_form_scripts($form, $ajax);
 
         if(empty($confirmation_message)){
+            $wrapper_css_class = "gform_wrapper";
+            if(!$is_valid)
+                $wrapper_css_class .=" gform_validation_error";
+
             //Hidding entire form if conditional logic is on to prevent "hidden" fields from blinking. Form will be set to visible in the conditional_logic.php after the rules have been applied.
             $style = self::has_conditional_logic($form) ? "style='display:none'" : "";
             $form_string .= "
-                <div class='gform_wrapper' id='gform_wrapper_$form_id' " . $style . ">";
+                <div class='{$wrapper_css_class}' id='gform_wrapper_$form_id' " . $style . ">";
 
             $action = RGFormsModel::get_current_page_url();
             $default_anchor = $has_pages ? 1 : 0;
@@ -326,7 +334,10 @@ class GFFormDisplay{
                 $action .= "#gf_$form_id";
             }
             $target = $ajax ? "target='gform_ajax_frame_{$form_id}'" : "";
-            $form_string .= apply_filters("gform_form_tag_{$form_id}", apply_filters("gform_form_tag", "<form method='post' enctype='multipart/form-data' {$target} id='gform_$form_id' class='" . $form["cssClass"] . "' action='{$action}'>", $form), $form);
+
+            $form_css_class = !empty($form["cssClass"]) ? "class='{$form["cssClass"]}'": "";
+
+            $form_string .= apply_filters("gform_form_tag_{$form_id}", apply_filters("gform_form_tag", "<form method='post' enctype='multipart/form-data' {$target} id='gform_{$form_id}' {$form_css_class} action='{$action}'>", $form), $form);
 
             if($display_title || $display_description){
                 $form_string .= "
@@ -337,7 +348,7 @@ class GFFormDisplay{
                 }
                 if($display_description){
                     $form_string .= "
-                            <span class='gform_description'>" . $form['description'] ."</span>";
+                            <span class='gform_description'>" . rgar($form,'description') ."</span>";
                 }
                 $form_string .= "
                         </div>";
@@ -350,7 +361,8 @@ class GFFormDisplay{
                 if($form["pagination"]["type"] == "percentage"){
                     $percent = floor(( ($current_page) / $page_count ) * 100) . "%";
 
-                    $page_name = isset($form["pagination"]["pages"][$current_page -1]) ? " - " . $form["pagination"]["pages"][$current_page -1] : "";
+                    $page_name = rgar($form["pagination"]["pages"], $current_page -1);
+                    $page_name = !empty($page_name) ? " - " . $page_name : "";
 
                     $style = $form["pagination"]["style"];
                     $color = $style == "custom" ? " color:{$form["pagination"]["color"]};" : "";
@@ -1074,8 +1086,14 @@ class GFFormDisplay{
             $value = array($field["id"] => $value);
         }
 
+
         foreach($value as $key => $input_value){
             $state = isset($_gf_state[$key]) ? $_gf_state[$key] : false;
+
+            //converting price to a number for single product fields and single shipping fields
+            if( ($field["inputType"] == "singleproduct" && $key == $field["id"] . ".2") || $field["inputType"] == "singleshipping")
+                $input_value = GFCommon::to_number($input_value);
+
             $hash = wp_hash($input_value);
 
             if(strlen($input_value) > 0 && $state !== false && ((is_array($state) && !in_array($hash, $state)) || (!is_array($state) && $hash != $state)) ){
@@ -1492,7 +1510,7 @@ class GFFormDisplay{
             break;
         }
 
-        if(empty($value))
+        if(empty($value) && $value !== "0")
             $value = IS_ADMIN ? rgget("defaultValue", $field) : GFCommon::replace_variables_prepopulate(rgget("defaultValue", $field));
 
         $field_content = str_replace("{FIELD}", GFCommon::get_field_input($field, $value, 0, $form_id), $field_content);

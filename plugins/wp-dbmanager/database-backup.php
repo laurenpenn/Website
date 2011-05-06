@@ -2,7 +2,7 @@
 /*
 +----------------------------------------------------------------+
 |																							|
-|	WordPress 2.8 Plugin: WP-DBManager 2.60								|
+|	WordPress 2.8 Plugin: WP-DBManager 2.62								|
 |	Copyright (c) 2009 Lester "GaMerZ" Chan									|
 |																							|
 |	File Written By:																	|
@@ -33,23 +33,24 @@ $backup['date'] = current_time('timestamp');
 $backup['mysqldumppath'] = $backup_options['mysqldumppath'];
 $backup['mysqlpath'] = $backup_options['mysqlpath'];
 $backup['path'] = $backup_options['path'];
-
+$backup['password'] = str_replace('$', '\$', DB_PASSWORD);
 
 ### Form Processing 
 if($_POST['do']) {
 	// Decide What To Do
 	switch($_POST['do']) {
 		case __('Backup', 'wp-dbmanager'):
+			check_admin_referer('wp-dbmanager_backup');
 			$brace = (substr(PHP_OS, 0, 3) == 'WIN') ? '"' : '';
 			$gzip = intval($_POST['gzip']);
 			if($gzip == 1) {
 				$backup['filename'] = $backup['date'].'_-_'.DB_NAME.'.sql.gz';
 				$backup['filepath'] = $backup['path'].'/'.$backup['filename'];
-				$backup['command'] = $brace.$backup['mysqldumppath'].$brace.' --host="'.DB_HOST.'" --user="'.DB_USER.'" --password="'.DB_PASSWORD.'" --add-drop-table --skip-lock-tables '.DB_NAME.' | gzip > '.$brace.$backup['filepath'].$brace;
+				$backup['command'] = $brace.$backup['mysqldumppath'].$brace.' --host="'.DB_HOST.'" --user="'.DB_USER.'" --password="'.$backup['password'].'" --add-drop-table --skip-lock-tables '.DB_NAME.' | gzip > '.$brace.$backup['filepath'].$brace;
 			} else {
 				$backup['filename'] = $backup['date'].'_-_'.DB_NAME.'.sql';
 				$backup['filepath'] = $backup['path'].'/'.$backup['filename'];
-				$backup['command'] = $brace.$backup['mysqldumppath'].$brace.' --host="'.DB_HOST.'" --user="'.DB_USER.'" --password="'.DB_PASSWORD.'" --add-drop-table --skip-lock-tables '.DB_NAME.' > '.$brace.$backup['filepath'].$brace;
+				$backup['command'] = $brace.$backup['mysqldumppath'].$brace.' --host="'.DB_HOST.'" --user="'.DB_USER.'" --password="'.$backup['password'].'" --add-drop-table --skip-lock-tables '.DB_NAME.' > '.$brace.$backup['filepath'].$brace;
 			}
 			$error = execute_backup($backup['command']);
 			if(!is_writable($backup['path'])) {
@@ -163,6 +164,7 @@ $stats_function_disabled = 0;
 </div>
 <!-- Backup Database -->
 <form method="post" action="<?php echo admin_url('admin.php?page='.plugin_basename(__FILE__)); ?>">
+	<?php wp_nonce_field('wp-dbmanager_backup'); ?>
 	<div class="wrap">
 		<h3><?php _e('Backup Database', 'wp-dbmanager'); ?></h3>
 		<br style="clear" />

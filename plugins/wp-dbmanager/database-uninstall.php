@@ -2,7 +2,7 @@
 /*
 +----------------------------------------------------------------+
 |																							|
-|	WordPress 2.8 Plugin: WP-DBManager 2.60								|
+|	WordPress 2.8 Plugin: WP-DBManager 2.62								|
 |	Copyright (c) 2009 Lester "GaMerZ" Chan									|
 |																							|
 |	File Written By:																	|
@@ -37,6 +37,7 @@ if(!empty($_POST['do'])) {
 	switch($_POST['do']) {
 		//  Uninstall WP-DBManager
 		case __('UNINSTALL WP-DBManager', 'wp-dbmanager') :
+			check_admin_referer('wp-dbmanager_uninstall');
 			if(trim($_POST['uninstall_db_yes']) == 'yes') {
 				echo '<div id="message" class="updated fade">';
 				echo '<p>';
@@ -85,6 +86,7 @@ switch($mode) {
 ?>
 <!-- Uninstall WP-DBManager -->
 <form method="post" action="<?php echo admin_url('admin.php?page='.plugin_basename(__FILE__)); ?>">
+	<?php wp_nonce_field('wp-dbmanager_uninstall'); ?>
 	<div class="wrap">
 		<div id="icon-wp-dbmanager" class="icon32"><br /></div>
 		<h2><?php _e('Uninstall WP-DBManager', 'wp-dbmanager'); ?></h2>

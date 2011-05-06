@@ -2,15 +2,15 @@
 /*
 Plugin Name: WP-DBManager
 Plugin URI: http://lesterchan.net/portfolio/programming/php/
-Description: Manages your Wordpress database. Allows you to optimize database, repair database, backup database, restore database, delete backup database , drop/empty tables and run selected queries. Supports automatic scheduling of backing up and optimizing of database.
-Version: 2.60
+Description: Manages your WordPress database. Allows you to optimize database, repair database, backup database, restore database, delete backup database , drop/empty tables and run selected queries. Supports automatic scheduling of backing up, optimizing and repairing of database.
+Version: 2.62
 Author: Lester 'GaMerZ' Chan
 Author URI: http://lesterchan.net
 */
 
 
 /*  
-	Copyright 2009  Lester Chan  (email : lesterchan@gmail.com)
+	Copyright 2011  Lester Chan  (email : lesterchan@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -59,7 +59,7 @@ add_action('admin_enqueue_scripts', 'dbmanager_stylesheets_admin');
 function dbmanager_stylesheets_admin($hook_suffix) {
 	$dbmanager_admin_pages = array('wp-dbmanager/database-manager.php', 'wp-dbmanager/database-backup.php', 'wp-dbmanager/database-manage.php', 'wp-dbmanager/database-optimize.php', 'wp-dbmanager/database-repair.php', 'wp-dbmanager/database-empty.php', 'wp-dbmanager/database-run.php', 'database_page_wp-dbmanager/wp-dbmanager', 'wp-dbmanager/database-uninstall.php');
 	if(in_array($hook_suffix, $dbmanager_admin_pages)) {
-		wp_enqueue_style('wp-dbmanager-admin', plugins_url('wp-dbmanager/database-admin-css.css'), false, '2.50', 'all');
+		wp_enqueue_style('wp-dbmanager-admin', plugins_url('wp-dbmanager/database-admin-css.css'), false, '2.62', 'all');
 	}
 }
 
@@ -68,6 +68,7 @@ function dbmanager_stylesheets_admin($hook_suffix) {
 add_filter('cron_schedules', 'cron_dbmanager_reccurences');
 add_action('dbmanager_cron_backup', 'cron_dbmanager_backup');
 add_action('dbmanager_cron_optimize', 'cron_dbmanager_optimize');
+add_action('dbmanager_cron_repair', 'cron_dbmanager_repair');
 function cron_dbmanager_backup() {
 	global $wpdb;
 	$backup_options = get_option('dbmanager_options');
@@ -79,16 +80,17 @@ function cron_dbmanager_backup() {
 		$backup['mysqldumppath'] = $backup_options['mysqldumppath'];
 		$backup['mysqlpath'] = $backup_options['mysqlpath'];
 		$backup['path'] = $backup_options['path'];
+		$backup['password'] = str_replace('$', '\$', DB_PASSWORD);
 		$backup['command'] = '';
 		$brace = (substr(PHP_OS, 0, 3) == 'WIN') ? '"' : '';
 		if(intval($backup_options['backup_gzip']) == 1) {
 			$backup['filename'] = $backup['date'].'_-_'.DB_NAME.'.sql.gz';
 			$backup['filepath'] = $backup['path'].'/'.$backup['filename'];
-			$backup['command'] = $brace.$backup['mysqldumppath'].$brace.' --host="'.DB_HOST.'" --user="'.DB_USER.'" --password="'.DB_PASSWORD.'" --add-drop-table --skip-lock-tables '.DB_NAME.' | gzip > '.$brace.$backup['filepath'].$brace;
+			$backup['command'] = $brace.$backup['mysqldumppath'].$brace.' --host="'.DB_HOST.'" --user="'.DB_USER.'" --password="'.$backup['password'].'" --add-drop-table --skip-lock-tables '.DB_NAME.' | gzip > '.$brace.$backup['filepath'].$brace;
 		} else {
 			$backup['filename'] = $backup['date'].'_-_'.DB_NAME.'.sql';
 			$backup['filepath'] = $backup['path'].'/'.$backup['filename'];
-			$backup['command'] = $brace.$backup['mysqldumppath'].$brace.' --host="'.DB_HOST.'" --user="'.DB_USER.'" --password="'.DB_PASSWORD.'" --add-drop-table --skip-lock-tables '.DB_NAME.' > '.$brace.$backup['filepath'].$brace;
+			$backup['command'] = $brace.$backup['mysqldumppath'].$brace.' --host="'.DB_HOST.'" --user="'.DB_USER.'" --password="'.$backup['password'].'" --add-drop-table --skip-lock-tables '.DB_NAME.' > '.$brace.$backup['filepath'].$brace;
 		}		
 		execute_backup($backup['command']);
 		if(!empty($backup_email)) {
@@ -101,8 +103,8 @@ function cron_dbmanager_backup() {
 				fclose($file);
 				$file_data = chunk_split(base64_encode($file_data));
 				// Create Mail To, Mail Subject And Mail Header
-				$mail_subject = sprintf(__('%s Database Backup File For %s', 'wp-dbmanager'), get_bloginfo('name'), $file_date);
-				$mail_header = 'From: '.get_bloginfo('name').' Administrator <'.get_option('admin_email').'>';
+				$mail_subject = sprintf(__('%s Database Backup File For %s', 'wp-dbmanager'), wp_specialchars_decode(get_option('blogname')), $file_date);
+				$mail_header = 'From: '.wp_specialchars_decode(get_option('blogname')).' Administrator <'.get_option('admin_email').'>';
 				// MIME Boundary
 				$random_time = md5(time());
 				$mime_boundary = "==WP-DBManager- $random_time";
@@ -110,13 +112,13 @@ function cron_dbmanager_backup() {
 				$mail_header .= "\nMIME-Version: 1.0\n" .
 										"Content-Type: multipart/mixed;\n" .
 										" boundary=\"{$mime_boundary}\"";
-				$mail_message = __('Website Name:', 'wp-dbmanager').' '.get_bloginfo('name')."\n".
+				$mail_message = __('Website Name:', 'wp-dbmanager').' '.wp_specialchars_decode(get_option('blogname'))."\n".
 										__('Website URL:', 'wp-dbmanager').' '.get_bloginfo('siteurl')."\n".
 										__('Backup File Name:', 'wp-dbmanager').' '.$backup['filename']."\n".
 										__('Backup File Date:', 'wp-dbmanager').' '.$file_date."\n".
 										__('Backup File Size:', 'wp-dbmanager').' '.$file_size."\n\n".
 										__('With Regards,', 'wp-dbmanager')."\n".
-										get_bloginfo('name').' '. __('Administrator', 'wp-dbmanager')."\n".
+										wp_specialchars_decode(get_option('blogname')).' '. __('Administrator', 'wp-dbmanager')."\n".
 										get_bloginfo('siteurl');
 				$mail_message = "This is a multi-part message in MIME format.\n\n" .
 										"--{$mime_boundary}\n" .
@@ -149,18 +151,38 @@ function cron_dbmanager_optimize() {
 	}
 	return;
 }
+function cron_dbmanager_repair() {
+	global $wpdb;
+	$backup_options = get_option('dbmanager_options');
+	$repair = intval($backup_options['repair']);
+	$repair_period = intval($backup_options['repair_period']);
+	if($repair_period > 0) {
+		$repair_tables = array();
+		$tables = $wpdb->get_col("SHOW TABLES");
+			foreach($tables as $table_name) {
+				$repair_tables[] = '`'.$table_name.'`';
+		}
+		$wpdb->query('REPAIR TABLE '.implode(',', $repair_tables));
+	}
+	return;
+}
 function cron_dbmanager_reccurences($schedules) {
 	$backup_options = get_option('dbmanager_options');
 	$backup = intval($backup_options['backup'])*intval($backup_options['backup_period']);
 	$optimize = intval($backup_options['optimize'])*intval($backup_options['optimize_period']);
+	$repair = intval($backup_options['repair'])*intval($backup_options['repair_period']);
 	if($backup == 0) {
 		$backup = 31536000;
 	}
 	if($optimize == 0) {
 		$optimize = 31536000;
 	}
+	if($repair == 0) {
+		$repair = 31536000;
+	}
    $schedules['dbmanager_backup'] = array('interval' => $backup, 'display' => __('WP-DBManager Backup Schedule', 'wp-dbmanager'));
    $schedules['dbmanager_optimize'] = array('interval' => $optimize, 'display' => __('WP-DBManager Optimize Schedule', 'wp-dbmanager'));
+   $schedules['dbmanager_repair'] = array('interval' => $repair, 'display' => __('WP-DBManager Repair Schedule', 'wp-dbmanager'));
    return $schedules;
 }
 
@@ -307,6 +329,8 @@ function dbmanager_init() {
 	$backup_options['backup_email'] = get_option('admin_email');
 	$backup_options['optimize'] = 3;
 	$backup_options['optimize_period'] = 86400;
+	$backup_options['repair'] = 2;
+	$backup_options['repair_period'] = 604800;
 	add_option('dbmanager_options', $backup_options, 'WP-DBManager Options');
 
 	// Create Backup Folder
@@ -328,18 +352,24 @@ add_action('init', 'download_database');
 function download_database() {
 	if(isset($_POST['do']) && $_POST['do'] == __('Download', 'wp-dbmanager') && !empty($_POST['database_file'])) {
 		if(strpos($_SERVER['HTTP_REFERER'], admin_url('admin.php?page=wp-dbmanager/database-manage.php')) !== false) {
-			$backup_options = get_option('dbmanager_options');
-			$file_path = $backup_options['path'].'/'.$_POST['database_file'];
-			header("Pragma: public");
-			header("Expires: 0");
-			header("Cache-Control: must-revalidate, post-check=0, pre-check=0"); 
-			header("Content-Type: application/force-download");
-			header("Content-Type: application/octet-stream");
-			header("Content-Type: application/download");
-			header("Content-Disposition: attachment; filename=".basename($file_path).";");
-			header("Content-Transfer-Encoding: binary");
-			header("Content-Length: ".filesize($file_path));
-			@readfile($file_path);
+			$database_file = trim($_POST['database_file']);
+			if(substr($database_file, strlen($database_file) - 4, 4) == '.sql' || substr($database_file, strlen($database_file) - 7, 7) == '.sql.gz') {
+				check_admin_referer('wp-dbmanager_manage');
+				$backup_options = get_option('dbmanager_options');
+				$clean_file_name = sanitize_file_name($database_file);
+				$clean_file_name = str_replace('sql_.gz', 'sql.gz', $clean_file_name);
+				$file_path = $backup_options['path'].'/'.$clean_file_name;
+				header("Pragma: public");
+				header("Expires: 0");
+				header("Cache-Control: must-revalidate, post-check=0, pre-check=0"); 
+				header("Content-Type: application/force-download");
+				header("Content-Type: application/octet-stream");
+				header("Content-Type: application/download");
+				header("Content-Disposition: attachment; filename=".basename($file_path).";");
+				header("Content-Transfer-Encoding: binary");
+				header("Content-Length: ".filesize($file_path));
+				@readfile($file_path);
+			}
 		}
 		exit();
 	}
@@ -353,6 +383,7 @@ function dbmanager_options() {
 	$backup_options = array();
 	$backup_options = get_option('dbmanager_options');
 	if($_POST['Submit']) {
+		check_admin_referer('wp-dbmanager_options');
 		$backup_options['mysqldumppath'] = trim($_POST['db_mysqldumppath']);
 		$backup_options['mysqlpath'] = trim($_POST['db_mysqlpath']);
 		$backup_options['path'] = trim($_POST['db_path']);
@@ -363,6 +394,8 @@ function dbmanager_options() {
 		$backup_options['backup_email'] = trim(addslashes($_POST['db_backup_email']));
 		$backup_options['optimize'] = intval($_POST['db_optimize']);
 		$backup_options['optimize_period'] = intval($_POST['db_optimize_period']);
+		$backup_options['repair'] = intval($_POST['db_repair']);
+		$backup_options['repair_period'] = intval($_POST['db_repair_period']);
 		$update_db_options = update_option('dbmanager_options', $backup_options);
 		if($update_db_options) {
 			$text = '<font color="green">'.__('Database Options Updated', 'wp-dbmanager').'</font>';
@@ -382,6 +415,12 @@ function dbmanager_options() {
 				wp_schedule_event(time(), 'dbmanager_optimize', 'dbmanager_cron_optimize');
 			}
 		}
+		wp_clear_scheduled_hook('dbmanager_cron_repair');
+		if($backup_options['repair_period'] > 0) {
+			if (!wp_next_scheduled('dbmanager_cron_repair')) {
+				wp_schedule_event(time(), 'dbmanager_repair', 'dbmanager_cron_repair');
+			}
+		}
 	}
 	$path = detect_mysql();
 ?>
@@ -398,6 +437,7 @@ function dbmanager_options() {
 <?php if(!empty($text)) { echo '<!-- Last Action --><div id="message" class="updated fade"><p>'.$text.'</p></div>'; } ?>
 <!-- Database Options -->
 <form method="post" action="<?php echo admin_url('admin.php?page='.plugin_basename(__FILE__)); ?>">
+	<?php wp_nonce_field('wp-dbmanager_options'); ?>
 	<div class="wrap">
 		<div id="icon-wp-dbmanager" class="icon32"><br /></div>
 		<h2><?php _e('Database Options', 'wp-dbmanager'); ?></h2>
@@ -513,6 +553,31 @@ function dbmanager_options() {
 					</select>
 					</p>
 					<p><?php _e('WP-DBManager can automatically optimize your database after a certain period.', 'wp-dbmanager'); ?></p>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top"><strong><?php _e('Automatic Repairing Of DB:', 'wp-dbmanager'); ?></strong></td>
+				<td>
+					<?php
+						_e('Next repair date: ', 'wp-dbmanager');
+						if(wp_next_scheduled('dbmanager_cron_repair')) {
+							echo '<strong>'.mysql2date(sprintf(__('%s @ %s', 'wp-dbmanager'), get_option('date_format'), get_option('time_format')), gmdate('Y-m-d H:i:s', (wp_next_scheduled('dbmanager_cron_repair') + (get_option('gmt_offset') * 3600)))).'</strong>';
+						} else {
+							_e('N/A', 'wp-dbmanager');
+						}
+					?>
+					<p>
+					<?php _e('Every', 'wp-dbmanager'); ?>&nbsp;<input type="text" name="db_repair" size="3" maxlength="5" value="<?php echo intval($backup_options['repair']); ?>" />&nbsp;
+					<select name="db_repair_period" size="1">
+						<option value="0"<?php selected('0', $backup_options['repair_period']); ?>><?php _e('Disable', 'wp-dbmanager'); ?></option>
+						<option value="60"<?php selected('60', $backup_options['repair_period']); ?>><?php _e('Minutes(s)', 'wp-dbmanager'); ?></option>
+						<option value="3600"<?php selected('3600', $backup_options['repair_period']); ?>><?php _e('Hour(s)', 'wp-dbmanager'); ?></option>
+						<option value="86400"<?php selected('86400', $backup_options['repair_period']); ?>><?php _e('Day(s)', 'wp-dbmanager'); ?></option>
+						<option value="604800"<?php selected('604800', $backup_options['repair_period']); ?>><?php _e('Week(s)', 'wp-dbmanager'); ?></option>
+						<option value="18144000"<?php selected('18144000', $backup_options['repair_period']); ?>><?php _e('Month(s)', 'wp-dbmanager'); ?></option>
+					</select>
+					</p>
+					<p><?php _e('WP-DBManager can automatically repair your database after a certain period.', 'wp-dbmanager'); ?></p>
 				</td>
 			</tr>
 		</table>
