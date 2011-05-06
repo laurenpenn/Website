@@ -194,7 +194,7 @@ function dbc_child_pages() {
 */
 function dbc_disable_sidebars( $sidebars_widgets ) {
 
-	if ( is_front_page() ) {
+	if ( is_front_page() || is_page_template( 'page-template-full-width.php' ) ) {
 		$sidebars_widgets['primary'] = false;
 		$sidebars_widgets['secondary'] = false;
 	}
