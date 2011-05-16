@@ -11,7 +11,7 @@
  *  
  */
 
-//require_once( trailingslashit( WP_CONTENT_DIR ) . '/mu-plugins/dbc/acs.php' );
+require_once( trailingslashit( WP_CONTENT_DIR ) . '/mu-plugins/dbc/acs.php' );
 
  /* Inserts Javascript. */
 add_action( 'template_redirect', 'dbc_plugin_load_scripts' );
