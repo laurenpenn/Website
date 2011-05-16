@@ -10,7 +10,7 @@ error_reporting(E_ERROR);
 
 // Create NuSoap client
 include( trailingslashit( WP_CONTENT_DIR ) . 'mu-plugins/dbc/lib/nusoap.php' );
-$client = new SoapClient($accessACS, 'wsdl');
+$client = new nusoap_client($accessACS, 'wsdl');
 
 // Exit on an error
 $err = $client->getError();
