@@ -11,7 +11,7 @@
  *  
  */
 
-require_once( trailingslashit( WP_CONTENT_DIR ) . '/mu-plugins/dbc/acs.php' );
+//require_once( trailingslashit( WP_CONTENT_DIR ) . 'mu-plugins/dbc/acs.php' );
 
  /* Inserts Javascript. */
 add_action( 'template_redirect', 'dbc_plugin_load_scripts' );
@@ -27,6 +27,8 @@ add_action( 'wp_footer', 'dbc_global_bar', 12 );
 
 /* Inserts the Google Analytics script into the footer. */
 add_action( 'wp_footer', 'dbc_analytics', 13 );
+
+add_action( 'switch_blog', 'dbc_switch_blog', null, 2 );
 
 /**
  * Queues Javascript.
@@ -140,5 +142,24 @@ function dbc_analytics() {
 	}
 }
 
+/**
+ * Hooks the WP MS action switch_blog to switch some caches cache when a blog
+ * is switched to. Fixes bug that prevented switch_to_blog() from returning the
+ * home_url of the parent site and instead gave the current child site.
+ *
+ * @param int $blog_id The ID of the blog which has been switched to 
+ * @param int $prev_blog_id The ID of the blog we were in before switching 
+ * @return void
+ **/
+function dbc_switch_blog( $blog_id, $prev_blog_id ) {
+	// Save the previous alloptions cache
+	$prev_alloptions = wp_cache_get( 'alloptions', 'options' );
+	// Do we have a previously cached alloptions for the new blog? If so,
+	// replace the current alloptions cache otherwise delete it.
+	if ( $alloptions = wp_cache_get( "alloptions_$blog_id", 'options' ) )
+		wp_cache_replace( "alloptions", $alloptions, 'options' );
+	else
+		wp_cache_delete( 'alloptions', 'options' );
+}
 
 ?>
