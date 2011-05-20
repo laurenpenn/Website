@@ -1720,18 +1720,6 @@ jQuery.cookie = function (key, value, options) {
  */
 jQuery(document).ready(function($) {
 
-	// Equal column heights
-	    // get the heights
-	    l = $('#sidebar-primary').height();
-	    r = $('#content').height();
-	
-	    // get maximum heights of all columns
-	    h = Math.max(Math.max(l, r));
-	
-	    // apply it
-	    $('#sidebar-primary').height(h);
-	    $('#content').height(h);
-
 	// for PDF auto-detection
 		$('a[href$=".pdf"]').addClass('fancybox-pdf');
 	

@@ -24,6 +24,18 @@
 
 		</div><!-- .loop-meta -->
 
+	<?php elseif ( is_multitax() ) : ?>
+
+		<div class="loop-meta">
+
+			<h1 class="loop-title"><?php echo QMT_Template::get_title(); ?>/h1>
+
+			<div class="loop-description">
+				<?php echo category_description(); ?>
+			</div><!-- .loop-description -->
+
+		</div><!-- .loop-meta -->
+
 	<?php elseif ( is_category() ) : ?>
 
 		<div class="loop-meta">
