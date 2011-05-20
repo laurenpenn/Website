@@ -10,7 +10,8 @@
  *  Version 0.3 has been renamed to "DBC" and is now more of general global DBC plugin
  *  
  */
-
+ 
+ /* ACS API connection. We won't use this until we've built anything that needs it. */
 //require_once( trailingslashit( WP_CONTENT_DIR ) . 'mu-plugins/dbc/acs.php' );
 
  /* Inserts Javascript. */
