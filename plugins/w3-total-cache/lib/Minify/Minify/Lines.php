@@ -26,9 +26,9 @@ class Minify_Lines {
      * 
      * 'id': (optional) string to identify file. E.g. file name/path
      *
-     * 'currentDir': (default null) if given, this is assumed to be the
-     * directory of the current CSS file. Using this, minify will rewrite
-     * all relative URIs in import/url declarations to correctly point to
+     * 'currentDir': (default null) if given, this is assumed to be the
+     * directory of the current CSS file. Using this, minify will rewrite
+     * all relative URIs in import/url declarations to correctly point to
      * the desired files, and prepend a comment with debugging information about
      * this process.
      * 
@@ -64,8 +64,10 @@ class Minify_Lines {
             $content = Minify_CSS_UriRewriter::rewrite(
                  $content
                 ,$options['currentDir']
-                ,isset($options['docRoot']) ? $options['docRoot'] : $_SERVER['DOCUMENT_ROOT']
+                ,isset($options['docRoot']) ? $options['docRoot'] : $_SERVER['DOCUMENT_ROOT']
                 ,isset($options['symlinks']) ? $options['symlinks'] : array()
+                ,isset($options['browserCacheId']) ? $options['browserCacheId'] : 0
+                ,isset($options['browserCacheExtensions']) ? $options['browserCacheExtensions'] : array()
             );
             $content = "/* Minify_CSS_UriRewriter::\$debugText\n\n" 
                  . Minify_CSS_UriRewriter::$debugText . "*/\n"
@@ -76,6 +78,8 @@ class Minify_Lines {
             $content = Minify_CSS_UriRewriter::prepend(
                 $content
                 ,$options['prependRelativePath']
+                ,isset($options['browserCacheId']) ? $options['browserCacheId'] : 0
+                ,isset($options['browserCacheExtensions']) ? $options['browserCacheExtensions'] : array()
             );
         }
         

@@ -22,8 +22,14 @@ License:
 	/* feed generation functions                                 		 */
 	/*************************************************************/
 	
-	function podPress_feedSafeContent($input, $aggressive = false) {
+	function podPress_feedSafeContent($input, $aggressive = FALSE) {
 		GLOBAL $podPress;
+		
+		// All values should be plain text (no markup or HTML). [...] CDATA sections are strongly discouraged. (see http://www.apple.com/itunes/podcasts/specs.html#encoding)
+		if (TRUE === $aggressive) { // this option is only reachable via php source code and via the WP backend
+			$input = preg_replace('/<script[\w\W]*<\/script>/i', '', $input);
+			$input = strip_tags($input);
+		}
 
 		// replace the relevant characters with their HTML entities
 		if ( TRUE === $aggressive OR 'yes' == strtolower($podPress->settings['protectFeed']) OR TRUE === $podPress->settings['protectFeed'] ) {
@@ -38,23 +44,12 @@ License:
 			} else {
 				$result = htmlspecialchars($input, ENT_NOQUOTES, get_bloginfo('charset'));
 			}
-		}
-		
-		if (TRUE === $aggressive) { // this option is only reachable via php source code and via the WP backend
-			$input = $result;
-			$result = str_replace(array('&amp;', '&lt;', '&gt;', '&'), '', $input);
-		}
+		}		
 		$input = $result;
+		$result = str_replace('&nbsp;', ' ', $input);
 		
-		// get the HTML translation table
-		$table = get_html_translation_table(HTML_ENTITIES);//HTML_SPECIALCHARS
-		
-		// replace the HTML entities with their numeric entities which are okay for XML
-		foreach ($table as $chr => $htmlentity) {
-			$ord = ord($chr); // get the ASCII number of the character
-			$result = str_replace($htmlentity, '&#'.$ord.';', $input);
-			$input = $result;
-		}
+		// transform all HTML entities in to their numeric equivalents
+		$result = ent2ncr($result);
 		return $result;
 	}
 
@@ -92,6 +87,9 @@ License:
 				$data['author'] = get_option('blogname');
 			}
 		}
+		$data['subtitle'] = stripslashes($data['subtitle']);
+		$data['summary'] = stripslashes($data['summary']);
+		$data['keywords'] = stripslashes($data['keywords']);
 		$data['rss_copyright'] = stripslashes($podPress->settings['rss_copyright']);
 		$data['rss_license_url'] = $podPress->settings['rss_license_url'];
 		$data['rss_image'] = get_option('rss_image');
@@ -168,7 +166,13 @@ License:
 			$data['rss_ttl'] = $feed['ttl'];
 		}
 		
-		echo '	<!-- podcast_generator="podPress/'.PODPRESS_VERSION.'" -->'."\n";
+		if (isset($podPress->settings['enableVersionInFeeds']) AND TRUE === $podPress->settings['enableVersionInFeeds'] ) {
+			if (isset($podPress->settings['disableVersionNumber']) AND TRUE === $podPress->settings['disableVersionNumber'] ) {
+				echo '	<!-- podcast_generator="podPress" -->'."\n";
+			} else {
+				echo '	<!-- podcast_generator="podPress/'.PODPRESS_VERSION.'" -->'."\n";
+			}
+		}
 		
 		if (empty($data['rss_copyright'])) {
 			echo '	<copyright>'.podPress_feedSafeContent(__('Copyright', 'podpress').' &#xA9; '. date('Y',time())).' '.get_bloginfo('blogname').' '.$data['rss_license_url'].'</copyright>'."\n";
@@ -201,7 +205,6 @@ License:
 			echo '	<image>'."\n";
 			echo '		<url>'.$data['rss_image'].'</url>'."\n";
 			echo '		<title>'.podPress_feedSafeContent(get_bloginfo('blogname')).wp_title('&#187;', false).'</title>'."\n";
-			//echo '		<title>'.podPress_feedSafeContent(get_bloginfo('blogname')).'</title>'."\n";
 			echo '		<link>'.get_option('siteurl').'</link>'."\n";
 			echo '		<width>144</width>'."\n";
 			echo '		<height>144</height>'."\n";
@@ -214,10 +217,14 @@ License:
 				echo '	<itunes:new-feed-url>'.podPress_feedSafeContent($data['podcastFeedURL']).'</itunes:new-feed-url>'."\n";
 			}
 		}
-		echo '	<itunes:subtitle>'.podPress_stringLimiter(podPress_feedSafeContent($data['subtitle']), 255).'</itunes:subtitle>'."\n";
-		echo '	<itunes:summary>'.podPress_stringLimiter(podPress_feedSafeContent($data['summary']), 4000).'</itunes:summary>'."\n";
+		echo '	<itunes:subtitle>'.podPress_stringLimiter(podPress_feedSafeContent($data['subtitle'], TRUE), 255).'</itunes:subtitle>'."\n";
+		echo '	<itunes:summary>'.podPress_stringLimiter(podPress_feedSafeContent($data['summary'], TRUE), 4000).'</itunes:summary>'."\n";
 		echo '	<itunes:keywords>'.podPress_stringLimiter(podPress_feedSafeContent($data['keywords']), 255).'</itunes:keywords>'."\n";
-		echo podPress_getiTunesCategoryTags();
+		if ( TRUE === $is_podpress_feed ) {
+			echo podPress_getiTunesCategoryTags($feed['itunes-category']);
+		} else {
+			echo podPress_getiTunesCategoryTags();			
+		}
 		echo '	<itunes:author>'.podPress_feedSafeContent($data['author']).'</itunes:author>'."\n";
 		echo '	<itunes:owner>'."\n";
 		echo '		<itunes:name>'.stripslashes(podPress_feedSafeContent($data['author'])).'</itunes:name>'."\n";
@@ -234,41 +241,88 @@ License:
 		}
 	}
 
+	function podpress_post_is_password_protected() {
+		GLOBAL $wp_version;
+		if ( TRUE === version_compare($wp_version, '2.7', '>=') ) {
+			if ( TRUE === post_password_required($post) ) {
+				$is_password_protected = TRUE;
+			} else {
+				$is_password_protected = FALSE;
+			}
+		} else {
+			if ( !empty($post->post_password) ) { // if there's a password	
+				if ( !isset($_COOKIE['wp-postpass_'.COOKIEHASH]) || $_COOKIE['wp-postpass_'.COOKIEHASH] != $post->post_password ) {  // and it doesn't match the cookie			if ( TRUE === post_password_required($post) ) {
+					$is_password_protected = TRUE;
+				} else {
+					$is_password_protected = FALSE;
+				}
+			} else {
+				$is_password_protected = FALSE;
+			}
+		}
+		return $is_password_protected;
+	}
+	
 	function podPress_rss2_item() {
 		GLOBAL $podPress, $post, $post_meta_cache, $blog_id;
+		
 		$enclosureTag = podPress_getEnclosureTags();
-		if($enclosureTag != '') // if no enclosure tag, no need for iTunes tags
-		{
-			echo $enclosureTag;
-
-			if($post->podPressPostSpecific['itunes:subtitle'] == '##PostExcerpt##') {
-				ob_start();
-				the_content_rss('', false, 0, 25);
-				$data = ob_get_contents();
-				ob_end_clean();
-				$post->podPressPostSpecific['itunes:subtitle'] = substr(ltrim($data), 0, 254);
+		
+		if ( $enclosureTag != '' ) { // if no enclosure tag, no need for iTunes tags
+			$is_password_protected = podpress_post_is_password_protected();
+			if ( FALSE === $is_password_protected ) {
+				echo $enclosureTag;
 			}
-			if(empty($post->podPressPostSpecific['itunes:subtitle'])) {
+			if ( $post->podPressPostSpecific['itunes:subtitle'] == '##PostExcerpt##' ) {
+				if ( TRUE === $is_password_protected ) {
+					$post->podPressPostSpecific['itunes:subtitle'] = __('This post is password protected.', 'podPress');
+				} else {
+					if ( TRUE == empty($post->post_excerpt) ) {
+						$post->podPressPostSpecific['itunes:subtitle'] = ltrim(preg_replace('/<!--more(.*?)?-->|\n|\t/', '', $post->post_content));
+					} else {
+						$post->podPressPostSpecific['itunes:subtitle'] = ltrim($post->post_excerpt);
+					}
+				}
+			}
+			if ( TRUE == empty($post->podPressPostSpecific['itunes:subtitle']) ) {
 				$post->podPressPostSpecific['itunes:subtitle'] = get_the_title_rss();
 			}
-			echo '		<itunes:subtitle>'.podPress_feedSafeContent($post->podPressPostSpecific['itunes:subtitle']).'</itunes:subtitle>'."\n";
+			echo '		<itunes:subtitle>'.podPress_stringLimiter(podPress_feedSafeContent($post->podPressPostSpecific['itunes:subtitle'], TRUE), 254).'</itunes:subtitle>'."\n";
+			
+			if ( FALSE == isset($post->podPressPostSpecific['itunes:summary']) ) {
+				$post->podPressPostSpecific['itunes:summary'] = '##PostContentShortened##';
+			}
 
-			if($post->podPressPostSpecific['itunes:summary'] == '##Global##') {
-				$post->podPressPostSpecific['itunes:summary'] = $podPress->settings['iTunes']['summary'];
+			Switch ($post->podPressPostSpecific['itunes:summary']) {
+				case '##Global##' :
+					$post->podPressPostSpecific['itunes:summary'] = $podPress->settings['iTunes']['summary'];
+				break;
+				case '##PostExcerpt##' :
+					if ( TRUE == empty($post->post_excerpt) ) {
+						if ( TRUE === $is_password_protected ) {
+							$post->podPressPostSpecific['itunes:summary'] = __('This post is password protected.', 'podPress');
+						} else {
+							$post->podPressPostSpecific['itunes:summary'] = trim(preg_replace('/<!--more(.*?)?-->/', '', $post->post_content ));
+						}
+					} else {
+						if ( TRUE === $is_password_protected ) {
+							$post->podPressPostSpecific['itunes:summary'] = __('There is no excerpt because this is a protected post.');
+						} else {
+							$post->podPressPostSpecific['itunes:summary'] = trim($post->post_excerpt);
+						}
+					}
+				break;
+				case '##PostContentShortened##' :
+					if ( post_password_required($post) ) {
+						$post->podPressPostSpecific['itunes:summary'] = __('This post is password protected.', 'podPress');
+					} else {
+						$post->podPressPostSpecific['itunes:summary'] = trim(preg_replace('/<!--more(.*?)?-->/', '', $post->post_content ));
+					}
+				break;
 			}
-			if(empty($post->podPressPostSpecific['itunes:summary']) || $post->podPressPostSpecific['itunes:summary'] == '##PostExcerpt##') {
-				ob_start();
-				the_content_rss('', false, 0, '', 2);
-				$data = ob_get_contents();
-				ob_end_clean();
-				$post->podPressPostSpecific['itunes:summary'] = substr(ltrim($data), 0, 4000);
-			}
-			if(empty($post->podPressPostSpecific['itunes:summary'])) {
-				$post->podPressPostSpecific['itunes:summary'] = $podPress->settings['iTunes']['summary'];
-			}
-			echo '		<itunes:summary>'.podPress_stringLimiter(podPress_feedSafeContent($post->podPressPostSpecific['itunes:summary']), 4000).'</itunes:summary>'."\n";
+			echo '		<itunes:summary>'.podPress_stringLimiter(podPress_feedSafeContent($post->podPressPostSpecific['itunes:summary'], TRUE), 4000).'</itunes:summary>'."\n";
 
-			if($post->podPressPostSpecific['itunes:keywords'] == '##WordPressCats##') {
+			if ( $post->podPressPostSpecific['itunes:keywords'] == '##WordPressCats##' ) {
 				$categories = get_the_category();
 				$post->podPressPostSpecific['itunes:keywords'] = '';
 				if ( TRUE == is_array($categories) AND FALSE == empty($categories) ) {
@@ -324,11 +378,11 @@ License:
 				$post->podPressPostSpecific['itunes:block'] = 'No';
 			}
 			echo '		<itunes:block>'.podPress_feedSafeContent(strtolower($post->podPressPostSpecific['itunes:block'])).'</itunes:block>'."\n";
+			
 			//echo '<comments>'. get_comments_link() .'</comments>'."\n";
 			
 			$episodeLicenseTags = podPress_getEpisodeLicenseTags();
-			if ($episodeLicenseTags != '')
-			{
+			if ( $episodeLicenseTags != '' ) {
 				echo $episodeLicenseTags;
 			}
 		}
@@ -394,7 +448,11 @@ License:
 	function podPress_atom_entry() {
 		$enclosureTag = podPress_getEnclosureTags('atom');
 		if ($enclosureTag != '') { // if no enclosure tag, no need for iTunes tags
-			echo $enclosureTag;
+		
+			$is_password_protected = podpress_post_is_password_protected();
+			if ( FALSE === $is_password_protected ) {
+				echo $enclosureTag;
+			}
 			
 			$episodeLicenseTags = podPress_getEpisodeLicenseTags('atom');
 			if ($episodeLicenseTags != '')	{
@@ -433,9 +491,11 @@ License:
 			foreach ($posts as $post) {
 				start_wp(); /* This is a call to a very very old function and it seems to be not necessary if $post is global. */
 				$enclosureTag = podPress_getEnclosureTags('xspf');
-				if ($enclosureTag != '') // if no enclosure tag, no need for track tags
-				{
-					echo $enclosureTag;
+				if ( $enclosureTag != '' ) {// if no enclosure tag, no need for track tags
+					$is_password_protected = podpress_post_is_password_protected();
+					if ( FALSE === $is_password_protected ) {
+						echo $enclosureTag;
+					}
 				}
 			}
 		}
@@ -672,7 +732,7 @@ License:
 		}
 	}
 
-	function podPress_getiTunesCategoryTags() {
+	function podPress_getiTunesCategoryTags($podpress_feed_cat = '') {
 		GLOBAL $podPress, $post;
 		$result = '';
 		$data = array();
@@ -688,7 +748,11 @@ License:
 			}
 		}
 		if(empty($data)) {
-			$data = $podPress->settings['iTunes']['category'];
+			if ( TRUE == is_array($podpress_feed_cat) ) {
+				$data = $podpress_feed_cat;
+			} else {
+				$data = $podPress->settings['iTunes']['category'];
+			}
 		}
 		if(is_array($data)) {
 			foreach($data as $thiscat) {

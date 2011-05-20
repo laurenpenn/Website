@@ -1042,7 +1042,9 @@ class RGFormsModel{
         $title = "Untitled";
         $count = 1;
 
-        while($wpdb->get_var($wpdb->prepare("SELECT count(0) FROM $wpdb->posts WHERE post_title=%s", $title)) > 0){
+        $titles = $wpdb->get_col("SELECT post_title FROM $wpdb->posts WHERE post_title like '%Untitled%'");
+        $titles = array_values($titles);
+        while(in_array($title, $titles)){
             $title = "Untitled_$count";
             $count++;
         }
@@ -1112,7 +1114,6 @@ class RGFormsModel{
             break;
 
             default:
-                $value = stripslashes($value);
 
                 //allow HTML for certain field types
                 if(!in_array($field["type"], array("post_custom_field", "post_title", "post_content", "post_excerpt", "post_tags")) && !in_array($input_type, array("checkbox", "radio"))){
@@ -1120,7 +1121,7 @@ class RGFormsModel{
                 }
 
                 //do not save price fields with blank price
-                if($field["enablePrice"]){
+                if(rgar($field, "enablePrice")){
                     list($label, $price) = explode("|", $value);
                     $is_empty = (strlen(trim($price)) <= 0);
                     if($is_empty)
@@ -1442,7 +1443,7 @@ class RGFormsModel{
         else if(RG_CURRENT_VIEW == "entry" && in_array($field["type"], array("post_category","post_title","post_content","post_excerpt","post_tags","post_custom_field","post_image")))
             return;
 
-        if(empty($value) && $field["adminOnly"] && !IS_ADMIN){
+        if(empty($value) && rgar($field, "adminOnly") && !IS_ADMIN){
             $value = self::get_default_value($field, $input_id);
         }
 
@@ -1719,7 +1720,7 @@ class RGFormsModel{
 
         $max_length = GFORMS_MAX_FIELD_LENGTH;
         $value = array();
-        if(is_array($field["inputs"])){
+        if(is_array(rgar($field, "inputs"))){
             //making sure values submitted are sent in the value even if
             //there isn't an input associated with it
             $lead_field_keys = array_keys($lead);
@@ -1741,7 +1742,7 @@ class RGFormsModel{
         }
 
         //filtering lead value
-        $value = apply_filters("gform_get_field_value", $value, $lead, $field);
+        //$value = apply_filters("gform_get_field_value", $value, $lead, $field);
 
         return $value;
     }
@@ -1884,7 +1885,9 @@ class RGFormsModel{
 
         $leads = array();
         $lead = array();
+        $form_id = 0;
         if(is_array($results) && sizeof($results) > 0){
+            $form_id = $results[0]->form_id;
             $lead = array("id" => $results[0]->id, "form_id" => $results[0]->form_id, "date_created" => $results[0]->date_created, "is_starred" => intval($results[0]->is_starred), "is_read" => intval($results[0]->is_read), "ip" => $results[0]->ip, "source_url" => $results[0]->source_url, "post_id" => $results[0]->post_id, "currency" => $results[0]->currency, "payment_status" => $results[0]->payment_status, "payment_date" => $results[0]->payment_date, "transaction_id" => $results[0]->transaction_id, "payment_amount" => $results[0]->payment_amount, "is_fulfilled" => $results[0]->is_fulfilled, "created_by" => $results[0]->created_by, "transaction_type" => $results[0]->transaction_type, "user_agent" => $results[0]->user_agent);
         }
 
@@ -1908,6 +1911,21 @@ class RGFormsModel{
         //adding last lead.
         if(sizeof($lead) > 0)
             array_push($leads, $lead);
+
+        //running entry through gform_get_field_value filter
+        $form = RGFormsModel::get_form_meta($form_id);
+        foreach($leads as &$lead){
+            foreach($form["fields"] as $field){
+                if(isset($field["inputs"]) && is_array($field["inputs"])){
+                    foreach($field["inputs"] as $input){
+                        $lead[(string)$input["id"]] = apply_filters("gform_get_input_value", rgar($lead, (string)$input["id"]), $lead, $field, $input["id"]);
+                    }
+                }
+                else{
+                    $lead[$field["id"]] = apply_filters("gform_get_input_value", $lead[$field["id"]], $lead, $field, "");
+                }
+            }
+        }
 
         return $leads;
 
@@ -2063,12 +2081,7 @@ class RGFormsModel{
             $pageURL .= "s";
         $pageURL .= "://";
 
-        //if (RGForms::get("SERVER_PORT",$_SERVER) != "80")
-        //    $pageURL .= RGForms::get("HTTP_HOST", $_SERVER).":".RGForms::get("SERVER_PORT", $_SERVER). RGForms::get("REQUEST_URI", $_SERVER);
-        //else
-
-        $pageURL .= RGForms::get("HTTP_HOST", $_SERVER). RGForms::get("REQUEST_URI", $_SERVER);
-
+        $pageURL .= RGForms::get("HTTP_HOST", $_SERVER) . rgget("REQUEST_URI", $_SERVER);
         return $pageURL;
     }
 

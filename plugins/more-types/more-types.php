@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: More Types
-Version: 1.1
+Version: 1.1.1b1
 Author URI: http://labs.dagensskiva.com/
 Plugin URI: http://labs.dagensskiva.com/
 Description:  Add more post types to your WordPress installation. 

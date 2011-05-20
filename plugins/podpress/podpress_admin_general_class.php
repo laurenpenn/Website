@@ -288,8 +288,8 @@ License:
 			echo '				<th><label for="statLogging">'.__('Stat Logging', 'podpress').':</label></th>'."\n";
 			echo '				<td colspan="2">';
 			echo '					<select name="statLogging" id="statLogging">'."\n";
-			echo '						<option value="Counts" '; if($this->settings['statLogging'] == 'Counts') { echo 'selected="selected"'; } echo '>'.__('Counts Only', 'podpress').'</option>'."\n";
-			echo '						<option value="Full" '; if($this->settings['statLogging'] == 'Full') { echo 'selected="selected"'; } echo '>'.__('Full (recommended)', 'podpress').'</option>'."\n";
+			echo '						<option value="Counts" '; if($this->settings['statLogging'] == 'Counts') { echo 'selected="selected"'; } echo '>'.__('Counts Only (recommended)', 'podpress').'</option>'."\n";
+			echo '						<option value="Full" '; if($this->settings['statLogging'] == 'Full') { echo 'selected="selected"'; } echo '>'.__('Full', 'podpress').'</option>'."\n";
 			echo '						<option value="FullPlus" '; if($this->settings['statLogging'] == 'FullPlus') { echo 'selected="selected"'; } echo '>'.__('Full+', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
 			unset($x);
@@ -299,9 +299,9 @@ License:
 			echo '				<th></th>'."\n";
 			echo '				<td colspan="2" class="podpress_settings_description_cell">';
 			echo '				<ul>'."\n";
-			echo '				<li>'.__('"Counts Only" - podPress counts only how many times a media was downloaded from the website, the feeds and how often the player of this file was started. Your media files should have unique file names. (The db table name is e.g. wp_podpress_statcounts.)', 'podpress').'</li>';
-			echo '				<li>'.__('"Full" (recommended) - With this option podPress will log how many times a media was downloaded from the website, the feeds and how often the player of this file was started. It will also log on each download the ID of the post (or page), the IP address, the referrer, the browser type (User Agent) and the time of the download. Furthermore podPress parses the referer and user agent information and store the information in separate columns in the database.<br />Full includes also the posssibility to mark downloads on the basis of user agent names and IP addresses as downloads of <a href="http://en.wikipedia.org/wiki/Internet_bot" target="_blank" title="en.Wikipedia: Internet bot">Internets bots</a> and filter the statistic tables and graphs. (The db table name is e.g. wp_podpress_stats.) If you add more than one media file to a post (with podPress) then these files should have different file names.', 'podpress').'</li>';
-			echo '				<li>'.__('"Full+" - If you would like to know all the information "Full" gives you and additionally whether a download has been completed or not. podPress can only try to find out whether a file transfer was complete, if the file is on the same server as your blog (if it is a local file for the script). If you add more than one media file to a post (with podPress) then these files should have different file names. In order to get the information whetehr a download was complete or not podPress (or at least a PHP script of podPress) needs to run during the whole download. But this may lead to problems if the file is relative big or the maximum execution time for PHP scripts is relative short on the server of your blog. If the time limit is reached the download stops. So if you are not allowed to change the max_execution_time setting of the PHP configuration on the server of your blog or if you are unsure what this all means then please use the "Full" method (as recommended).', 'podpress').'</li>';
+			echo '				<li>'.__('"Counts Only" (recommended) - podPress counts only how many times a media was downloaded from the website, the feeds and how often the player of this file was started. Your media files should have unique file names. (The db table name is e.g. wp_podpress_statcounts.)', 'podpress').'</li>';
+			echo '				<li>'.__('"Full" - With this option podPress will log how many times a media was downloaded from the website, the feeds and how often the player of this file was started. It will also log on each download the ID of the post (or page), the IP address, the referrer, the browser type (User Agent) and the time of the download. Furthermore podPress parses the referer and user agent information and store the information in separate columns in the database.<br />Full includes also the posssibility to mark downloads on the basis of user agent names and IP addresses as downloads of <a href="http://en.wikipedia.org/wiki/Internet_bot" target="_blank" title="en.Wikipedia: Internet bot">Internets bots</a> and filter the statistic tables and graphs. (The db table name is e.g. wp_podpress_stats.) If you add more than one media file to a post (with podPress) then these files should have different file names.', 'podpress').'</li>';
+			echo '				<li>'.__('"Full+" (experimental) - If you would like to know all the information "Full" gives you and additionally whether a download has been completed or not. podPress can only try to find out whether a file transfer was complete, if the file is on the same server as your blog (if it is a local file for the script). If you add more than one media file to a post (with podPress) then these files should have different file names. In order to get the information whetehr a download was complete or not podPress (or at least a PHP script of podPress) needs to run during the whole download. But this may lead to problems if the file is relative big or the maximum execution time for PHP scripts is relative short on the server of your blog. If the time limit is reached the download stops. So if you are not allowed to change the max_execution_time setting of the PHP configuration on the server of your blog or if you are unsure what this all means then please use the "Full" method (as recommended).', 'podpress').'</li>';
 			echo '				<ul>'."\n";
 			echo '				'.__('Note that if you enable the statistics, the Counts Only counter counts always even if you choose Full or Full+ but not vice versa.', 'podpress')."\n";
 			echo '				</td>'."\n";
@@ -371,7 +371,7 @@ License:
 			echo '				<td>'."\n";
 			echo '					<input type="radio" name="enable3rdPartyStats" id="enableBlubrryStats" value="Blubrry"' . $blubrry_checked . $blubrry_disabled .  ' />'."\n";
 			echo '				</td>'."\n";
-			echo '				<td>'.__('This will use the Blubrry service. <a href="http://www.blubrry.com/podpress/" target="_new">More info ...</a>', 'podpress').'</td>'."\n";
+			echo '				<td>'.__('This will use the blubrry service. (You need use a non-default Permalink scheme.) <a href="http://www.blubrry.com/podpress/" target="_new">More info ...</a>', 'podpress').'</td>'."\n";
 			echo '			</tr> '."\n";
 			echo '			<tr id="statBluBrryWrapper" '.$showStatsOptions.'>'."\n";
 			echo '				<th></th>'."\n";
@@ -863,21 +863,31 @@ License:
 			echo '				<td>'."\n";
 			echo '					<input type="checkbox" name="enableFooter" id="enableFooter" '; if($this->settings['enableFooter']) { echo 'checked="checked"'; } echo '/>'."\n";
 			echo '				</td>'."\n";
-			echo '			</tr> '."\n";
-			echo '			<tr>'."\n";
-			echo '				<td colspan="2">'.__('Enabling this allows you to give us credit for making your podcasting easier, and lets other podcasters find out what your using to have such cool features on your podcasting blog ;) . If this feature makes your site look bad, please add in podPress with all the other credits, such as the ones in place for WordPress.', 'podpress')."\n";
+			echo '				<td class="podpress_settings_description_cell">'.__('Enabling this allows you to give us credit for making this plugin, and lets other podcasters find out what your using to publish your podcasts. If this feature makes your site look bad, please add in podPress with all the other credits, such as the ones in place for WordPress.', 'podpress')."\n";
 			echo '				</td>'."\n";
 			echo '			</tr> '."\n";
-			echo '		</table>'."\n";
-			echo '		<table class="editform podpress_settings_table">'."\n";
+			echo '			<tr>'."\n";
+			echo '				<th><label for="enableVersionInFeeds">'.__('Add podPress version information to the feeds:', 'podpress').'</label></th>'."\n";
+			echo '				<td>'."\n";
+			echo '					<input type="checkbox" name="enableVersionInFeeds" id="enableVersionInFeeds" '; if($this->settings['enableVersionInFeeds']) { echo 'checked="checked"'; } echo '/>'."\n";
+			echo '				</td>'."\n";
+			echo '				<td class="podpress_settings_description_cell">'.__('Enabling this will add a comment with the name of this plugin and maybe the current version number to all Feeds of this blog. This comment is usually only visible if you look into the source code of the Feeds and may e.g. help to debug problems.', 'podpress')."\n";
+			echo '				</td>'."\n";
+			echo '			</tr> '."\n";
+			echo '			<tr>'."\n";
+			echo '				<th><label for="disableVersionNumber">'.__('Do not show the version number:', 'podpress').'</label></th>'."\n";
+			echo '				<td>'."\n";
+			echo '					<input type="checkbox" name="disableVersionNumber" id="disableVersionNumber" '; if($this->settings['disableVersionNumber']) { echo 'checked="checked"'; } echo '/>'."\n";
+			echo '				</td>'."\n";
+			echo '				<td class="podpress_settings_description_cell">'.__('Do not show the current version number in the footer nor in the Feeds of this blog.', 'podpress')."\n";
+			echo '				</td>'."\n";
+			echo '			</tr> '."\n";
 			echo '			<tr>'."\n";
 			echo '				<th><label for="donation_button">'.__('Donations Appreciated:', 'podpress').'</label></th>'."\n";
 			echo '				<td>'."\n";
 			echo '					<a id="donation_button" href="http://www.mightyseek.com/podpress_donate.php" title="'.__('Donation button of the original author of this project Dan Kuykendall (seek3r)', 'podpress').'" target="_blank"><img alt="'.__('Donation button of the original author of this project Dan Kuykendall (seek3r)', 'podpress').'" border="0" src="'.PODPRESS_URL.'/images/x-click-but04.gif" /></a>'."\n";
 			echo '				</td>'."\n";
-			echo '			</tr> '."\n";
-			echo '			<tr>'."\n";
-			echo '				<td colspan="2">'.__('This project is a labor of love, feel no obligation what-so-ever to donate. For those that want to, here ya go.', 'podpress').'</td>'."\n";
+			echo '				<td class="podpress_settings_description_cell">'.__('This project is a labor of love, feel no obligation what-so-ever to donate. For those that want to, here ya go.', 'podpress').' <span class="nonessential">('.__('Donation button of the original author of this project Dan Kuykendall (seek3r)', 'podpress').')</span></td>'."\n";
 			echo '			</tr> '."\n";
 			echo '		</table>'."\n";
 			//~ ntm: Frappr.com seems to be down since 01/2010
@@ -963,6 +973,7 @@ License:
 
 			if(isset($_POST['enableStats'])) {
 				$this->settings['enableStats'] = true;
+				$this->createstatistictables();
 			} else {
 				$this->settings['enableStats'] = false;
 			}
@@ -1136,6 +1147,17 @@ License:
 			} else {
 				$this->settings['enableFooter'] = false;
 			}
+			if(isset($_POST['enableVersionInFeeds'])) {
+				$this->settings['enableVersionInFeeds'] = true;
+			} else {
+				$this->settings['enableVersionInFeeds'] = false;
+			}
+			if (isset($_POST['disableVersionNumber'])) {
+				$this->settings['disableVersionNumber'] = true;
+			} else {
+				$this->settings['disableVersionNumber'] = false;
+			}
+
 
 			if(isset($_POST['cleanupOldMetaKeys'])) {
 				$sql = "DELETE FROM ".$wpdb->prefix."postmeta WHERE meta_key IN('podPress_podcastStandardAudio',

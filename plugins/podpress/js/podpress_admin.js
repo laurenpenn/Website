@@ -1,5 +1,29 @@
 /* podpress_admin.js | podPress - JS scripts for the Admin Site */
 /* some functions rely on function in podpres.js that makes it necessary to enqueue in Admin Site always both files */
+if (!self.getHTTPObject) {
+	function getHTTPObject() {
+		var xmlhttp;
+		var container;
+		if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+			try {
+				xmlhttp = new XMLHttpRequest();
+			} catch (e) {
+				xmlhttp = false;
+			}
+		} else {
+			try {
+				xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch (e) {
+				try {
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				} catch (E) {
+					xmlhttp = false;
+				}
+			}
+		}		
+		return xmlhttp;
+	}
+}
 var podPressHttp_TestStats = getHTTPObject();
 
 var podPressLoadedMP3Info = '';

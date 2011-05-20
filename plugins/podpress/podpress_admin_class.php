@@ -464,13 +464,13 @@ License:
 				echo '						</td>'."\n";
 				echo '						<td>'."\n";
 				echo '							<select id="iTunesSubtitleChoice" name="iTunesSubtitleChoice" onchange="javascript: if(this.value == \'Custom\') { document.getElementById(\'iTunesSubtitleWrapper\').style.display=\'\'; } else { document.getElementById(\'iTunesSubtitleWrapper\').style.display=\'none\'; }">'."\n";
-				echo '								<option value="PostExcerpt" '; if($post->podPressPostSpecific['itunes:subtitle'] == '##PostExcerpt##') { echo 'selected="selected"';	}	echo '>'.__('Use Post Excerpt', 'podpress').'</option>'."\n";
+				echo '								<option value="PostExcerpt" '; if($post->podPressPostSpecific['itunes:subtitle'] == '##PostExcerpt##') { echo 'selected="selected"';	}	echo '>'.__('Use the excerpt', 'podpress').'</option>'."\n";
 				echo '								<option value="Custom" '; if($post->podPressPostSpecific['itunes:subtitle'] != '##PostExcerpt##') { echo 'selected="selected"';	}	echo '>'.__('Insert custom value', 'podpress').'</option>'."\n";
 				echo '							</select>'."\n";
 				echo '						</td>'."\n";
 				echo '					</tr>'."\n";
 				echo '					<tr id="iTunesSubtitleHelp" style="display: none;">'."\n";
-				echo '						<td colspan="2">'.__('By default this is taken from the first 255 characters of the blog Post text.', 'podpress').'</td>'."\n";
+				echo '						<td colspan="2">'.sprintf(__('"%1$s" (default) podPress takes the first 255 characters from the excerpt of the excerpt and if there is none from the blog Post text.', 'podpress'),__('Use the excerpt', 'podpress')).'</td>'."\n";
 				echo '					</tr>'."\n";
 				if($post->podPressPostSpecific['itunes:subtitle'] == '##PostExcerpt##') { $tempShowMe = 'style="display: none;"';$post->podPressPostSpecific['itunes:subtitle'] = ''; } else { $tempShowMe = ''; }
 				echo '					<tr id="iTunesSubtitleWrapper" '.$tempShowMe.'>'."\n";
@@ -485,16 +485,17 @@ License:
 				echo '						</td>'."\n";
 				echo '						<td>'."\n";
 				echo '							<select id="iTunesSummaryChoice" name="iTunesSummaryChoice" onchange="javascript: if(this.value == \'Custom\') { document.getElementById(\'iTunesSummaryWrapper\').style.display=\'\'; } else { document.getElementById(\'iTunesSummaryWrapper\').style.display=\'none\'; }">'."\n";
-				echo '								<option value="PostExcerpt" '; if($post->podPressPostSpecific['itunes:summary'] == '##PostExcerpt##') { echo 'selected="selected"';	}	echo '>'.__('Use Post Excerpt', 'podpress').'</option>'."\n";
+				echo '								<option value="PostExcerpt" '; if($post->podPressPostSpecific['itunes:summary'] == '##PostExcerpt##') { echo 'selected="selected"';	}	echo '>'.__('Use the excerpt', 'podpress').'</option>'."\n";
+				echo '								<option value="PostContentShortened" '; if($post->podPressPostSpecific['itunes:summary'] == '##PostContentShortened##') { echo 'selected="selected"';	}	echo '>'.__('autom. excerpt of the post content', 'podpress').'</option>'."\n";
 				echo '								<option value="Global" '; if($post->podPressPostSpecific['itunes:summary'] == '##Global##') { echo 'selected="selected"';	}	echo '>'.__('Use Global', 'podpress').'</option>'."\n";
-				echo '								<option value="Custom" '; if($post->podPressPostSpecific['itunes:summary'] != '##Global##' && $post->podPressPostSpecific['itunes:summary'] != '##PostExcerpt##') { echo 'selected="selected"';	}	echo '>'.__('Insert custom value', 'podpress').'</option>'."\n";
+				echo '								<option value="Custom" '; if($post->podPressPostSpecific['itunes:summary'] != '##Global##' && $post->podPressPostSpecific['itunes:summary'] != '##PostExcerpt##' && $post->podPressPostSpecific['itunes:summary'] != '##PostContentShortened##') { echo 'selected="selected"';	}	echo '>'.__('Insert custom value', 'podpress').'</option>'."\n";
 				echo '							</select>'."\n";
 				echo '						</td>'."\n";
 				echo '					</tr>'."\n";
 				echo '					<tr id="iTunesSummaryHelp" style="display: none;">'."\n";
-				echo '						<td colspan="2">'.__('By default this is taken from the blog Post text.', 'podpress').'</td>'."\n";
+				echo '						<td colspan="2">'.sprintf(__('"%1$s" (default) podPress takes the excerpt. If you have not written an excerpt then it takes a part from the blog Post text.', 'podpress'),__('Use the excerpt', 'podpress')).'</td>'."\n";
 				echo '					</tr>'."\n";
-				if($post->podPressPostSpecific['itunes:summary'] == '##Global##' || $post->podPressPostSpecific['itunes:summary'] == '##PostExcerpt##') { $tempShowMe = 'style="display: none;"';	$post->podPressPostSpecific['itunes:summary'] = ''; } else { $tempShowMe = ''; }
+				if($post->podPressPostSpecific['itunes:summary'] == '##Global##' || $post->podPressPostSpecific['itunes:summary'] == '##PostExcerpt##' || $post->podPressPostSpecific['itunes:summary'] ==  '##PostContentShortened##') { $tempShowMe = 'style="display: none;"';	$post->podPressPostSpecific['itunes:summary'] = ''; } else { $tempShowMe = ''; }
 				echo '					<tr id="iTunesSummaryWrapper" '.$tempShowMe.'>'."\n";
 				echo '						<td width="1%" nowrap="nowrap">&nbsp;</td>'."\n";
 				echo '						<td>'."\n";
@@ -1039,14 +1040,14 @@ License:
 				echo '						</th>'."\n";
 				echo '						<td>'."\n";
 				echo '							<select id="iTunesSubtitleChoice" name="iTunesSubtitleChoice" onchange="javascript: if(this.value == \'Custom\') { document.getElementById(\'iTunesSubtitleWrapper\').style.display=\'\'; } else { document.getElementById(\'iTunesSubtitleWrapper\').style.display=\'none\'; }">'."\n";
-				echo '								<option value="PostExcerpt" '; if($post->podPressPostSpecific['itunes:subtitle'] == '##PostExcerpt##') { echo 'selected="selected"';	}	echo '>'.__('Use Post Excerpt', 'podpress').'</option>'."\n";
+				echo '								<option value="PostExcerpt" '; if($post->podPressPostSpecific['itunes:subtitle'] == '##PostExcerpt##') { echo 'selected="selected"';	}	echo '>'.__('Use the excerpt', 'podpress').'</option>'."\n";
 				echo '								<option value="Custom" '; if($post->podPressPostSpecific['itunes:subtitle'] != '##PostExcerpt##') { echo 'selected="selected"';	}	echo '>'.__('Insert custom value', 'podpress').'</option>'."\n";
 				echo '							</select>'."\n";
 				echo '						</td>'."\n";
 				echo '					</tr>'."\n";
 				echo '					<tr id="iTunesSubtitleHelp" style="display: none;">'."\n";
 				echo '						<th>&nbsp;</th>'."\n";
-				echo '						<td>'.__('By default this is taken from the first 255 characters of the blog Post text.', 'podpress').'</td>'."\n";
+				echo '						<td>'.sprintf(__('"%1$s" (default) podPress takes the first 255 characters from the excerpt of the excerpt and if there is none from the blog Post text.', 'podpress'),__('Use the excerpt', 'podpress')).'</td>'."\n";
 				echo '					</tr>'."\n";
 				if($post->podPressPostSpecific['itunes:subtitle'] == '##PostExcerpt##') { $tempShowMe = 'style="display: none;"';$post->podPressPostSpecific['itunes:subtitle'] = ''; } else { $tempShowMe = ''; }
 				echo '					<tr id="iTunesSubtitleWrapper" '.$tempShowMe.'>'."\n";
@@ -1062,19 +1063,19 @@ License:
 				echo '						</th>'."\n";
 				echo '						<td>'."\n";
 				echo '							<select id="iTunesSummaryChoice" name="iTunesSummaryChoice" onchange="javascript: if(this.value == \'Custom\') { document.getElementById(\'iTunesSummaryWrapper\').style.display=\'\'; } else { document.getElementById(\'iTunesSummaryWrapper\').style.display=\'none\'; }">'."\n";
-				echo '								<option value="PostExcerpt" '; if($post->podPressPostSpecific['itunes:summary'] == '##PostExcerpt##') { echo 'selected="selected"';	}	echo '>'.__('Use Post Excerpt', 'podpress').'</option>'."\n";
+				echo '								<option value="PostExcerpt" '; if($post->podPressPostSpecific['itunes:summary'] == '##PostExcerpt##') { echo 'selected="selected"';	}	echo '>'.__('Use the excerpt', 'podpress').'</option>'."\n";
+				echo '								<option value="PostContentShortened" '; if($post->podPressPostSpecific['itunes:summary'] == '##PostContentShortened##') { echo 'selected="selected"';	}	echo '>'.__('autom. excerpt of the post content', 'podpress').'</option>'."\n";
 				echo '								<option value="Global" '; if($post->podPressPostSpecific['itunes:summary'] == '##Global##') { echo 'selected="selected"';	}	echo '>'.__('Use Global', 'podpress').'</option>'."\n";
-				echo '								<option value="Custom" '; if($post->podPressPostSpecific['itunes:summary'] != '##Global##' && $post->podPressPostSpecific['itunes:summary'] != '##PostExcerpt##') { echo 'selected="selected"';	}	echo '>'.__('Insert custom value', 'podpress').'</option>'."\n";
+				echo '								<option value="Custom" '; if($post->podPressPostSpecific['itunes:summary'] != '##Global##' && $post->podPressPostSpecific['itunes:summary'] != '##PostExcerpt##' && $post->podPressPostSpecific['itunes:summary'] != '##PostContentShortened##') { echo 'selected="selected"';	}	echo '>'.__('Insert custom value', 'podpress').'</option>'."\n";
 				echo '							</select>'."\n";
 				echo '						</td>'."\n";
 				echo '					</tr>'."\n";
-				
 				echo '					<tr id="iTunesSummaryHelp" style="display: none;">'."\n";
 				echo '						<th>&nbsp;</th>'."\n";
-				echo '						<td>'.__('By default this is taken from the blog Post text.', 'podpress').'</td>'."\n";
+				echo '						<td>'.sprintf(__('"%1$s" (default) podPress takes the excerpt. If you have not written an excerpt then it takes a part from the blog Post text.', 'podpress'),__('Use the excerpt', 'podpress')).'</td>'."\n";
 				echo '					</tr>'."\n";
 				
-				if($post->podPressPostSpecific['itunes:summary'] == '##Global##' || $post->podPressPostSpecific['itunes:summary'] == '##PostExcerpt##') { $tempShowMe = 'style="display: none;"';	$post->podPressPostSpecific['itunes:summary'] = ''; } else { $tempShowMe = ''; }
+				if($post->podPressPostSpecific['itunes:summary'] == '##Global##' || $post->podPressPostSpecific['itunes:summary'] == '##PostExcerpt##' || $post->podPressPostSpecific['itunes:summary'] ==  '##PostContentShortened##') { $tempShowMe = 'style="display: none;"';	$post->podPressPostSpecific['itunes:summary'] = ''; } else { $tempShowMe = ''; }
 				echo '					<tr id="iTunesSummaryWrapper" '.$tempShowMe.'>'."\n";
 				echo '						<th>&nbsp;</th>'."\n";
 				echo '						<td>'."\n";
@@ -1295,10 +1296,12 @@ License:
 						$podPressPostSpecific['itunes:subtitle'] = '##PostExcerpt##';
 					}
 
-					if($_POST['iTunesSummaryChoice'] == 'Custom' && !empty($_POST['iTunesSummary'])) {
+					if ($_POST['iTunesSummaryChoice'] == 'Custom' && !empty($_POST['iTunesSummary'])) {
 						$podPressPostSpecific['itunes:summary'] = htmlspecialchars(strip_tags(trim($_POST['iTunesSummary'])), ENT_QUOTES, $blog_charset);
-					} elseif($_POST['iTunesSummaryChoice'] == 'Global') {
+					} elseif ($_POST['iTunesSummaryChoice'] == 'Global') {
 						$podPressPostSpecific['itunes:summary'] = '##Global##';
+					} elseif ($_POST['iTunesSummaryChoice'] == 'PostContentShortened') {
+						$podPressPostSpecific['itunes:summary'] = '##PostContentShortened##';
 					} else {
 						$podPressPostSpecific['itunes:summary'] = '##PostExcerpt##';
 					}

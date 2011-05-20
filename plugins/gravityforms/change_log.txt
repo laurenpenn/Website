@@ -1,3 +1,14 @@
+  -------------------------------------------------------------------------------------------------------------------
+Version 1.5.2.1
+    - Updated jQuery property selector to include quotes
+    - Removed 'href' attribute from 'Edit' link to resolve IE issue where it triggered the onBeforeUnload event
+    - Updated admin styles to make 'Close' link cursor display as a pointer
+    - Added 'gform_admin_pre_render' hook to fire on Form Editor view
+    - Added renewal reminder to admin notifications
+    - Removed Category ID from category variable replacement
+    - Fixed issue with back-slashes being removed when saving entry
+    - Added gform_get_input_value hook to replace gform_get_field_value
+
 -------------------------------------------------------------------------------------------------------------------
 Version 1.5.2
     - Updated reCAPTCHA API file
@@ -16,7 +27,7 @@ Version 1.5.2
     - Added gform_delete_lead hook
     - Fixed problem with exporting/importing routing rules
     - Fixed issue with product field validation when using Euro as currency
-    
+
 -------------------------------------------------------------------------------------------------------------------
 Version 1.5.1
     - Fixed problem with getting embed_post for {custom_field} variables

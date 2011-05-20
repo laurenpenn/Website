@@ -25,12 +25,6 @@ class Minify_HTML {
      *
      * @param array $options
      *
-     * 'cssMinifier' : (optional) callback function to process content of STYLE
-     * elements.
-     *
-     * 'jsMinifier' : (optional) callback function to process content of SCRIPT
-     * elements. Note: the type attribute is ignored.
-     *
      * 'xhtml' : (optional boolean) should content be treated as XHTML1.0? If
      * unset, minify will sniff for an XHTML doctype.
      *
@@ -66,18 +60,8 @@ class Minify_HTML {
         if (isset($options['xhtml'])) {
             $this->_isXhtml = (bool)$options['xhtml'];
         }
-        if (isset($options['cssMinifier'])) {
-            $this->_cssMinifier = $options['cssMinifier'];
-        }
-        if (isset($options['jsMinifier'])) {
-            $this->_jsMinifier = $options['jsMinifier'];
-        }
 
         $this->_stripCrlf = (isset($options['stripCrlf']) ? (boolean) $options['stripCrlf'] : false) ;
-        $this->_cssStripCrlf = (isset($options['cssStripCrlf']) ? (boolean) $options['cssStripCrlf'] : false);
-        $this->_cssStripComments = (isset($options['cssStripComments']) ? (boolean) $options['cssStripComments'] : false);
-        $this->_jsStripCrlf = (isset($options['jsStripCrlf']) ? (boolean) $options['jsStripCrlf'] : false);
-        $this->_jsStripComments = (isset($options['jsStripComments']) ? (boolean) $options['jsStripComments'] : false);
         $this->_ignoredComments = (isset($options['ignoredComments']) ? (array) $options['ignoredComments'] : array());
     }
 
@@ -103,13 +87,13 @@ class Minify_HTML {
 
         // replace SCRIPTs (and minify) with placeholders
         $this->_html = preg_replace_callback(
-            '/(\\s*)(<script\\b[^>]*?>)([\\s\\S]*?)<\\/script>(\\s*)/i'
+            '/\\s*(<script\\b[^>]*?>[\\s\\S]*?<\\/script>)\\s*/i'
             ,array($this, '_removeScriptCB')
             ,$this->_html);
 
         // replace STYLEs (and minify) with placeholders
         $this->_html = preg_replace_callback(
-            '/\\s*(<style\\b[^>]*?>)([\\s\\S]*?)<\\/style>\\s*/i'
+            '/\\s*(<style\\b[^>]*?>[\\s\\S]*?<\\/style>)\\s*/i'
             ,array($this, '_removeStyleCB')
             ,$this->_html);
 
@@ -196,9 +180,6 @@ class Minify_HTML {
     protected $_cssMinifier = null;
     protected $_jsMinifier = null;
     protected $_stripCrlf = null;
-    protected $_cssStripCrlf = null;
-    protected $_jsStripCrlf = null;
-    protected $_jsStripComments = null;
     protected $_ignoredComments = null;
 
     protected function _outsideTagCB($m)
@@ -218,72 +199,12 @@ class Minify_HTML {
 
     protected function _removeStyleCB($m)
     {
-        $openStyle = $m[1];
-        $css = $m[2];
-        // remove HTML comments
-        $css = preg_replace('/(?:^\\s*<!--|-->\\s*$)/', '', $css);
-
-        // remove CDATA section markers
-        $css = $this->_removeCdata($css);
-
-        // minify
-        $minifier = $this->_cssMinifier
-            ? $this->_cssMinifier
-            : 'trim';
-        $css = call_user_func($minifier, $css);
-
-        if ($this->_cssStripComments) {
-            $css = preg_replace('~/\*.*\*/~Us', '', $css);
-        }
-
-        if ($this->_cssStripCrlf) {
-            $css = preg_replace("~[\r\n]+~", ' ', $css);
-        } else {
-            $css = preg_replace("~[\r\n]+~", "\n", $css);
-        }
-
-        return $this->_reservePlace($this->_needsCdata($css)
-            ? "{$openStyle}/*<![CDATA[*/{$css}/*]]>*/</style>"
-            : "{$openStyle}{$css}</style>"
-        );
+        return $this->_reservePlace($m[1]);
     }
 
     protected function _removeScriptCB($m)
     {
-        $openScript = $m[2];
-        $js = $m[3];
-
-        // whitespace surrounding? preserve at least one space
-        $ws1 = ($m[1] === '') ? '' : ' ';
-        $ws2 = ($m[4] === '') ? '' : ' ';
-
-        // remove HTML comments (and ending "//" if present)
-        $js = preg_replace('/(?:^\\s*(?:\\/\\/)?\\s*<!--\\s*|\\s*(?:\\/\\/)?\\s*-->\\s*$)/', '', $js);
-
-        // remove CDATA section markers
-        $js = $this->_removeCdata($js);
-
-        // minify
-        $minifier = $this->_jsMinifier
-            ? $this->_jsMinifier
-            : 'trim';
-        $js = call_user_func($minifier, $js);
-
-        if ($this->_jsStripComments) {
-            $js = preg_replace('~^//.*$~m', '', $js);
-            $js = preg_replace('~/\*.*\*/~Us', '', $js);
-        }
-
-        if ($this->_jsStripCrlf) {
-            $js = preg_replace("~[\r\n]+~", '', $js);
-        } else {
-            $js = preg_replace("~[\r\n]+~", "\n", $js);
-        }
-
-        return $this->_reservePlace($this->_needsCdata($js)
-            ? "{$ws1}{$openScript}/*<![CDATA[*/{$js}/*]]>*/</script>{$ws2}"
-            : "{$ws1}{$openScript}{$js}</script>{$ws2}"
-        );
+        return $this->_reservePlace($m[1]);
     }
 
     protected function _removeCdata($str)

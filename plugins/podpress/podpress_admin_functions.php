@@ -1247,9 +1247,10 @@ License:
 				podPress_var_dump('podPress_showID3tags - podpress_tmp_download_exists = FALSE');
 			}
 			
+		
 			$result .= '	</tr>'."\n";
 			//~ $result .= '	<tr>'."\n";
-			//~ $result .= '		<td colspan="2"><a href="#" onclick="podPressID3ToPost(\''.$randID.'\'); return false;">'.__('Copy contents to post details', 'podpress').'</a></td>'."\n";
+			//~ $result .= '		<th>The getID3() output:</th><td><pre class="podpress_id3tags_error">'.var_export($fileinfo, true).'</pre></td>'."\n";
 			//~ $result .= '	</tr>'."\n";
 			$result .= '</table>'."\n";
 
@@ -1268,19 +1269,25 @@ License:
 			$fileinfo = podPress_getID3tags($mediafile, TRUE, 500000, TRUE, FALSE);
 		}
 		podPress_var_dump('podPress_getCoverArt - after getid3tags');
+
 		if ( isset($fileinfo['id3v2']['APIC'][0]) ) {
 			$ref = $fileinfo['id3v2']['APIC'][0];
 			if ( (FALSE == isset($ref['image_mime']) OR (isset($ref['image_mime']) AND empty($ref['image_mime']))) AND isset($ref['mime']) ) {
 				$ref['image_mime'] = $ref['mime'];
 			}
 			podPress_var_dump('podPress_getCoverArt - (id3v2 - APIC) '. $ref['image_mime']);
-			podPress_var_dump($ref['mime']);
 		} elseif ( isset($fileinfo['id3v2']['PIC'][0]) ) {
 			$ref = $fileinfo['id3v2']['PIC'][0];
 			if ( (FALSE == isset($ref['image_mime']) OR (isset($ref['image_mime']) AND empty($ref['image_mime']))) AND isset($ref['mime']) ) {
 				$ref['image_mime'] = $ref['mime'];
 			}
 			podPress_var_dump('podPress_getCoverArt - (id3v2 - PIC) '. $ref['image_mime']);
+		} elseif ( isset($fileinfo['comments']['artwork'][0]) ) {
+			$ref['data'] = $fileinfo['comments']['artwork'][0];
+			podPress_var_dump('podPress_getCoverArt - (m4a comments) '. $ref['image_mime']);
+		} elseif ( isset($fileinfo['tags']['quicktime']['artwork'][0]) ) {
+			$ref['data'] = $fileinfo['tags']['quicktime']['artwork'][0];
+			podPress_var_dump('podPress_getCoverArt - (m4a tags) '. $ref['image_mime']);
 		} else {
 			$ref['image_mime'] = 'image/png';
 			$ref['datalength'] = @filesize('images/powered_by_podpress.png');
@@ -1289,8 +1296,12 @@ License:
 		}
 		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // some day in the past
 		header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT', false, 200);
-		header('Content-type: '.$ref['image_mime']);
-		header('Content-Length: '.$ref['datalength']);
+		if ( isset($ref['image_mime']) AND FALSE == empty($ref['image_mime']) ) {
+			header('Content-type: '.$ref['image_mime']);
+		}
+		if ( isset($ref['datalength']) AND FALSE == empty($ref['datalength']) ) {
+			header('Content-Length: '.$ref['datalength']);
+		}
 		//set_time_limit(0);
 		echo $ref['data'];
 		podPress_var_dump('podPress_getCoverArt - end');
@@ -1725,6 +1736,85 @@ License:
 				}
 			}
 			return $returnmsg;
+		}
+	}
+	
+	/** podPress_get_real_url - demask an URL which is masked with the podPress stats scheme
+	* @package podPress
+	* @since 8.8.10.3 beta 5
+	* @param mixed $url - the masked url
+	* @param mixed $print - print (TRUE) or return the result (FALSE)
+	* @return string - the real URL
+	*/	
+	function podPress_get_real_url($url, $count = TRUE, $print = TRUE) {
+		$requested = parse_url($url);
+		$requested = $requested['path'];
+
+		$realURL = 'false';
+		$pos = 0;
+		if ( $pos = strpos($requested, 'podpress_trac') ) {
+			if ( $pos == 0 ) {
+				$pos = strpos($requested, 'podpress_trac');
+			}
+			$pos = $pos+14;
+			if ( substr($requested, $pos, 1) == '/' ) {
+				$pos = $pos+1;
+			}
+			$requested = substr($requested, $pos);
+			$parts = explode('/', $requested);
+			if ( count($parts) == 4 ) {
+				$postID = $parts[1];
+				$mediaNum = $parts[2];
+				$filename = rawurlencode($parts[3]);
+				$method = $parts[0];
+				
+				$allowedMethods = array('feed', 'play', 'web');
+				$realSysPath = false;
+				$statID = false;
+
+				if ( in_array($method, $allowedMethods) && is_numeric($postID) && is_numeric($mediaNum) ) {
+					$mediaFiles = podPress_get_post_meta($postID, '_podPressMedia', true);
+					if (isset($mediaFiles[$mediaNum]) ) {
+						if ( $mediaFiles[$mediaNum]['URI'] == urldecode($filename) ) {
+							$realURL = $filename;
+						} elseif ( podPress_getFileName($mediaFiles[$mediaNum]['URI']) == urldecode($filename) ) {
+							$realURL = $mediaFiles[$mediaNum]['URI'];
+						} elseif ( podPress_getFileName($mediaFiles[$mediaNum]['URI_torrent']) == urldecode($filename) ) {
+							$realURL = $mediaFiles[$mediaNum]['URI_torrent'];
+						}
+					}
+				}
+				
+				if ( TRUE === $count ) {
+					$badextensions = array('.smi', '.jpg', '.png', '.gif');
+					if ($filename && !in_array(strtolower(substr($filename, -4)), $badextensions)) {
+						global $podPress;
+						podPress_StatCounter($postID, $filename, $method);
+						if ( $podPress->settings['statLogging'] == 'Full' || $podPress->settings['statLogging'] == 'FullPlus' ) {
+							$statID = podPress_StatCollector($postID, $filename, $method);
+						}
+					}
+				}
+				
+				//~ $realSysPath = $podPress->convertPodcastFileNameToSystemPath(str_replace('%20', ' ', $realURL));
+				//~ if (FALSE === $realSysPath) {
+					//~ $realSysPath = $podPress->TryToFindAbsFileName(str_replace('%20', ' ', $realURL));
+				//~ }
+				//~ $realURL = $podPress->convertPodcastFileNameToValidWebPath($realURL);
+			
+				//~ if ($podPress->settings['enable3rdPartyStats'] == 'PodTrac') {
+					//~ $realURL = str_replace(array('ftp://', 'http://', 'https://'), '', $realURL);
+					//~ $realURL = $podPress->podtrac_url.$realURL;
+				//~ } elseif( strtolower($podPress->settings['enable3rdPartyStats']) == 'blubrry' && !empty($podPress->settings['statBluBrryProgramKeyword'])) {
+					//~ $realURL = str_replace('http://', '', $realURL);
+					//~ $realURL = $podPress->blubrry_url.$podPress->settings['statBluBrryProgramKeyword'].'/'.$realURL;
+				//~ }
+			}
+		}
+		if ( TRUE === $print ) {
+			echo $realURL;
+		} else {
+			return $realURL;
 		}
 	}
 ?>

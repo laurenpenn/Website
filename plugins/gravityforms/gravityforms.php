@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms
 Plugin URI: http://www.gravityforms.com
 Description: Easily create web forms and manage form entries within the WordPress admin.
-Version: 1.5.2
+Version: 1.5.2.1
 Author: rocketgenius
 Author URI: http://www.rocketgenius.com
 

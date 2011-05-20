@@ -653,7 +653,7 @@ function UpdateFormObject(){
 
     if(jQuery("#gform_pagination").is(":visible")){
         form["pagination"] = new Object();
-        var type = jQuery("input[name=pagination_type]:checked").val();
+        var type = jQuery("input[name=\"pagination_type\"]:checked").val();
         form["pagination"]["type"] = type;
 
         var pageNames = jQuery(".gform_page_names input");

@@ -76,8 +76,9 @@ require("cloudfiles_http.php");
 define("DEFAULT_CF_API_VERSION", 1);
 define("MAX_CONTAINER_NAME_LEN", 256);
 define("MAX_OBJECT_NAME_LEN", 1024);
-define("MAX_OBJECT_SIZE", 5*1024*1024*1024+1); # bigger than S3! ;-)
-
+define("MAX_OBJECT_SIZE", 5*1024*1024*1024+1);
+define("US_AUTHURL", "https://auth.api.rackspacecloud.com");
+define("UK_AUTHURL", "https://lon.auth.api.rackspacecloud.com");
 /**
  * Class for handling Cloud Files Authentication, call it's {@link authenticate()}
  * method to obtain authorized service urls and an authentication token.
@@ -87,6 +88,14 @@ define("MAX_OBJECT_SIZE", 5*1024*1024*1024+1); # bigger than S3! ;-)
  * # Create the authentication instance
  * #
  * $auth = new CF_Authentication("username", "api_key");
+ *
+ * # NOTE: For UK Customers please specify your AuthURL Manually
+ * # There is a Predfined constant to use EX:
+ * #
+ * # $auth = new CF_Authentication("username, "api_key", NULL, UK_AUTHURL);
+ * # Using the UK_AUTHURL keyword will force the api to use the UK AuthUrl.
+ * # rather then the US one. The NULL Is passed for legacy purposes and must
+ * # be passed to function correctly.
  *
  * # NOTE: Some versions of cURL include an outdated certificate authority (CA)
  * #       file.  This API ships with a newer version obtained directly from
@@ -122,10 +131,10 @@ class CF_Authentication
      *
      * @param string $username Mosso username
      * @param string $api_key Mosso API Access Key
-     * @param string $account <b>Deprecated</b> <i>Account name</i>
-     * @param string $auth_host <b>Deprecated</b> <i>Authentication service URI</i>
+     * @param string $account  <i>Account name</i>
+     * @param string $auth_host  <i>Authentication service URI</i>
      */
-    function __construct($username=NULL, $api_key=NULL, $account=NULL, $auth_host=NULL)
+    function __construct($username=NULL, $api_key=NULL, $account=NULL, $auth_host=US_AUTHURL)
     {
 
         $this->dbug = False;
@@ -757,13 +766,14 @@ class CF_Connection
      * )
      * </code>
      *
+     * @param bool $enabled_only Will list all containers ever CDN enabled if     * set to false or only currently enabled CDN containers if set to true.      * Defaults to false.
      * @return array list of published Container names
      * @throws InvalidResponseException unexpected response
      */
-    function list_public_containers()
+    function list_public_containers($enabled_only=False)
     {
         list($status, $reason, $containers) =
-                $this->cfs_http->list_cdn_containers();
+                $this->cfs_http->list_cdn_containers($enabled_only);
         #if ($status == 401 && $this->_re_auth()) {
         #    return $this->list_public_containers();
         #}

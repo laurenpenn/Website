@@ -34,7 +34,8 @@ class GFExport{
                 foreach($form["fields"] as &$field){
                     $inputType = RGFormsModel::get_input_type($field);
 
-                    unset($field["pageNumber"]);
+                    if(isset($field["pageNumber"]))
+                        unset($field["pageNumber"]);
 
                     if($inputType == "checkbox")
                         unset($field["inputs"]);
@@ -46,7 +47,7 @@ class GFExport{
                         unset($field["inputType"]);
 
 
-                    if(in_array($inputType, array("checkbox", "radio", "select")) && !$field["enableChoiceValue"]){
+                    if(in_array($inputType, array("checkbox", "radio", "select")) && !rgar($field,"enableChoiceValue")){
                         foreach($field["choices"] as &$choice)
                             unset($choice["value"]);
                     }

@@ -132,7 +132,10 @@ class more_types_object extends more_plugins_object_sputnik_7 {
 
 				// Add capability!
 				foreach ((array) $page['more_' . $cap_key] as $role) {				
-					$wp_roles->add_cap($role, $capability);
+					if(is_object($mp_roles) && method_exists($wp_roles,'add_cap'))
+					{
+						$wp_roles->add_cap($role, $capability);
+					}
 				}
 
 			}

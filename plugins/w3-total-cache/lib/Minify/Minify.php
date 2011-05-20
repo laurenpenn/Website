@@ -254,16 +254,18 @@ class Minify {
             unset($cg);
         }
         
-        if (self::$_options['contentType'] === self::TYPE_CSS
-            && self::$_options['rewriteCssUris']) {
+        if (self::$_options['contentType'] === self::TYPE_CSS) {
             reset($controller->sources);
             while (list($key, $source) = each($controller->sources)) {
-                if ($source->filepath 
+                if (self::$_options['rewriteCssUris']
+                    && $source->filepath
                     && !isset($source->minifyOptions['currentDir'])
                     && !isset($source->minifyOptions['prependRelativePath'])
                 ) {
                     $source->minifyOptions['currentDir'] = dirname($source->filepath);
                 }
+
+                $source->minifyOptions['processCssImports'] = self::$_options['processCssImports'];
             }
         }
         
@@ -536,6 +538,7 @@ class Minify {
             ,self::$_options['minifierOptions']
             ,self::$_options['postprocessor']
             ,self::$_options['bubbleCssImports']
+            ,self::$_options['processCssImports']
         ))));
     }
     
@@ -547,7 +550,7 @@ class Minify {
     {
         if (self::$_options['bubbleCssImports']) {
             // bubble CSS imports
-            preg_match_all('/@import.*?;/', $css, $imports);
+            preg_match_all('/@import.*?;/', $css, $imports);
             $css = implode('', $imports[0]) . preg_replace('/@import.*?;/', '', $css);
         } else if ('' !== self::$importWarning) {
             // remove comments so we don't mistake { in a comment as a block

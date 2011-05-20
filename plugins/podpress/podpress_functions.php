@@ -444,7 +444,7 @@ License:
 			$options['comments-atom'] = false;
 		}
 		if(!isset($options['itunes'])) {
-			$options['itunes'] = true;
+			$options['itunes'] = false;
 		}
 		if (!isset($options['iprot'])) {
 			$options['iprot'] = false;
@@ -1369,7 +1369,7 @@ License:
 					$instance['comments-atom'] = false;
 				}
 				if (!isset($instance['itunes'])) {
-					$instance['itunes'] = true;
+					$instance['itunes'] = false;
 				}
 				if (!isset($instance['iprot'])) {
 					$instance['iprot'] = false;
@@ -1851,20 +1851,20 @@ License:
 	function podPress_StatCollector($postID, $media, $method) {
 		global $wpdb;
 
-		$media	= addslashes($media);
-		$method	= addslashes($method);
+		$media = addslashes($media);
+		$method = addslashes($method);
 
-		$ip		= addslashes($_SERVER['REMOTE_ADDR']);
-		//$cntry	= addslashes(podPress_determineCountry($ip));
-		$cntry	= addslashes('');
-		$lang	= addslashes(podPress_determineLanguage());
-		$ref	= addslashes($_SERVER['HTTP_REFERER']);
-		$url 	= parse_url($ref);
-		$domain	= addslashes(eregi_replace('^www.','',$url['host']));
-		//$res	= $_SERVER['REQUEST_URI'];
-		$ua   = addslashes($_SERVER['HTTP_USER_AGENT']);
-		$br		= podPress_parseUserAgent($_SERVER['HTTP_USER_AGENT']);
-		$dt		= time();
+		$ip = addslashes($_SERVER['REMOTE_ADDR']);
+		//$cntry = addslashes(podPress_determineCountry($ip));
+		$cntry = addslashes('');
+		$lang = addslashes(podPress_determineLanguage());
+		$ref = addslashes($_SERVER['HTTP_REFERER']);
+		$url = parse_url($ref);
+		$domain = addslashes(eregi_replace('^www.','',$url['host']));
+		//$res = $_SERVER['REQUEST_URI'];
+		$ua = addslashes($_SERVER['HTTP_USER_AGENT']);
+		$br = podPress_parseUserAgent($_SERVER['HTTP_USER_AGENT']);
+		$dt = time();
 	
 		$query = "INSERT INTO ".$wpdb->prefix."podpress_stats (postID, media, method, remote_ip, country, language, domain, referer, user_agent, platform, browser, version, dt) VALUES ('$postID', '$media', '$method', '".$ip."', '$cntry', '$lang', '$domain', '$ref', '$ua', '".addslashes($br['platform'])."', '".addslashes($br['browser'])."', '".addslashes($br['version'])."', $dt)";
 		$result = $wpdb->query($query);
@@ -2137,6 +2137,7 @@ License:
 			exit;
 		}
 		$realURL = str_replace(' ', '%20', $realURL);
+		//~ printphpnotices_var_dump($realURL);
 		status_header('302');
 		header('X-PodPress-Location: '.$realURL, true, 302);
 		header('Location: '.$realURL, true, 302);

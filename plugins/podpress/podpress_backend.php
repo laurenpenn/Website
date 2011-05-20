@@ -40,6 +40,11 @@ if ( isset($_GET['action']) OR isset($_POST['action']) ) {
 		}
 		
 		switch( $action_param ) {
+			case 'getrealurl' :
+				if ( FALSE == function_exists('wp_verify_nonce') or FALSE == wp_verify_nonce($_POST['_wpnonce'], 'podPress_html5_ajax_nonce') ) {
+					podPress_get_real_url($_POST['url']);
+				}
+			break;
 			case 'size':
 				podPress_isAuthorized('edit_posts');
 				echo podPress_getFileSize( stripslashes($_POST['filename']) );

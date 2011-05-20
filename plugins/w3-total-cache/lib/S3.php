@@ -41,6 +41,14 @@ class S3 {
 	const ACL_PUBLIC_READ_WRITE = 'public-read-write';
 	const ACL_AUTHENTICATED_READ = 'authenticated-read';
 
+	const LOCATION_US = '';
+	const LOCATION_EU = 'EU';
+	const LOCATION_US_WEST = 'us-west-1';
+	const LOCATION_AP_SOUTHEAST = 'ap-southeast-1';
+
+	const ORIGIN_TYPE_S3 = 'S3';
+	const ORIING_TYPE_CUSTOM = 'Custom';
+
 	public static $useSSL = true;
 
 	private static $__accessKey; // AWS Access key
@@ -207,10 +215,10 @@ class S3 {
 		$rest = new S3Request('PUT', $bucket, '');
 		$rest->setAmzHeader('x-amz-acl', $acl);
 
-		if ($location !== false) {
+		if ($location) {
 			$dom = new DOMDocument;
 			$createBucketConfiguration = $dom->createElement('CreateBucketConfiguration');
-			$locationConstraint = $dom->createElement('LocationConstraint', strtoupper($location));
+			$locationConstraint = $dom->createElement('LocationConstraint', $location);
 			$createBucketConfiguration->appendChild($locationConstraint);
 			$dom->appendChild($createBucketConfiguration);
 			$rest->data = $dom->saveXML();
@@ -794,7 +802,7 @@ class S3 {
 		}
 		array_push($policy->conditions, array('content-length-range', 0, $maxFileSize));
 		$policy = base64_encode(str_replace('\/', '/', json_encode($policy)));
-	
+
 		// Create parameters
 		$params = new stdClass;
 		$params->AWSAccessKeyId = self::$__accessKey;
@@ -814,16 +822,17 @@ class S3 {
 	/**
 	* Create a CloudFront distribution
 	*
-	* @param string $bucket Bucket name
+	* @param string $dnsName Origin DNS name
+	* @param string $originType Origin Type
 	* @param boolean $enabled Enabled (true/false)
 	* @param array $cnames Array containing CNAME aliases
 	* @param string $comment Use the bucket name as the hostname
 	* @return array | false
 	*/
-	public static function createDistribution($bucket, $enabled = true, $cnames = array(), $comment = '') {
+	public static function createDistribution($dnsName, $originType = self::ORIGIN_TYPE_S3, $enabled = true, $cnames = array(), $comment = '') {
 		self::$useSSL = true; // CloudFront requires SSL
-		$rest = new S3Request('POST', '', '2008-06-30/distribution', 'cloudfront.amazonaws.com');
-		$rest->data = self::__getCloudFrontDistributionConfigXML($bucket.'.s3.amazonaws.com', $enabled, $comment, (string)microtime(true), $cnames);
+		$rest = new S3Request('POST', '', '2010-11-01/distribution', 'cloudfront.amazonaws.com');
+		$rest->data = self::__getCloudFrontDistributionConfigXML($dnsName, $originType, $enabled, $comment, (string)microtime(true), $cnames);
 		$rest->size = strlen($rest->data);
 		$rest->setHeader('Content-Type', 'application/xml');
 		$rest = self::__getCloudFrontResponse($rest);
@@ -831,14 +840,13 @@ class S3 {
 		if ($rest->error === false && $rest->code !== 201)
 			$rest->error = array('code' => $rest->code, 'message' => 'Unexpected HTTP status');
 		if ($rest->error !== false) {
-			trigger_error(sprintf("S3::createDistribution({$bucket}, ".(int)$enabled.", '$comment'): [%s] %s",
+			trigger_error(sprintf("S3::createDistribution($dnsName, $originType, ".(int)$enabled.", '$comment'): [%s] %s",
 			$rest->error['code'], $rest->error['message']), E_USER_WARNING);
 			return false;
 		} elseif ($rest->body instanceof SimpleXMLElement)
 			return self::__parseCloudFrontDistributionConfig($rest->body);
 		return false;
 	}
-
 
 	/**
 	* Get CloudFront distribution info
@@ -848,7 +856,7 @@ class S3 {
 	*/
 	public static function getDistribution($distributionId) {
 		self::$useSSL = true; // CloudFront requires SSL
-		$rest = new S3Request('GET', '', '2008-06-30/distribution/'.$distributionId, 'cloudfront.amazonaws.com');
+		$rest = new S3Request('GET', '', '2010-11-01/distribution/'.$distributionId, 'cloudfront.amazonaws.com');
 		$rest = self::__getCloudFrontResponse($rest);
 
 		if ($rest->error === false && $rest->code !== 200)
@@ -874,8 +882,8 @@ class S3 {
 	*/
 	public static function updateDistribution($dist) {
 		self::$useSSL = true; // CloudFront requires SSL
-		$rest = new S3Request('PUT', '', '2008-06-30/distribution/'.$dist['id'].'/config', 'cloudfront.amazonaws.com');
-		$rest->data = self::__getCloudFrontDistributionConfigXML($dist['origin'], $dist['enabled'], $dist['comment'], $dist['callerReference'], $dist['cnames']);
+		$rest = new S3Request('PUT', '', '2010-11-01/distribution/'.$dist['id'].'/config', 'cloudfront.amazonaws.com');
+		$rest->data = self::__getCloudFrontDistributionConfigXML($dist['origin'], $dist['type'], $dist['enabled'], $dist['comment'], $dist['callerReference'], $dist['cnames']);
 		$rest->size = strlen($rest->data);
 		$rest->setHeader('If-Match', $dist['hash']);
 		$rest = self::__getCloudFrontResponse($rest);
@@ -883,7 +891,7 @@ class S3 {
 		if ($rest->error === false && $rest->code !== 200)
 			$rest->error = array('code' => $rest->code, 'message' => 'Unexpected HTTP status');
 		if ($rest->error !== false) {
-			trigger_error(sprintf("S3::updateDistribution({$dist['id']}, ".(int)$enabled.", '$comment'): [%s] %s",
+			trigger_error(sprintf("S3::updateDistribution({$dist['id']}, ".(int)$dist['enabled'].", '".$dist['comment']."'): [%s] %s",
 			$rest->error['code'], $rest->error['message']), E_USER_WARNING);
 			return false;
 		} else {
@@ -903,7 +911,7 @@ class S3 {
 	*/
 	public static function deleteDistribution($dist) {
 		self::$useSSL = true; // CloudFront requires SSL
-		$rest = new S3Request('DELETE', '', '2008-06-30/distribution/'.$dist['id'], 'cloudfront.amazonaws.com');
+		$rest = new S3Request('DELETE', '', '2010-11-01/distribution/'.$dist['id'], 'cloudfront.amazonaws.com');
 		$rest->setHeader('If-Match', $dist['hash']);
 		$rest = self::__getCloudFrontResponse($rest);
 
@@ -925,7 +933,7 @@ class S3 {
 	*/
 	public static function listDistributions() {
 		self::$useSSL = true; // CloudFront requires SSL
-		$rest = new S3Request('GET', '', '2008-06-30/distribution', 'cloudfront.amazonaws.com');
+		$rest = new S3Request('GET', '', '2010-11-01/distribution', 'cloudfront.amazonaws.com');
 		$rest = self::__getCloudFrontResponse($rest);
 
 		if ($rest->error === false && $rest->code !== 200)
@@ -954,19 +962,30 @@ class S3 {
 	* Get a DistributionConfig DOMDocument
 	*
 	* @internal Used to create XML in createDistribution() and updateDistribution()
-	* @param string $bucket Origin bucket
+	* @param string $dnsName Origin DNS name
+	* @param string $originType Origin type
 	* @param boolean $enabled Enabled (true/false)
 	* @param string $comment Comment to append
 	* @param string $callerReference Caller reference
 	* @param array $cnames Array of CNAME aliases
 	* @return string
 	*/
-	private static function __getCloudFrontDistributionConfigXML($bucket, $enabled, $comment, $callerReference = '0', $cnames = array()) {
+	private static function __getCloudFrontDistributionConfigXML($dnsName, $originType, $enabled, $comment, $callerReference = '0', $cnames = array()) {
 		$dom = new DOMDocument('1.0', 'UTF-8');
 		$dom->formatOutput = true;
 		$distributionConfig = $dom->createElement('DistributionConfig');
-		$distributionConfig->setAttribute('xmlns', 'http://cloudfront.amazonaws.com/doc/2008-06-30/');
-		$distributionConfig->appendChild($dom->createElement('Origin', $bucket));
+		$distributionConfig->setAttribute('xmlns', 'http://cloudfront.amazonaws.com/doc/2010-11-01/');
+
+		if ($originType == 's3') {
+			$origin = $dom->createElement('S3Origin');
+			$origin->appendChild($dom->createElement('DNSName', $dnsName));
+		} else {
+			$origin = $dom->createElement('CustomOrigin');
+			$origin->appendChild($dom->createElement('DNSName', $dnsName));
+			$origin->appendChild($dom->createElement('OriginProtocolPolicy', 'http-only'));
+		}
+
+		$distributionConfig->appendChild($origin);
 		$distributionConfig->appendChild($dom->createElement('CallerReference', $callerReference));
 		foreach ($cnames as $cname)
 			$distributionConfig->appendChild($dom->createElement('CNAME', $cname));
@@ -986,28 +1005,158 @@ class S3 {
 	*/
 	private static function __parseCloudFrontDistributionConfig(&$node) {
 		$dist = array();
-		if (isset($node->Id, $node->Status, $node->LastModifiedTime, $node->DomainName)) {
-			$dist['id'] = (string)$node->Id;
-			$dist['status'] = (string)$node->Status;
-			$dist['time'] = strtotime((string)$node->LastModifiedTime);
-			$dist['domain'] = (string)$node->DomainName;
-		}
-		if (isset($node->CallerReference))
-			$dist['callerReference'] = (string)$node->CallerReference;
-		if (isset($node->Comment))
-			$dist['comment'] = (string)$node->Comment;
-		if (isset($node->Enabled, $node->Origin)) {
-			$dist['origin'] = (string)$node->Origin;
-			$dist['enabled'] = (string)$node->Enabled == 'true' ? true : false;
-		} elseif (isset($node->DistributionConfig)) {
-			$dist = array_merge($dist, self::__parseCloudFrontDistributionConfig($node->DistributionConfig));
-		}
-		if (isset($node->CNAME)) {
-			$dist['cnames'] = array();
-			foreach ($node->CNAME as $cname) $dist['cnames'][(string)$cname] = (string)$cname;
-		}
+
+        if (isset($node->Id)) {
+            $dist['id'] = (string) $node->Id;
+        }
+
+        if (isset($node->Status)) {
+            $dist['status'] = (string) $node->Status;
+        }
+
+        if (isset($node->LastModifiedTime)) {
+            $dist['time'] = strtotime((string) $node->LastModifiedTime);
+        }
+
+        if (isset($node->DomainName)) {
+            $dist['domain'] = (string) $node->DomainName;
+        }
+
+        if (isset($node->S3Origin)) {
+            $dist['type'] = 's3';
+
+            if (isset($node->S3Origin->DNSName)) {
+                $dist['origin'] = (string) $node->S3Origin->DNSName;
+            }
+        } elseif (isset($node->CustomOrigin)) {
+            $dist['type'] = 'custom';
+
+            if (isset($node->CustomOrigin->DNSName)) {
+                $dist['origin'] = (string) $node->CustomOrigin->DNSName;
+            }
+        }
+
+        if (isset($node->CallerReference)) {
+            $dist['callerReference'] = (string) $node->CallerReference;
+        }
+
+        if (isset($node->CNAME)) {
+            $dist['cnames'] = array();
+
+            foreach ($node->CNAME as $cname) {
+                $dist['cnames'][] = (string) $cname;
+            }
+        }
+
+        if (isset($node->Comment)) {
+            $dist['comment'] = (string) $node->Comment;
+        }
+
+        if (isset($node->Enabled)) {
+            $dist['enabled'] = ((string) $node->Enabled == 'true' ? true : false);
+        }
+
+        if (isset($node->DistributionConfig)) {
+            $dist = array_merge($dist, self::__parseCloudFrontDistributionConfig($node->DistributionConfig));
+        }
+
 		return $dist;
 	}
+
+
+    /**
+     * Creates invalidation bath
+     *
+     * @static
+     * @param integer $distributionId
+     * @param array $paths
+     * @return array|bool
+     */
+    public static function createInvalidation($distributionId, $paths) {
+        self::$useSSL = true; // CloudFront requires SSL
+
+        $rest = new S3Request('POST', '', '2010-11-01/distribution/' . $distributionId . '/invalidation', 'cloudfront.amazonaws.com');
+
+        $rest->data = self::__getCloudFrontInvalidationBath($paths);
+        $rest->size = strlen($rest->data);
+        $rest->setHeader('Content-Type', 'application/xml');
+
+        $rest = self::__getCloudFrontResponse($rest);
+
+        if ($rest->error === false && $rest->code !== 201) {
+            $rest->error = array('code' => $rest->code, 'message' => 'Unexpected HTTP status');
+        }
+
+        if ($rest->error !== false) {
+            trigger_error(sprintf("S3::createInvalidation($distributionId, %s): [%s] %s",
+            print_r($files, true),
+            $rest->error['code'], $rest->error['message']), E_USER_WARNING);
+
+            return false;
+        } elseif ($rest->body instanceof SimpleXMLElement) {
+            return self::__parseCloudFrontInvalidation($rest->body);
+        }
+
+        return false;
+    }
+
+
+    /**
+     * Returns invalidation bath XML
+     *
+     * @static
+     * @param array $files
+     * @return string
+     */
+    private static function __getCloudFrontInvalidationBath($paths) {
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->formatOutput = true;
+
+        $invalidationBath = $dom->createElement('InvalidationBatch');
+
+        foreach ($paths as $path) {
+            $invalidationBath->appendChild($dom->createElement('Path', $path));
+        }
+
+        $invalidationBath->appendChild($dom->createElement('CallerReference', date('YmdHis')));
+        $dom->appendChild($invalidationBath);
+
+        return $dom->saveXML();
+    }
+
+
+    /**
+     * Parse CloudFront invalidation XML
+     *
+     * @static
+     * @param DOMNode $node
+     * @return array
+     */
+    private static function __parseCloudFrontInvalidation(&$node) {
+        $invalidation = array();
+
+        if (isset($node->Id)) {
+            $invalidation['id'] = $node->Id;
+        }
+
+        if (isset($node->Status)) {
+            $invalidation['status'] = $node->Status;
+        }
+
+        if (isset($node->CreateTime)) {
+            $invalidation['createTime'] = $node->CreateTime;
+        }
+
+        if (isset($node->InvalidationBatch)) {
+            $invalidation['invalidationBath'] = array();
+
+            foreach ($node->InvalidationBatch as $path) {
+                $invalidation['invalidationBath'][] = $path;
+            }
+        }
+
+        return $invalidation;
+    }
 
 
 	/**
@@ -1045,7 +1194,7 @@ class S3 {
 	*/
 	public static function __getMimeType(&$file) {
 		$type = w3_get_mime_type($file);
-		
+
 		return $type;
 	}
 
@@ -1219,7 +1368,7 @@ final class S3Request {
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, false);
 		curl_setopt($curl, CURLOPT_WRITEFUNCTION, array(&$this, '__responseWriteCallback'));
 		curl_setopt($curl, CURLOPT_HEADERFUNCTION, array(&$this, '__responseHeaderCallback'));
-		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+		@curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
 		curl_setopt($curl, CURLOPT_TIMEOUT, 120);
 
 		// Request types
@@ -1328,5 +1477,4 @@ final class S3Request {
 		}
 		return $strlen;
 	}
-
 }

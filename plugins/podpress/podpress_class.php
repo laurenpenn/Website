@@ -23,17 +23,17 @@ License:
 		var $settings = array();
 
 		// Global hardcoded settings
-		var $podcastTag_regexp   = "/\[podcast:([^]]+)]/";
-		var $podcastTag          = '[display_podcast]';
-		var $podtrac_url         = 'http://www.podtrac.com/pts/redirect.mp3?';
-		var $blubrry_url         = 'http://media.blubrry.com/';
+		var $podcastTag_regexp = "/\[podcast:([^]]+)]/";
+		var $podcastTag = '[display_podcast]';
+		var $podtrac_url = 'http://www.podtrac.com/pts/redirect.mp3?';
+		var $blubrry_url = 'http://media.blubrry.com/';
 		var $requiredAdminRights = 'manage_categories';//'level_7';
-		var $realm               = 'Premium Subscribers Content';
-		var $justposted          = false;
-		var $uploadPath  = '';
-		var $tempFileSystemPath  = '';
-		var $tempFileURLPath     = '';
-		var $tempContentAddedTo  = array();
+		var $realm = 'Premium Subscribers Content';
+		var $justposted = false;
+		var $uploadPath = '';
+		var $tempFileSystemPath = '';
+		var $tempFileURLPath = '';
+		var $tempcontentaddedto = array();
 		var $podangoAPI;
 
 		/*************************************************************/
@@ -147,6 +147,30 @@ License:
 				}
 			}
 			
+			$this->createstatistictables();
+
+			if(function_exists('wp_cache_flush')) {
+				wp_cache_flush();
+			}
+
+			$current = get_option('podPress_version');
+			if ( FALSE === $current ) {
+				$current = constant('PODPRESS_VERSION');
+				update_option('podPress_version', $current);
+			}
+
+			//$this->checkSettings();
+		}
+
+		/**
+		* createstatistictables - creates the db tables for the statistics
+		*
+		* @package podPress
+		* @since 8.8.10.3 beta 5
+		*
+		*/
+		function createstatistictables() {
+			GLOBAL $wpdb;
 			// ntm: create the table with the collation or db_charset (since 8.8.5 beta 4)
 			if ( TRUE == defined('DB_COLLATE') AND '' !== DB_COLLATE ) {
 				$db_charset = ' COLLATE ' . DB_COLLATE;
@@ -164,7 +188,7 @@ License:
 			                "feed int(11) default '0',".
 			                "web int(11) default '0',".
 			                "play int(11) default '0',".
-			                "PRIMARY KEY (media)) TYPE=MyISAM" . $db_charset;
+			                "PRIMARY KEY (media)) " . $db_charset;
 			podPress_maybe_create_table($wpdb->prefix."podpress_statcounts", $create_table);
 			
 			// Create stats table
@@ -185,22 +209,11 @@ License:
 			                "version varchar(15) NOT NULL default '',".
 			                "dt int(10) unsigned NOT NULL default '0',".
 					"completed TINYINT(1) UNSIGNED DEFAULT '0',".
-			                "UNIQUE KEY id (id)) TYPE=MyISAM" . $db_charset;
+			                "UNIQUE KEY id (id)) " . $db_charset;
 			podPress_maybe_create_table($wpdb->prefix."podpress_stats", $create_table);
-
-			if(function_exists('wp_cache_flush')) {
-				wp_cache_flush();
-			}
-
-			$current = get_option('podPress_version');
-			if ( FALSE === $current ) {
-				$current = constant('PODPRESS_VERSION');
-				update_option('podPress_version', $current);
-			}
-
-			//$this->checkSettings();
 		}
-
+		
+		
 		/**
 		* checkLocalPathToMediaFiles - checks whether the "Local path to media files directory" exists or not. (This procedure is simply taken from the checkSettings() function earlier versions.)
 		*
@@ -282,7 +295,7 @@ License:
 
 			if(!$this->settings['statLogging'] || empty($this->settings['statLogging']))
 			{
-				$this->settings['statLogging'] = 'Full';
+				$this->settings['statLogging'] = 'Counts';
 			}
 
 			if(empty($this->settings['enable3rdPartyStats'])) {
@@ -420,13 +433,9 @@ License:
 					$this->settings['contentAutoDisplayPlayer'] = true;
 				}
 			}
-
-			if(!is_bool($this->settings['enableFooter'])) {
-				if($this->settings['enableFooter']== 'false') {
-					$this->settings['enableFooter'] = false;
-				} else {
-					$this->settings['enableFooter'] = true;
-				}
+			
+			if ( FALSE == is_bool($this->settings['enableFooter']) ) {
+				$this->settings['enableFooter'] = false;
 			}
 			
 			if ( FALSE == isset($this->settings['mp3Player']) ) {
@@ -532,7 +541,7 @@ License:
 						'use_headerlink' => FALSE
 					);
 					$this->settings['podpress_feeds'][1] = array(
-						'use' => TRUE, 
+						'use' => FALSE, 
 						'premium' => FALSE,
 						'name' => __('Enhanced Podcast Feed', 'podpress'),
 						'slug' => 'enhancedpodcast',
@@ -563,7 +572,7 @@ License:
 						'use_headerlink' => FALSE
 					);
 					$this->settings['podpress_feeds'][2] = array(
-						'use' => TRUE, 
+						'use' => FALSE, 
 						'premium' => FALSE,
 						'name' => __('Torrent Feed', 'podpress'),
 						'slug' => 'torrent',
@@ -596,7 +605,7 @@ License:
 					
 					if ( FALSE == defined('PODPRESS_DEACTIVATE_PREMIUM') OR FALSE === constant('PODPRESS_DEACTIVATE_PREMIUM') ) {
 						$this->settings['podpress_feeds'][3] = array(
-							'use' => TRUE, 
+							'use' => FALSE, 
 							'premium' => TRUE,
 							'name' => __('Premium Feed', 'podpress'),
 							'slug' => 'premium',
@@ -1019,15 +1028,15 @@ License:
 
 		function insert_the_excerpt($content = '') {
 			GLOBAL $post;
-			$this->tempContentAddedTo[$post->ID] = true;
+			$this->tempcontentaddedto[$post->ID] = true;
 			return $content;
 		}
 
 		function insert_the_excerptplayer($content = '') {
 			GLOBAL $post;
-			unset($this->tempContentAddedTo[$post->ID]);
+			unset($this->tempcontentaddedto[$post->ID]);
 			$content = $this->insert_content($content, TRUE);
-			unset($this->tempContentAddedTo[$post->ID]);
+			unset($this->tempcontentaddedto[$post->ID]);
 			return $content;
 		}
 
@@ -1038,18 +1047,19 @@ License:
 					return $content;
 				}
 			}
-			if(isset($this->tempContentAddedTo[$post->ID])) {
-				if(is_feed()) {
+
+			if ( isset($this->tempcontentaddedto[$post->ID]) ) {
+				if ( is_feed() ) {
 					return str_replace($this->podcastTag,'',$content);
 				}
-				if ( FALSE === is_single() AND FALSE === is_page() ) {
+				//~ if ( FALSE === is_single() AND FALSE === is_page() ) {
 					return $content;
-				}
+				//~ }
 			} else {
-				$this->tempContentAddedTo[$post->ID] = true;
+				$this->tempcontentaddedto[$post->ID] = true;
 			}
 
-			if(is_feed()) {
+			if ( is_feed() ) {
 				if($this->settings['protectFeed'] == 'Yes' && get_bloginfo('charset') == 'UTF-8') {
 					$content = podPress_feedSafeContent($content);
 				}
@@ -1078,7 +1088,6 @@ License:
 				}
 			}
 			
-			
 			$podpressTag_in_the_content = '<p>'.$this->podcastTag.'</p>';
 			
 			// add the player and the other elements not if the related setting has been set 
@@ -1097,7 +1106,7 @@ License:
 							}
 						break;
 					}
-					//~ $content = "\n<!-- is excerpt -->\n" . $content;
+					$content = "\n<!-- is excerpt -->\n" . $content;
 				} else {
 					switch ( $this->settings['incontentandexcerpt'] ) {
 						default :
@@ -1112,7 +1121,7 @@ License:
 							}
 						break;
 					}
-					//~ $content = "\n<!-- is content -->\n" . $content;
+					$content = "\n<!-- is content -->\n" . $content;
 				}
 			}
 

@@ -1,7 +1,7 @@
 <?php
 class GFCommon{
 
-    public static $version = "1.5.2";
+    public static $version = "1.5.2.1";
     public static $tab_index = 1;
 
     public static function get_selection_fields($form, $selected_field_id){
@@ -424,6 +424,11 @@ class GFCommon{
                     case "total" :
                         $value = GFCommon::to_money($value);
                     break;
+
+                    case "post_category" :
+                        $ary = explode(":", $value);
+                        $value = count($ary) > 0 ? $ary[0] : "";
+                    break;
                 }
 
                 $text = str_replace($match[0], $value , $text);
@@ -735,6 +740,12 @@ class GFCommon{
         $message = GFCommon::replace_variables(rgget("message", $form["notification"]), $form, $lead, false, false, !rgget("disableAutoformat", $form["notification"]));
         $message = do_shortcode($message);
 
+        $version_info = self::get_version_info();
+        $is_expired = !rgempty("expiration_time", $version_info) && $version_info["expiration_time"] < time();
+        if(!$version_info["is_valid_key"] && $is_expired){
+            $message .= "<br/><br/>Your Gravity Forms License Key has expired. In order to continue receiving support and software updates you must renew your license key. You can do so by following the renewal instructions on the Gravity Forms Settings page in your WordPress Dashboard or by <a href='http://www.gravityhelp.com/renew-license/?key=" . self::get_key() . "'>clicking here</a>.";
+        }
+
         $from = rgempty("fromField", $form["notification"]) ? rgget("from", $form["notification"]) : rgget($form["notification"]["fromField"], $lead);
 
         if(rgempty("fromNameField", $form["notification"])){
@@ -920,7 +931,7 @@ class GFCommon{
 
         if(!$raw_response){
             //Getting version number
-            $options = array('method' => 'POST', 'timeout' => 3);
+            $options = array('method' => 'POST', 'timeout' => 20);
             $options['headers'] = array(
                 'Content-Type' => 'application/x-www-form-urlencoded; charset=' . get_option('blog_charset'),
                 'User-Agent' => 'WordPress/' . get_bloginfo("version"),
@@ -938,7 +949,11 @@ class GFCommon{
          else
          {
              $ary = explode("||", $raw_response['body']);
-             return array("is_valid_key" => $ary[0], "version" => $ary[1], "url" => $ary[2]);
+             $info = array("is_valid_key" => $ary[0], "version" => $ary[1], "url" => $ary[2]);
+             if(count($ary) == 4)
+                $info["expiration_time"] = $ary[3];
+
+             return $info;
          }
 
     }
@@ -1629,7 +1644,7 @@ class GFCommon{
 
         $id = $field["id"];
         $field_id = IS_ADMIN || $form_id == 0 ? "input_$id" : "input_" . $form_id . "_$id";
-        $form_id = IS_ADMIN && empty($form_id) ? $_GET["id"] : $form_id;
+        $form_id = IS_ADMIN && empty($form_id) ? rgget("id") : $form_id;
 
         $size = $field["size"];
         $disabled_text = (IS_ADMIN && RG_CURRENT_VIEW != "entry") ? "disabled='disabled'" : "";
@@ -2595,7 +2610,7 @@ class GFCommon{
             break;
 
             case "date" :
-                return GFCommon::date_display($value, $field["dateFormat"]);
+                return GFCommon::date_display($value, rgar($field, "dateFormat"));
             break;
 
             case "radio" :

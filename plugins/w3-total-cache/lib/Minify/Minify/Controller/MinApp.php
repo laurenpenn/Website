@@ -88,7 +88,7 @@ class Minify_Controller_MinApp extends Minify_Controller_Base {
                 $this->log("Too many or duplicate files specified");
                 return $options;
             }
-            if (isset($_GET['b'])) {
+            if (!empty($_GET['b'])) {
                 // check for validity
                 if (preg_match('@^[^/]+(?:/[^/]+)*$@', $_GET['b'])
                     && false === strpos($_GET['b'], '..')

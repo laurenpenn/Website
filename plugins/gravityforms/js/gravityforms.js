@@ -135,13 +135,13 @@ function gformDeleteUploadedFile(formId, fieldId){
 
 
     //displaying file upload field
-    parent.find("input[type=file]").removeClass("gform_hidden");
+    parent.find("input[type=\"file\"]").removeClass("gform_hidden");
 
     //displaying post image label
     parent.find(".ginput_post_image_file").show();
 
     //clearing post image meta fields
-    parent.find("input[type=text]").val('');
+    parent.find("input[type=\"text\"]").val('');
 
     //removing file from uploaded meta
     var files = jQuery.secureEvalJSON(jQuery('#gform_uploaded_files_' + formId).val());
@@ -189,7 +189,7 @@ function gformCalculateTotalPrice(formId){
 }
 
 function gformGetShippingPrice(formId){
-    var shippingField = jQuery(".gfield_shipping_" + formId + " input[type=hidden], .gfield_shipping_" + formId + " select, .gfield_shipping_" + formId + " input:checked");
+    var shippingField = jQuery(".gfield_shipping_" + formId + " input[type=\"hidden\"], .gfield_shipping_" + formId + " select, .gfield_shipping_" + formId + " input:checked");
     var shipping = 0;
     if(shippingField.length == 1 && !gformIsHidden(shippingField)){
         if(shippingField.attr("type").toLowerCase() == "hidden")
@@ -274,7 +274,7 @@ function gformGetBasePrice(formId, productFieldId){
 
     var suffix = "_" + formId + "_" + productFieldId;
     var price = 0;
-    var productField = jQuery("#ginput_base_price" + suffix+ ", .gfield_donation" + suffix + " input[type=text], .gfield_product" + suffix + " .ginput_amount");
+    var productField = jQuery("#ginput_base_price" + suffix+ ", .gfield_donation" + suffix + " input[type=\"text\"], .gfield_product" + suffix + " .ginput_amount");
     if(productField.length > 0){
         price = productField.val();
 
@@ -391,14 +391,14 @@ function gformInitPriceFields(){
         var productIds = gformGetProductIds("gfield_price", this);
         gformRegisterPriceField(productIds);
 
-       jQuery(this).find("input[type=text], select").change(function(){
+       jQuery(this).find("input[type=\"text\"], select").change(function(){
            var productIds = gformGetProductIds("gfield_price", this);
            if(productIds.formId == 0)
                 productIds = gformGetProductIds("gfield_shipping", this);
            gformCalculateTotalPrice(productIds.formId);
        });
 
-       jQuery(this).find("input[type=radio], input[type=checkbox]").click(function(){
+       jQuery(this).find("input[type=\"radio\"], input[type=\"checkbox\"]").click(function(){
            var productIds = gformGetProductIds("gfield_price", this);
            if(productIds.formId == 0)
                 productIds = gformGetProductIds("gfield_shipping", this);

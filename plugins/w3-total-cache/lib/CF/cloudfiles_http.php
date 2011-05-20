@@ -29,7 +29,7 @@
  */
 require_once("cloudfiles_exceptions.php");
 
-define("PHP_CF_VERSION", "1.7.4");
+define("PHP_CF_VERSION", "1.7.6");
 define("USER_AGENT", sprintf("PHP-CloudFiles/%s", PHP_CF_VERSION));
 define("ACCOUNT_CONTAINER_COUNT", "X-Account-Container-Count");
 define("ACCOUNT_BYTES_USED", "X-Account-Bytes-Used");
@@ -183,7 +183,7 @@ class CF_Http
     function authenticate($user, $pass, $acct=NULL, $host=NULL)
     {
         $path = array();
-        if (isset($acct) || isset($host)) {
+        if (isset($acct)){
             $headers = array(
                 sprintf("%s: %s", AUTH_USER_HEADER_LEGACY, $user),
                 sprintf("%s: %s", AUTH_KEY_HEADER_LEGACY, $pass),
@@ -196,7 +196,7 @@ class CF_Http
                 sprintf("%s: %s", AUTH_USER_HEADER, $user),
                 sprintf("%s: %s", AUTH_KEY_HEADER, $pass),
                 );
-	    $path[] = "https://auth.api.rackspacecloud.com";
+	    $path[] = $host;
         }
 	$path[] = "v1.0";
         $url = implode("/", $path);
@@ -207,13 +207,14 @@ class CF_Http
             curl_setopt($curl_ch, CURLOPT_CAINFO, $this->cabundle_path);
         }
         curl_setopt($curl_ch, CURLOPT_VERBOSE, $this->dbug);
-        curl_setopt($curl_ch, CURLOPT_FOLLOWLOCATION, 1);
+        @curl_setopt($curl_ch, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($curl_ch, CURLOPT_MAXREDIRS, 4);
         curl_setopt($curl_ch, CURLOPT_HEADER, 0);
         curl_setopt($curl_ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl_ch, CURLOPT_USERAGENT, USER_AGENT);
         curl_setopt($curl_ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($curl_ch, CURLOPT_HEADERFUNCTION,array(&$this,'_auth_hdr_cb'));
+        curl_setopt($curl_ch, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt($curl_ch, CURLOPT_URL, $url);
         curl_exec($curl_ch);
         curl_close($curl_ch);
@@ -224,14 +225,21 @@ class CF_Http
 
     # (CDN) GET /v1/Account
     #
-    function list_cdn_containers()
+    function list_cdn_containers($enabled_only)
     {
         $conn_type = "GET_CALL";
-        $url_path = $this->_make_path("CDN", $container_name);
+        $url_path = $this->_make_path("CDN");
 
         $this->_write_callback_type = "TEXT_LIST";
-        $return_code = $this->_send_request($conn_type, $url_path);
-
+        if ($enabled_only)
+        {
+            $return_code = $this->_send_request($conn_type, $url_path . 
+            '/?enabled_only=true');
+        }
+        else
+        {
+            $return_code = $this->_send_request($conn_type, $url_path);
+        }
         if (!$return_code) {
             $this->error_str .= ": Failed to obtain valid HTTP response.";
             array(0,$this->error_str,array());
@@ -1175,7 +1183,8 @@ class CF_Http
             curl_setopt($ch, CURLOPT_CAINFO, $this->cabundle_path);
         }
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, True);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        @curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt($ch, CURLOPT_MAXREDIRS, 4);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_HEADERFUNCTION, array(&$this, '_header_cb'));

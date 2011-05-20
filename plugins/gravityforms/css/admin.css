@@ -156,7 +156,7 @@ a.close_icon {position:absolute; left:100%; margin-left:-27px; top:9px; width:16
 .field_selected .field_edit_icon,
 .field_selected .field_delete_icon,
 .field_selected .form_edit_icon,
-.field_selected .form_delete_icon {display:block!important}
+.field_selected .form_delete_icon {display:block!important; cursor:pointer;}
 .field_edit_icon,.form_edit_icon {display:none; float:right; font-size:10px; text-decoration:none; margin-right:6px; height:16px; line-height:16px; padding:0 0 0 18px}
 .edit_icon_expanded {background-image:url(../images/close.png); background-repeat:no-repeat}
 .edit_icon_collapsed {background-image:url(../images/edit.png); background-repeat:no-repeat}

@@ -131,7 +131,12 @@ class GFFormDetail{
         $form = RGFormsModel::get_form_meta($form_id);
         $form = RGFormsModel::add_default_properties($form);
 
-        if(is_object($form) || is_array($form))
+        if($form == null)
+            $form = array("fields" => array());
+
+        $form = apply_filters("gform_admin_pre_render_" . $form_id, apply_filters("gform_admin_pre_render", $form));
+
+        if(isset($form['id']))
             echo "<script>var form = " . GFCommon::json_encode($form) . ";</script>";
         else
             echo "<script>var form = new Form();</script>";
@@ -571,7 +576,7 @@ class GFFormDetail{
 
                     <div>
                         <?php
-                            $button_text = $form["id"] > 0 ? __("Update Form", "gravityforms") : __("Save Form", "gravityforms");
+                            $button_text = rgar($form,"id") > 0 ? __("Update Form", "gravityforms") : __("Save Form", "gravityforms");
                             $save_button = '<input type="button" class="button-primary gfbutton" value="' . $button_text . '" onclick="SaveForm();" />';
                             $save_button = apply_filters("gform_save_form_button", $save_button);
                             echo $save_button;
@@ -595,14 +600,14 @@ class GFFormDetail{
                         </div>
                         <div class="updated_base" id="after_update_dialog" style="padding:10px 10px 16px 10px; display:none;">
                             <strong><?php _e("Form updated successfully.", "gravityforms"); ?></strong><br />
-                            <a title="<?php _e("Continue editing this form", "gravityforms"); ?>" id="continue_form_link" href="?page=gf_edit_forms&id=<?php echo $form["id"]?>" onclick="jQuery('#after_update_dialog').slideUp();"><?php _e("Continue Editing", "gravityforms"); ?></a> |
-                            <a title="<?php _e("Setup email notifications for this form", "gravityforms"); ?>" href="?page=gf_edit_forms&view=notification&id=<?php echo absint($form["id"]) ?>"><?php _e("Setup Email Notifications", "gravityforms"); ?></a> |
+                            <a title="<?php _e("Continue editing this form", "gravityforms"); ?>" id="continue_form_link" href="?page=gf_edit_forms&id=<?php echo rgar($form, "id")?>" onclick="jQuery('#after_update_dialog').slideUp();"><?php _e("Continue Editing", "gravityforms"); ?></a> |
+                            <a title="<?php _e("Setup email notifications for this form", "gravityforms"); ?>" href="?page=gf_edit_forms&view=notification&id=<?php echo absint(rgar($form, "id")) ?>"><?php _e("Setup Email Notifications", "gravityforms"); ?></a> |
 
                             <?php if(GFCommon::current_user_can_any("gravityforms_view_entries")){ ?>
-                                <a title="<?php _e("View this form's entries", "gravityforms"); ?>" href="?page=gf_entries&view=entries&id=<?php echo absint($form["id"]) ?>"><?php _e("View Entries", "gravityforms"); ?></a> |
+                                <a title="<?php _e("View this form's entries", "gravityforms"); ?>" href="?page=gf_entries&view=entries&id=<?php echo absint(rgar($form, "id")) ?>"><?php _e("View Entries", "gravityforms"); ?></a> |
                             <?php } ?>
 
-                            <a title="<?php _e("Preview this form", "gravityforms"); ?>" href="<?php echo GFCommon::get_base_url() ?>/preview.php?id=<?php echo absint($form["id"]) ?>" target="_blank"><?php _e("Preview Form", "gravityforms"); ?></a>
+                            <a title="<?php _e("Preview this form", "gravityforms"); ?>" href="<?php echo GFCommon::get_base_url() ?>/preview.php?id=<?php echo absint(rgar($form, "id")) ?>" target="_blank"><?php _e("Preview Form", "gravityforms"); ?></a>
                         </div>
                         <div class="error_base" id="after_update_error_dialog" style="padding:10px 10px 16px 10px; display:none;">
                             There was an error while saving your form, most likely caused by a plugin conflict.
@@ -990,7 +995,7 @@ class GFFormDetail{
                                 </label>
                                 <?php
                                     $args = array('name' => 'field_post_author');
-                                    $args = apply_filters("gform_author_dropdown_args_{$form["id"]}", apply_filters("gform_author_dropdown_args", $args));
+                                    $args = apply_filters("gform_author_dropdown_args_" . rgar($form, "id"), apply_filters("gform_author_dropdown_args", $args));
                                     wp_dropdown_users($args);
                                     ?>
                                 <div>
@@ -1135,7 +1140,7 @@ class GFFormDetail{
                             <li class="address_setting field_setting">
                                 <?php
 
-                                $addressTypes = GFCommon::get_address_types($form["id"]);
+                                $addressTypes = GFCommon::get_address_types(rgar($form,"id"));
                                 ?>
                                 <label for="field_address_type">
                                     <?php _e("Address Type", "gravityforms"); ?>
@@ -1358,7 +1363,7 @@ class GFFormDetail{
                                             __("Size", "gravityforms") => array(__("Extra Small","gravityforms"),__("Small","gravityforms"),__("Medium","gravityforms"),__("Large","gravityforms"),__("Extra Large","gravityforms")),
 
                                         );
-                                        $predefined_choices = apply_filters("gform_predefined_choices_{$form["id"]}", apply_filters("gform_predefined_choices", $predefined_choices));
+                                        $predefined_choices = apply_filters("gform_predefined_choices_" . rgar($form, "id"), apply_filters("gform_predefined_choices", $predefined_choices));
                                         ?>
                                         <script type="text/javascript">
                                             var gform_predefined_choices = <?php echo GFCommon::json_encode($predefined_choices) ?>;

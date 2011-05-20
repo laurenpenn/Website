@@ -6,11 +6,11 @@
 
 /**
  * eAccelerator-based cache class for Minify
- * 
+ *
  * <code>
  * Minify::setCache(new Minify_Cache_Eaccelerator());
  * </code>
- * 
+ *
  * @package Minify
  * @author Chris Edwards
  **/
@@ -26,8 +26,7 @@ class Minify_Cache_Eaccelerator {
      *
      * @return null
      */
-    public function __construct($expire = 0)
-    {
+    public function __construct($expire = 0) {
         $this->_exp = $expire;
     }
 
@@ -40,8 +39,7 @@ class Minify_Cache_Eaccelerator {
      *
      * @return bool success
      */
-    public function store($id, $data)
-    {
+    public function store($id, $data) {
         return eaccelerator_put($id, "{$_SERVER['REQUEST_TIME']}|{$data}", $this->_exp);
     }
 
@@ -52,11 +50,10 @@ class Minify_Cache_Eaccelerator {
      *
      * @return int size in bytes
      */
-    public function getSize($id)
-    {
+    public function getSize($id) {
         return $this->_fetch($id)
-            ? strlen($this->_data)
-            : false;
+                ? strlen($this->_data)
+                : false;
     }
 
     /**
@@ -68,8 +65,7 @@ class Minify_Cache_Eaccelerator {
      *
      * @return bool exists
      */
-    public function isValid($id, $srcMtime)
-    {
+    public function isValid($id, $srcMtime) {
         return ($this->_fetch($id) && ($this->_lm >= $srcMtime));
     }
 
@@ -78,11 +74,10 @@ class Minify_Cache_Eaccelerator {
      *
      * @param string $id cache id
      */
-    public function display($id)
-    {
+    public function display($id) {
         echo $this->_fetch($id)
-            ? $this->_data
-            : '';
+                ? $this->_data
+                : '';
     }
 
     /**
@@ -92,11 +87,22 @@ class Minify_Cache_Eaccelerator {
      *
      * @return string
      */
-    public function fetch($id)
-    {
+    public function fetch($id) {
         return $this->_fetch($id)
-            ? $this->_data
-            : '';
+                ? $this->_data
+                : '';
+    }
+
+    /**
+     * Flush cache
+     *
+     * @return bool
+     */
+    public function flush() {
+        @eaccelerator_clean();
+        @eaccelerator_clear();
+
+        return true;
     }
 
     private $_exp = null;
@@ -113,8 +119,7 @@ class Minify_Cache_Eaccelerator {
      *
      * @return bool success
      */
-    private function _fetch($id)
-    {
+    private function _fetch($id) {
         if ($this->_id === $id) {
             return true;
         }

@@ -1,16 +1,16 @@
 <?php
-define('PODPRESS_VERSION', '8.8.10.2');
+define('PODPRESS_VERSION', '8.8.10.6');
 /*
 Info for WordPress:
 ==============================================================================
 Plugin Name: podPress
-Version: 8.8.10.2
+Version: 8.8.10.6
 Plugin URI: http://www.mightyseek.com/podpress/
 Description: The podPress plugin gives you everything you need in one easy plugin to use WordPress for Podcasting. Set it up in <a href="admin.php?page=podpress/podpress_feed.php">'podPress'->Feed/iTunes Settings</a>. If this plugin works for you, send us a comment.
 Author: Dan Kuykendall (Seek3r)
 Author URI: http://www.mightyseek.com/
 Min WP Version: 2.2
-Max WP Version: 3.1
+Max WP Version: 3.1.2
 
 podPress - Podcasting made easy for WordPress
 ==============================================================================
@@ -120,8 +120,8 @@ function podPress_init() {
 	// Variables which you can overwrite with definitions in the podpress_config.php file
 	// to (de-)activate the Podango Integration (default: FALSE) - Leave this feature deactivated because the Podango platform and all coresponding feature are offline for a long time (since end of 2008) now.
 	if ( ! defined( 'PODPRESS_ACTIVATE_PODANGO_INTEGRATION' ) ) { define( 'PODPRESS_ACTIVATE_PODANGO_INTEGRATION', FALSE ); }
-	// to (de-)activate the 3rd party stats "feature" (default: FALSE)
-	if ( ! defined( 'PODPRESS_ACTIVATE_3RD_PARTY_STATS' ) ) { define( 'PODPRESS_ACTIVATE_3RD_PARTY_STATS', FALSE ); }
+	// to (de-)activate the 3rd party stats feature (default: TRUE)
+	if ( ! defined( 'PODPRESS_ACTIVATE_3RD_PARTY_STATS' ) ) { define( 'PODPRESS_ACTIVATE_3RD_PARTY_STATS', TRUE ); }
 
 	// You can log some of the procedures of podPress if you define this constant as true. The log file is podpress_log.dat.
 	if ( ! defined( 'PODPRESS_DEBUG_LOG' ) ) { define( 'PODPRESS_DEBUG_LOG', FALSE ); }
@@ -769,6 +769,16 @@ function podpress_print_js_vars() {
 		echo 'var podPressHTML5 = false;'."\n";
 	} else {
 		echo 'var podPressHTML5 = true;'."\n";
+		if ( TRUE === $podPress->settings['enableStats'] ) {
+			wp_enqueue_script( 'jquery' );
+
+			echo 'var podPressHTML5sec = "'. attribute_escape(wp_create_nonce( 'podPress_html5_ajax_nonce' )) .'";'."\n";
+			if ( $podPress->settings['enable3rdPartyStats'] == 'PodTrac' ) {
+				echo 'var podPressPT = true;'."\n";
+			} elseif ( $podPress->settings['enable3rdPartyStats'] == 'Blubrry' AND FALSE == empty($podPress->settings['statBluBrryProgramKeyword']) ) {
+				echo 'var podPressBK = "'.attribute_escape($podPress->settings['statBluBrryProgramKeyword']).'";'."\n";
+			}
+		}
 	}
 	if ( TRUE == isset($podPress->settings['showhtml5playersonpageload']) AND TRUE === $podPress->settings['showhtml5playersonpageload'] ) {
 		echo 'var podPressHTML5_showplayersdirectly = true;'."\n";
@@ -874,8 +884,12 @@ function podPress_admin_footer() {
 
 function podPress_wp_footer() {
 	GLOBAL $podPress;
-	if ( $podPress->settings['enableFooter'] ) {
-		echo '<div id="podPress_footer">'.__('Podcast powered by', 'podpress').' <a href="http://wordpress.org/extend/plugins/podpress/" title="'.__('podPress, a plugin for podcasting with WordPress', 'podpress').'"><strong>podPress v'.PODPRESS_VERSION.'</strong></a></div>';
+	if ( isset($podPress->settings['enableFooter']) AND TRUE === $podPress->settings['enableFooter'] ) {
+		if (isset($podPress->settings['disableVersionNumber']) AND TRUE === $podPress->settings['disableVersionNumber'] ) {
+			echo '<div id="podPress_footer">'.__('Podcast powered by', 'podpress').' <a href="http://wordpress.org/extend/plugins/podpress/" title="'.__('podPress, a plugin for podcasting with WordPress', 'podpress').'">podPress</a></div>';
+		} else {
+			echo '<div id="podPress_footer">'.__('Podcast powered by', 'podpress').' <a href="http://wordpress.org/extend/plugins/podpress/" title="'.__('podPress, a plugin for podcasting with WordPress', 'podpress').'">podPress v'.PODPRESS_VERSION.'</a></div>';
+		}
 	}
 }
 

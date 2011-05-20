@@ -105,12 +105,19 @@ class Minify_Source {
      */
     public function getContent()
     {
-        $content = (null !== $this->filepath)
-            ? file_get_contents($this->filepath)
-            : ((null !== $this->_content)
-                ? $this->_content
-                : call_user_func($this->_getContentFunc, $this->_id)
-            );
+        if (isset($this->minifyOptions['processCssImports']) && $this->minifyOptions['processCssImports']) {
+            require_once W3TC_LIB_MINIFY_DIR . '/Minify/ImportProcessor.php';
+
+            $content = Minify_ImportProcessor::process($this->filepath);
+        } else {
+            $content = (null !== $this->filepath)
+                ? file_get_contents($this->filepath)
+                : ((null !== $this->_content)
+                    ? $this->_content
+                    : call_user_func($this->_getContentFunc, $this->_id)
+                );
+        }
+        
         // remove UTF-8 BOM if present
         return (pack("CCC",0xef,0xbb,0xbf) === substr($content, 0, 3))
             ? substr($content, 3)

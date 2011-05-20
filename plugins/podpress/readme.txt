@@ -3,19 +3,15 @@ Tags: post, podcast, podcasting, audio, video, admin, feed, widget, stats, stati
 Contributors: seek3r, macx, iscifi
 Donate link: http://www.mightyseek.com/podpress_donate.php
 Requires at least: 2.2
-Tested up to: 3.1
-Stable Tag: 8.8.10.2
+Tested up to: 3.1.2
+Stable Tag: 8.8.10.6
 
 A plugin for Podcasters using WordPress.
 
 == Description ==
 podPress adds a lot of features designed to make WordPress the ideal platform for hosting a podcast.
 
-podPress 8.8.10.2 includes 2 bug fixes. Read more about this version in the [Changelog](http://wordpress.org/extend/plugins/podpress/changelog/) and pay attention to the [Upgrade](http://wordpress.org/extend/plugins/podpress/other_notes/) section.
-
-Thank you to all who have reported bugs and have made improvement proposals. Special thanks to [Ray (raymer)](http://wordpress.org/support/profile/68146) who did extensive tests with the development versions of 8.8.5+ and helped a lot! 
-(Most patches for v8.8.5+ were made by [Tim Berger (ntm)](http://profiles.wordpress.org/ntm/))
-If somebody else is also interested in maintaining podPress while the main developers are out, please send an email to admin [at] laptoptips.ca.
+podPress 8.8.10.5 and .6 include 2 bug fixes. You can read more about this version in the [Changelog](http://wordpress.org/extend/plugins/podpress/changelog/) and pay attention to the [Upgrade](http://wordpress.org/extend/plugins/podpress/other_notes/) section.
 
 Features:
 
@@ -37,14 +33,49 @@ Available in these languages:
 * English
 * German
 
-If you discover a problem with this plugin, please report it in the [WP.org forum](http://wordpress.org/tags/podpress?forum_id=10) and add the tag "podpress" to your post resp. thread.
 
-For the more information visit the website
+If you discover a problem with this plugin, please report it in the [WP.org forum](http://wordpress.org/tags/podpress?forum_id=10) and add the tag "podpress" to your post.<br />
+Thank you to all who have reported bugs and have made improvement proposals. Special thanks to [Ray (raymer)](http://wordpress.org/support/profile/68146) who did extensive tests with the development versions since v8.8.5 and helped a lot! 
+
+This plugin is currently maintained by [Tim Berger (ntm)](http://profiles.wordpress.org/ntm/).<br />Latest news and announcements regarding podPress on Twitter: [podpress2010](http://twitter.com/podPress2010)
+
+If somebody else is also interested in maintaining podPress while the main developers are out, please send an email to admin [at] laptoptips.ca.
+
+For further information you may also visit the website
 http://www.mightyseek.com/podpress
 
 == Changelog ==
 
 Please, read the [Upgrade instructions](http://wordpress.org/extend/plugins/podpress/other_notes/). 
+= v8.8.10.6 =
+<strong>Notice:</strong> Upgrading to this version from version 8.8.9.2 or older will rename the podPress `meta_key`s in the postmeta data base table of your blog (see bug fixes). Downgrading to a previous version is only possible if you reverse these changes.
+
+* bug fix: a further bug fix for the feed modifying functions. podPress is using now the WP-own list of HTML entities and their numeric equivalents (ent2ncr();) to transform non-ASCII characters in the additional feed elements into RSS-feed-save text. (Thank you [Aaron Frankel](http://wordpress.org/support/profile/aaronfrankel) for [reporting the problem](http://wordpress.org/support/topic/88105-xml-feed-still-down).)
+
+= v8.8.10.5 =
+<strong>Notice:</strong> Upgrading to this version from version 8.8.9.2 or older will rename the podPress `meta_key`s in the postmeta data base table of your blog (see bug fixes). Downgrading to a previous version is only possible if you reverse these changes.
+
+* bug fix: a further bug fix for the feed modifying functions
+* bug fix: podPresshas displayed under some circumstances the player and links twice on single post views
+
+= v8.8.10.4 =
+<strong>Notice:</strong> Upgrading to this version from version 8.8.9.2 or older will rename the podPress `meta_key`s in the postmeta data base table of your blog (see bug fixes). Downgrading to a previous version is only possible if you reverse these changes.
+
+* bug fix: for a problem with not escaped ampersands in iTunes:category names which appeared in 8.8.10.3 (Thank you [BibleStudyRadio](http://wordpress.org/support/profile/biblestudyradio), [UULosAlamos Webmaster](http://wordpress.org/support/profile/uulosalamos-webmaster),  [AJRitz](http://wordpress.org/support/profile/ajritz) and [raymer](http://wordpress.org/support/profile/raymer) for [reporting the problem](http://wordpress.org/support/topic/plugin-podpress-itune-feed-incorrect).)
+* bug fix: The iTunes:category settings for the podPress Feeds work now. Depending on your previous iTunes:category settings it might be necessary to adjust them now. The podPress Feeds will no longer use the comparable settings of the main feed settings.
+
+= v8.8.10.3 =
+<strong>Notice:</strong> Upgrading to this version from version 8.8.9.2 or older will rename the podPress `meta_key`s in the postmeta data base table of your blog (see bug fixes). Downgrading to a previous version is only possible if you reverse these changes.
+
+* The 3rd party statistic options are available again by default. If you have used them before then please control the related settings after the upgrade.
+* bug fix: podPress statistics counts HTML5 play events correct, now. It counts when the "onplaying" event happens (when someone clicks on play and not during when the the HTML5 player buffers (preload) the file). The download numbers with 8.8.10 - 8.8.10.2 are probably to high depending on how many of your listners have used Chrome/Chromium (or Safari desktop versions) to listen your podcasts.
+* bug fix: podPress will use the excerpt of a post if there is one as the iTunes:summary and 255 characters of it as iTunes:subtitle. If a post has no excerpt then podPress takes automatically the post content (or the first parts of it). In older versions podPress has ignored the excerpts. Furthermore podPress will respect the password protected posts and adds only the summary, subtitle and enclosure if there is no password protection or if the user has already entered the password for the post. (Thank you [MedHead](http://wordpress.org/support/profile/medhead) for [reporting the problem](http://wordpress.org/support/topic/plugin-podpress-itunes-summary-send-only-excerpt).)
+* bug fix: the iTunes:block options in the podPress Feeds section will show the correct status / current setting (so far it displayed always 'No' regardless of the setting) (Thank you [maydaytothemoon](http://wordpress.org/support/profile/maydaytothemoon) for [reporting the problem](http://wordpress.org/support/topic/plugin-podpress-podpress-settingspreferences-are-not-being-saved).)
+* bug fix: Now it is possible to deselect the iTunes feed button (Feed Buttons Widget). (Thank you [maydaytothemoon](http://wordpress.org/support/profile/maydaytothemoon) for [reporting the problem](http://wordpress.org/support/topic/plugin-podpress-podpress-settingspreferences-are-not-being-saved).)
+* bug fix: podPress checks whether or the stats tables exist and creates them if necessary when someone activates the stats feature. The db queries do not long include a specific table type. That prevents problems in cases in which the type was not the one which was hardcoded in previous versions of podPress.
+* podPress version number appears only if you want it to in the footer or the Feeds of your blog. It is also possible show only the name of the plugin without the version number.
+* The auto detection of the meta information of the media files can retrieve the cover art of m4a files.
+* on a first installation of podPress, only the podPress Feed with the slug "podcast" will be active by default
 
 = v8.8.10.2 =
 <strong>Notice:</strong> Upgrading to this version from version 8.8.9.2 or older will rename the podPress `meta_key`s in the postmeta data base table of your blog (see bug fixes). Downgrading to a previous version is only possible if you reverse these changes.
@@ -339,6 +370,8 @@ Details about all the optional_files are in optional_files/details.txt
 
 = Requirements =
 podPress requires at least WP 2.1 but it is very recommended to use at least WP 2.3. Many features like the widgets, the custom feeds or the CategoryCasting feature will work only with WP 2.3 or later WP versions. Multiple Widgets are available in combination with WP 2.8.x or newer.
+
+The auto detection of the duration and other meta information requires PHP 5.0.5. But all other elements of the plugin work with PHP 4.x, too.
 
 = Included Software =
 podPress v8.8.10 includes:

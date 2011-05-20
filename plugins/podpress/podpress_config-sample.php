@@ -1,7 +1,7 @@
 <?php
 /**
 * podPress Custom Settings
-* rev. 1.0
+* rev. 1.1
 */
 
 // Usage:
@@ -13,4 +13,6 @@
 // If you set this constant from FALSE to TRUE then all premium feed option will not be visible and it will not be possible to create a Feed with the slug name "premium". Existing "premium" Feeds will be removed automatically during the next update of the Feed/iTunes settings of a blog. This constant effects all blogs of a multi site WP installation.
 if ( ! defined('PODPRESS_DEACTIVATE_PREMIUM') ) { define('PODPRESS_DEACTIVATE_PREMIUM', FALSE); }
 
+// If you set this constant from FALSE to TRUE then 3rd party statistics option will be available again.
+if ( ! defined( 'PODPRESS_ACTIVATE_3RD_PARTY_STATS' ) ) { define( 'PODPRESS_ACTIVATE_3RD_PARTY_STATS', FALSE ); }
 ?>

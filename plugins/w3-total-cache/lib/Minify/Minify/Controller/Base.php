@@ -49,6 +49,7 @@ abstract class Minify_Controller_Base {
             ,'maxAge' => 1800 // 30 minutes
             ,'rewriteCssUris' => true
             ,'bubbleCssImports' => false
+            ,'processCssImports' => false
             ,'quiet' => false // serve() will send headers and output
             ,'debug' => false
             

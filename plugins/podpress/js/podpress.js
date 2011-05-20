@@ -1,30 +1,30 @@
 /* podpress.js | podPress - JS scripts for the frontend and the Admin Site */
-	if (!self.getHTTPObject) {
-		function getHTTPObject() {
-			var xmlhttp;
-			var container;
-			if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
-				try {
-					xmlhttp = new XMLHttpRequest();
-				} catch (e) {
-					xmlhttp = false;
-				}
-			} else {
-				try {
-					xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-				} catch (e) {
-					try {
-						xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-					} catch (E) {
-						xmlhttp = false;
-					}
-				}
-			}		
-			return xmlhttp;
-		}
-	}
+	//~ if (!self.getHTTPObject) {
+		//~ function getHTTPObject() {
+			//~ var xmlhttp;
+			//~ var container;
+			//~ if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+				//~ try {
+					//~ xmlhttp = new XMLHttpRequest();
+				//~ } catch (e) {
+					//~ xmlhttp = false;
+				//~ }
+			//~ } else {
+				//~ try {
+					//~ xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+				//~ } catch (e) {
+					//~ try {
+						//~ xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+					//~ } catch (E) {
+						//~ xmlhttp = false;
+					//~ }
+				//~ }
+			//~ }		
+			//~ return xmlhttp;
+		//~ }
+	//~ }
 
-	var podPressHttp = getHTTPObject();
+	//~ var podPressHttp = getHTTPObject();
 
 	function podPressShowVideoPreview (strPlayerDiv, strMediaFile, numWidth, numHeight, strPreviewImg) {
 		var refPlayerDiv = document.getElementById('podPressPlayerSpace_'+strPlayerDiv);
@@ -228,8 +228,10 @@
 				}
 				// Gecko since 1.9.1 and Presto since 2.5 support OGG Audio and Video in the HTML 5 <audio> and <video> element.
 				if ( podPressHTML5 == true && (-1 != navigator.userAgent.search(/rv:([0-9]\.*[0-9]*\.*[0-9]*\.*[0-9]*)\) Gecko/gi) && true == podPress_is_v1_gtoreq_v2(RegExp.$1, '1.9.1')) || (-1 != navigator.userAgent.search(/Presto\/([0-9]\.*[0-9]*\.*[0-9]*\.*[0-9]*)/gi) && true == podPress_is_v1_gtoreq_v2(RegExp.$1, '2.5')) ) {
-					strResult = '<' + strTag + ' controls="controls" preload="none"' + strAutoPlay + '>';
-					strResult += '<source src="'+strMediaFile+'" type="' + strTag + '/ogg" />';
+					var maskedurl = decodeURI(strMediaFile);
+					var realurl = podPress_get_OrigURL(strPlayerDiv);
+					strResult = '<' + strTag + ' id="podpresshtml5_'+strPlayerDiv+'" controls="controls" preload="metadata"' + strAutoPlay + ' onplaying="podPress_html5_count(\'' + maskedurl + '\', this.id)">';
+					strResult += '<source src="' + realurl + '" type="' + strTag + '/ogg" />';
 					var use_html5 = true;
 				} else {
 					strResult += '<object class="podpress_player_object" classid="clsid:CAFEEFAC-0015-0000-0000-ABCDEFFEDCBA" type="application/x-java-applet;jpi-version=1.5.0" width="'+numWidth+'" height="'+numHeight+'">';
@@ -339,21 +341,27 @@
 			refPlayerDivLink.parentNode.onclick = function(){ podPressShowHidePlayer(strPlayerDiv, strMediaFile, numWidth, numHeight, 'true', strPreviewImg, strTitle, strArtist); return false; };
 			if ( strExt == 'mp3' && podPressPlayerFile == '1pixelout_player.swf' && true == podPressMP3PlayerWrapper ) {
 				document.getElementById('podpress_lwc_' + strPlayerDiv).style.backgroundImage = 'url('+podPressBackendURL+'images/listen_wrapper.gif)';
+				document.getElementById('podpress_lwc_' + strPlayerDiv).style.display='block';
 			}
+			refPlayerDiv.parentNode.style.display='block';
 			refPlayerDiv.style.display='block';
 		} else {
 			if(refPlayerDivLink.innerHTML == podPressText_PlayNow) {
 				refPlayerDivLink.innerHTML=podPressText_HidePlayer;
 				if ( strExt == 'mp3' && podPressPlayerFile == '1pixelout_player.swf' && true == podPressMP3PlayerWrapper ) {
 					document.getElementById('podpress_lwc_' + strPlayerDiv).style.backgroundImage = 'url('+podPressBackendURL+'images/listen_wrapper.gif)';
+					document.getElementById('podpress_lwc_' + strPlayerDiv).style.display='block';
 				}
+				refPlayerDiv.parentNode.style.display='block';
 				refPlayerDiv.style.display='block';
 			} else {
 				refPlayerDivLink.innerHTML=podPressText_PlayNow;
 				if ( strExt == 'mp3' && podPressPlayerFile == '1pixelout_player.swf' && true == podPressMP3PlayerWrapper ) {
 					document.getElementById('podpress_lwc_' + strPlayerDiv).style.backgroundImage = '';
+					document.getElementById('podpress_lwc_' + strPlayerDiv).style.display='none';
 				}
 				refPlayerDiv.style.display='none';
+				refPlayerDiv.parentNode.style.display='none';
 				if(document.getElementById('winplayer') != undefined) {
 					if(document.getElementById('winplayer').controls) {
 						document.getElementById('winplayer').controls.stop();
@@ -415,10 +423,12 @@
 	*/
 	function podPressenprintHTML5audio(strPlayerDiv, strMediaFile, playnow) {
 		if (typeof playnow != 'boolean') { var playnow = false; }
+		var maskedurl = decodeURI(strMediaFile);
+		var realurl = podPress_get_OrigURL(strPlayerDiv);
 		if ( playnow == true ) {
-			document.getElementById('podPressPlayerSpace_' + strPlayerDiv).innerHTML = '<audio id="podpresshtml5_'+strPlayerDiv+'" controls="controls" preload="auto" autoplay="true"><source src="' + decodeURI(strMediaFile) + '" type="audio/mpeg" /></audio>';
+			document.getElementById('podPressPlayerSpace_' + strPlayerDiv).innerHTML = '<audio id="podpresshtml5_'+strPlayerDiv+'" controls="controls" preload="auto" autoplay="autoplay" onplaying="podPress_html5_count(\'' + maskedurl + '\', this.id)"><source src="' + realurl + '" type="audio/mpeg" /></audio>';
 		} else {
-			document.getElementById('podPressPlayerSpace_' + strPlayerDiv).innerHTML = '<audio id="podpresshtml5_'+strPlayerDiv+'" controls="controls" preload="none"><source src="' + decodeURI(strMediaFile) + '" type="audio/mpeg" /></audio>';
+			document.getElementById('podPressPlayerSpace_' + strPlayerDiv).innerHTML = '<audio id="podpresshtml5_'+strPlayerDiv+'" controls="controls" preload="none" onplaying="podPress_html5_count(\'' + maskedurl + '\', this.id)"><source src="' + realurl + '" type="audio/mpeg" /></audio>';
 		}
 	}
 	
@@ -549,6 +559,7 @@
 		}
 		if ( strExt == 'mp3' && podPressHTML5 == true && ((-1 != navigator.userAgent.search(/Webkit\/([0-9]+\.[0-9]+)/gi) && true == podPress_is_v1_gtoreq_v2(RegExp.$1, '525')) || true == is_modern_ie ) ) {
 			var use_html5 = true;
+			strResult += '<script type="text/javascript" src="'+podPressBackendURL+'js/podpress_popupplayer.js"></script>\n';
 		} else {
 			var use_html5 = false;
 		}
@@ -565,7 +576,9 @@
 		strResult += '<BODY>\n';
 		strResult += '<div id="podpress_popupplayer_container">\n';
 		if ( true == use_html5 ) {
-			strResult += '<div id="podPressPlayerSpace_popup"><audio controls="controls" preload="metadata" autoplay="autoplay"><source src="' + decodeURI(strMediaFile) + '" type="audio/mpeg" /></audio></div>\n';
+			var maskedurl = decodeURI(strMediaFile);
+			var realurl = podPress_get_OrigURL(strPlayerDiv);
+			strResult += '<div id="podPressPlayerSpace_popup"><audio id="podpresshtml5_popup" controls="controls" preload="metadata" autoplay="autoplay" onplaying="podPress_html5_count(\'' + maskedurl + '\', this.id)"><source src="' + realurl + '" type="audio/mpeg" /></audio></div>\n';
 		} else {
 			if ( strExt == 'mp3' && podPressPlayerFile == '1pixelout_player.swf' ) {
 				if ( true == podPressMP3PlayerWrapper ) {
@@ -621,6 +634,54 @@
 		}
 	}
 	
+	/** podPress_get_OrigURL -  get the OrigURL
+	* @param mixed $url - the masked url
+	* @return string - the real URL
+	*/	
+	function podPress_get_OrigURL(strPlayerDiv) {	
+		var realurl = document.getElementById('podPressPlayerSpace_' + strPlayerDiv + '_OrigURL').value;
+		if ( typeof podPressPT == 'boolean' && podPressPT == true ) {
+			realurl = realurl.replace(/^(https?:\/\/|http:\/\/)/, '');
+			realurl = 'http://www.podtrac.com/pts/redirect.mp3?' + realurl;
+		} else if ( typeof podPressBK == 'string' && podPressBK != '' ) {
+			realurl = realurl.replace(/^http:\/\//, '');
+			realurl = 'http://media.blubrry.com/' + podPressBK + '/'+ realurl;
+		}
+		return realurl;
+	}
+	
+	/** podPress_html5_count - counts how many times a media file was played (HTML5)
+	* @param mixed $url - the masked url
+	* @param mixed $id - the ID of the player element
+	*/	
+	function podPress_html5_count(url, id) {
+		if ( typeof podPressHTML5sec == 'string' && podPressHTML5sec != '' ) {
+			var startTime = document.getElementById( id ).currentTime;
+			if (startTime < 0.1) { // count only if the player has been started at the position < 0.1 seconds
+				jQuery.ajax({
+					async: true,
+					url: podPressBackendURL + 'podpress_backend.php',
+					type: 'POST',
+					dataType: 'text',
+					data: 'action=getrealurl&url='+encodeURIComponent(url)+'&_ajax_nonce=' + podPressHTML5sec,
+					//~ success: function(data, textStatus, XMLHttpRequest) {
+						//~ alert(data);
+					//~ },
+					//~ complete: function(XMLHttpRequest, textStatus) {
+						//~ switch (textStatus) {
+							//~ case 'notmodified' :
+							//~ case 'error' :
+							//~ case 'timeout' :
+							//~ case 'parsererror' :
+								//~ alert('podPress HTML5 counter error:\n' + String(textStatus) + '\n' + String(XMLHttpRequest.responseText));
+							//~ break;
+						//~ }
+					//~ }
+				});
+			}
+		}
+	}
+
 	function podPressGetBaseName(file) {
 		var Parts = file.split('\\');
 		if( Parts.length < 2 ) {

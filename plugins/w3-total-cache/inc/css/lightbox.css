@@ -1,27 +1,56 @@
-#overlay {
-	background: #666;
-}
-
-.lightbox {
-	position: absolute;
-	background: #fdfdfd;
-	padding: 10px 20px;
-	border: 1px solid #bbb;
-	border-radius: 11px;
-	-webkit-border-radius: 11px;
-	-moz-border-radius: 11px;
-}
-
-.lightbox-close {
-	cursor: pointer;
-	position: absolute;
-	text-decoration: underline;
-	top: 25px;
-	right: 20px;
-}
-
-.lightbox-loader {
-	background-image: url(../images/loader.gif);
-	background-position: center center;
-	background-repeat: no-repeat;
-}
+#overlay {
+    background: #666;
+}
+
+.lightbox {
+    position: absolute;
+    background: #fdfdfd;
+    padding: 10px 20px;
+    border: 1px solid #bbb;
+    border-radius: 11px;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+}
+
+.lightbox-close {
+    cursor: pointer;
+    position: absolute;
+    text-decoration: underline;
+    top: 25px;
+    right: 20px;
+}
+
+.lightbox-loader {
+    background-image: url(../images/loader.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#recom_container {
+    overflow: auto;
+    height: 475px;
+}
+
+th.minify-files-add, td.minify-files-add {
+    width: 40px;
+    text-align: center;
+}
+
+.minify-files-exists input, .minify-files-exists select {
+    color: red;
+}
+
+#w3tc-self-test {
+    height: 490px;
+    overflow: auto;
+}
+
+#w3tc-self-test ul {
+    list-style: none;
+}
+
+.w3tc-self-test-hint {
+    font-size: 0.8em;
+    font-style: italic;
+    color: #999;
+}

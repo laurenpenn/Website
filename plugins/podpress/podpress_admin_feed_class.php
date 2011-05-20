@@ -604,8 +604,8 @@ class podPressAdmin_class extends podPress_class
 						$yes_selected = '';
 					}
 					echo '					<select name="podpress_feeds['.$i.'][itunes-block]" id="podpress_feed_'.$i.'_iTunesBlock">'."\n";
-					echo '						<option value="No"'.$disable_selected.'>'.__('No', 'podpress').'</option>'."\n";
-					echo '						<option value="Yes"'.$enable_selected.'>'.__('Yes', 'podpress').'</option>'."\n";
+					echo '						<option value="No"'.$no_selected.'>'.__('No', 'podpress').'</option>'."\n";
+					echo '						<option value="Yes"'.$yes_selected.'>'.__('Yes', 'podpress').'</option>'."\n";
 					echo '					</select>'."\n";
 					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_right_col">';
