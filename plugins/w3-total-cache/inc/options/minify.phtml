@@ -1,6 +1,6 @@
 <?php include W3TC_DIR . '/inc/options/common/header.phtml'; ?>
 
-<script>/*<![CDATA[*/
+<script type="text/javascript">/*<![CDATA[*/
 var minify_templates = {};
 <?php foreach ($templates as $theme_key => $theme_templates): ?>
 minify_templates['<?php echo addslashes($theme_key); ?>'] = {};
@@ -43,7 +43,7 @@ minify_templates['<?php echo addslashes($theme_key); ?>']['<?php echo addslashes
             <tr>
                 <th colspan="2">
                     <input type="hidden" name="minify.reject.logged" value="0" />
-                    <label><input type="checkbox" name="minify.reject.logged" value="1"<?php checked($this->_config->get_boolean('minify.reject.logged'), true); ?> /> Disable <acronym title="Hypertext Markup Language">HTML</acronym> minification for logged in users</label><br />
+                    <label><input type="checkbox" name="minify.reject.logged" value="1"<?php checked($this->_config->get_boolean('minify.reject.logged'), true); ?> /> Disable minify for logged in users</label><br />
                     <span class="description">Authenticated users will not recieve minified pages if this option is enabled.</span>
                 </th>
             </tr>

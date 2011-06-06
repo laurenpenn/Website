@@ -18,7 +18,7 @@ if (!function_exists('json_decode')) {
         global $json;
 
         if (!is_a($json, 'Services_JSON')) {
-            require_once W3TC_LIB_W3_DIR . '/JSON.php';
+            require_once W3TC_LIB_DIR . '/JSON.php';
             $json = new Services_JSON();
         }
 

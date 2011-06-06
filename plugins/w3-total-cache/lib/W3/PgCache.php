@@ -517,7 +517,7 @@ class W3_PgCache {
             if ($this->_config->get_boolean('pgcache.purge.author') && $post) {
                 $posts_number = count_user_posts($post->post_author);
                 $posts_per_page = get_option('posts_per_page');
-                $posts_pages_number = ceil($posts_number / $posts_per_page);
+                $posts_pages_number = @ceil($posts_number / $posts_per_page);
 
                 $author_link = get_author_link(false, $post->post_author);
                 $author_uri = str_replace($domain_url, '', $author_link);
@@ -561,7 +561,7 @@ class W3_PgCache {
 
                 $posts_per_page = get_option('posts_per_page');
                 $posts_number = $this->_get_archive_posts_count($post_year, $post_month, $post_day);
-                $posts_pages_number = ceil($posts_number / $posts_per_page);
+                $posts_pages_number = @ceil($posts_number / $posts_per_page);
 
                 $day_link = get_day_link($post_year, $post_month, $post_day);
                 $day_uri = str_replace($domain_url, '', $day_link);
@@ -730,7 +730,7 @@ class W3_PgCache {
          * Don't cache in console mode
          */
         if (PHP_SAPI === 'cli') {
-            $this->cache_reject_reason = 'console mode';
+            $this->cache_reject_reason = 'Console mode';
 
             return false;
         }
@@ -739,7 +739,7 @@ class W3_PgCache {
          * Skip if session defined
          */
         if (defined('SID') && SID != '') {
-            $this->cache_reject_reason = 'session is started';
+            $this->cache_reject_reason = 'Session started';
 
             return false;
         }
@@ -748,7 +748,7 @@ class W3_PgCache {
          * Skip if posting
          */
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->cache_reject_reason = 'request method is POST';
+            $this->cache_reject_reason = 'Requested method is POST';
 
             return false;
         }
@@ -757,16 +757,7 @@ class W3_PgCache {
          * Skip if there is query in the request uri
          */
         if (!$this->_config->get_boolean('pgcache.cache.query') && strstr($this->_request_uri, '?') !== false) {
-            $this->cache_reject_reason = 'request URI contains query';
-
-            return false;
-        }
-
-        /**
-         * Check for request URI trailing slash
-         */
-        if ($this->_enhanced_mode && substr($this->_request_uri, -1) !== '/') {
-            $this->cache_reject_reason = 'request URI doesn\'t have a trailing slash';
+            $this->cache_reject_reason = 'Requested URI contains query';
 
             return false;
         }
@@ -775,7 +766,7 @@ class W3_PgCache {
          * Check request URI
          */
         if (!in_array($_SERVER['PHP_SELF'], $this->_config->get_array('pgcache.accept.files')) && !$this->_check_request_uri()) {
-            $this->cache_reject_reason = 'request URI is rejected';
+            $this->cache_reject_reason = 'Requested URI is rejected';
 
             return false;
         }
@@ -784,7 +775,7 @@ class W3_PgCache {
          * Check User Agent
          */
         if (!$this->_check_ua()) {
-            $this->cache_reject_reason = 'user agent is rejected';
+            $this->cache_reject_reason = 'User agent is rejected';
 
             return false;
         }
@@ -793,7 +784,7 @@ class W3_PgCache {
          * Check WordPress cookies
          */
         if (!$this->_check_cookies()) {
-            $this->cache_reject_reason = 'cookie is rejected';
+            $this->cache_reject_reason = 'Cookie is rejected';
 
             return false;
         }
@@ -802,7 +793,7 @@ class W3_PgCache {
          * Skip if user is logged in
          */
         if ($this->_config->get_boolean('pgcache.reject.logged') && !$this->_check_logged_in()) {
-            $this->cache_reject_reason = 'user is logged in';
+            $this->cache_reject_reason = 'User is logged in';
 
             return false;
         }
@@ -825,10 +816,33 @@ class W3_PgCache {
         }
 
         /**
+         * Check for request URI trailing slash
+         */
+        if ($this->_enhanced_mode) {
+            $permalink_structure = get_option('permalink_structure');
+            $permalink_structure_slash = (substr($permalink_structure, -1) == '/');
+            $request_uri_slash = (substr($this->_request_uri, -1) == '/');
+
+            if ($permalink_structure_slash != $request_uri_slash) {
+                if ($permalink_structure_slash) {
+                    if (!$this->_check_accept_uri()) {
+                        $this->cache_reject_reason = 'Requested URI doesn\'t have a trailing slash';
+
+                        return false;
+                    }
+                } else {
+                    $this->cache_reject_reason = 'Requested URI has a trailing slash';
+
+                    return false;
+                }
+            }
+        }
+
+        /**
          * Check for database error
          */
         if (w3_is_database_error($buffer)) {
-            $this->cache_reject_reason = 'Database Error occurred';
+            $this->cache_reject_reason = 'Database error occurred';
 
             return false;
         }
@@ -846,7 +860,7 @@ class W3_PgCache {
          * Don't cache 404 pages
          */
         if (!$this->_config->get_boolean('pgcache.cache.404') && function_exists('is_404') && is_404()) {
-            $this->cache_reject_reason = 'page is 404';
+            $this->cache_reject_reason = 'Page is 404';
 
             return false;
         }
@@ -855,7 +869,7 @@ class W3_PgCache {
          * Don't cache homepage
          */
         if (!$this->_config->get_boolean('pgcache.cache.home') && function_exists('is_home') && is_home()) {
-            $this->cache_reject_reason = 'page is home';
+            $this->cache_reject_reason = 'Page is home';
 
             return false;
         }
@@ -864,7 +878,7 @@ class W3_PgCache {
          * Don't cache feed
          */
         if (!$this->_config->get_boolean('pgcache.cache.feed') && function_exists('is_feed') && is_feed()) {
-            $this->cache_reject_reason = 'page is feed';
+            $this->cache_reject_reason = 'Page is feed';
 
             return false;
         }
@@ -873,7 +887,7 @@ class W3_PgCache {
          * Check if page contains dynamic tags
          */
         if ($this->_enhanced_mode && $this->_has_dynamic($buffer)) {
-            $this->cache_reject_reason = 'page that contains dynamic tags (mfunc or mclude) can not be cached in enhanced mode';
+            $this->cache_reject_reason = 'Page contains dynamic tags (mfunc or mclude) can not be cached in enhanced mode';
 
             return false;
         }
@@ -956,6 +970,25 @@ class W3_PgCache {
         }
 
         return true;
+    }
+
+    /**
+     * Checks accept URI
+     *
+     * @return boolean
+     */
+    function _check_accept_uri() {
+        $accept_uri = $this->_config->get_array('pgcache.accept.uri');
+        $accept_uri = array_map('w3_parse_path', $accept_uri);
+
+        foreach ($accept_uri as $expr) {
+            $expr = trim($expr);
+            if ($expr != '' && preg_match('~' . $expr . '~i', $this->_request_uri)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -1349,7 +1382,7 @@ class W3_PgCache {
             $debug_info .= "Header info:\r\n";
 
             foreach ($headers as $header_name => $header_value) {
-                $debug_info .= sprintf("%s%s\r\n", str_pad($header_name . ': ', 20), $header_value);
+                $debug_info .= sprintf("%s%s\r\n", str_pad($header_name . ': ', 20), w3_escape_comment($header_value));
             }
         }
 
@@ -1659,7 +1692,7 @@ class W3_PgCache {
                 $output = sprintf('Unable to execute code: %s', htmlspecialchars($code));
             }
         } else {
-            $output = htmlspecialchars('Inavalid mfunc tag syntax. Correct: <!-- mfunc PHP code --><!-- /mfunc --> or <!-- mfunc -->PHP code<!-- /mfunc -->.');
+            $output = htmlspecialchars('Invalid mfunc tag syntax. The correct format is: <!-- mfunc PHP code --><!-- /mfunc --> or <!-- mfunc -->PHP code<!-- /mfunc -->.');
         }
 
         return $output;
@@ -1688,7 +1721,7 @@ class W3_PgCache {
                 $output = sprintf('Unable to open file: %s', htmlspecialchars($file));
             }
         } else {
-            $output = htmlspecialchars('Incorrect mclude tag syntax. Correct: <!-- mclude path/to/file.php --><!-- /mclude --> or <!-- mclude -->path/to/file.php<!-- /mclude -->.');
+            $output = htmlspecialchars('Incorrect mclude tag syntax. The correct format is: <!-- mclude path/to/file.php --><!-- /mclude --> or <!-- mclude -->path/to/file.php<!-- /mclude -->.');
         }
 
         return $output;

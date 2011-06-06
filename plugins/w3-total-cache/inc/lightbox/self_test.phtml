@@ -16,6 +16,10 @@
 
     <ul>
         <li>
+            Plugin Version: <code><?php echo W3TC_VERSION; ?></code>
+        </li>
+
+        <li>
             PHP Version:
             <?php if (PHP_VERSION >= 5): ?>
             <code><?php echo PHP_VERSION; ?></code>
@@ -240,7 +244,7 @@
         <li>
             <?php $uploads_dir = @wp_upload_dir(); ?>
             <?php echo htmlspecialchars($uploads_dir['path']); ?>:
-            <?if (!empty($uploads_dir['error'])): ?>
+            <?php if (!empty($uploads_dir['error'])): ?>
             <code>Error: <?php echo htmlspecialchars($uploads_dir['error']); ?></code>
             <?php elseif (!w3_is_writable_dir($uploads_dir['path'])): ?>
             <code>Not write-able</code>

@@ -22,14 +22,14 @@ License:
 	/* feed generation functions                                 		 */
 	/*************************************************************/
 	
-	function podPress_feedSafeContent($input, $aggressive = FALSE) {
+	function podPress_feedSafeContent($input, $aggressive = FALSE, $removescripts = FALSE) {
 		GLOBAL $podPress;
 		
 		// All values should be plain text (no markup or HTML). [...] CDATA sections are strongly discouraged. (see http://www.apple.com/itunes/podcasts/specs.html#encoding)
-		if (TRUE === $aggressive) { // this option is only reachable via php source code and via the WP backend
+		if (TRUE === $removescripts) { // this option is only reachable via php source code and via the WP backend
 			$input = preg_replace('/<script[\w\W]*<\/script>/i', '', $input);
-			$input = strip_tags($input);
 		}
+		$input = strip_tags($input);
 
 		// replace the relevant characters with their HTML entities
 		if ( TRUE === $aggressive OR 'yes' == strtolower($podPress->settings['protectFeed']) OR TRUE === $podPress->settings['protectFeed'] ) {
@@ -50,6 +50,7 @@ License:
 		
 		// transform all HTML entities in to their numeric equivalents
 		$result = ent2ncr($result);
+		
 		return $result;
 	}
 
@@ -204,7 +205,8 @@ License:
 		if ('' != trim($data['rss_image'])) {
 			echo '	<image>'."\n";
 			echo '		<url>'.$data['rss_image'].'</url>'."\n";
-			echo '		<title>'.podPress_feedSafeContent(get_bloginfo('blogname')).wp_title('&#187;', false).'</title>'."\n";
+			//~ echo '		<title>'.podPress_feedSafeContent(get_bloginfo('blogname')).get_wp_title_rss().'</title>'."\n";
+			echo '		<title>'.get_bloginfo('blogname').'</title>'."\n";
 			echo '		<link>'.get_option('siteurl').'</link>'."\n";
 			echo '		<width>144</width>'."\n";
 			echo '		<height>144</height>'."\n";
@@ -217,9 +219,10 @@ License:
 				echo '	<itunes:new-feed-url>'.podPress_feedSafeContent($data['podcastFeedURL']).'</itunes:new-feed-url>'."\n";
 			}
 		}
-		echo '	<itunes:subtitle>'.podPress_stringLimiter(podPress_feedSafeContent($data['subtitle'], TRUE), 255).'</itunes:subtitle>'."\n";
-		echo '	<itunes:summary>'.podPress_stringLimiter(podPress_feedSafeContent($data['summary'], TRUE), 4000).'</itunes:summary>'."\n";
-		echo '	<itunes:keywords>'.podPress_stringLimiter(podPress_feedSafeContent($data['keywords']), 255).'</itunes:keywords>'."\n";
+		
+		echo '	<itunes:subtitle>'.podPress_strlimiter_end(podPress_feedSafeContent($data['subtitle'], FALSE, TRUE), 254, '[...]', TRUE).'</itunes:subtitle>'."\n";
+		echo '	<itunes:summary>'.podPress_strlimiter_end(podPress_feedSafeContent($data['summary'], FALSE, TRUE), 4000, '[...]', TRUE).'</itunes:summary>'."\n";
+		echo '	<itunes:keywords>'.podPress_feedSafeContent($data['keywords']).'</itunes:keywords>'."\n";
 		if ( TRUE === $is_podpress_feed ) {
 			echo podPress_getiTunesCategoryTags($feed['itunes-category']);
 		} else {
@@ -240,7 +243,42 @@ License:
 			echo '	<itunes:image href="'.$data['image'].'" />'."\n";
 		}
 	}
-
+	
+	/**
+	* podpress_get_content_rss - retrieves the excerpt or alternatively the content
+	* @package podPress
+	* @since 8.8.10.7
+	* @return str - the excerpt content
+	*/
+	function podpress_get_excerpt_rss() {
+		global $post, $wp_version;
+		$output = $post->post_excerpt;
+		if ( empty($output) ) {
+			if ( TRUE == version_compare($wp_version, '2.9', '>=') ) {
+				$output = get_the_content_feed();
+			} else {
+				$output = podpress_get_content_rss();
+			}
+		}
+		return apply_filters('the_excerpt_rss', $output);
+	}
+	
+	/**
+	* podpress_get_content_rss - retrieves the_content_rss (only for WP < 2.9)
+	* @package podPress
+	* @since 8.8.10.7
+	* @return str - the content 
+	*/
+	function podpress_get_content_rss() {
+		$more_link_text = '';
+		$stripteaser = false;
+		$more_file = '';
+		$content = get_the_content($more_link_text, $stripteaser, $more_file);
+		$content = apply_filters('the_content_rss', $content);
+		$content = str_replace(']]>', ']]&gt;', $content);
+		return $content;
+	}
+	
 	function podpress_post_is_password_protected() {
 		GLOBAL $wp_version;
 		if ( TRUE === version_compare($wp_version, '2.7', '>=') ) {
@@ -264,7 +302,7 @@ License:
 	}
 	
 	function podPress_rss2_item() {
-		GLOBAL $podPress, $post, $post_meta_cache, $blog_id;
+		GLOBAL $podPress, $post, $post_meta_cache, $blog_id, $wp_version;
 		
 		$enclosureTag = podPress_getEnclosureTags();
 		
@@ -277,17 +315,13 @@ License:
 				if ( TRUE === $is_password_protected ) {
 					$post->podPressPostSpecific['itunes:subtitle'] = __('This post is password protected.', 'podPress');
 				} else {
-					if ( TRUE == empty($post->post_excerpt) ) {
-						$post->podPressPostSpecific['itunes:subtitle'] = ltrim(preg_replace('/<!--more(.*?)?-->|\n|\t/', '', $post->post_content));
-					} else {
-						$post->podPressPostSpecific['itunes:subtitle'] = ltrim($post->post_excerpt);
-					}
+					$post->podPressPostSpecific['itunes:subtitle'] = trim(podpress_get_excerpt_rss());
 				}
 			}
 			if ( TRUE == empty($post->podPressPostSpecific['itunes:subtitle']) ) {
 				$post->podPressPostSpecific['itunes:subtitle'] = get_the_title_rss();
 			}
-			echo '		<itunes:subtitle>'.podPress_stringLimiter(podPress_feedSafeContent($post->podPressPostSpecific['itunes:subtitle'], TRUE), 254).'</itunes:subtitle>'."\n";
+			echo '		<itunes:subtitle>'.podPress_strlimiter_end(podPress_feedSafeContent($post->podPressPostSpecific['itunes:subtitle'], FALSE, TRUE), 254, '[...]', TRUE).'</itunes:subtitle>'."\n";
 			
 			if ( FALSE == isset($post->podPressPostSpecific['itunes:summary']) ) {
 				$post->podPressPostSpecific['itunes:summary'] = '##PostContentShortened##';
@@ -298,63 +332,84 @@ License:
 					$post->podPressPostSpecific['itunes:summary'] = $podPress->settings['iTunes']['summary'];
 				break;
 				case '##PostExcerpt##' :
-					if ( TRUE == empty($post->post_excerpt) ) {
-						if ( TRUE === $is_password_protected ) {
-							$post->podPressPostSpecific['itunes:summary'] = __('This post is password protected.', 'podPress');
-						} else {
-							$post->podPressPostSpecific['itunes:summary'] = trim(preg_replace('/<!--more(.*?)?-->/', '', $post->post_content ));
-						}
+					if ( TRUE === $is_password_protected ) {
+						$post->podPressPostSpecific['itunes:summary'] = __('This post is password protected.', 'podPress');
 					} else {
-						if ( TRUE === $is_password_protected ) {
-							$post->podPressPostSpecific['itunes:summary'] = __('There is no excerpt because this is a protected post.');
-						} else {
-							$post->podPressPostSpecific['itunes:summary'] = trim($post->post_excerpt);
-						}
+						$post->podPressPostSpecific['itunes:summary'] = trim(podpress_get_excerpt_rss());
 					}
 				break;
 				case '##PostContentShortened##' :
 					if ( post_password_required($post) ) {
 						$post->podPressPostSpecific['itunes:summary'] = __('This post is password protected.', 'podPress');
 					} else {
-						$post->podPressPostSpecific['itunes:summary'] = trim(preg_replace('/<!--more(.*?)?-->/', '', $post->post_content ));
+						if ( TRUE == version_compare($wp_version, '2.9', '>=') ) {
+							$post->podPressPostSpecific['itunes:summary'] = get_the_content_feed();
+						} else {
+							$post->podPressPostSpecific['itunes:summary'] = trim(podpress_get_content_rss());
+						}
 					}
 				break;
 			}
-			echo '		<itunes:summary>'.podPress_stringLimiter(podPress_feedSafeContent($post->podPressPostSpecific['itunes:summary'], TRUE), 4000).'</itunes:summary>'."\n";
-
-			if ( $post->podPressPostSpecific['itunes:keywords'] == '##WordPressCats##' ) {
-				$categories = get_the_category();
-				$post->podPressPostSpecific['itunes:keywords'] = '';
-				if ( TRUE == is_array($categories) AND FALSE == empty($categories) ) {
-					$category_names = Array();
-					$b = '';
-					foreach ($categories as $category) {
-						$result = preg_match('/\S+\s+\S+/', $category->cat_name, $b);
-						// take the category name only if it does not contain inner white spaces (if it does not consist of more than one word)
-						if (TRUE == empty($b)) {
-							$category_names[] = $category->cat_name;
-						}
-					}
-					if ( TRUE == is_array($category_names) AND FALSE == empty($category_names) ) {
-						$nr_category_names = count($category_names);
-						if ( $nr_category_names > 1 ) {
-							for ($i=0; $i < min($nr_category_names, 12); $i++) { // max. 12 keywords are allowed
-								if ( 0 == $i ) {
-									$post->podPressPostSpecific['itunes:keywords'] = $category_names[$i];
-								} else {
-									$post->podPressPostSpecific['itunes:keywords'] .= ', '.$category_names[$i];
-								}
-							}
-						} elseif ( $nr_category_names === 1 ) {
-							$post->podPressPostSpecific['itunes:keywords'] = $category_names[0];
-						}
-					}
-				}
-			} elseif ($post->podPressPostSpecific['itunes:keywords'] == '##Global##') {
-				$post->podPressPostSpecific['itunes:keywords'] = $podPress->settings['iTunes']['keywords'];
+			
+			if ( FALSE == empty($post->podPressPostSpecific['itunes:summary']) ) {
+				echo '		<itunes:summary>'.podPress_strlimiter_end(podPress_feedSafeContent($post->podPressPostSpecific['itunes:summary'], FALSE, TRUE), 4000, '[...]', TRUE).'</itunes:summary>'."\n";
 			}
-			echo '		<itunes:keywords>'.podPress_feedSafeContent($post->podPressPostSpecific['itunes:keywords']).'</itunes:keywords>'."\n";
-
+			
+			Switch ( $post->podPressPostSpecific['itunes:keywords'] ) {
+				default:
+				case '##WordPressCats##' :
+					$categories = get_the_category();
+					$post->podPressPostSpecific['itunes:keywords'] = '';
+					if ( TRUE == is_array($categories) AND FALSE == empty($categories) ) {
+						$category_names = Array();
+						$b = '';
+						foreach ($categories as $category) {
+							$result = preg_match('/\S+\s+\S+/', $category->cat_name, $b);
+							// take the category name only if it does not contain inner white spaces (if it does not consist of more than one word)
+							if (TRUE == empty($b)) {
+								$category_names[] = $category->cat_name;
+							}
+						}
+						if ( TRUE == is_array($category_names) AND FALSE == empty($category_names) ) {
+							$nr_category_names = count($category_names);
+							if ( $nr_category_names > 1 ) {
+								for ($i=0; $i < min($nr_category_names, 12); $i++) { // max. 12 keywords are allowed
+									if ( 0 == $i ) {
+										$post->podPressPostSpecific['itunes:keywords'] = $category_names[$i];
+									} else {
+										$post->podPressPostSpecific['itunes:keywords'] .= ', '.$category_names[$i];
+									}
+								}
+							} elseif ( $nr_category_names === 1 ) {
+								$post->podPressPostSpecific['itunes:keywords'] = $category_names[0];
+							}
+						}
+					}
+				break;
+				case '##post_tags##' :
+					$posttags = get_the_tags();
+					$post->podPressPostSpecific['itunes:keywords'] = '';
+					if ( is_array($posttags) AND FALSE == empty($posttags) ) {
+						$posttags_nr = count($posttags);
+						$i = 0;
+						foreach ( $posttags as $tag ) {
+							if ( $i == ($posttags_nr-1) ) {
+								$post->podPressPostSpecific['itunes:keywords'] .= $tag->name; 
+							} else {
+								$post->podPressPostSpecific['itunes:keywords'] .= $tag->name . ', '; 
+							}
+							$i++;
+						}
+					}
+				break;
+				case '##Global##' :
+					$post->podPressPostSpecific['itunes:keywords'] = $podPress->settings['iTunes']['keywords'];
+				break;
+			}
+			if ( FALSE == empty($post->podPressPostSpecific['itunes:keywords']) ) {
+				echo '		<itunes:keywords>'.podPress_feedSafeContent( $podPress->cleanup_itunes_keywords($post->podPressPostSpecific['itunes:keywords'], '', FALSE) ).'</itunes:keywords>'."\n";
+			}
+			
 			if($post->podPressPostSpecific['itunes:author'] == '##Global##') {
 				$post->podPressPostSpecific['itunes:author'] = $podPress->settings['iTunes']['author'];
 				if(empty($post->podPressPostSpecific['itunes:author'])) {
@@ -767,7 +822,7 @@ License:
 			}
 		}
 		if(empty($result)) {
-			$result .= "\t".'<itunes:category text="Society &amp; Culture" />'."\n";
+			$result .= "\t".'<itunes:category text="Society &#38; Culture" />'."\n";
 		}
 		return $result;
 	}
@@ -816,9 +871,9 @@ License:
 		return $podPress->settings['category_data'];
 	}
 
-	function podPress_getCategoryCastingFeedData ($selection, $input) {
+	function podPress_getCategoryCastingFeedData($selection, $input) {
 		GLOBAL $podPress;
-		if(!isset($podPress->settings['category_data'])) {
+		if ( is_category() ) {
 			podPress_feed_getCategory();
 		}
 		$feedslug = get_query_var('feed');		
@@ -841,7 +896,7 @@ License:
 					case 'blogname' :
 						switch ($podPress->settings['category_data']['blognameChoice']) {
 							case 'CategoryName' :
-								if(empty($podPress->settings['category_data']['blogname'])) {
+								if ( empty($podPress->settings['category_data']['blogname']) ) {
 									return $input;
 								} else {
 									add_filter('wp_title_rss', 'podPress_customfeedtitleonly'); // this filter works since WP 2.2
@@ -849,7 +904,7 @@ License:
 								}
 							break;
 							case 'Append' :
-								if(empty($podPress->settings['category_data']['blogname'])) {
+								if ( empty($podPress->settings['category_data']['blogname']) ) {
 									return $input;
 								} else {
 									return stripslashes($input.' &#187; '.$podPress->settings['category_data']['blogname']);

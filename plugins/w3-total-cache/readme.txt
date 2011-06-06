@@ -3,7 +3,7 @@ Contributors: fredericktownes
 Tags: user experience, cache, caching, page cache, css cache, js cache, db cache, disk cache, disk caching, database cache, http compression, gzip, deflate, minify, cdn, content delivery network, media library, performance, speed, multiple hosts, css, merge, combine, unobtrusive javascript, compress, optimize, optimizer, javascript, js, cascading style sheet, plugin, yslow, yui, google, google rank, google page speed, mod_pagespeed, s3, cloudfront, aws, amazon web services, cloud files, rackspace, cotendo, max cdn, limelight, cloudflare, microsoft, microsoft azure, iis, nginx, apache, varnish, xcache, apc, eacclerator, wincache, mysql, w3 total cache, batcache, wp cache, wp super cache, buddypress
 Requires at least: 2.8
 Tested up to: 3.2
-Stable tag: 0.9.2.1
+Stable tag: 0.9.2.2
 
 Improve site performance and user experience via caching: browser, page, object, database, minify and content delivery network support.
 
@@ -35,7 +35,7 @@ Features:
 
 * Compatible with shared hosting, virtual private / dedicated servers and dedicated servers / clusters
 * Transparent content delivery network (CDN) integration with Media Library, theme files and WordPress itself
-* Mobile support: custom caching of pages by referrer or groups of user agents including theme switching for groups of referrers or user agents
+* Mobile support: respective caching of pages by referrer or groups of user agents including theme switching for groups of referrers or user agents
 * Caching of (minified and compressed) pages and posts in memory or on disk or on CDN (mirror only)
 * Caching of (minified and compressed) CSS and JavaScript in memory, on disk or on CDN
 * Caching of feeds (site, categories, tags, comments, search results) in memory or on disk or on CDN (mirror only)
@@ -45,7 +45,7 @@ Features:
 * Minification of posts and pages and feeds
 * Minification of inline, embedded or 3rd party JavaScript (with automated updates)
 * Minification of inline, embedded or 3rd party CSS (with automated updates)
-* Browser caching using cache-control, future expire headers and entity tags (ETag)
+* Browser caching using cache-control, future expire headers and entity tags (ETag) with "cache-busting"
 * JavaScript grouping by template (home page, post page etc) with embed location control
 * Non-blocking JavaScript embedding
 * Import post attachments directly into the Media Library (and CDN)
@@ -251,6 +251,9 @@ Install the plugin to read the full FAQ.
 
 **May 2011:**
 
+* [Optimizing WordPress with Nginx, Varnish, APC, W3 Total Cache, and Amazon S3 (With Benchmarks)](http://danielmiessler.com/blog/optimizing-wordpress-with-nginx-varnish-w3-total-cache-amazon-s3-and-memcached), Daniel Miessler
+* [Poll: Best Caching Plugin for WordPress?](http://digwp.com/2011/05/best-caching-plugin-wordpress/), Jeff Starr
+* [Page Speed Online has a shiny new API](http://googlecode.blogspot.com/2011/05/page-speed-online-has-shiny-new-api.html), Andrew Oates and Richard Rabbat
 * [Use W3 Total Cache to Speed Up Your WordPress Site](http://www.ostraining.com/blog/wordpress/w3-total-cache/), Steve Burge
 
 **April 2011:**
@@ -260,8 +263,8 @@ Install the plugin to read the full FAQ.
 * [Speeding Up Your WordPress Website: 11 Ways to Improve Your Load Time](http://wpmu.org/speeding-up-your-wordpress-website-11-ways-to-improve-your-load-time/), Siobhan Ambrose
 * [Recipe for Baked WordPress](http://carpeaqua.com/2011/04/05/recipe-for-baked-wordpress/), Justin Williams
 * [WordPress + W3 Total Cache + CDN story](http://translate.google.com/translate?hl=en&sl=auto&tl=en&u=http%3A%2F%2Fblog.gaspanik.com%2Factivate-cdn-option-on-w3totalcache), Mori Masako
-* [SETTING UP W3 TOTAL CACHE PART 1](http://www.geekforhim.com/setting-up-w3-total-cache-part-1/), Matthew Snider
 * [SETTING UP W3 TOTAL CACHE PART 2](http://www.geekforhim.com/setting-up-w3-total-cache-part-2/), Matthew Snider
+* [SETTING UP W3 TOTAL CACHE PART 1](http://www.geekforhim.com/setting-up-w3-total-cache-part-1/), Matthew Snider
 
 **March 2011:**
 
@@ -439,6 +442,17 @@ Please reach out to all of these people and support their projects if you're so 
 
 == Changelog ==
 
+= 0.9.2.2 =
+* Fixed bug with minify directives, e.g.: "File param is missing," causing minify caching to fail
+* Fixed bug with document root detection for IIS server
+* Fixed bug with HTTP compression when using CloudFlare
+* Fixed bug with HTML validation with JavaScript embed tags
+* Fixed bug with fancy permalinks, sites with or without trailing slashes can now cache pages using disk enhanced
+* Fixed bug with appending WP_CACHE define into wp-config.php for some users
+* Fixed bug with path to JSON.php
+* Fixed bug with listing of buckets error with AWS S3
+* Improved compatibility with WordPress SEO by Yoast, 404 error exception list sitemap value changed to: sitemap(_index|[0-9]+)?\.xml(\.gz)?
+
 = 0.9.2.1 =
 * Fixed bug with existing installation upgrades: set minify to manual mode by default
 * Fixed bug with unsuccessful transfer queue button
@@ -525,7 +539,7 @@ Please reach out to all of these people and support their projects if you're so 
 * Fixed notification issues with preview mode
 * Fixed an issue with fatal errors with minify and memcache(d) caching engine
 
-= 0.9.0 =
+= 0.9 =
 * Added preview feature so all cache settings can be reviewed prior to deployment
 * Added minify configuration wizard (help button on minify tab)
 * Added "never cache the following pages" to database and object cache
@@ -651,7 +665,7 @@ Please reach out to all of these people and support their projects if you're so 
 * Fixed various bugs with emptying cache under various obscure permutations
 * Fixed bug with installations deeper than document root
 
-= 0.8.0 =
+= 0.8 =
 * Added disk as method for page caching
 * Added support for mirror (origin pull) content delivery networks
 * Added options to specify minify group policies per template
@@ -709,13 +723,13 @@ Please reach out to all of these people and support their projects if you're so 
 * Eliminated false negatives in a number of gzip / deflate compression analysis tools
 * Total plugin file size reduced
 
-= 0.7.0 =
+= 0.7 =
 * Added minify support for URIs starting with /
 * WordPress network mode support bug fixes
 * Minor CDN uploader fixes
 * Minor error message improvements
 
-= 0.6.0 =
+= 0.6 =
 * Added "Debug Mode" listing all settings and queries with statistics
 * Improved error message notifications
 * Improved cache stability for large objects
@@ -723,5 +737,5 @@ Please reach out to all of these people and support their projects if you're so 
 * Support for multiple wordpress installations added
 * Resolved bug in minification of feeds
 
-= 0.5.0 =
+= 0.5 =
 * Initial release

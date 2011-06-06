@@ -620,16 +620,16 @@ class W3_Plugin_Minify extends W3_Plugin {
         static $non_blocking_function = false;
 
         if ($blocking) {
-            return '<script src="' . str_replace('&', '&amp;', $url) . '"></script>';
+            return '<script type="text/javascript" src="' . str_replace('&', '&amp;', $url) . '"></script>';
         } else {
             $script = '';
 
             if (!$non_blocking_function) {
                 $non_blocking_function = true;
-                $script = "<script>function w3tc_load_js(u){var d=document,p=d.getElementsByTagName('HEAD')[0],c=d.createElement('script');c.type='text/javascript';c.src=u;p.appendChild(c);}</script>";
+                $script = "<script type=\"text/javascript\">function w3tc_load_js(u){var d=document,p=d.getElementsByTagName('HEAD')[0],c=d.createElement('script');c.type='text/javascript';c.src=u;p.appendChild(c);}</script>";
             }
 
-            $script .= "<script>w3tc_load_js('" . $url . "');</script>";
+            $script .= "<script type=\"text/javascript\">w3tc_load_js('" . $url . "');</script>";
 
             return $script;
         }
@@ -745,7 +745,7 @@ class W3_Plugin_Minify extends W3_Plugin {
         if ($this->_config->get_boolean('minify.rewrite')) {
             $url = sprintf('%s/%s/%s/%s.%s.%d.%s', $site_url_ssl, W3TC_CONTENT_MINIFY_DIR_NAME, $theme, $template, $location, $id, $type);
         } else {
-            $url = sprintf('%s/%s/?tt=%s&gg=%s&g=%s&t=%s&m=%d', $site_url_ssl, W3TC_CONTENT_MINIFY_DIR_NAME, $theme, $template, $location, $type, $id);
+            $url = sprintf('%s/%s/index.php?file=%s/%s.%s.%d.%s', $site_url_ssl, W3TC_CONTENT_MINIFY_DIR_NAME, $theme, $template, $location, $id, $type);
         }
 
         return $url;
@@ -771,7 +771,7 @@ class W3_Plugin_Minify extends W3_Plugin {
         if ($this->_config->get_boolean('minify.rewrite')) {
             $url = sprintf('%s/%s/%s.%d.%s', $site_url_ssl, W3TC_CONTENT_MINIFY_DIR_NAME, $hash, $id, $type);
         } else {
-            $url = sprintf('%s/%s/?h=%s&t=%s&m=%s', $site_url_ssl, W3TC_CONTENT_MINIFY_DIR_NAME, $hash, $type, $id);
+            $url = sprintf('%s/%s/index.php?file=%s.%d.%s', $site_url_ssl, W3TC_CONTENT_MINIFY_DIR_NAME, $hash, $id, $type);
         }
 
         return $url;
@@ -832,7 +832,7 @@ class W3_Plugin_Minify extends W3_Plugin {
             $debug_info .= "\r\nReplaced CSS files:\r\n";
 
             foreach ($this->replaced_styles as $index => $file) {
-                $debug_info .= sprintf("%d. %s\r\n", $index + 1, $file);
+                $debug_info .= sprintf("%d. %s\r\n", $index + 1, w3_escape_comment($file));
             }
         }
 
@@ -840,7 +840,7 @@ class W3_Plugin_Minify extends W3_Plugin {
             $debug_info .= "\r\nReplaced JavaScript files:\r\n";
 
             foreach ($this->replaced_scripts as $index => $file) {
-                $debug_info .= sprintf("%d. %s\r\n", $index + 1, $file);
+                $debug_info .= sprintf("%d. %s\r\n", $index + 1, w3_escape_comment($file));
             }
         }
 
@@ -1085,7 +1085,7 @@ class W3_Plugin_Minify extends W3_Plugin {
             $rules .= "    RewriteRule (.*) $1%{ENV:APPEND_EXT} [L]\n";
         }
 
-        $rules .= "    RewriteRule (.*) index.php?file=$1 [L]\n";
+        $rules .= "    RewriteRule ^(.+\\.(css|js))$ index.php?file=$1 [L]\n";
 
         $rules .= "</IfModule>\n";
         $rules .= W3TC_MARKER_END_MINIFY_CORE . "\n";
@@ -1132,7 +1132,7 @@ class W3_Plugin_Minify extends W3_Plugin {
             $rules .= "}\n";
         }
 
-        $rules .= "rewrite ^" . $cache_dir_condition . "/(.+)$ " . $cache_dir_rewrite . "/index.php?file=$" . $offset . " last;\n";
+        $rules .= "rewrite ^" . $cache_dir_condition . "/(.+\\.(css|js))$ " . $cache_dir_rewrite . "/index.php?file=$" . $offset . " last;\n";
         $rules .= W3TC_MARKER_END_MINIFY_CORE . "\n";
 
         return $rules;

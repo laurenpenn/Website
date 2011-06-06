@@ -265,7 +265,7 @@ class W3_Cdn_S3 extends W3_Cdn_Base {
 
         $buckets = @$this->_s3->listBuckets();
 
-        if (!$buckets) {
+        if ($buckets === false) {
             $error = sprintf('Unable to list buckets (%s).', $this->_get_last_error());
 
             $this->_restore_error_handler();
@@ -363,7 +363,7 @@ class W3_Cdn_S3 extends W3_Cdn_Base {
 
         $buckets = @$this->_s3->listBuckets();
 
-        if (!$buckets) {
+        if ($buckets === false) {
             $error = sprintf('Unable to list buckets (%s).', $this->_get_last_error());
 
             $this->_restore_error_handler();

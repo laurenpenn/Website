@@ -1,31 +1,4 @@
 /* podpress.js | podPress - JS scripts for the frontend and the Admin Site */
-	//~ if (!self.getHTTPObject) {
-		//~ function getHTTPObject() {
-			//~ var xmlhttp;
-			//~ var container;
-			//~ if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
-				//~ try {
-					//~ xmlhttp = new XMLHttpRequest();
-				//~ } catch (e) {
-					//~ xmlhttp = false;
-				//~ }
-			//~ } else {
-				//~ try {
-					//~ xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-				//~ } catch (e) {
-					//~ try {
-						//~ xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-					//~ } catch (E) {
-						//~ xmlhttp = false;
-					//~ }
-				//~ }
-			//~ }		
-			//~ return xmlhttp;
-		//~ }
-	//~ }
-
-	//~ var podPressHttp = getHTTPObject();
-
 	function podPressShowVideoPreview (strPlayerDiv, strMediaFile, numWidth, numHeight, strPreviewImg) {
 		var refPlayerDiv = document.getElementById('podPressPlayerSpace_'+strPlayerDiv);
 		if(refPlayerDiv == undefined) {
@@ -663,20 +636,7 @@
 					url: podPressBackendURL + 'podpress_backend.php',
 					type: 'POST',
 					dataType: 'text',
-					data: 'action=getrealurl&url='+encodeURIComponent(url)+'&_ajax_nonce=' + podPressHTML5sec,
-					//~ success: function(data, textStatus, XMLHttpRequest) {
-						//~ alert(data);
-					//~ },
-					//~ complete: function(XMLHttpRequest, textStatus) {
-						//~ switch (textStatus) {
-							//~ case 'notmodified' :
-							//~ case 'error' :
-							//~ case 'timeout' :
-							//~ case 'parsererror' :
-								//~ alert('podPress HTML5 counter error:\n' + String(textStatus) + '\n' + String(XMLHttpRequest.responseText));
-							//~ break;
-						//~ }
-					//~ }
+					data: 'action=getrealurl&url='+encodeURIComponent(url)+'&_ajax_nonce=' + podPressHTML5sec
 				});
 			}
 		}

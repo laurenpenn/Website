@@ -1646,30 +1646,20 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $this->_errors[] = sprintf('Page caching is not available. The current add-in %s is either an incorrect file or an old version. De-activate the plugin, remove the file, then activate the plugin again.', W3TC_ADDIN_FILE_ADVANCED_CACHE);
             } elseif (!defined('WP_CACHE') || !WP_CACHE) {
                 $this->_errors[] = sprintf('Page caching is not available: please add: <strong>define(\'WP_CACHE\', true);</strong> to <strong>%swp-config.php</strong>. This error message will automatically disappear once the change is successfully made.', ABSPATH);
-            } elseif ($this->_config->get_string('pgcache.engine') == 'file_pgcache') {
-                if ($this->_config->get_boolean('notes.no_trailing_slash')) {
-                    $permalink_structure = get_option('permalink_structure');
+            } elseif ($this->_config->get_string('pgcache.engine') == 'file_pgcache' && $this->_config->get_boolean('config.check') && w3_can_check_rules()) {
+                require_once W3TC_LIB_W3_DIR . '/Plugin/PgCache.php';
+                $w3_plugin_pgcache = & W3_Plugin_PgCache::instance();
 
-                    if (substr($permalink_structure, -1) !== '/') {
-                        $this->_errors[] = sprintf('The permalink structure (<strong>%s</strong>) does not include a trailing slash, disk enhanced page caching will fail to cache most requests. Either switch to any other supported caching method or add a trailing slash in the %s. %s', $permalink_structure, $this->button_link('settings', 'options-permalink.php'), $this->button_hide_note('Hide this message', 'no_trailing_slash'));
+                if ($w3_plugin_pgcache->check_rules_core()) {
+                    if (!$this->test_rewrite_pgcache()) {
+                        $this->_errors[] = 'It appears Page Cache <acronym title="Uniform Resource Locator">URL</acronym> rewriting is not working. If using apache, verify that the server configuration allows .htaccess or if using nginx verify all configuration files are included in the configuration.';
                     }
+                } elseif ($this->_config->get_boolean('notes.pgcache_rules_core')) {
+                    $this->_errors[] = sprintf('Disk enhanced page caching is not active. To enable it, add the following rules into the server configuration file (<strong>%s</strong>) of the site above the WordPress directives %s <textarea class="w3tc-rules" cols="120" rows="10" readonly="readonly">%s</textarea>. Or if permission allow this can be done automatically, by clicking here: %s. %s', w3_get_pgcache_rules_core_path(), $this->button('view code', '', 'w3tc-show-rules'), htmlspecialchars($w3_plugin_pgcache->generate_rules_core()), $this->button_link('auto-install', sprintf('admin.php?page=%s&pgcache_write_rules_core', $this->_page)), $this->button_hide_note('Hide this message', 'pgcache_rules_core'));
                 }
 
-                if ($this->_config->get_boolean('config.check') && w3_can_check_rules()) {
-                    require_once W3TC_LIB_W3_DIR . '/Plugin/PgCache.php';
-                    $w3_plugin_pgcache = & W3_Plugin_PgCache::instance();
-
-                    if ($w3_plugin_pgcache->check_rules_core()) {
-                        if (!$this->test_rewrite_pgcache()) {
-                            $this->_errors[] = 'It appears Page Cache <acronym title="Uniform Resource Locator">URL</acronym> rewriting is not working. If using apache, verify that the server configuration allows .htaccess or if using nginx verify all configuration files are included in the configuration.';
-                        }
-                    } elseif ($this->_config->get_boolean('notes.pgcache_rules_core')) {
-                        $this->_errors[] = sprintf('Disk enhanced page caching is not active. To enable it, add the following rules into the server configuration file (<strong>%s</strong>) of the site above the WordPress directives %s <textarea class="w3tc-rules" cols="120" rows="10" readonly="readonly">%s</textarea>. Or if permission allow this can be done automatically, by clicking here: %s. %s', w3_get_pgcache_rules_core_path(), $this->button('view code', '', 'w3tc-show-rules'), htmlspecialchars($w3_plugin_pgcache->generate_rules_core()), $this->button_link('auto-install', sprintf('admin.php?page=%s&pgcache_write_rules_core', $this->_page)), $this->button_hide_note('Hide this message', 'pgcache_rules_core'));
-                    }
-
-                    if ($this->_config->get_boolean('notes.pgcache_rules_cache') && !$w3_plugin_pgcache->check_rules_cache()) {
-                        $this->_errors[] = sprintf('Disk enhanced page caching is not active. To enable it, add the following rules into the server configuration file (<strong>%s</strong>) of the site %s <textarea class="w3tc-rules" cols="120" rows="10" readonly="readonly">%s</textarea>. This can be done automatically, by clicking here: %s. %s', w3_get_pgcache_rules_cache_path(), $this->button('view code', '', 'w3tc-show-rules'), htmlspecialchars($w3_plugin_pgcache->generate_rules_cache()), $this->button_link('auto-install', sprintf('admin.php?page=%s&pgcache_write_rules_cache', $this->_page)), $this->button_hide_note('Hide this message', 'pgcache_rules_cache'));
-                    }
+                if ($this->_config->get_boolean('notes.pgcache_rules_cache') && !$w3_plugin_pgcache->check_rules_cache()) {
+                    $this->_errors[] = sprintf('Disk enhanced page caching is not active. To enable it, add the following rules into the server configuration file (<strong>%s</strong>) of the site %s <textarea class="w3tc-rules" cols="120" rows="10" readonly="readonly">%s</textarea>. This can be done automatically, by clicking here: %s. %s', w3_get_pgcache_rules_cache_path(), $this->button('view code', '', 'w3tc-show-rules'), htmlspecialchars($w3_plugin_pgcache->generate_rules_cache()), $this->button_link('auto-install', sprintf('admin.php?page=%s&pgcache_write_rules_cache', $this->_page)), $this->button_hide_note('Hide this message', 'pgcache_rules_cache'));
                 }
             }
         }
@@ -2156,6 +2146,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
         $default_feed = get_default_feed();
         $pgcache_enabled = $this->_config->get_boolean('pgcache.enabled');
+        $permalink_structure = get_option('permalink_structure');
 
         include W3TC_DIR . '/inc/options/pgcache.phtml';
     }
@@ -3763,6 +3754,11 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
         $attach_files = array(
             /**
+             * Attach WP config file
+             */
+            w3_get_wp_config_path(),
+
+            /**
              * Attach config files
              */
             W3TC_CONFIG_PATH,
@@ -4996,31 +4992,31 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $host = (!empty($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'localhost');
 
                 if ($this->is_supported()) {
-                    $buffer .= sprintf("\r\n<!-- Served from: %s @ %s by W3 Total Cache -->", $host, $date);
+                    $buffer .= sprintf("\r\n<!-- Served from: %s @ %s by W3 Total Cache -->", w3_escape_comment($host), $date);
                 } else {
-                    $buffer .= "\r\n<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/\r\n\r\n";
+                    $strings = array();
 
                     if ($this->_config->get_boolean('minify.enabled') && !$this->_config->get_boolean('minify.debug')) {
                         require_once W3TC_LIB_W3_DIR . '/Plugin/Minify.php';
                         $w3_plugin_minify = & W3_Plugin_Minify::instance();
 
-                        $buffer .= sprintf("Minified using %s%s\r\n", w3_get_engine_name($this->_config->get_string('minify.engine')), ($w3_plugin_minify->minify_reject_reason != '' ? sprintf(' (%s)', $w3_plugin_minify->minify_reject_reason) : ''));
+                        $strings[] = sprintf("Minified using %s%s", w3_get_engine_name($this->_config->get_string('minify.engine')), ($w3_plugin_minify->minify_reject_reason != '' ? sprintf(' (%s)', $w3_plugin_minify->minify_reject_reason) : ''));
                     }
 
                     if ($this->_config->get_boolean('pgcache.enabled') && !$this->_config->get_boolean('pgcache.debug')) {
                         require_once W3TC_LIB_W3_DIR . '/PgCache.php';
                         $w3_pgcache = & W3_PgCache::instance();
 
-                        $buffer .= sprintf("Page Caching using %s%s\r\n", w3_get_engine_name($this->_config->get_string('pgcache.engine')), ($w3_pgcache->cache_reject_reason != '' ? sprintf(' (%s)', $w3_pgcache->cache_reject_reason) : ''));
+                        $strings[] = sprintf("Page Caching using %s%s", w3_get_engine_name($this->_config->get_string('pgcache.engine')), ($w3_pgcache->cache_reject_reason != '' ? sprintf(' (%s)', $w3_pgcache->cache_reject_reason) : ''));
                     }
 
                     if ($this->_config->get_boolean('dbcache.enabled') && !$this->_config->get_boolean('dbcache.debug') && is_a($wpdb, 'W3_Db')) {
                         $append = (is_user_logged_in() ? ' (user is logged in)' : '');
 
                         if ($wpdb->query_hits) {
-                            $buffer .= sprintf("Database Caching %d/%d queries in %.3f seconds using %s%s\r\n", $wpdb->query_hits, $wpdb->query_total, $wpdb->time_total, w3_get_engine_name($this->_config->get_string('dbcache.engine')), $append);
+                            $strings[] = sprintf("Database Caching %d/%d queries in %.3f seconds using %s%s", $wpdb->query_hits, $wpdb->query_total, $wpdb->time_total, w3_get_engine_name($this->_config->get_string('dbcache.engine')), $append);
                         } else {
-                            $buffer .= sprintf("Database Caching using %s%s\r\n", w3_get_engine_name($this->_config->get_string('dbcache.engine')), $append);
+                            $strings[] = sprintf("Database Caching using %s%s", w3_get_engine_name($this->_config->get_string('dbcache.engine')), $append);
                         }
                     }
 
@@ -5028,7 +5024,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                         require_once W3TC_LIB_W3_DIR . '/ObjectCache.php';
                         $w3_objectcache = & W3_ObjectCache::instance();
 
-                        $buffer .= sprintf("Object Caching %d/%d objects using %s\r\n", $w3_objectcache->cache_hits, $w3_objectcache->cache_total, w3_get_engine_name($this->_config->get_string('objectcache.engine')));
+                        $strings[] = sprintf("Object Caching %d/%d objects using %s", $w3_objectcache->cache_hits, $w3_objectcache->cache_total, w3_get_engine_name($this->_config->get_string('objectcache.engine')));
                     }
 
                     if ($this->_config->get_boolean('cdn.enabled') && !$this->_config->get_boolean('cdn.debug')) {
@@ -5038,10 +5034,16 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                         $cdn = & $w3_plugin_cdn->get_cdn();
                         $via = $cdn->get_via();
 
-                        $buffer .= sprintf("Content Delivery Network via %s%s\r\n", ($via ? $via : 'N/A'), ($w3_plugin_cdn->cdn_reject_reason != '' ? sprintf(' (%s)', $w3_plugin_cdn->cdn_reject_reason) : ''));
+                        $strings[] = sprintf("Content Delivery Network via %s%s", ($via ? $via : 'N/A'), ($w3_plugin_cdn->cdn_reject_reason != '' ? sprintf(' (%s)', $w3_plugin_cdn->cdn_reject_reason) : ''));
                     }
 
-                    $buffer .= sprintf("\r\nServed from: %s @ %s -->", $host, $date);
+                    $buffer .= "\r\n<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/\r\n";
+
+                    if (count($strings)) {
+                        $buffer .= "\r\n" . implode("\r\n", $strings) . "\r\n";
+                    }
+
+                    $buffer .= sprintf("\r\nServed from: %s @ %s -->", w3_escape_comment($host), $date);
                 }
             }
         }
@@ -5139,20 +5141,9 @@ class W3_Plugin_TotalCache extends W3_Plugin {
         }
 
         $server_info = array(
-            'wp' => array(
-                'version' => $wp_version,
-                'db_version' => $wp_db_version,
-                'abspath' => ABSPATH,
-                'home' => get_option('home'),
-                'siteurl' => get_option('siteurl'),
-                'email' => get_option('admin_email'),
-                'upload_info' => (array) w3_upload_info(),
-                'theme' => get_theme(get_current_theme()),
-                'plugins' => $wordpress_plugins_active,
-                'wp_cache' => ((defined('WP_CACHE') && WP_CACHE) ? 'true' : 'false')
-            ),
             'w3tc' => array(
                 'version' => W3TC_VERSION,
+                'server' => (!empty($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : 'Unknown'),
                 'dir' => W3TC_DIR,
                 'content_dir' => W3TC_CONTENT_DIR,
                 'blogname' => W3TC_BLOGNAME,
@@ -5162,6 +5153,18 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 'base_path' => w3_get_base_path(),
                 'home_path' => w3_get_home_path(),
                 'site_path' => w3_get_site_path()
+            ),
+            'wp' => array(
+                'version' => $wp_version,
+                'db_version' => $wp_db_version,
+                'abspath' => ABSPATH,
+                'home' => get_option('home'),
+                'siteurl' => get_option('siteurl'),
+                'email' => get_option('admin_email'),
+                'upload_info' => (array) w3_upload_info(),
+                'theme' => get_theme(get_current_theme()),
+                'wp_cache' => ((defined('WP_CACHE') && WP_CACHE) ? 'true' : 'false'),
+                'plugins' => $wordpress_plugins_active
             ),
             'mysql' => array(
                 'version' => $mysql_version,
@@ -6066,7 +6069,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
                 $comment = get_comment($id);
 
-                $value = array('a' => $comment->comment_author,
+                $value = array(
+                    'a' => $comment->comment_author,
                     'am' => $comment->comment_author_email,
                     'ip' => $comment->comment_author_IP,
                     'con' => substr($comment->comment_content, 0, 100)

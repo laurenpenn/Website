@@ -449,7 +449,7 @@ License:
 			}
 
 
-			echo '	<h3>'.sprintf(__('To control player location in your post, put %1$s where you want it to appear.', 'podpress'), $this->podcastTag).'</h3> '."\n";
+			echo '	<h3>'.sprintf(__('To control player location in your post, you may put %1$s where you want it to appear. You can choose the default postion on the general settings page of podPress.', 'podpress'), $this->podcastTag).'</h3> '."\n";
 			echo '			<input type="button" name="podPressAddAnother" value="'.__('Add Media File','podpress').'" onclick="javascript: podPressAddMediaFile(true, \'\', \'\', \'\', \'\', \'\', \'\', \'\', \'\', \'\', \'new\', true, false, false, \'free\'); podPressDisplayMediaFiles();"/>'."\n";
 			if($entryType != 'page') {
 				echo '			<br/>'."\n";
@@ -510,6 +510,7 @@ License:
 				echo '						<td>'."\n";
 				echo '							<select id="iTunesKeywordsChoice" name="iTunesKeywordsChoice" onchange="javascript: if(this.value == \'Custom\') { document.getElementById(\'iTunesKeywordsWrapper\').style.display=\'\'; } else { document.getElementById(\'iTunesKeywordsWrapper\').style.display=\'none\'; }">'."\n";
 				echo '								<option value="WordPressCats" '; if($post->podPressPostSpecific['itunes:keywords'] == '##WordPressCats##') { echo 'selected="selected"';	}	echo '>'.__('Use WordPress Categories', 'podpress').'</option>'."\n";
+				echo '								<option value="post_tags" '; if($post->podPressPostSpecific['itunes:keywords'] == '##post_tags##') { echo 'selected="selected"';	}	echo '>'.__('Use the tags of the post', 'podpress').'</option>'."\n";
 				echo '								<option value="Global" '; if($post->podPressPostSpecific['itunes:keywords'] == '##Global##') { echo 'selected="selected"';	}	echo '>'.__('Use Global', 'podpress').' ('.podPress_stringLimiter(stripslashes($this->settings['iTunes']['keywords']), 40) .')</option>'."\n";
 				echo '								<option value="Custom" '; if($post->podPressPostSpecific['itunes:keywords'] != '##Global##' && $post->podPressPostSpecific['itunes:keywords'] != '##WordPressCats##') { echo 'selected="selected"';	}	echo '>'.__('Insert custom value', 'podpress').'</option>'."\n";
 				echo '							</select>'."\n";
@@ -522,7 +523,7 @@ License:
 				echo '					<tr id="iTunesKeywordsWrapper" '.$tempShowMe.'>'."\n";
 				echo '						<td width="1%" nowrap="nowrap">&nbsp;</td>'."\n";
 				echo '						<td>'."\n";
-				echo '							'.__('Separate multiples with commas', 'podpress').', '.__('max 8', 'podpress').'<br/><textarea name="iTunesKeywords" rows="4" cols="40">'.stripslashes($post->podPressPostSpecific['itunes:keywords']).'</textarea>'."\n";
+				echo '							'.__('a list of max. 12 comma separated words', 'podpress').'<br/><textarea name="iTunesKeywords" rows="4" cols="40">'.stripslashes($post->podPressPostSpecific['itunes:keywords']).'</textarea>'."\n";
 				echo '						</td>'."\n";
 				echo '					</tr>'."\n";
 
@@ -764,7 +765,7 @@ License:
 
 			echo '<input type="hidden" id="podPressMedia_defaultpreviewImage" value="'.PODPRESS_URL.'/images/vpreview_center.png" />'."\n";
 			
-			echo '<p style="padding-bottom:1em;">'.sprintf(__('To control player location in your post, put %1$s where you want it to appear.', 'podpress'), $this->podcastTag).'<br />'.__('File Uploading support is not part of podPress.', 'podpress').'</p>'."\n";
+			echo '<p style="padding-bottom:1em;">'.sprintf(__('To control player location in your post, you may put %1$s where you want it to appear. You can choose the default postion on the general settings page of podPress.', 'podpress'), $this->podcastTag).'<br />'.__('File Uploading support is not part of podPress.', 'podpress').'</p>'."\n";
 			echo '<h4>'.__('Podcasting Files:', 'podpress').'</h4>'."\n";
 		
 			$num = 0;
@@ -1090,6 +1091,7 @@ License:
 				echo '						<td>'."\n";
 				echo '							<select id="iTunesKeywordsChoice" name="iTunesKeywordsChoice" onchange="javascript: if(this.value == \'Custom\') { document.getElementById(\'iTunesKeywordsWrapper\').style.display=\'\'; } else { document.getElementById(\'iTunesKeywordsWrapper\').style.display=\'none\'; }">'."\n";
 				echo '								<option value="WordPressCats" '; if($post->podPressPostSpecific['itunes:keywords'] == '##WordPressCats##') { echo 'selected="selected"';	}	echo '>'.__('Use WordPress Categories', 'podpress').'</option>'."\n";
+				echo '								<option value="post_tags" '; if($post->podPressPostSpecific['itunes:keywords'] == '##post_tags##') { echo 'selected="selected"';	}	echo '>'.__('Use the tags of the post', 'podpress').'</option>'."\n";
 				echo '								<option value="Global" '; if($post->podPressPostSpecific['itunes:keywords'] == '##Global##') { echo 'selected="selected"';	}	echo '>'.__('Use Global', 'podpress').' ('.podPress_stringLimiter(stripslashes($this->settings['iTunes']['keywords']), 40) .')</option>'."\n";
 				echo '								<option value="Custom" '; if($post->podPressPostSpecific['itunes:keywords'] != '##Global##' && $post->podPressPostSpecific['itunes:keywords'] != '##WordPressCats##') { echo 'selected="selected"';	}	echo '>'.__('Insert custom value', 'podpress').'</option>'."\n";
 				echo '							</select>'."\n";
@@ -1105,7 +1107,7 @@ License:
 				echo '					<tr id="iTunesKeywordsWrapper" '.$tempShowMe.'>'."\n";
 				echo '						<th>&nbsp;</th>'."\n";
 				echo '						<td>'."\n";
-				echo '							'.__('Separate multiples with commas', 'podpress').', '.__('max 8', 'podpress').'<br/><textarea name="iTunesKeywords" class="podpress_wide_text_field" rows="4" cols="40">'.stripslashes($post->podPressPostSpecific['itunes:keywords']).'</textarea>'."\n";
+				echo '							'.__('a list of max. 12 comma separated words', 'podpress').'<br/><textarea name="iTunesKeywords" class="podpress_wide_text_field" rows="4" cols="40">'.stripslashes($post->podPressPostSpecific['itunes:keywords']).'</textarea>'."\n";
 				echo '						</td>'."\n";
 				echo '					</tr>'."\n";
 
@@ -1308,8 +1310,10 @@ License:
 
 					if($_POST['iTunesKeywordsChoice'] == 'Custom' && !empty($_POST['iTunesKeywords'])) {
 						$podPressPostSpecific['itunes:keywords'] = $this->cleanup_itunes_keywords($_POST['iTunesKeywords']);
-					} elseif($_POST['iTunesKeywordsChoice'] == 'Global') {
+					} elseif ($_POST['iTunesKeywordsChoice'] == 'Global') {
 						$podPressPostSpecific['itunes:keywords'] = '##Global##';
+					} elseif ($_POST['iTunesKeywordsChoice'] == 'post_tags') {
+						$podPressPostSpecific['itunes:keywords'] = '##post_tags##';
 					} else {
 						$podPressPostSpecific['itunes:keywords'] = '##WordPressCats##';
 					}
@@ -1443,7 +1447,7 @@ License:
 			echo '					<p><label for="podcastFeedURL"><strong>'.__('the new Feed URL', 'podpress').'</strong></label>';
 			echo '					<br/>';
 			echo '					<input type="text" id="podcastFeedURL" name="podcastFeedURL" class="podpress_wide_text_field" size="40" value="'.attribute_escape($data['podcastFeedURL']).'" /><br />'.__('The URL of your Podcast Feed. If you want to register your podcast at the iTunes Store or if your podcast is already listed there then this input field should contain the same URL as in the iTunes Store settings. If you want change the URL at the iTunes Store then please read first the help text of the iTunes:New-Feed-Url option.', 'podpress');
-			echo '					<input type="button" value="Validate your Feed" onclick="javascript: if(document.getElementById(\'add_option\').value != \'\') { window.open(\'http://www.feedvalidator.org/check.cgi?url=\'+document.getElementById(\'podcastFeedURL\').value); }"/>'."\n";
+			echo '					<br /><input type="button" value="'.__('Validate your Feed','podpress').'" onclick="javascript: if(document.getElementById(\'podcastFeedURL\').value != \'\') { window.open(\'http://www.feedvalidator.org/check.cgi?url=\'+document.getElementById(\'podcastFeedURL\').value); }"/>'."\n";
 			echo '				</p></td>'."\n";
 			echo '			</tr>'."\n";
 
@@ -1553,7 +1557,7 @@ License:
 			echo '						<option value="Custom" '; if($data['iTunesKeywordsChoice'] == 'Custom') { echo 'selected="selected"';	}	echo '>'.__('Insert custom value', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
 			echo '					<div id="iTunesKeywordsWrapper">'."\n";
-			echo '						'.__('Separate multiples with commas', 'podpress').', '.__('max. 8', 'podpress').'<br/><textarea name="iTunesKeywords" rows="4" cols="40">'.stripslashes($data['iTunesKeywords']).'</textarea>'."\n";
+			echo '						'.__('a list of max. 12 comma separated words', 'podpress').'<br/><textarea name="iTunesKeywords" rows="4" cols="40">'.stripslashes($data['iTunesKeywords']).'</textarea>'."\n";
 			echo '					</div>'."\n";
 			echo '					<div id="iTunesKeywordsHelp">'."\n";
 			echo '						'.__('Not visible in iTunes, but used for searches.', 'podpress')."\n";
@@ -1818,6 +1822,7 @@ License:
 		}
 
 		function edit_category($cat_ID) {
+			global $wp_version;
 			if(!isset($_POST['iTunesFeedID'])){
 				return;
 			}
@@ -1833,7 +1838,11 @@ License:
 			$data['iTunesFeedID'] = intval(preg_replace('/[^0-9]/', '', $_POST['iTunesFeedID']));
 			$data['iTunesNewFeedURL'] = $_POST['iTunesNewFeedURL'];
 			$data['blognameChoice'] = $_POST['blognameChoice'];
-			$data['blogname'] = htmlspecialchars(strip_tags(trim($_POST['blogname'])), ENT_QUOTES, $blog_charset);
+			if ( TRUE == version_compare($wp_version, '3.0', '<') ) {
+				$data['blogname'] = htmlspecialchars(strip_tags(trim($_POST['cat_name'])), ENT_QUOTES, $blog_charset);
+			} else {
+				$data['blogname'] = htmlspecialchars(strip_tags(trim($_POST['name'])), ENT_QUOTES, $blog_charset);
+			}
 			$data['blogdescriptionChoice'] = $_POST['blogdescriptionChoice'];
 			$data['iTunesSubtitleChoice'] = $_POST['iTunesSubtitleChoice'];
 			$data['iTunesSubtitle'] = htmlspecialchars(strip_tags(trim($_POST['iTunesSubtitle'])), ENT_QUOTES, $blog_charset);

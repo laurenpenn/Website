@@ -23,8 +23,8 @@ License:
 		var $settings = array();
 
 		// Global hardcoded settings
-		var $podcastTag_regexp = "/\[podcast:([^]]+)]/";
-		var $podcastTag = '[display_podcast]';
+		var $podcasttag_regexp = "/\[podcast:([^]]+)]/";
+		var $podcasttag = '[display_podcast]';
 		var $podtrac_url = 'http://www.podtrac.com/pts/redirect.mp3?';
 		var $blubrry_url = 'http://media.blubrry.com/';
 		var $requiredAdminRights = 'manage_categories';//'level_7';
@@ -35,7 +35,8 @@ License:
 		var $tempFileURLPath = '';
 		var $tempcontentaddedto = array();
 		var $podangoAPI;
-
+		var $isexcerpt = FALSE;
+		
 		/*************************************************************/
 		/* Load up the plugin values and get ready to action         */
 		/*************************************************************/
@@ -1028,52 +1029,101 @@ License:
 
 		function insert_the_excerpt($content = '') {
 			GLOBAL $post;
-			$this->tempcontentaddedto[$post->ID] = true;
+//~ printphpnotices_var_dump('get_the_excerpt');
+//~ printphpnotices_var_dump($this->tempcontentaddedto);
+//~ printphpnotices_var_dump('in_the_loop');
+//~ printphpnotices_var_dump(in_the_loop());
+//~ printphpnotices_var_dump($post->ID);
+//~ printphpnotices_var_dump('is page');
+//~ printphpnotices_var_dump(is_page());
+			//~ printphpnotices_var_dump(has_excerpt());
+			//~ if ( FALSE === in_the_loop() ) {
+			//~ if ( TRUE == isset($this->tempcontentaddedto[$post->ID]) AND TRUE === $this->tempcontentaddedto[$post->ID]) {
+				//~ return str_replace($this->podcasttag,'',$content);
+			//~ }
+			//~ if ( FALSE === is_single() AND FALSE === is_page() ) {
+				//~ $this->tempcontentaddedto[$post->ID] = true;
+			//~ }
+			//~ if ( FALSE !== empty($post->post_excerpt) ) {
+	
+			if ( FALSE == !empty($post->post_excerpt) ) {
+				$this->tempcontentaddedto[$post->ID] = true;
+			}
+			
+			//~ remove_filter('the_content', 'insert_content');
+			//~ }
+			$this->isexcerpt = true;
+			//~ return str_replace($this->podcasttag,'',$content);
 			return $content;
 		}
 
 		function insert_the_excerptplayer($content = '') {
 			GLOBAL $post;
-			unset($this->tempcontentaddedto[$post->ID]);
+			$this->isexcerpt = true;
+//~ printphpnotices_var_dump('the_excerpt');
+//~ printphpnotices_var_dump($this->tempcontentaddedto);
+			//~ unset($this->tempcontentaddedto[$post->ID]);
+			//~ printphpnotices_var_dump('B: '.$post->post_title);
+
 			$content = $this->insert_content($content, TRUE);
-			unset($this->tempcontentaddedto[$post->ID]);
+			//~ unset($this->tempcontentaddedto[$post->ID]);
 			return $content;
 		}
 
-		function insert_content($content = '', $is_excerpt = FALSE) {
+		function insert_content($content = '', $is_the_excerpt = FALSE) {
 			GLOBAL $post, $podPressTemplateData, $podPressTemplateUnauthorizedData, $wpdb;
+//~ printphpnotices_var_dump('insert_content');
 			if ( !empty($post->post_password) ) { // if there's a password
 				if ( stripslashes($_COOKIE['wp-postpass_'.COOKIEHASH]) != $post->post_password ) {	// and it doesn't match the cookie
 					return $content;
 				}
 			}
-
-			if ( isset($this->tempcontentaddedto[$post->ID]) ) {
+//~ printphpnotices_var_dump('###################');
+//~ printphpnotices_var_dump($post->ID);
+//~ printphpnotices_var_dump($post->post_title);
+//~ printphpnotices_var_dump(has_excerpt());
+//~ printphpnotices_var_dump($is_the_excerpt);
+//~ printphpnotices_var_dump($this->isexcerpt);
+			
+//~ if ( $is_the_excerpt === TRUE ) {
+//~ printphpnotices_var_dump('is excerpt');
+//~ } else {
+//~ printphpnotices_var_dump('is content');
+//~ }
+//~ printphpnotices_var_dump($content);
+			if ( $this->isexcerpt === $is_the_excerpt  ) {
+				unset($this->tempcontentaddedto[$post->ID]);
+			}
+			$this->isexcerpt = FALSE;
+			if ( isset($this->tempcontentaddedto[$post->ID]) ) {//OR 
 				if ( is_feed() ) {
-					return str_replace($this->podcastTag,'',$content);
-				}
-				//~ if ( FALSE === is_single() AND FALSE === is_page() ) {
+					return str_replace($this->podcasttag,'',$content);
+				} else {
+					//~ if ( FALSE === is_single() AND FALSE === is_page() ) {
 					return $content;
-				//~ }
+					//~ }
+				}
 			} else {
 				$this->tempcontentaddedto[$post->ID] = true;
 			}
-
+			
 			if ( is_feed() ) {
 				if($this->settings['protectFeed'] == 'Yes' && get_bloginfo('charset') == 'UTF-8') {
 					$content = podPress_feedSafeContent($content);
 				}
 				if($this->settings['rss_showlinks'] != 'yes') {
-					return str_replace($this->podcastTag,'',$content);
+					return str_replace($this->podcasttag,'',$content);
 				}
 			}
 
 			if(!is_array($post->podPressMedia)) {
-				return str_replace($this->podcastTag,'',$content);
+				return str_replace($this->podcasttag,'',$content);
 			}
 
-			$hasLocationDefined = (bool)strstr($content, $this->podcastTag);
-			if(!$hasLocationDefined) {
+			//~ $hasLocationDefined = (bool)strstr($content, $this->podcasttag);
+			//~ if(!$hasLocationDefined) {
+
+			if ( FALSE === stristr($content, $this->podcasttag) ) {
 				if($this->settings['contentBeforeMore'] == 'no') {
 					if (is_home() or is_archive()) {
 						if ( FALSE !== strpos($post->post_content, '<!--more-->') ) {
@@ -1082,17 +1132,17 @@ License:
 					}
 				}
 				if($this->settings['contentLocation'] == 'start') {
-					$content = $this->podcastTag.$content;
+					$content = $this->podcasttag.$content;
 				} else {
-					$content .= $this->podcastTag;
+					$content .= $this->podcasttag;
 				}
 			}
-			
-			$podpressTag_in_the_content = '<p>'.$this->podcastTag.'</p>';
+		
+			$podpressTag_in_the_content = '<p>'.$this->podcasttag.'</p>';
 			
 			// add the player and the other elements not if the related setting has been set 
 			if ( TRUE == isset($this->settings['incontentandexcerpt']) ) {
-				if ( $is_excerpt === TRUE ) {
+				if ( $is_the_excerpt === TRUE ) {
 					switch ( $this->settings['incontentandexcerpt'] ) {
 						default :
 						case 'in_content_and_excerpt' :
@@ -1102,11 +1152,11 @@ License:
 							if ( FALSE !== stripos($content, $podpressTag_in_the_content) ) {
 								return str_replace($podpressTag_in_the_content, '', $content);
 							} else {
-								return str_replace($this->podcastTag,'',$content);
+								return str_replace($this->podcasttag,'',$content);
 							}
 						break;
 					}
-					$content = "\n<!-- is excerpt -->\n" . $content;
+					//~ $content = "\n<!-- is excerpt -->\n" . $content;
 				} else {
 					switch ( $this->settings['incontentandexcerpt'] ) {
 						default :
@@ -1117,11 +1167,11 @@ License:
 							if ( FALSE !== stripos($content, $podpressTag_in_the_content) ) {
 								return str_replace($podpressTag_in_the_content, '', $content);
 							} else {
-								return str_replace($this->podcastTag,'',$content);
+								return str_replace($this->podcasttag,'',$content);
 							}
 						break;
 					}
-					$content = "\n<!-- is content -->\n" . $content;
+					//~ $content = "\n<!-- is content -->\n" . $content;
 				}
 			}
 
@@ -1306,7 +1356,7 @@ License:
 			}
 
 			if(is_feed()) {
-				return str_replace($this->podcastTag, '<br/>'.$podPressRSSContent, $content);
+				return str_replace($this->podcasttag, '<br/>'.$podPressRSSContent, $content);
 			}
 
 			if(!$this->settings['compatibilityChecks']['wp_head']) {
@@ -1321,8 +1371,22 @@ License:
 			if ( FALSE !== stripos($content, $podpressTag_in_the_content) ) {
 				return str_replace($podpressTag_in_the_content, $podPressContent, $content);
 			} else {
-				return str_replace($this->podcastTag, $podPressContent, $content);
+				return str_replace($this->podcasttag, $podPressContent, $content);
 			}
+		}
+		
+		/**
+		* feed_excerpt_filter - a function to filter the excerpt content (mainly to remove the podPress shortcode which is not desired in feed elements)
+		*
+		* @package podPress
+		* @since 8.8.10.7
+		*
+		* @param str $content - text which may contain the podPress shortcode to determine the position of the player at the blog page
+		*
+		* @return str the content without the podPress shortcode 
+		*/
+		function feed_excerpt_filter($content) {
+			return str_replace($this->podcasttag, '', $content);
 		}
 
 		function xmlrpc_post_addMedia($input) {
@@ -1423,25 +1487,30 @@ License:
 		*
 		* @param str $rawstring - The raw input string.
 		* @param str $blog_charset [optional] - should be a PHP conform charset string like UTF-8 
+		* @param bool $do_htmlspecialchars [optional] - do htmlspecialchars or not (since 8.8.10.7)
 		*
 		* @return str clean keyword string
 		*/
-		function cleanup_itunes_keywords($rawstring='', $blog_charset='') {
+		function cleanup_itunes_keywords($rawstring='', $blog_charset='', $do_htmlspecialchars = TRUE) {
 			if ( FALSE === empty($rawstring) ) {
 				$tmpstring = strip_tags(trim($rawstring));
 				$tmpstring_parts = preg_split("/(\,)|(\s+)/", $tmpstring, -1, PREG_SPLIT_NO_EMPTY);
 				$i=0;
 				foreach ($tmpstring_parts as $tmpstring_part) {
 					$string_parts[] = $tmpstring_part;
-					if ( 7 == $i ) {
+					if ( 11 == $i ) { // max 12 keywords
 						break;
 					}
 					$i++;
-				}				
-				if ( FALSE === empty($blog_charset) ) {
-					return htmlspecialchars(implode(', ', $string_parts), ENT_QUOTES, $blog_charset);
+				}
+				if ( TRUE === $do_htmlspecialchars ) {
+					if ( FALSE === empty($blog_charset) ) {
+						return htmlspecialchars(implode(', ', $string_parts), ENT_QUOTES, $blog_charset);
+					} else {
+						return htmlspecialchars(implode(', ', $string_parts), ENT_QUOTES);
+					}
 				} else {
-					return htmlspecialchars(implode(', ', $string_parts), ENT_QUOTES);
+					return implode(', ', $string_parts);
 				}
 			} else {
 				return '';

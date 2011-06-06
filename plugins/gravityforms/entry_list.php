@@ -355,14 +355,17 @@ class GFEntryList{
                                                     }
                                                     else{
                                                         $field = RGFormsModel::get_field($form, $field_id);
-                                                        if($field["enableChoiceValue"] || $field["enablePrice"]){
+                                                        if(rgar($field, "enableChoiceValue") || rgar($field, "enablePrice")){
                                                             foreach($field["choices"] as $choice){
                                                                 if($choice["value"] == $lead[$field_id]){
                                                                     $value = "<img src='" . GFCommon::get_base_url() . "/images/tick.png'/>";
                                                                     break;
                                                                 }
                                                                 else if($field["enablePrice"]){
-                                                                    list($val, $price) = explode("|", $lead[$field_id]);
+                                                                    $ary = explode("|", $lead[$field_id]);
+                                                                    $val = count($ary) > 0 ? $ary[0] : "";
+                                                                    $price = count($ary) > 1 ? $ary[1] : "";
+
                                                                     if($val == $choice["value"]){
                                                                         $value = "<img src='" . GFCommon::get_base_url() . "/images/tick.png'/>";
                                                                         break;

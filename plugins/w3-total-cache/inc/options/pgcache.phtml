@@ -108,6 +108,15 @@
         			<span class="description">Cache the specified pages / directories even if listed in the "never cache the following pages" field.</span>
         		</td>
         	</tr>
+            <?php if (substr($permalink_structure, -1) == '/'): ?>
+            <tr>
+                <th><label for="pgcache_accept_uri">Non-trailing slash pages:</label></th>
+                <td>
+                    <textarea id="pgcache_accept_uri" name="pgcache.accept.uri" cols="40" rows="5"><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('pgcache.accept.uri'))); ?></textarea><br />
+                    <span class="description">Cache the specified pages even if they don't have tailing slash.</span>
+                </td>
+            </tr>
+            <?php endif; ?>
         	<tr>
         		<th><label for="pgcache_cache_headers">Specify page headers:</label></th>
         		<td>

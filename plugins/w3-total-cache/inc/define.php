@@ -1,6 +1,6 @@
 <?php
 
-define('W3TC_VERSION', '0.9.1.4b');
+define('W3TC_VERSION', '0.9.2.2');
 define('W3TC_POWERED_BY', 'W3 Total Cache/' . W3TC_VERSION);
 define('W3TC_EMAIL', 'w3tc@w3-edge.com');
 define('W3TC_PAYPAL_URL', 'https://www.paypal.com/cgi-bin/webscr');
@@ -753,11 +753,11 @@ function w3_get_document_root() {
 
     if ($document_root === null) {
         if (!empty($_SERVER['SCRIPT_FILENAME'])) {
-            $document_root = substr($_SERVER['SCRIPT_FILENAME'], 0, -strlen($_SERVER['PHP_SELF']));
+            $document_root = substr(w3_path($_SERVER['SCRIPT_FILENAME']), 0, -strlen(w3_path($_SERVER['PHP_SELF'])));
         } elseif (!empty($_SERVER['PATH_TRANSLATED'])) {
-            $document_root = substr($_SERVER['PATH_TRANSLATED'], 0, -strlen($_SERVER['PHP_SELF']));
+            $document_root = substr(w3_path($_SERVER['PATH_TRANSLATED']), 0, -strlen(w3_path($_SERVER['PHP_SELF'])));
         } elseif (!empty($_SERVER['DOCUMENT_ROOT'])) {
-            $document_root = $_SERVER['DOCUMENT_ROOT'];
+            $document_root = w3_path($_SERVER['DOCUMENT_ROOT']);
         } else {
             $document_root = w3_get_site_root();
         }
@@ -2051,6 +2051,20 @@ function w3_extract_css($content) {
     $files = array_values(array_unique($files));
 
     return $files;
+}
+
+/**
+ * Escapes HTML comment
+ *
+ * @param string $comment
+ * @return mixed
+ */
+function w3_escape_comment($comment) {
+    while (strstr($comment, '--') !== false) {
+        $comment = str_replace('--', '- -', $comment);
+    }
+
+    return $comment;
 }
 
 /**

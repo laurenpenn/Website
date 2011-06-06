@@ -1,4 +1,19 @@
-  -------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.2.3
+    - Updated jQuery attr("checked"), attr("disabled") and attr("selected") statements for compatibility with jQuery 1.6
+    - Fixed issue with form editor throwing errors on WP 3.2 on forms without page breaks
+    - Changed Print Entry page so that Admin labels are used when appropriate.
+    - Added "gfield_contains_required" class to main <li> when it contains a required field.
+    - Fixed issue with checkbox option fields displaying blank options in the admin and PayPal
+    - Added Greenland to the list of countries
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.2.2
+    - Changed form action to a relative path instead of full URL
+    - Removed TwentyTen theme-specific styles from forms.css
+    - Minor updates to admin.css
+    
+-------------------------------------------------------------------------------------------------------------------
 Version 1.5.2.1
     - Updated jQuery property selector to include quotes
     - Removed 'href' attribute from 'Edit' link to resolve IE issue where it triggered the onBeforeUnload event

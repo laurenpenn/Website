@@ -4,14 +4,14 @@ Contributors: seek3r, macx, iscifi
 Donate link: http://www.mightyseek.com/podpress_donate.php
 Requires at least: 2.2
 Tested up to: 3.1.2
-Stable Tag: 8.8.10.6
+Stable Tag: 8.8.10.7
 
 A plugin for Podcasters using WordPress.
 
 == Description ==
 podPress adds a lot of features designed to make WordPress the ideal platform for hosting a podcast.
 
-podPress 8.8.10.5 and .6 include 2 bug fixes. You can read more about this version in the [Changelog](http://wordpress.org/extend/plugins/podpress/changelog/) and pay attention to the [Upgrade](http://wordpress.org/extend/plugins/podpress/other_notes/) section.
+podPress 8.8.10.7 includes a few bug fixes and a new option. You can read more about this version in the [Changelog](http://wordpress.org/extend/plugins/podpress/changelog/) and pay attention to the [Upgrade](http://wordpress.org/extend/plugins/podpress/other_notes/) section.
 
 Features:
 
@@ -47,6 +47,15 @@ http://www.mightyseek.com/podpress
 == Changelog ==
 
 Please, read the [Upgrade instructions](http://wordpress.org/extend/plugins/podpress/other_notes/). 
+= v8.8.10.7 =
+<strong>Notice:</strong> Upgrading to this version from version 8.8.9.2 or older will rename the podPress `meta_key`s in the postmeta data base table of your blog (see bug fixes). Downgrading to a previous version is only possible if you reverse these changes.
+
+* bug fix: the function which limits the number of characters for several feed elements is multibyte-character-safe and it does not cut through htmlentities anymore (Thank you [franky1029](http://wordpress.org/support/profile/franky1029), [welshes99](http://wordpress.org/support/profile/welshes99) and [drezac](http://wordpress.org/support/profile/drezac) for [reporting the problem](http://wordpress.org/support/topic/podpress-player-doesnt-show-in-post).)
+* bug fix: the HTML5 player appears also in IE9 (JS error fixed) (Thank you [dael3](http://wordpress.org/support/profile/dael3) for [reporting the problem](http://wordpress.org/support/topic/no-player).)
+* bug fix: the "Validate your feed" button at the Category Casting settings works again (Thank you [meetwp](http://wordpress.org/support/profile/meetwp) for [reporting the problem](http://wordpress.org/support/topic/plugin-podpress-category-casting-category-title-appears-twice-in-feed-title).)
+* new: It is now possible to "Use the tags of the post" as itunes:keywords. There is a new option with this name in the Post specific settings for iTunes (below the post editor). (Suggested by [Twanislas](http://wordpress.org/support/profile/twanislas) in [this thread](http://wordpress.org/support/topic/podpress-suggestions))
+* new: max. 12 itunes:keywords possible
+
 = v8.8.10.6 =
 <strong>Notice:</strong> Upgrading to this version from version 8.8.9.2 or older will rename the podPress `meta_key`s in the postmeta data base table of your blog (see bug fixes). Downgrading to a previous version is only possible if you reverse these changes.
 

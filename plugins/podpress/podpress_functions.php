@@ -142,10 +142,10 @@ License:
 				$startlen = $startlen - 1;
 				$endlen = $startlen * 2;
 				$endlen = $endlen - $endlen - $endlen;
-				return substr($str, 0, $startlen).'...'.substr($str, $endlen);
+				return mb_substr($str, 0, $startlen).'...'.mb_substr($str, $endlen);
 			} else {
 				$len = $len - 3;
-				return substr($str, 0, $len).'...';
+				return mb_substr($str, 0, $len).'...';
 			}
 		} else {
 			return $str;
@@ -186,8 +186,128 @@ License:
 		} else {
 			return $phrase;
 		}
-	}	
-		
+	}
+	
+	/**
+	* podPress_strlimiter_end - if the input phrase is longer then maxlength then cut characters from the end of the phrase
+	*
+	* @package podPress
+	* @since 8.8.10.7 beta 7
+	*
+	* @param str $phrase input string
+	* @param int $maxlength [optional] - max. length of the output string
+	* @param str $paddingchar [optional] - character(s) which should symbolize the shortend string / placed in the middle of the shortend string
+	* @param bool $respecthtmlentities [optional] - if TRUE then the function will not cut htmlentities in half. It will cut before and after the entity.
+	* @param bool $abbrev [optional] - use the abbr-tag with the original string as the title element
+	* @param str $classname [optional] - name(s) of the CSS class(es) of the abbr-tag
+	*
+	* @return str phrase with max. length
+	*/
+	function podPress_strlimiter_end($phrase, $maxlength = 25, $paddingchar = ' ... ', $respecthtmlentities = FALSE, $abbrev = FALSE, $classname = 'podpress_abbr') {
+		$len = strlen($phrase);
+		$maxlen = ($maxlength-strlen($paddingchar));
+		if ( $len > $maxlen ) {
+			$short_phrase = mb_substr($phrase, 0, $maxlen);
+			if ( TRUE === $respecthtmlentities ) {
+				$short_phrase_end = mb_substr($short_phrase, -10);
+				$ampersandpos = strrpos($short_phrase_end, '&');
+				if ( FALSE !== $ampersandpos ) {
+					// if there is an ampersand among the last characters then it might be an entity
+					$semicolonpos = strrpos($short_phrase_end, ';');
+					if ( FALSE === $semicolonpos OR $semicolonpos < $ampersandpos) {
+						// if no semicolon is following the ampersand then it is most likely an entity which was cut off
+						$maxlen = $maxlen - 10 + $ampersandpos;
+						// cut the string before the entity
+						$short_phrase = mb_substr($phrase, 0, $maxlen);
+					} 
+				}
+			}
+			if ($abbrev == TRUE) {
+				if ( Trim($classname) != '' ) {
+					return '<span class="'.$classname.'" title="'.attribute_escape(str_replace('"', '\'', $phrase)).'">' . $short_phrase . $paddingchar . '</span>';
+				} else {
+					return '<span title="'.attribute_escape(str_replace('"', '\'', $phrase)).'">' . $short_phrase . $paddingchar . '</span>';
+				}
+			} else {
+				return $short_phrase . $paddingchar;
+			}
+		} else {
+			return $phrase;
+		}
+	}
+	
+	/**
+	* podPress_strlimiter_middle - if the input phrase is longer then maxlength then cut characters from the center of the phrase
+	*
+	* @package podPress
+	* @since 8.8.10.7 beta 7
+	*
+	* @param str $phrase input string
+	* @param int $maxlength [optional] - max. length of the output string
+	* @param str $paddingchar [optional] - character(s) which should symbolize the shortend string / placed in the middle of the shortend string
+	* @param bool $respecthtmlentities [optional] - if TRUE then the function will not cut htmlentities in half. It will cut before and after the entity.
+	* @param bool $abbrev [optional] - use the abbr-tag with the original string as the title element
+	* @param str $classname [optional] - name(s) of the CSS class(es) of the abbr-tag
+	*
+	* @return str phrase with max. length
+	*/
+	function podPress_strlimiter_middle($phrase, $maxlength = 25, $paddingchar = ' ... ', $respecthtmlentities = FALSE, $abbrev = FALSE, $classname = 'podpress_abbr') {
+		$len = strlen($phrase);
+		$paddinglen = strlen($paddingchar);
+		$maxlen = ($maxlength-$paddinglen);
+		if ( $len > $maxlen ) {
+			$part1_len = floor($maxlen/2);
+			$part1 = mb_substr($phrase, 0,  $part1_len);
+			$part2_len = ceil($maxlen/2);
+			$part2 = mb_substr($phrase, -$part2_len, $len);
+			
+			if ( TRUE === $respecthtmlentities ) {
+				$part1_end = mb_substr($part1, -10);
+				$ampersandpos_part1 = strrpos($part1_end, '&');
+				if ( FALSE !== $ampersandpos_part1 ) {
+					// if there is an ampersand among the last characters of part1 then it might be an entity
+					$semicolonpos_part1 = strrpos($part1_end, ';');
+					if ( FALSE === $semicolonpos_part1 OR $semicolonpos_part1 < $ampersandpos_part1 ) {
+						// if no semicolon is following the ampersand then it is most likely an entity which was cut off
+						// cut the 1. part phrase before the entity
+						$part1 = mb_substr($part1, 0, ($part1_len - 10 + $ampersandpos_part1));
+						
+					}
+				}
+			
+				$part2_start = mb_substr($part2, 0, 10);
+				$semicolonpos_part2 = strpos($part2_start, ';');
+				if ( FALSE !== $semicolonpos_part2 ) {
+					// if there is a semicolon among the first characters of part2 then check whether there is an ampersand before that semicolon
+					$ampersandpos_part2 = strrpos($part2_start, '&');
+					if ( FALSE === $ampersandpos_part2 OR $ampersandpos_part2 > $semicolonpos_part2 ) {
+						// if there is no ampersand among the first characters of part2 which comes before the semicolon then look for it in the 10 characters before the semicolon
+						$part2_long_start = mb_substr($phrase, (-$part2_len+$semicolonpos_part2-10), 10); // a certain number of characters before the semicolon (this might include characters from part1 depending on the $paddinglen)
+						$ampersandpos_part2_long = strrpos($part2_long_start, '&');
+						$semicolonpos_part2_long = strrpos($part2_long_start, ';');
+						if ( (FALSE !== $ampersandpos_part2_long AND FALSE === $semicolonpos_part2_long) OR (FALSE !== $ampersandpos_part2_long AND FALSE !== $semicolonpos_part2_long AND $semicolonpos_part2_long < $ampersandpos_part2_long) ) {
+							// if there is an ampersand and no further semicolon OR if there is an ampersand and further semicolon which comes before the ampersand then this semicolon is most likely a semicolon of an entity
+							// cut the 2. part phrase after the semicolon
+							$part2 = mb_substr($part2, (-$part2_len+$semicolonpos_part2+1), $len);
+						}
+					}
+				}
+			}
+			
+			if ($abbrev == TRUE) {
+				if ( Trim($classname) != '' ) {
+					return '<span class="'.$classname.'" title="'.attribute_escape(str_replace('"', '\'', $phrase)).'">' . $part1 . $paddingchar . $part2 . '</span>';
+				} else {
+					return '<span title="'.attribute_escape(str_replace('"', '\'', $phrase)).'">' . $part1 . $paddingchar . $part2 . '</span>';
+				}
+			} else {
+				return $part1 . $paddingchar. $part2;
+			}
+		} else {
+			return $phrase;
+		}
+	}
+
 	if(!function_exists('html_print_r')) {
 		function html_print_r($v, $n = '', $ret = false) {
 			if($ret) {

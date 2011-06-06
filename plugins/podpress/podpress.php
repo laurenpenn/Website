@@ -1,10 +1,10 @@
 <?php
-define('PODPRESS_VERSION', '8.8.10.6');
+define('PODPRESS_VERSION', '8.8.10.7');
 /*
 Info for WordPress:
 ==============================================================================
 Plugin Name: podPress
-Version: 8.8.10.6
+Version: 8.8.10.7
 Plugin URI: http://www.mightyseek.com/podpress/
 Description: The podPress plugin gives you everything you need in one easy plugin to use WordPress for Podcasting. Set it up in <a href="admin.php?page=podpress/podpress_feed.php">'podPress'->Feed/iTunes Settings</a>. If this plugin works for you, send us a comment.
 Author: Dan Kuykendall (Seek3r)
@@ -317,6 +317,7 @@ function podPress_class_init() {
 	add_filter('the_content', array(&$podPress, 'insert_content'));
 	add_filter('get_the_excerpt', array(&$podPress, 'insert_the_excerpt'), 1);
 	add_filter('the_excerpt', array(&$podPress, 'insert_the_excerptplayer'));
+	add_filter('the_excerpt_rss', array(&$podPress, 'feed_excerpt_filter'));
 	
 	// ntm: This is deactivated because of the unknown purpose and reported problems (http://wordpress.org/support/topic/podpress_get_attached_file-overwriting-attempts-to-include-thumbnail-in-feed)
 	// The only purpose I can imagine is to prevent WP from adding non-podPress enclosure to Feed items. Since 8.8.5 podPress has a different filter to achieve that (see podPress_dont_print_nonpodpress_enclosures).

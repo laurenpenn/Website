@@ -51,7 +51,7 @@ class W3_Minify {
         $file = W3_Request::get_string('file');
 
         if (!$file) {
-            die('File param is missing.');
+            $this->send_error('File param is missing.');
         }
 
         $hash = '';
@@ -62,7 +62,7 @@ class W3_Minify {
         } elseif (preg_match('~^([a-f0-9]+)\\/(.+)\\.(include(\\-(footer|body))?(-nb)?)\\.[0-9]+\\.(css|js)$~', $file, $matches)) {
             list(, $theme, $template, $location, , , , $type) = $matches;
         } else {
-            die('Bad file param format.');
+            $this->send_error('Bad file param format.');
         }
 
         require_once W3TC_LIB_MINIFY_DIR . '/Minify.php';
@@ -505,6 +505,17 @@ class W3_Minify {
         $files = array_map('w3_normalize_file_minify2', $files);
 
         return $files;
+    }
+
+    /**
+     * Sends error response
+     *
+     * @param string $error
+     * @return void
+     */
+    function send_error($error) {
+        header('HTTP/1.0 400 Bad Request');
+        die($error);
     }
 
     /**

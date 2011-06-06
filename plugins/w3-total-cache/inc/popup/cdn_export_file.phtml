@@ -1,17 +1,16 @@
 <?php include W3TC_DIR . '/inc/popup/common/header.phtml'; ?>
 
-<script>
+<script type="text/javascript">/*<![CDATA[*/
 var files = [
 <?php $files_count = count($files); foreach ($files as $index => $file): ?>
 	'<?php echo addslashes($file); ?>'<?php if ($index < $files_count - 1): ?>,<?php endif; ?>
-	
 <?php endforeach; ?>
 ];
 
 jQuery(function() {
 	W3tc_Popup_Cdn_Export_File.init(files);	
 });
-</script>
+/*]]>*/</script>
 
 <p>This tool will upload files of the selected type to content delivery network provider.</p>
 <table cellspacing="5">

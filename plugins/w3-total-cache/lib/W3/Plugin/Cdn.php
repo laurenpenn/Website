@@ -1699,7 +1699,7 @@ class W3_Plugin_Cdn extends W3_Plugin {
                         'id' => $this->_config->get_string('cdn.cf2.id'),
                         'cname' => $this->_config->get_array('cdn.cf2.cname'),
                         'ssl' => $this->_config->get_string('cdn.cf2.ssl'),
-                        'compression' => $compression
+                        'compression' => false
                     );
                     break;
 
@@ -1765,7 +1765,7 @@ class W3_Plugin_Cdn extends W3_Plugin {
             $debug_info .= "\r\nReplaced URLs:\r\n";
 
             foreach ($this->replaced_urls as $old_url => $new_url) {
-                $debug_info .= sprintf("%s => %s\r\n", $old_url, $new_url);
+                $debug_info .= sprintf("%s => %s\r\n", w3_escape_comment($old_url), w3_escape_comment($new_url));
             }
         }
 

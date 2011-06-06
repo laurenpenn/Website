@@ -327,7 +327,7 @@ class GFFormDisplay{
             $form_string .= "
                 <div class='{$wrapper_css_class}' id='gform_wrapper_$form_id' " . $style . ">";
 
-            $action = RGFormsModel::get_current_page_url();
+            $action = add_query_arg(array());
             $default_anchor = $has_pages ? 1 : 0;
             if(apply_filters("gform_confirmation_anchor_{$form["id"]}", apply_filters("gform_confirmation_anchor", $default_anchor))){
                 $form_string .="<a name='gf_$form_id' class='gform_anchor' ></a>";
@@ -466,9 +466,9 @@ class GFFormDisplay{
                 <script type='text/javascript'>" .
                     "function gformInitSpinner(){" .
                         "jQuery('#gform_{$form_id}').submit(function(){" .
-                            "jQuery('#gform_submit_button_{$form_id}').attr('disabled', 'disabled').after('<' + 'img id=\"gform_ajax_spinner_{$form_id}\"  class=\"gform_ajax_spinner\" src=\"{$spinner_url}\" alt=\"\" />');" .
-                            "jQuery('#gform_wrapper_{$form_id} .gform_previous_button').attr('disabled', 'disabled'); " .
-                            "jQuery('#gform_wrapper_{$form_id} .gform_next_button').attr('disabled', 'disabled').after('<' + 'img id=\"gform_ajax_spinner_{$form_id}\"  class=\"gform_ajax_spinner\" src=\"{$spinner_url}\" alt=\"\" />');" .
+                            "jQuery('#gform_submit_button_{$form_id}').attr('disabled', true).after('<' + 'img id=\"gform_ajax_spinner_{$form_id}\"  class=\"gform_ajax_spinner\" src=\"{$spinner_url}\" alt=\"\" />');" .
+                            "jQuery('#gform_wrapper_{$form_id} .gform_previous_button').attr('disabled', true); " .
+                            "jQuery('#gform_wrapper_{$form_id} .gform_next_button').attr('disabled', true).after('<' + 'img id=\"gform_ajax_spinner_{$form_id}\"  class=\"gform_ajax_spinner\" src=\"{$spinner_url}\" alt=\"\" />');" .
                         "});" .
                     "}" .
                     "jQuery(document).ready(function($){" .
@@ -1434,8 +1434,9 @@ class GFFormDisplay{
         $shipping_class = $field["type"] == "shipping" ? "gfield_price gfield_shipping gfield_shipping_{$form["id"]}" : "";
         $product_class = $field["type"] == "product" ? "gfield_price gfield_price_{$form["id"]}_{$field["id"]} gfield_product_{$form["id"]}_{$field["id"]}" : "";
         $donation_class = $field["type"] == "donation" ? "gfield_price gfield_price_{$form["id"]}_{$field["id"]} gfield_donation_{$form["id"]}_{$field["id"]}" : "";
+        $required_class = $field["isRequired"] ? "gfield_contains_required" : "";
 
-        $css_class = "$selectable_class gfield $error_class $section_class $admin_only_class $custom_class $hidden_class $html_block_class $html_formatted_class $html_no_follows_desc_class $option_class $quantity_class $product_class $donation_class $shipping_class $page_class";
+        $css_class = "$selectable_class gfield $error_class $section_class $admin_only_class $custom_class $hidden_class $html_block_class $html_formatted_class $html_no_follows_desc_class $option_class $quantity_class $product_class $donation_class $shipping_class $page_class $required_class";
         $css_class = apply_filters("gform_field_css_class_{$form["id"]}", apply_filters("gform_field_css_class", trim($css_class), $field, $form), $field, $form);
 
         $style = !empty($form) && !IS_ADMIN && RGFormsModel::is_field_hidden($form, $field, $field_values) ? "style='display:none;'" : "";

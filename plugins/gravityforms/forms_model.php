@@ -1198,7 +1198,10 @@ class RGFormsModel{
            return true;
         }
         else if(rgget("enablePrice", $field)){
-            list($val, $price) = explode("|", $value);
+            $ary = explode("|", $value);
+            $val = count($ary) > 0 ? $ary[0] : "";
+            $price = count($ary) > 1 ? $ary[1] : "";
+
             if($val == $choice["value"])
                 return true;
         }
@@ -1922,7 +1925,8 @@ class RGFormsModel{
                     }
                 }
                 else{
-                    $lead[$field["id"]] = apply_filters("gform_get_input_value", $lead[$field["id"]], $lead, $field, "");
+
+                    $lead[$field["id"]] = apply_filters("gform_get_input_value", rgar($lead, (string)$field["id"]), $lead, $field, "");
                 }
             }
         }
@@ -2041,7 +2045,7 @@ class RGFormsModel{
     }
 
     public static function get_label($field, $input_id = 0, $input_only = false){
-        $field_label = (IS_ADMIN || RG_CURRENT_PAGE == "select_columns.php") && !empty($field["adminLabel"]) ? $field["adminLabel"] : $field["label"];
+        $field_label = (IS_ADMIN || RG_CURRENT_PAGE == "select_columns.php" || RG_CURRENT_PAGE == "print-entry.php") && !empty($field["adminLabel"]) ? $field["adminLabel"] : $field["label"];
         $input = self::get_input($field, $input_id);
         if(rgget("type", $field) == "checkbox" && $input != null)
             return $input["label"];

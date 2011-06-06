@@ -155,7 +155,7 @@ class podPressAdmin_class extends podPress_class
 			echo '				</th>'."\n";
 			echo '				<td colspan="2">'."\n";
 			echo '					<textarea name="iTunes[keywords]" id="iTunesKeywords" class="podpress_wide_text_field" rows="4" cols="40">'.stripslashes($this->settings['iTunes']['keywords']).'</textarea>';
-			echo '					<br/>('.__('Comma seperated list', 'podpress').', '.__('max 8', 'podpress').')';
+			echo '					<br/>('.__('a list of max. 12 comma separated words', 'podpress').', '.__('max 8', 'podpress').')';
 			echo '				</td>'."\n";
 			echo '			</tr>'."\n";
 			echo '			<tr>'."\n";
@@ -500,7 +500,7 @@ class podPressAdmin_class extends podPress_class
 					echo '					</select>'."\n";
 					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_right_col">'."\n";
-					echo '					<label for="podpress_feed_'.$i.'_iTunesKeywords">'.__('iTunes:Keywords', 'podpress').'</label><br /><textarea name="podpress_feeds['.$i.'][itunes-keywords]" id="podpress_feed_'.$i.'_iTunesKeywords" class="podpress_feeds_text_field" rows="4" cols="40">'.stripslashes(stripslashes($feed['itunes-keywords'])).'</textarea><br /><span class="podpress_description">'.__('Comma seperated list', 'podpress').'</span>'."\n";
+					echo '					<label for="podpress_feed_'.$i.'_iTunesKeywords">'.__('iTunes:Keywords', 'podpress').'</label><br /><textarea name="podpress_feeds['.$i.'][itunes-keywords]" id="podpress_feed_'.$i.'_iTunesKeywords" class="podpress_feeds_text_field" rows="4" cols="40">'.stripslashes(stripslashes($feed['itunes-keywords'])).'</textarea><br /><span class="podpress_description">'.__('a list of max. 12 comma separated words', 'podpress').'</span>'."\n";
 					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_left_col">'."\n";
 					echo '					<label for="podpress_feed_'.$i.'_iTunesAuthor">'.__('iTunes:Author/Owner', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$i.'][itunes-author]" id="podpress_feed_'.$i.'_iTunesAuthor" class="podpress_feeds_text_field" value="'.attribute_escape(stripslashes($feed['itunes-author'])).'" size="40" />'."\n";
@@ -747,7 +747,7 @@ class podPressAdmin_class extends podPress_class
 					echo '					</select>'."\n";
 					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_right_col">'."\n";
-					echo '					<label for="podpress_feed_'.$j.'_iTunesKeywords">'.__('iTunes:Keywords', 'podpress').'</label><br /><textarea name="podpress_feeds['.$j.'][itunes-keywords]" id="podpress_feed_'.$j.'_iTunesKeywords" class="podpress_feeds_text_field" rows="4" cols="40"></textarea><br /><span class="podpress_description">'.__('Comma seperated list', 'podpress').'</span>'."\n";
+					echo '					<label for="podpress_feed_'.$j.'_iTunesKeywords">'.__('iTunes:Keywords', 'podpress').'</label><br /><textarea name="podpress_feeds['.$j.'][itunes-keywords]" id="podpress_feed_'.$j.'_iTunesKeywords" class="podpress_feeds_text_field" rows="4" cols="40"></textarea><br /><span class="podpress_description">'.__('a list of max. 12 comma separated words', 'podpress').'</span>'."\n";
 					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_left_col">'."\n";
 					echo '					<label for="podpress_feed_'.$j.'_iTunesAuthor">'.__('iTunes:Author/Owner', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$j.'][itunes-author]" id="podpress_feed_'.$j.'_iTunesAuthor" class="podpress_feeds_text_field" value="" size="40" />'."\n";
