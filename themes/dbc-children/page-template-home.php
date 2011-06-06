@@ -24,26 +24,26 @@ get_header(); ?>
 
 	<div id="welcome-bar">
 		<dl id="welcome-preschool">
-			<a href="#">
+			<a href="http://children.dentonbible.org/preschool/">
 				<dt><strong>Preschool</strong></dt>
 				<dd>4 months - 4 years</dd>
 			</a>
 		</dl>
 		<dl id="welcome-elementary">
-			<a href="#">
+			<a href="http://children.dentonbible.org/elementary/">
 				<dt><strong>Elementary</strong></dt>
 				<dd>Kindergarten - 4th grade</dd>
 			</a>
 		</dl>
 		<dl id="welcome-volunteer">
-			<a href="#">
+			<a href="http://children.dentonbible.org/volunteer/">
 				<dt><strong>Volunteer</strong></dt>
 				<dd>Learn how to get involved</dd>
 			</a>
 		</dl>
 		<dl id="welcome-connect">
-			<a href="#">
-				<dt><strong>Connect</strong></dt>
+			<a href="http://children.dentonbible.org/calendar/">
+				<dt><strong>Calendar</strong></dt>
 				<dd>Sign up for events</dd>
 			</a>
 		</dl>
