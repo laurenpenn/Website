@@ -37,7 +37,7 @@ get_header(); ?>
 		</dl>
 		<dl id="welcome-volunteer">
 			<a href="#">
-				<dt><strong>Volunteers</strong></dt>
+				<dt><strong>Volunteer</strong></dt>
 				<dd>Learn how to get involved</dd>
 			</a>
 		</dl>
