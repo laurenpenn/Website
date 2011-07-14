@@ -33,30 +33,29 @@ var W3tc_Lightbox = {
 
     open: function(options) {
         this.options = jQuery.extend({
-            width: 400,
-            height: 300,
-            offsetTop: 100,
+            width: 0,
+            height: 0,
+            maxWidth: 0,
+            maxHeight: 0,
+            minWidth: 0,
+            minHeight: 0,
+            widthPercent: 0.6,
+            heightPercent: 0.8,
             content: null,
             url: null,
             callback: null
         }, options);
 
         this.create();
-
-        this.container.css({
-            width: this.options.width,
-            height: this.options.height
-        });
+        this.resize();
 
         if (this.options.content) {
-            this.content(options.content);
+            this.content(this.options.content);
         } else if (this.options.url) {
             this.load(this.options.url, this.options.callback);
         }
 
-        W3tc_Overlay.show(this);
-
-        this.resize();
+        W3tc_Overlay.show();
         this.container.show();
     },
 
@@ -66,14 +65,34 @@ var W3tc_Lightbox = {
     },
 
     resize: function() {
+        var width = (this.options.width ? this.options.width : this.window.width() * this.options.widthPercent);
+        var height = (this.options.height ? this.options.height : this.window.height() * this.options.heightPercent);
+
+        if (this.options.maxWidth && width > this.options.maxWidth) {
+            width = this.options.maxWidth;
+        } else if (width < this.options.minWidth) {
+            width = this.options.minWidth;
+        }
+
+        if (this.options.maxHeight && height > this.options.maxHeight) {
+            height = this.options.maxHeight;
+        } else if (height < this.options.minHeight) {
+            height = this.options.minHeight;
+        }
+
         this.container.css({
-            top: this.window.scrollTop() + this.options.offsetTop,
-            left: this.window.scrollLeft() + this.window.width() / 2 - this.container.width() / 2
+            width: width,
+            height: height
+        });
+
+        this.container.css({
+            top: this.window.scrollTop() + this.window.height() / 2 - this.container.outerHeight() / 2,
+            left: this.window.scrollLeft() + this.window.width() / 2 - this.container.outerWidth() / 2
         });
 
         jQuery('.lightbox-content', this.container).css({
-            width: this.width(),
-            height: this.height()
+            width: width,
+            height: height
         });
     },
 
@@ -169,7 +188,7 @@ var W3tc_Overlay = {
 function w3tc_lightbox_support_us() {
     W3tc_Lightbox.open({
         width: 500,
-        height: 230,
+        height: 200,
         url: 'admin.php?page=w3tc_general&w3tc_action=support_us'
     });
 }
@@ -177,20 +196,8 @@ function w3tc_lightbox_support_us() {
 var w3tc_minify_recommendations_checked = {};
 
 function w3tc_lightbox_minify_recommendations() {
-    var min_height = 200;
-    var max_height = 1200;
-
-    var height = jQuery(window).height() - 220;
-
-    if (height < min_height) {
-        height = min_height;
-    } else if (height > max_height) {
-        height = max_height;
-    }
-
     W3tc_Lightbox.open({
         width: 1000,
-        height: height,
         url: 'admin.php?page=w3tc_minify&w3tc_action=minify_recommendations',
         callback: function(lightbox) {
             var theme = jQuery('#recom_theme').val();
@@ -297,20 +304,9 @@ function w3tc_lightbox_minify_recommendations() {
 }
 
 function w3tc_lightbox_self_test() {
-    var min_height = 200;
-    var max_height = 1000;
-
-    var height = jQuery(window).height() - 220;
-
-    if (height < min_height) {
-        height = min_height;
-    } else if (height > max_height) {
-        height = max_height;
-    }
-
     W3tc_Lightbox.open({
         width: 800,
-        height: height,
+        minHeight: 300,
         url: 'admin.php?page=w3tc_general&w3tc_action=self_test',
         callback: function(lightbox) {
             jQuery('.button-primary', lightbox.container).click(function() {
@@ -323,7 +319,7 @@ function w3tc_lightbox_self_test() {
 function w3tc_lightbox_cdn_s3_bucket_location(type) {
     W3tc_Lightbox.open({
         width: 500,
-        height: 150,
+        height: 130,
         url: 'admin.php?page=w3tc_general&w3tc_action=cdn_s3_bucket_location&type=' + type,
         callback: function(lightbox) {
             jQuery('.button', lightbox.container).click(function() {

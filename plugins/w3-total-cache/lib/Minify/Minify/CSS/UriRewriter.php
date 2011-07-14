@@ -211,7 +211,7 @@ class Minify_CSS_UriRewriter {
                     $query = (isset($matches[2]) ? $matches[2] : '');
 
                     if ($extension && in_array($extension, self::$_browserCacheExtensions)) {
-                        $uri = w3_remove_wp_query($uri);
+                        $uri = w3_remove_query($uri);
                         $uri .= ($query ? '&' : '?') . self::$_browserCacheId;
                     }
                 }

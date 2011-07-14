@@ -40,25 +40,25 @@ class W3_Cdn_Mirror_Netdna extends W3_Cdn_Mirror {
      *
      * @param array $files
      * @param array $results
-     * @return void
+     * @return boolean
      */
     function purge($files, &$results) {
         if (empty($this->_config['apiid'])) {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, 'Empty API ID.');
 
-            return;
+            return false;
         }
 
         if (empty($this->_config['apikey'])) {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, 'Empty API key.');
 
-            return;
+            return false;
         }
 
         if ($this->_sha256('test') === false) {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, "hash() or mhash() function doesn't exists.");
 
-            return;
+            return false;
         }
 
         if (!class_exists('IXR_Client')) {
@@ -101,6 +101,31 @@ class W3_Cdn_Mirror_Netdna extends W3_Cdn_Mirror {
         if (function_exists('date_default_timezone_set')) {
             date_default_timezone_set($timezone);
         }
+
+        return !$this->_is_error($results);
+    }
+
+    /**
+     * Tests NetDNA
+     *
+     * @param string $error
+     * @return bool
+     */
+    function test(&$error) {
+        if (!parent::test($error)) {
+            return false;
+        }
+
+        $results = array();
+        $files = array('' => 'purge_test_' . time());
+
+        if (!$this->purge($files, $results) && isset($results[0]['error'])) {
+            $error = $results[0]['error'];
+
+            return false;
+        }
+
+        return true;
     }
 
     /**

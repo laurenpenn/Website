@@ -175,7 +175,7 @@ class GFSettings{
 
               <h3><?php _e("reCAPTCHA Settings", "gravityforms"); ?></h3>
 
-              <p style="text-align: left;"><?php _e("Gravity Forms integrates with reCAPTCHA, a free CAPTCHA service that helps to digitize books while protecting your forms from spam bots. ", "gravityforms"); ?><a href="http://recaptcha.net/" target="_blank"><?php _e("Read more about reCAPTCHA", "gravityforms"); ?></a>.</p>
+              <p style="text-align: left;"><?php _e("Gravity Forms integrates with reCAPTCHA, a free CAPTCHA service that helps to digitize books while protecting your forms from spam bots. ", "gravityforms"); ?><a href="http://www.google.com/recaptcha/" target="_blank"><?php _e("Read more about reCAPTCHA", "gravityforms"); ?></a>.</p>
 
               <table class="form-table">
 
@@ -184,14 +184,14 @@ class GFSettings{
                    <th scope="row"><label for="gforms_captcha_public_key"><?php _e("reCAPTCHA Public Key", "gravityforms"); ?></label>  <?php gform_tooltip("settings_recaptcha_public") ?></th>
                     <td>
                         <input type="text" name="gforms_captcha_public_key" style="width:350px;" value="<?php echo get_option("rg_gforms_captcha_public_key") ?>" /><br />
-                        <?php _e("Required only if you decide to use the reCAPTCHA field.", "gravityforms"); ?> <?php _e(sprintf("%sSign up%s for a free account to get the key.", '<a target="_blank" href="https://admin.recaptcha.net/recaptcha/createsite/?app=php">', '</a>'), "gravityforms"); ?>
+                        <?php _e("Required only if you decide to use the reCAPTCHA field.", "gravityforms"); ?> <?php printf(__("%sSign up%s for a free account to get the key.", "gravityforms"), '<a target="_blank" href="http://www.google.com/recaptcha/whyrecaptcha">', '</a>'); ?>
                     </td>
                 </tr>
                 <tr valign="top">
                    <th scope="row"><label for="gforms_captcha_private_key"><?php _e("reCAPTCHA Private Key", "gravityforms"); ?></label>  <?php gform_tooltip("settings_recaptcha_private") ?></th>
                     <td>
                         <input type="text" name="gforms_captcha_private_key" style="width:350px;" value="<?php echo esc_attr(get_option("rg_gforms_captcha_private_key")) ?>" /><br />
-                        <?php _e("Required only if you decide to use the reCAPTCHA field.", "gravityforms"); ?> <?php _e(sprintf("%sSign up%s for a free account to get the key.", '<a target="_blank" href="https://admin.recaptcha.net/recaptcha/createsite/?app=php">', '</a>'), "gravityforms"); ?>
+                        <?php _e("Required only if you decide to use the reCAPTCHA field.", "gravityforms"); ?> <?php printf(__("%sSign up%s for a free account to get the key.", "gravityforms"), '<a target="_blank" href="http://www.google.com/recaptcha/whyrecaptcha">', '</a>'); ?>
                     </td>
                 </tr>
 

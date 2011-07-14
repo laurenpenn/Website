@@ -39,30 +39,54 @@ if ( isset($_GET['action']) OR isset($_POST['action']) ) {
 			podpress_var_dump('podpress_backend.php - param filename: '.var_export(stripslashes($_GET['filename']), TRUE));
 		}
 		
+		if ( defined('NONCE_KEY') AND is_string(constant('NONCE_KEY')) AND '' != trim(constant('NONCE_KEY')) ) {
+			$nonce_key = constant('NONCE_KEY');
+		} else {
+			$nonce_key = 'Af|F07*wC7g-+OX$;|Z5;R@Pi]ZgoU|Zex8=`?mO-Mdvu+WC6l=6<O^2d~+~U3MM';
+		}
+		
 		switch( $action_param ) {
 			case 'getrealurl' :
-				if ( FALSE == function_exists('wp_verify_nonce') or FALSE == wp_verify_nonce($_POST['_wpnonce'], 'podPress_html5_ajax_nonce') ) {
+				if ( isset($_POST['_ajax_nonce']) AND TRUE == function_exists('wp_verify_nonce') AND TRUE == wp_verify_nonce($_POST['_ajax_nonce'], $nonce_key) ) {
 					podPress_get_real_url($_POST['url']);
+				} else {
+					die('Error: Security check failed.');
 				}
 			break;
 			case 'size':
-				podPress_isAuthorized('edit_posts');
-				echo podPress_getFileSize( stripslashes($_POST['filename']) );
+				if ( isset($_POST['_ajax_nonce']) AND TRUE == function_exists('wp_verify_nonce') AND TRUE == wp_verify_nonce($_POST['_ajax_nonce'], $nonce_key) ) {
+					podPress_isAuthorized('edit_posts');
+					echo trim( podPress_getFileSize( stripslashes($_POST['filename']) ) );
+				} else {
+					die('Error: Security check failed.');
+				}
 			break;
 			case 'duration':
-				podPress_isAuthorized('edit_posts');
-				echo podPress_getDuration( stripslashes($_POST['filename']) );
+				if ( isset($_POST['_ajax_nonce']) AND TRUE == function_exists('wp_verify_nonce') AND TRUE == wp_verify_nonce($_POST['_ajax_nonce'], $nonce_key) ) {
+					podPress_isAuthorized('edit_posts');
+					echo trim( podPress_getDuration( stripslashes($_POST['filename']) ) );
+				} else {
+					die('Error: Security check failed.');
+				}
 			break;
 			case 'id3tags':
-				podPress_isAuthorized('edit_posts');
-				echo podPress_showID3tags( stripslashes($_POST['filename']) );
+				if ( isset($_POST['_ajax_nonce']) AND TRUE == function_exists('wp_verify_nonce') AND TRUE == wp_verify_nonce($_POST['_ajax_nonce'], $nonce_key) ) {
+					podPress_isAuthorized('edit_posts');
+					echo podPress_showID3tags( stripslashes($_POST['filename']) );
+				} else {
+					die('Error: Security check failed.');
+				}
 			break;
 			case 'id3image':
-				podPress_isAuthorized('edit_posts');
-				if ( isset($_GET['tmpdownloadexists']) AND 'yes' === $_GET['tmpdownloadexists'] ) {
-					podPress_getCoverArt( stripslashes($_GET['filename']), TRUE );
+				if ( isset($_GET['_ajax_nonce']) AND TRUE == function_exists('wp_verify_nonce') AND TRUE == wp_verify_nonce($_GET['_ajax_nonce'], $nonce_key) ) {
+					podPress_isAuthorized('edit_posts');
+					if ( isset($_GET['tmpdownloadexists']) AND 'yes' === $_GET['tmpdownloadexists'] ) {
+						podPress_getCoverArt( stripslashes($_GET['filename']), TRUE );
+					} else {
+						podPress_getCoverArt( stripslashes($_GET['filename']), FALSE );
+					}
 				} else {
-					podPress_getCoverArt( stripslashes($_GET['filename']), FALSE );
+					die('Error: Security check failed.');
 				}
 			break;
 			case 'streamfile':

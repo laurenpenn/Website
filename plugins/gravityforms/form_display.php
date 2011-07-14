@@ -136,9 +136,9 @@ class GFFormDisplay{
                     case "select" :
                         $product_fields[$field["id"]] = array();
                         foreach($field["choices"] as $choice){
-                            $field_value = !empty($choice["value"]) || $field["enableChoiceValue"] ? $choice["value"] : $choice["text"];
+                            $field_value = !empty($choice["value"]) || rgar($field,"enableChoiceValue") ? $choice["value"] : $choice["text"];
                             if($field["enablePrice"])
-                                $field_value .= "|" . GFCommon::to_number($choice["price"]);
+                                $field_value .= "|" . GFCommon::to_number(rgar($choice,"price"));
 
                             $product_fields[$field["id"]][] = wp_hash($field_value);
                         }
@@ -1238,7 +1238,7 @@ class GFFormDisplay{
 
             //use section's logic if one exists
             $section = RGFormsModel::get_section($form, $field["id"]);
-            $section_logic = !empty($section) ? $section["conditionalLogic"] : null;
+            $section_logic = !empty($section) ? rgar($section,"conditionalLogic") : null;
 
             $field_logic = $field["type"] != "page" ? RGForms::get("conditionalLogic", $field) : null; //page break conditional logic will be handled during the next button click
 
@@ -1382,7 +1382,7 @@ class GFFormDisplay{
     }
 
     public static function get_field($field, $value="", $force_frontend_label = false, $form=null, $field_values=null){
-        $custom_class = rgget("cssClass", $field);
+        $custom_class = IS_ADMIN ? "" : rgget("cssClass", $field);
 
         if($field["type"] == "page"){
             if(IS_ADMIN && RG_CURRENT_VIEW == "entry"){
@@ -1407,7 +1407,7 @@ class GFFormDisplay{
             }
         }
 
-        if(!IS_ADMIN && $field["adminOnly"])
+        if(!IS_ADMIN && rgar($field,"adminOnly"))
         {
             if($field["allowsPrepopulate"])
                 $field["inputType"] = "adminonly_hidden";
@@ -1434,7 +1434,7 @@ class GFFormDisplay{
         $shipping_class = $field["type"] == "shipping" ? "gfield_price gfield_shipping gfield_shipping_{$form["id"]}" : "";
         $product_class = $field["type"] == "product" ? "gfield_price gfield_price_{$form["id"]}_{$field["id"]} gfield_product_{$form["id"]}_{$field["id"]}" : "";
         $donation_class = $field["type"] == "donation" ? "gfield_price gfield_price_{$form["id"]}_{$field["id"]} gfield_donation_{$form["id"]}_{$field["id"]}" : "";
-        $required_class = $field["isRequired"] ? "gfield_contains_required" : "";
+        $required_class = rgar($field, "isRequired") ? "gfield_contains_required" : "";
 
         $css_class = "$selectable_class gfield $error_class $section_class $admin_only_class $custom_class $hidden_class $html_block_class $html_formatted_class $html_no_follows_desc_class $option_class $quantity_class $product_class $donation_class $shipping_class $page_class $required_class";
         $css_class = apply_filters("gform_field_css_class_{$form["id"]}", apply_filters("gform_field_css_class", trim($css_class), $field, $form), $field, $form);
@@ -1462,7 +1462,7 @@ class GFFormDisplay{
 
     public static function get_field_content($field, $value="", $force_frontend_label = false, $form_id=0){
         $id = $field["id"];
-        $size = $field["size"];
+        $size = rgar($field,"size");
         $validation_message = (rgget("failed_validation", $field) && !empty($field["validation_message"])) ? sprintf("<div class='gfield_description validation_message'>%s</div>", $field["validation_message"]) : "";
 
         $delete_field_link = "<a class='field_delete_icon' id='gfield_delete_$id' title='" . __("click to delete this field", "gravityforms") . "' href='javascript:void(0);' onclick='StartDeleteField(this);'>" . __("Delete", "gravityforms") . "</a>";
@@ -1473,7 +1473,7 @@ class GFFormDisplay{
         $field_label = $force_frontend_label ? $field["label"] : GFCommon::get_label($field);
         $field_id = IS_ADMIN || $form_id == 0 ? "input_$id" : "input_" . $form_id . "_$id";
 
-        $required_div = IS_ADMIN || $field["isRequired"] ? sprintf("<span class='gfield_required'>%s</span>", $field["isRequired"] ? "*" : "") : "";
+        $required_div = IS_ADMIN || rgar($field, "isRequired") ? sprintf("<span class='gfield_required'>%s</span>", $field["isRequired"] ? "*" : "") : "";
         $target_input_id = "";
         switch(RGFormsModel::get_input_type($field)){
             case "section" :
@@ -1515,6 +1515,8 @@ class GFFormDisplay{
             $value = IS_ADMIN ? rgget("defaultValue", $field) : GFCommon::replace_variables_prepopulate(rgget("defaultValue", $field));
 
         $field_content = str_replace("{FIELD}", GFCommon::get_field_input($field, $value, 0, $form_id), $field_content);
+
+        $field_content = apply_filters("gform_field_content", $field_content, $field, $value, 0, $form_id);
 
         return $field_content;
     }

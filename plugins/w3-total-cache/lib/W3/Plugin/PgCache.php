@@ -29,7 +29,7 @@ class W3_Plugin_PgCache extends W3_Plugin {
         ));
 
         if ($this->_config->get_boolean('pgcache.enabled')) {
-            if ($this->_config->get_string('pgcache.engine') == 'file' || $this->_config->get_string('pgcache.engine') == 'file_pgcache') {
+            if ($this->_config->get_string('pgcache.engine') == 'file' || $this->_config->get_string('pgcache.engine') == 'file_generic') {
                 add_action('w3_pgcache_cleanup', array(
                     &$this,
                     'cleanup'
@@ -123,9 +123,9 @@ class W3_Plugin_PgCache extends W3_Plugin {
      * Activate plugin action
      */
     function activate() {
-        if ($this->_config->get_boolean('pgcache.enabled') && $this->_config->get_string('pgcache.engine') == 'file_pgcache') {
+        if ($this->_config->get_boolean('pgcache.enabled') && $this->_config->get_string('pgcache.engine') == 'file_generic') {
             /**
-             * Disable enchanged mode if permalink structure is disabled
+             * Disable enhanced mode if permalink structure is disabled
              */
             $permalink_structure = get_option('permalink_structure');
 
@@ -186,7 +186,7 @@ class W3_Plugin_PgCache extends W3_Plugin {
      * Schedules events
      */
     function schedule() {
-        if ($this->_config->get_boolean('pgcache.enabled') && ($this->_config->get_string('pgcache.engine') == 'file' || $this->_config->get_string('pgcache.engine') == 'file_pgcache')) {
+        if ($this->_config->get_boolean('pgcache.enabled') && ($this->_config->get_string('pgcache.engine') == 'file' || $this->_config->get_string('pgcache.engine') == 'file_generic')) {
             if (!wp_next_scheduled('w3_pgcache_cleanup')) {
                 wp_schedule_event(time(), 'w3_pgcache_cleanup', 'w3_pgcache_cleanup');
             }
@@ -298,26 +298,29 @@ class W3_Plugin_PgCache extends W3_Plugin {
 
         switch ($engine) {
             case 'file':
-                require_once W3TC_LIB_W3_DIR . '/Cache/File/Manager.php';
+                require_once W3TC_LIB_W3_DIR . '/Cache/File/Cleaner.php';
 
-                $w3_cache_file_manager = & new W3_Cache_File_Manager(array(
+                $w3_cache_file_cleaner = & new W3_Cache_File_Cleaner(array(
                     'cache_dir' => W3TC_CACHE_FILE_PGCACHE_DIR,
                     'clean_timelimit' => $this->_config->get_integer('timelimit.cache_gc')
                 ));
 
-                $w3_cache_file_manager->clean();
+                $w3_cache_file_cleaner->clean();
                 break;
 
-            case 'file_pgcache':
-                require_once W3TC_LIB_W3_DIR . '/Cache/File/PgCache/Manager.php';
+            case 'file_generic':
+                require_once W3TC_LIB_W3_DIR . '/Cache/File/Cleaner/Generic.php';
 
-                $w3_cache_file_pgcache_manager = & new W3_Cache_File_PgCache_Manager(array(
+                $w3_cache_file_cleaner_generic = & new W3_Cache_File_Cleaner_Generic(array(
+                    'exclude' => array(
+                        '.htaccess'
+                    ),
                     'cache_dir' => W3TC_CACHE_FILE_PGCACHE_DIR,
                     'expire' => $this->_config->get_integer('browsercache.html.lifetime'),
                     'clean_timelimit' => $this->_config->get_integer('timelimit.cache_gc')
                 ));
 
-                $w3_cache_file_pgcache_manager->clean();
+                $w3_cache_file_cleaner_generic->clean();
                 break;
         }
     }
@@ -329,6 +332,8 @@ class W3_Plugin_PgCache extends W3_Plugin {
      * @return void
      */
     function prime($start = 0) {
+        $start = (int) $start;
+
         /**
          * Don't start cache prime if queues are still scheduled
          */
@@ -348,32 +353,73 @@ class W3_Plugin_PgCache extends W3_Plugin {
 
         $interval = $this->_config->get_integer('pgcache.prime.interval');
         $limit = $this->_config->get_integer('pgcache.prime.limit');
-        $sitemap_url = $this->_config->get_string('pgcache.prime.sitemap');
-        $sitemap_xml = w3_http_get($sitemap_url);
-
-        $queue = array();
+        $sitemap = $this->_config->get_string('pgcache.prime.sitemap');
 
         /**
          * Parse XML sitemap
          */
-        if ($sitemap_xml) {
-            $url_matches = null;
+        $urls = $this->parse_sitemap($sitemap);
 
-            if (preg_match_all('~<url>(.*)</url>~Uis', $sitemap_xml, $url_matches)) {
+        /**
+         * Queue URLs
+         */
+        $queue = array_slice($urls, $start, $limit);
+
+        if (count($urls) > ($start + $limit)) {
+            wp_schedule_single_event(time() + $interval, 'w3_pgcache_prime', array(
+                $start + $limit
+            ));
+        }
+
+        /**
+         * Make HTTP requests and prime cache
+         */
+        foreach ($queue as $url) {
+            w3_http_get($url);
+        }
+    }
+
+    /**
+     * Parses sitemap
+     *
+     * @param string $xml
+     * @return array
+     */
+    function parse_sitemap($url) {
+        $urls = array();
+
+        $xml = w3_http_get($url);
+
+        if ($xml) {
+            $url_matches = null;
+            $sitemap_matches = null;
+
+            if (preg_match_all('~<sitemap>(.*?)</sitemap>~is', $xml, $sitemap_matches)) {
+                $loc_matches = null;
+
+                foreach ($sitemap_matches[1] as $sitemap_match) {
+                    if (preg_match('~<loc>(.*?)</loc>~is', $sitemap_match, $loc_matches)) {
+                        $loc = trim($loc_matches[1]);
+
+                        if ($loc) {
+                            $urls = array_merge($urls, $this->parse_sitemap($loc));
+                        }
+                    }
+                }
+            } elseif (preg_match_all('~<url>(.*?)</url>~is', $xml, $url_matches)) {
+                $locs = array();
                 $loc_matches = null;
                 $priority_matches = null;
-
-                $locs = array();
 
                 foreach ($url_matches[1] as $url_match) {
                     $loc = '';
                     $priority = 0;
 
-                    if (preg_match('~<loc>(.*)</loc>~is', $url_match, $loc_matches)) {
+                    if (preg_match('~<loc>(.*?)</loc>~is', $url_match, $loc_matches)) {
                         $loc = trim($loc_matches[1]);
                     }
 
-                    if (preg_match('~<priority>(.*)</priority>~is', $url_match, $priority_matches)) {
+                    if (preg_match('~<priority>(.*?)</priority>~is', $url_match, $priority_matches)) {
                         $priority = (double) trim($priority_matches[1]);
                     }
 
@@ -384,33 +430,17 @@ class W3_Plugin_PgCache extends W3_Plugin {
 
                 arsort($locs);
 
-                $queue = array_keys($locs);
+                $urls = array_keys($locs);
             }
         }
 
-        /**
-         * Queue URLs
-         */
-        $urls = array_slice($queue, $start, $limit);
-
-        if (count($queue) > ($start + $limit)) {
-            wp_schedule_single_event(time() + $interval, 'w3_pgcache_prime', array(
-                $start + $limit
-            ));
-        }
-
-        /**
-         * Make HTTP requests and prime cache
-         */
-        foreach ($urls as $url) {
-            w3_http_get($url);
-        }
+        return $urls;
     }
 
     /**
      * Cron schedules filter
      *
-     * @paran array $schedules
+     * @param array $schedules
      * @return array
      */
     function cron_schedules($schedules) {
@@ -598,7 +628,7 @@ class W3_Plugin_PgCache extends W3_Plugin {
         $reject_cookies = array_merge($reject_cookies, $this->_config->get_array('pgcache.reject.cookie'));
         $reject_uris = array_merge($reject_uris, $this->_config->get_array('pgcache.reject.uri'));
         $reject_uris = array_map('w3_parse_path', $reject_uris);
-        $reject_user_agents = $this->_config->get_array('pgcache.reject.ua');
+        $reject_user_agents = array_merge(array(W3TC_POWERED_BY), $this->_config->get_array('pgcache.reject.ua'));
         $accept_uris = $this->_config->get_array('pgcache.accept.uri');
         $accept_files = $this->_config->get_array('pgcache.accept.files');
 
@@ -858,7 +888,7 @@ class W3_Plugin_PgCache extends W3_Plugin {
         $reject_cookies = array_merge($reject_cookies, $this->_config->get_array('pgcache.reject.cookie'));
         $reject_uris = array_merge($reject_uris, $this->_config->get_array('pgcache.reject.uri'));
         $reject_uris = array_map('w3_parse_path', $reject_uris);
-        $reject_user_agents = $this->_config->get_array('pgcache.reject.ua');
+        $reject_user_agents = array_merge(array(W3TC_POWERED_BY), $this->_config->get_array('pgcache.reject.ua'));
         $accept_uris = $this->_config->get_array('pgcache.accept.uri');
         $accept_files = $this->_config->get_array('pgcache.accept.files');
 
@@ -1288,6 +1318,7 @@ class W3_Plugin_PgCache extends W3_Plugin {
             $data = @file_get_contents($path);
 
             if ($data !== false) {
+                $data = $this->erase_rules_legacy($data);
                 $data = $this->erase_rules_wpsc($data);
             } else {
                 return false;
@@ -1393,7 +1424,7 @@ class W3_Plugin_PgCache extends W3_Plugin {
     }
 
     /**
-     * Erases W3TC directives from config
+     * Erases Page Cache core directives
      *
      * @param string $data
      * @return string
@@ -1405,7 +1436,7 @@ class W3_Plugin_PgCache extends W3_Plugin {
     }
 
     /**
-     * Erases W3TC directives from config
+     * Erases Page Cache cache directives
      *
      * @param string $data
      * @return string
@@ -1417,19 +1448,31 @@ class W3_Plugin_PgCache extends W3_Plugin {
     }
 
     /**
-     * Erases WP Super Cache rules directives config
+     * Erases Page Cache legacy directives
      *
      * @param string $data
      * @return string
      */
-    function erase_rules_wpsc($data) {
-        $data = w3_erase_rules($data, W3TC_MARKER_BEGIN_SUPERCACHE, W3TC_MARKER_END_SUPERCACHE);
+    function erase_rules_legacy($data) {
+        $data = w3_erase_rules($data, W3TC_MARKER_BEGIN_PGCACHE_LEGACY, W3TC_MARKER_END_PGCACHE_LEGACY);
 
         return $data;
     }
 
     /**
-     * Removes W3TC directives from WP .htaccess
+     * Erases WP Super Cache rules directives
+     *
+     * @param string $data
+     * @return string
+     */
+    function erase_rules_wpsc($data) {
+        $data = w3_erase_rules($data, W3TC_MARKER_BEGIN_PGCACHE_WPSC, W3TC_MARKER_END_PGCACHE_WPSC);
+
+        return $data;
+    }
+
+    /**
+     * Removes Page Cache core directives
      *
      * @return boolean
      */
@@ -1450,7 +1493,7 @@ class W3_Plugin_PgCache extends W3_Plugin {
     }
 
     /**
-     * Removes W3TC directives from file cache dir
+     * Removes Page Cache cache directives
      *
      * @return boolean
      */
@@ -1471,7 +1514,49 @@ class W3_Plugin_PgCache extends W3_Plugin {
     }
 
     /**
-     * Checks core directives
+     * Removes Page Cache legacy directives
+     *
+     * @return boolean
+     */
+    function remove_rules_legacy() {
+        $path = w3_get_pgcache_rules_core_path();
+
+        if (file_exists($path)) {
+            if (($data = @file_get_contents($path)) !== false) {
+                $data = $this->erase_rules_legacy($data);
+
+                return @file_put_contents($path, $data);
+            }
+
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Removes WPSC directives
+     *
+     * @return boolean
+     */
+    function remove_rules_wpsc() {
+        $path = w3_get_pgcache_rules_core_path();
+
+        if (file_exists($path)) {
+            if (($data = @file_get_contents($path)) !== false) {
+                $data = $this->erase_rules_wpsc($data);
+
+                return @file_put_contents($path, $data);
+            }
+
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Checks if core rules exists
      *
      * @return boolean
      */
@@ -1483,7 +1568,7 @@ class W3_Plugin_PgCache extends W3_Plugin {
     }
 
     /**
-     * Checks cache directives
+     * Checks if cache rules exists
      *
      * @return boolean
      */
@@ -1492,5 +1577,27 @@ class W3_Plugin_PgCache extends W3_Plugin {
         $search = $this->generate_rules_cache();
 
         return (($data = @file_get_contents($path)) && strstr(w3_clean_rules($data), w3_clean_rules($search)) !== false);
+    }
+
+    /**
+     * Check if legacy rules exists
+     *
+     * @return boolean
+     */
+    function check_rules_legacy() {
+        $path = w3_get_pgcache_rules_core_path();
+
+        return (($data = @file_get_contents($path)) && w3_has_rules(w3_clean_rules($data), W3TC_MARKER_BEGIN_PGCACHE_LEGACY, W3TC_MARKER_END_PGCACHE_LEGACY));
+    }
+
+    /**
+     * Check if WPSC rules exists
+     *
+     * @return boolean
+     */
+    function check_rules_wpsc() {
+        $path = w3_get_pgcache_rules_core_path();
+
+        return (($data = @file_get_contents($path)) && w3_has_rules(w3_clean_rules($data), W3TC_MARKER_BEGIN_PGCACHE_WPSC, W3TC_MARKER_END_PGCACHE_WPSC));
     }
 }

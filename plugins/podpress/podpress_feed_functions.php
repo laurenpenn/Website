@@ -32,7 +32,7 @@ License:
 		$input = strip_tags($input);
 
 		// replace the relevant characters with their HTML entities
-		if ( TRUE === $aggressive OR 'yes' == strtolower($podPress->settings['protectFeed']) OR TRUE === $podPress->settings['protectFeed'] ) {
+		if ( TRUE === $aggressive ) {
 			if (TRUE === version_compare(PHP_VERSION, '5.2.3', '>=')) {
 				$result = htmlentities($input, ENT_NOQUOTES, get_bloginfo('charset'), FALSE);
 			} else {
@@ -75,9 +75,6 @@ License:
 				}
 			}
 		}
-		if(!isset($podPress->settings['category_data'])) {
-			podPress_feed_getCategory();
-		}
 		
 		$data = $podPress->settings['iTunes'];
 		$data['podcastFeedURL'] = $podPress->settings['podcastFeedURL'];
@@ -85,7 +82,7 @@ License:
 			if (0 < strlen($podPress->settings['iTunesAuthor'])) {
 				$data['author'] = stripslashes($podPress->settings['iTunesAuthor']);
 			} else {
-				$data['author'] = get_option('blogname');
+				$data['author'] = get_bloginfo('name');
 			}
 		}
 		$data['subtitle'] = stripslashes($data['subtitle']);
@@ -145,7 +142,7 @@ License:
 				$is_podpress_feed = TRUE;
 				break;
 			}
-		}		
+		}
 		if ( TRUE === $is_podpress_feed ) {
 			$data['podcastFeedURL'] = get_feed_link($feed['slug']);
 			$data['new-feed-url'] = $feed['itunes-newfeedurl'];
@@ -205,9 +202,8 @@ License:
 		if ('' != trim($data['rss_image'])) {
 			echo '	<image>'."\n";
 			echo '		<url>'.$data['rss_image'].'</url>'."\n";
-			//~ echo '		<title>'.podPress_feedSafeContent(get_bloginfo('blogname')).get_wp_title_rss().'</title>'."\n";
-			echo '		<title>'.get_bloginfo('blogname').'</title>'."\n";
-			echo '		<link>'.get_option('siteurl').'</link>'."\n";
+			echo '		<title>'.get_bloginfo('name').'</title>'."\n";
+			echo '		<link>'.get_bloginfo('home').'</link>'."\n";
 			echo '		<width>144</width>'."\n";
 			echo '		<height>144</height>'."\n";
 			echo '	</image>'."\n";
@@ -288,7 +284,7 @@ License:
 				$is_password_protected = FALSE;
 			}
 		} else {
-			if ( !empty($post->post_password) ) { // if there's a password	
+			if ( !empty($post->post_password) ) { // if there's a password
 				if ( !isset($_COOKIE['wp-postpass_'.COOKIEHASH]) || $_COOKIE['wp-postpass_'.COOKIEHASH] != $post->post_password ) {  // and it doesn't match the cookie			if ( TRUE === post_password_required($post) ) {
 					$is_password_protected = TRUE;
 				} else {
@@ -452,9 +448,6 @@ License:
 
 	function podPress_atom_head() {
 		GLOBAL $podPress;
-		if(!isset($podPress->settings['category_data'])) {
-			podPress_feed_getCategory();
-		}
 		
 		$data['rss_image'] = get_option('rss_image');
 		$data['rss_copyright'] = $podPress->settings['rss_copyright'];
@@ -567,7 +560,7 @@ License:
 			reset($post->podPressMedia);
 			while ( list($key, $val) = each($post->podPressMedia) ) {
 				// get the post_meta 
-				$querystring = 'SELECT meta_key, meta_value  FROM '.$wpdb->postmeta." WHERE post_id='".$post->ID."' and (meta_key='podcast_episode_license_url' or meta_key='podcast_episode_license_name')";
+				$querystring = 'SELECT meta_key, meta_value FROM '.$wpdb->postmeta." WHERE post_id='".$post->ID."' and (meta_key='podcast_episode_license_url' or meta_key='podcast_episode_license_name')";
 				$episode_license_infos = $wpdb->get_results($querystring);
 				$license = array();
 				if ( 0 < count($episode_license_infos) ) {
@@ -827,55 +820,9 @@ License:
 		return $result;
 	}
 
-	function podPress_feed_getCategory() {
-		GLOBAL $podPress, $wpdb, $wp_query;
-		if(!is_category()) {
-			$podPress->settings['category_data'] = false;
-			return $podPress->settings['category_data'];
-		}
-		$current_catid = $wp_query->get('cat');
-		$category = get_category($current_catid);
-
-		$data = podPress_get_option('podPress_category_'.$category->cat_ID);
-		$data['id'] = $category->cat_ID;
-		$data['blogname'] = $category->cat_name;
-		$data['blogdescription'] = $category->category_description;
-		$podPress->settings['category_data'] = $data;
-		return $podPress->settings['category_data'];
-
-		// old version of this function
-		if(!is_category()) {
-			//return false;
-		}
-		$byName = single_cat_title('', false);
-
-		$categories = get_the_category();
-		if(is_array($categories)) {
-			foreach ($categories as $category) {
-				$thisisit = false;
-				if($byName == $category->cat_name) {
-					$thisisit = true;
-				}
-
-				if($thisisit) {
-					$data = podPress_get_option('podPress_category_'.$category->cat_ID);
-					$data['id'] = $category->cat_ID;
-					$data['blogname'] = $category->cat_name;
-					$data['blogdescription'] = $category->category_description;
-					$podPress->settings['category_data'] = $data;
-					return $podPress->settings['category_data'];
-				}
-			}
-		}
-		$podPress->settings['category_data'] = false;
-		return $podPress->settings['category_data'];
-	}
-
 	function podPress_getCategoryCastingFeedData($selection, $input) {
 		GLOBAL $podPress;
-		if ( is_category() ) {
-			podPress_feed_getCategory();
-		}
+
 		$feedslug = get_query_var('feed');		
 		$is_podpress_feed = FALSE;
 		foreach ($podPress->settings['podpress_feeds'] as $feed) {
@@ -888,36 +835,38 @@ License:
 		if ( empty($feedslug) OR (FALSE == isset($podPress->settings['category_data']['categoryCasting']) AND FALSE === $is_podpress_feed) ) {
 			return $input;
 		} else {
+			if ( isset($podPress->settings['category_data']['categoryCasting']) AND empty($podPress->settings['category_data']['categoryCasting']) ) {
+				$podPress->settings['category_data']['categoryCasting'] = 'true';
+			}
 			if ( 'true' === $podPress->settings['category_data']['categoryCasting'] ) {
-				if ( empty($podPress->settings['category_data']['categoryCasting']) ) {
-					$podPress->settings['category_data']['categoryCasting'] = 'true';
-				}
 				switch ($selection) {
 					case 'blogname' :
 						switch ($podPress->settings['category_data']['blognameChoice']) {
-							case 'CategoryName' :
+							case 'Global' : // use the blogname as category feed title
 								if ( empty($podPress->settings['category_data']['blogname']) ) {
 									return $input;
 								} else {
 									add_filter('wp_title_rss', 'podPress_customfeedtitleonly'); // this filter works since WP 2.2
-									return stripslashes($podPress->settings['category_data']['blogname']);
+									return $podPress->settings['category_data']['blogname'];
 								}
 							break;
-							case 'Append' :
-								if ( empty($podPress->settings['category_data']['blogname']) ) {
+							case 'CategoryName' :
+								if ( empty($podPress->settings['category_data']['cat_name']) ) {
 									return $input;
 								} else {
-									return stripslashes($input.' &#187; '.$podPress->settings['category_data']['blogname']);
+									add_filter('wp_title_rss', 'podPress_customfeedtitleonly'); // this filter works since WP 2.2
+									return stripslashes($podPress->settings['category_data']['cat_name']);
 								}
 							break;
 							default:
+							case 'Append' : // use the default WP scheme for category feed titles (Site Title >> Category Name)
 								return $input;
 							break;
 						}
 					break;
 					case 'blogdescription' :
-						if($podPress->settings['category_data']['blogdescriptionChoice'] == 'CategoryDescription' && !empty($podPress->settings['category_data']['blogdescription'])) {
-							return stripslashes($podPress->settings['category_data']['blogdescription']);
+						if($podPress->settings['category_data']['blogdescriptionChoice'] == 'CategoryDescription' && !empty($podPress->settings['category_data']['cat_description'])) {
+							return stripslashes($podPress->settings['category_data']['cat_description']);
 						}
 						return $input;
 					break;

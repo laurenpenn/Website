@@ -67,7 +67,7 @@
                 <td>
                     <select name="pgcache.engine">
                         <optgroup label="Shared Server (disk enhanced is best):">
-                            <option value="file_pgcache"<?php selected($this->_config->get_string('pgcache.engine'), 'file_pgcache'); ?><?php if (! $check_rules): ?> disabled="disabled"<?php endif; ?>>Disk (enhanced)</option>
+                            <option value="file_generic"<?php selected($this->_config->get_string('pgcache.engine'), 'file_generic'); ?><?php if (! $check_rules): ?> disabled="disabled"<?php endif; ?>>Disk (enhanced)</option>
                             <option value="file"<?php selected($this->_config->get_string('pgcache.engine'), 'file'); ?>>Disk (basic)</option>
                         </optgroup>
                         <optgroup label="Dedicated / Virtual Server:">
@@ -480,7 +480,7 @@
             <tr>
                 <th colspan="2">
                     <input type="hidden" name="widget.pagespeed.enabled" value="0" />
-                    <label><input type="checkbox" name="widget.pagespeed.enabled" value="1"<?php checked($this->_config->get_boolean('widget.latest.enabled'), true); ?> />  Enable Google Page Speed dashboard widget</label>
+                    <label><input type="checkbox" name="widget.pagespeed.enabled" value="1"<?php checked($this->_config->get_boolean('widget.pagespeed.enabled'), true); ?> />  Enable Google Page Speed dashboard widget</label>
                     <br /><span class="description">Display Google Page Speed results on the WordPress dashboard.</span>
                 </th>
             </tr>

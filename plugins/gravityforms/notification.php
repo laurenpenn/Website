@@ -383,7 +383,7 @@ Class GFNotification{
                                                     <?php _e("From Email", "gravityforms"); ?>
                                                     <?php gform_tooltip("notification_from_email") ?>
                                                 </label>
-                                                <input type="text" class="fieldwidth-2" name="form_notification_from" id="form_notification_from" onkeydown="jQuery('#form_notification_from_field').val('');" onchange="jQuery('#form_notification_from_field').val('');" value="<?php echo (empty($form["notification"]["from"]) && empty($form["notification"]["fromField"])) ? esc_attr($wp_email) : esc_attr($form["notification"]["from"]) ?>"/>
+                                                <input type="text" class="fieldwidth-2" name="form_notification_from" id="form_notification_from" onkeydown="jQuery('#form_notification_from_field').val('');" onchange="jQuery('#form_notification_from_field').val('');" value="<?php echo (rgempty("from", $form["notification"]) && rgempty("fromField", $form["notification"])) ? esc_attr($wp_email) : esc_attr(rgget("from", $form["notification"])) ?>"/>
                                                 <?php
                                                 if(!empty($email_fields)){
                                                 ?>

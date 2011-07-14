@@ -285,37 +285,14 @@ class W3_Minifier {
                 break;
         }
 
-        if ($this->_config->get_boolean('browsercache.enabled')) {
-            $types = array();
-            $extensions = array();
-
+        if ($this->_config->get_boolean('browsercache.enabled') && ($this->_config->get_boolean('browsercache.cssjs.replace') || $this->_config->get_boolean('browsercache.html.replace') || $this->_config->get_boolean('browsercache.other.replace'))) {
             require_once W3TC_LIB_W3_DIR . '/Plugin/BrowserCache.php';
             $w3_plugin_browsercache =& W3_Plugin_Browsercache::instance();
 
-            if ($this->_config->get_boolean('browsercache.cssjs.replace')) {
-                $types = array_merge($types, array_keys($w3_plugin_browsercache->get_cssjs_types()));
-            }
-
-            if ($this->_config->get_boolean('browsercache.html.replace')) {
-                $types = array_merge($types, array_keys($w3_plugin_browsercache->get_html_types()));
-            }
-
-            if ($this->_config->get_boolean('browsercache.other.replace')) {
-                $types = array_merge($types, array_keys($w3_plugin_browsercache->get_other_types()));
-            }
-
-            if (count($types)) {
-                foreach ($types as $type) {
-                    $extensions = array_merge($extensions, explode('|', $type));
-                }
-
-                $id = $this->_config->get_string('browsercache.id', date('Ymd'));
-
-                $options = array_merge($options, array(
-                    'browserCacheId' => $id,
-                    'browserCacheExtensions' => $extensions
-                ));
-            }
+            $options = array_merge($options, array(
+                'browserCacheId' => $w3_plugin_browsercache->get_replace_id(),
+                'browserCacheExtensions' => $w3_plugin_browsercache->get_replace_extensions()
+            ));
         }
 
         return $options;

@@ -6,6 +6,8 @@ class Minify_HTMLTidy {
             'clean' => false,
             'hide-comments' => true,
             'wrap' => 0,
+            'input-encoding' => 'utf8',
+            'output-encoding' => 'utf8',
         ), $options, array(
             'show-errors' => 0,
             'show-warnings' => false,

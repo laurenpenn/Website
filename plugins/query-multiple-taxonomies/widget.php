@@ -51,7 +51,7 @@ jQuery(function($){
 		if ( empty( $instance ) )
 			$instance = $this->defaults;
 
-		echo 
+		echo
 		html( 'p',
 			$this->input( array(
 				'name'  => 'title',
@@ -66,7 +66,7 @@ jQuery(function($){
 			$this->input( array(
 				'type'   => 'select',
 				'name'   => 'mode',
-				'values' => array( 
+				'values' => array(
 					'lists' => __( 'lists', 'query-multiple-taxonomies' ),
 //					'checkboxes' => __( 'checkboxes', 'query-multiple-taxonomies' ),
 					'dropdowns' => __( 'dropdowns', 'query-multiple-taxonomies' ),
@@ -102,7 +102,7 @@ jQuery(function($){
 				implode( ', ', $tax_obj->object_type )
 			);
 
-			$list .= 
+			$list .=
 			html( 'li', array( 'title' => $ptypes ), $this->input( array(
 				'type'   => 'checkbox',
 				'name'   => 'taxonomies[]',
@@ -127,10 +127,7 @@ jQuery(function($){
 			echo
 			html( 'p', __( 'No taxonomies selected!', 'query-multiple-taxonomies' ) );
 		} else {
-			echo
-			html( "div class='taxonomy-drilldown-$mode'",
-				call_user_func( array( __CLASS__, "generate_$mode" ), $taxonomies )
-			);
+			echo call_user_func( array( __CLASS__, "generate_$mode" ), $taxonomies );
 		}
 	}
 
@@ -144,128 +141,90 @@ jQuery(function($){
 	private function generate_lists( $taxonomies ) {
 		$query = qmt_get_query();
 
-		$out = '';
+		$data = self::get_reset_data();
+
 		foreach ( $taxonomies as $taxonomy ) {
 			$list = qmt_walk_terms( $taxonomy, $this->get_terms( $taxonomy ) );
 
 			if ( empty( $list ) )
 				continue;
 
-			$title = get_taxonomy( $taxonomy )->label;
+			$data_tax = array(
+				'taxonomy' => $taxonomy,
+				'title' => get_taxonomy( $taxonomy )->label,
+				'list' => $list
+			);
+
 			if ( isset( $query[$taxonomy] ) ) {
-				$title .= ' ' . html( 'a', array(
-					'href' => QMT_URL::for_tax( $taxonomy, '' ),
-					'title' => __( 'Remove selected terms in group', 'query-multiple-taxonomies' ) )
-				, '(-)' );
-			}
-			$title = html( 'h4', $title );
-			$title = apply_filters( 'qmt_term_list_title', $title, $taxonomy, $query );
-
-			$out .=
-			html( "div id='term-list-$taxonomy'",
-				 $title
-				.html( "ul class='term-list'", $list )
-			);
-		}
-
-		$out .= self::reset_button();
-
-		return $out;
-	}
-
-	private function generate_checkboxes( $taxonomies ) {
-		$query = qmt_get_query();
-
-		$out = '';
-		foreach ( $taxonomies as $taxonomy ) {
-			$terms = $this->get_terms( $taxonomy );
-
-			if ( empty( $terms ) )
-				continue;
-
-			$title = html( 'h4', get_taxonomy( $taxonomy )->label );
-			$title = apply_filters( 'qmt_term_list_title', $title, $taxonomy, $query );
-
-			$list = '';
-			foreach ( $terms as $term ) {
-				$list .=
-				html( 'li', scbForms::input( array(
-					'type' => 'checkbox',
-					'name' => $taxonomy . '[and][]',
-					'value' => $term->slug,
-					'desc' => $term->name,
-					'checked' => in_array( $term->slug, (array) @$query[ $taxonomy ] )
-				)));
+				$data_tax['clear'] = array(
+					'url' => QMT_URL::for_tax( $taxonomy, '' ),
+					'title' => __( 'Remove selected terms in group', 'query-multiple-taxonomies' )
+				);
 			}
 
-			$out .=
-			html( "div id='term-list-$taxonomy'",
-				 $title
-				.html( "ul class='term-list'", $list )
-			);
+			$data['taxonomy'][] = $data_tax;
 		}
 
-		return $this->make_form( $out );
+		return self::mustache_render( 'lists.html', $data );
 	}
 
 	private function generate_dropdowns( $taxonomies ) {
-		$out = '';
+		$data = array_merge( self::get_reset_data(), array(
+			'base-url' => QMT_URL::get_base(),
+			'submit-text' => __( 'Submit', 'query-multiple-taxonomies' ),
+		) );
+
 		foreach ( $taxonomies as $taxonomy ) {
 			$terms = $this->get_terms( $taxonomy );
 
 			if ( empty( $terms ) )
 				continue;
 
-			$name = get_taxonomy( $taxonomy )->query_var;
-
-			$out .=
-			html( 'li',
-				html( 'label', array( 'for' => $name ), 
-					get_taxonomy( $taxonomy )->label . ':' 
-				),
-				' ',
-				html( 'select', array( 'name' => $name ),
-					'<option></option>',
-					walk_category_dropdown_tree( $terms, 0, array(
-						'selected' => qmt_get_query( $taxonomy ),
-						'show_count' => false,
-						'show_last_update' => false,
-						'hierarchical' => true,
-						'walker' => new QMT_Dropdown_Walker
-					) )
-				)
+			$data['taxonomy'][] = array(
+				'name' => get_taxonomy( $taxonomy )->query_var,
+				'title' => get_taxonomy( $taxonomy )->label,
+				'options' => walk_category_dropdown_tree( $terms, 0, array(
+					'selected' => qmt_get_query( $taxonomy ),
+					'show_count' => false,
+					'show_last_update' => false,
+					'hierarchical' => true,
+					'walker' => new QMT_Dropdown_Walker
+				) )
 			);
 		}
 
-		return $this->make_form( html('ul', $out) );
-	}
-
-	private function make_form( $out ) {
-		if ( empty( $out ) )
+		if ( empty( $data['taxonomy'] ) )
 			return '';
 
-		return
-		html( 'form', array( 'action' => QMT_URL::get_base(), 'method' => 'get' ),
-			$out,
-			"<input type='submit' value='Submit' />\n",
-			self::reset_button()
-		);
+		return self::mustache_render( 'dropdowns.html', $data );
 	}
-	
-	private function reset_button() {
-		return html( 'a', array(
-			'href' => QMT_URL::get(), 
-			'class' => 'taxonomy-drilldown-reset',
-		), __( 'Reset', 'query-multiple-taxonomies' ) );
+
+	private function get_reset_data() {
+		return array(
+			'reset-text' => __( 'Reset', 'query-multiple-taxonomies' ),
+			'reset-url' => QMT_URL::get(),
+		);
 	}
 
 	static function test_tax( $tax_name ) {
 		$tax_obj = get_taxonomy( $tax_name );
-		
+
 		if ( $tax_obj && $tax_obj->public && $tax_obj->query_var )
 			return $tax_obj;
 
 		return false;
+	}
+
+	static function mustache_render( $file, $data ) {
+		if ( !class_exists( 'Mustache' ) )
+			require dirname(__FILE__) . '/mustache/Mustache.php';
+
+		$template_path = locate_template( 'qmt-templates/' . $file );
+		if ( !$template_path )
+			$template_path = dirname(__FILE__) . '/templates/' . $file;
+
+		$m = new Mustache;
+		return $m->render( file_get_contents( $template_path ), $data );
 	}
 }
 
@@ -275,10 +234,10 @@ function qmt_walk_terms( $taxonomy, $terms, $args = '' ) {
 
 	$walker = new QMT_List_Walker( $taxonomy );
 
-	$args = wp_parse_args( $args, array( 
+	$args = wp_parse_args( $args, array(
 		'style' => 'list',
 		'use_desc_for_title' => false,
-		'addremove' => true, 
+		'addremove' => true,
 	) );
 
 	return $walker->walk( $terms, 0, $args );
@@ -298,41 +257,59 @@ class QMT_List_Walker extends Walker_Category {
 		$this->selected_terms = explode( '+', qmt_get_query( $taxonomy ) );
 	}
 
-	function start_el( &$output, $term, $depth, $args ) {
-		extract( $args );
-
-		$class = 'term-item term-item-' . $term->term_id;
-		if ( in_array( $term->slug, $this->selected_terms ) )
-			$class .= ' current-term';
-
-		$output .= "\t<li class='$class'>" . $this->get_addremove_link( $term ) . "\n";
-	}
-
-	private function get_addremove_link( $term ) {
+	function single_el( &$output, $term, $depth, $child_output ) {
 		$tmp = $this->selected_terms;
 		$i = array_search( $term->slug, $tmp );
 
 		if ( false === $i ) {
 			$tmp[] = $term->slug;
-			$new_url = esc_url( QMT_URL::for_tax( $this->taxonomy, $tmp ) );
 
-			$title = __( 'Add term', 'query-multiple-taxonomies' );
-
-			$link = "<a class='add-term' href='$new_url' title='$title'>$term->name (+)</a>";
-
-			$link = apply_filters( 'qmt_add_term_link', $link, $new_url, $term );
+			$data = array(
+				'title' => __( 'Add term', 'query-multiple-taxonomies' ),
+			);
 		} else {
 			unset( $tmp[$i] );
-			$new_url = esc_url( QMT_URL::for_tax( $this->taxonomy, $tmp ) );
 
-			$title = __( 'Remove term', 'query-multiple-taxonomies' );
-
-			$link = "<a class='remove-term' href='$new_url' title='$title'>$term->name (-)</a>";
-
-			$link = apply_filters( 'qmt_remove_term_link', $link, $new_url, $term );
+			$data = array(
+				'title' => __( 'Remove term', 'query-multiple-taxonomies' ),
+				'is-selected' => array( true )
+			);
 		}
 
-		return $link;
+		$data = array_merge( $data, array(
+			'url' => QMT_URL::for_tax( $this->taxonomy, $tmp ),
+			'name' => $term->name,
+		) );
+
+		if ( !empty( $child_output ) ) {
+			$data['children']['child-list'] = $child_output;
+		}
+
+		$output .= taxonomy_drill_down_widget::mustache_render( 'list-item.html', $data );
+	}
+
+	function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
+
+		if ( !$element )
+			return;
+
+		$id_field = $this->db_fields['id'];
+
+		$id = $element->$id_field;
+
+		$child_output = '';
+
+		// descend only when the depth is right and there are childrens for this element
+		if ( ($max_depth == 0 || $max_depth > $depth+1 ) && isset( $children_elements[$id]) ) {
+
+			foreach ( $children_elements[ $id ] as $child ) {
+				$this->display_element( $child, $children_elements, $max_depth, $depth + 1, $args, $child_output );
+			}
+
+			unset( $children_elements[ $id ] );
+		}
+
+		$this->single_el( $output, $element, $depth, $child_output );
 	}
 }
 

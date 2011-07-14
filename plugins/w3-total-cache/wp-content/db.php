@@ -8,7 +8,6 @@ if (!defined('W3TC_DIR')) {
 }
 
 if (!@is_dir(W3TC_DIR) || !file_exists(W3TC_DIR . '/inc/define.php')) {
-
     if (!defined('WP_ADMIN')) { // lets don't show error on front end
         require_once (ABSPATH . WPINC . '/wp-db.php');
     } else {
@@ -16,10 +15,13 @@ if (!@is_dir(W3TC_DIR) || !file_exists(W3TC_DIR . '/inc/define.php')) {
         die(sprintf('<strong>W3 Total Cache Error:</strong> some files appear to be missing or out of place. Please re-install plugin or remove <strong>%s</strong>.', __FILE__));
     }
 } else {
-
     require_once W3TC_DIR . '/inc/define.php';
+
+    if (defined('DB_TYPE') && file_exists(W3TC_DB_DIR . DIRECTORY_SEPARATOR . DB_TYPE . '.php')) {
+        require_once W3TC_DB_DIR . DIRECTORY_SEPARATOR . DB_TYPE . '.php';
+    }
+
     require_once W3TC_LIB_W3_DIR . '/Db.php';
 
     $GLOBALS['wpdb'] = & W3_Db::instance();
 }
-

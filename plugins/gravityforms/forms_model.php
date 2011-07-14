@@ -731,7 +731,7 @@ class RGFormsModel{
             //only save fields that are not hidden (except on entry screen)
             if(RG_CURRENT_VIEW == "entry" || !RGFormsModel::is_field_hidden($form, $field, array()) ){
 
-                if(is_array($field["inputs"])){
+                if(isset($field["inputs"]) && is_array($field["inputs"])){
                     foreach($field["inputs"] as $input)
                         self::save_input($form, $field, $lead, $current_fields, $input["id"]);
                 }
@@ -751,7 +751,7 @@ class RGFormsModel{
         //if section is hidden, hide field no matter what. if section is visible, see if field is supposed to be visible
         if($section_display == "hide")
             return true;
-        else if(self::is_page_hidden($form, $field["page_number"], $field_values)){
+        else if(self::is_page_hidden($form, rgar($field,"page_number"), $field_values)){
             return true;
         }
         else{
@@ -874,13 +874,13 @@ class RGFormsModel{
 
             default:
 
-                if(is_array($field["inputs"])){
+                if(isset($field["inputs"]) && is_array($field["inputs"])){
                     foreach($field["inputs"] as $input){
                         $value[strval($input["id"])] = self::get_input_value($field, "input_" . str_replace('.', '_', strval($input["id"])), RGForms::get("name", $input), $field_values, $get_from_post);
                     }
                 }
                 else{
-                    $value = self::get_input_value($field, "input_" . $field["id"], $field["inputName"], $field_values, $get_from_post);
+                    $value = self::get_input_value($field, "input_" . $field["id"], rgar($field, "inputName"), $field_values, $get_from_post);
                 }
             break;
         }
@@ -889,14 +889,14 @@ class RGFormsModel{
     }
 
     private static function get_input_value($field, $standard_name, $custom_name = "", $field_values=array(), $get_from_post=true){
-        if(!empty($_POST["is_submit_" . $field["formId"]]) && $get_from_post){
+        if(!empty($_POST["is_submit_" . rgar($field,"formId")]) && $get_from_post){
             $value = RGForms::post($standard_name);
             if(!is_array($value))
                 $value = stripslashes($value);
 
             return $value;
         }
-        else if($field["allowsPrepopulate"]){
+        else if(rgar($field, "allowsPrepopulate")){
             return self::get_parameter_value($custom_name, $field_values);
         }
     }
@@ -1111,6 +1111,11 @@ class RGFormsModel{
 
             case "number" :
                 $value = GFCommon::clean_number($value);
+            break;
+
+            case "website" :
+                if($value == "http://")
+                    $value = "";
             break;
 
             default:
@@ -1989,7 +1994,7 @@ class RGFormsModel{
                 if(RGForms::get("displayOnly",$field))
                     continue;
 
-                if(is_array($field["inputs"])){
+                if(isset($field["inputs"]) && is_array($field["inputs"])){
                     if($field["type"] == "name"){
                         $field_ids[] = $field["id"] . '.3'; //adding first name
                         $field_ids[] = $field["id"] . '.6'; //adding last name

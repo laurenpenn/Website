@@ -559,3 +559,6 @@ img.gf_keystatus_valid {position: relative; top:2px}
 
 ul.gfield_radio li.gchoice_total,
 ul.gfield_checkbox li.gchoice_total {font-size:11px; color:#878787; padding-top:14px!important}
+
+/* added to prevent truncating the button panels ----------------------------------------------------*/
+body #wpcontent #wpbody #wpbody-content {overflow: visible}

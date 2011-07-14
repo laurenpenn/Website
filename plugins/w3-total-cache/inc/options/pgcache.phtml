@@ -7,7 +7,7 @@
         is currently <span class="w3tc-<?php if ($pgcache_enabled): ?>enabled">enabled<?php else: ?>disabled">disabled<?php endif; ?></span>.
     </p>
     <p>
-		To rebuild the page cache use the 
+		To rebuild the page cache use the
         <input type="submit" name="flush_pgcache" value="empty cache"<?php if (! $pgcache_enabled): ?> disabled="disabled"<?php endif; ?> class="button" />
 		operation.
         <input type="hidden" name="page" value="<?php echo $this->_page; ?>" />
@@ -41,8 +41,8 @@
         	</tr>
         	<tr>
         		<th>
-        			<input type="hidden" name="pgcache.cache.query" value="0"<?php if ($this->_config->get_string('pgcache.engine') == 'file_pgcache'): ?> disabled="disabled"<?php endif; ?> />
-        			<label><input type="checkbox" name="pgcache.cache.query" value="1"<?php checked($this->_config->get_boolean('pgcache.cache.query'), true); ?><?php if ($this->_config->get_string('pgcache.engine') == 'file_pgcache'): ?> disabled="disabled"<?php endif; ?> /> Cache <acronym title="Uniform Resource Identifier">URI</acronym>s with query string variables</label><br />
+        			<input type="hidden" name="pgcache.cache.query" value="0"<?php if ($this->_config->get_string('pgcache.engine') == 'file_generic'): ?> disabled="disabled"<?php endif; ?> />
+        			<label><input type="checkbox" name="pgcache.cache.query" value="1"<?php checked($this->_config->get_boolean('pgcache.cache.query'), true); ?><?php if ($this->_config->get_string('pgcache.engine') == 'file_generic'): ?> disabled="disabled"<?php endif; ?> /> Cache <acronym title="Uniform Resource Identifier">URI</acronym>s with query string variables</label><br />
     				<span class="description">Search result (and similar) pages will be cached if enabled.</span>
         		</th>
         	</tr>
@@ -76,7 +76,7 @@
         	<tr>
         		<th><label for="pgcache_file_gc">Garbage collection interval:</label></th>
         		<td>
-        			<input id="pgcache_file_gc" type="text" name="pgcache.file.gc" value="<?php echo $this->_config->get_integer('pgcache.file.gc'); ?>" size="8"<?php if ($this->_config->get_string('pgcache.engine') != 'file' && $this->_config->get_string('pgcache.engine') != 'file_pgcache'): ?> disabled="disabled"<?php endif; ?> /> seconds
+        			<input id="pgcache_file_gc" type="text" name="pgcache.file.gc" value="<?php echo $this->_config->get_integer('pgcache.file.gc'); ?>" size="8"<?php if ($this->_config->get_string('pgcache.engine') != 'file' && $this->_config->get_string('pgcache.engine') != 'file_generic'): ?> disabled="disabled"<?php endif; ?> /> seconds
         			<br /><span class="description">If caching to disk, specify how frequently expired cache data is removed. For busy sites, a lower value is best.</span>
     			</td>
         	</tr>
@@ -120,7 +120,7 @@
         	<tr>
         		<th><label for="pgcache_cache_headers">Specify page headers:</label></th>
         		<td>
-        			<textarea id="pgcache_cache_headers" name="pgcache.cache.headers" cols="40" rows="5"<?php if (!W3TC_PHP5 || $this->_config->get_string('pgcache.engine') == 'file_pgcache'): ?> disabled="disabled"<?php endif; ?>><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('pgcache.cache.headers'))); ?></textarea><br />
+        			<textarea id="pgcache_cache_headers" name="pgcache.cache.headers" cols="40" rows="5"<?php if (!W3TC_PHP5 || $this->_config->get_string('pgcache.engine') == 'file_generic'): ?> disabled="disabled"<?php endif; ?>><?php echo htmlspecialchars(implode("\r\n", $this->_config->get_array('pgcache.cache.headers'))); ?></textarea><br />
         			<span class="description">Specify additional page headers to cache.</span>
         		</td>
         	</tr>
@@ -214,7 +214,7 @@
             <tr>
                 <th colspan="2">
                     <p>Specify the feed types to purge:</p>
-                    <input type="hidden" name="pgcache.purge.feed.types" value="" /> 
+                    <input type="hidden" name="pgcache.purge.feed.types" value="" />
                     <?php foreach($feeds as $feed): ?>
                         <label><input type="checkbox" name="pgcache.purge.feed.types[]" value="<?php echo $feed; ?>"<?php checked(in_array($feed, $this->_config->get_array('pgcache.purge.feed.types')), true); ?> />
                         <?php echo $feed; ?>

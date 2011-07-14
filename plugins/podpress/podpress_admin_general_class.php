@@ -121,7 +121,7 @@ License:
 			echo '					<input type="text" id="mediaWebPath" name="mediaWebPath" class="podpress_wide_text_field" size="40" value="'.attribute_escape(stripslashes($this->settings['mediaWebPath'])).'" /><br />'."\n";
 			if(!isset($this->settings['mediaWebPath']) || empty($this->settings['mediaWebPath'])){
 				echo "<br />\n";
-				echo __('Suggested', 'podpress').': <code>'.$this->uploadURL.'</code>'."\n";
+				echo __('Suggested', 'podpress').': <code>'.$this->uploadurl.'</code>'."\n";
 			}
 			echo '				</td>'."\n";
 			echo '			</tr>'."\n";
@@ -129,7 +129,7 @@ License:
 			echo '			<tr id="mediaWebPathHelp" style="display: none;">'."\n";
 			echo '				<th>&nbsp;</th>'."\n";
 			echo '				<td>';
-			echo '					'.sprintf(__('Point this to the full URL where you put your media files. It can be an URL to a local or remote location. The default value is the URL of the upload folder of this blog for example: <code>%1$s</code>', 'podpress'), $this->uploadURL)."\n";
+			echo '					'.sprintf(__('Point this to the full URL where you put your media files. It can be an URL to a local or remote location. The default value is the URL of the upload folder of this blog for example: <code>%1$s</code>', 'podpress'), $this->uploadurl)."\n";
 			echo '				</td>'."\n";
 			echo '			</tr> '."\n";
 
@@ -149,7 +149,7 @@ License:
 			echo '			<tr id="mediaFilePathHelp" style="display: none;">'."\n";
 			echo '				<th>&nbsp;</th>'."\n";
 			echo '				<td>';
-			echo '					'.sprintf(__('This is an optional feature which is used to speed up the time/duration detection process, and is only possible if you host the media files on the same server as your website. Instead of having to go download a file, it can read e.g. the ID3 information of a media file directly.<br />Insert the full path name of the folder which includes the media files. The URL and this path needs to point to the same directory. This path name could look like <code>/home/yoursite/http/wp-content/files/</code> or can be the path of the upload folder of this blog: <code>%1$s</code>.', 'podpress'), $this->uploadPath)."\n";
+			echo '					'.sprintf(__('This is an optional feature which is used to speed up the time/duration detection process, and is only possible if you host the media files on the same server as your website. Instead of having to go download a file, it can read e.g. the ID3 information of a media file directly.<br />Insert the full path name of the folder which includes the media files. The URL and this path needs to point to the same directory. This path name could look like <code>/home/yoursite/http/wp-content/files/</code> or can be the path of the upload folder of this blog: <code>%1$s</code>.', 'podpress'), $this->uploadpath)."\n";
 			echo '				</td>'."\n";
 			echo '			</tr> '."\n";
 
@@ -549,7 +549,7 @@ License:
 					//~ echo '		<tr id="protectedMediaFilePathHelp" '.$showPremiumOptions.'>'."\n";
 					//~ echo '			<th>&nbsp;</th>'."\n";
 					//~ echo '			<td colspan="2">';
-					//~ echo '				'.sprintf(__('Insert here the complete path name of the folder which contains the premium meda files. This folder needs to be on the same server as your blog. But it should NOT be in a dir under your web root. It should be a dir outside of the web root so that users cannot simply browse to the dir and get access to the files. For example this could be <code>%1$s/premium_mp3s/</code> or maybe with random number as folder name: <code>%1$s/%2$s/premium_mp3s/</code>. Create this folder before you start to use this feature.', 'podpress'), $this->uploadPath, rand(10000, 99999))."\n";
+					//~ echo '				'.sprintf(__('Insert here the complete path name of the folder which contains the premium meda files. This folder needs to be on the same server as your blog. But it should NOT be in a dir under your web root. It should be a dir outside of the web root so that users cannot simply browse to the dir and get access to the files. For example this could be <code>%1$s/premium_mp3s/</code> or maybe with random number as folder name: <code>%1$s/%2$s/premium_mp3s/</code>. Create this folder before you start to use this feature.', 'podpress'), $this->uploadpath, rand(10000, 99999))."\n";
 					//~ echo '			</td>'."\n";
 					//~ echo '		</tr> '."\n";
 
@@ -783,7 +783,7 @@ License:
 			echo ' 					'.__('Feed Caching', 'podpress');		
 			echo '				</th>'."\n";			
 			echo '				<td>'."\n";
-			echo ' 					'.__('Feedcache files will be stored in the follow directory:', 'podpress').'<br /><code>'.$this->tempFileSystemPath.'</code> '.$this->checkWritableTempFileDir(TRUE);		
+			echo ' 					'.__('Feedcache files will be stored in the follow directory:', 'podpress').'<br /><code>'.$this->tempfilesystempath.'</code> '.$this->checkWritableTempFileDir(TRUE);		
 			echo '				</td>'."\n";
 			echo '			</tr> '."\n";
 			echo '			<tr>'."\n";

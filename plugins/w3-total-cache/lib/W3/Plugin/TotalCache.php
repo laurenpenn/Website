@@ -15,36 +15,42 @@ if (!defined('W3TC_PLUGIN_TOTALCACHE_REGEXP_COOKIEDOMAIN')) {
 class W3_Plugin_TotalCache extends W3_Plugin {
     /**
      * Current page
+     *
      * @var string
      */
     var $_page = 'w3tc_general';
 
     /**
      * Notes
+     *
      * @var array
      */
     var $_notes = array();
 
     /**
      * Errors
+     *
      * @var array
      */
     var $_errors = array();
 
     /**
      * Show support reminder flag
+     *
      * @var boolean
      */
     var $_support_reminder = false;
 
     /**
      * Used in PHPMailer init function
+     *
      * @var string
      */
     var $_phpmailer_sender = '';
 
     /**
      * Array of request types
+     *
      * @var array
      */
     var $_request_types = array(
@@ -59,6 +65,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Array of request groups
+     *
      * @var array
      */
     var $_request_groups = array(
@@ -77,6 +84,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Request price list
+     *
      * @var array
      */
     var $_request_prices = array(
@@ -89,6 +97,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Runs plugin
+     *
+     * @return void
      */
     function run() {
         register_activation_hook(W3TC_FILE, array(
@@ -159,19 +169,19 @@ class W3_Plugin_TotalCache extends W3_Plugin {
             add_filter('media_row_actions', array(
                 &$this,
                 'media_row_actions'
-            ), null, 2);
+            ), 0, 2);
         }
 
         if ($this->_config->get_boolean('pgcache.enabled')) {
             add_filter('post_row_actions', array(
                 &$this,
                 'post_row_actions'
-            ), null, 2);
+            ), 0, 2);
 
             add_filter('page_row_actions', array(
                 &$this,
                 'page_row_actions'
-            ), null, 2);
+            ), 0, 2);
         }
 
         if (isset($_REQUEST['w3tc_theme']) && isset($_SERVER['HTTP_USER_AGENT']) && $_SERVER['HTTP_USER_AGENT'] == W3TC_POWERED_BY) {
@@ -288,6 +298,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Activate plugin action
+     *
+     * @return void
      */
     function activate() {
         /**
@@ -388,6 +400,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Deactivate plugin action
+     *
+     * @return void
      */
     function deactivate() {
         $this->link_delete();
@@ -412,6 +426,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Init action
+     *
+     * @return void
      */
     function init() {
         /**
@@ -443,9 +459,6 @@ class W3_Plugin_TotalCache extends W3_Plugin {
         }
 
         /**
-         * Check rewrite test
-         */
-        /**
          * Check for rewrite test request
          */
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -460,6 +473,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Load action
+     *
+     * @return void
      */
     function load() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -567,6 +582,14 @@ class W3_Plugin_TotalCache extends W3_Plugin {
         if (isset($_REQUEST['flush_objectcache'])) {
             $this->flush_objectcache();
 
+            $this->_config->set('notes.need_empty_objectcache', false);
+
+            if (!$this->_config->save()) {
+                $this->redirect(array(
+                    'w3tc_error' => 'config_save'
+                ), true);
+            }
+
             $this->redirect(array(
                 'w3tc_note' => 'flush_objectcache'
             ), true);
@@ -665,6 +688,36 @@ class W3_Plugin_TotalCache extends W3_Plugin {
             }
         }
 
+        if (isset($_REQUEST['pgcache_remove_rules_legacy'])) {
+            require_once W3TC_LIB_W3_DIR . '/Plugin/PgCache.php';
+            $w3_plugin_pgcache = & W3_Plugin_PgCache::instance();
+
+            if ($w3_plugin_pgcache->remove_rules_legacy()) {
+                $this->redirect(array(
+                    'w3tc_note' => 'pgcache_remove_rules_legacy'
+                ));
+            } else {
+                $this->redirect(array(
+                    'w3tc_error' => 'pgcache_remove_rules_legacy'
+                ));
+            }
+        }
+
+        if (isset($_REQUEST['pgcache_remove_rules_wpsc'])) {
+            require_once W3TC_LIB_W3_DIR . '/Plugin/PgCache.php';
+            $w3_plugin_pgcache = & W3_Plugin_PgCache::instance();
+
+            if ($w3_plugin_pgcache->remove_rules_wpsc()) {
+                $this->redirect(array(
+                    'w3tc_note' => 'pgcache_remove_rules_wpsc'
+                ));
+            } else {
+                $this->redirect(array(
+                    'w3tc_error' => 'pgcache_remove_rules_wpsc'
+                ));
+            }
+        }
+
         /**
          * Write browser cache rules
          */
@@ -728,6 +781,21 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 } else {
                     $this->redirect(array(
                         'w3tc_error' => 'minify_write_rules_cache'
+                    ));
+                }
+            }
+
+            if (isset($_REQUEST['minify_remove_rules_legacy'])) {
+                require_once W3TC_LIB_W3_DIR . '/Plugin/Minify.php';
+                $w3_plugin_minify = & W3_Plugin_Minify::instance();
+
+                if ($w3_plugin_minify->remove_rules_legacy()) {
+                    $this->redirect(array(
+                        'w3tc_note' => 'minify_remove_rules_legacy'
+                    ));
+                } else {
+                    $this->redirect(array(
+                        'w3tc_error' => 'minify_remove_rules_legacy'
                     ));
                 }
             }
@@ -853,6 +921,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Dashboard setup action
+     *
+     * @return void
      */
     function wp_dashboard_setup() {
         wp_enqueue_style('w3tc-widget');
@@ -881,6 +951,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Prints latest widget contents
+     *
+     * @return void
      */
     function widget_latest() {
         global $wp_version;
@@ -917,6 +989,10 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Latest widget control
+     *
+     * @param integer $widget_id
+     * @param array $form_inputs
+     * @return void
      */
     function widget_latest_control($widget_id, $form_inputs = array()) {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -952,6 +1028,10 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Latest widget control
+     *
+     * @param integer $widget_id
+     * @param array $form_inputs
+     * @return void
      */
     function widget_pagespeed_control($widget_id, $form_inputs = array()) {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -966,6 +1046,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Admin init
+     *
+     * @return void
      */
     function admin_init() {
         wp_register_style('w3tc-options', plugins_url('inc/css/options.css', W3TC_FILE));
@@ -979,6 +1061,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Admin menu
+     *
+     * @return void
      */
     function admin_menu() {
         $pages = array(
@@ -1085,6 +1169,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Admin bar menu
+     *
+     * @return void
      */
     function admin_bar_menu() {
         global $wp_admin_bar;
@@ -1093,7 +1179,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
             $menu_items = array(
                 array(
                     'id' => 'w3tc',
-                    'title' => 'Perfomance',
+                    'title' => 'Performance',
                     'href' => admin_url('admin.php?page=w3tc_general')
                 ),
                 array(
@@ -1203,6 +1289,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
     /**
      * Plugin action links filter
      *
+     * @param array $links
      * @return array
      */
     function plugin_action_links($links) {
@@ -1213,6 +1300,9 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * favorite_actions filter
+     *
+     * @param array $actions
+     * @return void
      */
     function favorite_actions($actions) {
         $actions['admin.php?page=w3tc_general&amp;flush_all'] = array(
@@ -1225,6 +1315,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Admin notices action
+     *
+     * @return void
      */
     function admin_notices() {
         $config_path = (w3_is_preview_config() ? W3TC_CONFIG_PREVIEW_PATH : W3TC_CONFIG_PATH);
@@ -1243,11 +1335,14 @@ class W3_Plugin_TotalCache extends W3_Plugin {
             'fancy_permalinks_disabled_browsercache' => sprintf('Fancy permalinks are disabled. Please %s it first, then re-attempt to enabling the \'Do not process 404 errors for static objects with WordPress\'.', $this->button_link('enable', 'options-permalink.php')),
             'pgcache_write_rules_core' => sprintf('The page cache rules could not be modified. Please %srun <strong>chmod 777 %s</strong> to resolve this issue.', (file_exists($pgcache_rules_core_path) ? '' : sprintf('create an empty file in <strong>%s</strong> and ', $pgcache_rules_core_path)), $pgcache_rules_core_path),
             'pgcache_write_rules_cache' => sprintf('The page cache rules could not be modified. Please run <strong>chmod 777 %s</strong> to resolve this issue.', (file_exists($pgcache_rules_cache_path) ? $pgcache_rules_cache_path : dirname($pgcache_rules_cache_path))),
+            'pgcache_remove_rules_legacy' => sprintf('The legacy page cache rules could not be removed. Please run <strong>chmod 777 %s</strong> to resolve this issue.', (file_exists($pgcache_rules_cache_path) ? $pgcache_rules_cache_path : dirname($pgcache_rules_cache_path))),
+            'pgcache_remove_rules_wpsc' => sprintf('The WP Super Cache rules could not be removed. Please run <strong>chmod 777 %s</strong> to resolve this issue.', (file_exists($pgcache_rules_cache_path) ? $pgcache_rules_cache_path : dirname($pgcache_rules_cache_path))),
             'browsercache_write_rules_cache' => sprintf('The browser cache rules could not be modified. Please %srun <strong>chmod 777 %s</strong> to resolve this issue.', (file_exists($browsercache_rules_cache_path) ? '' : sprintf('create an empty file in <strong>%s</strong> and ', $browsercache_rules_cache_path)), $browsercache_rules_cache_path),
             'browsercache_write_rules_no404wp' => sprintf('The browser cache rules could not be modified. Please %srun <strong>chmod 777 %s</strong> to resolve this issue.', (file_exists($browsercache_rules_no404wp_path) ? '' : sprintf('create an empty file in <strong>%s</strong> and ', $browsercache_rules_no404wp_path)), $browsercache_rules_no404wp_path),
             'browsercache_write_rules_cdn' => sprintf('The browser cache rules for <acronym title="Content Delivery Network">CDN</acronym> could not be modified. Please check <acronym title="Content Delivery Network">CDN</acronym> settings.'),
             'minify_write_rules_core' => sprintf('The minify rules could not be modified. Please run <strong>chmod 777 %s</strong> to resolve this issue.', (file_exists($minify_rules_core_path) ? $minify_rules_core_path : dirname($minify_rules_core_path))),
             'minify_write_rules_cache' => sprintf('The minify rules could not be modified. Please run <strong>chmod 777 %s</strong> to resolve this issue.', (file_exists($minify_rules_cache_path) ? $minify_rules_cache_path : dirname($minify_rules_cache_path))),
+            'minify_remove_rules_legacy' => sprintf('The legacy minify rules could not be modified. Please run <strong>chmod 777 %s</strong> to resolve this issue.', (file_exists($minify_rules_cache_path) ? $minify_rules_cache_path : dirname($minify_rules_cache_path))),
             'support_request_type' => 'Please select request type.',
             'support_request_url' => 'Please enter the address of the site in the site <acronym title="Uniform Resource Locator">URL</acronym> field.',
             'support_request_name' => 'Please enter your name in the Name field',
@@ -1288,9 +1383,13 @@ class W3_Plugin_TotalCache extends W3_Plugin {
             'flush_minify' => 'Minify cache successfully emptied.',
             'pgcache_write_rules_core' => 'Page cache rewrite rules have been successfully written.',
             'pgcache_write_rules_cache' => 'Page cache rewrite rules have been successfully written.',
+            'pgcache_remove_rules_legacy' => 'Legacy page cache configuration settings have been successfully removed.',
+            'pgcache_remove_rules_wpsc' => 'WP Super Cache configuration settings have been successfully removed.',
             'browsercache_write_rules_cache' => 'Browser cache directives have been successfully written.',
             'browsercache_write_rules_no404wp' => 'Browser cache directives have been successfully written.',
-            'minify_write_rules' => 'Minify rewrite rules have been successfully written.',
+            'minify_write_rules_core' => 'Minify rewrite rules have been successfully written.',
+            'minify_write_rules_cache' => 'Minify rewrite rules have been successfully written.',
+            'minify_remove_rules_legacy' => 'Legacy minify configuration settings have been successfuly removed.',
             'support_request' => 'The support request has been successfully sent.',
             'config_import' => 'Settings successfully imported.',
             'config_reset' => 'Settings successfully restored.',
@@ -1412,6 +1511,13 @@ class W3_Plugin_TotalCache extends W3_Plugin {
         }
 
         /**
+         * Show notification when object cache needs to be emptied
+         */
+        if ($this->_config->get_boolean('objectcache.enabled') && $this->_config->get('notes.need_empty_objectcache') && !w3_is_preview_config()) {
+            $notes[] = sprintf('The setting change(s) made either invalidate the cached data or modify the behavior of the site. %s now to provide a consistent user experience.', $this->button_link('Empty the object cache', sprintf('admin.php?page=%s&flush_objectcache', $this->_page)));
+        }
+
+        /**
          * Minify notifications
          */
         if ($this->_config->get_boolean('minify.enabled')) {
@@ -1444,6 +1550,9 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Active plugins pre update option filter
+     *
+     * @param string $new_value
+     * @return string
      */
     function pre_update_option_active_plugins($new_value) {
         $old_value = (array) get_option('active_plugins');
@@ -1458,6 +1567,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Show plugin changes
+     *
+     * @return void
      */
     function in_plugin_update_message() {
         $data = w3_http_get(W3TC_README_URL);
@@ -1500,6 +1611,10 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * media_row_actions filter
+     *
+     * @param array $actions
+     * @param object $post
+     * @return array
      */
     function media_row_actions($actions, $post) {
         $actions = array_merge($actions, array(
@@ -1511,6 +1626,10 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * post_row_actions filter
+     *
+     * @param array $actions
+     * @param object $post
+     * @return array
      */
     function post_row_actions($actions, $post) {
         $actions = array_merge($actions, array(
@@ -1522,6 +1641,10 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * page_row_actions filter
+     *
+     * @param array $actions
+     * @param object $post
+     * @return array
      */
     function page_row_actions($actions, $post) {
         $actions = array_merge($actions, array(
@@ -1627,6 +1750,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Footer plugin action
+     *
+     * @return void
      */
     function footer() {
         echo '<div style="text-align: center;">Performance Optimization <a href="http://www.w3-edge.com/wordpress-plugins/" rel="external">WordPress Plugins</a> by W3 EDGE</div>';
@@ -1634,6 +1759,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Options page
+     *
+     * @return void
      */
     function options() {
         /**
@@ -1646,7 +1773,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 $this->_errors[] = sprintf('Page caching is not available. The current add-in %s is either an incorrect file or an old version. De-activate the plugin, remove the file, then activate the plugin again.', W3TC_ADDIN_FILE_ADVANCED_CACHE);
             } elseif (!defined('WP_CACHE') || !WP_CACHE) {
                 $this->_errors[] = sprintf('Page caching is not available: please add: <strong>define(\'WP_CACHE\', true);</strong> to <strong>%swp-config.php</strong>. This error message will automatically disappear once the change is successfully made.', ABSPATH);
-            } elseif ($this->_config->get_string('pgcache.engine') == 'file_pgcache' && $this->_config->get_boolean('config.check') && w3_can_check_rules()) {
+            } elseif ($this->_config->get_string('pgcache.engine') == 'file_generic' && $this->_config->get_boolean('config.check') && w3_can_check_rules()) {
                 require_once W3TC_LIB_W3_DIR . '/Plugin/PgCache.php';
                 $w3_plugin_pgcache = & W3_Plugin_PgCache::instance();
 
@@ -1656,6 +1783,14 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                     }
                 } elseif ($this->_config->get_boolean('notes.pgcache_rules_core')) {
                     $this->_errors[] = sprintf('Disk enhanced page caching is not active. To enable it, add the following rules into the server configuration file (<strong>%s</strong>) of the site above the WordPress directives %s <textarea class="w3tc-rules" cols="120" rows="10" readonly="readonly">%s</textarea>. Or if permission allow this can be done automatically, by clicking here: %s. %s', w3_get_pgcache_rules_core_path(), $this->button('view code', '', 'w3tc-show-rules'), htmlspecialchars($w3_plugin_pgcache->generate_rules_core()), $this->button_link('auto-install', sprintf('admin.php?page=%s&pgcache_write_rules_core', $this->_page)), $this->button_hide_note('Hide this message', 'pgcache_rules_core'));
+                }
+
+                if ($this->_config->get_boolean('notes.pgcache_rules_legacy') && $w3_plugin_pgcache->check_rules_legacy()) {
+                    $this->_errors[] = sprintf('Legacy Page Cache rewrite rules have been found. To remove them manually, edit the configuration file (<strong>%s</strong>) and remove all lines between and including <strong>%s</strong> and <strong>%s</strong> markers inclusive. Or if permission allow this can be done automatically, by clicking here: %s. %s', w3_get_pgcache_rules_core_path(), W3TC_MARKER_BEGIN_PGCACHE_LEGACY, W3TC_MARKER_END_PGCACHE_LEGACY, $this->button_link('auto-remove', sprintf('admin.php?page=%s&pgcache_remove_rules_legacy', $this->_page)), $this->button_hide_note('Hide this message', 'pgcache_rules_legacy'));
+                }
+
+                if ($this->_config->get_boolean('notes.pgcache_rules_wpsc') && $w3_plugin_pgcache->check_rules_wpsc()) {
+                    $this->_errors[] = sprintf('WP Super Cache rewrite rules have been found. To remove them manually, edit the configuration file (<strong>%s</strong>) and remove all lines between and including <strong>%s</strong> and <strong>%s</strong> markers inclusive. Or if permission allow this can be done automatically, by clicking here: %s. %s', w3_get_pgcache_rules_core_path(), W3TC_MARKER_BEGIN_PGCACHE_WPSC, W3TC_MARKER_END_PGCACHE_WPSC, $this->button_link('auto-remove', sprintf('admin.php?page=%s&pgcache_remove_rules_wpsc', $this->_page)), $this->button_hide_note('Hide this message', 'pgcache_rules_wpsc'));
                 }
 
                 if ($this->_config->get_boolean('notes.pgcache_rules_cache') && !$w3_plugin_pgcache->check_rules_cache()) {
@@ -1694,6 +1829,10 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                     }
                 } elseif ($this->_config->get_boolean('notes.minify_rules_core')) {
                     $this->_errors[] = sprintf('Minify is not active. To enable it, add the following rules into the server configuration file (<strong>%s</strong>) of the site %s <textarea class="w3tc-rules" cols="120" rows="10" readonly="readonly">%s</textarea>. This can be done automatically, by clicking here: %s. %s', w3_get_minify_rules_core_path(), $this->button('view code', '', 'w3tc-show-rules'), htmlspecialchars($w3_plugin_minify->generate_rules_core()), $this->button_link('auto-install', sprintf('admin.php?page=%s&minify_write_rules_core', $this->_page)), $this->button_hide_note('Hide this message', 'minify_rules_core'));
+                }
+
+                if ($this->_config->get_boolean('notes.minify_rules_legacy') && $w3_plugin_minify->check_rules_legacy()) {
+                    $this->_errors[] = sprintf('Legacy Minify rewrite rules have been found. To remove them manually, edit the configuration file (<strong>%s</strong>) and remove all lines between and including <strong>%s</strong> and <strong>%s</strong> markers inclusive. Or if permission allow this can be done automatically, by clicking here: %s. %s', w3_get_minify_rules_core_path(), W3TC_MARKER_BEGIN_MINIFY_LEGACY, W3TC_MARKER_END_MINIFY_LEGACY, $this->button_link('auto-remove', sprintf('admin.php?page=%s&minify_remove_rules_legacy', $this->_page)), $this->button_hide_note('Hide this message', 'minify_rules_legacy'));
                 }
 
                 if ($this->_config->get_string('minify.engine') == 'file' && $this->_config->get_boolean('notes.minify_rules_cache') && !$w3_plugin_minify->check_rules_cache()) {
@@ -1866,7 +2005,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
         /**
          * Check permalinks
          */
-        if ($this->_config->get_boolean('notes.no_permalink_rules') && (($this->_config->get_boolean('pgcache.enabled') && $this->_config->get_string('pgcache.engine') == 'file_pgcache') || ($this->_config->get_boolean('browsercache.enabled') && $this->_config->get_boolean('browsercache.no404wp'))) && !w3_is_permalink_rules()) {
+        if ($this->_config->get_boolean('notes.no_permalink_rules') && (($this->_config->get_boolean('pgcache.enabled') && $this->_config->get_string('pgcache.engine') == 'file_generic') || ($this->_config->get_boolean('browsercache.enabled') && $this->_config->get_boolean('browsercache.no404wp'))) && !w3_is_permalink_rules()) {
             $this->_errors[] = sprintf('The required directives for fancy permalinks could not be detected, please confirm they are available: <a href="http://codex.wordpress.org/Using_Permalinks#Creating_and_editing_.28.htaccess.29">Creating and editing</a> %s', $this->button_hide_note('Hide this message', 'no_permalink_rules'));
         }
 
@@ -2027,6 +2166,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * General tab
+     *
+     * @return void
      */
     function options_general() {
         global $current_user;
@@ -2069,7 +2210,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
         $file_engines = array(
             'file',
-            'file_pgcache'
+            'file_generic'
         );
 
         $can_empty_memcache = ($pgcache_enabled && $pgcache_engine == 'memcached');
@@ -2132,6 +2273,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Page cache tab
+     *
+     * @return void
      */
     function options_pgcache() {
         global $wp_rewrite;
@@ -2153,6 +2296,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Minify tab
+     *
+     * @return void
      */
     function options_minify() {
         $minify_enabled = $this->_config->get_boolean('minify.enabled');
@@ -2198,6 +2343,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Database cache tab
+     *
+     * @return void
      */
     function options_dbcache() {
         $dbcache_enabled = $this->_config->get_boolean('dbcache.enabled');
@@ -2207,6 +2354,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Objects cache tab
+     *
+     * @return void
      */
     function options_objectcache() {
         $objectcache_enabled = $this->_config->get_boolean('objectcache.enabled');
@@ -2216,6 +2365,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Objects cache tab
+     *
+     * @return void
      */
     function options_browsercache() {
         $browsercache_enabled = $this->_config->get_boolean('browsercache.enabled');
@@ -2231,6 +2382,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Mobile tab
+     *
+     * @return void
      */
     function options_mobile() {
         $groups = $this->_config->get_array('mobile.rgroups');
@@ -2245,6 +2398,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Referrer tab
+     *
+     * @return void
      */
     function options_referrer() {
         $groups = $this->_config->get_array('referrer.rgroups');
@@ -2259,6 +2414,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * CDN tab
+     *
+     * @return void
      */
     function options_cdn() {
         $cdn_enabled = $this->_config->get_boolean('cdn.enabled');
@@ -2275,6 +2432,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * FAQ tab
+     *
+     * @return void
      */
     function options_faq() {
         $faq = $this->parse_faq();
@@ -2284,6 +2443,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Support tab
+     *
+     * @return void
      */
     function options_support() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -2342,6 +2503,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Support select tab
+     *
+     * @return void
      */
     function options_support_select() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -2353,6 +2516,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Support payment tab
+     *
+     * @return void
      */
     function options_support_payment() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -2373,6 +2538,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Install tab
+     *
+     * @return void
      */
     function options_install() {
         $rewrite_rules = array();
@@ -2483,6 +2650,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * About tab
+     *
+     * @return void
      */
     function options_about() {
         include W3TC_DIR . '/inc/options/about.phtml';
@@ -2490,6 +2659,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Options save action
+     *
+     * @return void
      */
     function options_save() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -2520,7 +2691,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
             /**
              * Check permalinks for page cache
              */
-            if ($config->get_boolean('pgcache.enabled') && $config->get_string('pgcache.engine') == 'file_pgcache' && !get_option('permalink_structure')) {
+            if ($config->get_boolean('pgcache.enabled') && $config->get_string('pgcache.engine') == 'file_generic' && !get_option('permalink_structure')) {
                 $this->redirect(array(
                     'w3tc_error' => 'fancy_permalinks_disabled_pgcache'
                 ));
@@ -2530,7 +2701,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
         /**
          * Minify tab
          */
-        if ($this->_page == 'w3tc_minify') {
+        if ($this->_page == 'w3tc_minify' && !$this->_config->get_boolean('minify.auto')) {
             $js_groups = array();
             $css_groups = array();
 
@@ -2915,11 +3086,57 @@ class W3_Plugin_TotalCache extends W3_Plugin {
      * @return void
      */
     function config_save(&$old_config, &$new_config, $preview = null) {
+        $browsercache_dependencies = array();
+
+        if ($new_config->get_boolean('browsercache.enabled')) {
+            $browsercache_dependencies = array_merge($browsercache_dependencies, array(
+                'browsercache.cssjs.replace',
+                'browsercache.html.replace',
+                'browsercache.other.replace'
+            ));
+
+            if ($new_config->get_boolean('browsercache.cssjs.replace')) {
+                $browsercache_dependencies = array_merge($browsercache_dependencies, array(
+                    'browsercache.cssjs.compression',
+                    'browsercache.cssjs.expires',
+                    'browsercache.cssjs.lifetime',
+                    'browsercache.cssjs.cache.control',
+                    'browsercache.cssjs.cache.policy',
+                    'browsercache.cssjs.etag',
+                    'browsercache.cssjs.w3tc'
+                ));
+            }
+
+            if ($new_config->get_boolean('browsercache.html.replace')) {
+                $browsercache_dependencies = array_merge($browsercache_dependencies, array(
+                    'browsercache.html.compression',
+                    'browsercache.html.expires',
+                    'browsercache.html.lifetime',
+                    'browsercache.html.cache.control',
+                    'browsercache.html.cache.policy',
+                    'browsercache.html.etag',
+                    'browsercache.html.w3tc'
+                ));
+            }
+
+            if ($new_config->get_boolean('browsercache.other.replace')) {
+                $browsercache_dependencies = array_merge($browsercache_dependencies, array(
+                    'browsercache.other.compression',
+                    'browsercache.other.expires',
+                    'browsercache.other.lifetime',
+                    'browsercache.other.cache.control',
+                    'browsercache.other.cache.policy',
+                    'browsercache.other.etag',
+                    'browsercache.other.w3tc'
+                ));
+            }
+        }
+
         /**
          * Show need empty page cache notification
          */
         if ($new_config->get_boolean('pgcache.enabled')) {
-            $pgcache_dependencies = array(
+            $pgcache_dependencies = array_merge($browsercache_dependencies, array(
                 'pgcache.debug',
                 'dbcache.enabled',
                 'objectcache.enabled',
@@ -2927,7 +3144,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 'cdn.enabled',
                 'mobile.enabled',
                 'referrer.enabled'
-            );
+            ));
 
             if ($new_config->get_boolean('dbcache.enabled')) {
                 $pgcache_dependencies = array_merge($pgcache_dependencies, array(
@@ -3002,62 +3219,28 @@ class W3_Plugin_TotalCache extends W3_Plugin {
                 ));
             }
 
-            if ($new_config->get_boolean('browsercache.enabled')) {
+            if ($new_config->get_boolean('mobile.enabled')) {
                 $pgcache_dependencies = array_merge($pgcache_dependencies, array(
-                    'browsercache.cssjs.replace',
-                    'browsercache.html.replace',
-                    'browsercache.other.replace'
+                    'mobile.rgroups'
                 ));
+            }
 
-                if ($new_config->get_boolean('browsercache.cssjs.replace') || $new_config->get_boolean('browsercache.html.replace') || $new_config->get_boolean('browsercache.other.replace')) {
-                    $pgcache_dependencies = array_merge($pgcache_dependencies, array(
-                        'browsercache.cssjs.compression',
-                        'browsercache.cssjs.expires',
-                        'browsercache.cssjs.lifetime',
-                        'browsercache.cssjs.cache.control',
-                        'browsercache.cssjs.cache.policy',
-                        'browsercache.cssjs.etag',
-                        'browsercache.cssjs.w3tc',
-                        'browsercache.html.compression',
-                        'browsercache.html.expires',
-                        'browsercache.html.lifetime',
-                        'browsercache.html.cache.control',
-                        'browsercache.html.cache.policy',
-                        'browsercache.html.etag',
-                        'browsercache.html.w3tc',
-                        'browsercache.other.compression',
-                        'browsercache.other.expires',
-                        'browsercache.other.lifetime',
-                        'browsercache.other.cache.control',
-                        'browsercache.other.cache.policy',
-                        'browsercache.other.etag',
-                        'browsercache.other.w3tc'
-                    ));
-                }
+            if ($new_config->get_boolean('referrer.enabled')) {
+                $pgcache_dependencies = array_merge($pgcache_dependencies, array(
+                    'referrer.rgroups'
+                ));
+            }
 
-                if ($new_config->get_boolean('mobile.enabled')) {
-                    $pgcache_dependencies = array_merge($pgcache_dependencies, array(
-                        'mobile.rgroups'
-                    ));
-                }
+            $old_pgcache_dependencies_values = array();
+            $new_pgcache_dependencies_values = array();
 
-                if ($new_config->get_boolean('referrer.enabled')) {
-                    $pgcache_dependencies = array_merge($pgcache_dependencies, array(
-                        'referrer.rgroups'
-                    ));
-                }
+            foreach ($pgcache_dependencies as $pgcache_dependency) {
+                $old_pgcache_dependencies_values[] = $old_config->get($pgcache_dependency);
+                $new_pgcache_dependencies_values[] = $new_config->get($pgcache_dependency);
+            }
 
-                $old_pgcache_dependencies_values = array();
-                $new_pgcache_dependencies_values = array();
-
-                foreach ($pgcache_dependencies as $pgcache_dependency) {
-                    $old_pgcache_dependencies_values[] = $old_config->get($pgcache_dependency);
-                    $new_pgcache_dependencies_values[] = $new_config->get($pgcache_dependency);
-                }
-
-                if (serialize($old_pgcache_dependencies_values) != serialize($new_pgcache_dependencies_values)) {
-                    $new_config->set('notes.need_empty_pgcache', true);
-                }
+            if (serialize($old_pgcache_dependencies_values) != serialize($new_pgcache_dependencies_values)) {
+                $new_config->set('notes.need_empty_pgcache', true);
             }
         }
 
@@ -3065,14 +3248,14 @@ class W3_Plugin_TotalCache extends W3_Plugin {
          * Show need empty minify notification
          */
         if ($new_config->get_boolean('minify.enabled') && (($new_config->get_boolean('minify.css.enable') && ($new_config->get_boolean('minify.auto') || count($new_config->get_array('minify.css.groups')))) || ($new_config->get_boolean('minify.js.enable') && ($new_config->get_boolean('minify.auto') || count($new_config->get_array('minify.js.groups')))))) {
-            $minify_dependencies = array(
+            $minify_dependencies = array_merge($browsercache_dependencies, array(
                 'minify.auto',
                 'minify.debug',
                 'minify.options',
                 'minify.symlinks',
                 'minify.css.enable',
                 'minify.js.enable'
-            );
+            ));
 
             if ($new_config->get_boolean('minify.css.enable') && ($new_config->get_boolean('minify.auto') || count($new_config->get_array('minify.css.groups')))) {
                 $minify_dependencies = array_merge($minify_dependencies, array(
@@ -3193,43 +3376,26 @@ class W3_Plugin_TotalCache extends W3_Plugin {
         }
 
         /**
-         * Set new cache ID if browsercache settings changes
+         * Show need empty object cache notification
          */
-        if ($new_config->get_boolean('browsercache.enabled') && ($new_config->get_boolean('browsercache.cssjs.replace') || $new_config->get_boolean('browsercache.html.replace') || $new_config->get_boolean('browsercache.other.replace'))) {
-            $browsercache_dependencies = array(
-                'browsercache.cssjs.compression',
-                'browsercache.cssjs.expires',
-                'browsercache.cssjs.lifetime',
-                'browsercache.cssjs.cache.control',
-                'browsercache.cssjs.cache.policy',
-                'browsercache.cssjs.etag',
-                'browsercache.cssjs.w3tc',
-                'browsercache.html.compression',
-                'browsercache.html.expires',
-                'browsercache.html.lifetime',
-                'browsercache.html.cache.control',
-                'browsercache.html.cache.policy',
-                'browsercache.html.etag',
-                'browsercache.html.w3tc',
-                'browsercache.other.compression',
-                'browsercache.other.expires',
-                'browsercache.other.lifetime',
-                'browsercache.other.cache.control',
-                'browsercache.other.cache.policy',
-                'browsercache.other.etag',
-                'browsercache.other.w3tc'
+        if ($this->_config->get_boolean('objectcache.enabled')) {
+            $objectcache_dependencies = array(
+                'objectcache.reject.admin',
+                'objectcache.reject.uri',
+                'objectcache.groups.global',
+                'objectcache.groups.nonpersistent'
             );
 
-            $old_browsercache_dependencies_values = array();
-            $new_browsercache_dependencies_values = array();
+            $old_objectcache_dependencies_values = array();
+            $new_objectcache_dependencies_values = array();
 
-            foreach ($browsercache_dependencies as $browsercache_dependency) {
-                $old_browsercache_dependencies_values[] = $old_config->get($browsercache_dependency);
-                $new_browsercache_dependencies_values[] = $new_config->get($browsercache_dependency);
+            foreach ($objectcache_dependencies as $objectcache_dependency) {
+                $old_objectcache_dependencies_values[] = $old_config->get($objectcache_dependency);
+                $new_objectcache_dependencies_values[] = $new_config->get($objectcache_dependency);
             }
 
-            if (serialize($old_browsercache_dependencies_values) != serialize($new_browsercache_dependencies_values)) {
-                $new_config->set('browsercache.id', rand(10000, 99999));
+            if (serialize($old_objectcache_dependencies_values) != serialize($new_objectcache_dependencies_values)) {
+                $new_config->set('notes.need_empty_objectcache', true);
             }
         }
 
@@ -3353,7 +3519,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
             /**
              * Write page cache rewrite rules
              */
-            if ($new_config->get_boolean('pgcache.enabled') && $new_config->get_string('pgcache.engine') == 'file_pgcache') {
+            if ($new_config->get_boolean('pgcache.enabled') && $new_config->get_string('pgcache.engine') == 'file_generic') {
                 if (w3_can_modify_rules(w3_get_pgcache_rules_core_path())) {
                     $w3_plugin_pgcache->write_rules_core();
                 }
@@ -3544,6 +3710,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Save preview option
+     *
+     * @return void
      */
     function preview_save() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -3576,7 +3744,9 @@ class W3_Plugin_TotalCache extends W3_Plugin {
     }
 
     /**
-     * Depoly preview settings action
+     * Deploy preview settings action
+     *
+     * @return void
      */
     function preview_deploy() {
         if ($this->_config->save(false)) {
@@ -3594,6 +3764,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Select support type action
+     *
+     * @return void
      */
     function support_select() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -3620,6 +3792,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Send support request
+     *
+     * @return void
      */
     function support_request() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -4027,6 +4201,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * CDN queue action
+     *
+     * @return void
      */
     function cdn_queue() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -4074,6 +4250,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * CDN export library action
+     *
+     * @return void
      */
     function cdn_export_library() {
         require_once W3TC_LIB_W3_DIR . '/Plugin/Cdn.php';
@@ -4088,6 +4266,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * CDN export library process
+     *
+     * @return void
      */
     function cdn_export_library_process() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -4117,6 +4297,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * CDN import library action
+     *
+     * @return void
      */
     function cdn_import_library() {
         require_once W3TC_LIB_W3_DIR . '/Plugin/Cdn.php';
@@ -4134,6 +4316,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * CDN import library process
+     *
+     * @return void
      */
     function cdn_import_library_process() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -4163,6 +4347,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * CDN rename domain action
+     *
+     * @return void
      */
     function cdn_rename_domain() {
         require_once W3TC_LIB_W3_DIR . '/Plugin/Cdn.php';
@@ -4178,6 +4364,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * CDN rename domain process
+     *
+     * @return void
      */
     function cdn_rename_domain_process() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -4208,6 +4396,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * CDN export action
+     *
+     * @return void
      */
     function cdn_export() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -4245,6 +4435,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * CDN export process
+     *
+     * @return void
      */
     function cdn_export_process() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -4274,6 +4466,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * CDN purge action
+     *
+     * @return void
      */
     function cdn_purge() {
         $title = 'Content Delivery Network (CDN): Purge Tool';
@@ -4284,6 +4478,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * CDN purge post action
+     *
+     * @return void
      */
     function cdn_purge_post() {
         $title = 'Content Delivery Network (CDN): Purge Tool';
@@ -4337,7 +4533,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
     }
 
     /**
-     * Uploads browsercache .htaccess to FTP
+     * Uploads Browser Cache .htaccess to FTP
      *
      * @return void
      */
@@ -4364,7 +4560,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
     }
 
     /**
-     * Deletes browsercache .htaccess to FTP
+     * Deletes Browser Cache .htaccess from FTP
      *
      * @return void
      */
@@ -4444,6 +4640,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Create container action
+     *
+     * @return void
      */
     function cdn_create_container() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -4495,16 +4693,19 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * CDN Purge Post
+     *
+     * @return void
      */
     function cdn_purge_attachment() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
         require_once W3TC_LIB_W3_DIR . '/Plugin/Cdn.php';
 
+        $results = array();
         $attachment_id = W3_Request::get_integer('attachment_id');
 
         $w3_plugin_cdn = & W3_Plugin_Cdn::instance();
 
-        if ($w3_plugin_cdn->purge_attachment($attachment_id)) {
+        if ($w3_plugin_cdn->purge_attachment($attachment_id, $results)) {
             $this->redirect(array(
                 'w3tc_note' => 'cdn_purge_attachment'
             ), true);
@@ -4514,7 +4715,6 @@ class W3_Plugin_TotalCache extends W3_Plugin {
             ), true);
         }
     }
-
 
     /**
      * S3 bucket location lightbox
@@ -4538,6 +4738,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * PgCache purge post
+     *
+     * @return void
      */
     function pgcache_purge_post() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -4560,6 +4762,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * PgCache purge page
+     *
+     * @return void
      */
     function pgcache_purge_page() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -4588,7 +4792,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
      */
     function is_memcache_available($servers) {
         static $results = array();
-        $key = md5(serialize($servers));
+
+        $key = md5(implode('', $servers));
 
         if (!isset($results[$key])) {
             require_once W3TC_LIB_W3_DIR . '/Cache/Memcached.php';
@@ -4609,6 +4814,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Test memcached
+     *
+     * @return void
      */
     function test_memcached() {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
@@ -4633,6 +4840,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Test minifier action
+     *
+     * @return void
      */
     function test_minifier() {
         if (W3TC_PHP5) {
@@ -4729,7 +4938,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
             $data = w3_http_get($url);
 
             if ($data !== false) {
-                $result = ($data == 'OK');
+                $result = (trim($data) == 'OK');
             } else {
                 $result = true;
             }
@@ -4744,6 +4953,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Update plugin link
+     *
+     * @return void
      */
     function link_update() {
         $this->link_delete();
@@ -4752,6 +4963,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Insert plugin link into Blogroll
+     *
+     * @return void
      */
     function link_insert() {
         $support = $this->_config->get_string('common.support');
@@ -4771,6 +4984,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Deletes plugin link from Blogroll
+     *
+     * @return void
      */
     function link_delete() {
         $bookmarks = get_bookmarks();
@@ -4838,6 +5053,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Flush APC cache
+     *
      * @return void
      */
     function flush_opcode() {
@@ -4854,7 +5070,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
      */
     function flush_file() {
         $this->flush('file');
-        $this->flush('file_pgcache');
+        $this->flush('file_generic');
     }
 
     /**
@@ -4870,6 +5086,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Flush page cache
+     *
+     * @return void
      */
     function flush_pgcache() {
         require_once W3TC_LIB_W3_DIR . '/PgCache.php';
@@ -4879,6 +5097,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Flush page cache
+     *
+     * @return void
      */
     function flush_dbcache() {
         require_once W3TC_LIB_W3_DIR . '/Db.php';
@@ -4888,6 +5108,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Flush page cache
+     *
+     * @return void
      */
     function flush_objectcache() {
         require_once W3TC_LIB_W3_DIR . '/ObjectCache.php';
@@ -4897,6 +5119,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Flush minify cache
+     *
+     * @return void
      */
     function flush_minify() {
         if (W3TC_PHP5) {
@@ -5080,7 +5304,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
         }
 
         /**
-         * Skip if doint AJAX
+         * Skip if doing AJAX
          */
         if (defined('DOING_AJAX')) {
             return false;
@@ -5114,11 +5338,20 @@ class W3_Plugin_TotalCache extends W3_Plugin {
             return false;
         }
 
+        /**
+         * Check User Agent
+         */
+        if (isset($_SERVER['HTTP_USER_AGENT']) && stristr($_SERVER['HTTP_USER_AGENT'], W3TC_POWERED_BY) !== false) {
+            return false;
+        }
+
         return true;
     }
 
     /**
      * Returns server info
+     *
+     * @return array
      */
     function get_server_info() {
         global $wp_version, $wp_db_version, $wpdb;
@@ -5177,6 +5410,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Support us lightbox
+     *
+     * @return void
      */
     function support_us() {
         $supports = $this->get_supports();
@@ -5186,6 +5421,8 @@ class W3_Plugin_TotalCache extends W3_Plugin {
 
     /**
      * Minify recommendations lightbox
+     *
+     * @return void
      */
     function minify_recommendations() {
         $themes = $this->get_themes();
@@ -5294,15 +5531,17 @@ class W3_Plugin_TotalCache extends W3_Plugin {
     /**
      * Redirect function
      *
-     * @param boolean $check_referer
+     * @param array $params
+     * @param boolean $check_referrer
+     * @return void
      */
-    function redirect($params = array(), $check_referer = false) {
+    function redirect($params = array(), $check_referrer = false) {
         require_once W3TC_LIB_W3_DIR . '/Request.php';
 
         $url = W3_Request::get_string('redirect');
 
         if ($url == '') {
-            if ($check_referer && !empty($_SERVER['HTTP_REFERER'])) {
+            if ($check_referrer && !empty($_SERVER['HTTP_REFERER'])) {
                 $url = $_SERVER['HTTP_REFERER'];
             } else {
                 $url = 'admin.php';
@@ -5383,6 +5622,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
     /**
      * Returns minify groups
      *
+     * @param string $theme_name
      * @return array
      */
     function get_theme_templates($theme_name) {
@@ -5404,7 +5644,7 @@ class W3_Plugin_TotalCache extends W3_Plugin {
     /**
      * Returns array of detected URLs for theme templates
      *
-     * @param string  $theme_name
+     * @param string $theme_name
      * @return array
      */
     function get_theme_urls($theme_name) {
@@ -5821,32 +6061,6 @@ class W3_Plugin_TotalCache extends W3_Plugin {
      */
     function _get_theme_recommendations($groups) {
         /**
-         * Replace CDN hosts to local host
-         */
-        if ($this->_config->get_boolean('cdn.enabled')) {
-            require_once W3TC_LIB_W3_DIR . '/Plugin/Cdn.php';
-
-            $w3_plugin_cdn = & W3_Plugin_Cdn::instance();
-            $cdn = & $w3_plugin_cdn->get_cdn();
-
-            $search = array();
-            $domains = $cdn->get_domains();
-
-            foreach ($domains as $domain) {
-                $_domains = array_map('trim', explode(',', $domain));
-                $search = array_merge($search, $_domains);
-            }
-
-            $replace = w3_get_domain(w3_get_host());
-
-            foreach ($groups as $template => $files) {
-                foreach ($files as $index => $file) {
-                    $groups[$template][$index] = str_replace($search, $replace, $file);
-                }
-            }
-        }
-
-        /**
          * First calculate file usage count
          */
         $all_files = array();
@@ -5978,9 +6192,9 @@ class W3_Plugin_TotalCache extends W3_Plugin {
      * @return string
      */
     function link_replace_callback($matches) {
-        list (, $attr, $quote, $domain_url, , $path) = $matches;
+        list (, $attr, $quote, $domain_url, , , $path) = $matches;
 
-        $path .= (strstr($path, '?') !== false ? '&' : '?') . 'w3tc_preview=1';
+        $path .= (strstr($path, '?') !== false ? '&amp;' : '?') . 'w3tc_preview=1';
 
         return sprintf('%s=%s%s%s', $attr, $quote, $domain_url, $path);
     }

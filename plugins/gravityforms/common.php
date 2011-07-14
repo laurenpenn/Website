@@ -1,7 +1,7 @@
 <?php
 class GFCommon{
 
-    public static $version = "1.5.2.3";
+    public static $version = "1.5.2.8";
     public static $tab_index = 1;
 
     public static function get_selection_fields($form, $selected_field_id){
@@ -377,6 +377,7 @@ class GFCommon{
                 $input_id = $match[1];
 
                 $field = RGFormsModel::get_field($form,$input_id);
+
                 $value = RGFormsModel::get_lead_field_value($lead, $field);
 
                 $raw_value = $value;
@@ -414,7 +415,8 @@ class GFCommon{
                         else if($use_price)
                             list($name, $value) = explode("|", $value);
                         else
-                            $value = RGFormsModel::get_choice_text($field, $raw_value, $input_id);
+                            $value = RGFormsModel::is_field_hidden($form, $field, array()) ? "" : RGFormsModel::get_choice_text($field, $raw_value, $input_id);
+
                     break;
 
                     case "date" :
@@ -596,13 +598,14 @@ class GFCommon{
                         $has_product_fields = true;
                         continue;
                     }
+                    else if(RGFormsModel::is_field_hidden($form, $field, array())){
+                        //ignore fields hidden by conditional logic
+                        continue;
+                    }
 
                     $field_value = RGFormsModel::get_lead_field_value($lead, $field);
 
-
                     $field_value = GFCommon::get_lead_field_display($field, $field_value, $lead["currency"], $use_text);
-
-
 
                     if( !empty($field_value) || strlen($field_value) > 0 || $display_empty)
                         $field_data .= sprintf('<tr bgcolor="#EAF2FA">
@@ -1145,7 +1148,7 @@ class GFCommon{
                 $input_id = $field["id"] . '.' . $choice_number;
                 $id = $field["id"] . '_' . $choice_number++;
 
-                if(empty($value) && $choice["isSelected"])
+                if(empty($value) && rgar($choice,"isSelected"))
                     $checked = "checked='checked'";
                 else if(is_array($value) && RGFormsModel::choice_value_match($field, $choice, rgget($input_id, $value)))
                     $checked = "checked='checked'";
@@ -1229,7 +1232,7 @@ class GFCommon{
                 //needed for users upgrading from 1.0
                 $field_value = !empty($choice["value"]) || rgget("enableChoiceValue", $field) ? $choice["value"] : $choice["text"];
                 if(rgget("enablePrice", $field))
-                    $field_value .= "|" . GFCommon::to_number($choice["price"]);
+                    $field_value .= "|" . GFCommon::to_number(rgar($choice,"price"));
 
                 if(rgblank($value) && RG_CURRENT_VIEW != "entry"){
                     $selected = rgar($choice,"isSelected") ? "selected='selected'" : "";
@@ -1646,7 +1649,7 @@ class GFCommon{
         $field_id = IS_ADMIN || $form_id == 0 ? "input_$id" : "input_" . $form_id . "_$id";
         $form_id = IS_ADMIN && empty($form_id) ? rgget("id") : $form_id;
 
-        $size = $field["size"];
+        $size = rgar($field, "size");
         $disabled_text = (IS_ADMIN && RG_CURRENT_VIEW != "entry") ? "disabled='disabled'" : "";
         $class_suffix = RG_CURRENT_VIEW == "entry" ? "_admin" : "";
         $class = $size . $class_suffix;
@@ -1668,10 +1671,10 @@ class GFCommon{
 
         //product fields are not editable
         if(RG_CURRENT_VIEW == "entry" && self::is_product_field($field["type"]))
-            return "<div class='ginput_container'>" . _e("Product fields are not editable", "gravityforms") . "</div>";
+            return "<div class='ginput_container'>" . __("Product fields are not editable", "gravityforms") . "</div>";
 
         else if(RG_CURRENT_VIEW == "entry" && $field["type"] == "donation")
-            return "<div class='ginput_container'>" . _e("Donations are not editable", "gravityforms") . "</div>";
+            return "<div class='ginput_container'>" . __("Donations are not editable", "gravityforms") . "</div>";
 
         $max_length = "";
         $html5_attributes = "";
@@ -1770,7 +1773,7 @@ class GFCommon{
                     if(rgget("emailConfirmEnabled", $field) && RG_CURRENT_VIEW != "entry"){
                         $first_tabindex = self::get_tabindex();
                         $last_tabindex = self::get_tabindex();
-                        return "<div class='ginput_complex ginput_container' id='{$field_id}_container'><span id='{$field_id}_1_container' class='ginput_left'><input type='{$html_input_type}' name='input_{$id}' id='{$field_id}' value='" . esc_attr($value) . "' {$first_tabindex} {$disabled_text}/><label for='{$field_id}'>" . apply_filters("gform_email_{$form_id}", apply_filters("gform_email",__("Enter Email", "gravityforms"), $form_id), $form_id) . "</label></span><span id='{$field_id}_2_container' class='ginput_right'><input type='{$html_input_type}' name='input_{$id}_2' id='{$field_id}_2' value='{$_POST["input_" . $id ."_2"]}' {$last_tabindex} {$disabled_text}/><label for='{$field_id}_2'>" . apply_filters("gform_email_confirm_{$form_id}", apply_filters("gform_email_confirm",__("Confirm Email", "gravityforms"), $form_id), $form_id) . "</label></span></div>";
+                        return "<div class='ginput_complex ginput_container' id='{$field_id}_container'><span id='{$field_id}_1_container' class='ginput_left'><input type='{$html_input_type}' name='input_{$id}' id='{$field_id}' value='" . esc_attr($value) . "' {$first_tabindex} {$disabled_text}/><label for='{$field_id}'>" . apply_filters("gform_email_{$form_id}", apply_filters("gform_email",__("Enter Email", "gravityforms"), $form_id), $form_id) . "</label></span><span id='{$field_id}_2_container' class='ginput_right'><input type='{$html_input_type}' name='input_{$id}_2' id='{$field_id}_2' value='" . esc_attr(rgpost("input_" . $id ."_2")) . "' {$last_tabindex} {$disabled_text}/><label for='{$field_id}_2'>" . apply_filters("gform_email_confirm_{$form_id}", apply_filters("gform_email_confirm",__("Confirm Email", "gravityforms"), $form_id), $form_id) . "</label></span></div>";
                     }
                     else{
                         $tabindex = self::get_tabindex();
@@ -1935,13 +1938,13 @@ class GFCommon{
                 $upload = sprintf("<span class='ginput_full$class_suffix'>{$preview}<input name='input_%d' id='%s' type='file' value='%s' class='%s' $tabindex %s/>$file_label</span>", $id, $field_id, esc_attr($value), esc_attr($class . $hidden_class), $disabled_text);
 
                 $tabindex = self::get_tabindex();
-                $title_field = rgget("displayTitle", $field) || IS_ADMIN ? sprintf("<span class='ginput_full$class_suffix ginput_post_image_title' $title_style><input type='text' name='input_%d.1' id='%s.1' value='%s' $tabindex %s/><label for='%s.1'>" . apply_filters("gform_postimage_title_{$form_id}",apply_filters("gform_postimage_title",__("Title", "gravityforms"), $form_id), $form_id) . "</label></span>", $id, $field_id, $title, $disabled_text, $field_id) : "";
+                $title_field = rgget("displayTitle", $field) || IS_ADMIN ? sprintf("<span class='ginput_full$class_suffix ginput_post_image_title' $title_style><input type='text' name='input_%d.1' id='%s_1' value='%s' $tabindex %s/><label for='%s_1'>" . apply_filters("gform_postimage_title_{$form_id}",apply_filters("gform_postimage_title",__("Title", "gravityforms"), $form_id), $form_id) . "</label></span>", $id, $field_id, $title, $disabled_text, $field_id) : "";
 
                 $tabindex = self::get_tabindex();
-                $caption_field = rgget("displayCaption", $field) || IS_ADMIN ? sprintf("<span class='ginput_full$class_suffix ginput_post_image_caption' $caption_style><input type='text' name='input_%d.4' id='%s.4' value='%s' $tabindex %s/><label for='%s.4'>" . apply_filters("gform_postimage_caption_{$form_id}",apply_filters("gform_postimage_caption",__("Caption", "gravityforms"), $form_id), $form_id) . "</label></span>", $id, $field_id, $caption, $disabled_text, $field_id) : "";
+                $caption_field = rgget("displayCaption", $field) || IS_ADMIN ? sprintf("<span class='ginput_full$class_suffix ginput_post_image_caption' $caption_style><input type='text' name='input_%d.4' id='%s_4' value='%s' $tabindex %s/><label for='%s_4'>" . apply_filters("gform_postimage_caption_{$form_id}",apply_filters("gform_postimage_caption",__("Caption", "gravityforms"), $form_id), $form_id) . "</label></span>", $id, $field_id, $caption, $disabled_text, $field_id) : "";
 
                 $tabindex = self::get_tabindex();
-                $description_field = rgget("displayDescription", $field) || IS_ADMIN? sprintf("<span class='ginput_full$class_suffix ginput_post_image_description' $description_style><input type='text' name='input_%d.7' id='%s.7' value='%s' $tabindex %s/><label for='%s.7'>" . apply_filters("gform_postimage_description_{$form_id}",apply_filters("gform_postimage_description",__("Description", "gravityforms"), $form_id), $form_id) . "</label></span>", $id, $field_id, $description, $disabled_text, $field_id) : "";
+                $description_field = rgget("displayDescription", $field) || IS_ADMIN? sprintf("<span class='ginput_full$class_suffix ginput_post_image_description' $description_style><input type='text' name='input_%d.7' id='%s_7' value='%s' $tabindex %s/><label for='%s_7'>" . apply_filters("gform_postimage_description_{$form_id}",apply_filters("gform_postimage_description",__("Description", "gravityforms"), $form_id), $form_id) . "</label></span>", $id, $field_id, $description, $disabled_text, $field_id) : "";
 
                 return "<div class='ginput_complex$class_suffix ginput_container'>" . $upload . $title_field . $caption_field . $description_field . "</div>";
 
@@ -1997,7 +2000,7 @@ class GFCommon{
                         $first_tabindex = self::get_tabindex();
                         $last_tabindex = self::get_tabindex();
                         $suffix_tabindex = self::get_tabindex();
-                        return sprintf("<div class='ginput_complex$class_suffix ginput_container' id='$field_id'><span id='" . $field_id . "_2_container' class='name_prefix'><input type='text' name='input_%d.2' id='%s.2' value='%s' $prefix_tabindex %s/><label for='%s.2'>" . apply_filters("gform_name_prefix_{$form_id}",apply_filters("gform_name_prefix",__("Prefix", "gravityforms"), $form_id), $form_id) . "</label></span><span id='" . $field_id . "_3_container' class='name_first'><input type='text' name='input_%d.3' id='%s.3' value='%s' $first_tabindex %s/><label for='%s.3'>" . apply_filters("gform_name_first_{$form_id}",apply_filters("gform_name_first",__("First", "gravityforms"), $form_id), $form_id) . "</label></span><span id='" . $field_id . "_6_container' class='name_last'><input type='text' name='input_%d.6' id='%s.6' value='%s' $last_tabindex %s/><label for='%s.6'>" . apply_filters("gform_name_last_{$form_id}", apply_filters("gform_name_last", __("Last", "gravityforms"), $form_id), $form_id) . "</label></span><span id='" . $field_id . "_8_container' class='name_suffix'><input type='text' name='input_%d.8' id='%s.8' value='%s' $suffix_tabindex %s/><label for='%s.8'>" . apply_filters("gform_name_suffix_{$form_id}", apply_filters("gform_name_suffix", __("Suffix", "gravityforms"), $form_id), $form_id) . "</label></span></div>", $id, $field_id, $prefix, $disabled_text, $field_id, $id, $field_id, $first, $disabled_text, $field_id, $id, $field_id, $last, $disabled_text, $field_id, $id, $field_id, $suffix, $disabled_text, $field_id);
+                        return sprintf("<div class='ginput_complex$class_suffix ginput_container' id='$field_id'><span id='" . $field_id . "_2_container' class='name_prefix'><input type='text' name='input_%d.2' id='%s_2' value='%s' $prefix_tabindex %s/><label for='%s_2'>" . apply_filters("gform_name_prefix_{$form_id}",apply_filters("gform_name_prefix",__("Prefix", "gravityforms"), $form_id), $form_id) . "</label></span><span id='" . $field_id . "_3_container' class='name_first'><input type='text' name='input_%d.3' id='%s_3' value='%s' $first_tabindex %s/><label for='%s_3'>" . apply_filters("gform_name_first_{$form_id}",apply_filters("gform_name_first",__("First", "gravityforms"), $form_id), $form_id) . "</label></span><span id='" . $field_id . "_6_container' class='name_last'><input type='text' name='input_%d.6' id='%s_6' value='%s' $last_tabindex %s/><label for='%s_6'>" . apply_filters("gform_name_last_{$form_id}", apply_filters("gform_name_last", __("Last", "gravityforms"), $form_id), $form_id) . "</label></span><span id='" . $field_id . "_8_container' class='name_suffix'><input type='text' name='input_%d.8' id='%s_8' value='%s' $suffix_tabindex %s/><label for='%s_8'>" . apply_filters("gform_name_suffix_{$form_id}", apply_filters("gform_name_suffix", __("Suffix", "gravityforms"), $form_id), $form_id) . "</label></span></div>", $id, $field_id, $prefix, $disabled_text, $field_id, $id, $field_id, $first, $disabled_text, $field_id, $id, $field_id, $last, $disabled_text, $field_id, $id, $field_id, $suffix, $disabled_text, $field_id);
 
                     case "simple" :
                         $tabindex = self::get_tabindex();
@@ -2006,7 +2009,7 @@ class GFCommon{
                     default :
                         $first_tabindex = self::get_tabindex();
                         $last_tabindex = self::get_tabindex();
-                        return sprintf("<div class='ginput_complex$class_suffix ginput_container' id='$field_id'><span id='" . $field_id . "_3_container' class='ginput_left'><input type='text' name='input_%d.3' id='%s.3' value='%s' $first_tabindex %s/><label for='%s.3'>" . apply_filters("gform_name_first_{$form_id}", apply_filters("gform_name_first",__("First", "gravityforms"), $form_id), $form_id) . "</label></span><span id='" . $field_id . "_6_container' class='ginput_right'><input type='text' name='input_%d.6' id='%s.6' value='%s' $last_tabindex %s/><label for='%s.6'>" . apply_filters("gform_name_last_{$form_id}", apply_filters("gform_name_last",__("Last", "gravityforms"), $form_id), $form_id) . "</label></span></div>", $id, $field_id, $first, $disabled_text, $field_id, $id, $field_id, $last, $disabled_text, $field_id);
+                        return sprintf("<div class='ginput_complex$class_suffix ginput_container' id='$field_id'><span id='" . $field_id . "_3_container' class='ginput_left'><input type='text' name='input_%d.3' id='%s_3' value='%s' $first_tabindex %s/><label for='%s_3'>" . apply_filters("gform_name_first_{$form_id}", apply_filters("gform_name_first",__("First", "gravityforms"), $form_id), $form_id) . "</label></span><span id='" . $field_id . "_6_container' class='ginput_right'><input type='text' name='input_%d.6' id='%s_6' value='%s' $last_tabindex %s/><label for='%s_6'>" . apply_filters("gform_name_last_{$form_id}", apply_filters("gform_name_last",__("Last", "gravityforms"), $form_id), $form_id) . "</label></span></div>", $id, $field_id, $first, $disabled_text, $field_id, $id, $field_id, $last, $disabled_text, $field_id);
                 }
 
             case "address" :
@@ -2042,6 +2045,13 @@ class GFCommon{
 
                 $country_list = self::get_country_dropdown($country_value);
 
+                //changing css classes based on field format to ensure proper display
+                $address_display_format = apply_filters("gform_address_display_format", "default");
+                $city_location = $address_display_format == "zip_before_city" ? "right" : "left";
+                $zip_location = $address_display_format != "zip_before_city" && rgar($field,"hideState") ? "right" : "left";
+                $state_location = $address_display_format == "zip_before_city" ? "left" : "right";
+                $country_location = rgar($field,"hideState") ? "left" : "right";
+
                 //address field
                 $tabindex = self::get_tabindex();
                 $street_address = sprintf("<span class='ginput_full$class_suffix' id='" . $field_id . "_1_container'><input type='text' name='input_%d.1' id='%s_1' value='%s' $tabindex %s/><label for='%s_1' id='" . $field_id . "_1_label'>" . apply_filters("gform_address_street_{$form_id}", apply_filters("gform_address_street",__("Street Address", "gravityforms"), $form_id), $form_id) . "</label></span>", $id, $field_id, $street_value, $disabled_text, $field_id);
@@ -2054,34 +2064,59 @@ class GFCommon{
                     $street_address2 = sprintf("<span class='ginput_full$class_suffix' id='" . $field_id . "_2_container' $style><input type='text' name='input_%d.2' id='%s_2' value='%s' $tabindex %s/><label for='%s_2' id='" . $field_id . "_2_label'>" . apply_filters("gform_address_street2_{$form_id}",apply_filters("gform_address_street2",__("Address Line 2", "gravityforms"), $form_id), $form_id) . "</label></span>", $id, $field_id, $street2_value, $disabled_text, $field_id);
                 }
 
-                //city field
-                $tabindex = self::get_tabindex();
-                $city = sprintf("<span class='ginput_left$class_suffix' id='" . $field_id . "_3_container'><input type='text' name='input_%d.3' id='%s_3' value='%s' $tabindex %s/><label for='%s_3' id='$field_id.3_label'>" . apply_filters("gform_address_city_{$form_id}", apply_filters("gform_address_city",__("City", "gravityforms"), $form_id), $form_id) . "</label></span>", $id, $field_id, $city_value, $disabled_text, $field_id);
+                if($address_display_format == "zip_before_city"){
+                    //zip field
+                    $tabindex = self::get_tabindex();
+                    $zip = sprintf("<span class='ginput_{$zip_location}$class_suffix' id='" . $field_id . "_5_container'><input type='text' name='input_%d.5' id='%s_5' value='%s' $tabindex %s/><label for='%s_5' id='" . $field_id . "_5_label'>" . apply_filters("gform_address_zip_{$form_id}", apply_filters("gform_address_zip", $zip_label, $form_id), $form_id) . "</label></span>", $id, $field_id, $zip_value, $disabled_text, $field_id);
 
-                //state field
-                $style = (IS_ADMIN && rgget("hideState", $field)) ? "style='display:none;'" : "";
-                if(IS_ADMIN || !rgget("hideState", $field)){
-                    $state_field = self::get_state_field($field, $id, $field_id, $state_value, $disabled_text, $form_id);
-                    $state = sprintf("<span class='ginput_right$class_suffix' id='" . $field_id . "_4_container' $style>$state_field<label for='%s.4' id='" . $field_id . "_4_label'>" . apply_filters("gform_address_state_{$form_id}", apply_filters("gform_address_state", $state_label, $form_id), $form_id) . "</label></span>", $field_id);
+                    //city field
+                    $tabindex = self::get_tabindex();
+                    $city = sprintf("<span class='ginput_{$city_location}$class_suffix' id='" . $field_id . "_3_container'><input type='text' name='input_%d.3' id='%s_3' value='%s' $tabindex %s/><label for='%s_3' id='$field_id.3_label'>" . apply_filters("gform_address_city_{$form_id}", apply_filters("gform_address_city",__("City", "gravityforms"), $form_id), $form_id) . "</label></span>", $id, $field_id, $city_value, $disabled_text, $field_id);
+
+                    //state field
+                    $style = (IS_ADMIN && rgget("hideState", $field)) ? "style='display:none;'" : "";
+                    if(IS_ADMIN || !rgget("hideState", $field)){
+                        $state_field = self::get_state_field($field, $id, $field_id, $state_value, $disabled_text, $form_id);
+                        $state = sprintf("<span class='ginput_{$state_location}$class_suffix' id='" . $field_id . "_4_container' $style>$state_field<label for='%s.4' id='" . $field_id . "_4_label'>" . apply_filters("gform_address_state_{$form_id}", apply_filters("gform_address_state", $state_label, $form_id), $form_id) . "</label></span>", $field_id);
+                    }
+                    else{
+                        $state = sprintf("<input type='hidden' class='gform_hidden' name='input_%d.4' id='%s_4' value='%s'/>", $id, $field_id, $state_value);
+                    }
                 }
                 else{
-                    $state = sprintf("<input type='hidden' class='gform_hidden' name='input_%d.4' id='%s_4' value='%s'/>", $id, $field_id, $state_value);
-                }
 
-                //zip field
-                $tabindex = self::get_tabindex();
-                $zip = sprintf("<span class='ginput_left$class_suffix' id='" . $field_id . "_5_container'><input type='text' name='input_%d.5' id='%s_5' value='%s' $tabindex %s/><label for='%s_5' id='" . $field_id . "_5_label'>" . apply_filters("gform_address_zip_{$form_id}", apply_filters("gform_address_zip", $zip_label, $form_id), $form_id) . "</label></span>", $id, $field_id, $zip_value, $disabled_text, $field_id);
+                    //city field
+                    $tabindex = self::get_tabindex();
+                    $city = sprintf("<span class='ginput_{$city_location}$class_suffix' id='" . $field_id . "_3_container'><input type='text' name='input_%d.3' id='%s_3' value='%s' $tabindex %s/><label for='%s_3' id='$field_id.3_label'>" . apply_filters("gform_address_city_{$form_id}", apply_filters("gform_address_city",__("City", "gravityforms"), $form_id), $form_id) . "</label></span>", $id, $field_id, $city_value, $disabled_text, $field_id);
+
+                    //state field
+                    $style = (IS_ADMIN && rgget("hideState", $field)) ? "style='display:none;'" : "";
+                    if(IS_ADMIN || !rgget("hideState", $field)){
+                        $state_field = self::get_state_field($field, $id, $field_id, $state_value, $disabled_text, $form_id);
+                        $state = sprintf("<span class='ginput_{$state_location}$class_suffix' id='" . $field_id . "_4_container' $style>$state_field<label for='%s.4' id='" . $field_id . "_4_label'>" . apply_filters("gform_address_state_{$form_id}", apply_filters("gform_address_state", $state_label, $form_id), $form_id) . "</label></span>", $field_id);
+                    }
+                    else{
+                        $state = sprintf("<input type='hidden' class='gform_hidden' name='input_%d.4' id='%s_4' value='%s'/>", $id, $field_id, $state_value);
+                    }
+
+                    //zip field
+                    $tabindex = self::get_tabindex();
+                    $zip = sprintf("<span class='ginput_{$zip_location}$class_suffix' id='" . $field_id . "_5_container'><input type='text' name='input_%d.5' id='%s_5' value='%s' $tabindex %s/><label for='%s_5' id='" . $field_id . "_5_label'>" . apply_filters("gform_address_zip_{$form_id}", apply_filters("gform_address_zip", $zip_label, $form_id), $form_id) . "</label></span>", $id, $field_id, $zip_value, $disabled_text, $field_id);
+
+                }
 
                 if(IS_ADMIN || !$hide_country){
                     $style = $hide_country ? "style='display:none;'" : "";
                     $tabindex = self::get_tabindex();
-                    $country = sprintf("<span class='ginput_right$class_suffix' id='" . $field_id . "_6_container' $style><select name='input_%d.6' id='%s_6' $tabindex %s>%s</select><label for='%s_6' id='" . $field_id . "_6_label'>" . apply_filters("gform_address_country_{$form_id}", apply_filters("gform_address_country",__("Country", "gravityforms"), $form_id), $form_id) . "</label></span>", $id, $field_id, $disabled_text, $country_list, $field_id);
+                    $country = sprintf("<span class='ginput_{$country_location}$class_suffix' id='" . $field_id . "_6_container' $style><select name='input_%d.6' id='%s_6' $tabindex %s>%s</select><label for='%s_6' id='" . $field_id . "_6_label'>" . apply_filters("gform_address_country_{$form_id}", apply_filters("gform_address_country",__("Country", "gravityforms"), $form_id), $form_id) . "</label></span>", $id, $field_id, $disabled_text, $country_list, $field_id);
                 }
                 else{
                     $country = sprintf("<input type='hidden' class='gform_hidden' name='input_%d.6' id='%s_6' value='%s'/>", $id, $field_id, $country_value);
                 }
 
-                return "<div class='ginput_complex$class_suffix ginput_container' id='$field_id'>" . $street_address . $street_address2 . $city . $state . $zip . $country . "</div>";
+                $inputs = $address_display_format == "zip_before_city" ? $street_address . $street_address2 . $zip . $city . $state . $country : $street_address . $street_address2 . $city . $state . $zip . $country;
+
+                return "<div class='ginput_complex$class_suffix ginput_container' id='$field_id'>" . $inputs . "</div>";
 
             case "date" :
                 if(!empty($post_link))
@@ -2160,7 +2195,7 @@ class GFCommon{
                 $hour_tabindex = self::get_tabindex();
                 $minute_tabindex = self::get_tabindex();
                 $ampm_tabindex = self::get_tabindex();
-                return sprintf("<div class='clear-multi'><div class='gfield_time_hour ginput_container' id='%s'><input type='text' maxlength='2' name='input_%d[]' id='%s.1' value='%s' $hour_tabindex %s/> : <label for='%s.1'>" . __("HH", "gravityforms") . "</label></div><div class='gfield_time_minute ginput_container'><input type='text' maxlength='2' name='input_%d[]' id='%s.2' value='%s' $minute_tabindex %s/><label for='%s.2'>" . __("MM", "gravityforms") . "</label></div><div class='gfield_time_ampm ginput_container'><select name='input_%d[]' id='%s.3' $ampm_tabindex %s><option value='am' %s>" . __("AM", "gravityforms") . "</option><option value='pm' %s>" . __("PM", "gravityforms") . "</option></select></div></div>", $field_id, $id, $field_id, $hour, $disabled_text, $field_id, $id, $field_id, $minute, $disabled_text, $field_id, $id, $field_id, $disabled_text, $am_selected, $pm_selected);
+                return sprintf("<div class='clear-multi'><div class='gfield_time_hour ginput_container' id='%s'><input type='text' maxlength='2' name='input_%d[]' id='%s_1' value='%s' $hour_tabindex %s/> : <label for='%s_1'>" . __("HH", "gravityforms") . "</label></div><div class='gfield_time_minute ginput_container'><input type='text' maxlength='2' name='input_%d[]' id='%s_2' value='%s' $minute_tabindex %s/><label for='%s_2'>" . __("MM", "gravityforms") . "</label></div><div class='gfield_time_ampm ginput_container'><select name='input_%d[]' id='%s_3' $ampm_tabindex %s><option value='am' %s>" . __("AM", "gravityforms") . "</option><option value='pm' %s>" . __("PM", "gravityforms") . "</option></select></div></div>", $field_id, $id, $field_id, $hour, $disabled_text, $field_id, $id, $field_id, $minute, $disabled_text, $field_id, $id, $field_id, $disabled_text, $am_selected, $pm_selected);
 
             case "fileupload" :
                 $tabindex = self::get_tabindex();
@@ -2219,7 +2254,7 @@ class GFCommon{
                         $privatekey = get_option("rg_gforms_captcha_private_key");
                         if(IS_ADMIN){
                             if(empty($publickey) || empty($privatekey)){
-                                return "<div class='captcha_message'>" . __("To use the reCaptcha field you must first do the following:", "gravityforms") . "</div><div class='captcha_message'>1 - <a href='https://admin.recaptcha.net/recaptcha/createsite/?app=php' target='_blank'>" . __(sprintf("Sign up%s for a free reCAPTCHA account", "</a>"), "gravityforms") . "</div><div class='captcha_message'>2 - " . __(sprintf("Enter your reCAPTCHA keys in the %ssettings page%s", "<a href='?page=gf_settings'>", "</a>"), "gravityforms") . "</div>";
+                                return "<div class='captcha_message'>" . __("To use the reCaptcha field you must first do the following:", "gravityforms") . "</div><div class='captcha_message'>1 - <a href='https://admin.recaptcha.net/recaptcha/createsite/?app=php' target='_blank'>" . sprintf(__("Sign up%s for a free reCAPTCHA account", "gravityforms"), "</a>") . "</div><div class='captcha_message'>2 - " . sprintf(__("Enter your reCAPTCHA keys in the %ssettings page%s", "gravityforms"), "<a href='?page=gf_settings'>", "</a>") . "</div>";
                             }
                             else{
                                 return "<div class='ginput_container'><img class='gfield_captcha' src='" . GFCommon::get_base_url() . "/images/captcha_$theme.jpg' alt='reCAPTCHA' title='reCAPTCHA'/></div>";
@@ -2501,7 +2536,7 @@ class GFCommon{
                     $zip_value = trim(rgget($field["id"] . ".5", $value));
                     $country_value = trim(rgget($field["id"] . ".6", $value));
 
-                    $address_display_format = apply_filters("gform_address_display_format", "street,city,state,zip,country");
+                    $address_display_format = apply_filters("gform_address_display_format", "default");
                     if($address_display_format == "zip_before_city"){
                         /*
                         Sample:
@@ -2726,7 +2761,11 @@ class GFCommon{
         }
         $shipping_price = self::to_number($shipping_price);
 
-        return array("products" => $products, "shipping" => array("name" => $shipping_name, "price" => $shipping_price));
+        $product_info = array("products" => $products, "shipping" => array("name" => $shipping_name, "price" => $shipping_price));
+
+        $product_info = apply_filters("gform_product_info_{$form["id"]}", apply_filters("gform_product_info", $product_info, $form, $lead), $form, $lead);
+
+        return $product_info;
     }
 
     public static function get_order_total($form, $lead) {

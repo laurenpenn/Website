@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: apeatling, johnjamesjacoby, MrMaz, DJPaul, boonebgorges
 Tags: buddypress, social networking, activity, profiles, messaging, friends, groups, forums, microblogging, twitter, facebook, mingle, social, community, networks, networking, cms
-Requires at least: 3.1
-Tested up to: 3.1
-Stable tag: 1.2.8
+Requires at least: 3.2
+Tested up to: 3.2
+Stable tag: 1.2.9
 
 == Description ==
 
@@ -121,10 +121,12 @@ The <a href="http://i18n.svn.buddypress.org/">BuddyPress language file repositor
 
 == Upgrade Notice ==
 
+= 1.2.9 =
+Compatibility with WordPress 3.2
+
 = 1.2.8 =
 Compatibility with WordPress 3.1
 
 == Changelog ==
 
 See http://buddypress.org/about/release-history/ for a list of changes.
-

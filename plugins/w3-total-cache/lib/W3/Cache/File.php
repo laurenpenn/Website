@@ -21,6 +21,20 @@ class W3_Cache_File extends W3_Cache_Base {
     var $_cache_dir = '';
 
     /**
+     * Exclude files
+     *
+     * @var array
+     */
+    var $_exclude = array();
+
+    /**
+     * Flush time limit
+     *
+     * @var int
+     */
+    var $_flush_timelimit = 0;
+
+    /**
      * File locking
      *
      * @var boolean
@@ -28,28 +42,21 @@ class W3_Cache_File extends W3_Cache_Base {
     var $_locking = false;
 
     /**
-     * Flush timelimit
-     *
-     * @var int
-     */
-    var $_flush_timelimit = 0;
-
-    /**
-     * PHP5 constructor
+     * PHP5-style constructor
      *
      * @param array $config
      */
     function __construct($config = array()) {
         $this->_cache_dir = isset($config['cache_dir']) ? trim($config['cache_dir']) : 'cache';
-        $this->_locking = isset($config['locking']) ? (boolean) $config['locking'] : false;
+        $this->_exclude = isset($config['exclude']) ? (array) $config['exclude'] : array();
         $this->_flush_timelimit = isset($config['flush_timelimit']) ? (int) $config['flush_timelimit'] : 180;
+        $this->_locking = isset($config['locking']) ? (boolean) $config['locking'] : false;
     }
 
     /**
-     * PHP4 constructor
+     * PHP4-style constructor
      *
-     * @paran array $config
-     * @return W3_Cache_File
+     * @param array $config
      */
     function W3_Cache_File($config = array()) {
         $this->__construct($config);
@@ -81,7 +88,7 @@ class W3_Cache_File extends W3_Cache_Base {
      */
     function set($key, &$var, $expire = 0) {
         $sub_path = $this->_get_path($key);
-        $path = $this->_cache_dir . '/' . $sub_path;
+        $path = $this->_cache_dir . DIRECTORY_SEPARATOR . $sub_path;
 
         $sub_dir = dirname($sub_path);
         $dir = dirname($path);
@@ -117,7 +124,7 @@ class W3_Cache_File extends W3_Cache_Base {
      */
     function get($key) {
         $var = false;
-        $path = $this->_cache_dir . '/' . $this->_get_path($key);
+        $path = $this->_cache_dir . DIRECTORY_SEPARATOR . $this->_get_path($key);
 
         if (is_readable($path)) {
             $ftime = @filemtime($path);
@@ -182,7 +189,7 @@ class W3_Cache_File extends W3_Cache_Base {
      * @return boolean
      */
     function delete($key) {
-        $path = $this->_cache_dir . '/' . $this->_get_path($key);
+        $path = $this->_cache_dir . DIRECTORY_SEPARATOR . $this->_get_path($key);
 
         if (file_exists($path)) {
             return @unlink($path);
@@ -199,9 +206,7 @@ class W3_Cache_File extends W3_Cache_Base {
     function flush() {
         @set_time_limit($this->_flush_timelimit);
 
-        w3_emptydir($this->_cache_dir);
-
-        return true;
+        return w3_emptydir($this->_cache_dir, $this->_exclude);
     }
 
     /**
@@ -210,7 +215,7 @@ class W3_Cache_File extends W3_Cache_Base {
      * @param integer $key
      */
     function mtime($key) {
-        $path = $this->_cache_dir . '/' . $this->_get_path($key);
+        $path = $this->_cache_dir . DIRECTORY_SEPARATOR . $this->_get_path($key);
 
         if (file_exists($path)) {
             return @filemtime($path);

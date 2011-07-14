@@ -17,7 +17,7 @@ minify_templates['<?php echo addslashes($theme_key); ?>']['<?php echo addslashes
         is currently <span class="w3tc-<?php if ($minify_enabled): ?>enabled">enabled<?php else: ?>disabled">disabled<?php endif; ?></span>.
     </p>
     <p>
-		To rebuild the minify cache use the 
+		To rebuild the minify cache use the
         <input type="hidden" name="page" value="<?php echo $this->_page; ?>" />
         <input type="submit" name="flush_minify" value="empty cache"<?php if (! $minify_enabled): ?> disabled="disabled"<?php endif; ?> class="button" />
 		operation.
@@ -187,8 +187,8 @@ minify_templates['<?php echo addslashes($theme_key); ?>']['<?php echo addslashes
             			<br /><span class="description">Files are minified by template. First select the theme to manage, then add scripts used in all templates to the "All Templates" group. Use the menu above to manage scripts unique to a specific template. If necessary drag &amp; drop to resolve dependency issues (due to incorrect order).</span>
         			</p>
         			<ul id="js_files" class="minify-files">
-                    <?php $index = 0; foreach ($js_groups as $js_theme => $js_templates): if (isset($templates[$js_theme])): ?>
-                	    <?php foreach ($js_templates as $js_template => $js_locations): ?>
+                    <?php foreach ($js_groups as $js_theme => $js_templates): if (isset($templates[$js_theme])): ?>
+                	    <?php $index = 0; foreach ($js_templates as $js_template => $js_locations): ?>
                 	        <?php foreach ((array) $js_locations as $js_location => $js_config): ?>
             		            <?php if (! empty($js_config['files'])): foreach ((array) $js_config['files'] as $js_file): $index++; ?>
             					<li>
@@ -229,7 +229,7 @@ minify_templates['<?php echo addslashes($theme_key); ?>']['<?php echo addslashes
                     							<input class="js_file_delete js_enabled button" type="button" value="Delete" />
                     							<input class="js_file_verify js_enabled button" type="button" value="Verify URI" />
                     						</td>
-										</tr>                							
+										</tr>
         							</table>
             					</li>
 		    	        		<?php endforeach; endif; ?>
@@ -259,7 +259,7 @@ minify_templates['<?php echo addslashes($theme_key); ?>']['<?php echo addslashes
         			<label><input id="css_enabled" type="checkbox" name="minify.css.enable" value="1"<?php checked($this->_config->get_boolean('minify.css.enable'), true); ?> /> Enable</label><br />
         			<label><input class="css_enabled" type="checkbox" name="minify.css.combine" value="1"<?php checked($this->_config->get_boolean('minify.css.combine'), true); ?> /> Combine only</label><br />
                     <?php
-                        $css_engine_file = '';    
+                        $css_engine_file = '';
 
                         switch ($css_engine) {
                             case 'css':
@@ -316,8 +316,8 @@ minify_templates['<?php echo addslashes($theme_key); ?>']['<?php echo addslashes
     					<br /><span class="description">Files are minified by template. First select the theme to manage, then add style sheets used in all templates to the "All Templates" group. Use the menu above to manage style sheets unique to a specific template. If necessary drag &amp; drop to resolve dependency issues (due to incorrect order).</span>
         			</p>
         			<ul id="css_files" class="minify-files">
-                    <?php $index = 0; foreach ($css_groups as $css_theme => $css_templates): if (isset($templates[$css_theme])): ?>
-                        <?php foreach ($css_templates as $css_template => $css_locations): ?>
+                    <?php foreach ($css_groups as $css_theme => $css_templates): if (isset($templates[$css_theme])): ?>
+                        <?php $index = 0; foreach ($css_templates as $css_template => $css_locations): ?>
                         	<?php foreach ((array) $css_locations as $css_location => $css_config): ?>
                         		<?php if (! empty($css_config['files'])): foreach ((array) $css_config['files'] as $css_file): $index++; ?>
             					<li>
@@ -326,7 +326,7 @@ minify_templates['<?php echo addslashes($theme_key); ?>']['<?php echo addslashes
 											<th>&nbsp;</th>
 											<th>File URI:</th>
 											<th colspan="2">Template:</th>
-										</tr>                    						
+										</tr>
             							<tr>
             								<td><?php echo $index; ?>.</td>
 	            							<td>

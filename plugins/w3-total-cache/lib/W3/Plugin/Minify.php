@@ -178,21 +178,26 @@ class W3_Plugin_Minify extends W3_Plugin {
      * @return void
      */
     function cleanup() {
-        require_once W3TC_LIB_W3_DIR . '/Cache/File/Minify/Manager.php';
+        require_once W3TC_LIB_W3_DIR . '/Cache/File/Cleaner/Generic.php';
 
-        $w3_cache_file_minify_manager = & new W3_Cache_File_Minify_Manager(array(
+        $w3_cache_file_cleaner_generic = & new W3_Cache_File_Cleaner_Generic(array(
+            'exclude' => array(
+                '*.files',
+                '.htaccess',
+                'index.php'
+            ),
             'cache_dir' => W3TC_CACHE_FILE_MINIFY_DIR,
             'expire' => $this->_config->get_integer('minify.file.gc'),
             'clean_timelimit' => $this->_config->get_integer('timelimit.cache_gc')
         ));
 
-        $w3_cache_file_minify_manager->clean();
+        $w3_cache_file_cleaner_generic->clean();
     }
 
     /**
      * Cron schedules filter
      *
-     * @paran array $schedules
+     * @param array $schedules
      * @return array
      */
     function cron_schedules($schedules) {
@@ -340,11 +345,37 @@ class W3_Plugin_Minify extends W3_Plugin {
      * @return array
      */
     function filter_files($files) {
-        $files = array_map('w3_normalize_file_minify', $files);
-        $files = array_filter($files, create_function('$el', 'return !w3_is_url($el);'));
+        $files = array_map('w3_normalize_file_minify2', $files);
+        $files = array_filter($files, array(&$this, '_filter_files'));
         $files = array_values(array_unique($files));
 
         return $files;
+    }
+
+    /**
+     * URL file filter
+     *
+     * @param string $file
+     * @return bool
+     */
+    function _filter_files($file) {
+        if (w3_is_url($file)) {
+            return false;
+        }
+
+        $ext = strrchr($file, '.');
+
+        if ($ext != '.js' && $ext != '.css') {
+            return false;
+        }
+
+        $path = w3_get_document_root() . '/' . $file;
+
+        if (!file_exists($path)) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -540,7 +571,7 @@ class W3_Plugin_Minify extends W3_Plugin {
     /**
      * Returns current theme
      *
-     * @retun string
+     * @return string
      */
     function get_theme() {
         static $theme = null;
@@ -598,7 +629,7 @@ class W3_Plugin_Minify extends W3_Plugin {
      * Returns style tag
      *
      * @param string $url
-     * @param string $import
+     * @param boolean $import
      * @return string
      */
     function get_style($url, $import = false) {
@@ -613,7 +644,7 @@ class W3_Plugin_Minify extends W3_Plugin {
      * Prints script tag
      *
      * @param string $url
-     * @param boolean $non_blocking
+     * @param boolean $blocking
      * @return string
      */
     function get_script($url, $blocking = true) {
@@ -732,6 +763,7 @@ class W3_Plugin_Minify extends W3_Plugin {
      * @param string $template
      * @param string $location
      * @param string $type
+     * @param boolean $rewrite
      * @return string
      */
     function format_url_group($theme, $template, $location, $type, $rewrite = null) {
@@ -743,9 +775,9 @@ class W3_Plugin_Minify extends W3_Plugin {
         $site_url_ssl = w3_get_site_url_ssl();
 
         if ($this->_config->get_boolean('minify.rewrite')) {
-            $url = sprintf('%s/%s/%s/%s.%s.%d.%s', $site_url_ssl, W3TC_CONTENT_MINIFY_DIR_NAME, $theme, $template, $location, $id, $type);
+            $url = sprintf('%s/%s/%s/%s.%s.%s.%s', $site_url_ssl, W3TC_CONTENT_MINIFY_DIR_NAME, $theme, $template, $location, $id, $type);
         } else {
-            $url = sprintf('%s/%s/index.php?file=%s/%s.%s.%d.%s', $site_url_ssl, W3TC_CONTENT_MINIFY_DIR_NAME, $theme, $template, $location, $id, $type);
+            $url = sprintf('%s/%s/index.php?file=%s/%s.%s.%s.%s', $site_url_ssl, W3TC_CONTENT_MINIFY_DIR_NAME, $theme, $template, $location, $id, $type);
         }
 
         return $url;
@@ -769,9 +801,9 @@ class W3_Plugin_Minify extends W3_Plugin {
         $site_url_ssl = w3_get_site_url_ssl();
 
         if ($this->_config->get_boolean('minify.rewrite')) {
-            $url = sprintf('%s/%s/%s.%d.%s', $site_url_ssl, W3TC_CONTENT_MINIFY_DIR_NAME, $hash, $id, $type);
+            $url = sprintf('%s/%s/%s.%s.%s', $site_url_ssl, W3TC_CONTENT_MINIFY_DIR_NAME, $hash, $id, $type);
         } else {
-            $url = sprintf('%s/%s/index.php?file=%s.%d.%s', $site_url_ssl, W3TC_CONTENT_MINIFY_DIR_NAME, $hash, $id, $type);
+            $url = sprintf('%s/%s/index.php?file=%s.%s.%s', $site_url_ssl, W3TC_CONTENT_MINIFY_DIR_NAME, $hash, $id, $type);
         }
 
         return $url;
@@ -813,6 +845,8 @@ class W3_Plugin_Minify extends W3_Plugin {
 
     /**
      * Returns debug info
+     *
+     * @return string
      */
     function get_debug_info() {
         $debug_info = "<!-- W3 Total Cache: Minify debug info:\r\n";
@@ -859,7 +893,7 @@ class W3_Plugin_Minify extends W3_Plugin {
          * Skip if doint AJAX
          */
         if (defined('DOING_AJAX')) {
-            $this->minify_reject_reason = 'doing AJAX';
+            $this->minify_reject_reason = 'Doing AJAX';
 
             return false;
         }
@@ -868,7 +902,7 @@ class W3_Plugin_Minify extends W3_Plugin {
          * Skip if doing cron
          */
         if (defined('DOING_CRON')) {
-            $this->minify_reject_reason = 'doing cron';
+            $this->minify_reject_reason = 'Doing cron';
 
             return false;
         }
@@ -877,7 +911,7 @@ class W3_Plugin_Minify extends W3_Plugin {
          * Skip if APP request
          */
         if (defined('APP_REQUEST')) {
-            $this->minify_reject_reason = 'application request';
+            $this->minify_reject_reason = 'Application request';
 
             return false;
         }
@@ -913,7 +947,7 @@ class W3_Plugin_Minify extends W3_Plugin {
          * Check User agent
          */
         if (!$this->check_ua()) {
-            $this->minify_reject_reason = 'user agent is rejected';
+            $this->minify_reject_reason = 'User agent is rejected';
 
             return false;
         }
@@ -922,7 +956,7 @@ class W3_Plugin_Minify extends W3_Plugin {
          * Check request URI
          */
         if (!$this->check_request_uri()) {
-            $this->minify_reject_reason = 'request URI is rejected';
+            $this->minify_reject_reason = 'Request URI is rejected';
 
             return false;
         }
@@ -931,7 +965,7 @@ class W3_Plugin_Minify extends W3_Plugin {
          * Skip if user is logged in
          */
         if ($this->_config->get_boolean('minify.reject.logged') && !$this->check_logged_in()) {
-            $this->minify_reject_reason = 'user is logged in';
+            $this->minify_reject_reason = 'User is logged in';
 
             return false;
         }
@@ -940,7 +974,7 @@ class W3_Plugin_Minify extends W3_Plugin {
          * Check feed
          */
         if ($this->_config->get_boolean('minify.html.reject.feed') && function_exists('is_feed') && is_feed()) {
-            $this->minify_reject_reason = 'feed is rejected';
+            $this->minify_reject_reason = 'Feed is rejected';
 
             return false;
         }
@@ -951,8 +985,8 @@ class W3_Plugin_Minify extends W3_Plugin {
     /**
      * Returns true if we can minify
      *
+     * @param string $buffer
      * @return string
-     * @return boolean
      */
     function can_minify2(&$buffer) {
         /**
@@ -982,7 +1016,11 @@ class W3_Plugin_Minify extends W3_Plugin {
      * @return boolean
      */
     function check_ua() {
-        foreach ($this->_config->get_array('minify.reject.ua') as $ua) {
+        $uas = array_merge($this->_config->get_array('minify.reject.ua'), array(
+            W3TC_POWERED_BY
+        ));
+
+        foreach ($uas as $ua) {
             if (isset($_SERVER['HTTP_USER_AGENT']) && stristr($_SERVER['HTTP_USER_AGENT'], $ua) !== false) {
                 return false;
             }
@@ -1370,7 +1408,9 @@ class W3_Plugin_Minify extends W3_Plugin {
         if (file_exists($path)) {
             $data = @file_get_contents($path);
 
-            if ($data === false) {
+            if ($data !== false) {
+                $data = $this->erase_rules_legacy($data);
+            } else {
                 return false;
             }
         } else {
@@ -1427,7 +1467,9 @@ class W3_Plugin_Minify extends W3_Plugin {
         if (file_exists($path)) {
             $data = @file_get_contents($path);
 
-            if ($data === false) {
+            if ($data !== false) {
+                $data = $this->erase_rules_legacy($data);
+            } else {
                 return false;
             }
         } else {
@@ -1474,7 +1516,7 @@ class W3_Plugin_Minify extends W3_Plugin {
     }
 
     /**
-     * Erases W3TC rules from config
+     * Erases Minify core directives
      *
      * @param string $data
      * @return string
@@ -1486,7 +1528,7 @@ class W3_Plugin_Minify extends W3_Plugin {
     }
 
     /**
-     * Erases W3TC rules from config
+     * Erases Minify cache directives
      *
      * @param string $data
      * @return string
@@ -1498,7 +1540,19 @@ class W3_Plugin_Minify extends W3_Plugin {
     }
 
     /**
-     * Removes W3TC rules from file cache dir
+     * Erases Minify legacy directives
+     *
+     * @param string $data
+     * @return string
+     */
+    function erase_rules_legacy($data) {
+        $data = w3_erase_rules($data, W3TC_MARKER_BEGIN_MINIFY_LEGACY, W3TC_MARKER_END_MINIFY_LEGACY);
+
+        return $data;
+    }
+
+    /**
+     * Removes Minify core directives
      *
      * @return boolean
      */
@@ -1519,7 +1573,7 @@ class W3_Plugin_Minify extends W3_Plugin {
     }
 
     /**
-     * Removes W3TC rules from file cache dir
+     * Removes Minify cache directives
      *
      * @return boolean
      */
@@ -1540,7 +1594,28 @@ class W3_Plugin_Minify extends W3_Plugin {
     }
 
     /**
-     * Checks rules
+     * Removes Minify legacy directives
+     *
+     * @return boolean
+     */
+    function remove_rules_legacy() {
+        $path = w3_get_minify_rules_cache_path();
+
+        if (file_exists($path)) {
+            if (($data = @file_get_contents($path)) !== false) {
+                $data = $this->erase_rules_legacy($data);
+
+                return @file_put_contents($path, $data);
+            }
+
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Checks if core rules exists
      *
      * @return boolean
      */
@@ -1552,7 +1627,7 @@ class W3_Plugin_Minify extends W3_Plugin {
     }
 
     /**
-     * Checks rules
+     * Checks if cache rules exists
      *
      * @return boolean
      */
@@ -1561,5 +1636,17 @@ class W3_Plugin_Minify extends W3_Plugin {
         $search = $this->generate_rules_cache();
 
         return (($data = @file_get_contents($path)) && strstr(w3_clean_rules($data), w3_clean_rules($search)) !== false);
+    }
+
+
+    /**
+     * Check if legacy rules exists
+     *
+     * @return boolean
+     */
+    function check_rules_legacy() {
+        $path = w3_get_minify_rules_core_path();
+
+        return (($data = @file_get_contents($path)) && w3_has_rules(w3_clean_rules($data), W3TC_MARKER_BEGIN_MINIFY_LEGACY, W3TC_MARKER_END_MINIFY_LEGACY));
     }
 }

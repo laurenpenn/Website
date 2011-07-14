@@ -1,16 +1,16 @@
 <?php
-define('PODPRESS_VERSION', '8.8.10.7');
+define('PODPRESS_VERSION', '8.8.10.8');
 /*
 Info for WordPress:
 ==============================================================================
 Plugin Name: podPress
-Version: 8.8.10.7
+Version: 8.8.10.8
 Plugin URI: http://www.mightyseek.com/podpress/
 Description: The podPress plugin gives you everything you need in one easy plugin to use WordPress for Podcasting. Set it up in <a href="admin.php?page=podpress/podpress_feed.php">'podPress'->Feed/iTunes Settings</a>. If this plugin works for you, send us a comment.
 Author: Dan Kuykendall (Seek3r)
 Author URI: http://www.mightyseek.com/
 Min WP Version: 2.2
-Max WP Version: 3.1.2
+Max WP Version: 3.2
 
 podPress - Podcasting made easy for WordPress
 ==============================================================================
@@ -265,12 +265,12 @@ function podPress_class_init() {
 			if($podPress->settings['enablePodangoIntegration']) {
 				podPress_checkmem('PodangoAPI code loaded', true);
 				require_once(ABSPATH.PLUGINDIR.'/podpress/podango-api.php');
-				$podPress->podangoAPI = new PodangoAPI ($podPress->settings['podangoUserKey'], $podPress->settings['podangoPassKey']);
+				$podPress->podangoapi = new PodangoAPI ($podPress->settings['podangoUserKey'], $podPress->settings['podangoPassKey']);
 				if(!empty($podPress->settings['podangoDefaultPodcast'])) {
-					$podPress->podangoAPI->defaultPodcast = $podPress->settings['podangoDefaultPodcast'];
+					$podPress->podangoapi->defaultPodcast = $podPress->settings['podangoDefaultPodcast'];
 				}
 				if(!empty($podPress->settings['podangoDefaultTranscribe'])) {
-					$podPress->podangoAPI->defaultTranscribe = (int)$podPress->settings['podangoDefaultTranscribe'];
+					$podPress->podangoapi->defaultTranscribe = (int)$podPress->settings['podangoDefaultTranscribe'];
 				}
 				podPress_checkmem('PodangoAPI code loaded');
 			}
@@ -442,7 +442,7 @@ function podPress_class_init() {
 function podPress_add_menu_page() {
 	GLOBAL $podPress, $wp_version;
 	if(podPress_WPVersionCheck('2.0.0')) {
-		$permission_needed = $podPress->requiredAdminRights;
+		$permission_needed = $podPress->requiredadminrights;
 	} else {
 		$permission_needed = 1;
 	}
@@ -772,12 +772,18 @@ function podpress_print_js_vars() {
 		echo 'var podPressHTML5 = true;'."\n";
 		if ( TRUE === $podPress->settings['enableStats'] ) {
 			wp_enqueue_script( 'jquery' );
-
-			echo 'var podPressHTML5sec = "'. attribute_escape(wp_create_nonce( 'podPress_html5_ajax_nonce' )) .'";'."\n";
+			
+			if ( defined('NONCE_KEY') AND is_string(constant('NONCE_KEY')) AND '' != trim(constant('NONCE_KEY')) ) {
+				$nonce_key = constant('NONCE_KEY');
+			} else {
+				$nonce_key = 'Af|F07*wC7g-+OX$;|Z5;R@Pi]ZgoU|Zex8=`?mO-Mdvu+WC6l=6<O^2d~+~U3MM';
+			}
+			
+			echo 'var podPressHTML5sec = "'. wp_create_nonce( $nonce_key ) .'";'."\n";
 			if ( $podPress->settings['enable3rdPartyStats'] == 'PodTrac' ) {
 				echo 'var podPressPT = true;'."\n";
 			} elseif ( $podPress->settings['enable3rdPartyStats'] == 'Blubrry' AND FALSE == empty($podPress->settings['statBluBrryProgramKeyword']) ) {
-				echo 'var podPressBK = "'.attribute_escape($podPress->settings['statBluBrryProgramKeyword']).'";'."\n";
+				echo 'var podPressBK = "'.js_escape($podPress->settings['statBluBrryProgramKeyword']).'";'."\n";
 			}
 		}
 	}
@@ -1069,6 +1075,15 @@ function podPress_feed_content_filtering( $query ) {
 			}
 		} elseif ( isset($categorysettings) AND FALSE !== $categorysettings AND isset($categorysettings['categoryCasting']) AND 'true' == $categorysettings['categoryCasting'] ) {
 			// CategoryCasting Feeds
+			
+			// add same data of the current category temporarily to the $podPress->settings
+			$podPress->settings['category_data'] = $categorysettings;
+			$podPress->settings['category_data']['id'] = $cat_id;
+			$category = get_category($cat_id);
+			$podPress->settings['category_data']['cat_name'] = $category->cat_name;
+			$podPress->settings['category_data']['cat_description'] = $category->category_description;
+			$podPress->settings['category_data']['blogname'] = get_bloginfo('name');
+
 			// get the list of allowed file extensions
 			$podpress_allowed_ext = podpress_get_exts_from_filetypes($categorysettings['FileTypes']);
 			if (is_array($podpress_allowed_ext) AND FALSE === empty($podpress_allowed_ext)) {

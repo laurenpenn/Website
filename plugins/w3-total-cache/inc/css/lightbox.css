@@ -5,19 +5,23 @@
 .lightbox {
     position: absolute;
     background: #fdfdfd;
-    padding: 10px 20px;
+    padding: 20px;
     border: 1px solid #bbb;
     border-radius: 11px;
     -webkit-border-radius: 11px;
     -moz-border-radius: 11px;
 }
 
+.lightbox h3 {
+    margin-top: 0;
+}
+
 .lightbox-close {
     cursor: pointer;
     position: absolute;
     text-decoration: underline;
-    top: 25px;
     right: 20px;
+    z-index: 9999;
 }
 
 .lightbox-loader {
@@ -26,9 +30,30 @@
     background-repeat: no-repeat;
 }
 
+.lightbox-content {
+    position: relative;
+}
+
 #recom_container {
+    top: 90px;
+    bottom: 120px;
     overflow: auto;
-    height: 475px;
+    position: absolute;
+    width: 100%;
+}
+
+#recom_container_bottom {
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+}
+
+#recom_container_bottom p {
+    margin-top: 0;
+}
+
+#recom_container_bottom fieldset {
+    margin: 0;
 }
 
 th.minify-files-add, td.minify-files-add {
@@ -41,12 +66,21 @@ th.minify-files-add, td.minify-files-add {
 }
 
 #w3tc-self-test {
-    height: 490px;
+    top: 170px;
+    bottom: 40px;
     overflow: auto;
+    position: absolute;
+    width: 100%;
 }
 
 #w3tc-self-test ul {
     list-style: none;
+}
+
+#w3tc-self-test-bottom {
+    bottom: 0;
+    width: 100%;
+    position: absolute;
 }
 
 .w3tc-self-test-hint {

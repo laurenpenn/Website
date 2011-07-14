@@ -1,4 +1,45 @@
 -------------------------------------------------------------------------------------------------------------------
+Version 1.5.2.8
+    - Added product price javascript filter to allow custom total calculation
+
+        function gform_product_total(formId, price){
+            return price + 100;
+        }
+    - Added gform_product_info filter to allow manipulation of the product list
+    - Removed custom class from field when displayed in the form editor
+    - Implemented gform_address_display_format on form display
+    - Fixed formatting issue with address field when state field was hidden
+    - Replace dot (.) in complex field's input IDs with underscores to prevent CSS problems when targeting the input
+    - Added gform_print_entry_header and gform_print_entry_footer hooks to allow users to add custom headers and footers in the Print Entry screen
+    - Added CSS rule to prevent a reported display issue where button panels were cut off by the container overflow in the form editor
+    - Fixed javascript error on drop down shipping fields when using WP 3.2 RC1
+    - Fixed issue with Post Custom Field template not saving value correctly
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.2.7
+    - Fixed issue with drop down fields hidden by conditional logic getting sent in notifications
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.2.6
+    - Added rgobj() function to better handle retrieving properties from objects
+    - Added new hook "gform_default_notification" to allow the default admin notification for new forms to be disabled
+        Documentation: http://www.gravityhelp.com/documentation/page/Gform_default_notification
+        Example:
+        add_filter("gform_default_notification", "__return_false");
+
+    - Fixed localization issues on a few strings
+    - Updated POT file
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.2.5
+    - Adjusted website field so that if the default value of "http://" is left in the field, it is saved as a blank value
+    - Fixed issue with shortcode wizard adding shortcode to wrong the tab
+
+-------------------------------------------------------------------------------------------------------------------
+Version 1.5.2.4
+    - Changed entry export so that entry date is timezone aware
+
+-------------------------------------------------------------------------------------------------------------------
 Version 1.5.2.3
     - Updated jQuery attr("checked"), attr("disabled") and attr("selected") statements for compatibility with jQuery 1.6
     - Fixed issue with form editor throwing errors on WP 3.2 on forms without page breaks
@@ -12,7 +53,7 @@ Version 1.5.2.2
     - Changed form action to a relative path instead of full URL
     - Removed TwentyTen theme-specific styles from forms.css
     - Minor updates to admin.css
-    
+
 -------------------------------------------------------------------------------------------------------------------
 Version 1.5.2.1
     - Updated jQuery property selector to include quotes

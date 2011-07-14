@@ -398,10 +398,16 @@
 		if (typeof playnow != 'boolean') { var playnow = false; }
 		var maskedurl = decodeURI(strMediaFile);
 		var realurl = podPress_get_OrigURL(strPlayerDiv);
-		if ( playnow == true ) {
-			document.getElementById('podPressPlayerSpace_' + strPlayerDiv).innerHTML = '<audio id="podpresshtml5_'+strPlayerDiv+'" controls="controls" preload="auto" autoplay="autoplay" onplaying="podPress_html5_count(\'' + maskedurl + '\', this.id)"><source src="' + realurl + '" type="audio/mpeg" /></audio>';
+		// add a background-color to the audio element in order to overwrite an effect which occurrs in Chrome/Chromium >= v10 caused by the ocasionally inherited value "background-color: transparent:"
+		if ( -1 != navigator.userAgent.search(/(Chrome|Chromium)\/([0-9]+\.[0-9]+)/gi) && true == podPress_is_v1_gtoreq_v2(RegExp.$2, '10') )  {
+			var chrome_css_helper = ' style="background-color:#262626"';
 		} else {
-			document.getElementById('podPressPlayerSpace_' + strPlayerDiv).innerHTML = '<audio id="podpresshtml5_'+strPlayerDiv+'" controls="controls" preload="none" onplaying="podPress_html5_count(\'' + maskedurl + '\', this.id)"><source src="' + realurl + '" type="audio/mpeg" /></audio>';
+			var chrome_css_helper = '';
+		}
+		if ( playnow == true ) {
+			document.getElementById('podPressPlayerSpace_' + strPlayerDiv).innerHTML = '<audio id="podpresshtml5_'+strPlayerDiv+'" controls="controls" preload="auto" autoplay="autoplay"' + chrome_css_helper + ' onplaying="podPress_html5_count(\'' + maskedurl + '\', this.id)"><source src="' + realurl + '" type="audio/mpeg" /></audio>';
+		} else {
+			document.getElementById('podPressPlayerSpace_' + strPlayerDiv).innerHTML = '<audio id="podpresshtml5_'+strPlayerDiv+'" controls="controls" preload="none"' + chrome_css_helper + ' onplaying="podPress_html5_count(\'' + maskedurl + '\', this.id)"><source src="' + realurl + '" type="audio/mpeg" /></audio>';
 		}
 	}
 	
@@ -628,7 +634,7 @@
 	* @param mixed $id - the ID of the player element
 	*/	
 	function podPress_html5_count(url, id) {
-		if ( typeof podPressHTML5sec == 'string' && podPressHTML5sec != '' ) {
+		if ( typeof podPressHTML5sec == 'string' && podPressHTML5sec != '' ) { // if statistics are enabled then podPressHTML5sec exists and is an not-empty string 
 			var startTime = document.getElementById( id ).currentTime;
 			if (startTime < 0.1) { // count only if the player has been started at the position < 0.1 seconds
 				jQuery.ajax({

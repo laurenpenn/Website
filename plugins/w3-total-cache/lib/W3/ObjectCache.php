@@ -466,7 +466,7 @@ class W3_ObjectCache {
          * Skip if disabled
          */
         if (!$this->_config->get_boolean('objectcache.enabled')) {
-            $this->_cache_reject_reason = 'object caching is disabled';
+            $this->_cache_reject_reason = 'Object caching is disabled';
 
             return false;
         }
@@ -493,7 +493,7 @@ class W3_ObjectCache {
          * Check request URI
          */
         if (!$this->_check_request_uri()) {
-            $this->_cache_reject_reason = 'request URI is rejected';
+            $this->_cache_reject_reason = 'Request URI is rejected';
 
             return false;
         }
@@ -506,6 +506,7 @@ class W3_ObjectCache {
      *
      * @param string $id
      * @param string $group
+     * @param string $cache_reject_reason
      * @return boolean
      */
     function _can_cache2($id, $group, &$cache_reject_reason) {
@@ -535,7 +536,7 @@ class W3_ObjectCache {
         }
 
         if (in_array($group, $this->nonpersistent_groups)) {
-            $cache_reject_reason = 'non-persistent group';
+            $cache_reject_reason = 'Non-persistent group';
 
             return false;
         }
@@ -632,6 +633,13 @@ class W3_ObjectCache {
          * Check for WPMU's and WP's 3.0 short init
          */
         if (defined('SHORTINIT') && SHORTINIT) {
+            return false;
+        }
+
+        /**
+         * Check User Agent
+         */
+        if (isset($_SERVER['HTTP_USER_AGENT']) && stristr($_SERVER['HTTP_USER_AGENT'], W3TC_POWERED_BY) !== false) {
             return false;
         }
 

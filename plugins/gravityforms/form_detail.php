@@ -361,7 +361,7 @@ class GFFormDetail{
                                         <label><?php _e("Confirmation Message", "gravityforms"); ?></label>
                                         <div style="margin:4px 0;">
                                             <input type="radio" id="form_confirmation_show_message" name="form_confirmation" value="message" onclick="ToggleConfirmation();" />
-                                            <label for="form_confirmation_show_messagex" class="inline">
+                                            <label for="form_confirmation_show_message" class="inline">
                                                 <?php _e("Text", "gravityforms"); ?>
                                                 <?php gform_tooltip("form_confirmation_message") ?>
                                             </label>
@@ -1967,9 +1967,11 @@ class GFFormDetail{
             $form_meta["id"] = $id;
 
             //creating default notification
-            $form_meta["notification"]["to"] = get_bloginfo("admin_email");
-            $form_meta["notification"]["subject"] = __("New submission from", "gravityforms") . " {form_title}";
-            $form_meta["notification"]["message"] = "{all_fields}";
+            if(apply_filters('gform_default_notification', true)){
+                $form_meta["notification"]["to"] = get_bloginfo("admin_email");
+                $form_meta["notification"]["subject"] = __("New submission from", "gravityforms") . " {form_title}";
+                $form_meta["notification"]["message"] = "{all_fields}";
+            }
 
             //updating form meta
             RGFormsModel::update_form_meta($id, $form_meta);

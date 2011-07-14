@@ -56,6 +56,7 @@ class podPressAdmin_class extends podPress_class
 			} else {
 				echo '	<h2>'.__('Feed/iTunes Settings', 'podpress').'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.mightyseek.com/podpress/#download" target="_new"><img src="http://www.mightyseek.com/podpress_downloads/versioncheck.php?current='.PODPRESS_VERSION.'" alt="'.__('Checking for updates... Failed.', 'podpress').'" border="0" /></a></h2>'."\n";
 			}
+			
 			echo '	<form method="post">'."\n";
 			if ( function_exists('wp_nonce_field') ) { // since WP 2.0.4
 				wp_nonce_field('podPress_feed_settings_nonce');
@@ -354,24 +355,26 @@ class podPressAdmin_class extends podPress_class
 			echo '					<p>'.__('Notice: You can set post specific license URLs and names by defining two custom fields per post. One with the name <strong>podcast_episode_license_name</strong> and one custom field with the name <strong>podcast_episode_license_url</strong>. If you want to set post specific values then it is necessary to define at least the custom field with the URL. If the license name is not defined then the name will be the URL.', 'podpress').'</p>';			
 			echo '				</td>'."\n";
 			echo '			</tr>'."\n";
-			echo '			<tr>'."\n";
-			echo '				<th>'."\n";
-			echo '					<label for="protectFeed">'.__('Aggressively Protect the news feeds', 'podpress').'</label>';
-			echo '				</th>'."\n";
-			echo '				<td>'."\n";
-			echo '					<select name="protectFeed" id="protectFeed">'."\n";
-			echo '						<option value="No" '; if($this->settings['protectFeed'] != 'Yes') { echo 'selected="selected"'; } echo '>'.__('No', 'podpress').'</option>'."\n";
-			echo '						<option value="Yes" '; if($this->settings['protectFeed'] == 'Yes') { echo 'selected="selected"'; } echo '>'.__('Yes', 'podpress').'</option>'."\n";
-			echo '					</select>'."\n";
-			echo '				</td>'."\n";
-			echo '				<td>'."\n";
-			echo '					'.__('"No" (default) will convert only ampersand, less-than, greater-than, apostrophe and quotation signs to their numeric character references.', 'podpress')."\n";
-			echo '					<br/>'.__('"Yes" will convert any invalid characters to their numeric character references in the feeds.', 'podpress')."\n";
-			echo '				</td>'."\n";
-			echo '			</tr>'."\n";
+			
 			//~ echo '			<tr>'."\n";
 			//~ echo '				<th>'."\n";
-			//~ echo '					<label for="rss_showlinks"><strong>'.__('Show Download Links in RSS Encoded Content', 'podpress').'</strong></label>';
+			//~ echo '					<label for="protectFeed">'.__('Aggressively Protect the news feeds', 'podpress').'</label>';
+			//~ echo '				</th>'."\n";
+			//~ echo '				<td>'."\n";
+			//~ echo '					<select name="protectFeed" id="protectFeed">'."\n";
+			//~ echo '						<option value="No" '; if($this->settings['protectFeed'] != 'Yes') { echo 'selected="selected"'; } echo '>'.__('No', 'podpress').'</option>'."\n";
+			//~ echo '						<option value="Yes" '; if($this->settings['protectFeed'] == 'Yes') { echo 'selected="selected"'; } echo '>'.__('Yes', 'podpress').'</option>'."\n";
+			//~ echo '					</select>'."\n";
+			//~ echo '				</td>'."\n";
+			//~ echo '				<td>'."\n";
+			//~ echo '					'.__('"No" (default) will convert only ampersand, less-than, greater-than, apostrophe and quotation signs to their numeric character references.', 'podpress')."\n";
+			//~ echo '					<br/>'.__('"Yes" will convert any invalid characters to their numeric character references in the feeds.', 'podpress')."\n";
+			//~ echo '				</td>'."\n";
+			//~ echo '			</tr>'."\n";
+			// this section is deactivated since 8.8.5 and since 8.8.10.8 the upgrade_class will remove the value during the upgrade process. (the only encoded content section is the <description> on <item> level and podPress does touch this value)
+			//~ echo '			<tr>'."\n";
+			//~ echo '				<th>'."\n";
+			//~ echo '					<label for="rss_showlinks">'.__('Show Download Links in RSS Encoded Content', 'podpress').'</label>';
 			//~ echo '				</th>'."\n";
 			//~ echo '				<td>'."\n";
 			//~ echo '					<select name="rss_showlinks" id="rss_showlinks">'."\n";
@@ -897,12 +900,12 @@ class podPressAdmin_class extends podPress_class
 				$this->settings['iTunes'] = $iTunesSettings;
 			}
 			
-			if(isset($_POST['blogname'])) { podPress_update_option('blogname', htmlspecialchars(strip_tags(trim($_POST['blogname'])), ENT_QUOTES, $blog_charset)); }
-			if(isset($_POST['blogdescription'])) { podPress_update_option('blogdescription', htmlspecialchars(strip_tags(trim($_POST['blogdescription'])), ENT_QUOTES, $blog_charset)); }
-			if(isset($_POST['admin_email'])) { podPress_update_option('admin_email', htmlspecialchars(strip_tags(trim($_POST['admin_email'])), ENT_QUOTES, $blog_charset)); }
+			//~ if(isset($_POST['blogname'])) { podPress_update_option('blogname', htmlspecialchars(strip_tags(trim($_POST['blogname'])), ENT_QUOTES, $blog_charset)); }
+			//~ if(isset($_POST['blogdescription'])) { podPress_update_option('blogdescription', htmlspecialchars(strip_tags(trim($_POST['blogdescription'])), ENT_QUOTES, $blog_charset)); }
+			//~ if(isset($_POST['admin_email'])) { podPress_update_option('admin_email', htmlspecialchars(strip_tags(trim($_POST['admin_email'])), ENT_QUOTES, $blog_charset)); }
 
-			if(isset($_POST['blog_charset'])) { podPress_update_option('blog_charset', htmlspecialchars(strtoupper(strip_tags(trim($_POST['blog_charset']))), ENT_QUOTES, $blog_charset)); }
-			if(isset($_POST['posts_per_rss'])) { podPress_update_option('posts_per_rss', intval(preg_replace('/[^0-9]/', '', $_POST['posts_per_rss']))); }
+			//~ if(isset($_POST['blog_charset'])) { podPress_update_option('blog_charset', htmlspecialchars(strtoupper(strip_tags(trim($_POST['blog_charset']))), ENT_QUOTES, $blog_charset)); }
+			//~ if(isset($_POST['posts_per_rss'])) { podPress_update_option('posts_per_rss', intval(preg_replace('/[^0-9]/', '', $_POST['posts_per_rss']))); }
 
 			if(isset($_POST['rss_language'])) { podPress_update_option('rss_language', htmlspecialchars(strip_tags(trim($_POST['rss_language'])), ENT_QUOTES, $blog_charset));	}
 			if(isset($_POST['rss_ttl'])) { podPress_update_option('rss_ttl', intval(preg_replace('/[^0-9]/', '', $_POST['rss_ttl'])));	}
@@ -917,16 +920,16 @@ class podPressAdmin_class extends podPress_class
 			if(isset($_POST['rss_license_url'])) {
 				$this->settings['rss_license_url'] = clean_url($_POST['rss_license_url'], array('http', 'https'), 'db');
 			}
-			if(isset($_POST['rss_showlinks'])) {
-				$this->settings['rss_showlinks'] = $_POST['rss_showlinks'];
-			}
+			//~ if( isset($_POST['protectFeed']) AND 'yes' == strtolower($_POST['protectFeed']) ) {
+				//~ $this->settings['protectFeed'] = 'Yes';
+			//~ } else {
+				//~ $this->settings['protectFeed'] = 'No';
+			//~ }
+			//~ if(isset($_POST['rss_showlinks'])) {
+				//~ $this->settings['rss_showlinks'] = $_POST['rss_showlinks'];
+			//~ }
 			if(isset($_POST['podcastFeedURL'])) {
 				$this->settings['podcastFeedURL'] = clean_url($_POST['podcastFeedURL'], array('http', 'https'), 'db');
-			}
-			if( isset($_POST['protectFeed']) AND 'yes' == strtolower($_POST['protectFeed']) ) {
-				$this->settings['protectFeed'] = 'Yes';
-			} else {
-				$this->settings['protectFeed'] = 'No';
 			}
 			if ( isset($_POST['podpress_feeds']) ) {
 				$i = 0;

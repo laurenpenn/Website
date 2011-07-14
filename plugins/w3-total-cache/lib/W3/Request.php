@@ -60,7 +60,7 @@ class W3_Request {
      * Returns double value
      *
      * @param string $key
-     * @param double $default
+     * @param double|float $default
      * @return double
      */
     function get_double($key, $default = 0.) {

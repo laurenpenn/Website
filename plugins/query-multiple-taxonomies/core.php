@@ -6,8 +6,6 @@ class QMT_Terms {
 
 	// Get a list of all the terms attached to all the posts in the current query
 	public function get( $tax ) {
-		global $wp_query, $wpdb;
-
 		self::set_filtered_ids();
 
 		if ( empty( self::$filtered_ids ) )
@@ -29,30 +27,17 @@ class QMT_Terms {
 		if ( isset( self::$filtered_ids ) )
 			return;
 
-		$wp_query->query = wp_parse_args( $wp_query->query );
-
 		$args = array_merge( $wp_query->query, array(
+			'fields' => 'ids',
 			'nopaging' => true,
 			'no_found_rows' => true,
 			'ignore_sticky_post' => true,
 			'cache_results' => false,
 		) );
 
-		add_filter( 'posts_fields', array( __CLASS__, 'posts_fields' ) );
+		$query = new WP_Query;
 
-		$query = new WP_Query();
-		$posts = $query->query( $args );
-
-		remove_filter( 'posts_fields', array( __CLASS__, 'posts_fields' ) );
-
-		foreach ( $posts as &$post )
-			$post = $post->ID;
-
-		self::$filtered_ids = $posts;
-	}
-
-	function posts_fields( $fields ) {
-		return 'ID';
+		self::$filtered_ids = $query->query( $args );
 	}
 }
 
@@ -98,24 +83,46 @@ class QMT_Template {
 
 	public function get_title() {
 		$title = array();
+
 		foreach ( qmt_get_query() as $tax => $value ) {
-			$key = get_taxonomy( $tax )->label;
+			$terms = explode( '+', $value );
 
-			if ( is_array( $value ) ) {
-				extract( $value );
+			$out = array();
+			foreach ( $terms as $slug ) {
+				$term_obj = get_term_by( 'slug', $slug, $tax );
 
-				if ( isset( $or ) )
-					$value = implode( ',', $or );
-				elseif ( isset( $and ) )
-					$value = implode( '+', $and );
+				if ( $term_obj )
+					$out[] = $term_obj->name;
 			}
 
-			$title[] .= "$key: $value";
+			$tax_obj = get_taxonomy( $tax );
+			if ( count( $out ) == 1 )
+				$key = $tax_obj->labels->singular_name;
+			else
+				$key = $tax_obj->labels->name;
+
+			$title[] .= $key . ': ' . implode( ' + ', $out );
 		}
 
 		return implode( '; ', $title );
 	}
+
+	function wp_title( $title, $sep, $seplocation ) {
+		$tax_title = QMT_Template::get_title();
+
+		if ( empty( $tax_title ) )
+			return $title;
+
+		if ( 'right' == $seplocation )
+			$title = "$tax_title $sep ";
+		else
+			$title = " $sep $tax_title";
+
+		return $title;
+	}
 }
+
+add_filter( 'wp_title', array( 'QMT_Template', 'wp_title' ), 10, 3 );
 
 /**
  * Wether multiple taxonomies are queried
@@ -145,26 +152,26 @@ function qmt_get_query( $taxname = '' ) {
 
 	$qmt_query = array();
 
-	if ( is_null( $wp_query->tax_query ) )
-		return $qmt_query;
+	if ( !is_null( $wp_query->tax_query ) ) {
+		foreach ( $wp_query->tax_query->queries as $tax_query ) {
+			if ( 'slug' != $tax_query['field'] )
+				continue;
 
-	foreach ( $wp_query->tax_query->queries as $tax_query ) {
-		if ( 'IN' != $tax_query['operator'] )
-			continue;
+			if ( 'AND' == $tax_query['operator'] )
+				$qmt_query[ $tax_query['taxonomy'] ] = (array) $tax_query['terms'];
 
-		if ( 'slug' != $tax_query['field'] )
-			continue;
+			if ( 'IN' == $tax_query['operator'] )
+				$qmt_query[ $tax_query['taxonomy'] ][] = implode( ',', $tax_query['terms'] );
+		}
 
-		$qmt_query[ $tax_query['taxonomy'] ][] = implode( ',', $tax_query['terms'] );
+		foreach ( $qmt_query as &$value )
+			$value = implode( '+', $value );
 	}
-
-	foreach ( $qmt_query as &$value )
-		$value = implode( '+', $value );
 
 	if ( $taxname ) {
 		if ( isset( $qmt_query[ $taxname ] ) )
 			return $qmt_query[ $taxname ];
-		
+
 		return false;
 	}
 

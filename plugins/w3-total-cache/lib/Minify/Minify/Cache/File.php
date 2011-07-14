@@ -6,14 +6,16 @@
 
 class Minify_Cache_File {
 
-    public function __construct($path = '', $fileLocking = false) {
+    public function __construct($path = '', $exclude = array(), $locking = false, $flushTimeLimit = 0) {
         if (!$path) {
             require_once W3TC_LIB_MINIFY_DIR . '/Solar/Dir.php';
             $path = rtrim(Solar_Dir::tmp(), DIRECTORY_SEPARATOR);
         }
 
-        $this->_locking = $fileLocking;
         $this->_path = $path;
+        $this->_exclude = $exclude;
+        $this->_locking = $locking;
+        $this->_flushTimeLimit = $flushTimeLimit;
     }
 
     /**
@@ -145,10 +147,9 @@ class Minify_Cache_File {
      * @return bool
      */
     public function flush() {
-        return w3_emptydir(W3TC_CACHE_FILE_MINIFY_DIR, array(
-            W3TC_CACHE_FILE_MINIFY_DIR . '/index.php',
-            W3TC_CACHE_FILE_MINIFY_DIR . '/.htaccess'
-        ));
+        @set_time_limit($this->_flushTimeLimit);
+
+        return w3_emptydir($this->_path, $this->_exclude);
     }
 
     /**
@@ -161,5 +162,7 @@ class Minify_Cache_File {
     }
 
     private $_path = null;
+    private $_exclude = null;
     private $_locking = null;
+    private $_flushTimeLimit = null;
 }

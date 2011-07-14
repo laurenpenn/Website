@@ -11,9 +11,8 @@
 </p>
 
 <div id="recom_container">
+    <h4 style="margin-top: 0;">JavaScript:</h4>
 
-    <h4>JavaScript:</h4>
-    
     <?php if (count($js_groups)) :?>
     <ul id="recom_js_files" class="minify-files">
         <?php $index = 0; foreach ($js_groups as $js_group => $js_files): ?>
@@ -60,8 +59,8 @@
             			<td>
 			                <input class="js_file_verify button" type="button" value="Verify URI" />
             			</td>
-					</tr>			                
-				</table>			                
+					</tr>
+				</table>
             </li>
             <?php endforeach; ?>
         <?php endforeach; ?>
@@ -72,9 +71,9 @@
     <?php else:?>
     <p>No files found.</p>
     <?php endif;?>
-    
+
     <h4>Cascading Style Sheets:</h4>
-    
+
     <?php if (count($css_groups)) :?>
     <ul id="recom_css_files" class="minify-files">
         <?php $index = 0; foreach ($css_groups as $css_group => $css_files): ?>
@@ -106,7 +105,7 @@
 			                <input class="css_file_verify button" type="button" value="Verify URI" />
 						</td>
 					</tr>
-				</table>			                
+				</table>
             </li>
     	    <?php endforeach; ?>
         <?php endforeach; ?>
@@ -119,15 +118,17 @@
     <?php endif;?>
 </div>
 
-<p>
-    <input class="recom_apply button-primary" type="button" value="Apply &amp; close" />
-</p>
+<div id="recom_container_bottom">
+    <p>
+        <input class="recom_apply button-primary" type="button" value="Apply &amp; close" />
+    </p>
 
-<fieldset>
-    <legend>Notes</legend>
+    <fieldset>
+        <legend>Notes</legend>
 
-    <ul>
-        <li>Typically minification of advertiser code, analytics/statistics or any other types of tracking code is not recommended.</li>
-        <li>Scripts that were not already detected above may require <a href="admin.php?page=w3tc_support&amp;request_type=plugin_config">professional consultation</a> to implement.</li>
-    </ul>
-</fieldset>
+        <ul>
+            <li>Typically minification of advertiser code, analytics/statistics or any other types of tracking code is not recommended.</li>
+            <li>Scripts that were not already detected above may require <a href="admin.php?page=w3tc_support&amp;request_type=plugin_config">professional consultation</a> to implement.</li>
+        </ul>
+    </fieldset>
+</div>

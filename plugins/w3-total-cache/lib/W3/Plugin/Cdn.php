@@ -305,8 +305,6 @@ class W3_Plugin_Cdn extends W3_Plugin {
      * @param integer $attachment_id
      */
     function delete_attachment($attachment_id) {
-        $files = array();
-
         $files = $this->get_attachment_files($attachment_id);
         $files = apply_filters('w3tc_cdn_delete_attachment', $files);
 
@@ -359,12 +357,11 @@ class W3_Plugin_Cdn extends W3_Plugin {
      * Upload _wp_attached_file, _wp_attachment_metadata, _wp_attachment_backup_sizes
      *
      * @param integer $attachment_id
+     * @param array $results
      * @return boolean
      */
-    function purge_attachment($attachment_id) {
+    function purge_attachment($attachment_id, &$results) {
         $files = $this->get_attachment_files($attachment_id);
-
-        $results = array();
 
         return $this->purge($files, false, $results);
     }
@@ -372,7 +369,7 @@ class W3_Plugin_Cdn extends W3_Plugin {
     /**
      * Cron schedules filter
      *
-     * @paran array $schedules
+     * @param array $schedules
      * @return array
      */
     function cron_schedules($schedules) {
@@ -436,7 +433,7 @@ class W3_Plugin_Cdn extends W3_Plugin {
     /**
      * Returns array of files from sizes array
      *
-     * @param string $base_dir
+     * @param string $attached_file
      * @param array $sizes
      * @return array
      */
@@ -527,7 +524,6 @@ class W3_Plugin_Cdn extends W3_Plugin {
                 $site_path = w3_get_site_path();
                 $domain_url_regexp = w3_get_domain_url_regexp();
 
-
                 if ($this->_config->get_boolean('cdn.uploads.enable')) {
                     $upload_info = w3_upload_info();
 
@@ -559,9 +555,9 @@ class W3_Plugin_Cdn extends W3_Plugin {
 
                 if ($this->_config->get_boolean('cdn.minify.enable')) {
                     if ($this->_config->get_boolean('minify.auto')) {
-                        $regexps[] = '~(["\'])((' . $domain_url_regexp . ')?(' . w3_preg_quote($site_path . W3TC_CONTENT_MINIFY_DIR_NAME) . '/[a-f0-9]+\.[0-9]+\.(css|js)))~U';
+                        $regexps[] = '~(["\'])((' . $domain_url_regexp . ')?(' . w3_preg_quote($site_path . W3TC_CONTENT_MINIFY_DIR_NAME) . '/[a-f0-9]+\.[a-f0-9]+\.(css|js)))~U';
                     } else {
-                        $regexps[] = '~(["\'])((' . $domain_url_regexp . ')?(' . w3_preg_quote($site_path . W3TC_CONTENT_MINIFY_DIR_NAME) . '/[a-f0-9]+/.+\.include(-(footer|body))?(-nb)?\.[0-9]+\.(css|js)))~U';
+                        $regexps[] = '~(["\'])((' . $domain_url_regexp . ')?(' . w3_preg_quote($site_path . W3TC_CONTENT_MINIFY_DIR_NAME) . '/[a-f0-9]+/.+\.include(-(footer|body))?(-nb)?\.[a-f0-9]+\.(css|js)))~U';
                     }
                 }
 
@@ -748,7 +744,7 @@ class W3_Plugin_Cdn extends W3_Plugin {
      * @param array $files
      * @param boolean $queue_failed
      * @param array $results
-     * @return void
+     * @return boolean
      */
     function upload($files, $queue_failed, &$results) {
         $cdn = & $this->get_cdn();
@@ -756,15 +752,17 @@ class W3_Plugin_Cdn extends W3_Plugin {
 
         @set_time_limit($this->_config->get_integer('timelimit.cdn_upload'));
 
-        $cdn->upload($files, $results, $force_rewrite);
+        $return = $cdn->upload($files, $results, $force_rewrite);
 
-        if ($queue_failed) {
+        if (!$return && $queue_failed) {
             foreach ($results as $result) {
                 if ($result['result'] != W3TC_CDN_RESULT_OK) {
                     $this->queue_add($result['local_path'], $result['remote_path'], W3TC_CDN_COMMAND_UPLOAD, $result['error']);
                 }
             }
         }
+
+        return $return;
     }
 
     /**
@@ -773,22 +771,24 @@ class W3_Plugin_Cdn extends W3_Plugin {
      * @param array $files
      * @param boolean $queue_failed
      * @param array $results
-     * @return void
+     * @return boolean
      */
     function delete($files, $queue_failed, &$results) {
         $cdn = & $this->get_cdn();
 
         @set_time_limit($this->_config->get_integer('timelimit.cdn_delete'));
 
-        $cdn->delete($files, $results);
+        $return = $cdn->delete($files, $results);
 
-        if ($queue_failed) {
+        if (!$return && $queue_failed) {
             foreach ($results as $result) {
                 if ($result['result'] != W3TC_CDN_RESULT_OK) {
                     $this->queue_add($result['local_path'], $result['remote_path'], W3TC_CDN_COMMAND_DELETE, $result['error']);
                 }
             }
         }
+
+        return $return;
     }
 
     /**
@@ -820,15 +820,17 @@ class W3_Plugin_Cdn extends W3_Plugin {
 
         @set_time_limit($this->_config->get_integer('timelimit.cdn_purge'));
 
-        $cdn->purge($files, $results);
+        $return = $cdn->purge($files, $results);
 
-        if ($queue_failed) {
+        if (!$return && $queue_failed) {
             foreach ($results as $result) {
                 if ($result['result'] != W3TC_CDN_RESULT_OK) {
                     $this->queue_add($result['local_path'], $result['remote_path'], W3TC_CDN_COMMAND_PURGE, $result['error']);
                 }
             }
         }
+
+        return $return;
     }
 
     /**
@@ -1008,7 +1010,7 @@ class W3_Plugin_Cdn extends W3_Plugin {
 
                                 if (preg_match($regexp, $check_src)) {
                                     /**
-                                     * Check for alredy uploaded attachment
+                                     * Check for already uploaded attachment
                                      */
                                     if (isset($attachments[$src])) {
                                         list($dst, $dst_url) = $attachments[$src];
@@ -1335,6 +1337,8 @@ class W3_Plugin_Cdn extends W3_Plugin {
 
     /**
      * Exports includes to CDN
+     *
+     * @return array
      */
     function get_files_includes() {
         $includes_root = w3_path(ABSPATH . WPINC);
@@ -1348,6 +1352,8 @@ class W3_Plugin_Cdn extends W3_Plugin {
 
     /**
      * Exports theme to CDN
+     *
+     * @return array
      */
     function get_files_theme() {
         /**
@@ -1371,6 +1377,8 @@ class W3_Plugin_Cdn extends W3_Plugin {
 
     /**
      * Exports min files to CDN
+     *
+     * @return array
      */
     function get_files_minify() {
         $files = array();
@@ -1420,6 +1428,8 @@ class W3_Plugin_Cdn extends W3_Plugin {
 
     /**
      * Exports custom files to CDN
+     *
+     * @return array
      */
     function get_files_custom() {
         $files = array();
@@ -1454,7 +1464,7 @@ class W3_Plugin_Cdn extends W3_Plugin {
         global $wpdb;
         static $queue = null, $reject_files = null;
 
-        list($match, $quote, $url, $domain_url, $www, $path) = $matches;
+        list($match, $quote, $url, , , , $path) = $matches;
 
         $path = ltrim($path, '/');
 
@@ -1519,6 +1529,7 @@ class W3_Plugin_Cdn extends W3_Plugin {
      * Search files
      *
      * @param string $search_dir
+     * @param string $base_dir
      * @param string $mask
      * @param boolean $recursive
      * @return array
@@ -1821,8 +1832,8 @@ class W3_Plugin_Cdn extends W3_Plugin {
     /**
      * Returns true if we can do CDN logic
      *
+     * @param $buffer
      * @return string
-     * @return boolean
      */
     function can_cdn2(&$buffer) {
         /**
@@ -1861,7 +1872,11 @@ class W3_Plugin_Cdn extends W3_Plugin {
      * @return boolean
      */
     function check_ua() {
-        foreach ($this->_config->get_array('cdn.reject.ua') as $ua) {
+        $uas = array_merge($this->_config->get_array('cdn.reject.ua'), array(
+            W3TC_POWERED_BY
+        ));
+
+        foreach ($uas as $ua) {
             if (isset($_SERVER['HTTP_USER_AGENT']) && stristr($_SERVER['HTTP_USER_AGENT'], $ua) !== false) {
                 return false;
             }

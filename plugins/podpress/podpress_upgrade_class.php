@@ -67,6 +67,21 @@ License:
 					podPress_update_option('podPress_config', $settings);
 				}
 			}
+			if ( TRUE === version_compare('8.8.10.8', $current, '>') ) {
+				$settings = podPress_get_option('podPress_config');
+				if ( FALSE !== $settings ) {
+				
+					unset( $settings['protectFeed'] ); // is obsolete podPress will produce specification complaint RSS/ATOM feed without the option "Aggressively Protect the news feeds"
+					
+					unset( $settings['rss_showlinks'] );	// remove the rss_showlinks setting because this option is hidden since 8.8.5 and will be removed in 8.8.10.8 (the purpose of it was to show download links for the media files of a post in the feed element with encoded content -> <description> .
+					
+					if ( (FALSE === isset($settings['blognameChoice'])) OR (isset($settings['blognameChoice']) AND $settings['blognameChoice'] == 'Global') ) {
+						$settings['blognameChoice'] = 'Append'; // Append is (like) the default setting for category feeds in WP (Site Title >> Category Name). The setting 'Global' stay for 'Use the  Site Title'
+					}
+					
+					podPress_update_option('podPress_config', $settings);
+				}
+			}
 			
 			// update the version number in the db
 			$current = constant('PODPRESS_VERSION');
@@ -89,7 +104,7 @@ License:
 						$posts = $wpdb->get_results("SELECT ID, post_content FROM ".$wpdb->posts);
 						if($posts) {
 							foreach ($posts as $post) {
-								if(preg_match($this->podcastTag_regexp, $post->post_content, $matches)) {
+								if(preg_match($this->podcasttag_regexp, $post->post_content, $matches)) {
 									$podcastTagFileName = $matches[1];
 								} else {
 									$podcastTagFileName = false;
@@ -100,8 +115,8 @@ License:
 							}
 							reset($posts_that_need_upgrades);
 							foreach($posts_that_need_upgrades as $key => $value){
-								$wpdb->query("UPDATE ".$wpdb->posts." SET post_content = '".preg_replace($this->podcastTag_regexp, '', $value)."' WHERE ID=".$key);
-								if(preg_match($this->podcastTag_regexp, $content, $matches)) {
+								$wpdb->query("UPDATE ".$wpdb->posts." SET post_content = '".preg_replace($this->podcasttag_regexp, '', $value)."' WHERE ID=".$key);
+								if(preg_match($this->podcasttag_regexp, $content, $matches)) {
 									$podcastTagFileName = $matches[1];
 								} else {
 									$podcastTagFileName = false;

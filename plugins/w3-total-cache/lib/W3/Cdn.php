@@ -54,7 +54,7 @@ class W3_Cdn {
     function &instance($engine, $config = array()) {
         static $instances = array();
 
-        $instance_key = sprintf('%s_%s', $engine, md5(serialize($config)));
+        $instance_key = sprintf('%s_%s', $engine, md5(implode('', $config)));
 
         if (!isset($instances[$instance_key])) {
             switch (true) {

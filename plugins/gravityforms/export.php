@@ -484,12 +484,21 @@ class GFExport{
 
             foreach($leads as $lead){
                 foreach($fields as $field_id){
-                    $long_text = "";
-                    if(strlen($lead[$field_id]) >= GFORMS_MAX_FIELD_LENGTH)
-                        $long_text = RGFormsModel::get_field_value_long($lead["id"], $field_id);
+                    switch($field_id){
+                        case "date_created" :
+                            $lead_gmt_time = mysql2date("G", $lead["date_created"]);
+                            $lead_local_time = GFCommon::get_local_timestamp($lead_gmt_time);
+                            $value = date_i18n("Y-m-d H:i:s", $lead_local_time);
+                        break;
 
-                    $value = !empty($long_text) ? $long_text : $lead[$field_id];
+                        default :
+                            $long_text = "";
+                            if(strlen($lead[$field_id]) >= GFORMS_MAX_FIELD_LENGTH)
+                                $long_text = RGFormsModel::get_field_value_long($lead["id"], $field_id);
 
+                            $value = !empty($long_text) ? $long_text : $lead[$field_id];
+                        break;
+                    }
                     $lines .= '"' . str_replace('"', '""', $value) . '",';
                 }
                 $lines = substr($lines, 0, strlen($lines)-1);

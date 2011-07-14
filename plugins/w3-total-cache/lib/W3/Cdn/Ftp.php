@@ -120,6 +120,7 @@ class W3_Cdn_Ftp extends W3_Cdn_Base {
      * Sends MDTM command
      *
      * @param string $remote_file
+     * @param integer $mtime
      * @return boolean
      */
     function _mdtm($remote_file, $mtime) {
@@ -134,7 +135,7 @@ class W3_Cdn_Ftp extends W3_Cdn_Base {
      * @param array $files
      * @param array $results
      * @param boolean $force_rewrite
-     * @return void
+     * @return boolean
      */
     function upload($files, &$results, $force_rewrite = false) {
         $error = null;
@@ -142,7 +143,7 @@ class W3_Cdn_Ftp extends W3_Cdn_Base {
         if (!$this->_connect($error)) {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, $error);
 
-            return;
+            return false;
         }
 
         $this->_set_error_handler();
@@ -155,7 +156,7 @@ class W3_Cdn_Ftp extends W3_Cdn_Base {
             $this->_restore_error_handler();
             $this->_disconnect();
 
-            return;
+            return false;
         }
 
         foreach ($files as $local_path => $remote_path) {
@@ -214,6 +215,8 @@ class W3_Cdn_Ftp extends W3_Cdn_Base {
 
         $this->_restore_error_handler();
         $this->_disconnect();
+
+        return !$this->_is_error($results);
     }
 
     /**
@@ -221,7 +224,7 @@ class W3_Cdn_Ftp extends W3_Cdn_Base {
      *
      * @param array $files
      * @param array $results
-     * @return void
+     * @return boolean
      */
     function delete($files, &$results) {
         $error = null;
@@ -229,7 +232,7 @@ class W3_Cdn_Ftp extends W3_Cdn_Base {
         if (!$this->_connect($error)) {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, $error);
 
-            return;
+            return false;
         }
 
         $this->_set_error_handler();
@@ -254,6 +257,8 @@ class W3_Cdn_Ftp extends W3_Cdn_Base {
 
         $this->_restore_error_handler();
         $this->_disconnect();
+
+        return !$this->_is_error($results);
     }
 
     /**
@@ -354,7 +359,7 @@ class W3_Cdn_Ftp extends W3_Cdn_Base {
     /**
      * Returns array of CDN domains
      *
-     * @return string
+     * @return array
      */
     function get_domains() {
         if (!empty($this->_config['domain'])) {

@@ -180,6 +180,11 @@ function gformCalculateTotalPrice(formId){
         var shipping = gformGetShippingPrice(formId)
         price += shipping;
     }
+
+    //gform_product_total filter. Allows uers to perform custom price calculation
+    if(window["gform_product_total"])
+        price = window["gform_product_total"](formId, price);
+
     //updating total
     var totalElement = jQuery(".ginput_total_" + formId);
     if(totalElement.length > 0){
@@ -188,11 +193,13 @@ function gformCalculateTotalPrice(formId){
     }
 }
 
+
+
 function gformGetShippingPrice(formId){
     var shippingField = jQuery(".gfield_shipping_" + formId + " input[type=\"hidden\"], .gfield_shipping_" + formId + " select, .gfield_shipping_" + formId + " input:checked");
     var shipping = 0;
     if(shippingField.length == 1 && !gformIsHidden(shippingField)){
-        if(shippingField.attr("type").toLowerCase() == "hidden")
+        if(shippingField.attr("type") && shippingField.attr("type").toLowerCase() == "hidden")
             shipping = shippingField.val();
         else
             shipping = gformGetPrice(shippingField.val());

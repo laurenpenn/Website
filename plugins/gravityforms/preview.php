@@ -25,6 +25,7 @@ if(!GFCommon::current_user_can_any(array("gravityforms_edit_forms", "gravityform
             GFFormDisplay::enqueue_form_scripts($form);
             wp_print_scripts();
         ?>
+
     </head>
     <body>
     <div id="preview_top">

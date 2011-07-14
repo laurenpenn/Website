@@ -18,6 +18,8 @@ class W3_Cache_Memcached extends W3_Cache_Base {
 
     /**
      * PHP5 constructor
+     *
+     * @param array $config
      */
     function __construct($config) {
         $this->_memcache = & new Memcache();
@@ -42,6 +44,8 @@ class W3_Cache_Memcached extends W3_Cache_Base {
 
     /**
      * PHP4 constructor
+     *
+     * @param array $config
      */
     function W3_Cache_Memcached($config) {
         $this->__construct($config);

@@ -275,8 +275,9 @@ function ToggleCustomFieldTemplate(isInit){
 
     if(jQuery("#gfield_customfield_content_enabled").is(":checked")){
         jQuery("#gfield_customfield_content_container").show(speed);
-        if(isInit)
+        if(!isInit){
             PopulateContentTemplate("field_customfield_content_template");
+        }
     }
     else{
         jQuery("#gfield_customfield_content_container").hide(speed);

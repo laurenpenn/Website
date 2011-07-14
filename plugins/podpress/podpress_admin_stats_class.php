@@ -1395,7 +1395,7 @@ class podPressAdmin_class extends podPress_class {
 			$image_height = 470;
 			$col_width    = 20;
 			$filename     = 'graph-by-date.jpg';
-			$file         = $this->tempFileSystemPath.'/'.$filename;
+			$file         = $this->tempfilesystempath.'/'.$filename;
 			$sidemargin   = 20;
 			$baseline     = ($image_height - 90);
 			$topmargin    = 60;
@@ -1575,7 +1575,7 @@ class podPressAdmin_class extends podPress_class {
 						$memory_used = podPress_bytes($end_memory-$start_memory);
 				/* Output */
 				echo '<div id="podPress_graph" style="width: '.$image_width.'px;">'."\n";
-				echo '    <p><img src="'.$this->tempFileURLPath.'/'.$filename.'" width="'.$image_width.'" height="'.$image_height.'" alt="podPress-Statistics" /></p>'."\n";
+				echo '    <p><img src="'.$this->tempfileurlpath.'/'.$filename.'" width="'.$image_width.'" height="'.$image_height.'" alt="podPress-Statistics" /></p>'."\n";
 				echo "</div>\n";
 				echo '<p>'.__('Time to generate the graph', 'podpress').': '.number_format($chronometry1, 3, $this->local_settings['numbers'][0], $this->local_settings['numbers'][1]).' '.__('seconds', 'podpress').' ('.__('image', 'podpress').': '.number_format($chronometry2, 3, $this->local_settings['numbers'][0], $this->local_settings['numbers'][1]).' '.__('seconds', 'podpress').").\n";
 				echo '<br/>'.__('Memory to generate the graph', 'podpress').': '.$memory_used.".</p>\n";
@@ -1623,7 +1623,7 @@ class podPressAdmin_class extends podPress_class {
 			$col_width    = 25;
 			$col_space    = 15;
 			$filename     = 'graph-by-post.jpg';
-			$file         = $this->tempFileSystemPath.'/'.$filename;
+			$file         = $this->tempfilesystempath.'/'.$filename;
 			$sidemargin   = 20;
 			$baseline     = ($image_height - 90);
 			$topmargin    = 60;
@@ -1799,7 +1799,7 @@ class podPressAdmin_class extends podPress_class {
 				$end_memory = memory_get_usage();
 				$memory_used = podPress_bytes($end_memory-$start_memory);
 				echo '<div id="podPress_graph" style="width: '.$image_width.'px;">'."\n";
-				echo '    <p style="padding-top: 0;"><img src="'.$this->tempFileURLPath.'/'.$filename.'" width="'.$image_width.'" height="'.$image_height.'" alt="podPress-Statistics" /></p>'."\n";
+				echo '    <p style="padding-top: 0;"><img src="'.$this->tempfileurlpath.'/'.$filename.'" width="'.$image_width.'" height="'.$image_height.'" alt="podPress-Statistics" /></p>'."\n";
 				echo $this->paging($start, $limit, $total, 'Posts');
 				echo '    <div class="clear"></div>'."\n";
 				echo "</div>\n";

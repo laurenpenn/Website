@@ -101,13 +101,15 @@ class W3_Cdn_S3_Cf extends W3_Cdn_S3 {
      * @param array $files
      * @param array $results
      * @param boolean $force_rewrite
-     * @return void
+     * @return boolean
      */
     function upload($files, &$results, $force_rewrite = false) {
         if ($this->type == W3TC_CDN_CF_TYPE_S3) {
-            parent::upload($files, $results, $force_rewrite);
+            return parent::upload($files, $results, $force_rewrite);
         } else {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_OK, 'OK');
+
+            return true;
         }
     }
 
@@ -116,13 +118,15 @@ class W3_Cdn_S3_Cf extends W3_Cdn_S3 {
      *
      * @param array $files
      * @param array $results
-     * @return void
+     * @return boolean
      */
     function delete($files, &$results) {
         if ($this->type == W3TC_CDN_CF_TYPE_S3) {
-            parent::delete($files, $results);
+            return parent::delete($files, $results);
         } else {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_OK, 'OK');
+
+            return true;
         }
     }
 
@@ -131,14 +135,14 @@ class W3_Cdn_S3_Cf extends W3_Cdn_S3 {
      *
      * @param array $files
      * @param array $results
-     * @return void
+     * @return boolean
      */
     function purge($files, &$results) {
-        parent::purge($files, $results);
-
-        if (!$this->_is_error($results)) {
-            $this->invalidate($files, $results);
+        if (parent::purge($files, $results)) {
+            return $this->invalidate($files, $results);
         }
+
+        return false;
     }
 
     /**
@@ -146,13 +150,13 @@ class W3_Cdn_S3_Cf extends W3_Cdn_S3 {
      *
      * @param array $files
      * @param array $results
-     * @return void
+     * @return boolean
      */
     function invalidate($files, &$results) {
         if (!$this->_init($error)) {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, $error);
 
-            return;
+            return false;
         }
 
         $this->_set_error_handler();
@@ -162,13 +166,13 @@ class W3_Cdn_S3_Cf extends W3_Cdn_S3 {
         if ($dists === false) {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, sprintf('Unable to list distributions (%s).', $this->_get_last_error()));
 
-            return;
+            return false;
         }
 
         if (!count($dists)) {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, 'No distributions found.');
 
-            return;
+            return false;
         }
 
         $dist = false;
@@ -184,7 +188,7 @@ class W3_Cdn_S3_Cf extends W3_Cdn_S3 {
         if (!$dist) {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, sprintf('Distribution for origin "%s" not found.', $origin));
 
-            return;
+            return false;
         }
 
         $paths = array();
@@ -200,16 +204,18 @@ class W3_Cdn_S3_Cf extends W3_Cdn_S3 {
         if (!$invalidation) {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, sprintf('Unable to create invalidation bath (%s).', $this->_get_last_error()));
 
-            return;
+            return false;
         }
 
         $results = $this->_get_results($files, W3TC_CDN_RESULT_OK, 'OK');
+
+        return true;
     }
 
     /**
      * Returns array of CDN domains
      *
-     * @return string
+     * @return array
      */
     function get_domains() {
         if (!empty($this->_config['cname'])) {
@@ -381,7 +387,7 @@ class W3_Cdn_S3_Cf extends W3_Cdn_S3 {
      * Update distribution CNAMEs
      *
      * @param string $error
-     * @return bool
+     * @return boolean
      */
     function update_cnames(&$error) {
         if (!$this->_init($error)) {

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP-Mail-SMTP
-Version: 0.9.0
+Version: 0.9.1
 Plugin URI: http://www.callum-macdonald.com/code/wp-mail-smtp/
 Description: Reconfigures the wp_mail() function to use SMTP instead of mail() and creates an options page to manage the settings.
 Author: Callum Macdonald
@@ -194,7 +194,8 @@ function wp_mail_smtp_options_page() {
 		$result = wp_mail($to,$subject,$message);
 		
 		// Strip out the language strings which confuse users
-		unset($phpmailer->language);
+		//unset($phpmailer->language);
+		// This property became protected in WP 3.2
 		
 		// Grab the smtp debugging output
 		$smtp_debug = ob_get_clean();

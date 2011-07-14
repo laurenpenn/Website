@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms
 Plugin URI: http://www.gravityforms.com
 Description: Easily create web forms and manage form entries within the WordPress admin.
-Version: 1.5.2.3
+Version: 1.5.2.8
 Author: Rocketgenius Inc.
 Author URI: http://www.rocketgenius.com
 
@@ -52,6 +52,8 @@ $gf_recaptcha_public_key = "";
 //define('GF_RECAPTCHA_PRIVATE_KEY','YOUR_PRIVATE_KEY_GOES_HERE');
 //define('GF_RECAPTCHA_PUBLIC_KEY','YOUR_PUBLIC_KEY_GOES_HERE');
 //------------------------------------------------------------------------------------------------------------------
+
+
 
 if(!defined("RG_CURRENT_PAGE"))
     define("RG_CURRENT_PAGE", basename($_SERVER['PHP_SELF']));
@@ -558,8 +560,7 @@ class RGForms{
                 var description_qs = !display_description ? " description=false" : "";
                 var ajax_qs = ajax ? " ajax=true" : "";
 
-                var win = window.dialogArguments || opener || parent || top;
-                win.send_to_editor("[gravityform id=" + form_id + " name=" + form_name + title_qs + description_qs + ajax_qs + "]");
+                window.send_to_editor("[gravityform id=" + form_id + " name=" + form_name + title_qs + description_qs + ajax_qs + "]");
             }
         </script>
 
@@ -1237,6 +1238,16 @@ function rgempty($name, $array = null){
 if(!function_exists("rgblank")){
 function rgblank($text){
     return empty($text) && strval($text) != "0";
+}
+}
+
+
+if(!function_exists("rgobj")){
+function rgobj($obj, $name){
+    if(isset($obj->$name))
+        return $obj->$name;
+
+    return '';
 }
 }
 

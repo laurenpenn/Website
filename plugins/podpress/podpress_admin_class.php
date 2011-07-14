@@ -68,13 +68,13 @@ License:
 			if($this->settings['enablePodangoIntegration']) {
 				if(!empty($post->podPressPostSpecific['PodangoEpisodeID'])) {
 					if(empty($post->podPressPostSpecific['PodangoMediaFileID'])) {
-						$x = $this->podangoAPI->GetEpisode($post->podPressPostSpecific['PodangoEpisodeID']);
+						$x = $this->podangoapi->GetEpisode($post->podPressPostSpecific['PodangoEpisodeID']);
 						$post->podPressPostSpecific['PodangoMediaFileID'] = $x['MediaFileId'];
 						unset($x);
 					}
-					$podangoMediaFiles = $this->podangoAPI->GetMediaFile($post->podPressPostSpecific['PodangoMediaFileID']);
+					$podangoMediaFiles = $this->podangoapi->GetMediaFile($post->podPressPostSpecific['PodangoMediaFileID']);
 				} else {
-					$podangoMediaFiles = $this->podangoAPI->GetMediaFiles();
+					$podangoMediaFiles = $this->podangoapi->GetMediaFiles();
 				}
 			}
 
@@ -181,6 +181,8 @@ License:
 			echo '</script>'."\n";
 
 			echo '<input type="hidden" id="podPressMedia_defaultpreviewImage" value="'.PODPRESS_URL.'/images/vpreview_center.png" />'."\n";
+			// NONCE_KEY has been introduced in WP 2.7 the first time
+			echo '<input type="hidden" id="podPress_AJAX_sec" value="' . wp_create_nonce('Af|F07*wC7g-+OX$;|Z5;R@Pi]ZgoU|Zex8=`?mO-Mdvu+WC6l=6<O^2d~+~U3MM') . '" />'."\n";
 
 			echo '<div id="podPressstuff" class="dbx-group">'."\n";
 			echo '	<fieldset id="podpresscontent" class="dbx-box">'."\n";
@@ -189,6 +191,7 @@ License:
 			} else {
 				echo '		<h3 class="dbx-handle">'.__('podPress - podcasting settings of this post', 'podpress').'</h3> '."\n";
 			}
+			
 			echo '		<div class="dbx-content" id="podPress_mediaFileList">'."\n";
 			echo '			<strong>'.__('Podcasting Files:', 'podpress').'</strong><br/>'."\n";
 			
@@ -237,7 +240,7 @@ License:
 								if(!$podangoFirstOptGroup) {
 									echo "							</optgroup>\n";
 								}
-								$x = $this->podangoAPI->GetPodcast($podangoMediaFile['Podcast'], true);
+								$x = $this->podangoapi->GetPodcast($podangoMediaFile['Podcast'], true);
 								echo '							<optgroup name="PodangoOptGroup'.$podangoMediaFile['Podcast'].'" label="Podango Podcast: '.$x['Title'].'">'."\n";
 								unset($x);
 							}
@@ -449,7 +452,7 @@ License:
 			}
 
 
-			echo '	<h3>'.sprintf(__('To control player location in your post, you may put %1$s where you want it to appear. You can choose the default postion on the general settings page of podPress.', 'podpress'), $this->podcastTag).'</h3> '."\n";
+			echo '	<h3>'.sprintf(__('To control player location in your post, you may put %1$s where you want it to appear. You can choose the default postion on the general settings page of podPress.', 'podpress'), $this->podcasttag).'</h3> '."\n";
 			echo '			<input type="button" name="podPressAddAnother" value="'.__('Add Media File','podpress').'" onclick="javascript: podPressAddMediaFile(true, \'\', \'\', \'\', \'\', \'\', \'\', \'\', \'\', \'\', \'new\', true, false, false, \'free\'); podPressDisplayMediaFiles();"/>'."\n";
 			if($entryType != 'page') {
 				echo '			<br/>'."\n";
@@ -512,14 +515,14 @@ License:
 				echo '								<option value="WordPressCats" '; if($post->podPressPostSpecific['itunes:keywords'] == '##WordPressCats##') { echo 'selected="selected"';	}	echo '>'.__('Use WordPress Categories', 'podpress').'</option>'."\n";
 				echo '								<option value="post_tags" '; if($post->podPressPostSpecific['itunes:keywords'] == '##post_tags##') { echo 'selected="selected"';	}	echo '>'.__('Use the tags of the post', 'podpress').'</option>'."\n";
 				echo '								<option value="Global" '; if($post->podPressPostSpecific['itunes:keywords'] == '##Global##') { echo 'selected="selected"';	}	echo '>'.__('Use Global', 'podpress').' ('.podPress_stringLimiter(stripslashes($this->settings['iTunes']['keywords']), 40) .')</option>'."\n";
-				echo '								<option value="Custom" '; if($post->podPressPostSpecific['itunes:keywords'] != '##Global##' && $post->podPressPostSpecific['itunes:keywords'] != '##WordPressCats##') { echo 'selected="selected"';	}	echo '>'.__('Insert custom value', 'podpress').'</option>'."\n";
+				echo '								<option value="Custom" '; if($post->podPressPostSpecific['itunes:keywords'] != '##Global##' && $post->podPressPostSpecific['itunes:keywords'] != '##WordPressCats##' && $post->podPressPostSpecific['itunes:keywords'] != '##post_tags##') { echo 'selected="selected"';	}	echo '>'.__('Insert custom value', 'podpress').'</option>'."\n";
 				echo '							</select>'."\n";
 				echo '						</td>'."\n";
 				echo '					</tr>'."\n";
 				echo '					<tr id="iTunesKeywordsHelp" style="display: none;">'."\n";
 				echo '						<td colspan="2">'.__('Not visible in iTunes, but used for searches.', 'podpress').'</td>'."\n";
 				echo '					</tr>'."\n";
-				if($post->podPressPostSpecific['itunes:keywords'] == '##Global##' || $post->podPressPostSpecific['itunes:keywords'] == '##WordPressCats##') { $tempShowMe = 'style="display: none;"';	$post->podPressPostSpecific['itunes:keywords'] = ''; } else { $tempShowMe = ''; }
+				if($post->podPressPostSpecific['itunes:keywords'] == '##Global##' || $post->podPressPostSpecific['itunes:keywords'] == '##WordPressCats##' || $post->podPressPostSpecific['itunes:keywords'] == '##post_tags##') { $tempShowMe = 'style="display: none;"';	$post->podPressPostSpecific['itunes:keywords'] = ''; } else { $tempShowMe = ''; }
 				echo '					<tr id="iTunesKeywordsWrapper" '.$tempShowMe.'>'."\n";
 				echo '						<td width="1%" nowrap="nowrap">&nbsp;</td>'."\n";
 				echo '						<td>'."\n";
@@ -589,8 +592,8 @@ License:
 				echo "			<br/>\n";
 				echo '			<strong>Podango File Uploader</strong>';
 				if($this->settings['podangoDefaultPodcast'] == '##ALL##') {
-					$podangoPodcastList = $this->podangoAPI->GetPodcasts(true);
-					echo ' <strong>for: </strong><select name="podPressPodangoPodcastID" id="podPressPodangoPodcastID" onChange="javascript: document.getElementById(\'podangoUploadFrame\').src=\''.$this->podangoAPI->fileUploader.'?podcastId=\'+this.value">'."\n";
+					$podangoPodcastList = $this->podangoapi->GetPodcasts(true);
+					echo ' <strong>for: </strong><select name="podPressPodangoPodcastID" id="podPressPodangoPodcastID" onChange="javascript: document.getElementById(\'podangoUploadFrame\').src=\''.$this->podangoapi->fileUploader.'?podcastId=\'+this.value">'."\n";
 					foreach ($podangoPodcastList as $k=>$v) {
 						if(!isset($podangoPodcastID)) {
 							$podangoPodcastID = $k;
@@ -602,7 +605,7 @@ License:
 					$podangoPodcastID = $this->settings['podangoDefaultPodcast'];
 				}
 				echo '<br/>'."\n";
-				echo '			<iframe src="'.$this->podangoAPI->fileUploader.'?podcastId='.$podangoPodcastID.'" id="podangoUploadFrame" title="Podango Upload" border="0" width="560" height="110"> </iframe>'."\n";
+				echo '			<iframe src="'.$this->podangoapi->fileUploader.'?podcastId='.$podangoPodcastID.'" id="podangoUploadFrame" title="Podango Upload" border="0" width="560" height="110"> </iframe>'."\n";
 			}
 			echo '		</div>'."\n";
 			echo '	<h3>'.__('End of podPress. File Uploading support is not part of podPress', 'podpress').'</h3> '."\n";
@@ -647,13 +650,13 @@ License:
 			if($this->settings['enablePodangoIntegration']) {
 				if(!empty($post->podPressPostSpecific['PodangoEpisodeID'])) {
 					if(empty($post->podPressPostSpecific['PodangoMediaFileID'])) {
-						$x = $this->podangoAPI->GetEpisode($post->podPressPostSpecific['PodangoEpisodeID']);
+						$x = $this->podangoapi->GetEpisode($post->podPressPostSpecific['PodangoEpisodeID']);
 						$post->podPressPostSpecific['PodangoMediaFileID'] = $x['MediaFileId'];
 						unset($x);
 					}
-					$podangoMediaFiles = $this->podangoAPI->GetMediaFile($post->podPressPostSpecific['PodangoMediaFileID']);
+					$podangoMediaFiles = $this->podangoapi->GetMediaFile($post->podPressPostSpecific['PodangoMediaFileID']);
 				} else {
-					$podangoMediaFiles = $this->podangoAPI->GetMediaFiles();
+					$podangoMediaFiles = $this->podangoapi->GetMediaFiles();
 				}
 			}
 			echo '<script type="text/javascript">'."\n";
@@ -691,9 +694,6 @@ License:
 			$newMediaDefaults['showme'] = 'false';
 			echo "newMediaDefaults['showme'] = ".$newMediaDefaults['showme'].";\n";
 
-			//~ printphpnotices_var_dump($post);
-			//~ printphpnotices_var_dump($post->podPressMedia);
-			//~ printphpnotices_var_dump($post->podPressPostSpecific);
 			if ( FALSE !== empty($post->podPressMedia) ) {
 				$num = 0;
 			} else {
@@ -764,8 +764,13 @@ License:
 			echo '</script>'."\n";
 
 			echo '<input type="hidden" id="podPressMedia_defaultpreviewImage" value="'.PODPRESS_URL.'/images/vpreview_center.png" />'."\n";
+			if ( defined('NONCE_KEY') AND is_string(constant('NONCE_KEY')) AND '' != trim(constant('NONCE_KEY')) ) {
+				echo '<input type="hidden" id="podPress_AJAX_sec" value="' . wp_create_nonce(NONCE_KEY) . '" />'."\n";
+			} else {
+				echo '<input type="hidden" id="podPress_AJAX_sec" value="' . wp_create_nonce('Af|F07*wC7g-+OX$;|Z5;R@Pi]ZgoU|Zex8=`?mO-Mdvu+WC6l=6<O^2d~+~U3MM') . '" />'."\n";
+			}
 			
-			echo '<p style="padding-bottom:1em;">'.sprintf(__('To control player location in your post, you may put %1$s where you want it to appear. You can choose the default postion on the general settings page of podPress.', 'podpress'), $this->podcastTag).'<br />'.__('File Uploading support is not part of podPress.', 'podpress').'</p>'."\n";
+			echo '<p style="padding-bottom:1em;">'.sprintf(__('To control player location in your post, you may put %1$s where you want it to appear. You can choose the default postion on the general settings page of podPress.', 'podpress'), $this->podcasttag).'<br />'.__('File Uploading support is not part of podPress.', 'podpress').'</p>'."\n";
 			echo '<h4>'.__('Podcasting Files:', 'podpress').'</h4>'."\n";
 		
 			$num = 0;
@@ -815,7 +820,7 @@ License:
 								if(!$podangoFirstOptGroup) {
 									echo "							</optgroup>\n";
 								}
-								$x = $this->podangoAPI->GetPodcast($podangoMediaFile['Podcast'], true);
+								$x = $this->podangoapi->GetPodcast($podangoMediaFile['Podcast'], true);
 								echo '							<optgroup name="PodangoOptGroup'.$podangoMediaFile['Podcast'].'" label="Podango Podcast: '.$x['Title'].'">'."\n";
 								unset($x);
 							}
@@ -1093,7 +1098,7 @@ License:
 				echo '								<option value="WordPressCats" '; if($post->podPressPostSpecific['itunes:keywords'] == '##WordPressCats##') { echo 'selected="selected"';	}	echo '>'.__('Use WordPress Categories', 'podpress').'</option>'."\n";
 				echo '								<option value="post_tags" '; if($post->podPressPostSpecific['itunes:keywords'] == '##post_tags##') { echo 'selected="selected"';	}	echo '>'.__('Use the tags of the post', 'podpress').'</option>'."\n";
 				echo '								<option value="Global" '; if($post->podPressPostSpecific['itunes:keywords'] == '##Global##') { echo 'selected="selected"';	}	echo '>'.__('Use Global', 'podpress').' ('.podPress_stringLimiter(stripslashes($this->settings['iTunes']['keywords']), 40) .')</option>'."\n";
-				echo '								<option value="Custom" '; if($post->podPressPostSpecific['itunes:keywords'] != '##Global##' && $post->podPressPostSpecific['itunes:keywords'] != '##WordPressCats##') { echo 'selected="selected"';	}	echo '>'.__('Insert custom value', 'podpress').'</option>'."\n";
+				echo '								<option value="Custom" '; if($post->podPressPostSpecific['itunes:keywords'] != '##Global##' AND $post->podPressPostSpecific['itunes:keywords'] != '##WordPressCats##' AND $post->podPressPostSpecific['itunes:keywords'] != '##post_tags##') { echo 'selected="selected"';	}	echo '>'.__('Insert custom value', 'podpress').'</option>'."\n";
 				echo '							</select>'."\n";
 				echo '						</td>'."\n";
 				echo '					</tr>'."\n";
@@ -1103,7 +1108,7 @@ License:
 				echo '						<td>'.__('Not visible in iTunes, but used for searches.', 'podpress').'</td>'."\n";
 				echo '					</tr>'."\n";
 				
-				if($post->podPressPostSpecific['itunes:keywords'] == '##Global##' || $post->podPressPostSpecific['itunes:keywords'] == '##WordPressCats##') { $tempShowMe = 'style="display: none;"';	$post->podPressPostSpecific['itunes:keywords'] = ''; } else { $tempShowMe = ''; }
+				if ( $post->podPressPostSpecific['itunes:keywords'] == '##Global##' OR $post->podPressPostSpecific['itunes:keywords'] == '##WordPressCats##' OR $post->podPressPostSpecific['itunes:keywords'] == '##post_tags##' ) { $tempShowMe = 'style="display: none;"';	$post->podPressPostSpecific['itunes:keywords'] = ''; } else { $tempShowMe = ''; }
 				echo '					<tr id="iTunesKeywordsWrapper" '.$tempShowMe.'>'."\n";
 				echo '						<th>&nbsp;</th>'."\n";
 				echo '						<td>'."\n";
@@ -1175,8 +1180,8 @@ License:
 				echo "			<br/>\n";
 				echo '			<strong>Podango File Uploader</strong>';
 				if($this->settings['podangoDefaultPodcast'] == '##ALL##') {
-					$podangoPodcastList = $this->podangoAPI->GetPodcasts(true);
-					echo ' <strong>for: </strong><select name="podPressPodangoPodcastID" id="podPressPodangoPodcastID" onChange="javascript: document.getElementById(\'podangoUploadFrame\').src=\''.$this->podangoAPI->fileUploader.'?podcastId=\'+this.value">'."\n";
+					$podangoPodcastList = $this->podangoapi->GetPodcasts(true);
+					echo ' <strong>for: </strong><select name="podPressPodangoPodcastID" id="podPressPodangoPodcastID" onChange="javascript: document.getElementById(\'podangoUploadFrame\').src=\''.$this->podangoapi->fileUploader.'?podcastId=\'+this.value">'."\n";
 					foreach ($podangoPodcastList as $k=>$v) {
 						if(!isset($podangoPodcastID)) {
 							$podangoPodcastID = $k;
@@ -1188,7 +1193,7 @@ License:
 					$podangoPodcastID = $this->settings['podangoDefaultPodcast'];
 				}
 				echo '<br/>'."\n";
-				echo '			<iframe src="'.$this->podangoAPI->fileUploader.'?podcastId='.$podangoPodcastID.'" id="podangoUploadFrame" title="Podango Upload" border="0" width="560" height="110"> </iframe>'."\n";
+				echo '			<iframe src="'.$this->podangoapi->fileUploader.'?podcastId='.$podangoPodcastID.'" id="podangoUploadFrame" title="Podango Upload" border="0" width="560" height="110"> </iframe>'."\n";
 			}
 			
 			echo '<script type="text/javascript">podPressDisplayMediaFiles(); </script>'."\n";
@@ -1212,11 +1217,11 @@ License:
 
 				$this->justposted = true;
 				if($this->checkWritableTempFileDir()) {
-					if(!empty($this->tempFileSystemPath)) {
-						$dh  = opendir($this->tempFileSystemPath);
+					if(!empty($this->tempfilesystempath)) {
+						$dh  = opendir($this->tempfilesystempath);
 						while (false !== ($filename = readdir($dh))) {
-							if(substr($filename, 0, 10) == 'feedcache_' && is_file($this->tempFileSystemPath.'/'.$filename)) {
-								unlink($this->tempFileSystemPath.'/'.$filename);
+							if(substr($filename, 0, 10) == 'feedcache_' && is_file($this->tempfilesystempath.'/'.$filename)) {
+								unlink($this->tempfilesystempath.'/'.$filename);
 							}
 						}
 					}
@@ -1240,9 +1245,11 @@ License:
 									case 'size' :
 									case 'dimensionW' :
 									case 'dimensionH' :
+										$value = strip_tags(trim($value));
 										$verifiedMedia[$i][$key] = intval(preg_replace('/[^0-9]/', '', $value));
 									break;
 									case 'duration':
+										$value = strip_tags(trim($value));
 										$result = preg_match('/(^([0-9]{1,3})(:([0-5][0-9])){0,1}(:([0-5][0-9])$))/', $value, $b);
 										if (!empty($b) AND 0 < $result) {
 											$verifiedMedia[$i][$key] = $value;
@@ -1278,11 +1285,11 @@ License:
 										} else {
 											$podangoPodcastID = $this->settings['podangoDefaultPodcast'];
 										}
-										$podPressPostSpecific['PodangoEpisodeID'] = $this->podangoAPI->CreateEpisode($podangoPodcastID, $_POST['post_title'], $_POST['content'], '', $podPressPostSpecific['PodangoMediaFileID']);
+										$podPressPostSpecific['PodangoEpisodeID'] = $this->podangoapi->CreateEpisode($podangoPodcastID, $_POST['post_title'], $_POST['content'], '', $podPressPostSpecific['PodangoMediaFileID']);
 									} else {
-										$this->podangoAPI->UpdateEpisode($podPressPostSpecific['PodangoEpisodeID'], $_POST['post_title'], $_POST['content'], '', $podPressPostSpecific['PodangoMediaFileID']);
+										$this->podangoapi->UpdateEpisode($podPressPostSpecific['PodangoEpisodeID'], $_POST['post_title'], $_POST['content'], '', $podPressPostSpecific['PodangoMediaFileID']);
 									}
-									$val['URI'] = $this->podangoAPI->mediaTrackerURL.'555/'.$podPressPostSpecific['PodangoEpisodeID'].'/'.$fileNameParts[4];
+									$val['URI'] = $this->podangoapi->mediaTrackerURL.'555/'.$podPressPostSpecific['PodangoEpisodeID'].'/'.$fileNameParts[4];
 									$verifiedMedia[$key] = $val;
 									unset($fileNameParts);
 								}
@@ -1340,7 +1347,8 @@ License:
 					podPress_add_post_meta($post_id, '_podPressPostSpecific', $podPressPostSpecific, true);
 				}
 				$post->podPressPostSpecific = $podPressPostSpecific;
-
+				
+				
 				/*
 				if(class_exists(snoopy)) {
 					if(!empty($this->settings['iTunes']['FeedID'])) {
@@ -1665,13 +1673,13 @@ License:
 			echo '		<table class="podpress_feed_gensettings">'."\n";
 			echo '			<tr>'."\n";
 			echo '				<th>';
-			echo '					<label for="blognameChoice">'.__('Blog/Podcast title', 'podpress').'</label>';
+			echo '					<label for="blognameChoice">'.__('Podcast title / Feed title', 'podpress').'</label>';
 			echo '				</th>';
 			echo '				<td colspan="2">';
 			echo '					<select id="blognameChoice" name="blognameChoice" onchange="javascript: podPress_updateCategoryCasting('.$main_wp_version.');">'."\n";
-			echo '						<option value="Global" '; if($data['blognameChoice'] == 'Global' || empty($data['blognameChoice'])) { echo 'selected="selected"';	}	echo '>'.__('Use Global', 'podpress').'</option>'."\n";
-			echo '						<option value="Append" '; if($data['blognameChoice'] == 'Append') { echo 'selected="selected"';	}	echo '>'.__('Append Category Name', 'podpress').'</option>'."\n";
-			echo '						<option value="CategoryName" '; if($data['blognameChoice'] == 'CategoryName') { echo 'selected="selected"';	}	echo '>'.__('Use Category Name', 'podpress').'</option>'."\n";
+			echo '						<option value="Append" '; if ($data['blognameChoice'] == 'Append' || empty($data['blognameChoice']) ) { echo 'selected="selected"'; } echo '>'.__('Use the Site Title and append the name of the category', 'podpress').'</option>'."\n";
+			echo '						<option value="Global" '; if ( $data['blognameChoice'] == 'Global' ) { echo 'selected="selected"';	} echo '>'.__('Use the Site Title', 'podpress').'</option>'."\n";
+			echo '						<option value="CategoryName" '; if ( $data['blognameChoice'] == 'CategoryName' ) { echo 'selected="selected"'; } echo '>'.__('Use the name of the category', 'podpress').'</option>'."\n";
 			echo '					</select>'."\n";
 			echo '					<input type="hidden" id="global_blogname" value="'.attribute_escape(stripslashes(get_option('blogname'))).'" /></td>'."\n";
 			echo '				</td>'."\n";
@@ -1838,11 +1846,12 @@ License:
 			$data['iTunesFeedID'] = intval(preg_replace('/[^0-9]/', '', $_POST['iTunesFeedID']));
 			$data['iTunesNewFeedURL'] = $_POST['iTunesNewFeedURL'];
 			$data['blognameChoice'] = $_POST['blognameChoice'];
-			if ( TRUE == version_compare($wp_version, '3.0', '<') ) {
-				$data['blogname'] = htmlspecialchars(strip_tags(trim($_POST['cat_name'])), ENT_QUOTES, $blog_charset);
-			} else {
-				$data['blogname'] = htmlspecialchars(strip_tags(trim($_POST['name'])), ENT_QUOTES, $blog_charset);
-			}
+			//~ // Attention: $data['blogname'] is here the name of the category
+			//~ if ( TRUE == version_compare($wp_version, '3.0', '<') ) {
+				//~ $data['blogname'] = htmlspecialchars(strip_tags(trim($_POST['cat_name'])), ENT_QUOTES, $blog_charset);
+			//~ } else {
+				//~ $data['blogname'] = htmlspecialchars(strip_tags(trim($_POST['name'])), ENT_QUOTES, $blog_charset);
+			//~ }
 			$data['blogdescriptionChoice'] = $_POST['blogdescriptionChoice'];
 			$data['iTunesSubtitleChoice'] = $_POST['iTunesSubtitleChoice'];
 			$data['iTunesSubtitle'] = htmlspecialchars(strip_tags(trim($_POST['iTunesSubtitle'])), ENT_QUOTES, $blog_charset);

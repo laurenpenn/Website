@@ -341,17 +341,14 @@ class GFEntryDetail{
 
                             default :
                                 $value = RGFormsModel::get_lead_field_value($lead, $field);
-                                ?>
-                                <tr valign="top">
-                                    <td class="detail-view">
-                                        <label class="detail-label"><?php echo esc_html(GFCommon::get_label($field))?></label>
-                                        <?php echo GFCommon::get_field_input($field, $value, $lead["id"])?>
-                                    </td>
-                                </tr>
-                                <?php
+                                $content = "<tr valign='top'><td class='detail-view'><label class='detail-label'>" . esc_html(GFCommon::get_label($field)) . "</label>" .
+                                           GFCommon::get_field_input($field, $value, $lead["id"]) . "</td></tr>";
+
+                                $content = apply_filters("gform_field_content", $content, $field, $value, $lead["id"], $form["id"]);
+
+                                echo $content;
                             break;
                         }
-
                     }
                     ?>
                     </tbody>
@@ -526,14 +523,22 @@ class GFEntryDetail{
                             if($display_empty_fields || !empty($display_value) || $display_value === "0"){
                                 $count++;
                                 $is_last = $count >= $field_count && !$has_product_fields ? true : false;
-                                ?>
+                                $last_row = $is_last ? " lastrow" : "";
+
+                                $display_value =  empty($display_value) && $display_value !== "0" ? "&nbsp;" : $display_value;
+
+                                $content = '
                                 <tr>
-                                    <td colspan="2" class="entry-view-field-name"><?php echo esc_html(GFCommon::get_label($field))?></td>
+                                    <td colspan="2" class="entry-view-field-name">' . esc_html(GFCommon::get_label($field)) . '</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" class="entry-view-field-value<?php echo $is_last ? " lastrow" : ""?>"><?php echo empty($display_value) && $display_value !== "0" ? "&nbsp;" : $display_value ?></td>
-                                </tr>
-                                <?php
+                                    <td colspan="2" class="entry-view-field-value' . $last_row . '">' . $display_value . '</td>
+                                </tr>';
+
+                                $content = apply_filters("gform_field_content", $content, $field, $value, $lead["id"], $form["id"]);
+
+                                echo $content;
+
                             }
                         break;
                     }

@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: podPress v8.8.10.3\n"
+"Project-Id-Version: podPress v8.8.10.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-21 23:30+0100\n"
-"PO-Revision-Date: 2011-05-21 23:30+0100\n"
+"POT-Creation-Date: 2011-06-19 15:58+0100\n"
+"PO-Revision-Date: 2011-06-19 15:58+0100\n"
 "Last-Translator: Tim Berger <timberge@cs.tu-berlin.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -54,7 +54,7 @@ msgid "podPress - General Settings"
 msgstr ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:473
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:227
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:228
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:94
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:106
 msgid "General Settings"
@@ -108,14 +108,14 @@ msgstr ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:568
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:581
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:422
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:515
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:516
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:527
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:528
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:695
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:760
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:770
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:425
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:518
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:519
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:530
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:531
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:698
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:763
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:773
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_stats_class.php:684
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_stats_class.php:1000
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_stats_class.php:1132
@@ -175,796 +175,796 @@ msgstr ""
 msgid "podPress Stats"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:789
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:795
 msgid "Play Now"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:790
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:796
 msgid "Hide Player"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:860
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:866
 msgid "new version available"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:890
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:892
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:896
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:898
 msgid "Podcast powered by"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:890
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:892
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:896
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:898
 msgid "podPress, a plugin for podcasting with WordPress"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:1184
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:1199
 #, php-format
 msgid "Total podPress mem: %1$s out of a total %2$s"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:1199
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:190
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:1214
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:192
 msgid "podPress - podcasting settings of this post"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:1200
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:1203
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:188
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:1215
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:1218
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:190
 msgid "podPress - podcasting settings of this page"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:1260
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress.php:1275
 #, php-format
 msgid "%1$s: Increased memory %2$s for a total of %3$s"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:193
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:769
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:196
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:774
 msgid "Podcasting Files:"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:211
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:788
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:214
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:793
 msgid "Media File:"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:213
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:790
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:216
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:795
 msgid "Move Up"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:214
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:791
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:217
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:796
 msgid "Move Down"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:215
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:792
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:218
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:797
 msgid "Remove File"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:220
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:797
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:223
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:802
 msgid "Location"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:226
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:803
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:229
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:808
 msgid "Specify URL ..."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:298
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:876
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:301
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:881
 #, php-format
 msgid "<strong>Notice:</strong> It is not recommended to use other than these characters: %1$s or whitespaces in file and folder names."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:306
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:884
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:309
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:889
 msgid ".torrent Location"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:315
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:893
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:318
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:898
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1228
 msgid "Title"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:323
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:901
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:326
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:906
 msgid "Type"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:331
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:909
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:334
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:914
 msgid "File Size"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:334
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:912
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:337
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:917
 msgid "[in byte]"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:334
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:342
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:912
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:920
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:337
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:345
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:917
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:925
 msgid "Auto Detect"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:339
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:917
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:342
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:922
 msgid "Duration"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:342
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:920
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:345
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:925
 msgid "hours:minutes:seconds - for example: 2:45:10 or 34:01 or 1:36 or 120:47 or 0:10"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:342
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:920
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:345
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:925
 msgid "[hh:mm:ss]"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:342
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:435
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:920
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1015
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:345
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:438
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:925
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1020
 #, php-format
 msgid "This may take some time for remote files. %1$s"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:342
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:435
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:920
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1015
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:345
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:438
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:925
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1020
 msgid "If the file is not on the same server as your blog then podPress will attempt to download the file in order to get this information with the help of getID3() which is only able to retrieve ID3 tags from local files. podPress removes the temporary download file at the end of this process. It is likely that this feature works only for relative small files because the download is probably limited by execution time and memory limits on the server of your blog."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:342
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:435
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:920
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1015
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:345
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:438
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:925
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1020
 msgid "Because ..."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:350
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:928
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:353
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:933
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_player_class.php:607
 msgid "Preview Image URL"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:358
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:936
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:361
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:941
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_player_class.php:613
 msgid "Preview Image"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:370
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:950
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:373
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:955
 msgid "Dimensions"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:384
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:964
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:387
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:969
 msgid "Included in"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:387
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:967
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:390
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:972
 msgid "RSS2"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:388
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:968
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:662
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:391
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:973
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:665
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:848
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:668
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:851
 msgid "ATOM"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:389
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:969
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:392
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:974
 msgid "Feed Only"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:395
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:975
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:398
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:980
 msgid "Subscription"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:399
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:979
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:402
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:984
 msgid "Free"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:411
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:991
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:414
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:996
 msgid "Disable Player"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:415
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:995
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:418
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1000
 msgid "(Use if this media file is not compatible with one of the included players.)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:420
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1000
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:423
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1005
 msgid "Disable Preview Player"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:424
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1004
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:427
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1009
 msgid "(Use this to disable the \"Click to Play\" preview player.)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:432
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:435
 msgid "Tag (ID3) Info"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:435
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1015
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:438
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1020
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:46
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:619
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_js_i18n.php:7
 msgid "Show"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:452
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:768
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:455
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:773
 #, php-format
 msgid "To control player location in your post, you may put %1$s where you want it to appear. You can choose the default postion on the general settings page of podPress."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:453
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1029
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:456
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1034
 msgid "Add Media File"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:456
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:459
 msgid "Post specific settings for iTunes"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:463
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1040
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1534
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:145
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:477
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:724
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:466
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1045
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1542
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:146
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:480
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:727
 msgid "iTunes:Subtitle"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:467
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:473
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:488
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:496
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1044
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1051
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1067
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1076
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:470
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:476
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:491
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:499
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1049
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1056
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1072
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1081
 msgid "Use the excerpt"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:468
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:491
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:515
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:537
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1045
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1070
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1096
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1121
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1461
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1482
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1502
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1520
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1539
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1557
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1698
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1735
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1756
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:471
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:494
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:518
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:540
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1050
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1075
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1101
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1126
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1469
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1490
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1510
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1528
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1547
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1565
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1706
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1743
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1764
 msgid "Insert custom value"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:473
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1051
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:476
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1056
 #, php-format
 msgid "\"%1$s\" (default) podPress takes the first 255 characters from the excerpt of the excerpt and if there is none from the blog Post text."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:484
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1063
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1456
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:115
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:487
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1068
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1464
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:116
 msgid "iTunes:Summary"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:489
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1068
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:492
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1073
 msgid "autom. excerpt of the post content"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:490
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:514
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:536
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1069
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1095
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1120
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1440
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1460
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1481
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1501
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1519
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1538
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1556
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1580
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1596
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1611
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1628
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1649
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1672
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1685
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1697
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1717
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1734
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1755
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:493
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:517
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:539
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1074
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1100
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1125
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1448
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1468
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1489
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1509
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1527
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1546
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1564
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1588
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1604
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1619
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1636
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1657
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1693
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1705
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1725
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1742
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1763
 msgid "Use Global"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:496
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1076
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:499
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1081
 #, php-format
 msgid "\"%1$s\" (default) podPress takes the excerpt. If you have not written an excerpt then it takes a part from the blog Post text."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:508
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1089
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1552
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:154
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:503
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:750
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:511
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1094
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1560
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:155
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:506
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:753
 msgid "iTunes:Keywords"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:512
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1093
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:515
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1098
 msgid "Use WordPress Categories"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:513
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1094
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:516
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1099
 msgid "Use the tags of the post"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:520
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1103
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1563
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:523
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1108
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1571
 msgid "Not visible in iTunes, but used for searches."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:526
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1110
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1560
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:158
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:503
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:750
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:529
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1115
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1568
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:159
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:506
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:753
 msgid "a list of max. 12 comma separated words"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:532
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1116
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:535
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1121
 msgid "iTunes:Author"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:543
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1128
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1509
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:546
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1133
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1517
 msgid "Used if this Author is different than the feeds author."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:553
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1138
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1624
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:185
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:590
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:804
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:556
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1143
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1632
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:186
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:593
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:807
 msgid "iTunes:Explicit"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:557
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:574
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1142
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1160
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:560
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:577
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1147
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1165
 msgid "Use Default"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:558
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:575
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1143
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1161
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1629
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1650
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:189
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:208
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:363
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:592
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:607
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:806
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:814
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:561
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:578
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1148
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1166
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1637
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1658
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:190
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:209
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:595
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:610
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:809
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:817
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:724
 msgid "No"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:559
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:576
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1144
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1162
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1630
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1651
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:190
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:209
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:364
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:593
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:608
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:807
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:815
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:562
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:579
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1149
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1167
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1638
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1659
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:191
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:210
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:596
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:611
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:810
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:818
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:723
 msgid "Yes"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:560
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1145
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1631
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:191
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:594
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:808
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:563
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1150
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1639
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:192
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:597
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:811
 msgid "Clean"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:565
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:568
 msgid "Does your podcast contain explicit language or content which is not suitable for non-adult persons? (If you choose \"Yes\" or \"Clean\" then a corresponding notice will show up in iTunes (Explicit resp. Clean). If you choose \"No\" then there will be special notice.)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:570
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1156
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1645
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:204
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:598
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:812
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:573
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1161
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1653
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:205
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:601
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:815
 msgid "iTunes:Block"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:581
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1168
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:584
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1173
 msgid "Prevent this episode or podcast from appearing in iTunes."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:608
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:611
 msgid "End of podPress. File Uploading support is not part of podPress"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:768
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:773
 msgid "File Uploading support is not part of podPress."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1012
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1017
 msgid "ID3 Tag Info"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1033
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1038
 msgid "Post specific settings for iTunes:"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1151
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1156
 msgid "Does your podcast contain explicit language or adult content? (If you choose \"Yes\" or \"Clean\" then a corresponding notice will show up in iTunes (Explicit resp. Clean). If you choose \"No\" then there will be special notice.)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1410
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1418
 msgid "podPress Category Casting"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1411
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1419
 msgid "Enable Category Casting"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1414
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1422
 msgid "This feature is for cases in which you want to host more than one podcast in one blog or if you want to have different podcast feeds with different media files of certain file types per feed (e.g a feed which contains only .mp3 files).<br />Basically this feature gives you the opportunity to modify some of the feed elements and set them to other then as the general value from the Feed/iTunes Settings of podPress.<br/>For instance: If you organize your audio episodes in one category and the video episodes in a different category then you can modify the feed content describing values like the title or the description in the form below. This your category feeds will be more distinguishable from another."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1422
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1430
 msgid "Category Feed Options"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1423
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:74
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1431
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:75
 msgid "iTunes Settings"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1427
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:79
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:675
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:854
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1435
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:80
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:678
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:857
 msgid "iTunes:FeedID"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1436
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:96
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:629
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:643
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:831
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1444
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:97
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:632
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:646
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:834
 msgid "iTunes:New-Feed-Url"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1441
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:100
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:638
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:833
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1449
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:101
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:641
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:836
 msgid "Disable"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1442
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:101
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:639
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:834
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1450
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:102
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:642
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:837
 msgid "Enable"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1446
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:105
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1454
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:106
 msgid "If you want to change the URL of your podcast feed which you have used in the iTunes Store then change the \"Podcast Feed URL\" and set this option to \"Enable\" until the iTunes Store recognizes the new URL. This may take several days. \"Enable\" will add the <code>&lt;itunes:new-feed-url&gt;</code> tag to the RSS feeds and set the \"Podcast Feed URL\" as the new URL. For further information about \"<a href=\"http://www.apple.com/itunes/podcasts/specs.html#changing\" title=\"iTunes Podcasting Resources: Changing Your Feed URL\" target=\"_blank\">Changing Your Feed URL</a>\" read on in the <a href=\"http://www.apple.com/itunes/podcasts/specs.html\" target=\"_blank\" title=\"iTunes Podcasting Resources: Making a Podcast\">iTunes Podcasting Resources</a>."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1447
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:106
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:643
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1455
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:107
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:646
 msgid "the new Feed URL"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1449
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:108
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1457
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:109
 msgid "The URL of your Podcast Feed. If you want to register your podcast at the iTunes Store or if your podcast is already listed there then this input field should contain the same URL as in the iTunes Store settings. If you want change the URL at the iTunes Store then please read first the help text of the iTunes:New-Feed-Url option."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1450
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:109
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1458
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:110
 msgid "Validate your Feed"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1468
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1476
 msgid "By default this is taken from the blog Post text."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1475
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:124
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:515
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:516
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:760
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:761
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1483
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:125
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:518
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:519
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:763
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:764
 msgid "iTunes:Image"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1478
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:127
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1486
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:128
 msgid "The iTunes image should be a square image with <a href=\"http://www.apple.com/itunes/podcasts/specs.html#image\" target=\"_blank\">at least 600 x 600 pixels</a> as Apple writes in \"<a href=\"http://www.apple.com/itunes/podcasts/specs.html\" target=\"_blank\">Making a Podcast</a>\" of their own Podcasting Resources. iTunes supports JPEG and PNG images (the file name extensions should \".jpg\" or \".png\")."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1491
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:132
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1499
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:133
 msgid "(This image is only a preview which is limited to 300 x 300 pixels.) "
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1497
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:137
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:506
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:753
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1505
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:138
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:509
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:756
 msgid "iTunes:Author/Owner"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1515
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:248
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:509
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:756
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1523
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:249
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:512
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:759
 msgid "Owner E-mail address"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1527
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1535
 msgid "Used if the owner of this category is different than the feeds owner."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1545
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1553
 msgid "By default this is taken from the first 255 characters of the blog Post text."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1570
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:163
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:485
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:732
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1578
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:164
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:488
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:735
 msgid "iTunes:Categories"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1574
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:167
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:487
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:734
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1582
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:168
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:490
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:737
 msgid "Select Primary"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1576
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1592
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1607
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:892
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1584
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1600
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1615
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:895
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:672
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:674
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_js_i18n.php:15
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_feed_functions.php:819
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_feed_functions.php:812
 msgid "nothing"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1590
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:172
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:492
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:739
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1598
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:173
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:495
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:742
 msgid "Select Second"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1605
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:177
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:497
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:744
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1613
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:178
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:500
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:747
 msgid "Select Third"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1634
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1642
 msgid "Setting to indicate (in iTunes) whether or not your podcast contains explicit language or adult content"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1635
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:196
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1643
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:197
 msgid "\"No\" (default) - no indicator will show up"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1636
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:197
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1644
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:198
 msgid "\"Yes\" - an \"EXPLICIT\" parental advisory graphic will appear next to your podcast artwork or name in iTunes"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1637
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:198
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1645
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:199
 msgid "\"Clean\" - means that you are sure that no explicit language or adult content is included any of the episodes, and a \"CLEAN\" graphic will appear"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1638
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:199
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1646
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:200
 msgid "You have also the possibility to adjust this option for each post or page with at least one podcast episode (in the post/page editor)."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1654
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1662
 msgid "Use this if you are no longer creating a podcast and you want it removed from the iTunes Store."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1655
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:214
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1663
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:215
 msgid "\"No\" (default) - the podcast appears in the iTunes Podcast directory"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1656
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:215
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1664
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:216
 msgid "\"Yes\" - prevent the entire podcast from appearing in the iTunes Podcast directory"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1657
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:216
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1665
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:217
 msgid "You can also use such an option for each of your podcast episodes (in the post/page editor)."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1664
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:222
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1672
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:223
 msgid "General Feed Settings"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1668
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:232
-msgid "Blog/Podcast title"
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1676
+msgid "Podcast title / Feed title"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1673
-msgid "Append Category Name"
-msgstr ""
-
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1674
-msgid "Use Category Name"
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1680
+msgid "Use the Site Title and append the name of the category"
 msgstr ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1681
+msgid "Use the Site Title"
+msgstr ""
+
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1682
+msgid "Use the name of the category"
+msgstr ""
+
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1689
 msgid "Description (Tagline)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1686
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1694
 msgid "Use Category Description"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1693
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:292
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1701
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:293
 msgid "Blog/RSS Image (144 x 144 pixels)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1711
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1719
 msgid "Language"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1716
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:307
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1724
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:308
 msgid "Select Language"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1726
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:326
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1734
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:327
 msgid "Further Feed Settings"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1730
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:339
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:521
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:767
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1738
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:340
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:524
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:770
 msgid "Feed Copyright / license name"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1742
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:343
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1750
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:344
 msgid "Enter the copyright string resp. the license name. For example: Copyright &#169 by Jon Doe, 2009 OR <a href=\"http://creativecommons.org/licenses/by-nc-sa/2.5/\" target=\"_blank\">CreativeCommons Attribution-Noncommercial-Share Alike 2.5</a>"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1744
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1752
 msgid "Used if this copyright phrase should be different than the global copyright phrase."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1751
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:349
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:533
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:776
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1759
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:350
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:536
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:779
 msgid "URL to the full Copyright / license text"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1763
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:353
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1771
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:354
 msgid "If you use a special license like a <a href=\"http://creativecommons.org/licenses\" target=\"_blank\" title=\"Creative Commons\">Creative Commons</a> License for your news feeds then enter the complete URL (e.g. <a href=\"http://creativecommons.org/licenses/by-nc-sa/2.5/\" target=\"_blank\">http://creativecommons.org/licenses/by-nc-sa/2.5/</a>) to the full text of this particular license here."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1764
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1772
 msgid "Used if this license URL should be different than the global license URL."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1775
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1783
 msgid "inlude only files of this(these) type(s)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1779
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:555
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:792
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1787
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:558
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:795
 msgid "Select file types"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1794
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1802
 msgid "You can select one or more media file types and limit by this choice the number of posts which will appear in the this Feed. For instance: if you select MP4 Video then this Feed will only contain posts (of this category) with MP4 files. If a post has also files of other types then only the files of the selected type will be attached in this feed. (This filter bypasses the \"Included in:\" selection.)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1794
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:569
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:626
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:801
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:828
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1802
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:572
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:629
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:804
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:831
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:454
 msgid "Hold the key [SHIFT] or [CTRL] and use the left mouse button to select more than one value.<br />Hold [CTRL] and use the left mouse button to deselect values."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1800
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:647
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:649
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:841
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1808
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:650
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:652
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:844
 msgid "Include only posts with podPress attachments in this Feed"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1810
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_class.php:1818
 msgid "works only while the File Type Filter is not in use"
 msgstr ""
 
@@ -991,347 +991,339 @@ msgstr ""
 msgid "Checking for updates... Failed."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:67
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:68
 msgid "Settings for the default Feeds"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:73
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:74
 #, php-format
 msgid "podPress adds automatically additional elements (e.g. <a href=\"http://www.apple.com/itunes/podcasts/specs.html#rss\" target=\"_blank\">iTunes RSS tags</a>) to the default RSS Feeds of your weblog. But it uses the RSS image, the copyright name, the license URL and the News Feed language also for the ATOM Feeds. You can configure these elements in the following section. But podPress adds also new Feeds to your weblog (see <a href=\"#podpressfeeds\">%1$s</a> below)."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:73
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:390
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:74
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:393
 msgid "podPress Feeds"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:75
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:76
 msgid "These settings are for the <a href=\"http://www.apple.com/itunes/podcasts/specs.html#rss\" target=\"_blank\">iTunes RSS tags</a>."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:119
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:120
 msgid "Used as iTunes description."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:149
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:150
 msgid "Used as default Podcast Episode Title (255 characters)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:158
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:159
 msgid "max 8"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:195
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:196
 msgid "Setting to indicate (in iTunes) whether or not your podcast contains explicit language or content which is not suitable for non-adult persons."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:213
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:214
 msgid "Use this if you are no longer creating a podcast and you want it removed from iTunes."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:223
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:224
 msgid "These settings are blog settings."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:227
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:256
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:228
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:257
 #, php-format
 msgid "You can modify the following %2$s options on the %1$s page of this blog."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:227
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:228
 msgid "three"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:235
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:233
+msgid "Blog/Podcast title"
+msgstr ""
+
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:236
 msgid "Used as the Feed title"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:240
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:241
 msgid "Blog Tagline"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:243
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:244
 msgid "used as the Feed description"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:251
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:252
 msgid "used besides the itunes:author value in the &lt;managingEditor&gt; and the &lt;webMaster&gt; elements of the RSS Feeds"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:256
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:257
 msgid "Reading Settings"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:256
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:257
 msgid "two"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:261
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:262
 msgid "Syndication feeds show the most recent"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:264
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:265
 msgid "posts"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:269
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:270
 msgid "Encoding for pages and feeds"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:272
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:273
 msgid "The <a href=\"http://codex.wordpress.org/Glossary#Character_set\">character encoding</a> of your site  (UTF-8 is <a href=\"http://www.apple.com/itunes/podcasts/specs.html#encoding\" target=\"_blank\" title=\"iTunes Podcast Resources - Making a Podcast\">recommended</a>)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:277
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:278
 msgid "TTL"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:277
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:278
 msgid "time-to-live"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:287
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:288
 msgid "minutes"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:287
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:288
 msgid "Minimum is 24 hours which is 1440 minutes."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:287
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:288
 msgid "More about TTL ..."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:302
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:303
 msgid "Language of the News Feed content"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:330
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:479
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:726
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:331
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:482
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:729
 msgid "RSS Category"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:334
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:335
 msgid "A category for your RSS feeds. (This is for everyone except iTunes)."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:354
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:355
 msgid "Notice: You can set post specific license URLs and names by defining two custom fields per post. One with the name <strong>podcast_episode_license_name</strong> and one custom field with the name <strong>podcast_episode_license_url</strong>. If you want to set post specific values then it is necessary to define at least the custom field with the URL. If the license name is not defined then the name will be the URL."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:359
-msgid "Aggressively Protect the news feeds"
-msgstr ""
-
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:368
-msgid "\"No\" (default) will convert only ampersand, less-than, greater-than, apostrophe and quotation signs to their numeric character references."
-msgstr ""
-
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:369
-msgid "\"Yes\" will convert any invalid characters to their numeric character references in the feeds."
-msgstr ""
-
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:401
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:404
 #, php-format
 msgid "podPress is capable of creating additional Feeds for your blog. These Feeds are RSS or ATOM Feeds. The content of such Feed maybe consist of all posts, posts with podPress attachment, posts of one more categories or posts with podPress attachments of certain file types. For instance you can create a Feed which contains only posts with audio files and one which contains only posts with video files. Furthermore the following section contains diverse options to customize these additional Feeds.<br />It is also possible to activate or deactivate these Feeds separately.<br /><strong>It is necessary to (re-)save the <a href=\"%1$s\">Permalink structure</a> and the podPress Feed Buttons <a href=\"%2$s\">widget settings</a> after the slug name of one of these Feeds has been modified OR after you have (de-)activated one of these Feeds.</strong>"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:402
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:405
 msgid "<strong>Notice:</strong> After an upgrade from podPress v8.8.6.3 or older version to the current version, you need to control the following forms (and fill out empty fields eventually) of the Feeds you like to keep on using. You may copy and paste the meta information from the input fields above. But you could also use the new section below to customize these information for each Feed. The additional Feeds like the one with the slug name \"podcast\" do not automatically share those meta information any longer with the default Feeds of the blog."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:426
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:428
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:698
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:429
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:431
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:701
 msgid "Activate Feed"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:434
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:436
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:702
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:611
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:437
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:439
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:705
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:612
 msgid "Premium Feed"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:439
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:704
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:442
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:707
 #, php-format
 msgid "If this Feed should be a Premium Feed then you need to activate the Premium Content feature at the <a href=\"%1$s\">general settings page of podPress</a>."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:444
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:709
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:447
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:712
 msgid "Feed Name"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:444
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:447
 msgid "(Leave the Feed Name field empty to delete this Feeds settings.)"
-msgstr ""
-
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:463
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:710
-msgid "How-to build the Feed title:"
-msgstr ""
-
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:465
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:712
-msgid "use the blog name and append the Feed Name"
 msgstr ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:466
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:713
+msgid "How-to build the Feed title:"
+msgstr ""
+
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:468
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:715
+msgid "use the blog name and append the Feed Name"
+msgstr ""
+
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:469
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:716
 msgid "use only the blog name as the title"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:467
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:714
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:470
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:717
 msgid "use the Feed Name as the title"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:471
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:718
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:474
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:721
 msgid "Slug Name"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:471
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:718
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:474
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:721
 msgid "- the name for this Feed in the URL"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:471
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:718
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:474
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:721
 msgid "Please, use only these characters: a-z, 0-9, underscore and hiphen."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:474
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:477
 msgid "current Feed URL"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:482
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:729
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:485
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:732
 msgid "Description (RSS) / Subtitle (ATOM) / iTunes:Summary"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:515
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:527
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:760
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:770
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:518
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:530
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:763
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:773
 msgid "Preview"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:527
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:770
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:530
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:773
 msgid "RSS Image (144 x 144 pixels)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:527
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:528
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:770
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:771
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:530
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:531
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:773
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:774
 msgid "RSS Image"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:536
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:779
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:539
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:782
 msgid "Language of this Feed"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:541
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:781
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:544
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:784
 msgid "Select a language"
-msgstr ""
-
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:550
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:787
-msgid "Encoding for this Feed"
 msgstr ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:553
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:790
+msgid "Encoding for this Feed"
+msgstr ""
+
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:556
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:793
 msgid "File Type Filter"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:568
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:800
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:571
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:803
 msgid "Select one or more file types to include in this Feed only posts which have attached media files of these file types. (This filter bypasses the \"Included in:\" selection.)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:612
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:819
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:615
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:822
 msgid "Category Filter"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:614
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:821
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:617
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:824
 msgid "Select categories"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:625
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:827
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:628
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:830
 msgid "Select one or more categories if this Feed should contain only posts of these categories. If the Feed should contain posts of all categories select none."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:647
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:649
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:841
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:650
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:652
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:844
 msgid "- while the File Type and Category Filters are not in use."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:654
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:656
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:844
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:657
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:659
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:847
 msgid "Bypass the \"Included in:\" selection for this Feed"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:654
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:656
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:844
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:657
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:659
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:847
 msgid "- If this option is selected then the first media file of the right file type will be the enclosure of a post in this Feed - if it is a RSS Feed. Posts in ATOM Feeds will contain all of their media files as enclosures (and not the ones you have marked while editing a post)."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:659
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:846
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:662
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:849
 msgid "Feed Type:"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:661
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:664
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:847
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:667
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:850
 msgid "RSS"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:672
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:851
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:675
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:854
 msgid "TTL (time-to-live)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:681
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:683
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:858
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:684
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:686
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:861
 msgid "add Feed link to the blog header"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:681
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:683
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:858
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:684
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:686
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:861
 msgid "(into &lt;head&gt;)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:721
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:724
 msgid "Feed URL"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:721
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:724
 msgid "http://"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:838
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:841
 msgid "iTunes:New-Feed-Url - the new Feed URL"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:865
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_feed_class.php:868
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:855
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:942
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_player_class.php:663
@@ -1502,28 +1494,28 @@ msgstr ""
 msgid "Length"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1243
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1246
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1250
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1253
 msgid "Cover Art"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1340
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1347
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_js_i18n.php:10
 msgid "UNKNOWN"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1714
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1735
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1721
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1742
 #, php-format
 msgid "This PHP script has not the permission to use chmod for the %1$s file."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1719
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1726
 #, php-format
 msgid "This PHP script has not the permission to delete the %1$s file (unlink)."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1730
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_functions.php:1737
 #, php-format
 msgid "This PHP script has not the permission to use create or open the %1$s file for writing (fopen)."
 msgstr ""
@@ -1992,60 +1984,60 @@ msgstr ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:681
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:688
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1592
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1747
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1537
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1692
 msgid "h"
 msgstr ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:681
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:688
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1592
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1747
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1537
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1692
 msgid "min"
 msgstr ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:681
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:688
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1592
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1747
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1537
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1692
 msgid "s"
 msgstr ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:681
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:688
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1592
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1747
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1537
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1692
 msgid "ms"
 msgstr ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:682
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:689
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1750
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1695
 msgid "hr."
 msgstr ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:682
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:689
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1750
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1695
 msgid "min."
 msgstr ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:682
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:689
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1750
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1695
 msgid "sec."
 msgstr ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:682
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:689
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1750
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1695
 msgid "msec."
 msgstr ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:683
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:690
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1754
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1756
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1699
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1701
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] ""
@@ -2053,8 +2045,8 @@ msgstr[1] ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:683
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:690
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1754
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1756
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1699
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1701
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] ""
@@ -2062,8 +2054,8 @@ msgstr[1] ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:683
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:690
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1754
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1756
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1699
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1701
 msgid "second"
 msgid_plural "seconds"
 msgstr[0] ""
@@ -2071,8 +2063,8 @@ msgstr[1] ""
 
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:683
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_general_class.php:690
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1754
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1756
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1699
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1701
 msgid "millisecond"
 msgid_plural "milliseconds"
 msgstr[0] ""
@@ -2783,7 +2775,6 @@ msgstr ""
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_stats_class.php:1513
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_stats_class.php:1720
 #: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_admin_stats_class.php:1729
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1270
 msgid "Download"
 msgstr ""
 
@@ -2869,65 +2860,65 @@ msgstr ""
 msgid "Last 100 posts"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:233
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:234
 msgid "Auto Detection Failed."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:316
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_feed_functions.php:179
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_feed_functions.php:493
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:317
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_feed_functions.php:176
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_feed_functions.php:486
 msgid "Copyright"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:516
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:517
 msgid "Podcast Feed"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:547
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:548
 msgid "Enhanced Podcast Feed"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:578
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:579
 msgid "Torrent Feed"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:852
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:885
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:853
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:886
 msgid "(The folder is writeable.)"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:858
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:859
 #, php-format
 msgid "Your uploads/podpress_temp directory is not writable. Please set permissions as needed, and make sure <a href=\"%1$s/wp-admin/options-misc.php\">configuration</a> is correct."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:858
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:865
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:871
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:859
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:866
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:872
 msgid "Currently set to:"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:865
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:866
 #, php-format
 msgid "Your WordPress upload directory does not exist. Please create it and make sure <a href=\"%1$s/wp-admin/options-misc.php\">configuration</a> is correct."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:871
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:872
 #, php-format
 msgid "Your WordPress upload directory is not writable. Please set permissions as needed, and make sure <a href=\"%1$s/wp-admin/options-misc.php\">configuration</a> is correct."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:879
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:880
 msgid "Could not create uploads/podpress_temp directory. Please set permission of the following directory to 755 or 777:"
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1363
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_class.php:1308
 msgid "podPress theme compatibility problem. Please check podPress->General Settings for more information."
 msgstr ""
 
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_feed_functions.php:316
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_feed_functions.php:336
-#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_feed_functions.php:343
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_feed_functions.php:312
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_feed_functions.php:332
+#: H:\xampp\htdocs\wp31en\wp-content\plugins\podpress/podpress_feed_functions.php:339
 msgid "This post is password protected."
 msgstr ""
 

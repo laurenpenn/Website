@@ -102,7 +102,7 @@ class W3_PgCache {
         $this->_debug = $this->_config->get_boolean('pgcache.debug');
         $this->_request_uri = $_SERVER['REQUEST_URI'];
         $this->_lifetime = $this->_config->get_integer('browsercache.html.lifetime');
-        $this->_enhanced_mode = ($this->_config->get_string('pgcache.engine') == 'file_pgcache');
+        $this->_enhanced_mode = ($this->_config->get_string('pgcache.engine') == 'file_generic');
 
         if ($this->_config->get_boolean('mobile.enabled')) {
             require_once W3TC_LIB_W3_DIR . '/Mobile.php';
@@ -922,11 +922,14 @@ class W3_PgCache {
                     );
                     break;
 
-                case 'file_pgcache':
+                case 'file_generic':
                     $engineConfig = array(
+                        'exclude' => array(
+                            '.htaccess'
+                        ),
+                        'expire' => $this->_lifetime,
                         'cache_dir' => W3TC_CACHE_FILE_PGCACHE_DIR,
                         'locking' => $this->_config->get_boolean('pgcache.file.locking'),
-                        'expire' => $this->_lifetime,
                         'flush_timelimit' => $this->_config->get_integer('timelimit.cache_flush')
                     );
                     break;
@@ -997,7 +1000,11 @@ class W3_PgCache {
      * @return boolean
      */
     function _check_ua() {
-        foreach ($this->_config->get_array('pgcache.reject.ua') as $ua) {
+        $uas = array_merge($this->_config->get_array('pgcache.reject.ua'), array(
+            W3TC_POWERED_BY
+        ));
+
+        foreach ($uas as $ua) {
             if (isset($_SERVER['HTTP_USER_AGENT']) && stristr($_SERVER['HTTP_USER_AGENT'], $ua) !== false) {
                 return false;
             }

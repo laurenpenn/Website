@@ -73,7 +73,7 @@ function w3tc_minify_js_file_add(theme, template, location, file) {
     }
     select.val(template);
     jQuery(append).find('.js_file_location').val(location);
-    jQuery('#js_files').append(append);
+    jQuery('#js_files').append(append).find('li:last input:first').focus();
     w3tc_minify_js_file_clear();
 }
 
@@ -85,7 +85,7 @@ function w3tc_minify_css_file_add(theme, template, file) {
         select.append(jQuery('<option />').val(i).html(minify_templates[theme][i]));
     }
     select.val(template);
-    jQuery('#css_files').append(append);
+    jQuery('#css_files').append(append).find('li:last input:first').focus();
     w3tc_minify_css_file_clear();
 }
 
@@ -389,7 +389,7 @@ jQuery(function() {
 
                 var qindex = v.indexOf('?');
                 if (qindex != -1) {
-                    if (!/^https?:\/\//.test(v)) {
+                    if (!/^(https?:)?\/\//.test(v)) {
                         query_js.push(g);
                     }
                     v = v.substr(0, qindex);
@@ -417,7 +417,7 @@ jQuery(function() {
 
                 var qindex = v.indexOf('?');
                 if (qindex != -1) {
-                    if (!/^https?:\/\//.test(v)) {
+                    if (!/^(https?:)?\/\//.test(v)) {
                         query_css.push(g);
                     }
                     v = v.substr(0, qindex);
@@ -499,6 +499,7 @@ jQuery(function() {
                 jQuery.extend(params, {
                     engine: 'mirror'
                 });
+
                 if (cnames.length) {
                     params['config[domain][]'] = cnames;
                 }
@@ -506,8 +507,11 @@ jQuery(function() {
 
             case me.hasClass('cdn_netdna'):
                 jQuery.extend(params, {
-                    engine: 'netdna'
+                    engine: 'netdna',
+                    'config[apiid]': jQuery('#cdn_netdna_apiid').val(),
+                    'config[apikey]': jQuery('#cdn_netdna_apikey').val()
                 });
+
                 if (cnames.length) {
                     params['config[domain][]'] = cnames;
                 }
@@ -517,6 +521,7 @@ jQuery(function() {
                 jQuery.extend(params, {
                     engine: 'cotendo'
                 });
+
                 if (cnames.length) {
                     params['config[domain][]'] = cnames;
                 }
@@ -531,6 +536,7 @@ jQuery(function() {
                     'config[pass]': jQuery('#cdn_ftp_pass').val(),
                     'config[pasv]': jQuery('#cdn_ftp_pasv:checked').size()
                 });
+
                 if (cnames.length) {
                     params['config[domain][]'] = cnames;
                 }
@@ -543,6 +549,7 @@ jQuery(function() {
                     'config[secret]': jQuery('#cdn_s3_secret').val(),
                     'config[bucket]': jQuery('#cdn_s3_bucket').val()
                 });
+
                 if (cnames.length) {
                     params['config[cname][]'] = cnames;
                 }
@@ -556,6 +563,7 @@ jQuery(function() {
                     'config[bucket]': jQuery('#cdn_cf_bucket').val(),
                     'config[id]': jQuery('#cdn_cf_id').val()
                 });
+
                 if (cnames.length) {
                     params['config[cname][]'] = cnames;
                 }
@@ -569,6 +577,7 @@ jQuery(function() {
                     'config[origin]': jQuery('#cdn_cf2_origin').val(),
                     'config[id]': jQuery('#cdn_cf2_id').val()
                 });
+
                 if (cnames.length) {
                     params['config[cname][]'] = cnames;
                 }
@@ -583,6 +592,7 @@ jQuery(function() {
                     'config[container]': jQuery('#cdn_rscf_container').val(),
                     'config[id]': jQuery('#cdn_rscf_id').val()
                 });
+
                 if (cnames.length) {
                     params['config[cname][]'] = cnames;
                 }
@@ -595,6 +605,7 @@ jQuery(function() {
                     'config[key]': jQuery('#cdn_azure_key').val(),
                     'config[container]': jQuery('#cdn_azure_container').val()
                 });
+
                 if (cnames.length) {
                     params['config[cname][]'] = cnames;
                 }
@@ -628,9 +639,12 @@ jQuery(function() {
                     'config[key]': jQuery('#cdn_s3_key').val(),
                     'config[secret]': jQuery('#cdn_s3_secret').val(),
                     'config[bucket]': jQuery('#cdn_s3_bucket').val(),
-                    'config[bucket_location]': jQuery('#cdn_s3_bucket_location').val(),
-                    'config[cname][]': cnames
+                    'config[bucket_location]': jQuery('#cdn_s3_bucket_location').val()
                 });
+
+                if (cnames.length) {
+                    params['config[cname][]'] = cnames;
+                }
                 break;
 
             case me.hasClass('cdn_cf'):
@@ -641,9 +655,12 @@ jQuery(function() {
                     'config[key]': jQuery('#cdn_cf_key').val(),
                     'config[secret]': jQuery('#cdn_cf_secret').val(),
                     'config[bucket]': jQuery('#cdn_cf_bucket').val(),
-                    'config[bucket_location]': jQuery('#cdn_cf_bucket_location').val(),
-                    'config[cname][]': cnames
+                    'config[bucket_location]': jQuery('#cdn_cf_bucket_location').val()
                 });
+
+                if (cnames.length) {
+                    params['config[cname][]'] = cnames;
+                }
                 break;
 
             case me.hasClass('cdn_cf2'):
@@ -654,9 +671,12 @@ jQuery(function() {
                     'config[key]': jQuery('#cdn_cf2_key').val(),
                     'config[secret]': jQuery('#cdn_cf2_secret').val(),
                     'config[origin]': jQuery('#cdn_cf2_origin').val(),
-                    'config[bucket_location]': jQuery('#cdn_cf2_bucket_location').val(),
-                    'config[cname][]': cnames
+                    'config[bucket_location]': jQuery('#cdn_cf2_bucket_location').val()
                 });
+
+                if (cnames.length) {
+                    params['config[cname][]'] = cnames;
+                }
                 break;
 
             case me.hasClass('cdn_rscf'):
@@ -666,9 +686,12 @@ jQuery(function() {
                     engine: 'rscf',
                     'config[user]': jQuery('#cdn_rscf_user').val(),
                     'config[key]': jQuery('#cdn_rscf_key').val(),
-                    'config[container]': jQuery('#cdn_rscf_container').val(),
-                    'config[cname][]': cnames
+                    'config[container]': jQuery('#cdn_rscf_container').val()
                 });
+
+                if (cnames.length) {
+                    params['config[cname][]'] = cnames;
+                }
                 break;
 
             case me.hasClass('cdn_azure'):
@@ -676,9 +699,12 @@ jQuery(function() {
                     engine: 'azure',
                     'config[user]': jQuery('#cdn_azure_user').val(),
                     'config[key]': jQuery('#cdn_azure_key').val(),
-                    'config[container]': jQuery('#cdn_azure_container').val(),
-                    'config[cname][]': cnames
+                    'config[container]': jQuery('#cdn_azure_container').val()
                 });
+
+                if (cnames.length) {
+                    params['config[cname][]'] = cnames;
+                }
                 break;
         }
 
@@ -1017,8 +1043,8 @@ jQuery(function() {
 
                     jQuery('#mobile_groups').append(li);
                     w3tc_mobile_groups_clear();
-
                     window.location.hash = '#mobile_group_' + group;
+                    li.find('textarea').focus();
                 }
             } else {
                 alert('Empty group name!');
@@ -1119,8 +1145,8 @@ jQuery(function() {
 
                     jQuery('#referrer_groups').append(li);
                     w3tc_referrer_groups_clear();
-
                     window.location.hash = '#referrer_group_' + group;
+                    li.find('textarea').focus();
                 }
             } else {
                 alert('Empty group name!');

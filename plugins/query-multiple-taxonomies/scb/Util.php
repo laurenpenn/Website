@@ -34,7 +34,10 @@ class scbUtil {
 
 	// Enable delayed activation ( to be used with scb_init() )
 	static function add_activation_hook( $plugin, $callback ) {
-		add_action( 'scb_activation_' . plugin_basename( $plugin ), $callback );
+		if ( defined( 'SCB_LOAD_MU' ) )
+			register_activation_hook( $plugin, $callback );
+		else
+			add_action( 'scb_activation_' . plugin_basename( $plugin ), $callback );
 	}
 
 	// Have more than one uninstall hooks; also prevents an UPDATE query on each page load
@@ -42,6 +45,11 @@ class scbUtil {
 		register_uninstall_hook( $plugin, '__return_false' );	// dummy
 
 		add_action( 'uninstall_' . plugin_basename( $plugin ), $callback );
+	}
+
+	// Get the current, full URL
+	static function get_current_url() {
+		return ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	}
 
 	// Apply a function to each element of a ( nested ) array recursively
@@ -57,27 +65,14 @@ class scbUtil {
 
 	// Extract certain $keys from $array
 	static function array_extract( $array, $keys ) {
-		$r = array();
-
-		foreach ( $keys as $key )
-			if ( array_key_exists( $key, $array ) )
-				$r[$key] = $array[$key];
-
-		return $r;
+		_deprecated_function( 'scbUtil::array_extract', '3.1', 'wp_array_slice_assoc()' );
+		return wp_array_slice_assoc( $array, $keys );
 	}
 
 	// Extract a certain value from a list of arrays
 	static function array_pluck( $array, $key ) {
-		$r = array();
-
-		foreach ( $array as $value ) {
-			if ( is_object( $value ) )
-				$value = get_object_vars( $value );
-			if ( array_key_exists( $key, $value ) )
-				$r[] = $value[$key];
-		}
-
-		return $r;
+		_deprecated_function( 'scbUtil::array_pluck', '3.1', 'wp_list_pluck()' );
+		return wp_list_pluck( $array, $key );
 	}
 
 	// Transform a list of objects into an associative array
@@ -133,7 +128,13 @@ function html( $tag ) {
 		$closing = $tag;
 		$attributes = array_shift( $args );
 		foreach ( $attributes as $key => $value ) {
-			$tag .= ' ' . $key . '="' . htmlspecialchars( $value, ENT_QUOTES ) . '"';
+			if ( false === $value )
+				continue;
+
+			if ( true === $value )
+				$value = $key;
+
+			$tag .= ' ' . $key . '="' . esc_attr( $value ) . '"';
 		}
 	} else {
 		list( $closing ) = explode( ' ', $tag, 2 );

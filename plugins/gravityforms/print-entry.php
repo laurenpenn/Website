@@ -37,6 +37,8 @@ $lead = RGFormsModel::get_lead($lead_id);
 	<div id="print-preview-header"><span class="actionlinks"><a href="javascript:;" onclick="window.print();" class="header-print-link">print this page</a> | <a href="javascript:window.close()" class="close_window"><?php _e("close window", "gravityforms") ?></a></span> Print Preview</div>
 		<div id="view-container">
         <?php
+        do_action("gform_print_entry_header", $form, $lead);
+
         require_once(GFCommon::get_base_path() . "/entry_detail.php");
         GFEntryDetail::lead_detail_grid($form, $lead);
 
@@ -44,6 +46,9 @@ $lead = RGFormsModel::get_lead($lead_id);
             $notes = RGFormsModel::get_lead_notes($lead["id"]);
             GFEntryDetail::notes_grid($notes, false);
         }
+
+        do_action("gform_print_entry_footer", $form, $lead);
+
         ?>
 		</div>
 	</body>

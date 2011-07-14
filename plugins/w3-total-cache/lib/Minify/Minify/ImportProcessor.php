@@ -134,9 +134,8 @@ class Minify_ImportProcessor {
             ? $m[1]
             : substr($m[1], 1, strlen($m[1]) - 2);
         if ('/' !== $url[0]) {
-            if (strpos($url, '//') > 0) {
-                // probably starts with protocol, do not alter
-            } else {
+            if (false === strpos($url, '//')  // protocol (non-data)
+                && 0 !== strpos($url, 'data:')) {  // data protocol
                 // prepend path with current dir separator (OS-independent)
                 $path = $this->_currentDir 
                     . DIRECTORY_SEPARATOR . strtr($url, '/', DIRECTORY_SEPARATOR);

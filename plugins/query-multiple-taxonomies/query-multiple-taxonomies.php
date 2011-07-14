@@ -1,16 +1,16 @@
 <?php
 /*
-Plugin Name: Taxonomy Drill Down
-Version: 1.4
+Plugin Name: Query Multiple Taxonomies
+Version: 1.5.1
 Description: Filter posts through multiple custom taxonomies using a widget.
 Author: scribu
 Author URI: http://scribu.net
 Plugin URI: http://scribu.net/wordpress/query-multiple-taxonomies
-Text Domain: taxonomy-drill-down
+Text Domain: query-multiple-taxonomies
 Domain Path: /lang
 
 
-Copyright (C) 2010 Cristi Burcă (scribu@gmail.com)
+Copyright (C) 2010-2011 Cristi Burcă (scribu@gmail.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,13 +29,13 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 require dirname( __FILE__ ) . '/scb/load.php';
 
 function _qmt_init() {
-	load_plugin_textdomain( 'taxonomy-drill-down', '', dirname( plugin_basename( __FILE__ ) ) . '/lang' );
+	load_plugin_textdomain( 'query-multiple-taxonomies', '', basename( dirname( __FILE__ ) ) . '/lang' );
 
 	require dirname( __FILE__ ) . '/core.php';
 	require dirname( __FILE__ ) . '/widget.php';
 
 	Taxonomy_Drill_Down_Widget::init();
-	scbWidget::init( 'Taxonomy_Drill_Down_Widget', __FILE__, 'taxonomy-drill-down' );
+	scbWidget::init( 'Taxonomy_Drill_Down_Widget', __FILE__, 'query-multiple-taxonomies' );
 }
 scb_init( '_qmt_init' );
 

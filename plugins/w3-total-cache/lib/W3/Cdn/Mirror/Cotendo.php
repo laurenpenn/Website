@@ -42,25 +42,25 @@ class W3_Cdn_Mirror_Cotendo extends W3_Cdn_Mirror {
      *
      * @param array $files
      * @param array $results
-     * @return void
+     * @return boolean
      */
     function purge($files, &$results) {
         if (empty($this->_config['username'])) {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, 'Empty username.');
 
-            return;
+            return false;
         }
 
         if (empty($this->_config['password'])) {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, 'Empty password.');
 
-            return;
+            return false;
         }
 
         if (empty($this->_config['zones'])) {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, 'Empty zones list.');
 
-            return;
+            return false;
         }
 
         require_once W3TC_LIB_NUSOAP_DIR . '/nusoap.php';
@@ -75,7 +75,7 @@ class W3_Cdn_Mirror_Cotendo extends W3_Cdn_Mirror {
         if ($error) {
             $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, sprintf('Constructor error (%s).', $error));
 
-            return;
+            return false;
         }
 
         $client->authtype = 'basic';
@@ -103,7 +103,7 @@ class W3_Cdn_Mirror_Cotendo extends W3_Cdn_Mirror {
             if ($client->fault) {
                 $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, 'Invalid response.');
 
-                return;
+                return false;
             }
 
             $error = $client->getError();
@@ -111,10 +111,12 @@ class W3_Cdn_Mirror_Cotendo extends W3_Cdn_Mirror {
             if ($error) {
                 $results = $this->_get_results($files, W3TC_CDN_RESULT_HALT, sprintf('Unable to purge (%s).', $error));
 
-                return;
+                return false;
             }
         }
 
         $results = $this->_get_results($files, W3TC_CDN_RESULT_OK, 'OK');
+
+        return true;
     }
 }

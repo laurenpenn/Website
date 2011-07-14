@@ -27,14 +27,15 @@ License:
 		var $podcasttag = '[display_podcast]';
 		var $podtrac_url = 'http://www.podtrac.com/pts/redirect.mp3?';
 		var $blubrry_url = 'http://media.blubrry.com/';
-		var $requiredAdminRights = 'manage_categories';//'level_7';
+		var $requiredadminrights = 'manage_categories';//'level_7';
 		var $realm = 'Premium Subscribers Content';
 		var $justposted = false;
-		var $uploadPath = '';
-		var $tempFileSystemPath = '';
-		var $tempFileURLPath = '';
+		var $uploadurl = '';
+		var $uploadpath = '';
+		var $tempfilesystempath = '';
+		var $tempfileurlpath = '';
 		var $tempcontentaddedto = array();
-		var $podangoAPI;
+		var $podangoapi;
 		var $isexcerpt = FALSE;
 		
 		/*************************************************************/
@@ -43,16 +44,16 @@ License:
 		
 		function podPress_class() {
 			//$this->feed_getCategory();
-			// this is not workin in WP 3.0: //$this->uploadPath = get_option('upload_path');  
+			// this is not workin in WP 3.0: //$this->uploadpath = get_option('upload_path');  
 			
 			$wp_upload_dir = wp_upload_dir(); // since WP 2.0.0 but the return values were different back than
 			if (FALSE == isset($wp_upload_dir['basedir']) OR FALSE == isset($wp_upload_dir['baseurl'])) {
 				$wp_upload_dir = $this->upload_dir();
 			}
-			$this->uploadPath = $wp_upload_dir['basedir'];
-			$this->uploadURL = $wp_upload_dir['baseurl'];
-			$this->tempFileSystemPath = $this->uploadPath.'/podpress_temp';
-			$this->tempFileURLPath = $wp_upload_dir['baseurl'].'/podpress_temp';
+			$this->uploadpath = $wp_upload_dir['basedir'];
+			$this->uploadurl = $wp_upload_dir['baseurl'];
+			$this->tempfilesystempath = $this->uploadpath.'/podpress_temp';
+			$this->tempfileurlpath = $wp_upload_dir['baseurl'].'/podpress_temp';
 			
 			// load up podPress general config
 			$this->settings = podPress_get_option('podPress_config');
@@ -228,9 +229,9 @@ License:
 			$mediaFilePath = stripslashes($this->settings['mediaFilePath']);
 			
 			if ( FALSE == isset($this->settings['mediaFilePath']) OR FALSE == file_exists( $mediaFilePath ) ) {
-				$this->settings['autoDetectedMediaFilePath'] = $this->uploadPath;
+				$this->settings['autoDetectedMediaFilePath'] = $this->uploadpath;
 				if (!file_exists($this->settings['autoDetectedMediaFilePath'])) {
-					$this->settings['autoDetectedMediaFilePath'] .= ' ('.__('Auto Detection Failed.', 'podpress').') '.strval($this->uploadPath);
+					$this->settings['autoDetectedMediaFilePath'] .= ' ('.__('Auto Detection Failed.', 'podpress').') '.strval($this->uploadpath);
 				} 
 			}
 		}
@@ -353,7 +354,7 @@ License:
 			}
 
 			if ( FALSE == isset($this->settings['mediaWebPath']) OR TRUE == empty($this->settings['mediaWebPath']) ) {
-				$this->settings['mediaWebPath'] = $this->uploadURL;
+				$this->settings['mediaWebPath'] = $this->uploadurl;
 			}
 			
 			$this->checkLocalPathToMediaFiles();
@@ -809,7 +810,7 @@ License:
 		*/
 		function TryToFindAbsFileName($url = '') {
 			if (FALSE == empty($url)) {
-				$uploadpath = $this->uploadPath;
+				$uploadpath = $this->uploadpath;
 				// remove drive letter
 				$uploadpath_WL = end(explode(':', $uploadpath));
 				// remove doubled backslashes
@@ -846,8 +847,8 @@ License:
 		*/
 		function checkWritableTempFileDir($returnMessages = FALSE) {
 			$siteurl = get_option('siteurl');
-			if (file_exists($this->tempFileSystemPath)) {
-				if(is_writable($this->tempFileSystemPath)) {
+			if (file_exists($this->tempfilesystempath)) {
+				if(is_writable($this->tempfilesystempath)) {
 					if ($returnMessages) {
 						return __('(The folder is writeable.)', 'podpress');
 					} else {
@@ -855,28 +856,28 @@ License:
 					}
 				} else {
 					if ($returnMessages) {
-						return '<p class="message error">'.sprintf(__('Your uploads/podpress_temp directory is not writable. Please set permissions as needed, and make sure <a href="%1$s/wp-admin/options-misc.php">configuration</a> is correct.', 'podpress'), $siteurl).'<br />'.__('Currently set to:', 'podpress').'<code>'.$this->tempFileSystemPath."</code></p>\n";
+						return '<p class="message error">'.sprintf(__('Your uploads/podpress_temp directory is not writable. Please set permissions as needed, and make sure <a href="%1$s/wp-admin/options-misc.php">configuration</a> is correct.', 'podpress'), $siteurl).'<br />'.__('Currently set to:', 'podpress').'<code>'.$this->tempfilesystempath."</code></p>\n";
 					} else {
 						return false;
 					}
 				}
-			} elseif (!file_exists($this->uploadPath)) {
+			} elseif (!file_exists($this->uploadpath)) {
 				if ($returnMessages) {
-					return '<p class="message error">'.sprintf(__('Your WordPress upload directory does not exist. Please create it and make sure <a href="%1$s/wp-admin/options-misc.php">configuration</a> is correct.', 'podpress'), $siteurl).'<br />'.__('Currently set to:', 'podpress').'<code>'.$this->uploadPath."</code></p>\n";
+					return '<p class="message error">'.sprintf(__('Your WordPress upload directory does not exist. Please create it and make sure <a href="%1$s/wp-admin/options-misc.php">configuration</a> is correct.', 'podpress'), $siteurl).'<br />'.__('Currently set to:', 'podpress').'<code>'.$this->uploadpath."</code></p>\n";
 				} else {
 					return false;
 				}
-			} elseif (!is_writable($this->uploadPath)) {
+			} elseif (!is_writable($this->uploadpath)) {
 				if ($returnMessages) {
-					return '<p class="message error">'.sprintf(__('Your WordPress upload directory is not writable. Please set permissions as needed, and make sure <a href="%1$s/wp-admin/options-misc.php">configuration</a> is correct.', 'podpress'), $siteurl).'<br />'.__('Currently set to:', 'podpress').'<code>'.$this->uploadPath."</code></p>\n";
+					return '<p class="message error">'.sprintf(__('Your WordPress upload directory is not writable. Please set permissions as needed, and make sure <a href="%1$s/wp-admin/options-misc.php">configuration</a> is correct.', 'podpress'), $siteurl).'<br />'.__('Currently set to:', 'podpress').'<code>'.$this->uploadpath."</code></p>\n";
 				} else {
 					return false;
 				}
 			} else {
-				$mkdir = @mkdir($this->tempFileSystemPath);
+				$mkdir = @mkdir($this->tempfilesystempath);
 				if (!$mkdir) {
 					if ($returnMessages) {
-						return '<p class="message error">'.__('Could not create uploads/podpress_temp directory. Please set permission of the following directory to 755 or 777:', 'podpress').'<br /><code>'.$this->tempFileSystemPath."</code></p>\n";
+						return '<p class="message error">'.__('Could not create uploads/podpress_temp directory. Please set permission of the following directory to 755 or 777:', 'podpress').'<br /><code>'.$this->tempfilesystempath."</code></p>\n";
 					} else {
 						return false;
 					}
@@ -1029,99 +1030,49 @@ License:
 
 		function insert_the_excerpt($content = '') {
 			GLOBAL $post;
-//~ printphpnotices_var_dump('get_the_excerpt');
-//~ printphpnotices_var_dump($this->tempcontentaddedto);
-//~ printphpnotices_var_dump('in_the_loop');
-//~ printphpnotices_var_dump(in_the_loop());
-//~ printphpnotices_var_dump($post->ID);
-//~ printphpnotices_var_dump('is page');
-//~ printphpnotices_var_dump(is_page());
-			//~ printphpnotices_var_dump(has_excerpt());
-			//~ if ( FALSE === in_the_loop() ) {
-			//~ if ( TRUE == isset($this->tempcontentaddedto[$post->ID]) AND TRUE === $this->tempcontentaddedto[$post->ID]) {
-				//~ return str_replace($this->podcasttag,'',$content);
-			//~ }
-			//~ if ( FALSE === is_single() AND FALSE === is_page() ) {
-				//~ $this->tempcontentaddedto[$post->ID] = true;
-			//~ }
-			//~ if ( FALSE !== empty($post->post_excerpt) ) {
-	
 			if ( FALSE == !empty($post->post_excerpt) ) {
 				$this->tempcontentaddedto[$post->ID] = true;
 			}
-			
-			//~ remove_filter('the_content', 'insert_content');
-			//~ }
 			$this->isexcerpt = true;
-			//~ return str_replace($this->podcasttag,'',$content);
 			return $content;
 		}
 
 		function insert_the_excerptplayer($content = '') {
 			GLOBAL $post;
 			$this->isexcerpt = true;
-//~ printphpnotices_var_dump('the_excerpt');
-//~ printphpnotices_var_dump($this->tempcontentaddedto);
-			//~ unset($this->tempcontentaddedto[$post->ID]);
-			//~ printphpnotices_var_dump('B: '.$post->post_title);
-
 			$content = $this->insert_content($content, TRUE);
-			//~ unset($this->tempcontentaddedto[$post->ID]);
 			return $content;
 		}
 
 		function insert_content($content = '', $is_the_excerpt = FALSE) {
 			GLOBAL $post, $podPressTemplateData, $podPressTemplateUnauthorizedData, $wpdb;
-//~ printphpnotices_var_dump('insert_content');
 			if ( !empty($post->post_password) ) { // if there's a password
 				if ( stripslashes($_COOKIE['wp-postpass_'.COOKIEHASH]) != $post->post_password ) {	// and it doesn't match the cookie
 					return $content;
 				}
 			}
-//~ printphpnotices_var_dump('###################');
-//~ printphpnotices_var_dump($post->ID);
-//~ printphpnotices_var_dump($post->post_title);
-//~ printphpnotices_var_dump(has_excerpt());
-//~ printphpnotices_var_dump($is_the_excerpt);
-//~ printphpnotices_var_dump($this->isexcerpt);
 			
-//~ if ( $is_the_excerpt === TRUE ) {
-//~ printphpnotices_var_dump('is excerpt');
-//~ } else {
-//~ printphpnotices_var_dump('is content');
-//~ }
-//~ printphpnotices_var_dump($content);
 			if ( $this->isexcerpt === $is_the_excerpt  ) {
 				unset($this->tempcontentaddedto[$post->ID]);
 			}
 			$this->isexcerpt = FALSE;
-			if ( isset($this->tempcontentaddedto[$post->ID]) ) {//OR 
+			if ( isset($this->tempcontentaddedto[$post->ID]) ) {
 				if ( is_feed() ) {
 					return str_replace($this->podcasttag,'',$content);
 				} else {
-					//~ if ( FALSE === is_single() AND FALSE === is_page() ) {
 					return $content;
-					//~ }
 				}
 			} else {
 				$this->tempcontentaddedto[$post->ID] = true;
 			}
 			
 			if ( is_feed() ) {
-				if($this->settings['protectFeed'] == 'Yes' && get_bloginfo('charset') == 'UTF-8') {
-					$content = podPress_feedSafeContent($content);
-				}
-				if($this->settings['rss_showlinks'] != 'yes') {
-					return str_replace($this->podcasttag,'',$content);
-				}
+				return str_replace($this->podcasttag, '', $content);
 			}
 
 			if(!is_array($post->podPressMedia)) {
 				return str_replace($this->podcasttag,'',$content);
 			}
-
-			//~ $hasLocationDefined = (bool)strstr($content, $this->podcasttag);
-			//~ if(!$hasLocationDefined) {
 
 			if ( FALSE === stristr($content, $this->podcasttag) ) {
 				if($this->settings['contentBeforeMore'] == 'no') {
@@ -1156,7 +1107,6 @@ License:
 							}
 						break;
 					}
-					//~ $content = "\n<!-- is excerpt -->\n" . $content;
 				} else {
 					switch ( $this->settings['incontentandexcerpt'] ) {
 						default :
@@ -1171,11 +1121,10 @@ License:
 							}
 						break;
 					}
-					//~ $content = "\n<!-- is content -->\n" . $content;
 				}
 			}
 
-			$podPressRSSContent = '';
+			//~ $podPressRSSContent = '';
 			$showmp3player = false;
 			$showvideopreview = false;
 			$showvideoplayer = false;
@@ -1267,7 +1216,7 @@ License:
 						$post->podPressMedia[$key]['enableTorrentDownload'] = false;
 					} else {
 						$post->podPressMedia[$key]['enableDownload'] = true;
-						$podPressRSSContent .= '<a href="'.$post->podPressMedia[$key]['URI'].'">'.__('Download', 'podpress').' '.__($post->podPressMedia[$key]['title'], 'podpress').'</a><br/>';
+						//~ $podPressRSSContent .= '<a href="'.$post->podPressMedia[$key]['URI'].'">'.__('Download', 'podpress').' '.__($post->podPressMedia[$key]['title'], 'podpress').'</a><br/>';
 						if($this->settings['enableTorrentCasting'] && !empty($post->podPressMedia[$key]['URI_torrent'])) {
 							$post->podPressMedia[$key]['enableTorrentDownload'] = true;
 						}
@@ -1345,7 +1294,7 @@ License:
 						}
 					}
 				}
-				if( TRUE == isset($post->podPressMedia[$key]['disablePlayer']) AND TRUE === $post->podPressMedia[$key]['disablePlayer']) {
+				if ( TRUE == isset($post->podPressMedia[$key]['disablePlayer']) AND (TRUE === $post->podPressMedia[$key]['disablePlayer'] OR 'on' == $post->podPressMedia[$key]['disablePlayer'])) {
 					$post->podPressMedia[$key]['enablePlayer'] = false;
 					$post->podPressMedia[$key]['enablePopup'] = false;
 				} 
@@ -1353,10 +1302,6 @@ License:
 				$podPressTemplateData['files'][] = $post->podPressMedia[$key];
 				$post->podPressMedia[$key]['URI'] = $post->podPressMedia[$key]['URI_orig'];
 				unset($post->podPressMedia[$key]['URI_orig']);
-			}
-
-			if(is_feed()) {
-				return str_replace($this->podcasttag, '<br/>'.$podPressRSSContent, $content);
 			}
 
 			if(!$this->settings['compatibilityChecks']['wp_head']) {

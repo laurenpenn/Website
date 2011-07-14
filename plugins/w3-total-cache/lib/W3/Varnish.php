@@ -68,7 +68,7 @@ class W3_Varnish {
      * Purge URI
      *
      * @param string $uri
-     * @return bool
+     * @return boolean
      */
     function purge($uri) {
         @set_time_limit($this->_timeout);

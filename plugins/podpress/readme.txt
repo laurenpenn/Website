@@ -3,15 +3,15 @@ Tags: post, podcast, podcasting, audio, video, admin, feed, widget, stats, stati
 Contributors: seek3r, macx, iscifi
 Donate link: http://www.mightyseek.com/podpress_donate.php
 Requires at least: 2.2
-Tested up to: 3.1.2
-Stable Tag: 8.8.10.7
+Tested up to: 3.2
+Stable Tag: 8.8.10.8
 
 A plugin for Podcasters using WordPress.
 
 == Description ==
 podPress adds a lot of features designed to make WordPress the ideal platform for hosting a podcast.
 
-podPress 8.8.10.7 includes a few bug fixes and a new option. You can read more about this version in the [Changelog](http://wordpress.org/extend/plugins/podpress/changelog/) and pay attention to the [Upgrade](http://wordpress.org/extend/plugins/podpress/other_notes/) section.
+podPress 8.8.10.8 includes some bug fixes and modifications. You can read more about this version in the [Changelog](http://wordpress.org/extend/plugins/podpress/changelog/) and pay attention to the [Upgrade](http://wordpress.org/extend/plugins/podpress/other_notes/) section.
 
 Features:
 
@@ -47,6 +47,19 @@ http://www.mightyseek.com/podpress
 == Changelog ==
 
 Please, read the [Upgrade instructions](http://wordpress.org/extend/plugins/podpress/other_notes/). 
+= v8.8.10.8 =
+<strong>Notice:</strong> Upgrading to this version from version 8.8.9.2 or older will rename the podPress `meta_key`s in the postmeta data base table of your blog (see bug fixes). Downgrading to a previous version is only possible if you reverse these changes.
+
+* bug fix: an upgrade to this version will remove an old deprecated option which could lead to the situation that podPress would add "Download Standard Podcast" somewhere in the iTunes:summary or iTunes:subtitle of post.  (Thank you [IAmediaworks](http://wordpress.org/support/profile/iamediaworks) for [reporting the problem](http://wordpress.org/support/topic/upgrade-added-download-standard-podcast-to-itunes-episode-description).)
+* bug fix: The `<link>` of the RSS image of the `<channel>` will include the 'Site address (URI)' set in Settings > General. (Thank you [lopo](http://wordpress.org/support/profile/lopo) for [reporting the problem and making suggestions](http://wordpress.org/support/topic/feed-validation-warning-image-link-doesnt-match-channel-link-wordaround).)
+* bug fix: If the option "Aggressively Protect the news feeds" was set to "Yes" then podPress has removed the formatting from the post content (`<content:encoded>`) in the feeds. Because this option is deprecated, it is removed now. (Thank you [sephage](http://wordpress.org/support/profile/sephage) for [reporting the problem](http://wordpress.org/support/topic/plugin-podpress-podpress-88107-breaks-rss-formatting).)
+* bug fix: Fix for a bug in the appearance of the iTunes:Keywords option in the podPress box below the post editor which occured when the new option "Use the tags of the post" was active. 
+* bug fix: The "Disable Player:" and "Disable Preview Player:" in the podPress box below the post editor are working again. (Thank you Philip for mentioning the problem.)
+* bug fix: The result of the duration auto detection could have a leading white space under some circumstances which is not desirable. (Thank you [Puck](http://wordpress.org/support/profile/puck) for [reporting the problem and making suggestions](http://wordpress.org/support/topic/plugin-podpress-podcast-duration-lostnot-being-saved-workaround-provided).)
+* bug fix: Chrome/Chromium >= v10 displayed the HTML5 audio player depending on certain CSS definitions of the theme without displaying the control elements properly. This podPress version includes a workaround/bug fix for this problem. (Thank you [Twanislas](http://wordpress.org/support/profile/twanislas) for [reporting the problem](http://wordpress.org/support/topic/podpress-suggestions).)
+* change: The options for the feed title of a category feed are re-arranged. Further it is possible to use the Site Title as the title of such a feed.
+* This version includes also some security improvements.
+
 = v8.8.10.7 =
 <strong>Notice:</strong> Upgrading to this version from version 8.8.9.2 or older will rename the podPress `meta_key`s in the postmeta data base table of your blog (see bug fixes). Downgrading to a previous version is only possible if you reverse these changes.
 

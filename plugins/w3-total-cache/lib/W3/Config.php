@@ -240,7 +240,6 @@ class W3_Config {
         'varnish.servers' => 'array',
 
         'browsercache.enabled' => 'boolean',
-        'browsercache.id' => 'string',
         'browsercache.no404wp' => 'boolean',
         'browsercache.no404wp.exceptions' => 'array',
         'browsercache.cssjs.compression' => 'boolean',
@@ -295,10 +294,14 @@ class W3_Config {
         'notes.cdn_reupload' => 'boolean',
         'notes.need_empty_pgcache' => 'boolean',
         'notes.need_empty_minify' => 'boolean',
+        'notes.need_empty_objectcache' => 'boolean',
         'notes.pgcache_rules_core' => 'boolean',
         'notes.pgcache_rules_cache' => 'boolean',
+        'notes.pgcache_rules_legacy' => 'boolean',
+        'notes.pgcache_rules_wpsc' => 'boolean',
         'notes.minify_rules_core' => 'boolean',
         'notes.minify_rules_cache' => 'boolean',
+        'notes.minify_rules_legacy' => 'boolean',
         'notes.support_us' => 'boolean',
         'notes.no_curl' => 'boolean',
         'notes.no_zlib' => 'boolean',
@@ -375,7 +378,7 @@ class W3_Config {
 
         'pgcache.enabled' => false,
         'pgcache.debug' => false,
-        'pgcache.engine' => 'file_pgcache',
+        'pgcache.engine' => 'file_generic',
         'pgcache.file.gc' => 3600,
         'pgcache.file.locking' => false,
         'pgcache.memcached.servers' => array(
@@ -499,7 +502,7 @@ class W3_Config {
         'minify.htmltidy.options.clean' => false,
         'minify.htmltidy.options.hide-comments' => true,
         'minify.htmltidy.options.wrap' => 0,
-        'minify.reject.logged' => true,
+        'minify.reject.logged' => false,
         'minify.reject.ua' => array(),
         'minify.reject.uri' => array(),
         'minify.error.notification' => '',
@@ -591,7 +594,6 @@ class W3_Config {
         'varnish.servers' => array(),
 
         'browsercache.enabled' => true,
-        'browsercache.id' => '',
         'browsercache.no404wp' => false,
         'browsercache.no404wp.exceptions' => array(
             'robots\.txt',
@@ -816,10 +818,14 @@ class W3_Config {
         'notes.cdn_reupload' => false,
         'notes.need_empty_pgcache' => false,
         'notes.need_empty_minify' => false,
+        'notes.need_empty_objectcache' => false,
         'notes.pgcache_rules_core' => true,
         'notes.pgcache_rules_cache' => true,
+        'notes.pgcache_rules_legacy' => true,
+        'notes.pgcache_rules_wpsc' => true,
         'notes.minify_rules_core' => true,
         'notes.minify_rules_cache' => true,
+        'notes.minify_rules_legacy' => true,
         'notes.support_us' => true,
         'notes.no_curl' => true,
         'notes.no_zlib' => true,
@@ -891,8 +897,15 @@ class W3_Config {
             case 'dbcache.engine':
             case 'minify.engine':
             case 'objectcache.engine':
+                /**
+                 * Legacy support
+                 */
+                if ($value == 'file_pgcache') {
+                    $value = 'file_generic';
+                }
+
                 switch (true) {
-                    case ($value == 'file_pgcache' && !w3_can_check_rules()):
+                    case ($value == 'file_generic' && !w3_can_check_rules()):
                     case ($value == 'apc' && !function_exists('apc_store')):
                     case ($value == 'eaccelerator' && !function_exists('eaccelerator_put')):
                     case ($value == 'xcache' && !function_exists('xcache_set')):
@@ -915,7 +928,7 @@ class W3_Config {
              * Disabled some page cache options when enhanced mode enabled
              */
             case 'pgcache.cache.query':
-                if ($this->get_string('pgcache.engine') == 'file_pgcache') {
+                if ($this->get_string('pgcache.engine') == 'file_generic') {
                     return false;
                 }
                 break;
@@ -1332,7 +1345,6 @@ class W3_Config {
      */
     function set_defaults() {
         $this->set('pgcache.enabled', true);
-        $this->set('minify.enabled', true);
         $this->set('minify.auto', true);
         $this->set('browsercache.enabled', true);
     }

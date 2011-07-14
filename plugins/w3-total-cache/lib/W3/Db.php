@@ -3,14 +3,17 @@
 /**
  * W3 Database object
  */
-$wpdb = false;
+if (!class_exists('W3_Db_Driver')) {
+    require_once ABSPATH . 'wp-includes/wp-db.php';
 
-require_once ABSPATH . 'wp-includes/wp-db.php';
+    class W3_Db_Driver extends wpdb {
+    }
+}
 
 /**
  * Class W3_Db
  */
-class W3_Db extends wpdb {
+class W3_Db extends W3_Db_Driver {
     /**
      * Array of queries
      *
@@ -76,9 +79,9 @@ class W3_Db extends wpdb {
 
         if ($this->_can_ob()) {
             ob_start(array(
-                &$this,
-                'ob_callback'
-            ));
+                    &$this,
+                    'ob_callback'
+                ));
         }
 
         parent::__construct($dbuser, $dbpassword, $dbname, $dbhost);
@@ -107,29 +110,14 @@ class W3_Db extends wpdb {
             return false;
         }
 
-        ++$this->query_total;
-
-        // Filter the query, if filters are available
-        // NOTE: Some queries are made before the plugins have been loaded, and thus cannot be filtered with this method
-        if (function_exists('apply_filters')) {
-            $query = apply_filters('query', $query);
-        }
-
-        // Initialise return
-        $return_val = 0;
-        $this->flush();
-
-        // Log how the function was called
-        $this->func_call = "\$db->query(\"$query\")";
-
-        // Keep track of the last query for debug..
-        $this->last_query = $query;
-
         $reason = '';
-        $caching = $this->_can_cache($query, $reason);
         $cached = false;
         $data = false;
         $time_total = 0;
+
+        $this->query_total++;
+
+        $caching = $this->_can_cache($query, $reason);
 
         if ($caching) {
             $this->timer_start();
@@ -139,88 +127,36 @@ class W3_Db extends wpdb {
             $time_total = $this->timer_stop();
         }
 
-        /**
-         * Check if query was cached
-         */
         if (is_array($data)) {
-            ++$this->query_hits;
             $cached = true;
+            $this->query_hits++;
 
-            /**
-             * Set result from the cache
-             */
             $this->last_error = $data['last_error'];
             $this->last_query = $data['last_query'];
             $this->last_result = $data['last_result'];
             $this->col_info = $data['col_info'];
             $this->num_rows = $data['num_rows'];
-        } else {
-            ++$this->num_queries;
-            ++$this->query_misses;
 
-            // Perform the query via std mysql_query function..
+            $return_val = $data['return_val'];
+        } else {
+            $this->query_misses++;
+
             $this->timer_start();
-            $this->result = @mysql_query($query, $this->dbh);
+            $return_val = parent::query($query);
             $time_total = $this->timer_stop();
 
-            if (defined('SAVEQUERIES') && SAVEQUERIES) {
-                $this->queries[] = array(
-                    $query,
-                    $time_total,
-                    $this->get_caller()
+            if ($caching) {
+                $data = array(
+                    'last_error' => $this->last_error,
+                    'last_query' => $this->last_query,
+                    'last_result' => $this->last_result,
+                    'col_info' => $this->col_info,
+                    'num_rows' => $this->num_rows,
+                    'return_val' => $return_val
                 );
-            }
 
-            // If there is an error then take note of it..
-            if (($this->last_error = mysql_error($this->dbh))) {
-                $this->print_error();
-                return false;
-            }
-
-            if (preg_match("/^\\s*(insert|delete|update|replace|alter)\\s+/si", $query)) {
-                $this->rows_affected = mysql_affected_rows($this->dbh);
-                // Take note of the insert_id
-                if (preg_match("/^\\s*(insert|replace) /i", $query)) {
-                    $this->insert_id = mysql_insert_id($this->dbh);
-                }
-                // Return number of rows affected
-                $return_val = $this->rows_affected;
-            } elseif (is_resource($this->result)) {
-                $i = 0;
-                while ($i < @mysql_num_fields($this->result)) {
-                    $this->col_info[$i] = @mysql_fetch_field($this->result);
-                    $i++;
-                }
-
-                $num_rows = 0;
-                while (($row = @mysql_fetch_object($this->result))) {
-                    $this->last_result[$num_rows] = $row;
-                    $num_rows++;
-                }
-
-                @mysql_free_result($this->result);
-
-                // Log number of rows the query returned
-                $this->num_rows = $num_rows;
-
-                // Return number of rows selected
-                $return_val = $this->num_rows;
-
-                if ($caching) {
-                    /**
-                     * Store result to the cache
-                     */
-                    $data = array(
-                        'last_error' => $this->last_error,
-                        'last_query' => $this->last_query,
-                        'last_result' => $this->last_result,
-                        'col_info' => $this->col_info,
-                        'num_rows' => $this->num_rows
-                    );
-
-                    $cache = & $this->_get_cache();
-                    $cache->set($cache_key, $data, $this->_lifetime);
-                }
+                $cache = & $this->_get_cache();
+                $cache->set($cache_key, $data, $this->_lifetime);
             }
         }
 
@@ -323,6 +259,7 @@ class W3_Db extends wpdb {
      * Check if can cache sql
      *
      * @param string $sql
+     * @param string $cache_reject_reason
      * @return boolean
      */
     function _can_cache($sql, &$cache_reject_reason) {
@@ -330,7 +267,7 @@ class W3_Db extends wpdb {
          * Skip if disabled
          */
         if (!$this->_config->get_boolean('dbcache.enabled')) {
-            $cache_reject_reason = 'database caching is disabled';
+            $cache_reject_reason = 'Database caching is disabled';
 
             return false;
         }
@@ -348,7 +285,7 @@ class W3_Db extends wpdb {
          * Skip if doint AJAX
          */
         if (defined('DOING_AJAX')) {
-            $cache_reject_reason = 'doing AJAX';
+            $cache_reject_reason = 'Doing AJAX';
 
             return false;
         }
@@ -357,7 +294,7 @@ class W3_Db extends wpdb {
          * Skip if doing cron
          */
         if (defined('DOING_CRON')) {
-            $cache_reject_reason = 'doing cron';
+            $cache_reject_reason = 'Doing cron';
 
             return false;
         }
@@ -366,7 +303,7 @@ class W3_Db extends wpdb {
          * Skip if APP request
          */
         if (defined('APP_REQUEST')) {
-            $cache_reject_reason = 'application request';
+            $cache_reject_reason = 'Application request';
 
             return false;
         }
@@ -402,7 +339,7 @@ class W3_Db extends wpdb {
          * Skip if SQL is rejected
          */
         if (!$this->_check_sql($sql)) {
-            $cache_reject_reason = 'query is rejected';
+            $cache_reject_reason = 'Query is rejected';
 
             return false;
         }
@@ -411,7 +348,7 @@ class W3_Db extends wpdb {
          * Skip if request URI is rejected
          */
         if (!$this->_check_request_uri()) {
-            $cache_reject_reason = 'request URI is rejected';
+            $cache_reject_reason = 'Request URI is rejected';
 
             return false;
         }
@@ -420,7 +357,7 @@ class W3_Db extends wpdb {
          * Skip if cookie is rejected
          */
         if (!$this->_check_cookies()) {
-            $cache_reject_reason = 'cookie is rejected';
+            $cache_reject_reason = 'Cookie is rejected';
 
             return false;
         }
@@ -429,7 +366,7 @@ class W3_Db extends wpdb {
          * Skip if user is logged in
          */
         if ($this->_config->get_boolean('dbcache.reject.logged') && !$this->_check_logged_in()) {
-            $cache_reject_reason = 'user is logged in';
+            $cache_reject_reason = 'User is logged in';
 
             return false;
         }
@@ -496,6 +433,13 @@ class W3_Db extends wpdb {
          * Check for WPMU's and WP's 3.0 short init
          */
         if (defined('SHORTINIT') && SHORTINIT) {
+            return false;
+        }
+
+        /**
+         * Check User Agent
+         */
+        if (isset($_SERVER['HTTP_USER_AGENT']) && stristr($_SERVER['HTTP_USER_AGENT'], W3TC_POWERED_BY) !== false) {
             return false;
         }
 
@@ -646,9 +590,22 @@ class W3_Db extends wpdb {
 
         if (count($this->query_stats)) {
             $debug_info .= "SQL info:\r\n";
-            $debug_info .= sprintf("%s | %s | %s | % s | %s | %s\r\n", str_pad('#', 5, ' ', STR_PAD_LEFT), str_pad('Time (s)', 8, ' ', STR_PAD_LEFT), str_pad('Caching (Reject reason)', 30, ' ', STR_PAD_BOTH), str_pad('Status', 10, ' ', STR_PAD_BOTH), str_pad('Data size (b)', 13, ' ', STR_PAD_LEFT), 'Query');
+            $debug_info .= sprintf("%s | %s | %s | % s | %s | %s\r\n",
+                str_pad('#', 5, ' ', STR_PAD_LEFT), str_pad('Time (s)', 8, ' ', STR_PAD_LEFT),
+                str_pad('Caching (Reject reason)', 30, ' ', STR_PAD_BOTH),
+                str_pad('Status', 10, ' ', STR_PAD_BOTH),
+                str_pad('Data size (b)', 13, ' ', STR_PAD_LEFT),
+                'Query');
+
             foreach ($this->query_stats as $index => $query) {
-                $debug_info .= sprintf("%s | %s | %s | %s | %s | %s\r\n", str_pad($index + 1, 5, ' ', STR_PAD_LEFT), str_pad(round($query['time_total'], 4), 8, ' ', STR_PAD_LEFT), str_pad(($query['caching'] ? 'enabled' : sprintf('disabled (%s)', $query['reason'])), 30, ' ', STR_PAD_BOTH), str_pad(($query['cached'] ? 'cached' : 'not cached'), 10, ' ', STR_PAD_BOTH), str_pad($query['data_size'], 13, ' ', STR_PAD_LEFT), w3_escape_comment(trim($query['query'])));
+                $debug_info .= sprintf("%s | %s | %s | %s | %s | %s\r\n",
+                    str_pad($index + 1, 5, ' ', STR_PAD_LEFT),
+                    str_pad(round($query['time_total'], 4), 8, ' ', STR_PAD_LEFT),
+                    str_pad(($query['caching'] ? 'enabled'
+                                : sprintf('disabled (%s)', $query['reason'])), 30, ' ', STR_PAD_BOTH),
+                    str_pad(($query['cached'] ? 'cached' : 'not cached'), 10, ' ', STR_PAD_BOTH),
+                    str_pad($query['data_size'], 13, ' ', STR_PAD_LEFT),
+                    w3_escape_comment(trim($query['query'])));
             }
         }
 

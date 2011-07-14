@@ -3,7 +3,7 @@ Contributors: fredericktownes
 Tags: user experience, cache, caching, page cache, css cache, js cache, db cache, disk cache, disk caching, database cache, http compression, gzip, deflate, minify, cdn, content delivery network, media library, performance, speed, multiple hosts, css, merge, combine, unobtrusive javascript, compress, optimize, optimizer, javascript, js, cascading style sheet, plugin, yslow, yui, google, google rank, google page speed, mod_pagespeed, s3, cloudfront, aws, amazon web services, cloud files, rackspace, cotendo, max cdn, limelight, cloudflare, microsoft, microsoft azure, iis, nginx, apache, varnish, xcache, apc, eacclerator, wincache, mysql, w3 total cache, batcache, wp cache, wp super cache, buddypress
 Requires at least: 2.8
 Tested up to: 3.2
-Stable tag: 0.9.2.2
+Stable tag: 0.9.2.3
 
 Improve site performance and user experience via caching: browser, page, object, database, minify and content delivery network support.
 
@@ -249,6 +249,11 @@ Install the plugin to read the full FAQ.
 
 == Press: Mentions, Tutorials &amp; Reviews ==
 
+**June 2011:**
+
+* [WordPress Optimization Results: Varnish/Nginx/APC + W3 Total Cache + Amazon S3 + CloudFlare](http://danielmiessler.com/blog/wordpress-optimization-results-varnishnginxapc-w3-total-cache-amazon-s3-cloudflare), Daniel Miessler
+* [Case Study: WordPress, MaxCDN, CloudFlare and W3 Total Cache Integration](http://www.thewebhostinghero.com/articles/case-study-wp-maxcdn-cloudflare.html), Ritesh Sanap
+
 **May 2011:**
 
 * [Optimizing WordPress with Nginx, Varnish, APC, W3 Total Cache, and Amazon S3 (With Benchmarks)](http://danielmiessler.com/blog/optimizing-wordpress-with-nginx-varnish-w3-total-cache-amazon-s3-and-memcached), Daniel Miessler
@@ -273,7 +278,7 @@ Install the plugin to read the full FAQ.
 **February 2011:**
 
 * [Optimizing WordPress with Nginx, Varnish, W3 Total Cache, Amazon S3, and Memcached (With Benchmarks)](http://danielmiessler.com/blog/optimizing-wordpress-with-nginx-varnish-w3-total-cache-amazon-s3-and-memcached), Daniel Miessler
-* [My WordPress site loads in 2 seconds… does yours?](http://labsecrets.com/blog/2011/02/14/my-wordpress-site-loads-in-two-seconds-does-yours/)
+* [My WordPress site loads in 2 seconds... does yours?](http://labsecrets.com/blog/2011/02/14/my-wordpress-site-loads-in-two-seconds-does-yours/)
 
 **January 2011:**
 
@@ -285,14 +290,14 @@ Install the plugin to read the full FAQ.
 **December 2010:**
 
 * [Best blog plugins](http://www.blog.web6.org/best-blog-plugins/)
-* [How To Make Your WordPress Blog Load Faster(http://www.johnchow.com/how-to-make-your-wordpress-blog-load-faster/), John Chow
+* [How To Make Your WordPress Blog Load Faster](http://www.johnchow.com/how-to-make-your-wordpress-blog-load-faster/), John Chow
 * [Unleash the Power of WordPress Using Plugin Combos](http://freelancefolder.com/unleash-the-power-of-wordpress-using-plugin-combos/), Paul de Wouters
 * [Rackspace Cloud Files for WordPress](http://sporkmarketing.com/blog/1095/rackspace-cloud-files-wordpress/), Jason Lancaster
 
 **November 2010:**
 
 * [Make your blog super fast with W3 Total Cache plugin](http://laspas.gr/2010/11/26/make-blog-super-fast-w3-total-cache-plugin/), Stratos Laspas
-* [10 WordPress Plugins I’m Thankful For (And Cannot Live Without)](http://wpmu.org/10-wordpress-plugins-im-thankful-for-and-cannot-live-without/), Sarah Gooding
+* [10 WordPress Plugins I'm Thankful For (And Cannot Live Without)](http://wpmu.org/10-wordpress-plugins-im-thankful-for-and-cannot-live-without/), Sarah Gooding
 * [Subjective Results of Installing W3 Total Cache Plugin](http://www.codyhatch.com/administriva/subjective-results-of-installing-w3-total-cache-plugin/), Cody Hatch
 * [13 Plugins Your WordPress Site Might Need](http://www.jonbishop.com/2010/11/13-plugins-your-wordpress-site-might-need/), Jon Bishop
 * [Best WordPress Plugins that Marketers Use](http://www.nicoleonthenet.com/6390/best-wordpress-plugins-marketers-use/), Nicole Dean
@@ -441,6 +446,16 @@ It's quite difficult to recall all of the innovators that have shared their thou
 Please reach out to all of these people and support their projects if you're so inclined.
 
 == Changelog ==
+
+= 0.9.2.3 =
+* Added additional CloudFlare IP range
+* Fixed bug in html tidy encoding
+* Fixed bug with NetDNA / MaxCDN purging
+* Improved handling of markers in .htaccess files - easier upgrades
+* Improved cache busting logic
+* Improved numerous notifications and user interface behaviors
+* Improved AWS S3 and Cloudfront reliability
+* Improved reliability of minify auto mode
 
 = 0.9.2.2 =
 * Fixed bug with minify directives, e.g.: "File param is missing," causing minify caching to fail
