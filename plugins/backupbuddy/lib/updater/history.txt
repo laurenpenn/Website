@@ -1,0 +1,14 @@
+1.0.0 - 2010-09-30 - Dustin Bolton
+	Gave official version number.
+	Using wp_remote_get instead of curl in both updater.php & get.php.
+	Limited checking to once per 10 minutes unless check now link is clicked.
+	Hover 'Check for Updates Now' link for updater version number and plugin it is being loaded from.
+1.0.1 - 2010-10-12 - Dustin Bolton
+	Fixed license confirmation screen not showing when generating a new key.
+1.0.2 - 2010-10-18 - Dustin Bolton
+	Added support for new plugin class names.
+1.0.3 - 2010-06-03 - Dustin Bolton
+	Fixed changelog viewing not working.
+1.0.4 - 2010-07-01 - Dustin Bolton
+	Updated get.php: Changed to using array for passing post variables instead of string for improved compatibility.
+	Updated updater.php: Blocking caching of non-normal updater checks. Ex: not caching changelog responses.
