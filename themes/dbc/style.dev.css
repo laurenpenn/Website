@@ -328,6 +328,10 @@ img.alignleft, img.alignright { display: inline; }
 blockquote.alignleft, blockquote .alignright { width: 33%; }
 
 /* Columns */
+.columns {
+	margin: 0 0 20px;
+	overflow: hidden;
+}
 .col-1 {
 	float: left;
 	width: 48%;

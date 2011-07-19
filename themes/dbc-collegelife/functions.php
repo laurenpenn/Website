@@ -16,10 +16,11 @@ remove_filter( 'sidebars_widgets', 'dbc_disable_sidebars' );
 // Change the site title to work for a child theme
 add_filter( 'hybrid_site_title', 'dbc_collegelife_site_title', 12 );
 
+
 function dbc_collegelife_home_style() {
 	wp_deregister_style( 'front-page' );
-	if ( is_page_template( 'page-template-front-page.php' ) )
-		wp_enqueue_style( 'home', trailingslashit( CHILD_THEME_URI ) .'home.css' );
+	if ( is_page_template( 'page-template-home.php' ) )
+		wp_enqueue_style( 'home', trailingslashit( CHILD_THEME_URI ) .'library/css/home.css' );
 }
 
 /**

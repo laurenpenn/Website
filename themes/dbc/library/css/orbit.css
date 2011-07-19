@@ -21,6 +21,7 @@
 	
 	#slider-container.widescreen {
 		background: url('../images/slider-bg.png') right 172px no-repeat;
+		height: 368px;
 		width: 655px;		
 	}
 	/* IE doesn't support box shadow, so I guess we'll use an image. *sigh* */

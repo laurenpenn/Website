@@ -5,9 +5,6 @@
  * @since 0.1
  */
 
-/* Slider CSS */
-@import('orbit.css');
-
 #main {
 	overflow: visible;
 }
