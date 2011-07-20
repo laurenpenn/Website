@@ -37,7 +37,8 @@
 			<div class="wrap">
 
 				<div id="branding">
-					<?php dbc_child_site_title(); ?>
+					<?php dbc_serve_site_title(); ?>
+					<?php hybrid_site_description(); ?>
 				</div><!-- #branding -->
 
 				<?php get_sidebar( 'header' ); // Loads the sidebar-header.php template. ?>

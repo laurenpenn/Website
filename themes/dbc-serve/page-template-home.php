@@ -20,8 +20,29 @@ get_header(); ?>
 
 		<?php get_template_part( 'slider-home' ); // loads slider-home.php ?>
 	
-		<?php if ( hybrid_get_setting( 'latest-message' ) == 'true' ) get_template_part( 'latest-message' ); // loads latest-message.php ?>
+		<div class="columns">
+			
+			<div class="col-1">
+				
+				<a href="http://serve-intl.com/denton/"><img src="http://serve-intl.com/wp-content/themes/dbc-serve/images/serve-denton.png" height="200" width="432" alt="Serve Denton" /></a>
+				
+			</div>
 
+			<div class="col-2">
+				
+				<a href="http://serve-intl.com/international/"><img src="http://serve-intl.com/wp-content/themes/dbc-serve/images/serve-international.png" height="200" width="432" alt="Serve International" /></a>
+				
+			</div>
+						
+		</div>
+		
+		<p id="serve-domestic">Serve <strong>Domestic</strong> sends missionaries throughout the United States. <a href="">Learn more</a></p>	
+		
+		<div id="diamond-recent-posts" class="alignright">
+			<h2>Updates from the field</h2>
+			<?php echo do_shortcode('[diamond-post format="{avatar} <strong>{author}</strong><br />{title}<br /><small> {date}</small>" exclude="1" avatar_size="50" /]'); ?>
+		</div>
+		 
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 			<div id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
