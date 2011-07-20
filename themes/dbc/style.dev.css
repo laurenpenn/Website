@@ -663,6 +663,7 @@ img.wp-smiley {
 		/* WP PageNavi (plugin) */
 		.pagination {
 			background: #EFECE7;
+			clear: both;
 			font-size: 11px;
 			margin-bottom: 21px;
 			padding: 5px;
