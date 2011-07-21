@@ -56,7 +56,7 @@ function dbc_create_settings_meta_boxes() {
 	add_meta_box( "{$prefix}-style-settings-meta-box", __( 'Theme style settings', $prefix ), 'dbc_style_settings_meta_box', 'appearance_page_theme-settings', 'normal', 'high' );
 	add_meta_box( "{$prefix}-home-settings-meta-box", __( 'Home template settings', $prefix ), 'dbc_home_settings_meta_box', 'appearance_page_theme-settings', 'normal', 'high' );
 	add_meta_box( "{$prefix}-visitor-info-settings-meta-box", __( 'Visitor info settings', $prefix ), 'dbc_visitor_info_settings_meta_box', 'appearance_page_theme-settings', 'normal', 'high' );
-	
+	add_meta_box( "{$prefix}-sidebar-settings-meta-box", __( 'Sidebar settings', $prefix ), 'dbc_sidebar_settings_meta_box', 'appearance_page_theme-settings', 'normal', 'high' );
 	
 }
 
@@ -138,6 +138,27 @@ function dbc_home_settings_meta_box() {
 			<td>
 				<input id="<?php echo hybrid_settings_field_id( 'feature_num_posts' ); ?>" name="<?php echo hybrid_settings_field_name( 'feature_num_posts' ); ?>" value="<?php echo hybrid_get_setting( 'feature_num_posts' ); ?>" size="2" maxlength="2" />
 				<label for="<?php echo hybrid_settings_field_id( 'feature_num_posts' ); ?>"><?php _e('How many feature posts should be shown?','hybrid'); ?></label>
+			</td>
+		</tr>
+
+	</table><!-- .form-table --><?php
+}
+
+/**
+ * Creates a settings box that allows users to customize the sidebar
+ *
+ * @since 0.2
+ */
+function dbc_sidebar_settings_meta_box() {
+	$prefix = hybrid_get_textdomain(); ?>
+
+	<table class="form-table">
+	
+		<tr>
+			<th><label for="<?php echo hybrid_settings_field_id( 'sidebar' ); ?>"><?php _e( 'Sidebar:', $prefix ); ?></label></th>
+			<td>
+				<input id="<?php echo hybrid_settings_field_id( 'sidebar' ); ?>" name="<?php echo hybrid_settings_field_name( 'sidebar' ); ?>" type="checkbox" <?php if ( wp_htmledit_pre( stripslashes( hybrid_get_setting( 'sidebar' ) ) ) == 'true' ) { echo 'checked="checked"'; } ?> value="true"  />
+				<?php _e( 'Select this to show the DBC sidebar content (i.e. DBC Media and Facebook links).', $prefix ); ?>
 			</td>
 		</tr>
 
