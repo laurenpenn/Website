@@ -8,7 +8,8 @@
  *  
  */
 
-add_action('gform_post_submission_6', 'remove_form_entry', 10, 2);
+// '4' is the ID of the form to remove the entries from
+add_action('gform_post_submission_4', 'remove_form_entry', 10, 2);
 
 function remove_form_entry($entry, $form){
     global $wpdb;
