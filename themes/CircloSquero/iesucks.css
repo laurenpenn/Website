@@ -1,0 +1,33 @@
+#paginationCS a.PreviousButton {
+	padding: 0px 3px 0px 0px;
+}
+
+#paginationCS .NextButton {
+	padding: 0px 15px 0px 0px;
+}
+
+.prevdivpag {
+	padding-top:6px;
+}
+
+.nextdivpag {
+	padding-top:6px;
+}
+
+.formfloatl {
+	margin-right: 6px;
+
+}
+
+#topinfobar h2  {
+	position: relative;
+	top: 25px;
+}
+
+#topinfobar {
+	padding: 2px 40px 25px 40px;
+}
+
+#searchTB {
+	top: 25px;
+}
