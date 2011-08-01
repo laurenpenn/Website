@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'init', 'dbc_serve_register' );
+add_action( 'init', 'dbc_serve_connection_types', 100 );
 
 add_action( 'wp_head', 'dbc_serve_custom_background', 11 );
 
@@ -35,12 +35,7 @@ function dbc_serve_disable_sidebars( $sidebars_widgets ) {
 
 	
 function dbc_serve_load_scripts() {
-	
-	wp_enqueue_style( 'zoommap', trailingslashit( CHILD_THEME_URI ) .'maps/zoommap.css' );
-	
-	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'zoommap', trailingslashit( CHILD_THEME_URI ) .'maps/zoommap.js' );
-	wp_enqueue_script( 'setup', trailingslashit( CHILD_THEME_URI ) .'maps/setup.js' );
+
 	wp_enqueue_script( 'scripts', trailingslashit( CHILD_THEME_URI ) .'js/scripts.js' );
 }
 
@@ -79,38 +74,6 @@ function dbc_serve_custom_background() {
 	}
 }
 
-function dbc_serve_register() {
-
-	$missionary_labels = array(
-		'name' => _x('Missionaries', 'missionaries'),
-		'singular_name' => _x('Missionary', 'missionary'),
-		'add_new' => _x('Add Missionary', 'missionary'),
-		'add_new_item' => __('Add New Missionary'),
-		'edit_item' => __('Edit Missionary'),
-		'new_item' => __('New Missionary'),
-		'view_item' => __('View Missionary'),
-		'search_items' => __('Search Missionaries'),
-		'not_found' =>  __('No missionaries found'),
-		'not_found_in_trash' => __('No missionaries found in Trash'), 
-		'parent_item_colon' => '',
-		'menu_name' => 'Missionaries'
-	);
-	
-	register_post_type( 'missionary', 
-		array(
-			'labels' => $missionary_labels,
-			'menu_position' => 4,
-			'public' => true,
-			'query_var' => 'missionary',
-			'has_archive' => true,
-			'rewrite' => array( 'slug' => 'missionaries/missionary', 'with_front' => false ),
-			'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes' ),
-			'register_meta_box_cb' => null,
-			'has_archive' => true
-		) 
-	);	
-}
-
 
 function dbc_serve_edit_missionary_columns( $columns ) {
 
@@ -124,8 +87,6 @@ function dbc_serve_edit_missionary_columns( $columns ) {
 	return $columns;
 }
 
-
-
 function dbc_serve_manage_missionary_columns( $column, $post_id ) {
 	global $post;
 
@@ -133,9 +94,29 @@ function dbc_serve_manage_missionary_columns( $column, $post_id ) {
 
 		/* If displaying the 'location' column. */
 		case 'location' :
-
-			/* Get the post meta. */
-			$location = get_post_meta( $post_id, 'location', true );
+			
+			$my_query = new WP_Query( array(
+				'ignore_sticky_posts' => true,
+				'post_type' => 'missionary',
+				'each_connected' => array(
+					'post_type' => 'location',
+				)
+			) );
+						
+			while ( $my_query->have_posts() ) : $my_query->the_post();
+			
+				// Display connected pages
+				foreach ( $post->connected as $post ) {
+					setup_postdata( $post );
+			
+					$location = get_the_title();
+				}
+			
+				// Prevent weirdness
+				wp_reset_postdata();
+			
+			
+			endwhile;
 
 			/* If no location is found, output a default message. */
 			if ( empty( $location ) )
@@ -188,6 +169,17 @@ function bc_serve_sort_missionaries( $vars ) {
 	}
 
 	return $vars;
+}
+
+function dbc_serve_connection_types() {
+	if ( !function_exists( 'p2p_register_connection_type' ) )
+		return;
+
+	p2p_register_connection_type( array( 
+		'from' => 'missionary',
+		'to' => 'location',
+		'reciprocal' => true
+	) );
 }
 
 ?>

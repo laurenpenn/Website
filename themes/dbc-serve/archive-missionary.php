@@ -19,7 +19,7 @@ get_header(); // Loads the header.php template. ?>
 		<div class="hfeed">
 
 			<?php get_template_part( 'loop-meta' ); // Loads the loop-meta.php template. ?>
-	
+
 			<ul id="sort-bar">
 
 				<li class="sort last">

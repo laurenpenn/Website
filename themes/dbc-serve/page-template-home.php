@@ -17,23 +17,27 @@ get_header(); ?>
 	<div id="content">
 
 		<?php do_atomic( 'open_content' ); // prototype_open_content ?>
-
-		<?php get_template_part( 'slider-home' ); // loads slider-home.php ?>
 	
-		<div class="columns">
+		<div class="columns columns-3">
 			
-			<div class="col-1">
+			<div class="column col-1">
 				
-				<a href="http://serve-intl.com/denton/"><img src="http://serve-intl.com/wp-content/themes/dbc-serve/images/serve-denton.png" height="200" width="432" alt="Serve Denton" /></a>
+				<a href="http://serve-intl.com/denton/"><img src="http://serve-intl.com/wp-content/themes/dbc-serve/images/serve-denton.png" height="200" width="297" alt="Serve Denton" /></a>
 				
 			</div>
 
-			<div class="col-2">
+			<div class="column col-2">
 				
-				<a href="http://serve-intl.com/international/"><img src="http://serve-intl.com/wp-content/themes/dbc-serve/images/serve-international.png" height="200" width="432" alt="Serve International" /></a>
+				<a href="http://serve-intl.com/international/"><img src="http://serve-intl.com/wp-content/themes/dbc-serve/images/serve-international.png" height="200" width="297" alt="Serve International" /></a>
 				
 			</div>
-						
+
+			<div class="column column-last col-3">
+				
+				<?php get_template_part( 'slider-home' ); // loads slider-home.php ?>
+				
+			</div>
+									
 		</div>
 		
 		<p id="serve-domestic">Serve <strong>Domestic</strong> sends missionaries throughout the United States. <a href="">Learn more</a></p>	

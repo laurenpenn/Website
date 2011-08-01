@@ -15,41 +15,78 @@ get_header(); // Loads the header.php template. ?>
 	<div id="content">
 
 		<?php do_atomic( 'open_content' ); // dbc_open_content ?>
-
+<!--
 		<ul id="sort-bar">
-		    <li class="sort last">
-		      <dl class="clearfix">
-		        <dt>
-		          Sort by:
-		        </dt>
-		        <dd>
-		          <div class="drop-down-menu">
-		            <div>Country</div>
-		            <ul>
-		                <li>
-		                  <a id="sort-by-price" class="" href="?meta_key=price&orderby=meta_value_num&order=ASC">Price: Low to High</a>
-		                </li>
-		                <li>
-		                  <a id="sort-by-price" class="" href="?meta_key=price&orderby=meta_value_num&order=DESC">Price: High to Low</a>
-		                </li>
-		                <li>
-		                  <a id="sort-by-name" class="" href="?orderby=title&order=ASC">Name</a>
-		                </li>
-		            </ul>
-		          </div>
-		        </dd>
-		      </dl>
-		    </li>
-		</ul>
+
+				<li class="sort last">
+					<dl class="clearfix">
+						<dt>
+							Sort by:
+						</dt>
+						<dd>
+							<div id="sort-missionaries" class="drop-down-menu">
+								<div>Name A-Z</div>
+								<ul>
+									<li>
+										<a id="sort-by-name" class="" href="?orderby=title&order=ASC">Name A-Z</a>
+									</li>
+									<li>
+										<a id="sort-by-name" class="" href="?orderby=title&order=DSC">Name Z-A</a>
+									</li>
+									<li>
+										<a id="sort-by-price" class="" href="?meta_key=location&orderby=meta_value&order=ASC">Region A-Z</a>
+									</li>
+									<li>
+										<a id="sort-by-price" class="" href="?meta_key=location&orderby=meta_value&order=DESC">Region Z-A</a>
+									</li>		
+								</ul>
+			          		</div>
+						</dd>
+					</dl>
+				</li>
+
+				<li class="sort last">
+					<dl class="clearfix">
+						<dt>
+							Region:
+						</dt>
+						<dd>
+							<div id="select-country" class="drop-down-menu">
+								<div>All</div>
+								<ul>
+									<li>
+										<a id="sort-by-name" class="" href="?meta_key=location&meta_value=Argentina">Argentina</a>
+									</li>
+									<li>
+										<a id="sort-by-name" class="" href="?meta_key=location&meta_value=Kenya">Kenya</a>
+									</li>		
+								</ul>
+			          		</div>
+						</dd>
+					</dl>
+				</li>
+			    
+				<li class="sort last">
+					<dl class="clearfix">
+						<dt>
+							Show affiliates:
+						</dt>
+						<dd>
+							<input type="checkbox" />
+						</dd>
+					</dl>
+				</li>
+		</ul>-->
 
 		<div class="hfeed">
 
 			<?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
-			<?php $missionaries = new WP_Query( array( 'orderby' => 'title', 'order' => 'DSC', 'paged' => $paged, 'posts_per_page'=> 18, 'post_type'=> 'missionary' )); ?>
+			<?php //$missionaries = new WP_Query( array( 'orderby' => 'title', 'order' => 'DSC', 'paged' => $paged, 'posts_per_page'=> 18, 'post_type'=> 'missionary' )); ?>
+			<?php global $query_string; query_posts( $querystring. '&posts_per_page=18&post_type=missionary&paged='. $paged ); ?>
 		
-			<?php if ( $missionaries->have_posts() ) : ?>
+			<?php if ( have_posts() ) : ?>
 
-				<?php while ( $missionaries->have_posts() ) : $missionaries->the_post(); ?>
+				<?php while ( have_posts() ) : the_post(); ?>
 
 					<?php do_atomic( 'before_entry' ); // dbc_before_entry ?>
 
@@ -57,12 +94,9 @@ get_header(); // Loads the header.php template. ?>
 
 						<?php do_atomic( 'open_entry' ); // dbc_open_entry ?>
 
-						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+						<h2><a href="<?php the_permalink(); ?>"><?php the_title_attribute(); ?></a></h2>
 
-						<p><?php get_the_image( array( 'default_image' => 'http://serve-intl.com/wp-content/themes/dbc-serve/images/noavatar.png', 'image_class' => 'avatar')); ?><br />
-						<small><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" ><?php the_title(); ?></a> | <a href="<?php echo get_post_meta($post->ID, 'blog-address', true); ?>">View blog</a></small></p>
-
-						<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">[entry-edit-link]</div>' ); ?>
+						<p><?php get_the_image( array( 'default_image' => 'http://serve-intl.com/wp-content/themes/dbc-serve/images/noavatar.png', 'image_class' => 'avatar')); ?></p>
 
 						<?php do_atomic( 'close_entry' ); // dbc_close_entry ?>
 

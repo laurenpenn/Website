@@ -149,8 +149,11 @@ a, #content a {
 	border-bottom: 1px solid #ccc;
 	color: #fff;
 	display: block;
-	padding: 5px 20px;	
+	padding: 5px 20px 5px 36px;	
 	text-shadow: none;
+}
+.widget-dbc-pages #sidebar-menu.tree li {
+	padding-left: 0;
 }
 .widget-dbc-pages #sidebar-menu.tree li li {
 	background: none;
@@ -171,7 +174,33 @@ a, #content a {
 	background: rgba(51,51,51,.8);
 }
 
+#sidebar-primary img {
+	background: #f1f1f1;
+	border: 3px solid #fff;
+	height: auto;
+	max-width: 185px;
+	padding: 2px;
+	width: auto;
+}
 
+#sidebar-primary .missionary {
+	text-align: center;
+}
+#sidebar-primary .missionary .avatar {
+	width: 100px;
+}
+
+#sidebar-primary #team,
+#sidebar-primary #locations {
+	background: #f0f0f0;
+	border-top: 1px solid #ccc;
+	margin: 0 -20px;
+	padding: 20px;
+}
+
+#sidebar-primary .button {
+	width: 90%;
+}
 /**
 * Content
 ************************************************/
@@ -327,8 +356,18 @@ a.button:hover, #content a.button:hover {
 }
 
 
-
-
+.page-template-intl-locations .location {
+	float: left;
+	width: 33%;
+}
+.page-template-intl-locations .location .entry-title {
+	margin-bottom: 5px;
+}
+.page-template-intl-locations .location img {
+	height: auto;
+	max-width: 185px;
+	width: auto;	
+}
 
 
 
@@ -392,7 +431,7 @@ a.button:hover, #content a.button:hover {
 	width: 50px;
 }
 
-.archive.archive-missionary .missionary {
+.page-template-missionaries .missionary {
 	background: none !important;
 	border-bottom: none;
 	border-left: none;
@@ -402,7 +441,7 @@ a.button:hover, #content a.button:hover {
 	text-align: center;
 	width: 33%;
 }
-.archive.archive-missionary .missionary .thumbnail {
+.page-template-missionaries .missionary .thumbnail {
 	border: 1px solid #fff;
 	float: none;
 	margin: 0;
@@ -414,3 +453,24 @@ a.button:hover, #content a.button:hover {
 	padding: 5px;
 }
 
+/**
+* Content
+************************************************/
+#slider-container {
+	height: 222px !important;
+	width: 297px !important;	
+}
+.orbit-bullets {
+	margin-left: -25px !important;
+}
+	
+#slider .post {
+	width: 297px !important;
+	height: 200px !important;
+	}
+#slider .post img {
+	height: 200px !important;
+	max-width: 297px !important;
+	max-height: 200px !important;
+	width: 297px !important;
+	}

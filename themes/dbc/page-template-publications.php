@@ -143,7 +143,7 @@ get_header(); // Loads the header.php template. ?>
 					
 						<li id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
 					
-							<a href="<?php echo $link; ?>" class="date"><?php the_time('F j, Y'); ?></a>
+							<a href="<?php echo $link; ?>" class="date"><?php the_title_attribute(); ?></a>
 					
 						</li><!-- .hentry -->
 					
