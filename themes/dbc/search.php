@@ -1,6 +1,6 @@
 <?php
 /**
- * Search Template
+ * Template Name: Search
  *
  * The search template is loaded when a visitor uses the search form to search for something
  * on the site.
@@ -18,41 +18,55 @@ get_header(); // Loads the header.php template. ?>
 		<?php do_atomic( 'open_content' ); // prototype_open_content ?>
  
 		<div class="hfeed">
-
+			
 			<?php get_template_part( 'loop-meta' ); // Loads the loop-meta.php template. ?>
-
-			<?php if ( have_posts() ) : ?>
-
-				<?php while ( have_posts() ) : the_post(); ?>
-
-					<?php do_atomic( 'before_entry' ); // prototype_before_entry ?>
-
-					<div id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
-
-						<?php do_atomic( 'open_entry' ); // prototype_open_entry ?>
-
-						<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'thumbnail' ) ); ?>
-
-						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
-
-						<div class="entry-summary">
-							<?php the_excerpt(); ?>
-							<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
-						</div><!-- .entry-summary -->
-
-						<?php do_atomic( 'close_entry' ); // prototype_close_entry ?>
-
-					</div><!-- .hentry -->
-
-					<?php do_atomic( 'after_entry' ); // prototype_after_entry ?>
-
-				<?php endwhile; ?>
-
-			<?php else : ?>
-
-				<?php get_template_part( 'loop-error' ); // Loads the loop-error.php template. ?>
-
-			<?php endif; ?>
+			
+			<div id="cse" style="width: 100%;">Loading</div>
+			<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+			<script type="text/javascript"> 
+			  function parseQueryFromUrl () {
+			    var queryParamName = "s";
+			    var search = window.location.search.substr(1);
+			    var parts = search.split('&');
+			    for (var i = 0; i < parts.length; i++) {
+			      var keyvaluepair = parts[i].split('=');
+			      if (decodeURIComponent(keyvaluepair[0]) == queryParamName) {
+			        return decodeURIComponent(keyvaluepair[1].replace(/\+/g, ' '));
+			      }
+			    }
+			    return '';
+			  }
+			  google.load('search', '1', {language : 'en'});
+			  var _gaq = _gaq || [];
+			  _gaq.push(["_setAccount", "UA-10285065-2"]);
+			  function _trackQuery(control, searcher, query) {
+			    var gaQueryParamName = "s";
+			    var loc = document.location;
+			    var url = [
+			      loc.pathname,
+			      loc.search,
+			      loc.search ? '&' : '?',
+			      gaQueryParamName == '' ? 'q' : encodeURIComponent(gaQueryParamName),
+			      '=',
+			      encodeURIComponent(query)
+			    ].join('');
+			    _gaq.push(["_trackPageview", url]);
+			  }
+			  google.setOnLoadCallback(function() {
+			    var customSearchControl = new google.search.CustomSearchControl('005661340557523912723:kolwlhunn_0');
+			    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+			    customSearchControl.setSearchStartingCallback(null, _trackQuery);
+			    var options = new google.search.DrawOptions();
+			    options.setAutoComplete(true);
+			    customSearchControl.setLinkTarget(google.search.Search.LINK_TARGET_SELF);
+			    customSearchControl.draw('cse', options);
+			    var queryFromUrl = parseQueryFromUrl();
+			    if (queryFromUrl) {
+			      customSearchControl.execute(queryFromUrl);
+			    }
+			  }, true);
+			</script>
+			<link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" /> 
 
 		</div><!-- .hfeed -->
 

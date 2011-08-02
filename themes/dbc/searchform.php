@@ -10,11 +10,19 @@
 ?>
 			<div class="search">
 
-				<form method="get" class="search-form" action="<?php echo trailingslashit( home_url() ); ?>">
-				<div>
-					<input class="search-text" type="text" name="s" value="<?php if ( is_search() ) echo esc_attr( get_search_query() ); else esc_attr_e( 'Search this site...', hybrid_get_textdomain() ); ?>" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" />
-					<input class="search-submit button" name="submit" type="submit" value="<?php esc_attr_e( 'Search', hybrid_get_textdomain() ); ?>" />
-				</div>
-				</form><!-- .search-form -->
+<div id="cse-search-form" style="width: 100%;">Loading</div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript"> 
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('005661340557523912723:kolwlhunn_0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    options.enableSearchboxOnly("http://dentonbible.org/", "s");    
+    customSearchControl.draw('cse-search-form', options);
+  }, true);
+</script>
+<link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" />
 
 			</div><!-- .search -->	

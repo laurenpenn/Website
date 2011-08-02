@@ -52,7 +52,7 @@ function dbc_theme_setup() {
 	add_action( 'template_redirect', 'dbc_one_column' );
 	add_action( 'widgets_init', 'dbc_sidebars' );	
 	add_action( 'widgets_init', 'dbc_register_widgets' );
-	add_action( 'wp_head', 'dbc_equal_columns' );
+	add_action( 'wp_footer', 'dbc_equal_columns' );
 	add_action( "{$prefix}_before_html", 'dbc_ie6_detection', 11 );
 	add_action( "{$prefix}_header", 'dbc_get_sidebar_header', 11 );
 	add_action( "{$prefix}_open_body", 'dbc_facebook_sdk', 12 );
@@ -229,8 +229,8 @@ function dbc_disable_sidebars( $sidebars_widgets ) {
 		$sidebars_widgets['secondary'] = false;
 	}
 	
-	if (  ( is_page_template( 'page-template-private.php' ) && !is_user_logged_in() ) ) $sidebars_widgets['primary'] = false;
-	
+	if (  ( is_page_template( 'page-template-private.php' ) && !is_user_logged_in() ) || is_search() ) $sidebars_widgets['primary'] = false;
+		
 	return $sidebars_widgets;
 }
 
@@ -246,6 +246,10 @@ function dbc_one_column() {
 
 	elseif ( is_attachment() )
 		add_filter( 'get_post_layout', 'dbc_post_layout_one_column' );
+
+	elseif ( is_search() ) 
+		add_filter( 'get_post_layout', 'dbc_post_layout_one_column' );
+	
 }
 
 /**

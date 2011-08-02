@@ -141,7 +141,7 @@ a img { border: none }
 	#content .entry-title a { text-decoration: none; }
 
 /* Text elements */
-strong { font-weight: bold; }
+strong, b { font-weight: bold; }
 strong strong { font-weight: normal; }
 em, cite { font-style: italic; }
 em em, cite cite { font-style: normal; }
@@ -234,21 +234,21 @@ code { font: .9em Monaco, monospace, Courier, "Courier New"; }
 pre code { font-size: 1em; }
 
 /* Tables */
-table {
+.entry-content table {
     border-collapse: collapse;
     border-spacing: 0;
     margin-bottom: 18px;
 	width: 100%;
 }
 
-	tr {
+	.entry-content tr {
 		border-bottom: 1px solid #ccc;
 		border-top: 1px solid #ccc;
 	}
-	th {
+	.entry-content th {
 		background: #f9f9f9;
 	}
-	th, td {
+	.entry-content th, .entry-content td {
 		border-left: 1px solid #ccc;
 		border-right: 1px solid #ccc;
 		padding: 3px 5px;
@@ -460,20 +460,22 @@ img.wp-smiley {
 				float: right;
 				width: 206px;
 			}
-			#search-form {
+			#search-form, #cse-search-form {
 				background: url('library/images/sprite.png') -317px -19px no-repeat;
 				height: 34px;
 				padding: 0;
 				width: 206px;
 			}
-				#search-text {
-					background: none;
+				#search-text, #cse-search-form input.gsc-input {
+					background: none !important;
 					border: none;
 					color: #999795;
 					font: 12px/12px Arial, Helvetica, sans-serif;
-					padding: 6px 10px;
+					margin: 3px 0 0 10px;
+					padding: 0;
+					width: 145px;
 				}
-				#search-submit {
+				#search-submit, #cse-search-form .gsc-search-button {
 					background: none;
 					border: none;
 					cursor: pointer;
@@ -483,6 +485,13 @@ img.wp-smiley {
 					padding: 0;
 					text-indent: -9999px;
 					width: 30px;
+				}
+				#cse-search-form .gsc-clear-button {
+					display: none;
+				}
+				.gsc-completion-container { cursor: pointer; }
+				@-moz-document url-prefix() {
+					.gsc-completion-container { cursor: pointer;  top:110px !important; z-index: 99999; }
 				}
 						
 /**
