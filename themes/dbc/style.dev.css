@@ -470,7 +470,8 @@ img.wp-smiley {
 					background: none !important;
 					border: none;
 					color: #999795;
-					font: 12px/12px Arial, Helvetica, sans-serif;
+					font: 12px/24px Arial, Helvetica, sans-serif;
+					height: 24px;
 					margin: 3px 0 0 10px;
 					padding: 0;
 					width: 145px;
@@ -479,6 +480,7 @@ img.wp-smiley {
 					background: none;
 					border: none;
 					cursor: pointer;
+					font-size: 0;
 					float: right;
 					height: 20px;
 					margin: 5px 10px 0 0;
