@@ -82,7 +82,7 @@ function dbc_load_scripts() {
 		wp_enqueue_style( 'orbit-css', trailingslashit( THEME_URI ) . 'library/css/orbit.css', false, '0.2.1', 'screen' );
 	}
 
-	if ( is_tax( 'note' ) || get_post_type() == 'note' )
+	if ( is_tax( 'note' ) || is_singular( 'note' ) || is_archive( 'note' ) )
 		wp_enqueue_style( 'note', trailingslashit( THEME_URI ) . 'library/css/note.css', false, '0.2.1', 'screen' );
 }
 
