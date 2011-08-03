@@ -32,23 +32,23 @@ get_header(); // Loads the header.php template. ?>
 								<div>Name A-Z</div>
 								<ul>
 									<li>
-										<a id="sort-by-name" class="" href="?orderby=title&order=ASC">Name A-Z</a>
+										<a id="sort-by-name-up" class="" href="?orderby=title&order=ASC">Name A-Z</a>
 									</li>
 									<li>
-										<a id="sort-by-name" class="" href="?orderby=title&order=DSC">Name Z-A</a>
+										<a id="sort-by-name-down" class="" href="?orderby=title&order=DSC">Name Z-A</a>
 									</li>
 									<li>
-										<a id="sort-by-price" class="" href="?meta_key=location&orderby=meta_value&order=ASC">Region A-Z</a>
+										<a id="sort-by-region-up" class="" href="?meta_key=location&orderby=meta_value&order=ASC">Region A-Z</a>
 									</li>
 									<li>
-										<a id="sort-by-price" class="" href="?meta_key=location&orderby=meta_value&order=DESC">Region Z-A</a>
+										<a id="sort-by-region-down" class="" href="?meta_key=location&orderby=meta_value&order=DESC">Region Z-A</a>
 									</li>		
 								</ul>
 			          		</div>
 						</dd>
 					</dl>
 				</li>
-
+<!--
 				<li class="sort last">
 					<dl class="clearfix">
 						<dt>
@@ -69,7 +69,7 @@ get_header(); // Loads the header.php template. ?>
 						</dd>
 					</dl>
 				</li>
-			    
+-->			    
 				<li class="sort last">
 					<dl class="clearfix">
 						<dt>

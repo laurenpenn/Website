@@ -9,6 +9,9 @@
  * @subpackage Template
  */
 
+$location = get_post_meta($post->ID, 'location', true);
+ 
+ 
 get_header(); // Loads the header.php template. ?>
 
 	<?php do_atomic( 'before_content' ); // dbc_before_content ?>
@@ -32,8 +35,12 @@ get_header(); // Loads the header.php template. ?>
 						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 
 						<div class="entry-content">
+							
 							<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', hybrid_get_textdomain() ) ); ?>
 							<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
+
+							<iframe width="660" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?q=<?php echo $location ?>&amp;output=embed"></iframe>			
+
 						</div><!-- .entry-content -->
 
 						<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms taxonomy="post_tag" before="| Tagged "]', hybrid_get_textdomain() ) . '</div>' ); ?>
