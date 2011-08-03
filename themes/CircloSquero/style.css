@@ -131,8 +131,10 @@ a.mediumbutton:hover, a.smallbutton:hover {
 }
 
 #logo {
-	width: 250px;
 	float: left;
+	margin-left: -40px;
+	margin-top: -25px;
+	width: 250px;
 }
 
 #navigation {
