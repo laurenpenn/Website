@@ -23,8 +23,8 @@
 			</div><!-- .loop-description -->
 
 		</div><!-- .loop-meta -->
-
-	<?php elseif ( is_multitax() ) : ?>
+		
+	<?php elseif ( function_exists( 'is_multitax' ) && is_multitax()  ) : ?>
 
 		<div class="loop-meta">
 
@@ -35,7 +35,7 @@
 			</div><!-- .loop-description -->
 
 		</div><!-- .loop-meta -->
-
+		
 	<?php elseif ( is_category() ) : ?>
 
 		<div class="loop-meta">
