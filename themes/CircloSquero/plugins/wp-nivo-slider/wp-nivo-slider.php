@@ -223,7 +223,7 @@ jQuery(window).load(function() {
 	$n_slices = get_option('wpns_slices');
 	$pages = explode (",", get_option('wpns_pages'));
 ?>
-<?php query_posts( 'cat='.$category.'&posts_per_page=$n_slices' ); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
+<?php query_posts( 'post_type=promo&posts_per_page=$n_slices' ); if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 	<?php if(has_post_thumbnail()) : ?>
 	<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> 
 		<?php the_post_thumbnail(); ?>
@@ -262,28 +262,6 @@ function wpns_menu_function() {
 <form method="post" action="options.php">
     <?php settings_fields( 'wpns-settings-group' ); ?>
     <table class="form-table">
-      
-        <tr valign="top">
-        <th scope="row">Category</th>
-        <td>
-        <select name="wpns_category" id="wpns_category"> 
-			 <option value="">Select a Category</option> 
- 			<?php 
- 				$category = get_option('wpns_category');
-  				$categories=  get_categories(); 
-  				foreach ($categories as $cat) {
-  					$option = '<option value="'.$cat->term_id.'"';
-  					if ($category == $cat->term_id) $option .= ' selected="selected">';
-  					else { $option .= '>'; }
-					$option .= $cat->cat_name;
-					$option .= ' ('.$cat->category_count.')';
-					$option .= '</option>';
-					echo $option;
-  				}
- 			?>
-		</select>
-
-        </tr>
     	
     	<tr valign="top">
         <th scope="row">Number of slices</th>

@@ -38,30 +38,11 @@
 	    </div>
 	</div>
 	<div class="shadowBg">
-	<?php if (is_front_page()) { ?>    
+	<?php if (is_home()) { ?>    
 	    <div id="sliderMy">
 		<div id="<?php if (get_option_tree( 'homepage_slider' ) == 'Piecemaker') { echo 'sliderMyPiece';} else {echo 'sliderMy';}; ?>">
-		
-		<?php
-			if ( get_option_tree( 'homepage_slider' ) == 'Nivo Slider' ) {
-				$category = get_option('wpns_category');
-				$n_slices = get_option('wpns_slices');
-				$pages = explode (",", get_option('wpns_pages'));
-			?>
-			
-			<?php query_posts( array( 'post_type' => 'promo',  'posts_per_page' => $n_slices ) ); ?>
-				
-			<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
-			
-				<?php if(has_post_thumbnail()) : ?>
-					<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail(); ?></a>
-				<?php endif ?>
-				
-			<?php endwhile; endif;?>
-			
-			<?php wp_reset_query();?>
-			<?php if ( function_exists('show_nivo_slider_js') ) { show_nivo_slider_js(); } ?>
-		    
+		<?php if (get_option_tree( 'homepage_slider' ) == 'Nivo Slider') { ?>
+		    <?php if ( function_exists('show_nivo_slider_js') ) { show_nivo_slider_js(); } ?>
 		<?php } elseif (get_option_tree( 'homepage_slider' ) == 'Piecemaker') { ?>
 		    <?php if (function_exists(display_the_piecemaker())) display_the_piecemaker(); ?>
 		<?php } else { ?>
