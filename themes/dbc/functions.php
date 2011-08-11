@@ -700,4 +700,23 @@ function dbc_get_post_pdf() {
 	return false;
 }
 
+/**
+ * Uses a custom field to populate the title of a publication if one exists.
+ * The function falls back to using the post title.
+ *
+ * @since 0.2.0
+ */
+function dbc_publication_title() {
+	global $post;
+
+	$key = get_post_meta($post->ID, 'public-title', true);
+	
+	if ( !empty( $key ) ) {
+		echo $key;
+	} else {
+		echo get_the_title();
+	}
+
+}
+
 ?>

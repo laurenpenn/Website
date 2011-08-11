@@ -142,8 +142,8 @@ get_header(); // Loads the header.php template. ?>
 						?>
 					
 						<li id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
-					
-							<a href="<?php echo $link; ?>" class="date"><?php the_title_attribute(); ?></a>
+							
+							<a href="<?php echo $link; ?>" class="date"><?php dbc_publication_title(); ?></a>
 					
 						</li><!-- .hentry -->
 					
