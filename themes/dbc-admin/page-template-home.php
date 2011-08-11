@@ -17,15 +17,17 @@ get_header(); ?>
 	<div id="content">
 
 		<?php do_atomic( 'open_content' ); // prototype_open_content ?>
+		
+		<div class="columns columns-2">
 
-		<div class="col-1">
+		<div class="column">
 			
 			<ul class="links-list">		
 				<?php wp_list_bookmarks( array( 'category' => 2, 'show_description' => true )) ?>
 			</ul><!-- links-list -->
 		</div><!-- .col-1 -->
 
-		<div class="col-2">
+		<div class="column column-last">
 			
 			<h2>How To...</h2>
 			
@@ -70,6 +72,8 @@ get_header(); ?>
 			</ul><!-- links-list -->
 			
 		</div><!-- .col-2 -->
+		
+		</div><!-- .columns -->
 		
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
