@@ -52,7 +52,7 @@ a.mediumbutton  {
 	display: block;
 }
 
-#rm_button {
+.rm_button {
 	font: 20px 'LuxiSansBold', sans-serif;
 	color: #ffffff;
 	text-decoration: none;
@@ -64,6 +64,9 @@ a.mediumbutton  {
 	display: table;
 	float: right;
 	text-shadow: #262626 0px -1px 1px;
+}
+.rm_button.subscribe {
+	background: url(images/orange/big_buttons.jpg) repeat-x top;
 }
 
 .bigbutton {
@@ -87,14 +90,14 @@ a.mediumbutton  {
 }
 
 
-#rm_button div {
+.rm_button div {
 	background: url(images/white_blue/big_button_arrow.png) no-repeat right top;
 	padding: 0px 35px 0px 0;
 	height: 27px;
 	line-height: 24px;
 }
 
-#rm_button_hover {
+.rm_button_hover {
 	width: 189px;
 	height: 45px;
 	position: relative;
@@ -105,7 +108,7 @@ a.mediumbutton  {
 }
 
 
-#rm_shadow {
+.rm_shadow {
 	width: 187px;
 	height: 17px;
 	background: url(images/white_blue/r_m_shadow.png) no-repeat top;

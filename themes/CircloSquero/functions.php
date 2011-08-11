@@ -19,6 +19,7 @@ function dbc_cl_load_scripts() {
 	
 	// Queue scripts
 	wp_enqueue_script( 'jquery' );
+	
 	wp_enqueue_script( 'superfish',			trailingslashit( CHILD_THEME_URI ) .'scripts/superfish.js' );
 	wp_enqueue_script( 'twitter-rss-with-rt',	trailingslashit( CHILD_THEME_URI ) .'scripts/twitter-rss-with-rt.js' );
 	wp_enqueue_script( 'featuredworks',		trailingslashit( CHILD_THEME_URI ) .'scripts/featuredworks.js' );
@@ -27,6 +28,9 @@ function dbc_cl_load_scripts() {
 	wp_enqueue_script( 'backgroundPosition',	trailingslashit( CHILD_THEME_URI ) .'scripts/jquery.backgroundPosition.js' );
 	wp_enqueue_script( 'color',				trailingslashit( CHILD_THEME_URI ) .'scripts/jquery.color.js' );
 	wp_enqueue_script( 'prettyPhoto',			trailingslashit( CHILD_THEME_URI ) .'scripts/jquery.prettyPhoto.js' );
+	
+	if ( is_home() )
+		wp_enqueue_script( 'orbit',				trailingslashit( CHILD_THEME_URI ) .'scripts/jquery.orbit.min.js', array( 'jquery' ), true );
 	
 	// Queue style scripts
 	if (get_option_tree( 'cs_style' ) == 'Gray-Blue')
@@ -140,12 +144,11 @@ function dbc_cl_load_styles() {
 		wp_enqueue_style( 'Image 9 Dark', trailingslashit( CHILD_THEME_URI ) .'backgrounds/bg19.css' );
 	
 	// Queue plugin styles
-	if ( function_exists('show_nivo_slider_css') )
-		show_nivo_slider_css();	
-	wp_enqueue_style( 'nivo-slider', trailingslashit( CHILD_THEME_URI ) .'nivo_slider/nivo-slider.css' );
-	wp_enqueue_style( 'nivo-inline', trailingslashit( CHILD_THEME_URI ) .'nivo_slider/nivo-inline.css' );
 	wp_enqueue_style( 'pretty-photo', trailingslashit( CHILD_THEME_URI ) .'scripts/prettyPhoto.css' );
-	
+
+	//if ( is_home() )
+		wp_enqueue_style( 'orbit', trailingslashit( CHILD_THEME_URI ) .'scripts/orbit.css' );
+		
 	// Queue IE7 styles
 	wp_enqueue_style( 'iesucks', trailingslashit( CHILD_THEME_URI ) .'scripts/iesucks.css' );	
 	$wp_styles->add_data( 'iesucks', 'conditional', 'lte IE 7' );
@@ -407,7 +410,7 @@ function my_render_css3_pie() {
 ?>   
 <!--[if lte IE 8]>
 <style type="text/css" media="screen">
-   .roundbox, .commentWrap, #authorBoxx, .formm input, .comment-form-comment textarea, #rm_button, #tw_button, a.mediumbutton, .bigbutton,
+   .roundbox, .commentWrap, #authorBoxx, .formm input, .comment-form-comment textarea, .rm_button, #tw_button, a.mediumbutton, .bigbutton,
    .smallbutton, #FooterWrap input, #FooterWrap textarea, .wpcf7-submit, .CStagcloud a, #twitter_update_listCS li {
       behavior: url('<?php echo get_bloginfo('template_url'); ?>/PIE.php');
       zoom: 1;

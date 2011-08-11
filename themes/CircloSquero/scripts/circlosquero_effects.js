@@ -8,7 +8,7 @@ jQuery(document).ready(function(){
                 jQuery('a', this).stop().animate({color: '#ffffff'},{queue:false,duration:120});
 	        });
     //readmore button effect
-            jQuery('#rm_button, .bigbutton').hover(function(){
+            jQuery('.rm_button, .bigbutton').hover(function(){
 	        jQuery(this).stop().animate({backgroundPosition: '0px -45px'},{queue:false,duration:120});            
 	        }, function() {
 	        jQuery(this).stop().animate({backgroundPosition: '0px 0px'},{queue:false,duration:120});

@@ -38,16 +38,4 @@
 	    </div>
 	</div>
 	<div class="shadowBg">
-	<?php if (is_home()) { ?>    
-	    <div id="sliderMy">
-		<div id="<?php if (get_option_tree( 'homepage_slider' ) == 'Piecemaker') { echo 'sliderMyPiece';} else {echo 'sliderMy';}; ?>">
-		<?php if (get_option_tree( 'homepage_slider' ) == 'Nivo Slider') { ?>
-		    <?php if ( function_exists('show_nivo_slider_js') ) { show_nivo_slider_js(); } ?>
-		<?php } elseif (get_option_tree( 'homepage_slider' ) == 'Piecemaker') { ?>
-		    <?php if (function_exists(display_the_piecemaker())) display_the_piecemaker(); ?>
-		<?php } else { ?>
-		<img src="<?php echo get_option_tree( 'homepage_image' ); ?>" alt="<?php bloginfo('name'); ?>" />
-		<?php }; ?>
-		</div>
-	    </div>
-	<?php ;} ?>
+		<?php get_template_part( 'slider' ); ?>
