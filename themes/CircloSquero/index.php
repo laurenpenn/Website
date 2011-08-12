@@ -3,15 +3,15 @@
     <?php if ((is_home() ) && (get_option_tree( 'homepage_caption' ) || (get_option_tree( 'homepage_button' ) ) ) ) { ?>    
 	<div id="topMessage">
 		<div id="messageWrap">
-			<div class="columns columns-2">
+			<div class="columns columns-2" style="margin: 0;">
 				<div class="column">
 					<p><?php echo get_option_tree( 'homepage_caption' ); ?> </p>
 				</div>
 	 			<div class="column column-last alignright">
-					<a href=""><img src="<?php bloginfo( 'siteurl' ); ?>/wp-content/themes/CircloSquero/images/vimeo.png" alt="CollegeLife's Viemo page" /></a>
+					<a href="http://www.facebook.com/pages/CollegeLife/104722509624498"><img src="<?php bloginfo( 'siteurl' ); ?>/wp-content/themes/CircloSquero/images/facebook.png" alt="CollegeLife's Facebook page" /></a>
 					<a href="http://twitter.com/collegelife_dbc"><img src="<?php bloginfo( 'siteurl' ); ?>/wp-content/themes/CircloSquero/images/twit.png" alt="CollegeLife's Tiwtter page" /></a>
-					<a href=""><img src="<?php bloginfo( 'siteurl' ); ?>/wp-content/themes/CircloSquero/images/facebook.png" alt="CollegeLife's Facebook page" /></a>
-					<a href=""><img src="<?php bloginfo( 'siteurl' ); ?>/wp-content/themes/CircloSquero/images/rss.png" alt="Subscribe to updates via email or RSS" /></a>
+					<a href="http://vimeo.com/user7791912"><img src="<?php bloginfo( 'siteurl' ); ?>/wp-content/themes/CircloSquero/images/vimeo.png" alt="CollegeLife's Viemo page" /></a>
+					<a href="http://feeds.feedburner.com/college_life"><img src="<?php bloginfo( 'siteurl' ); ?>/wp-content/themes/CircloSquero/images/rss.png" alt="Subscribe to updates via email or RSS" /></a>
 				</div>
 			</div>
 		</div>
