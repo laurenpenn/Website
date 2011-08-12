@@ -1426,3 +1426,25 @@ a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 .gform_wrapper .top_label input.medium {
 	width: 93% !important;
 }
+.gform_wrapper #Footer ul li ul li {
+	background: none;
+	border: none;
+}
+.gform_wrapper #FooterWrap input {
+	margin: 0;
+}
+.gform_button  {
+	height: 31px !important;
+	max-width: 50% !important;
+	-webkit-border-radius: 5px !important;
+	-moz-border-radius: 5px !important;
+	border-radius: 5px !important;
+	font: 15px/31px 'LuxiSansBold', sans-serif !important;
+	color: #ffffff !important;
+	padding: 0px 0px !important;
+	margin: 8px 0 !important;
+	text-shadow: #303030 0px -1px 0px!important;
+}
+.gform_button:hover {
+	background-position: bottom !important;
+}
