@@ -1,30 +1,24 @@
 <?php get_header(); ?>
 
     <?php if ((is_home() ) && (get_option_tree( 'homepage_caption' ) || (get_option_tree( 'homepage_button' ) ) ) ) { ?>    
-    <div id="topMessage">
-        <div id="messageWrap">
-		<div class="columns columns-3">
-			<div class="column">
-				<iframe src="http://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FCollegeLife%2F104722509624498&amp;width=292&amp;colorscheme=light&amp;show_faces=false&amp;border_color&amp;stream=false&amp;header=false&amp;height=62" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:62px;" allowTransparency="true"></iframe>
-			</div>
-			<div class="column">
-				<a href="http://twitter.com/collegelife_dbc" class="twitter rm_button"><div>Follow us on Twitter</div></a>
-				<div class="rm_shadow"></div><div class="clear"></div>
-			</div>
-			<div class="column column-last">
-				<a href="http://feeds.feedburner.com/college_life" class="subscribe rm_button"><div>Subscribe to Updates</div></a>
-				<div class="rm_shadow"></div><div class="clear"></div>
+	<div id="topMessage">
+		<div id="messageWrap">
+			<div class="columns columns-2">
+				<div class="column">
+					<p><?php echo get_option_tree( 'homepage_caption' ); ?> </p>
+				</div>
+	 			<div class="column column-last">
+					<a href=""><img src="<?php bloginfo( 'siteurl' ); ?>/wp-content/themes/CircloSquero/images/vimeo.png" alt="CollegeLife's Viemo page" /></a>
+					<a href="http://twitter.com/collegelife_dbc"><img src="<?php bloginfo( 'siteurl' ); ?>/wp-content/themes/CircloSquero/images/twit.png" alt="CollegeLife's Tiwtter page" /></a>
+					<a href=""><img src="<?php bloginfo( 'siteurl' ); ?>/wp-content/themes/CircloSquero/images/facebook.png" alt="CollegeLife's Facebook page" /></a>
+					<a href=""><img src="<?php bloginfo( 'siteurl' ); ?>/wp-content/themes/CircloSquero/images/rss.png" alt="Subscribe to updates via email or RSS" /></a>
+				</div>
 			</div>
 		</div>
-		<!--
-			<div id="<?php if (get_option_tree( 'homepage_button' )){echo 'msG';} else {echo 'msGFW';}; ?>"><p><?php echo get_option_tree( 'homepage_caption' ); ?> </p></div>
-           <?php if (get_option_tree( 'homepage_button' )) { ?><div id="bcaptionwrap"><a href="<?php echo get_option_tree( 'homepage_button_link' ); ?>" class="rm_button"><div><?php echo get_option_tree( 'homepage_button' ); ?></div></a><div class="rm_shadow"></div><div class="clear"></div></div> <?php };?>
-		-->
-        </div>
-    </div>
-    <div class="clear"> </div>
-    </div>
-    <?php ;}  ?>
+	</div>
+	<div class="clear"> </div>
+	</div>
+	<?php ;}  ?>
     <div class="separatorFull"></div>
     <div class="shadowBg">
     <?php $readmore =  get_option_tree( 't_read_more' ); ?>
