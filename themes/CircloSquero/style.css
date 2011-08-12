@@ -51,7 +51,12 @@ q:before, q:after {
 :focus {
 	outline: 0;
 }
-
+.alignright {
+	text-align: right;
+}
+.alignleft {
+	text-align: left;
+}
 /* remember to highlight inserts somehow! */
 ins {
 	text-decoration: none;

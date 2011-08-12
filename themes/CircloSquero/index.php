@@ -7,7 +7,7 @@
 				<div class="column">
 					<p><?php echo get_option_tree( 'homepage_caption' ); ?> </p>
 				</div>
-	 			<div class="column column-last">
+	 			<div class="column column-last alignright">
 					<a href=""><img src="<?php bloginfo( 'siteurl' ); ?>/wp-content/themes/CircloSquero/images/vimeo.png" alt="CollegeLife's Viemo page" /></a>
 					<a href="http://twitter.com/collegelife_dbc"><img src="<?php bloginfo( 'siteurl' ); ?>/wp-content/themes/CircloSquero/images/twit.png" alt="CollegeLife's Tiwtter page" /></a>
 					<a href=""><img src="<?php bloginfo( 'siteurl' ); ?>/wp-content/themes/CircloSquero/images/facebook.png" alt="CollegeLife's Facebook page" /></a>
