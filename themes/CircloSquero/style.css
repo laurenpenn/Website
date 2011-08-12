@@ -1420,9 +1420,9 @@ a img.alignleft {float:left; margin:0 1em 1em 0}
 a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 
 .gform_wrapper ul li.gfield {
-	background: none;
-	padding: 0;
+	background: none !important;
+	padding: 0 !important;
 }
 .gform_wrapper .top_label input.medium {
-	width: 93%;
+	width: 93% !important;
 }
