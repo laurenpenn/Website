@@ -1434,16 +1434,17 @@ a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 	margin: 0;
 }
 .gform_button  {
-	height: 31px !important;
-	max-width: 50% !important;
-	-webkit-border-radius: 5px !important;
-	-moz-border-radius: 5px !important;
-	border-radius: 5px !important;
-	font: 15px/31px 'LuxiSansBold', sans-serif !important;
-	color: #ffffff !important;
-	padding: 0px 0px !important;
-	margin: 8px 0 !important;
-	text-shadow: #303030 0px -1px 0px!important;
+	width: 95%;
+	background: url(images/default_grayblue/footer_input.jpg) left;
+	height: 33px;
+	border: none;
+	font: 14px/33px Lucida Sans Unicode, Lucida Grande, sans-serif;
+	color: #ffffff;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	padding: 0px 10px 0px 10px;
+	margin: 7px 0 14px;	
 }
 .gform_button:hover {
 	background-position: bottom !important;
