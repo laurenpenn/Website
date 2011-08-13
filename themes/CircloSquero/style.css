@@ -51,12 +51,7 @@ q:before, q:after {
 :focus {
 	outline: 0;
 }
-.alignright {
-	text-align: right;
-}
-.alignleft {
-	text-align: left;
-}
+
 /* remember to highlight inserts somehow! */
 ins {
 	text-decoration: none;
@@ -104,21 +99,6 @@ h6 {
 	color:#313131;
 }
 
-/* Columns */
-.columns {
-	margin: 0 0 20px;
-	overflow: hidden;
-}
-.column {
-	float: left;
-	margin: 0 4px 0 0;
-}
-.columns-2 .column { width: 49%; }
-.columns-3 .column { width: 33%; }
-
-.columns-3 .column-last {
-	margin: 0;
-}
 
 /*Layout */
 
@@ -153,7 +133,7 @@ a.mediumbutton:hover, a.smallbutton:hover {
 #logo {
 	float: left;
 	margin-left: -25px;
-	margin-top: -30px;
+	margin-top: -15px;
 	width: 250px;
 }
 
@@ -1418,34 +1398,3 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 a img.alignright {float:right; margin:0 0 1em 1em}
 a img.alignleft {float:left; margin:0 1em 1em 0}
 a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
-
-.gform_wrapper ul li.gfield {
-	background: none !important;
-	padding: 0 !important;
-}
-.gform_wrapper .top_label input.medium {
-	width: 93% !important;
-}
-.gform_wrapper #Footer ul li ul li {
-	background: none;
-	border: none;
-}
-.gform_wrapper #FooterWrap input {
-	margin: 0;
-}
-.gform_button  {
-	width: 95%;
-	background: url(images/default_grayblue/footer_input.jpg) left;
-	height: 33px;
-	border: none;
-	font: 14px/33px Lucida Sans Unicode, Lucida Grande, sans-serif;
-	color: #ffffff;
-	-webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
-	border-radius: 7px;
-	padding: 0px 10px 0px 10px;
-	margin: 7px 0 14px;	
-}
-.gform_button:hover {
-	background-position: bottom !important;
-}
