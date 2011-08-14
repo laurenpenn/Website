@@ -99,6 +99,29 @@ h6 {
 	color:#313131;
 }
 
+.alignright { 
+	text-align: right; 
+} 
+.alignleft { 
+	text-align: left; 
+} 
+
+/* Columns */
+.columns {
+	margin: 0 0 20px;
+	overflow: hidden;
+}
+.column {
+	float: left;
+	margin: 0 4px 0 0;
+}
+.columns-2 .column { width: 49%; }
+.columns-3 .column { width: 33%; }
+
+.columns-3 .column-last {
+	margin: 0;
+}
+
 
 /*Layout */
 
@@ -132,8 +155,8 @@ a.mediumbutton:hover, a.smallbutton:hover {
 
 #logo {
 	float: left;
-	margin-left: -25px;
-	margin-top: -20px;
+	margin-left:25px;
+	margin-top:20px;
 	width: 250px;
 }
 
@@ -371,7 +394,7 @@ a.mediumbutton:hover, a.smallbutton:hover {
 	color: #ffffff !important;
 	padding: 0px 0px !important;
 	margin: 8px 0 !important;
-	text-shadow: #303030 0px -1px 0px!important;
+	text-shadow: #303030 0px1px 0px!important;
 }
 .wpcf7-submit:hover {
 	background-position: bottom !important;
@@ -471,7 +494,7 @@ a.mediumbutton:hover, a.smallbutton:hover {
 	line-height: 37px;
 	font: 16px 'SansationRegular', Verdana, sans-serif;
 	color: #fcfcfc;
-	text-shadow: #393939 0px -1px 1px;
+	text-shadow: #393939 0px1px 1px;
 }
 
 .slidingContentTitleCSCS2 p {
@@ -850,7 +873,7 @@ td {
 .infobox4 a {
 	position: relative;
 	left: 25px;
-	top: -10px;
+	top:10px;
 }
 
 
@@ -863,7 +886,7 @@ td {
 .infobox5 a {
 	position: relative;
 	left: 25px;
-	top: -10px;
+	top:10px;
 }
 
 .infobox6 {
@@ -882,7 +905,7 @@ td {
 .infobox6 a {
 	position: relative;
 	left: 25px;
-	top: -10px;
+	top:10px;
 }
 
 .testimonials1 {
@@ -900,7 +923,7 @@ td {
 
 .testimonialauthor {
 	position: relative;
-        top: -1px;
+        top:1px;
 	min-height: 40px;
         width: 100%;
 	background:url(images/default_grayblue/testimonial1.png) top left no-repeat;;
@@ -928,7 +951,7 @@ td {
 
 .testimonial2author {
 	position: relative;
-        top: -1px;
+        top:1px;
 	min-height: 40px;
         width: 100%;
 	background:url(images/default_grayblue/testimonial2.png) top left no-repeat;;
@@ -1004,7 +1027,7 @@ td {
 
 .portfolio_wrap_small h3, .portfolio_wrap_small_last h3 {
 	position: relative;
-	top: -10px;
+	top:10px;
 }
 
 
@@ -1014,7 +1037,7 @@ td {
 	background: url(images/default_grayblue/shadow_portfolio.jpg) no-repeat;
 	margin: 0 auto;
 	position: relative;
-	top: -5px;
+	top:5px;
 }
 
 .shadowp2 {
@@ -1022,7 +1045,7 @@ td {
 	height:25px;
 	background: url(images/default_grayblue/shadow_portfolio2.jpg) no-repeat;
 	position: relative;
-	top: -5px;
+	top:5px;
 }
 
 .portfolio_wrap {
@@ -1037,7 +1060,7 @@ td {
 
 .potfolioDescDesc {
 	position: relative;
-	top: -10px;
+	top:10px;
 }
 
 #filterButtons {
@@ -1045,7 +1068,7 @@ td {
 	width: 880px;
 	margin: 0 auto;
 	position: relative;
-	top: -5px;
+	top:5px;
 }
 
 .fleftbutton:hover {
@@ -1132,7 +1155,7 @@ ul.most_commented li {
 	width: 980px !important;
 	position: absolute;
 	left: 0px !important;
-	top: -25px !important;
+	top:25px !important;
 	padding: 0 !important;
 	margin: 0 !important;
 }
@@ -1217,15 +1240,15 @@ textarea {
 }
 
 a.mediumbutton  {
-	text-shadow: #303030 0px -1px 0px !important;
+	text-shadow: #303030 0px1px 0px !important;
 }
 
 a.mediumbutton  {
-	text-shadow: #303030 0px -1px 0px !important;
+	text-shadow: #303030 0px1px 0px !important;
 }
 
 .bigbutton {
-	text-shadow: #303030 0px -1px 0px !important;	
+	text-shadow: #303030 0px1px 0px !important;	
 }
 
 
@@ -1244,7 +1267,7 @@ a.mediumbutton  {
 
 #submitC {
 	padding: 0px 25px 3px !important;
-	text-shadow:0 -1px 0px #303030 !important;
+	text-shadow:01px 0px #303030 !important;
 }
 
 .nextdivpag a, .prevdivpag a {
@@ -1275,12 +1298,12 @@ a.mediumbutton  {
 }
 .widget_works_wrap img.shadowportfoliowidget {
 	position: relative;
-	top: -5px;
+	top:5px;
 }
 
 .widget_works_wrap p {
 	position: relative;
-	top: -10px;
+	top:10px;
 }
 
 #avaa-next {
@@ -1370,12 +1393,12 @@ background: #fcfbfb url("images/default_grayblue/form_bg.png") repeat-x  top !im
 	margin-bottom: 10px;
 	position: relative;
 	left: 25px;
-	top: -1px;
+	top:1px;
 }
 
 #twitter_update_listCS .twitterwidgetusername {
 	position: relative;
-	top: -20px;
+	top:20px;
 	left: 50px;
 }
 
@@ -1398,3 +1421,35 @@ img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 a img.alignright {float:right; margin:0 0 1em 1em}
 a img.alignleft {float:left; margin:0 1em 1em 0}
 a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+a img.aligncenter {display: block; margin-left: auto; margin-right: auto} 
+ 
+.gform_wrapper ul li.gfield { 
+	background: none !important; 
+	padding: 0 !important; 
+} 
+.gform_wrapper .top_label input.medium { 
+	width: 93% !important; 
+} 
+.gform_wrapper #Footer ul li ul li { 
+	background: none; 
+	border: none; 
+} 
+.gform_wrapper #FooterWrap input { 
+	margin: 0; 
+} 
+.gform_button  { 
+	width: 95%; 
+	background: url(images/default_grayblue/footer_input.jpg) left; 
+	height: 33px; 
+	border: none; 
+	font: 14px/33px Lucida Sans Unicode, Lucida Grande, sans-serif; 
+	color: #ffffff; 
+	webkit-border-radius: 7px; 
+	moz-border-radius: 7px; 
+	border-radius: 7px; 
+	padding: 0px 10px 0px 10px; 
+	margin: 7px 0 14px;   
+} 
+.gform_button:hover { 
+	background-position: bottom !important; 
+} 
