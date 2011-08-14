@@ -155,8 +155,7 @@ a.mediumbutton:hover, a.smallbutton:hover {
 
 #logo {
 	float: left;
-	margin-left:25px;
-	margin-top:20px;
+	margin: -20px 0 0 -25px;
 	width: 250px;
 }
 
