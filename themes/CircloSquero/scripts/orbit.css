@@ -10,11 +10,13 @@
 
 
 #slider-container {
+	background: #000 url('../images/loading.gif') no-repeat center center;
 	height: 360px;
 	margin: 0 0 5px;
 	overflow: hidden;
 	width: 980px;	
 }
+
 
 #slider .post {
 	overflow: hidden;
