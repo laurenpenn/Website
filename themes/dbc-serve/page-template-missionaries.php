@@ -15,73 +15,12 @@ get_header(); // Loads the header.php template. ?>
 	<div id="content">
 
 		<?php do_atomic( 'open_content' ); // dbc_open_content ?>
-<!--
-		<ul id="sort-bar">
 
-				<li class="sort last">
-					<dl class="clearfix">
-						<dt>
-							Sort by:
-						</dt>
-						<dd>
-							<div id="sort-missionaries" class="drop-down-menu">
-								<div>Name A-Z</div>
-								<ul>
-									<li>
-										<a id="sort-by-name" class="" href="?orderby=title&order=ASC">Name A-Z</a>
-									</li>
-									<li>
-										<a id="sort-by-name" class="" href="?orderby=title&order=DSC">Name Z-A</a>
-									</li>
-									<li>
-										<a id="sort-by-price" class="" href="?meta_key=location&orderby=meta_value&order=ASC">Region A-Z</a>
-									</li>
-									<li>
-										<a id="sort-by-price" class="" href="?meta_key=location&orderby=meta_value&order=DESC">Region Z-A</a>
-									</li>		
-								</ul>
-			          		</div>
-						</dd>
-					</dl>
-				</li>
-
-				<li class="sort last">
-					<dl class="clearfix">
-						<dt>
-							Region:
-						</dt>
-						<dd>
-							<div id="select-country" class="drop-down-menu">
-								<div>All</div>
-								<ul>
-									<li>
-										<a id="sort-by-name" class="" href="?meta_key=location&meta_value=Argentina">Argentina</a>
-									</li>
-									<li>
-										<a id="sort-by-name" class="" href="?meta_key=location&meta_value=Kenya">Kenya</a>
-									</li>		
-								</ul>
-			          		</div>
-						</dd>
-					</dl>
-				</li>
-			    
-				<li class="sort last">
-					<dl class="clearfix">
-						<dt>
-							Show affiliates:
-						</dt>
-						<dd>
-							<input type="checkbox" />
-						</dd>
-					</dl>
-				</li>
-		</ul>-->
+		<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 
 		<div class="hfeed">
 
 			<?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
-			<?php //$missionaries = new WP_Query( array( 'orderby' => 'title', 'order' => 'DSC', 'paged' => $paged, 'posts_per_page'=> 18, 'post_type'=> 'missionary' )); ?>
 			<?php global $query_string; query_posts( $querystring. '&posts_per_page=18&post_type=missionary&paged='. $paged ); ?>
 		
 			<?php if ( have_posts() ) : ?>

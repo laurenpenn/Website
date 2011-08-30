@@ -93,6 +93,67 @@ a, #content a {
 		background: none;
 	}
 
+/* Search Form */
+#header #searchform {
+	position: absolute;
+	top: 3.8em;
+	right: 7.6%;
+	text-align: right;
+}
+#header #searchform div {
+	margin: 0;
+}
+#header #search-text {
+	float: right;
+	-webkit-transition-duration: 400ms;
+	-webkit-transition-property: width, background;
+	-webkit-transition-timing-function: ease;
+	-moz-transition-duration: 400ms;
+	-moz-transition-property: width, background;
+	-moz-transition-timing-function: ease;
+	-o-transition-duration: 400ms;
+	-o-transition-property: width, background;
+	-o-transition-timing-function: ease;
+	width: 72px;
+	background: #fff url(images/search.png) no-repeat 5px 6px !important;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	font-size: 14px;
+	height: 22px;
+	line-height: 1.2em;
+	padding: 4px 10px 4px 28px;
+}
+#header #search-text:focus {
+	background-color: #f9f9f9;
+	width: 196px;
+}
+#header #search-textearchsubmit {
+	display: none;
+}
+#header .only-search #searchform {
+	top: 5px;
+	z-index: 1;
+}
+#header .only-search #s {
+	background-color: #666;
+	border-color: #000;
+	color: #222;
+}
+#header .only-search #s,
+#header .only-search #s:focus {
+	width: 85%;
+}
+#header .only-search #s:focus {
+	background-color: #bbb;
+}
+#header .with-image #searchform {
+	top: auto;
+	bottom: -27px;
+	max-width: 195px;
+}
+#header .only-search + #access div {
+	padding-right: 205px;
+}
 /**
 * Page navigation
 ************************************************/
@@ -110,7 +171,7 @@ a, #content a {
 }
 #menu-primary li a {
 	border: 1px solid #f9f9f9;
-	color: rgba(0,0,0,.7);
+	color: #666;
 	text-shadow: 1px 1px 1px #fff;
 }
 #menu-primary li.current_page_item a, #menu-primary li.current_page_item a:hover {
@@ -205,6 +266,11 @@ a, #content a {
 #sidebar-primary .button {
 	width: 90%;
 }
+
+#sidebar-primary li {
+	line-height: 18px;
+}
+
 #blog-preview {
 	font-size: 11px;
 	line-height: 15px;
@@ -428,27 +494,56 @@ a.button:hover, #content a.button:hover {
 	border:1px solid #fff;
 	-webkit-box-shadow: 3px 3px 3px #ccc; /* Safari and Chrome */
 	box-shadow: 3px 3px 3px #ccc;
-	float: left;
+	float: right;
 	height: 26px;
-	margin: 0 10px 0 0;
+	margin: 0 0 0 10px;
 	width: 26px;
 }
 #content #diamond-recent-posts .avatar {
-	height: 50px;
-	width: 50px;
+	height: 30px;
+	width: 30px;
 }
 
-.page-template-missionaries .missionary {
-	background: none !important;
-	border-bottom: none;
+.page-template-missionaries .missionary,
+.page-template-intl-locations .location {
+	background: none;
+	border-bottom: 3px double #eee;
+	border-right: 3px double #eee;
 	border-left: none;
 	border-top: none;
 	float: left;
-	padding: 0;
+	padding: 10px 0;
 	text-align: center;
-	width: 33%;
+	width: 32%;
 }
-.page-template-missionaries .missionary .thumbnail {
+
+.page-template-intl-locations .location {
+	height: 180px;
+}
+
+.page-template-missionaries .missionary:nth-child(3n+3),
+.page-template-intl-locations .location:nth-child(3n+3) {
+	border-right: none;
+}
+
+.page-template-missionaries .missionary:nth-child(3n+4),
+.page-template-intl-locations .location:nth-child(3n+4) {
+	clear: both;
+}
+
+.page-template-missionaries .missionary:hover,
+.page-template-intl-locations .location:hover {
+	background: #eee;
+}
+
+
+.page-template-missionaries .missionary h2,
+.page-template-intl-locations .location h2 {
+	font-size: 16px;
+}
+
+.page-template-missionaries .missionary .thumbnail,
+.page-template-intl-locations .location .thumbnail {
 	border: 1px solid #fff;
 	float: none;
 	margin: 0;
@@ -618,7 +713,7 @@ a.button:hover, #content a.button:hover {
 		margin-right: 0;
 	}
 	/* Make sure the logo and search form don't collide */
-	#branding #searchform {
+	#header #searchform {
 		top: 1.625em !important;
 	}
 	/* Floated content doesn't work well at this size */
@@ -693,7 +788,7 @@ a.button:hover, #content a.button:hover {
 	#page {
 		margin-top: 0;
 	}
-	#branding {
+	#header {
 		border-top: none;
 	}
 

@@ -107,16 +107,22 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 				<?php if ( !empty( $religions ) ) { ?><dt>Religions</dt><dd><?php echo $religions; ?></dd><?php } ?>						
 			</dl>
 			
-			<div id="team">
-			<h2><?php the_title_attribute(); ?> Team</h2>
-			
 			<?php
 
 			p2p_each_connected( $wp_query, array(
 				'post_type' => 'missionary',
+				'orderby' => 'meta_value',
+				'meta_key' => 'field-director',
+				'order' => 'DESC'
 			) );
-			
 			while ( have_posts() ) : the_post();
+			
+			?>
+			
+			<div id="team">
+			<h2><?php the_title_attribute(); ?> Team</h2>
+			
+			<?php
 			
 				foreach ( $post->connected as $post ) {
 					setup_postdata( $post );

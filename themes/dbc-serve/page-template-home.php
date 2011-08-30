@@ -44,7 +44,7 @@ get_header(); ?>
 		
 		<div id="diamond-recent-posts" class="alignright">
 			<h2>Updates from the field</h2>
-			<?php echo do_shortcode('[diamond-post format="{avatar} <strong>{author}</strong><br />{title}<br /><small> {date}</small>" exclude="1" avatar_size="50" count="5" /]'); ?>
+			<?php echo do_shortcode('[diamond-post format="{avatar} <strong>{blog}</strong><br />{title}<br /><small> {date}</small>" date_format="M d, Y" exclude="1" avatar_size="50" count="3" /]'); ?>
 		</div>
 		 
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
