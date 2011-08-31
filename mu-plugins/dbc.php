@@ -29,7 +29,11 @@ add_action( 'wp_footer', 'dbc_global_bar', 12 );
 /* Inserts the Google Analytics script into the footer. */
 add_action( 'wp_footer', 'dbc_analytics', 13 );
 
+/* switch_to_blog() bug fix. */
 add_action( 'switch_blog', 'dbc_switch_blog', null, 2 );
+
+/* Co-authors plugin fix. */
+add_action( 'init', 'cap_register_taxonomy_for_pages' );
 
 /**
  * Queues Javascript.
@@ -161,6 +165,13 @@ function dbc_switch_blog( $blog_id, $prev_blog_id ) {
 		wp_cache_replace( "alloptions", $alloptions, 'options' );
 	else
 		wp_cache_delete( 'alloptions', 'options' );
+}
+
+/**
+ * Register the taxonomy with pages so the Co-Authors Plus permissions lookup works properly
+ */
+function cap_register_taxonomy_for_pages() {
+	register_taxonomy( 'author', 'page' );
 }
 
 ?>
