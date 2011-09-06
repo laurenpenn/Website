@@ -204,19 +204,24 @@ function dbc_serve_footer() {
 	
 			<?php do_shortcode('[primary_menu]'); ?>
 			<p class="copyright">Copyright &#169; <?php echo date('Y'); ?> <a href="http://dentonbible.org">Denton Bible Church</a>, all rights reserved.</p>
-			<p class="credit">Built by <a href="http://developdaly.com/" class="highlight">Develop Daly</a>. <a href="http://dentonbible.org/staff-registration/">Staff Registration</a> | <?php wp_loginout(); ?></p>
+			<p class="credit"><a href="http://mail.dbcm.org/">Serve Mail</a> | <a href="http://dentonbible.org/staff-registration/">Staff Registration</a> | <?php wp_loginout(); ?></p>
 	
 			<?php //hybrid_footer(); // Hybrid footer hook ?>
 		
 		</div>
 	
 		<div class="footer-right">
-	
-			<h6>Denton Bible Church</h6>
-			
-			<p>2300 E. University Dr.<br />
-			Denton, TX 76209<br />
-			(940) 297-6700</p>
+
+			<div class="vcard">
+				<h6 class="org">
+					Denton Bible Church
+				</h6>
+				<div class="adr">
+					<div class="street-address">2300 E. University Dr.</div>
+					<span class="locality">Denton</span>, <span class="region">TX</span>, <span class="postal-code">76209</span>
+				</div>
+				<div class="tel">(940) 297-6700</div>
+			</div>
 		
 		</div>
 	</div>
