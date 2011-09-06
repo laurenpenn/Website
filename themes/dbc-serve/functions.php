@@ -1,5 +1,7 @@
 <?php
 
+add_action( 'init', 'remove_actions' );
+
 add_action( 'init', 'dbc_serve_connection_types', 100 );
 
 add_action( 'wp_head', 'dbc_serve_custom_background', 11 );
@@ -16,6 +18,14 @@ add_action( 'manage_missionary_posts_custom_column', 'dbc_serve_manage_missionar
 add_filter( 'manage_edit-missionary_sortable_columns', 'dbc_serve_missionary_sortable_columns' );
 /* Only run our customization on the 'edit.php' page in the admin. */
 add_action( 'load-edit.php', 'dbc_serve_edit_missionary_load' );
+
+add_action( "{$prefix}_footer", 'dbv_serve_remove_actions', 11 );
+
+
+function dbv_serve_remove_actions() {
+	remove_action( "{$prefix}_footer", 'dbc_footer', 11 );
+}
+
 
 function dbc_serve_deregister_styles() {
 	wp_deregister_style( 'front-page' );
@@ -180,6 +190,37 @@ function dbc_serve_connection_types() {
 		'to' => 'location',
 		'reciprocal' => true
 	) );
+}
+
+/**
+ * Adds footer information
+ *
+ * @since 0.1
+ */
+function dbc_serve_footer() {
+?>
+	<div class="footer-container">
+		<div class="footer-left">
+	
+			<?php do_shortcode('[primary_menu]'); ?>
+			<p class="copyright">Copyright &#169; <?php echo date('Y'); ?> <a href="http://dentonbible.org">Denton Bible Church</a>, all rights reserved.</p>
+			<p class="credit">Built by <a href="http://developdaly.com/" class="highlight">Develop Daly</a>. <a href="http://dentonbible.org/staff-registration/">Staff Registration</a> | <?php wp_loginout(); ?></p>
+	
+			<?php //hybrid_footer(); // Hybrid footer hook ?>
+		
+		</div>
+	
+		<div class="footer-right">
+	
+			<h6>Denton Bible Church</h6>
+			
+			<p>2300 E. University Dr.<br />
+			Denton, TX 76209<br />
+			(940) 297-6700</p>
+		
+		</div>
+	</div>
+<?php 
 }
 
 ?>
