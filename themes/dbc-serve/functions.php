@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'init', 'remove_actions' );
+add_action( 'init', 'dbv_serve_remove_actions' );
 
 add_action( 'init', 'dbc_serve_connection_types', 100 );
 
@@ -19,11 +19,11 @@ add_filter( 'manage_edit-missionary_sortable_columns', 'dbc_serve_missionary_sor
 /* Only run our customization on the 'edit.php' page in the admin. */
 add_action( 'load-edit.php', 'dbc_serve_edit_missionary_load' );
 
-add_action( "{$prefix}_footer", 'dbv_serve_remove_actions', 11 );
+add_action( 'dbc_footer', 'dbc_serve_footer', 11 );
 
 
 function dbv_serve_remove_actions() {
-	remove_action( "{$prefix}_footer", 'dbc_footer', 11 );
+	remove_action( 'dbc_footer', 'dbc_footer', 11 );
 }
 
 
