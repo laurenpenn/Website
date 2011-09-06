@@ -32,7 +32,7 @@ get_header(); // Loads the header.php template. ?>
 
 						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 						
-						<p><?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'default_image' => 'http://serve-intl.com/wp-content/themes/dbc-serve/images/noavatar.png', 'meta_key' => 'Thumbnail', 'size' => 'thumbnail' ) ); ?><br />
+						<p><?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'default_image' => get_template_directory_uri(). '/images/noavatar.png', 'meta_key' => 'Thumbnail', 'size' => 'thumbnail' ) ); ?><br />
 
 						<?php do_atomic( 'close_entry' ); // prototype_close_entry ?>
 

@@ -134,7 +134,7 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 					
 						<h3><?php the_title_attribute(); ?></h3>
 					
-						<p><?php get_the_image( array( 'default_image' => 'http://serve-intl.com/wp-content/themes/dbc-serve/images/noavatar.png', 'image_class' => 'avatar', 'meta_key' => 'Thumbnail', 'size' => 'thumbnail' ) ); ?></p>
+						<p><?php get_the_image( array( 'default_image' => get_template_directory_uri(). '/images/noavatar.png', 'image_class' => 'avatar', 'meta_key' => 'Thumbnail', 'size' => 'thumbnail' ) ); ?></p>
 					
 					</div>
 					<?php

@@ -16,19 +16,19 @@ get_header(); ?>
 
 	<div id="content">
 
-		<?php do_atomic( 'open_content' ); // prototype_open_content ?>
+		<?php do_atomic( 'open_content' ); // dbc_open_content ?>
 	
 		<div class="columns columns-3">
 			
 			<div class="column col-1">
 				
-				<a href="http://serve-intl.com/denton/"><img src="http://serve-intl.com/wp-content/themes/dbc-serve/images/serve-denton.png" height="200" width="297" alt="Serve Denton" /></a>
+				<a href="<?php bloginfo( 'siteurl' ); ?>/denton/"><img src="<?php echo get_template_directory_uri(); ?>/images/serve-denton.png" height="200" width="297" alt="Serve Denton" /></a>
 				
 			</div>
 
 			<div class="column col-2">
 				
-				<a href="http://serve-intl.com/international/"><img src="http://serve-intl.com/wp-content/themes/dbc-serve/images/serve-international.png" height="200" width="297" alt="Serve International" /></a>
+				<a href="<?php bloginfo( 'siteurl' ); ?>/international/"><img src="<?php echo get_template_directory_uri(); ?>/images/serve-international.png" height="200" width="297" alt="Serve International" /></a>
 				
 			</div>
 
@@ -42,10 +42,12 @@ get_header(); ?>
 		
 		<p id="serve-domestic">Serve <strong>Domestic</strong> sends missionaries throughout the United States. <a href="">Learn more</a></p>	
 		
+		<!--
 		<div id="diamond-recent-posts" class="alignright">
 			<h2>Updates from the field</h2>
 			<?php echo do_shortcode('[diamond-post format="{avatar} <strong>{blog}</strong><br />{title}<br /><small> {date}</small>" date_format="M d, Y" exclude="1" avatar_size="50" count="3" /]'); ?>
 		</div>
+		-->
 		 
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -58,7 +60,7 @@ get_header(); ?>
 
 			</div><!-- .hentry -->
 
-			<?php do_atomic( 'after_singular' ); // prototype_after_singular ?>
+			<?php do_atomic( 'after_singular' ); // dbc_after_singular ?>
 
 			<?php endwhile; ?>
 
@@ -70,12 +72,12 @@ get_header(); ?>
 
 		<?php endif; ?>
 			
-		<?php do_atomic( 'close_content' ); // prototype_close_content ?>
+		<?php do_atomic( 'close_content' ); // dbc_close_content ?>
 
 	</div><!-- #content -->
 		
 	<?php get_sidebar( 'home' ); ?>
 
-	<?php do_atomic( 'after_content' ); // prototype_after_content ?>
+	<?php do_atomic( 'after_content' ); // dbc_after_content ?>
 
 <?php get_footer(); // Loads the footer.php template. ?>

@@ -21,7 +21,7 @@ get_header(); // Loads the header.php template. ?>
 		<div class="hfeed">
 
 			<?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
-			<?php global $query_string; query_posts( $querystring. '&posts_per_page=18&post_type=missionary&paged='. $paged ); ?>
+			<?php global $query_string; query_posts( $querystring. '&posts_per_page=-1&order=ASC&orderby=title&post_type=missionary&paged='. $paged ); ?>
 		
 			<?php if ( have_posts() ) : ?>
 
@@ -35,7 +35,7 @@ get_header(); // Loads the header.php template. ?>
 
 						<h2><a href="<?php the_permalink(); ?>"><?php the_title_attribute(); ?></a></h2>
 
-						<p><?php get_the_image( array( 'default_image' => 'http://serve-intl.com/wp-content/themes/dbc-serve/images/noavatar.png', 'image_class' => 'avatar')); ?></p>
+						<p><?php get_the_image( array( 'default_image' => get_template_directory_uri(). '/images/noavatar.png', 'image_class' => 'avatar')); ?></p>
 
 						<?php do_atomic( 'close_entry' ); // dbc_close_entry ?>
 

@@ -20,7 +20,9 @@ get_header(); // Loads the header.php template. ?>
 			
 			<?php $args = array(
 				'post_type' => 'location',
-				'posts_per_page' => -1
+				'posts_per_page' => -1,
+				'order' => 'ASC',
+				'orderby' => 'title'
 			);
 			?>
 			
