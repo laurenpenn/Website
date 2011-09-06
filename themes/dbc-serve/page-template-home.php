@@ -22,13 +22,13 @@ get_header(); ?>
 			
 			<div class="column col-1">
 				
-				<a href="<?php bloginfo( 'siteurl' ); ?>/denton/"><img src="<?php echo get_template_directory_uri(); ?>/images/serve-denton.png" height="200" width="297" alt="Serve Denton" /></a>
+				<a href="<?php bloginfo( 'siteurl' ); ?>/denton/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/serve-denton.png" height="200" width="297" alt="Serve Denton" /></a>
 				
 			</div>
 
 			<div class="column col-2">
 				
-				<a href="<?php bloginfo( 'siteurl' ); ?>/international/"><img src="<?php echo get_template_directory_uri(); ?>/images/serve-international.png" height="200" width="297" alt="Serve International" /></a>
+				<a href="<?php bloginfo( 'siteurl' ); ?>/international/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/serve-international.png" height="200" width="297" alt="Serve International" /></a>
 				
 			</div>
 

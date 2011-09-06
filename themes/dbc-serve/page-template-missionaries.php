@@ -35,7 +35,7 @@ get_header(); // Loads the header.php template. ?>
 
 						<h2><a href="<?php the_permalink(); ?>"><?php the_title_attribute(); ?></a></h2>
 
-						<p><?php get_the_image( array( 'default_image' => get_template_directory_uri(). '/images/noavatar.png', 'image_class' => 'avatar')); ?></p>
+						<p><?php get_the_image( array( 'default_image' => get_stylesheet_directory_uri(). '/images/noavatar.png', 'image_class' => 'avatar')); ?></p>
 
 						<?php do_atomic( 'close_entry' ); // dbc_close_entry ?>
 
