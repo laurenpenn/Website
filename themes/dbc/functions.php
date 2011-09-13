@@ -62,6 +62,7 @@ function dbc_theme_setup() {
 	add_filter( 'body_class', 'dbc_body_class' );
 	add_filter( 'stylesheet_uri', 'dbc_debug_stylesheet', 10, 2 );
 	add_filter( 'sidebars_widgets', 'dbc_disable_sidebars' );
+	add_filter( 'breadcrumb_trail', 'dbc_breadcrumb_trail' );
 
 	/* Add shortcodes */
 	add_shortcode( 'primary_menu', 'dbc_shortcode_primary_menu' );
@@ -809,19 +810,7 @@ function dbc_publication_title() {
 
 }
 
-/* Co-authors plugin fix. */
-add_action( 'init', 'cap_register_taxonomy_for_pages' );
-
-/**
- * Register the taxonomy with pages so the Co-Authors Plus permissions lookup works properly
- */
-function cap_register_taxonomy_for_pages() {
-	register_taxonomy( 'author', 'page' );
-}
-
-add_filter( 'breadcrumb_trail', 'sr_breadcrumb_trail' );
-
-function sr_breadcrumb_trail( $breadcrumb ) {
+function dbc_breadcrumb_trail( $breadcrumb ) {
 	$sr_post_type = get_post_type();
 	$post_type = get_post_type_object( $sr_post_type );
 	$search = 'Home</a> <span class="sep">/</span>';
