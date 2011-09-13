@@ -174,7 +174,7 @@ ins, dfn {
     border-bottom: 1px solid #666
 }
 del { text-decoration: line-through; }
-hr { margin-bottom: 18px; }
+hr { background: #eee; margin-bottom: 18px; }
 iframe { border: 0 solid #fff;; }
 
 /* Paragraphs */
@@ -207,8 +207,9 @@ dl { margin: 0 0 18px 3px; }
 
 /* Blockquotes */
 blockquote {
-    margin: 0 2.5em;
-    font-style: normal
+	color: #7A8287;
+	font: normal 21px/34px "CartoGothicStdItalic";
+	margin: 0 2.5em;
 }
 	blockquote em, blockquote cite { font-style: italic; }
 	blockquote, q { quotes: none; }
@@ -529,15 +530,21 @@ img.wp-smiley {
 
 /* Secondary Menu */
 .breadcrumbs {
+	background: #f9f9f9;
 	border-bottom: 1px solid #ddd;
 	font-size: 12px;
 	height: 35px;
 	line-height: 35px;
+	padding: 1em 0;
 	text-align: left;
 }
+	.breadcrumb-trail {
+		margin: 0 auto 50px;
+		max-width: 600px;
+	}
 	.breadcrumb-title {
+		color: #999;
 		letter-spacing: 1px;
-		text-transform: uppercase;
 	}
 	.breadcrumb-item {
 		margin: 5px;
@@ -665,6 +672,11 @@ img.wp-smiley {
 
 			/* Full entries */
 			.entry-content li { margin-bottom: 10px; }
+			
+			.entry-content img {
+				height: auto;
+				max-width: 100%;
+			}
 
 			/* Post meta data */
 			.entry-meta {
@@ -702,6 +714,21 @@ img.wp-smiley {
 				color: #fff;
 				text-shadow: 1px 1px 0 #000;
 			}
+			.loop-nav {
+				color: #808080;
+				font: 11px/21px "Georgia", "Times New Roman", Times, serif;
+				margin: 18px 0;
+				overflow: hidden;
+			}
+			
+			.loop-nav .previous {
+				float: left;
+			}
+			
+			.loop-nav .next {
+				float: right;
+			}
+
 	
 		/* Archives */
 		.archive .hentry,
@@ -768,7 +795,100 @@ img.wp-smiley {
 		#publication-archive .publications ul li {
 			margin: 0 0 5px;
 		}
-			
+
+/**
+* Stories
+************************************************/
+.page-template-publications #stories .hentry,
+.archive-story .hentry {
+	background: none !important;
+	border: none;
+	border-bottom: 3px double #f1f1f1;
+	padding: 18px 8px 0;
+}
+.page-template-publications #stories .entry-title,
+.archive-story .entry-title {
+	font: 21px/34px "CartoGothicStdBold", Arial, Helvetica, sans-serif;
+	margin: 0;
+}
+
+.page-template-publications #stories .byline,
+.archive-story .byline {
+	margin: 0 0 8px;
+}
+
+.page-template-publications #stories .small-thumb,
+.archive-story .small-thumb {
+	border: 1px solid #666;
+	float: left;
+	margin: 0 21px 8px 0;
+	padding: 4px;
+}
+.singular-story #content {
+	margin: 0 auto 50px;
+	max-width: 600px;
+}
+
+.singular-story #content .entry-title,
+.archive-story .page-title {
+	color: #333;
+	font: 34px/55px "CartoGothicStdBold", Arial, Helvetica, sans-serif;
+}
+
+.archive-story .page-title {
+	margin: 0;
+}
+
+.singular-story #content .entry-title a {
+	color: #333;
+}
+
+.singular-story .entry-content {
+	font: 18px/1.5em "Georgia", "Times New Roman", Times, serif;
+}
+
+.singular-story .entry-content p+p {
+	margin: 0;
+	text-indent: 1.2em;
+}
+
+.singular-story .entry-content img.alignnone {
+	margin-left: -1.2em;
+}
+
+.singular-story .entry-content p:first-child img.alignnone {
+	margin: 0;
+}
+
+.singular-story .byline {
+	margin: 0 0 18px;
+}
+
+.singular-story h2,
+.singular-story h3,
+.singular-story h4,
+.singular-story h5,
+.singular-story h6 {
+	color: #333;
+	font-family: "CartoGothicStdBold", Arial, Helvetica, sans-serif;
+	margin: 1.2em 0 .2em;
+	
+}
+
+.singular-story h2 {
+	font-size: 21px;
+	line-height: 34px;
+}
+
+.singular-story .entry-content blockquote,
+.singular-story .entry-content hr  {
+	margin: 1.2em 2.5em;
+}
+
+.singular-story .entry-content blockquote p {
+	text-indent: 0;
+}
+		
 /**
 * Featured slider
 ************************************************/

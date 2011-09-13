@@ -18,6 +18,12 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 		<?php do_atomic( 'open_sidebar_primary' ); // dbc_open_sidebar_primary ?>
 
 		<?php dynamic_sidebar( 'primary' ); ?>
+
+		<?php if ( is_post_type_archive( 'story' ) ): ?>
+			
+			
+			
+		<?php endif; ?>
 		
 		<?php if ( hybrid_get_setting( 'sidebar' ) == 'true' ) { ?>
 

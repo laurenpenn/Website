@@ -16,7 +16,7 @@
 			<?php previous_post_link( '%link', '<span class="previous">' . __( '&larr; Return to entry', hybrid_get_textdomain() ) . '</span>' ); ?>
 		</div><!-- .loop-nav -->
 
-	<?php elseif ( is_singular( 'post' ) ) : ?>
+	<?php elseif ( is_singular( 'post' ) || is_singular( 'story' ) ) : ?>
 
 		<div class="loop-nav">
 			<?php previous_post_link( '<div class="previous">' . __( 'Previous Entry: %link', hybrid_get_textdomain() ) . '</div>', '%title' ); ?>

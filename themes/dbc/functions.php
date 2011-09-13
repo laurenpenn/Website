@@ -65,6 +65,10 @@ function dbc_theme_setup() {
 
 	/* Add shortcodes */
 	add_shortcode( 'primary_menu', 'dbc_shortcode_primary_menu' );
+	
+	if ( function_exists( 'add_image_size' ) ) { 
+		add_image_size( 'small-thumb', 80, 80, true ); //300 pixels wide (and unlimited height)
+}
 
 }
 
@@ -82,7 +86,7 @@ function dbc_load_scripts() {
 		wp_enqueue_style( 'orbit-css', trailingslashit( THEME_URI ) . 'library/css/orbit.css', false, '0.2.1', 'screen' );
 	}
 
-	if ( is_tax( 'note' ) || is_singular( 'note' ) || is_archive( 'note' ) )
+	if ( is_tax( 'note' ) || is_singular( 'note' ) || is_post_type_archive( 'note' ) )
 		wp_enqueue_style( 'note', trailingslashit( THEME_URI ) . 'library/css/note.css', false, '0.2.1', 'screen' );
 }
 
@@ -224,7 +228,7 @@ function dbc_child_pages() {
 */
 function dbc_disable_sidebars( $sidebars_widgets ) {
 
-	if ( is_front_page() || is_page_template('page-template-home.php') || is_page_template( 'page-template-full-width.php' ) ) {
+	if ( is_front_page() || is_page_template('page-template-home.php') || is_page_template( 'page-template-full-width.php' ) || is_singular( 'story' ) ) {
 		$sidebars_widgets['primary'] = false;
 		$sidebars_widgets['secondary'] = false;
 	}
@@ -567,18 +571,29 @@ function dbc_register_post_types() {
 		'search_items' => __( 'Search Publications', $domain ),
 		'not_found' => __( 'No publications found', $domain ),
 		'not_found_in_trash' => __( 'No publications found in Trash', $domain ),
+		'parent_item_colon' => __( 'Publication Note:', $domain ),
+		'menu_name' => __( 'Publications', $domain )
 	);
 
 	/* Arguments for the publication post type. */
 	$publication_args = array(
 		'labels' => $publication_labels,
-		'capability_type' => 'post',
+		'hierarchical' => false,
+		'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
+		'taxonomies' => array( 'publication-type' ),
 		'public' => true,
-		'can_export' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'menu_position' => 9,
+		'menu_icon' => 'library/images/book-open-list.png',
+		'show_in_nav_menus' => true,
+		'publicly_queryable' => true,
+		'exclude_from_search' => false,
+		'has_archive' => true,
 		'query_var' => true,
+		'can_export' => true,
 		'rewrite' => array( 'slug' => 'publication', 'with_front' => false ),
-		'supports' => array( 'title', 'editor', 'thumbnail', 'entry-views' ),
-		'taxonomies' => array( 'publication-type' )
+		'capability_type' => 'post'
 	);
 	
 	/* Labels for the tom post type. */
@@ -595,25 +610,100 @@ function dbc_register_post_types() {
 		'search_items' => __( 'Search Note', $domain ),
 		'not_found' => __( 'No notes found', $domain ),
 		'not_found_in_trash' => __( 'No notes found in Trash', $domain ),
+		'parent_item_colon' => __( 'Parent Note:', $domain ),
+		'menu_name' => __( 'Notes', $domain )
 	);
 
 	/* Arguments for the publication post type. */
 	$note_args = array(
 		'labels' => $note_labels,
-		'capability_type' => 'post',
+		'hierarchical' => false,
+		'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
 		'public' => true,
-		'can_export' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'menu_position' => 7,
+		'menu_icon' => 'library/images/document-sticky-note.png',
+		'show_in_nav_menus' => true,
+		'publicly_queryable' => true,
+		'exclude_from_search' => false,
+		'has_archive' => true,
 		'query_var' => true,
+		'can_export' => true,
 		'rewrite' => array( 'slug' => 'note', 'with_front' => false ),
-		'supports' => array( 'title', 'editor', 'thumbnail', 'entry-views' ),
-		'has_archive' => true
+		'capability_type' => 'post'
 	);						
-	
+
+	/* Labels for the story type. */
+	$story_labels = array(
+		'name' => __( 'Stories', $domain ),
+		'singular_name' => __( 'Story', $domain ),
+		'add_new' => __( 'Add New', $domain ),
+		'add_new_item' => __( 'Add New Story', $domain ),
+		'edit' => __( 'Edit', $domain ),
+		'edit_item' => __( 'Edit Story', $domain ),
+		'new_item' => __( 'New Story', $domain ),
+		'view' => __( 'View Story', $domain ),
+		'view_item' => __( 'View Story', $domain ),
+		'search_items' => __( 'Search Story', $domain ),
+		'not_found' => __( 'No stories found', $domain ),
+		'not_found_in_trash' => __( 'No stories found in Trash', $domain ),
+		'parent_item_colon' => __( 'Parent Story:', $domain ),
+		'menu_name' => __( 'Stories', $domain )
+	);
+
+	/* Arguments for the publication post type. */
+	$story_args = array(
+		'labels' => $story_labels,
+		'hierarchical' => false,
+		'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
+		'taxonomies' => array( 'publication-type' ),
+		'public' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'menu_position' => 5,
+		'menu_icon' => 'library/images/book-open-list.png',
+		'show_in_nav_menus' => true,
+		'publicly_queryable' => true,
+		'exclude_from_search' => false,
+		'has_archive' => true,
+		'query_var' => true,
+		'can_export' => true,
+		'rewrite' => array( 'slug' => 'stories', 'with_front' => false ),
+		'capability_type' => 'post'
+	);		
+
+	/* Register the story post type. */
+	if ( $blog_id == 1 ) register_post_type( apply_filters( 'dbc_story_post_type', 'story' ), apply_filters( 'dbc_story_post_type_args', $story_args ) );
+
+	/* Register the note post type. */
+	if ( $blog_id == 1 ) register_post_type( apply_filters( 'dbc_note_post_type', 'note' ), apply_filters( 'dbc_note_post_type_args', $note_args ) );
+			
 	/* Register the publication post type. */
 	if ( $blog_id == 1 ) register_post_type( apply_filters( 'dbc_publication_post_type', 'publication' ), apply_filters( 'dbc_publication_post_type_args', $publication_args ) );
 	
-	/* Register the note post type. */
-	if ( $blog_id == 1 ) register_post_type( apply_filters( 'dbc_note_post_type', 'note' ), apply_filters( 'dbc_note_post_type_args', $note_args ) );
+	add_action( 'admin_head', 'cpt_icons' );
+	function cpt_icons() {
+	    ?>
+	    <style type="text/css" media="screen">
+			#menu-posts-story .wp-menu-image {
+				background: url('<?php bloginfo('template_url') ?>/library/images/book-open-list.png') no-repeat 6px -17px !important;
+			}
+			#menu-posts-note .wp-menu-image {
+				background: url('<?php bloginfo('template_url') ?>/library/images/document-sticky-note.png') no-repeat 6px -17px !important;
+			}
+			#menu-posts-publication .wp-menu-image {
+				background: url('<?php bloginfo('template_url') ?>/library/images/document-pdf-text.png') no-repeat 6px -17px !important;
+			}
+			#menu-posts-story:hover .wp-menu-image, #menu-posts-story.wp-has-current-submenu .wp-menu-image,
+			#menu-posts-note:hover .wp-menu-image, #menu-posts-note.wp-has-current-submenu .wp-menu-image,
+			#menu-posts-publication:hover .wp-menu-image, #menu-posts-publication.wp-has-current-submenu .wp-menu-image {
+				background-position:6px 7px!important;
+			}
+
+	    </style>
+	<?php }
+	
 }
 /**
  * Register taxonomies
@@ -717,6 +807,27 @@ function dbc_publication_title() {
 		echo get_the_title();
 	}
 
+}
+
+/* Co-authors plugin fix. */
+add_action( 'init', 'cap_register_taxonomy_for_pages' );
+
+/**
+ * Register the taxonomy with pages so the Co-Authors Plus permissions lookup works properly
+ */
+function cap_register_taxonomy_for_pages() {
+	register_taxonomy( 'author', 'page' );
+}
+
+add_filter( 'breadcrumb_trail', 'sr_breadcrumb_trail' );
+
+function sr_breadcrumb_trail( $breadcrumb ) {
+	$sr_post_type = get_post_type();
+	$post_type = get_post_type_object( $sr_post_type );
+	$search = 'Home</a> <span class="sep">/</span>';
+	$replace = 'Home</a> <span class="sep">/</span> <a href="/' . $post_type->rewrite[slug] . '">' . $post_type->labels->name . '</a> <span class="sep">/</span>';
+	$breadcrumb = str_replace( $search, $replace, $breadcrumb );
+	return $breadcrumb;
 }
 
 ?>
