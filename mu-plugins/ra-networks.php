@@ -3,7 +3,7 @@
 Plugin Name: WP Networks
 Plugin URI: http://musupport.net
 Description: Networks+ for WordPress.
-Version: 0.2.1
+Version: 0.2.2
 Author: Ron Rennick (http://ronandandrea.com)
 
 */
@@ -47,8 +47,8 @@ function ra_network_page() {
 	global $wpdb, $current_site;
 	if( !current_user_can( 'manage_networks' ) )
 		wp_die( __( 'You do not have permission to access this page.' ) );
-if ( $_POST ) {
 
+if ( $_POST ) {
 	switch($_POST['action']) {
 		case 'addsite': 
 			check_admin_referer( 'ra-networks-add' );
@@ -62,6 +62,7 @@ if ( $_POST ) {
 				else
 					$msg = 'Please provide a network title.';
 			}
+			do_action( 'netplus_addsite' );
 			break;
 		case 'deletesite':
 			check_admin_referer( 'ra-networks' );
@@ -93,6 +94,7 @@ if ( $_POST ) {
 					}
 				}
 			}
+			do_action( 'netplus_deletesite' );
 			break;
 	}
 }	?>
@@ -141,9 +143,11 @@ if ( $_POST ) {
 			</tbody>
 		</table></form>
 <?php	} ?>
-	<form method='post'> 
-<?php	wp_nonce_field( 'ra-networks-add' ); ?>
-		<h2>Add Network</h2>
+	<form method='post'><?php	
+
+	wp_nonce_field( 'ra-networks-add' ); 
+	
+	?><h2>Add Network</h2>
 		<table class="form-table">  
 			<tr> 
 				<th scope='row'>Domain Name</th> 
@@ -163,14 +167,21 @@ if ( $_POST ) {
 				<td class='submit'><input class="button" name='submit' type='submit' value='Add' /></td>
 				<td><input type="hidden" name="action" value="addsite" /></td>
 			</tr>
-		</table> 
-	</form></div><?php
+		</table><?php
+		
+	do_action( 'netplus_extra_fields' );
+	
+	?></form></div><?php
  }
 function ra_add_network( $domain, $network_title ) {
 	global $wpdb, $current_site, $current_user;
 	
 	if( $domain && $network_title ) {
-		$blog_id = wpmu_create_blog( $domain, $current_site->path, $network_title, $current_user->id, array( 'blog_public' => 1, 'public' => 1 ) );
+		do_action( 'netplus_before_new_network', $domain, $network_title );
+		
+		if( !( $blog_id = apply_filters( 'netplus_new_network_blog_id', false ) ) )
+			$blog_id = wpmu_create_blog( $domain, $current_site->path, $network_title, $current_user->id, array( 'blog_public' => 1, 'public' => 1 ) );
+			
 		if( is_wp_error( $blog_id ) )
 			return $blog_id->get_error_message();
 
@@ -182,6 +193,9 @@ function ra_add_network( $domain, $network_title ) {
 			if( is_wp_error( $result ) )
 				return $result->get_error_message();
 		}
+		
+		do_action( 'netplus_after_new_network', $blog_id, $domain, $current_site->path, $network_title );
+		
 		return __( 'Network created' );
 	}
 }
@@ -190,9 +204,10 @@ if ( !defined( 'BP_ROOT_BLOG' ) && isset( $current_site->blog_id ) )
 	define( 'BP_ROOT_BLOG', $current_site->blog_id );
 
 function ra_get_clean_basedomain( $domain ) {
-	$domain = preg_replace( '|https?://|', '', $domain );
+	$domain = strtolower( preg_replace( '|https?://|', '', $domain ) );
 	if ( ( $slash = strpos( $domain, '/' ) ) )
 		$domain = substr( $domain, 0, $slash );
+		
 	return $domain;
 }
 
@@ -200,39 +215,40 @@ function ra_populate_network( $network_id = 1, $domain = '', $email = '', $site_
 	global $wpdb, $current_site, $wp_db_version, $wp_rewrite;
 
 	$errors = new WP_Error();
-	if ( '' == $domain )
+	if( '' == $domain )
 		$errors->add( 'empty_domain', __( 'You must provide a domain name.' ) );
-	if ( '' == $site_name )
+	if( '' == $site_name )
 		$errors->add( 'empty_sitename', __( 'You must provide a name for your network of sites.' ) );
 
 	// check for network collision
-	if ( $network_id == $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->site WHERE id = %d", $network_id ) ) )
+	if( $network_id == $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->site WHERE id = %d", $network_id ) ) )
 		$errors->add( 'siteid_exists', __( 'The network already exists.' ) );
 
 	$site_user = get_user_by_email( $email );
-	if ( ! is_email( $email ) )
+	if( ! is_email( $email ) )
 		$errors->add( 'invalid_email', __( 'You must provide a valid e-mail address.' ) );
 
-	if ( $errors->get_error_code() )
+	if( $errors->get_error_code() )
 		return $errors;
 
 	// set up site tables
 	$template = get_option( 'template' );
 	$stylesheet = get_option( 'stylesheet' );
 	$allowed_themes = array( $stylesheet => true );
-	if ( $template != $stylesheet )
+	if( $template != $stylesheet )
 		$allowed_themes[ $template ] = true;
-	if ( WP_DEFAULT_THEME != $stylesheet && WP_DEFAULT_THEME != $template )
+	if( WP_DEFAULT_THEME != $stylesheet && WP_DEFAULT_THEME != $template )
 		$allowed_themes[ WP_DEFAULT_THEME ] = true;
 
-	if ( 1 == $network_id ) {
+	$blog_id = $network_id;
+	if( 1 == $network_id ) {
 		$wpdb->insert( $wpdb->site, array( 'domain' => $domain, 'path' => $path ) );
 		$network_id = $wpdb->insert_id;
 	} else {
 		$wpdb->insert( $wpdb->site, array( 'domain' => $domain, 'path' => $path, 'id' => $network_id ) );
 	}
 
-	if ( !is_multisite() ) {
+	if( !is_multisite() ) {
 		$site_admins = array( $site_user->user_login );
 		$users = get_users_of_blog();
 		if ( $users ) {
@@ -245,7 +261,8 @@ function ra_populate_network( $network_id = 1, $domain = '', $email = '', $site_
 		$site_admins = get_site_option( 'site_admins' );
 	}
 
-	$welcome_email = __( 'Dear User,
+	if( !( $welcome_email = get_site_option( 'welcome_email', false ) ) ) {
+		$welcome_email = __( 'Dear User,
 
 Your new SITE_NAME site has been successfully set up at:
 BLOG_URL
@@ -259,7 +276,8 @@ We hope you enjoy your new site.
 Thanks!
 
 --The Team @ SITE_NAME' );
-
+	}
+	
 	$sitemeta = array(
 		'site_name' => $site_name,
 		'admin_email' => $site_user->user_email,
@@ -284,8 +302,9 @@ Thanks!
 	if ( !intval( $subdomain_install ) )
 		$sitemeta['illegal_names'][] = 'blog';
 
+	$sitemeta = apply_filters( 'netplus_sitemeta', $sitemeta, $blog_id, $domain );
 	$insert = '';
-	foreach ( $sitemeta as $meta_key => $meta_value ) {
+	foreach( $sitemeta as $meta_key => $meta_value ) {
 		$meta_key = $wpdb->escape( $meta_key );
 		if ( is_array( $meta_value ) )
 			$meta_value = serialize( $meta_value );
@@ -296,11 +315,7 @@ Thanks!
 	}
 	$wpdb->query( "INSERT INTO $wpdb->sitemeta ( site_id, meta_key, meta_value ) VALUES " . $insert );
 
-	$current_site->domain = $domain;
-	$current_site->path = $path;
-	$current_site->site_name = ucfirst( $domain );
-
-	if ( !is_multisite() ) {
+	if( !is_multisite() ) {
 		$wpdb->insert( $wpdb->blogs, array( 'site_id' => $network_id, 'domain' => $domain, 'path' => $path, 'registered' => current_time( 'mysql' ) ) );
 		$blog_id = $wpdb->insert_id;
 		update_user_meta( $site_user->ID, 'source_domain', $domain );
@@ -312,12 +327,18 @@ Thanks!
 		update_option( 'fileupload_url', get_option( 'siteurl' ) . '/' . $upload_path );
 	}
 
-	if ( $subdomain_install )
+	if( is_multisite() )
+		switch_to_blog( $blog_id );
+		
+	if( $subdomain_install )
 		update_option( 'permalink_structure', '/%year%/%monthnum%/%day%/%postname%/');
 	else
 		update_option( 'permalink_structure', '/blog/%year%/%monthnum%/%day%/%postname%/');
 
-	$wp_rewrite->flush_rules();
+	update_option( 'rewrite_rules', '' );
+	
+	if( is_multisite() )
+		restore_current_blog();
 
 	if ( $subdomain_install ) {
 		$vhost_ok = false;
@@ -341,5 +362,7 @@ Thanks!
 		}
 	}
 
+	do_action( 'netplus_after_populate_network', $network_id, $blog_id, $domain, $email, $site_name, $path, $subdomain_install );
+	
 	return true;
 }

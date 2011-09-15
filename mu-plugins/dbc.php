@@ -174,4 +174,30 @@ function cap_register_taxonomy_for_pages() {
 	register_taxonomy( 'author', 'page' );
 }
 
+function ra_netplus_extra_fields() {
+	?><h2>Use Existing Site</h2>
+	<table class="form-table">
+	<tr>
+	<th scope='row'>Blog ID</th>
+	<td>
+	<input type='text' name='network_blog_id' value='<?php echo esc_attr( (int)$_POST['network_blog_id'] ); ?>' />
+	</td>
+	</tr>
+	</table><?php
+}
+add_action( 'netplus_extra_fields', 'ra_netplus_extra_fields' );
+
+function ra_netplus_new_network_blog_id( $blog_id ) {
+	global $wpdb;
+	
+	$net_blog_id = isset( $_POST['network_blog_id'] ) ? (int)$_POST['network_blog_id'] : 0;
+	if( $net_blog_id ) {
+		$existing_id = $wpdb->get_var( $wpdb->prepare( "SELECT blog_id FROM {$wpdb->blogs} WHERE blog_id = %d", $net_blog_id ) );
+		if( $existing_id )
+		return $existing_id;
+	}
+	return $blog_id;
+}
+add_filter( 'netplus_new_network_blog_id', 'ra_netplus_new_network_blog_id' );
+
 ?>
