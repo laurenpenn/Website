@@ -30,7 +30,7 @@ get_header(); // Loads the header.php template. ?>
 
 				<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 
-				<?php echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( '[entry-published] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</div>' ); ?>
+				<?php echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( '[entry-published format="F Y"] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</div>' ); ?>
 				
 				<?php get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'small-thumb' ) ); ?>
 
