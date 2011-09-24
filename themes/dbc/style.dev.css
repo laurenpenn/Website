@@ -797,70 +797,88 @@ img.wp-smiley {
 		}
 
 /**
-* Stories
+* Stories & Events
 ************************************************/
 .page-template-publications #stories .hentry,
-.archive-story .hentry {
+.archive-story .hentry,
+.archive-event .hentry {
 	background: none !important;
 	border: none;
 	border-bottom: 3px double #f1f1f1;
 	padding: 18px 8px 0;
 }
 .page-template-publications #stories .entry-title,
-.archive-story .entry-title {
+.archive-story .entry-title,
+.archive-event .entry-title {
 	font: 21px/34px "CartoGothicStdBold", Arial, Helvetica, sans-serif;
 	margin: 0;
 }
 
 .page-template-publications #stories .byline,
-.archive-story .byline {
+.archive-story .byline,
+.archive-event .byline {
 	margin: 0 0 8px;
 }
 
+.archive-event .byline {
+	font-weight: bold;
+}
+
 .page-template-publications #stories .small-thumb,
-.archive-story .small-thumb {
+.archive-story .small-thumb,
+.archive-event .small-thumb {
 	border: 1px solid #666;
 	float: left;
 	margin: 0 21px 8px 0;
 	padding: 4px;
 }
-.singular-story #content {
+.singular-story #content,
+.singular-event #content {
 	margin: 0 auto 50px;
 	max-width: 600px;
 }
 
 .singular-story #content .entry-title,
-.archive-story .page-title {
+.singular-event #content .entry-title,
+.archive-story .page-title,
+.archive-event .page-title {
 	color: #333;
 	font: 34px/55px "CartoGothicStdBold", Arial, Helvetica, sans-serif;
 }
 
-.archive-story .page-title {
+.archive-story .page-title,
+.archive-event .page-title {
 	margin: 0;
 }
 
-.singular-story #content .entry-title a {
+.singular-story #content .entry-title a ,
+.singular-event #content .entry-title a{
 	color: #333;
 }
 
-.singular-story .entry-content {
+.singular-story .entry-content,
+.singular-event .entry-content {
 	font: 18px/1.5em "Georgia", "Times New Roman", Times, serif;
 }
 
-.singular-story .entry-content p+p {
+.singular-story .entry-content p+p,
+.singular-event .entry-content p+p  {
 	margin: 0;
 	text-indent: 1.2em;
 }
 
-.singular-story .entry-content img.alignnone {
+.singular-story .entry-content img.alignnone,
+.singular-event .entry-content img.alignnone {
 	margin-left: -1.2em;
 }
 
-.singular-story .entry-content p:first-child img.alignnone {
+.singular-story .entry-content p:first-child img.alignnone,
+.singular-event .entry-content p:first-child img.alignnone {
 	margin: 0;
 }
 
-.singular-story .byline {
+.singular-story .byline,
+.singular-event .byline {
 	margin: 0 0 18px;
 }
 
@@ -868,14 +886,20 @@ img.wp-smiley {
 .singular-story h3,
 .singular-story h4,
 .singular-story h5,
-.singular-story h6 {
+.singular-story h6,
+.singular-event h2,
+.singular-event h3,
+.singular-event h4,
+.singular-event h5,
+.singular-event h6 {
 	color: #333;
 	font-family: "CartoGothicStdBold", Arial, Helvetica, sans-serif;
 	margin: 1.2em 0 .2em;
 	
 }
 
-.singular-story h2 {
+.singular-story h2,
+.singular-event h2 {
 	font-size: 21px;
 	line-height: 34px;
 }

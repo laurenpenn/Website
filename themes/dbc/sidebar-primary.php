@@ -19,9 +19,15 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 
 		<?php dynamic_sidebar( 'primary' ); ?>
 
-		<?php if ( is_post_type_archive( 'story' ) ): ?>
+		<?php if ( is_post_type_archive( 'story' ) || is_post_type_archive( 'event' ) ): ?>
 			
+			<h3>New Stories</h3>
 			
+			<?php get_template_part( 'loop-stories' ); // Loads the loop-stories.php template. ?>
+			
+			<h3>Upcoming Events</h3>
+			
+			<?php get_template_part( 'loop-events' ); // Loads the loop-events.php template. ?>
 			
 		<?php endif; ?>
 		

@@ -229,7 +229,7 @@ function dbc_child_pages() {
 */
 function dbc_disable_sidebars( $sidebars_widgets ) {
 
-	if ( is_front_page() || is_page_template('page-template-home.php') || is_page_template( 'page-template-full-width.php' ) || is_singular( 'story' ) ) {
+	if ( is_front_page() || is_page_template('page-template-home.php') || is_page_template( 'page-template-full-width.php' ) || is_singular( 'story' ) || is_singular( 'event' ) ) {
 		$sidebars_widgets['primary'] = false;
 		$sidebars_widgets['secondary'] = false;
 	}
@@ -586,7 +586,6 @@ function dbc_register_post_types() {
 		'show_ui' => true,
 		'show_in_menu' => true,
 		'menu_position' => 9,
-		'menu_icon' => 'library/images/book-open-list.png',
 		'show_in_nav_menus' => true,
 		'publicly_queryable' => true,
 		'exclude_from_search' => false,
@@ -597,7 +596,7 @@ function dbc_register_post_types() {
 		'capability_type' => 'post'
 	);
 	
-	/* Labels for the tom post type. */
+	/* Labels for the note post type. */
 	$note_labels = array(
 		'name' => __( 'Tom\'s Notes', $domain ),
 		'singular_name' => __( 'Tom\'s Note', $domain ),
@@ -615,7 +614,7 @@ function dbc_register_post_types() {
 		'menu_name' => __( 'Notes', $domain )
 	);
 
-	/* Arguments for the publication post type. */
+	/* Arguments for the note post type. */
 	$note_args = array(
 		'labels' => $note_labels,
 		'hierarchical' => false,
@@ -624,7 +623,6 @@ function dbc_register_post_types() {
 		'show_ui' => true,
 		'show_in_menu' => true,
 		'menu_position' => 7,
-		'menu_icon' => 'library/images/document-sticky-note.png',
 		'show_in_nav_menus' => true,
 		'publicly_queryable' => true,
 		'exclude_from_search' => false,
@@ -653,7 +651,7 @@ function dbc_register_post_types() {
 		'menu_name' => __( 'Stories', $domain )
 	);
 
-	/* Arguments for the publication post type. */
+	/* Arguments for the story post type. */
 	$story_args = array(
 		'labels' => $story_labels,
 		'hierarchical' => false,
@@ -663,7 +661,6 @@ function dbc_register_post_types() {
 		'show_ui' => true,
 		'show_in_menu' => true,
 		'menu_position' => 5,
-		'menu_icon' => 'library/images/book-open-list.png',
 		'show_in_nav_menus' => true,
 		'publicly_queryable' => true,
 		'exclude_from_search' => false,

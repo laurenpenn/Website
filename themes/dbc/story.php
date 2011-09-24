@@ -9,6 +9,35 @@
  * @subpackage Template
  */
 
+ 	$events = $wpdb->get_results($querystr, OBJECT);
+	
+	// - declare fresh day -
+	$daycheck = null;
+	
+	// - loop -
+	if ($events):
+	global $post;
+	foreach ($events as $post):
+	setup_postdata($post);
+	
+	// - custom variables -
+	$custom = get_post_custom(get_the_ID());
+	$sd = $custom["event_startdate"][0];
+	$ed = $custom["event_enddate"][0];
+
+	// - determine if it's a new day -
+	$longdate = date("l, M j, Y", $sd);
+		
+	if ( $sd != $ed ) {
+		$longdate = date("M j, Y", $sd) .' - ' . date("M j, Y", $ed);
+	}
+
+	
+	// - local time format -
+	$time_format = get_option('time_format');
+	$stime = date($time_format, $sd);
+	$etime = date($time_format, $ed);
+
 get_header(); // Loads the header.php template. ?>
 
 	<?php do_atomic( 'before_content' ); // dbc_before_content ?>
