@@ -22,6 +22,7 @@ add_filter( 'post_updated_messages', 'events_updated_messages' );
 add_filter( 'manage_edit-event_columns', 'event_edit_columns' );
 
 add_shortcode( 'events-full', 'event_full' );
+add_shortcode( 'events-sidebar', 'event_sidebar' );
 
 /**
  * Queues stylesheets into the admin
@@ -76,7 +77,7 @@ function dbc_event_post_types() {
 		'capability_type' => 'post',
 		'hierarchical' => false,
 		'rewrite' => array( "slug" => "events" ),
-		'supports'=> array('title', 'thumbnail', 'excerpt', 'editor') ,
+		'supports'=> array('title', 'thumbnail', 'excerpt', 'editor'),
 		'show_in_nav_menus' => true,
 		'menu_position' => 5,
 		'has_archive' => true
@@ -141,8 +142,8 @@ function event_custom_columns($column) {
 				// - show dates -
 				$startd = $custom["event_startdate"][0];
 				$endd = $custom["event_enddate"][0];
-				$startdate = date("F j, Y", $startd);
-				$enddate = date("F j, Y", $endd);
+				if ( !empty( $startd ) ) $startdate = date("F j, Y", $startd);
+				if ( !empty( $endd ) ) $enddate = date("F j, Y", $endd);
 				echo $startdate . '<br /><em>' . $enddate . '</em>';
 			break;
 			case "tf_col_ev_times":
@@ -150,8 +151,8 @@ function event_custom_columns($column) {
 				$startt = $custom["event_startdate"][0];
 				$endt = $custom["event_enddate"][0];
 				$time_format = get_option('time_format');
-				$starttime = date($time_format, $startt);
-				$endtime = date($time_format, $endt);
+				if ( !empty( $startt ) ) $starttime = date($time_format, $startt);
+				if ( !empty( $endt ) ) $endtime = date($time_format, $endt);
 				echo $starttime . ' - ' .$endtime;
 			break;
 			case "tf_col_ev_thumb":
@@ -193,6 +194,10 @@ function event_meta () {
 	// - grab data -
 
 	global $post;
+	
+	$cf_event_startdate = get_post_meta($post->ID, 'event_startdate', true);
+	$cf_event_enddate = get_post_meta($post->ID, 'event_enddate', true);
+	
 	$custom = get_post_custom($post->ID);
 	$meta_sd = $custom["event_startdate"][0];
 	$meta_ed = $custom["event_enddate"][0];
@@ -225,10 +230,10 @@ function event_meta () {
 	?>
 	<div class="tf-meta">
 		<ul>
-			<li><label>Start Date</label><input name="event_startdate" class="dbc-event-date" value="<?php echo $clean_sd; ?>" /></li>
-			<li><label>Start Time</label><input name="event_starttime" value="<?php echo $clean_st; ?>" /><em>Use 24h format (7pm = 19:00)</em></li>
-			<li><label>End Date</label><input name="event_enddate" class="dbc-event-date" value="<?php echo $clean_ed; ?>" /></li>
-			<li><label>End Time</label><input name="event_endtime" value="<?php echo $clean_et; ?>" /><em>Use 24h format (7pm = 19:00)</em></li>
+			<li><label>Start Date</label><input name="event_startdate" class="dbc-event-date" value="<?php if ( !empty( $cf_event_startdate ) ) echo $clean_sd; ?>" /></li>
+			<li><label>Start Time</label><input name="event_starttime" value="<?php if ( !empty( $meta_st ) ) echo $clean_st; ?>" /><em>Use 24h format (7pm = 19:00)</em></li>
+			<li><label>End Date</label><input name="event_enddate" class="dbc-event-date" value="<?php if ( !empty( $cf_event_enddate ) ) echo $clean_ed; ?>" /></li>
+			<li><label>End Time</label><input name="event_endtime" value="<?php if ( !empty( $meta_et ) ) echo $clean_et; ?>" /><em>Use 24h format (7pm = 19:00)</em></li>
 		</ul>
 	</div>
 	<?php
@@ -300,11 +305,114 @@ function events_updated_messages( $messages ) {
 /**
  * Creates the content for a shortcode to list events
  * 
- * Example: [tf-events-full limit='20']
+ * Example: [events-full limit='20']
  *
  * @since 1.0
  */
 function event_full ( $atts ) {
+
+	// - define arguments -
+	extract(shortcode_atts(array(
+	    'limit' => '10', // # of events to show
+	 ), $atts));
+	
+	// ===== OUTPUT FUNCTION =====
+	
+	ob_start();
+	
+	// ===== LOOP: FULL EVENTS SECTION =====
+	
+	// - hide events that are older than 6am today (because some parties go past your bedtime) -
+	
+	$today6am = strtotime('today 6:00') + ( get_option( 'gmt_offset' ) * 3600 );
+	
+	// - query -
+	global $wpdb;
+	$querystr = "
+		SELECT *
+		FROM $wpdb->posts wposts, $wpdb->postmeta metastart, $wpdb->postmeta metaend
+		WHERE (wposts.ID = metastart.post_id AND wposts.ID = metaend.post_id)
+		AND (metaend.meta_key = 'event_enddate' AND metaend.meta_value > $today6am OR metaend.meta_value = '' )
+		AND metastart.meta_key = 'event_enddate'
+		AND wposts.post_type = 'event'
+		AND wposts.post_status = 'publish'
+		GROUP BY wposts.ID
+		ORDER BY metastart.meta_value ASC LIMIT $limit
+	 ";
+	
+	$events = $wpdb->get_results($querystr, OBJECT);
+	echo '<pre>';
+	//print_r($events);
+	echo '</pre>';
+	// - declare fresh day -
+	$daycheck = null;
+	
+	// - loop -
+	if ($events):
+	global $post;
+	foreach ($events as $post):
+	setup_postdata($post);
+	
+	// - custom variables -
+	$custom = get_post_custom(get_the_ID());
+	$sd = $custom["event_startdate"][0];
+	$ed = $custom["event_enddate"][0];
+	
+	// single day event
+	if ( !empty( $sd ) ) $longdate = date("F j, Y g:iA", $sd);
+	if ( !empty( $ed ) ) $longdate .= date(" - g:iA", $ed);
+	
+	// multiple day event
+	if ( !empty( $sd ) || !empty( $ed ) ) {
+		if ( date("F j, Y", $sd) != date("F j, Y", $ed) )
+			$longdate = date("F j, Y g:iA", $sd) .' - ' . date("F j @ g:iA", $ed);
+	}
+	
+	?>
+	<div id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
+
+		<?php do_atomic( 'before_entry' ); // dbc_before_entry ?>
+
+		<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+		
+		<?php echo '<div class="byline">' . $longdate .'</div>'; ?>
+
+		<?php get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'small-thumb' ) ); ?>
+		
+		<div class="entry-summary">
+			<?php the_excerpt(); ?>
+			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
+		</div><!-- .entry-summary -->
+
+		<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "]', hybrid_get_textdomain() ) . '</div>' ); ?>
+
+		<?php do_atomic( 'after_entry' ); // dbc_after_entry ?>
+
+	</div><!-- .hentry -->
+	<?php
+	
+	// - fill daycheck with the current day -
+	$daycheck = $longdate;
+	
+	endforeach;
+	else :
+	endif;
+	
+	// ===== RETURN: FULL EVENTS SECTION =====
+	
+	$output = ob_get_contents();
+	ob_end_clean();
+	return $output;
+}
+
+/**
+ * Creates the content for a shortcode to list events
+ * 
+ * Example: [events-sidebar limit='20']
+ *
+ * @since 1.0
+ */
+function event_sidebar ( $atts ) {
 
 	// - define arguments -
 	extract(shortcode_atts(array(
@@ -342,55 +450,37 @@ function event_full ( $atts ) {
 	// - loop -
 	if ($events):
 	global $post;
-	foreach ($events as $post):
-	setup_postdata($post);
-	
-	// - custom variables -
-	$custom = get_post_custom(get_the_ID());
-	$sd = $custom["event_startdate"][0];
-	$ed = $custom["event_enddate"][0];
-
-	// - determine if it's a new day -
-	$longdate = date("l, M j, Y", $sd);
 		
-	if ( $sd != $ed ) {
-		$longdate = date("M j, Y", $sd) .' - ' . date("M j, Y", $ed);
-	}
-
-	
-	// - local time format -
-	$time_format = get_option('time_format');
-	$stime = date($time_format, $sd);
-	$etime = date($time_format, $ed);
+		echo '<h3>Upcoming Events</h3>';
+		echo '<ul>';
+		foreach ($events as $post):
+		setup_postdata($post);
 		
-	// - output - ?>
-	<div id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
-
-		<?php do_atomic( 'before_entry' ); // dbc_before_entry ?>
-
-		<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+		// - custom variables -
+		$custom = get_post_custom(get_the_ID());
+		$sd = $custom["event_startdate"][0];
+		$ed = $custom["event_enddate"][0];
 		
-		<?php echo '<div class="byline">' . $longdate . ' from ' . $stime . ' - ' . $etime .'</div>'; ?>
-
-		<?php get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'small-thumb' ) ); ?>
+		// single day event
+		$longdate = date("M j, Y", $sd);
 		
-		<div class="entry-summary">
-			<?php the_excerpt(); ?>
-			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
-		</div><!-- .entry-summary -->
-
-		<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "]', hybrid_get_textdomain() ) . '</div>' ); ?>
-
-		<?php do_atomic( 'after_entry' ); // dbc_after_entry ?>
-
-	</div><!-- .hentry -->
-	<?php
-	
-	// - fill daycheck with the current day -
-	$daycheck = $longdate;
-	
-	endforeach;
-	else :
+		// multiple day event
+		if ( date("M j, Y", $sd) != date("M j, Y", $ed) ) {
+			if ( date("M", $sd) != date("M", $ed) )
+				$longdate = date("M j, Y", $sd) .' - ' . date("M j, Y", $ed);
+			else
+				$longdate = date("M j", $sd) .' - ' . date("j, Y", $ed);
+		}
+		
+		?>
+			<li><a href="<?php the_permalink(); ?>"><?php the_title_attribute(); ?></a><br /><?php echo $longdate ?></li>		
+		<?php
+		
+		// - fill daycheck with the current day -
+		$daycheck = $longdate;
+		
+		endforeach;
+	echo '</ul>';
 	endif;
 	
 	// ===== RETURN: FULL EVENTS SECTION =====
