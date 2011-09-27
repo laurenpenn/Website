@@ -11,18 +11,30 @@
  */
 
 add_action( 'init', 'dbc_event_post_types' );
+add_action( 'init', 'dbc_remove_actions' );
 add_action( 'admin_print_styles' . $page, 'dbc_events_admin_styles' );
 add_action( 'admin_print_scripts' . $page, 'dbc_events_admin_scripts' );
 add_action( 'admin_init', 'event_create' );
 add_action( 'admin_head', 'dbc_events_icons' );
 add_action( 'manage_posts_custom_column', 'event_custom_columns' );
 add_action( 'save_post', 'save_event' );
-add_filter( 'post_updated_messages', 'events_updated_messages' );
 
+add_filter( 'post_updated_messages', 'events_updated_messages' );
 add_filter( 'manage_edit-event_columns', 'event_edit_columns' );
 
 add_shortcode( 'events-full', 'event_full' );
 add_shortcode( 'events-sidebar', 'event_sidebar' );
+
+/**
+ * Remove defaults set by WordPress or other plugins
+ *
+ * @since 1.0
+ */
+function dbc_remove_actions() {
+	
+	// Removes the post expirator plugin meta box
+	remove_action( 'edit_form_advanced','expirationdate_meta_custom' );
+}
 
 /**
  * Queues stylesheets into the admin
