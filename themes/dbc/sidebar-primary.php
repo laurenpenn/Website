@@ -25,9 +25,7 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 			
 			<?php get_template_part( 'loop-stories' ); // Loads the loop-stories.php template. ?>
 			
-			<h3>Upcoming Events</h3>
-			
-			<?php get_template_part( 'loop-events' ); // Loads the loop-events.php template. ?>
+			<?php echo do_shortcode('[events-sidebar]'); ?>
 			
 		<?php endif; ?>
 		

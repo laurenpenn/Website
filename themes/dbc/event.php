@@ -34,24 +34,20 @@ get_header(); // Loads the header.php template. ?>
 						$ed = $custom["event_enddate"][0];
 					
 						// single day event
-						$longdate = date("l, M j, Y", $sd);
+						$longdate = date("F j, Y g:iA", $sd);
 						
 						// multiple day event
 						if ( $sd != $ed ) {
-							$longdate = date("M j, Y", $sd) .' - ' . date("M j, Y", $ed);
+							$longdate = date("F j, Y g:iA", $sd) .' - ' . date("F j @ g:iA", $ed);
 						}
-						
-						// local time format
-						$time_format = get_option('time_format');
-						$stime = date($time_format, $sd);
-						$etime = date($time_format, $ed);
+
 					?>
 
 					<?php do_atomic( 'before_entry' ); // dbc_before_entry ?>
 			
 					<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 					
-					<?php echo '<h2>' . $longdate . ' from ' . $stime . ' - ' . $etime .'</h3>'; ?>
+					<?php echo '<h2>' . $longdate .'</h2>'; ?>
 			
 					<?php get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'small-thumb' ) ); ?>
 					
