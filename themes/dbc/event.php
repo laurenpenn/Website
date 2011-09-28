@@ -9,7 +9,6 @@
  * @subpackage Template
  */
 
-
 get_header(); // Loads the header.php template. ?>
 
 	<?php do_atomic( 'before_content' ); // dbc_before_content ?>
@@ -33,12 +32,14 @@ get_header(); // Loads the header.php template. ?>
 						$sd = $custom["event_startdate"][0];
 						$ed = $custom["event_enddate"][0];
 					
-						// single day event
-						$longdate = date("F j, Y g:iA", $sd);
-						
-						// multiple day event
-						if ( $sd != $ed ) {
-							$longdate = date("F j, Y g:iA", $sd) .' - ' . date("F j @ g:iA", $ed);
+						if ( !empty( $sd ) || !empty( $ed ) ) {
+							// single day event
+							$longdate = date("F j, Y g:iA", $sd);
+							
+							// multiple day event
+							if ( $sd != $ed ) {
+								$longdate = date("F j, Y g:iA", $sd) .' - ' . date("F j @ g:iA", $ed);
+							}
 						}
 
 					?>
@@ -49,7 +50,7 @@ get_header(); // Loads the header.php template. ?>
 					
 					<?php echo '<h2>' . $longdate .'</h2>'; ?>
 			
-					<?php get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'small-thumb' ) ); ?>
+					<?php get_the_image( array( 'size' => 'full' ) ); ?>
 					
 					<div class="entry-content">
 						<?php the_content(); ?>
