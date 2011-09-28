@@ -10,7 +10,8 @@
  */
 	$args = array (
 		'posts_per_page' => 5,
-		'post_type' => 'story'
+		'post_type' => 'story',
+		'post_status' => 'published'
 	);
 	
 	query_posts( $args );	
