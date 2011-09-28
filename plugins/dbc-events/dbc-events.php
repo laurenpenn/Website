@@ -325,7 +325,7 @@ function event_full ( $atts ) {
 
 	// - define arguments -
 	extract(shortcode_atts(array(
-	    'limit' => '10', // # of events to show
+	    'limit' => '99', // # of events to show
 	 ), $atts));
 	
 	// ===== OUTPUT FUNCTION =====
@@ -353,9 +353,7 @@ function event_full ( $atts ) {
 	 ";
 	
 	$events = $wpdb->get_results($querystr, OBJECT);
-	echo '<pre>';
-	//print_r($events);
-	echo '</pre>';
+
 	// - declare fresh day -
 	$daycheck = null;
 	
@@ -428,7 +426,7 @@ function event_sidebar ( $atts ) {
 
 	// - define arguments -
 	extract(shortcode_atts(array(
-	    'limit' => '10', // # of events to show
+	    'limit' => '5', // # of events to show
 	 ), $atts));
 	
 	// ===== OUTPUT FUNCTION =====
