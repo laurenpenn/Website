@@ -1270,7 +1270,51 @@ img.wp-smiley {
 		width: 195px;
 	}
 		#sidebar-menu a { color: #605149; }
-			#sidebar-menu .current_page_item a, #sidebar-menu a:hover { color: #94532D; }		
+			#sidebar-menu .current_page_item a, #sidebar-menu a:hover { color: #94532D; }
+
+	#sidebar-primary .loop {
+		margin: 0 -20px 0;
+	}				
+	#sidebar-primary .loop h3 {
+		background: #ccc;
+		border-bottom: 1px solid #ccc;
+		color: #fff;
+		margin-top: 1px;
+		font: 16px/26px "CartoGothicStdBold",Arial,Helvetica,sans-serif;
+		margin: 0;
+		padding: 10px 20px;
+		text-shadow: none;
+		text-transform: uppercase;
+	}
+	#sidebar-primary .loop .all {
+		font: 11px/26px Arial, Helvetica, sans-serif;
+		float: right;
+		letter-spacing: 0;
+		text-transform: lowercase;
+	}
+	#sidebar-primary .loop .all a {
+		color: #666;
+	}
+	#sidebar-primary .loop ul {
+		background: #fff;
+		border-top: 1px solid #ccc;
+		list-style: none;
+		margin: 0 0 20px;
+	}
+	#sidebar-primary .loop li {
+		background: #ddd;
+		border-bottom: 1px solid #ccc;
+		margin-top: 1px;
+		padding: 10px 20px;
+		text-shadow: none;
+	}
+	#sidebar-primary .loop ul a {
+		color: #333;
+		font-weight: bold;
+	}
+	#sidebar-primary .loop .date {
+		font-size: 11px;
+	}
 		
 /**
 * Footer

@@ -17,14 +17,20 @@
 
 	if ( have_posts() ) : ?>
 	
-		<ul>
-
-		<?php while ( have_posts() ) : the_post(); ?>
-						
-			<li><a href="<?php the_permalink(); ?>"><?php the_title_attribute(); ?></a></li>					
-			
-		<?php endwhile; ?>
+		<div class="loop loop-stories">
+	
+			<h3>New Stories <span class="all"><a href="<?php bloginfo( 'siteurl' ); ?>/stories/">view all</a></span></h3>
 		
-		</ul>
+			<ul>
+	
+			<?php while ( have_posts() ) : the_post(); ?>
+							
+				<li><a href="<?php the_permalink(); ?>"><?php the_title_attribute(); ?></a></li>					
+				
+			<?php endwhile; ?>
+			
+			</ul>
+		
+		</div>
 	
 	<?php endif; wp_reset_query(); ?>

@@ -21,8 +21,6 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 
 		<?php if ( is_post_type_archive( 'story' ) || is_post_type_archive( 'event' ) ): ?>
 			
-			<h3>New Stories</h3>
-			
 			<?php get_template_part( 'loop-stories' ); // Loads the loop-stories.php template. ?>
 			
 			<?php echo do_shortcode('[events-sidebar]'); ?>

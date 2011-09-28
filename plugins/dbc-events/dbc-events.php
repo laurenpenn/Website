@@ -461,36 +461,38 @@ function event_sidebar ( $atts ) {
 	if ($events):
 	global $post;
 		
-		echo '<h3>Upcoming Events</h3>';
+		echo '<div class="loop loop-events">';
+		echo '<h3>Upcoming Events <span class="all"><a href="'. get_bloginfo( 'siteurl' ) .'/events/">view all</a></span></h3>';
 		echo '<ul>';
-		foreach ($events as $post):
-		setup_postdata($post);
-		
-		// - custom variables -
-		$custom = get_post_custom(get_the_ID());
-		$sd = $custom["event_startdate"][0];
-		$ed = $custom["event_enddate"][0];
-		
-		// single day event
-		$longdate = date("M j, Y", $sd);
-		
-		// multiple day event
-		if ( date("M j, Y", $sd) != date("M j, Y", $ed) ) {
-			if ( date("M", $sd) != date("M", $ed) )
-				$longdate = date("M j, Y", $sd) .' - ' . date("M j, Y", $ed);
-			else
-				$longdate = date("M j", $sd) .' - ' . date("j, Y", $ed);
-		}
-		
-		?>
-			<li><a href="<?php the_permalink(); ?>"><?php the_title_attribute(); ?></a><br /><?php echo $longdate ?></li>		
-		<?php
-		
-		// - fill daycheck with the current day -
-		$daycheck = $longdate;
-		
-		endforeach;
-	echo '</ul>';
+			foreach ($events as $post):
+			setup_postdata($post);
+			
+			// - custom variables -
+			$custom = get_post_custom(get_the_ID());
+			$sd = $custom["event_startdate"][0];
+			$ed = $custom["event_enddate"][0];
+			
+			// single day event
+			$longdate = date("M j, Y", $sd);
+			
+			// multiple day event
+			if ( date("M j, Y", $sd) != date("M j, Y", $ed) ) {
+				if ( date("M", $sd) != date("M", $ed) )
+					$longdate = date("M j, Y", $sd) .' - ' . date("M j, Y", $ed);
+				else
+					$longdate = date("M j", $sd) .' - ' . date("j, Y", $ed);
+			}
+			
+			?>
+				<li><a href="<?php the_permalink(); ?>"><?php the_title_attribute(); ?></a><br /><span class="date"><?php echo $longdate ?></span></li>		
+			<?php
+			
+			// - fill daycheck with the current day -
+			$daycheck = $longdate;
+			
+			endforeach;
+		echo '</ul>';
+		echo '</div>';
 	endif;
 	
 	// ===== RETURN: FULL EVENTS SECTION =====
