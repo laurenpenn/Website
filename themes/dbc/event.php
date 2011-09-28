@@ -48,7 +48,7 @@ get_header(); // Loads the header.php template. ?>
 			
 					<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 					
-					<?php echo '<h2>' . $longdate .'</h2>'; ?>
+					<?php //echo '<h2>' . $longdate .'</h2>'; ?>
 			
 					<?php get_the_image( array( 'size' => 'full' ) ); ?>
 					

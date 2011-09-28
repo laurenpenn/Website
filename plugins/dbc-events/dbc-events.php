@@ -2,7 +2,7 @@
 /*
  *  Plugin Name: DBC Events
  *  Description: Event/calendar functionality
- *  Version: 1.0
+ *  Version: 1.1
  *  Author: Patrick Daly
  *  Author URI: http://developdaly.com/
  * 
@@ -12,9 +12,9 @@
 
 add_action( 'init', 'dbc_event_post_types' );
 add_action( 'init', 'dbc_remove_actions' );
-add_action( 'admin_print_styles' . $page, 'dbc_events_admin_styles' );
-add_action( 'admin_print_scripts' . $page, 'dbc_events_admin_scripts' );
-add_action( 'admin_init', 'event_create' );
+//add_action( 'admin_print_styles' . $page, 'dbc_events_admin_styles' );
+//add_action( 'admin_print_scripts' . $page, 'dbc_events_admin_scripts' );
+//add_action( 'admin_init', 'event_create' );
 add_action( 'admin_head', 'dbc_events_icons' );
 add_action( 'manage_posts_custom_column', 'event_custom_columns' );
 add_action( 'save_post', 'save_event' );
@@ -42,7 +42,7 @@ function dbc_remove_actions() {
  * @since 1.0
  */
 function dbc_events_admin_styles() {
-	wp_enqueue_style( 'jetpack', plugins_url( basename( dirname( __FILE__ ) ) . '/css/events.css' ), false );
+	wp_enqueue_style( 'events', plugins_url( basename( dirname( __FILE__ ) ) . '/css/events.css' ), false );
 	wp_enqueue_style( 'datepicker', plugins_url( basename( dirname( __FILE__ ) ) . '/css/redmond/jquery-ui-1.8.16.custom.css' ), false );
 }
 
@@ -127,8 +127,8 @@ function event_edit_columns($columns) {
 
 	$columns = array(
 		"cb" => "<input type=\"checkbox\" />",
-		"tf_col_ev_date" => "Dates",
-		"tf_col_ev_times" => "Times",
+		//"tf_col_ev_date" => "Dates",
+		//"tf_col_ev_times" => "Times",
 		"tf_col_ev_thumb" => "Thumbnail",
 		"title" => "Event",
 		"tf_col_ev_desc" => "Description",
@@ -150,6 +150,7 @@ function event_custom_columns($column) {
 	switch ($column)
 
 		{
+			/*
 			case "tf_col_ev_date":
 				// - show dates -
 				$startd = $custom["event_startdate"][0];
@@ -167,6 +168,7 @@ function event_custom_columns($column) {
 				if ( !empty( $endt ) ) $endtime = date($time_format, $endt);
 				echo $starttime . ' - ' .$endtime;
 			break;
+			 * */
 			case "tf_col_ev_thumb":
 				// - show thumb -
 				$post_image_id = get_post_thumbnail_id(get_the_ID());
@@ -349,7 +351,7 @@ function event_full ( $atts ) {
 		AND wposts.post_type = 'event'
 		AND wposts.post_status = 'publish'
 		GROUP BY wposts.ID
-		ORDER BY metastart.meta_value ASC LIMIT $limit
+		ORDER BY wposts.post_title ASC LIMIT $limit
 	 ";
 	
 	$events = $wpdb->get_results($querystr, OBJECT);
@@ -385,7 +387,7 @@ function event_full ( $atts ) {
 
 		<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 		
-		<?php echo '<div class="byline">' . $longdate .'</div>'; ?>
+		<?php //echo '<div class="byline">' . $longdate .'</div>'; ?>
 
 		<?php get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'small-thumb' ) ); ?>
 		
@@ -449,7 +451,7 @@ function event_sidebar ( $atts ) {
 	    AND metastart.meta_key = 'event_enddate'
 	    AND wposts.post_type = 'event'
 	    AND wposts.post_status = 'publish'
-	    ORDER BY metastart.meta_value ASC LIMIT $limit
+	    ORDER BY wposts.post_title ASC LIMIT $limit
 	 ";
 	
 	$events = $wpdb->get_results($querystr, OBJECT);
