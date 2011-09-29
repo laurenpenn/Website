@@ -23,8 +23,6 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 			
 			<?php get_template_part( 'loop-stories' ); // Loads the loop-stories.php template. ?>
 			
-			<?php echo do_shortcode('[events-sidebar]'); ?>
-			
 		<?php endif; ?>
 		
 		<?php if ( hybrid_get_setting( 'sidebar' ) == 'true' ) { ?>

@@ -20,7 +20,7 @@ get_header(); // Loads the header.php template. ?>
 
 		<div class="hfeed">
 			
-			<h1 class="page-title">Stories</h1>
+			<?php get_template_part( 'loop-meta' ); // Loads the loop-meta.php template. ?>
 
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -29,8 +29,16 @@ get_header(); // Loads the header.php template. ?>
 				<?php do_atomic( 'before_entry' ); // hybrid_before_entry ?>
 
 				<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+				
+				<?php $publication_month = get_post_meta($post->ID, 'publication-month', true); ?>
+				<?php $publication_year = get_post_meta($post->ID, 'publication-year', true); ?>
 
-				<?php echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( '[entry-published format="F Y"] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</div>' ); ?>
+				<?php
+					if ( !empty( $publication_month ) )
+						echo apply_atomic_shortcode( 'byline', '<div class="byline">' . $publication_month .' ' . $publication_year . __( ' [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</div>' );
+					else
+						echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( '[entry-published format="F Y"] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</div>' );
+				?>
 				
 				<?php get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'small-thumb' ) ); ?>
 

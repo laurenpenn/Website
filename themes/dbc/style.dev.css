@@ -731,6 +731,11 @@ img.wp-smiley {
 
 	
 		/* Archives */
+		.loop-title {
+			color: #333;
+			font: 34px/55px "CartoGothicStdBold", Arial, Helvetica, sans-serif;
+			margin: 0;
+		}
 		.archive .hentry,
 		.search .hentry {
 			border-left: 1px solid #D7D4CF;
@@ -836,19 +841,6 @@ img.wp-smiley {
 .singular-event #content {
 	margin: 0 auto 50px;
 	max-width: 600px;
-}
-
-.singular-story #content .entry-title,
-.singular-event #content .entry-title,
-.archive-story .page-title,
-.archive-event .page-title {
-	color: #333;
-	font: 34px/55px "CartoGothicStdBold", Arial, Helvetica, sans-serif;
-}
-
-.archive-story .page-title,
-.archive-event .page-title {
-	margin: 0;
 }
 
 .singular-story #content .entry-title a ,
