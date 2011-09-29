@@ -819,6 +819,13 @@ img.wp-smiley {
 	margin: 0;
 }
 
+.singular-story .entry-title,
+.singular-event .entry-title {
+	color: #333;
+	font: 34px/55px "CartoGothicStdBold", Arial, Helvetica, sans-serif;
+	margin: 0;
+}
+
 .page-template-publications #stories .byline,
 .archive-story .byline,
 .archive-event .byline {
