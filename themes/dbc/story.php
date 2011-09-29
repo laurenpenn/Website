@@ -33,8 +33,16 @@ get_header(); // Loads the header.php template. ?>
 
 						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 
-						<?php echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( '[entry-published format="F Y"] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</div>' ); ?>
-
+						<?php $publication_month = get_post_meta($post->ID, 'publication-month', true); ?>
+						<?php $publication_year = get_post_meta($post->ID, 'publication-year', true); ?>
+		
+						<?php
+							if ( !empty( $publication_month ) )
+								echo apply_atomic_shortcode( 'byline', '<div class="byline">' . $publication_month .' ' . $publication_year . __( ' [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</div>' );
+							else
+								echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( '[entry-published format="F Y"] [entry-edit-link before=" | "]', hybrid_get_textdomain() ) . '</div>' );
+						?>
+						
 						<div class="entry-content">
 							<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', hybrid_get_textdomain() ) ); ?>
 							<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
