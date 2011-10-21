@@ -800,6 +800,20 @@ img.wp-smiley {
 		#publication-archive .publications ul li {
 			margin: 0 0 5px;
 		}
+		
+.archive.archive-publication ul  {
+	list-style: square;
+	padding: 2em;
+}
+		
+.archive.archive-publication ul .hentry {
+	background: none;
+	border: none;
+	list-style: square;
+	margin: 0 0 1em;
+	overflow: visible;
+	padding: 0;
+}
 
 /**
 * Stories & Events

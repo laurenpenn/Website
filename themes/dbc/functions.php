@@ -592,7 +592,7 @@ function dbc_register_post_types() {
 		'has_archive' => true,
 		'query_var' => true,
 		'can_export' => true,
-		'rewrite' => array( 'slug' => 'publication', 'with_front' => false ),
+		'rewrite' => array( 'slug' => 'publications', 'with_front' => false ),
 		'capability_type' => 'post'
 	);
 	
@@ -804,6 +804,41 @@ function dbc_publication_title() {
 	} else {
 		echo get_the_title();
 	}
+
+}
+
+/**
+ * Uses a custom field to populate the title of a publication if one exists.
+ * The function falls back to using the post title.
+ *
+ * @since 0.2.0
+ */
+function dbc_publication_link() {
+	global $post;
+
+	$key = get_post_meta($post->ID, 'publication-link', true);
+	
+	$args = array(
+		'post_type' => 'attachment',
+		'numberposts' => 51,
+		'post_status' => null,
+		'post_parent' => $post->ID
+		); 
+	
+	$attachments = get_posts($args);
+	
+	if ($attachments & empty( $key ) ) {
+		foreach ($attachments as $attachment) {
+			if ( $attachment->post_mime_type == 'application/pdf')
+				$link = $attachment->guid;
+		}
+	} elseif ( !empty( $key ) ) {
+		$link = $key;
+	} else {
+		$link = get_permalink();
+	}
+	
+	return $link;
 
 }
 

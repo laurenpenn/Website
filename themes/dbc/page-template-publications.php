@@ -99,16 +99,53 @@ get_header(); // Loads the header.php template. ?>
 			</div><!-- #starting-point -->
 	
 			<div id="common-ground" class="publications">
-					
-				<p><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/starting-point-cover.jpg" alt="Starting Point" class="alignleft" height="320" width="250" /></p>
-				
-				<h2>Common Ground - Monthly</h2>
+
+				<p><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/common-ground-cover.gif" alt="Common Ground" class="alignleft" height="320" width="250" /></p>
 								
-				<p>Common Ground is a monthly email newsletter providing a variety of ministry events and opportunities during the month it is published: It also includes articles about ministries, people, or current events relevant to our lives today. A new edition of the newsletter is distributed around the first full week of each month.</p>
-									
-				<p><a href="http://dentonbible.org/stories/" class="link-out">View Stories</a></p>
-		
-			</div><!-- #common-ground -->		
+				<h2>Common Ground - Monthly</h2>
+	
+				<p>Common Ground is a monthly magazine providing a variety of ministry events and opportunities during the month it is published: It also includes articles about ministries, people, or current events relevant to our lives today. A new edition of the magazine is distributed around the first full week of each month.</p>			
+												
+				<ul id="common-ground-publications-inner">
+					<?php
+					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+					$args = array (
+						'paged' => $paged,
+						'posts_per_page' => 4,
+						'post_type' => 'publication',
+						'publication-type' => 'common-ground'
+					);
+					
+					query_posts( $args );
+					while ( have_posts() ) : the_post(); 
+						$args = array(
+							'post_type' => 'attachment',
+							'numberposts' => 51,
+							'post_status' => null,
+							'post_parent' => $post->ID
+							); 
+						$attachments = get_posts($args);
+						if ($attachments) {
+							foreach ($attachments as $attachment) {
+								if ( $attachment->post_mime_type == 'application/pdf')
+									$link = $attachment->guid;
+							}
+						} else {
+							$link = get_permalink();
+						}										
+						?>
+					
+						<li id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
+							
+							<a href="<?php echo $link; ?>" class="date"><?php dbc_publication_title(); ?></a>
+					
+						</li><!-- .hentry -->
+					
+					<?php endwhile; ?>	
+							
+					<?php wp_reset_query(); ?>
+				</ul>
+			</div><!-- #commoun-ground -->
 	
 			<div id="first-cup" class="publications">
 
