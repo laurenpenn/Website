@@ -41,9 +41,12 @@ get_header(); // Loads the header.php template. ?>
 							<?php echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( '[entry-published]', hybrid_get_textdomain() ) . '</div>' ); ?>
 	
 							<?php 
-							// the url to the first pdf or false if no pdf is found
 							$pdf = dbc_get_post_pdf();
+							
+							if ( !empty( $pdf ) )
+								echo '<div class="tom-pdf"><a href="'. $pdf .'" class="button">View PDF</a></div>';
 							?>
+							
 							<div class="tom-pdf"><a href="<?php echo $pdf; ?>" class="button">View PDF</a></div>
 							
 							<div class="facebook-like">
