@@ -771,7 +771,7 @@ function dbc_debug_stylesheet( $stylesheet_uri, $stylesheet_dir_uri ) {
 }
 
 /**
- * Get the first PDF attached to the current post
+ * Get the first PDF's URL attached to the current post.
  *
  * @since 0.2.0
  */
