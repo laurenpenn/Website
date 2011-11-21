@@ -19,7 +19,7 @@ get_header(); ?>
 		<?php get_template_part( 'slider-home' ); // loads slider-home.php ?>
 
 		<div id="mydbc">
-			<a class="big-button" href="https://secure.accessacs.com/access/login_guest.aspx?sn=92231">Check Out Upcoming<br /><span class="league-gothic">Events</span></a>
+			<a class="big-button" href="https://secure.accessacs.com/access/login_guest.aspx?sn=92231">Register for an<br /><span class="league-gothic">Event</span></a>
 			<a class="big-button" href="https://secure.accessacs.com/access/login_guest.aspx?sn=92231&amp;sc=sgguest">Search for a<br /><span class="league-gothic">Small Group</span></a>
 			<a class="big-button green" href="http://dentonbible.org/admin/mydbc-life-faq/">Connect to<br /><span class="league-gothic">MyDBC Life</span> <span class="icon">MyDBC Life</span></a>
 		</div><!-- #mydbc -->
