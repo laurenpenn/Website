@@ -56,19 +56,8 @@ get_header(); // Loads the header.php template. ?>
 						<?php the_content(); ?>
 						<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
 					</div><!-- .entry-summary -->
-			
+								
 					<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "]', hybrid_get_textdomain() ) . '</div>' ); ?>
-
-					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-						<p>
-							<a class="addthis_button_preferred_1"></a>
-							<a class="addthis_button_preferred_2"></a>
-							<a class="addthis_button_preferred_3"></a>
-							<a class="addthis_button_preferred_4"></a>
-							<a class="addthis_button_preferred_5"></a>
-							<a class="addthis_button_preferred_6"></a>
-						</p>
-					</div>
 					
 					<?php do_atomic( 'after_entry' ); // dbc_after_entry ?>
 
@@ -88,6 +77,17 @@ get_header(); // Loads the header.php template. ?>
 
 	</div><!-- #content -->
 
+	<div id="sidebar-sticky" class="addthis_toolbox addthis_default_style addthis_32x32_style">
+		<div class="buttons">
+			<div class="fb-like" data-href="<?php echo urlencode(get_permalink($post->ID)); ?>" data-send="false" data-layout="box_count" data-width="42" data-show-faces="false"></div>
+			<p>
+				<a class="addthis_button_twitter"></a>
+				<a class="addthis_button_email"></a>
+				<a class="addthis_button_print"></a>
+			</p>
+		</div>
+	</div><!-- #sidebar-sticky -->
+	
 	<?php do_atomic( 'after_content' ); // dbc_after_content ?>
 
 <?php get_footer(); // Loads the footer.php template. ?>

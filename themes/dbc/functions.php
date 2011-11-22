@@ -152,18 +152,13 @@ function dbc_ie6_detection(){
 function dbc_facebook_sdk() {
 	?>
 	<div id="fb-root"></div>
-	<script>
-	  window.fbAsyncInit = function() {
-	    FB.init({appId: '163053213744962', status: true, cookie: true,
-	             xfbml: true});
-	  };
-	  (function() {
-	    var e = document.createElement('script'); e.async = true;
-	    e.src = document.location.protocol +
-	      '//connect.facebook.net/en_US/all.js';
-	    document.getElementById('fb-root').appendChild(e);
-	  }());
-	</script>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) {return;}
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=163053213744962";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 	<?php
 }
 /**

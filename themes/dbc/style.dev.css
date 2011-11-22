@@ -858,11 +858,6 @@ img.wp-smiley {
 	margin: 0 21px 8px 0;
 	padding: 4px;
 }
-.singular-story #content,
-.singular-event #content {
-	margin: 0 auto 50px;
-	max-width: 600px;
-}
 
 .singular-story #content .entry-title a ,
 .singular-event #content .entry-title a{
@@ -872,22 +867,6 @@ img.wp-smiley {
 .singular-story .entry-content,
 .singular-event .entry-content {
 	font: 18px/1.5em "Georgia", "Times New Roman", Times, serif;
-}
-
-.singular-story .entry-content p+p,
-.singular-event .entry-content p+p  {
-	margin: 0;
-	text-indent: 1.2em;
-}
-
-.singular-story .entry-content img.alignnone,
-.singular-event .entry-content img.alignnone {
-	margin-left: -1.2em;
-}
-
-.singular-story .entry-content p:first-child img.alignnone,
-.singular-event .entry-content p:first-child img.alignnone {
-	margin: 0;
 }
 
 .singular-story .byline,
@@ -924,6 +903,31 @@ img.wp-smiley {
 
 .singular-story .entry-content blockquote p {
 	text-indent: 0;
+}
+
+.singular-story .wrap,
+.singular-event .wrap {
+	position: relative;
+}
+
+.singular-story #content,
+.singular-event #content {
+	float: right;
+	margin: 0 150px 50px 0;
+	max-width: 600px;
+}
+
+.singular-story #sidebar-sticky,
+.singular-event #sidebar-sticky {
+	float: left;
+	margin: 30px 0 0 35px;
+	width: 108px;
+}
+
+.fb-like.fb_edge_widget_with_comment.fb_iframe_widget {
+	display: block;
+	margin: 0 auto 5px;
+	width: 42px;
 }
 		
 /**

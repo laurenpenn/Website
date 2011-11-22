@@ -51,17 +51,6 @@ get_header(); // Loads the header.php template. ?>
 						<?php do_atomic( 'close_entry' ); // dbc_close_entry ?>
 
 					</div><!-- .hentry -->
-
-					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-						<p>
-							<a class="addthis_button_preferred_1"></a>
-							<a class="addthis_button_preferred_2"></a>
-							<a class="addthis_button_preferred_3"></a>
-							<a class="addthis_button_preferred_4"></a>
-							<a class="addthis_button_preferred_5"></a>
-							<a class="addthis_button_preferred_6"></a>
-						</p>
-					</div>
 					
 					<?php do_atomic( 'after_entry' ); // dbc_after_entry ?>
 
@@ -81,6 +70,17 @@ get_header(); // Loads the header.php template. ?>
 
 	</div><!-- #content -->
 
+	<div id="sidebar-sticky" class="addthis_toolbox addthis_default_style addthis_32x32_style">
+		<div class="buttons">
+			<div class="fb-like" data-href="<?php echo urlencode(get_permalink($post->ID)); ?>" data-send="false" data-layout="box_count" data-width="42" data-show-faces="false"></div>
+			<p>
+				<a class="addthis_button_twitter"></a>
+				<a class="addthis_button_email"></a>
+				<a class="addthis_button_print"></a>
+			</p>
+		</div>
+	</div><!-- #sidebar-sticky -->
+	
 	<?php do_atomic( 'after_content' ); // dbc_after_content ?>
 
 <?php get_footer(); // Loads the footer.php template. ?>
