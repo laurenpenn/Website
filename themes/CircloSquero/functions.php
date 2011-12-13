@@ -9,7 +9,7 @@ add_theme_support( 'automatic-feed-links' );
 add_action( 'template_redirect', 'dbc_cl_load_scripts' );
 
 /* Load styles to the theme. */
-add_action( 'wp_print_styles', 'dbc_cl_load_styles' );
+add_action( 'wp_enqueue_scripts', 'dbc_cl_load_styles' );
 
 function dbc_cl_load_scripts() {
 		

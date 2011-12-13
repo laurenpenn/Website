@@ -11,7 +11,7 @@ add_action( 'template_redirect', 'dbc_serve_load_scripts' );
 add_filter( 'sidebars_widgets', 'dbc_serve_disable_sidebars' );
 add_filter( 'hybrid_site_title', 'dbc_serve_site_title', 12 );
 
-add_action( 'wp_print_styles', 'dbc_serve_deregister_styles', 100 );
+add_action( 'wp_enqueue_scripts', 'dbc_serve_deregister_styles', 100 );
 
 add_filter( 'manage_edit-missionary_columns', 'dbc_serve_edit_missionary_columns' ) ;
 add_action( 'manage_missionary_posts_custom_column', 'dbc_serve_manage_missionary_columns', 10, 2 );
