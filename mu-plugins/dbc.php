@@ -77,8 +77,8 @@ function dbc_admin_bar_menu() {
 function dbc_global_bar(){
 	global $blog_id;	
 	if ( get_option( 'display' ) == 'true' )
-		return true; ?>
-	
+		return true;
+		
 ?>
 
 <div id="global-wrapper">
