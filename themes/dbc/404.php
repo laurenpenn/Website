@@ -10,7 +10,7 @@
  * @link http://codex.wordpress.org/Creating_an_Error_404_Page
  */
 
-@header( 'HTTP/1.1 404 Not found', true, 404 );?>
+@header( 'HTTP/1.1 404 Not found', true, 404 ); ?>
 
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>xmlns:fb="http://www.facebook.com/2008/fbml">
@@ -112,6 +112,8 @@
 		</div>
 		
 	</div>
+	
+	<?php wp_footer(); // wp_footer ?>
 	
 </body>
 </html>
