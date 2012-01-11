@@ -19,12 +19,26 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 
 		<?php dynamic_sidebar( 'primary' ); ?>
 
-		<?php if ( is_post_type_archive( 'story' ) || is_post_type_archive( 'event' ) ): ?>
-			
-			<?php get_template_part( 'loop-stories' ); // Loads the loop-stories.php template. ?>
-			
+		<?php if ( is_post_type_archive( 'story' ) && function_exists( 'wp_get_post_type_archives' ) ): ?>
+
+			<div class="loop">
+				<ul>
+					<?php wp_get_post_type_archives('story'); ?>
+				</ul>
+			</div>
+									
 		<?php endif; ?>
-		
+
+		<?php if ( is_post_type_archive( 'event' ) && function_exists( 'wp_get_post_type_archives' ) ): ?>
+
+			<div class="loop">
+				<ul>
+					<?php wp_get_post_type_archives('event'); ?>
+				</ul>
+			</div>
+									
+		<?php endif; ?>
+				
 		<?php if ( hybrid_get_setting( 'sidebar' ) == 'true' ) { ?>
 
 			<?php if ( is_tax( 'note' ) || get_post_type() == 'note' ) { ?>

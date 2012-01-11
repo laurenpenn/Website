@@ -107,13 +107,15 @@
 	<?php elseif ( is_date() ) : ?>
 
 		<div class="loop-meta">
-			<h1 class="loop-title"><?php _e( 'Archives by date', hybrid_get_textdomain() ); ?></h1>
-
-			<div class="loop-description">
-				<p>
-				<?php _e( 'You are browsing the site archives by date.', hybrid_get_textdomain() ); ?>
-				</p>
-			</div><!-- .loop-description -->
+			<?php if ( is_day() ) : ?>
+				<h1 class="loop-title"><?php _e( 'Daily archive: '. get_the_date(), hybrid_get_textdomain() ); ?></h1>
+			<?php elseif ( is_month() ) : ?>
+				<h1 class="loop-title"><?php _e( 'Monthly archive: '. get_the_date('F Y'), hybrid_get_textdomain() ); ?></h1>
+			<?php elseif ( is_year() ) : ?>
+				<h1 class="loop-title"><?php _e( 'Yearly archive: '. get_the_date('F'), hybrid_get_textdomain() ); ?></h1>
+			<?php else : ?>
+				<h1 class="loop-title"><?php _e( 'Archives: '. the_date('M'), hybrid_get_textdomain() ); ?></h1>
+			<?php endif; ?>
 
 		</div><!-- .loop-meta -->
 
