@@ -101,21 +101,23 @@ function dbc_equal_columns() {
 	
 	if ( post_layouts_get_layout() != 'layout-1c' ) {
 	?>
-	<script>
-		jQuery(document).ready(function($) {
-			// Equal column heights
-		    // get the heights
-		    l = $('#sidebar-primary').height();
-		    r = $('#content').height();
-		
-		    // get maximum heights of all columns
-		    h = Math.max(Math.max(l, r));
-		
-		    // apply it
-		    $('#sidebar-primary').height(h);
-		    $('#content').height(h);
-		   });
-	</script>
+<script>
+jQuery(document).ready(function ($) {
+	"use strict";
+	// Equal column heights
+	// get the heights
+	var l, r, h;
+	l = $('#sidebar-primary').height();
+	r = $('#content').height();
+
+	// get maximum heights of all columns
+	h = Math.max(Math.max(l, r));
+
+	// apply it
+	$('#sidebar-primary').height(h);
+	$('#content').height(h);
+});
+</script>
 	<?php		
 	}
 }
