@@ -347,9 +347,14 @@ blockquote.alignleft, blockquote .alignright { width: 33%; }
 }
 .columns-2 .column { width: 49%; }
 .columns-3 .column { width: 33%; }
+.columns-4 .column { width: 24%; }
 
-.columns-3 .column-last {
+.column-last {
 	margin: 0;
+}
+.page-template-columns-3 .column .entry-content,
+.page-template-columns-4 .column .entry-content {
+	padding: 0 1em;
 }
 
 /* Login form */

@@ -14,6 +14,12 @@ function dbc_child_disable_sidebars( $sidebars_widgets ) {
 
 	if ( hybrid_get_setting( 'info' ) == 'true' ) $sidebars_widgets['home'] = true;
 	
+	if ( !is_front_page() )
+		$sidebars_widgets['subsidiary'] = false;
+	
+	if ( is_page_template( 'page-template-columns-3.php' ) || is_page_template( 'page-template-columns-4.php' ) )
+		$sidebars_widgets['primary'] = false;
+		
 	return $sidebars_widgets;
 }
 

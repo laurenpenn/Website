@@ -8,7 +8,7 @@
  * Template: dbc
  */
 
-@import url('../dbc/style.css');
+@import url('../dbc/style.dev.css');
 
 #site-title a {
 	background: none;
