@@ -52,7 +52,6 @@ function dbc_theme_setup() {
 	add_action( 'template_redirect', 'dbc_one_column' );
 	add_action( 'widgets_init', 'dbc_sidebars' );	
 	add_action( 'widgets_init', 'dbc_register_widgets' );
-	add_action( 'wp_footer', 'dbc_equal_columns' );
 	add_action( "{$prefix}_before_html", 'dbc_ie6_detection', 11 );
 	add_action( "{$prefix}_header", 'dbc_get_sidebar_header', 11 );
 	add_action( "{$prefix}_open_body", 'dbc_facebook_sdk', 12 );
@@ -89,37 +88,6 @@ function dbc_load_scripts() {
 
 	if ( is_tax( 'note' ) || is_singular( 'note' ) || is_post_type_archive( 'note' ) )
 		wp_enqueue_style( 'note', trailingslashit( THEME_URI ) . 'library/css/note.css', false, '0.2.1', 'screen' );
-}
-
-/**
- * Inserts Javascript to equal the column heights only if two
- * columns exist.
- *
- * @since 0.2.1
- */
-function dbc_equal_columns() {
-	
-	if ( post_layouts_get_layout() != 'layout-1c' ) {
-	?>
-<script>
-jQuery(document).ready(function ($) {
-	"use strict";
-	// Equal column heights
-	// get the heights
-	var l, r, h;
-	l = $('#sidebar-primary').height();
-	r = $('#content').height();
-
-	// get maximum heights of all columns
-	h = Math.max(Math.max(l, r));
-
-	// apply it
-	$('#sidebar-primary').height(h);
-	$('#content').height(h);
-});
-</script>
-	<?php		
-	}
 }
 	
 /**

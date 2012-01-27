@@ -1,5 +1,5 @@
 /* 
- * Compress the contents of this file with http://www.minifyjs.com/javascript-compressor/.
+ * Compress the contents of this file with http://www.refresh-sf.com/yui/
  * Paste the results into /dbc/library/js/scripts.js
  */
 
