@@ -37,7 +37,7 @@
 		color: #6e6e6e;
 		display: inline-block;
 		font-size:14px;
-		line-height: 14px;
+		line-height: 18px;
 		margin-right: 16px;
 		padding: 10px;
 		text-decoration: none;
@@ -54,6 +54,7 @@
 	#mydbc .big-button.green {
 		background: #E2E8D7;
 		border: 5px solid #C3CEB1;
+		line-height: 14px;
 		margin: 0;
 	}
 		#mydbc .big-button.green:hover {
