@@ -15,12 +15,12 @@ get_header(); // Loads the header.php template. ?>
 	<div id="content">
 
 		<?php do_atomic( 'open_content' ); // dbc_open_content ?>
-		
-		<div class="columns columns-4">
-			
-			<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 
-			<div class="column">
+		<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+
+		<div class="columns columns-4">
+				
+			<div class="column column-first">
 	
 				<?php if ( have_posts() ) : ?>
 	

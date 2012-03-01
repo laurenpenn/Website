@@ -136,3 +136,20 @@
 #sidebar-subsidiary a {
 	color: #000;
 }
+.columns {
+	display: table-row;
+	width: 100%;
+}
+.columns-3 .column, .columns-4 .column {
+	display: table-cell;
+	float: none;
+	padding: 0 15px;
+}
+.columns-3 .column-first,
+.columns-3 .column-last {
+	width: 33%;
+}
+.columns-4 .column-first,
+.columns-4 .column-last {
+	width: 25%;
+}
