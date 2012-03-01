@@ -97,6 +97,9 @@
 #welcome-bar dl#welcome-connect { background: #a8cd89 url('images/icon-calendar.png') center 58px no-repeat; }
 #welcome-bar dl#welcome-connect:hover { background: #666 url('images/icon-calendar.png') center 58px no-repeat; }
 
+#welcome-bar dl#welcome-leaders { background: #a8cd89 url('images/icon-leaders.png') center 45px no-repeat; }
+#welcome-bar dl#welcome-leaders:hover { background: #666 url('images/icon-leaders.png') center 45px no-repeat; }
+
 #sidebar-primary {
     background: none;
 }
@@ -133,3 +136,18 @@
 #sidebar-subsidiary a {
 	color: #000;
 }
+
+.page-template-age .age-top {
+	overflow: hidden;
+}
+.page-template-age .overview {
+	border-right: 5px solid #ccc;
+	float: left;
+	padding-right: 30px;
+	width: 68%;
+}
+.page-template-age .loop-events {
+	float: right;
+	width: 25%;
+}
+

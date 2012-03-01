@@ -41,10 +41,10 @@ get_header(); ?>
 				<dd>Learn how to get involved</dd>
 			</a>
 		</dl>
-		<dl id="welcome-connect">
-			<a href="http://children.dentonbible.org/calendar/">
-				<dt><strong>Calendar</strong></dt>
-				<dd>Sign up for events</dd>
+		<dl id="welcome-leaders">
+			<a href="http://children.dentonbible.org/leaders/">
+				<dt><strong>Leaders</strong></dt>
+				<dd>Resources</dd>
 			</a>
 		</dl>
 	</div>
