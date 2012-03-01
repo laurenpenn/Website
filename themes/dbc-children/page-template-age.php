@@ -54,8 +54,6 @@ get_header(); // Loads the header.php template. ?>
 			<?php endif; ?>
 			
 			</div>
-			
-			<?php echo do_shortcode('[events-sidebar]'); ?>
 		
 		</div>
 

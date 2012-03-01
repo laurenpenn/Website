@@ -136,18 +136,3 @@
 #sidebar-subsidiary a {
 	color: #000;
 }
-
-.page-template-age .age-top {
-	overflow: hidden;
-}
-.page-template-age .overview {
-	border-right: 5px solid #ccc;
-	float: left;
-	padding-right: 30px;
-	width: 68%;
-}
-.page-template-age .loop-events {
-	float: right;
-	width: 25%;
-}
-
