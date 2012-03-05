@@ -56,6 +56,8 @@ get_header(); // Loads the header.php template. ?>
 			</div>
 		
 		</div>
+		
+		<?php if ( !post_password_required() ) { ?>
 
 		<div class="columns columns-3">
 			
@@ -64,6 +66,8 @@ get_header(); // Loads the header.php template. ?>
 			<div class="column column-last"><div class="entry-content"><?php the_secondary_content( 'Column 4' ); ?></div></div>
 			
 		</div><!-- .columns-3 -->
+		
+		<?php } ?>
 
 		<?php do_atomic( 'close_content' ); // dbc_close_content ?>
 
