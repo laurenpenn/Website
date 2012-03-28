@@ -26,13 +26,13 @@ get_header(); ?>
 	
 		<?php get_template_part( 'latest-message' ); // loads latest-message.php ?>
 		
-		<div id="home-ads">
+		<div id="home-features">
 		
-			<a href="http://dentonbible.org/note/" class="ad-note"><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/ad-notes.gif" alt="Notes from Tom Nelson" height="192" width="300" /></a>
+			<a href="http://dentonbible.org/note/" class="feature-note"><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/feature-notes.gif" alt="Notes from Tom Nelson" height="192" width="300" /></a>
 		
-			<a href="http://dentonbible.org/about-us/publications/" class="ad-publication"><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/ad-publications.gif" alt="Denton Bible Church Publications" height="192" width="300" /></a>
+			<a href="http://dentonbible.org/about-us/publications/" class="feature-publication"><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/feature-publications.gif" alt="Denton Bible Church Publications" height="192" width="300" /></a>
 		
-		</div><!-- #home-ads -->
+		</div><!-- #home-features -->
 		
 		<?php do_atomic( 'close_content' ); // dbc_close_content ?>
 
