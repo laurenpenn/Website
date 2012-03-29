@@ -63,14 +63,10 @@
 
 /* Contains everything */
 body {
-	background: #15100e;
+	background: #fff url('library/images/bg.gif');
 	color: #5c5650;
 	font: 14px/18px "CartoGothicStdBook", "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Tahoma, Arial, Helvetica, sans-serif;
 }
-
-	#container {
-		background: url('library/images/bg.png') top center no-repeat;
-	}
 
 	/* Wrapper for everything inside of the body */	
 	.wrap {
@@ -576,8 +572,8 @@ img.wp-smiley {
 		}
 			#menu-primary li.current_page_item a,
 			#menu-primary li a:hover {
-				background: url('library/images/current_static_page_item.png') center bottom no-repeat;
-				color: #fff;
+				color: #000;
+				text-shadow: 1px 1px 1px #fff;
 			}
 
 /* Secondary Menu */
@@ -684,6 +680,8 @@ img.wp-smiley {
 }
 	#main .wrap {
 		background: #fff;
+		border: 1px solid rgb(204,204,204); /* fallback border color */
+		border: 1px solid rgba(0,0,0,.20);
 		border-radius: 3px;
 		-moz-border-radius: 3px;
 	}
@@ -1392,11 +1390,16 @@ img.wp-smiley {
 
 	/* Footer section */
 	#footer .wrap {
-		background: #0f0b0a;
-		border-bottom: 1px solid #231b19;		
-		border-left: 1px solid #090706;
-		border-right: 1px solid #231b19;
-		border-top: 1px solid #090706;
+		background: #f9f9f9; /* fallback */
+		background: rgba(255,255,255,.50);
+		border-bottom: 1px solid rgb(255,255,255); /* fallback */
+		border-bottom: 1px solid rgba(255,255,255,.50);
+		border-left: 1px solid rgb(230,230,230); /* fallback */
+		border-left: 1px solid rgba(0,0,0,.1);
+		border-right: 1px solid rgb(255,255,255); /* fallback */
+		border-right: 1px solid rgba(255,255,255,.50);
+		border-top: 1px solid rgb(230,230,230); /* fallback */
+		border-top: 1px solid rgba(0,0,0,.1);
 		border-radius: 5px;
 		color:#777069;
 		font-size:11px;

@@ -54,7 +54,6 @@ function dbc_theme_setup() {
 	add_action( 'widgets_init', 'dbc_register_widgets' );
 	add_action( "{$prefix}_before_html", 'dbc_ie6_detection', 11 );
 	add_action( "{$prefix}_header", 'dbc_get_sidebar_header', 11 );
-	add_action( "{$prefix}_open_body", 'dbc_facebook_sdk', 12 );
 	add_action( "{$prefix}_footer", 'dbc_footer', 11 );
 	
 	/* Add filters */
@@ -114,23 +113,6 @@ function dbc_ie6_detection(){
 	echo '<![endif]-->';
 }
 
-/**
- * Loads Facebook SDK
- *
- * @since 0.2.1
- */
-function dbc_facebook_sdk() {
-	?>
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) {return;}
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=163053213744962";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
-	<?php
-}
 /**
  * Subsite Title
  *

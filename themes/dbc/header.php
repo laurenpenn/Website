@@ -11,7 +11,7 @@
  */
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>xmlns:fb="http://www.facebook.com/2008/fbml">
+<html<?php language_attributes(); ?>>
 <head>
 <meta http-equiv="Content-Type" content="<?php bloginfo( 'html_type' ); ?>; charset=<?php bloginfo( 'charset' ); ?>" />
 <meta property="fb:page_id" content="206268862487" />
@@ -27,6 +27,16 @@
 
 <body class="<?php hybrid_body_class(); ?>">
 
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=163053213744962";
+		fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+	
 	<?php do_atomic( 'open_body' ); // dbc_open_body ?>
 	
 	<div id="container">
@@ -64,5 +74,5 @@
 		<div id="main">
 
 			<div class="wrap">
-
+				
 			<?php do_atomic( 'open_main' ); // prototype_open_main ?>

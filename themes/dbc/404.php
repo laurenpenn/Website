@@ -55,7 +55,7 @@
 		width: 550px;
 	}
 	#ohno-inside {
-		background: #15100e url('<?php bloginfo( 'template_directory'); ?>/library/images/bg.png') center top no-repeat;
+		background: #15100e;
 		border-radius: 20px;
 		-moz-border-radius: 20px;
 		-webkit-border-radius: 20px;
