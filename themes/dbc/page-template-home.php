@@ -79,7 +79,7 @@ get_header(); ?>
 		
 		<div id="home-features">
 			
-			<a class="feature-dbc-cares" href="#">
+			<a class="feature-dbc-cares" href="http://dentonbible.org/care/dbc-cares/">
 				<span class="logo">DBC Cares</span>
 				<span class="new"><span>NEW</span> Ministry</span>
 				<span class="text">Are you, or someone you know in our church family, in need?</span>
@@ -88,7 +88,7 @@ get_header(); ?>
 					
 			<a href="http://dentonbible.org/note/" class="feature-note"><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/feature-notes.gif" alt="Notes from Tom Nelson" height="127" width="197" /></a>
 			
-			<a href="http://dentonbible.org/calendar/" class="feature-calendar"><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/feature-calendar.gif" alt="Calendar of Events" height="127" width="197" /></a>
+			<a href="http://dentonbible.org/about-us/calendar/" class="feature-calendar"><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/feature-calendar.gif" alt="Calendar of Events" height="127" width="197" /></a>
 		
 			<a href="http://dentonbible.org/about-us/publications/" class="feature-publication"><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/feature-publications.gif" alt="Denton Bible Church Publications" height="127" width="198" /></a>
 		
