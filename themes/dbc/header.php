@@ -14,7 +14,7 @@
 <!--[if lt IE 7 ]><html class="ie ie6"<?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7"<?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8"<?php language_attributes(); ?>> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html<?php language_attributes(); ?>> <!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="<?php bloginfo( 'html_type' ); ?>; charset=<?php bloginfo( 'charset' ); ?>" />
 <title><?php hybrid_document_title(); ?></title>
