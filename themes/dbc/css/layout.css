@@ -1,0 +1,194 @@
+/*
+* Skeleton V1.1
+* Copyright 2011, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 8/17/2011
+*/
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {
+	.addthis_toolbox,
+	#fdbk_tab {
+		display: none !important;
+	}
+
+	/* General and home page */
+	body #facebook-invite-intro {
+		font-size: 0.85em;
+	}
+	body #content {
+		width: 420px;
+	}
+	body #slider-container {
+		height: 160px;
+		width: 440px;
+	}
+	body #slider-container div.orbit-wrapper {
+		box-shadow: none;
+		width: 440px;
+	}
+	body #slider-container div.orbit-wrapper #slider {
+		width: 440px;
+	}
+	body #slider-container div.orbit-wrapper #slider .post {
+		height: auto;
+		width: 440px;
+	}
+	body #slider-container div.orbit-wrapper #slider .post img {
+		height: auto;
+		max-width: 440px;
+		width: 440px;
+	}
+	body #latest-message .latest-message-left,
+	body #latest-message .latest-message-right {
+		float: none;
+		width: auto;
+	}
+	body #mydbc {
+		margin: 0 0 5px;
+	}
+	body #mydbc .big-button {
+		font-size: 1.46em;
+		margin: 0 2px 0 0;
+	}
+	body #mydbc .big-button .league-gothic {
+		font-size: 2em;
+	}
+	body #mydbc .big-button.green {
+		line-height: 18px;
+		margin: 0;
+	}
+	body #mydbc .big-button.green .icon {
+		display: none;
+	}
+	body #home-features .feature-dbc-cares {
+		height: 60px;
+	}
+	body #home-features img {
+		height: auto;
+		width: 130px;	
+	}
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+	
+	#facebook-invite,
+	#sidebar-home .widget {
+		display: none;
+	}
+	
+	body #menu-primary {
+		background: #fff;
+		margin: 10px 0;
+		padding: 20px 50px;
+	}
+	body #menu-primary li {
+		float: none;
+		text-align: left;
+		width: 100%;
+	}
+	body #menu-primary li a {
+		padding: 4px 0;
+	}
+	
+	body #content {
+		float: none;
+		padding: 10px 10px 0;
+		width: 400px;
+	}
+
+	body #slider-container {
+		height: 160px;
+		width: 400px;
+	}
+	body #slider-container div.orbit-wrapper {
+		box-shadow: none;
+		width: 400px;
+	}
+	body #slider-container div.orbit-wrapper #slider {
+		width: 400px;
+	}
+	body #slider-container div.orbit-wrapper #slider .post {
+		height: auto;
+		width: 400px;
+	}
+	body #slider-container div.orbit-wrapper #slider .post img {
+		height: auto;
+		max-width: 440px;
+		width: 400px;
+	}
+
+	body #mydbc .big-button {
+		font-size: 1.37em;
+		margin: 0 2px 0 0;
+	}
+	body #mydbc .big-button .league-gothic {
+		font-size: 2em;
+	}
+
+	body #home-features img {
+		height: auto;
+		width: 185px;	
+	}
+	
+	body #sidebar-home {
+		float: none;
+		width: 400px;
+	}	
+	body #sidebar-home #welcome {
+		margin: 0 auto;;
+	}	
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+
+
+	body #content {
+		width: 280px;
+	}
+
+	body #slider-container {
+		height: 160px;
+		width: 280px;
+	}
+	body #slider-container div.orbit-wrapper {
+		box-shadow: none;
+		width: 280px;
+	}
+	body #slider-container div.orbit-wrapper #slider {
+		width: 280px;
+	}
+	body #slider-container div.orbit-wrapper #slider .post {
+		height: auto;
+		width: 280px;
+	}
+	body #slider-container div.orbit-wrapper #slider .post img {
+		height: auto;
+		max-width: 280px;
+		width: 280px;
+	}
+
+	body #home-features img {
+		height: auto;
+		width: 185px;	
+	}
+	
+	body #sidebar-home {
+		float: none;
+		width: 280px;
+	}	
+	body #sidebar-home #welcome {
+		margin: 0 auto;
+		width: 280px;
+	}
+}

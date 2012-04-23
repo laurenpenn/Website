@@ -12,7 +12,7 @@ if ( has_nav_menu( 'primary' ) ) : ?>
 
 	<?php do_atomic( 'before_menu_primary' ); // prototype_before_menu_primary ?>
 
-	<div id="menu-primary" class="menu-container">
+	<nav id="menu-primary" class="menu-container">
 
 		<div class="wrap">
 
@@ -24,7 +24,7 @@ if ( has_nav_menu( 'primary' ) ) : ?>
 
 		</div>
 
-	</div><!-- #menu-primary .menu-container -->
+	</nav><!-- #menu-primary .menu-container -->
 
 	<?php do_atomic( 'after_menu_primary' ); // prototype_after_menu_primary ?>
 

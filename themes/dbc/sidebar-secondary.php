@@ -13,7 +13,7 @@ if ( is_active_sidebar( 'secondary' ) ) : ?>
 
 	<?php do_atomic( 'before_sidebar_secondary' ); // prototype_before_sidebar_secondary ?>
 
-	<div id="sidebar-secondary" class="sidebar">
+	<aside id="sidebar-secondary" class="sidebar">
 
 		<?php do_atomic( 'open_sidebar_secondary' ); // prototype_open_sidebar_secondary ?>
 
@@ -21,7 +21,7 @@ if ( is_active_sidebar( 'secondary' ) ) : ?>
 
 		<?php do_atomic( 'close_sidebar_secondary' ); // prototype_close_sidebar_secondary ?>
 
-	</div><!-- #sidebar-secondary .aside -->
+	</aside><!-- #sidebar-secondary .aside -->
 
 	<?php do_atomic( 'after_sidebar_secondary' ); // prototype_after_sidebar_secondary ?>
 

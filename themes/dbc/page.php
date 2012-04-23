@@ -13,7 +13,7 @@ get_header(); // Loads the header.php template. ?>
 
 	<?php do_atomic( 'before_content' ); // dbc_before_content ?>
 
-	<div id="content">
+	<div id="content" role="main">
 
 		<?php do_atomic( 'open_content' ); // dbc_open_content ?>
 
@@ -32,8 +32,8 @@ get_header(); // Loads the header.php template. ?>
 						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 
 						<div class="entry-content">
-							<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', hybrid_get_textdomain() ) ); ?>
-							<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
+							<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'dbc' ) ); ?>
+							<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'dbc' ), 'after' => '</p>' ) ); ?>
 						</div><!-- .entry-content -->
 
 						<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">[entry-edit-link]</div>' ); ?>

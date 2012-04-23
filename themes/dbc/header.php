@@ -11,11 +11,19 @@
  */
 ?>
 <!DOCTYPE html>
-<html<?php language_attributes(); ?>>
+<!--[if lt IE 7 ]><html class="ie ie6"<?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7"<?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8"<?php language_attributes(); ?>> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html<?php language_attributes(); ?>> <!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="<?php bloginfo( 'html_type' ); ?>; charset=<?php bloginfo( 'charset' ); ?>" />
-<meta property="fb:page_id" content="206268862487" />
 <title><?php hybrid_document_title(); ?></title>
+
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="all" />
 <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -27,21 +35,11 @@
 
 <body class="<?php hybrid_body_class(); ?>">
 
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) {return;}
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=163053213744962";
-		fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
-	
 	<?php do_atomic( 'open_body' ); // dbc_open_body ?>
 	
 	<div id="container">
 	
-		<div id="header">
+		<header id="header">
 
 			<?php do_atomic( 'open_header' ); // prototype_open_header ?>
 
@@ -63,7 +61,7 @@
 
 			<?php do_atomic( 'close_header' ); // prototype_close_header ?>
 
-		</div><!-- #header -->
+		</header><!-- #header -->
 
 		<?php do_atomic( 'after_header' ); // prototype_after_header ?>
 

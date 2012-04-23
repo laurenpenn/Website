@@ -13,7 +13,7 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 	
 	<?php do_atomic( 'before_sidebar_primary' ); // dbc_before_sidebar_primary ?>
  
-	<div id="sidebar-primary" class="sidebar">
+	<aside id="sidebar-primary" class="sidebar">
 
 		<?php do_atomic( 'open_sidebar_primary' ); // dbc_open_sidebar_primary ?>
 
@@ -56,12 +56,10 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 			
 			<p><a href="http://facebook.com/dentonbible" class="button" title="Denton Bible on Facebook">Are you on Facebook too?</a></p>
 			
-		<?php } ?>
-		
-		</div><!-- #primary .widget-area -->		
+		<?php } ?>	
 
 		<?php do_atomic( 'after_sidebar_primary' ); // dbc_after_sidebar_primary ?>
 
-	</div><!-- #sidebar-primary -->
+	</aside><!-- #sidebar-primary -->
 
 <?php endif; ?>

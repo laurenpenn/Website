@@ -10,10 +10,10 @@
 
 if ( is_active_sidebar( 'header' ) ) : ?>
 
-	<div id="sidebar-header" class="sidebar">
+	<aside id="sidebar-header" class="sidebar">
 
 		<?php dynamic_sidebar( 'header' ); ?>
 
-	</div><!-- #sidebar-header -->
+	</aside><!-- #sidebar-header -->
 
 <?php endif; ?>

@@ -10,7 +10,7 @@
 
 if ( is_active_sidebar( 'home' ) ) : ?>
 
-	<div id="sidebar-home" class="sidebar">
+	<aside id="sidebar-home" class="sidebar">
 	
 		<?php if ( hybrid_get_setting( 'info' ) == 'true' ){ ?>
 		<div id="welcome">
@@ -31,7 +31,7 @@ if ( is_active_sidebar( 'home' ) ) : ?>
 
 		<?php dynamic_sidebar( 'home' ); ?>
 
-	</div><!-- #sidebar-home -->
+	</aside><!-- #sidebar-home -->
 	
 	<div class="clear"></div>
 

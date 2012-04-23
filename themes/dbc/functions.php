@@ -1,7 +1,7 @@
 <?php
 	
 /* Load the core theme framework. */
-require_once( trailingslashit( TEMPLATEPATH ) . 'hybrid-core/hybrid.php' );
+require_once( trailingslashit( TEMPLATEPATH ) . 'library/hybrid.php' );
 $theme = new Hybrid();
 
 /* Execute all functions after the theme is setup. */
@@ -13,37 +13,34 @@ function dbc_theme_setup() {
 	$prefix = hybrid_get_prefix();
 	
 	/* Load the theme settings. */
-	require_once( trailingslashit( TEMPLATEPATH ) . 'library/admin/theme-settings.php' );
+	require_once( trailingslashit( TEMPLATEPATH ) . 'admin/theme-settings.php' );
      
      /* Load the custom admin settings. */
-	require_once( trailingslashit( TEMPLATEPATH ) . 'library/admin/admin-theme.php' );
-	
-	/* Load the BuddyPress functions for the theme. */
-	require_once( trailingslashit( TEMPLATEPATH ) . 'buddypress/functions-buddypress.php' );
+	require_once( trailingslashit( TEMPLATEPATH ) . 'admin/admin-theme.php' );
 
 	/* Add theme support for core framework features. */
 	add_theme_support( 'hybrid-core-menus' );
 	add_theme_support( 'hybrid-core-sidebars' );
 	add_theme_support( 'hybrid-core-widgets' );
 	add_theme_support( 'hybrid-core-shortcodes' );
-	add_theme_support( 'hybrid-core-post-meta-box' );
 	add_theme_support( 'hybrid-core-seo' );
 	add_theme_support( 'hybrid-core-template-hierarchy' );
-	add_theme_support( 'hybrid-core-theme-settings' );
+	add_theme_support( 'hybrid-core-theme-settings', array( 'about', 'footer' ) );
 	add_theme_support( 'hybrid-core-meta-box-footer' );
 
 	/* Add theme support for framework extensions. */
-	add_theme_support( 'post-layouts' );
-	add_theme_support( 'post-stylesheets' );
-	add_theme_support( 'loop-pagination' );
-	add_theme_support( 'get-the-image' );
 	add_theme_support( 'breadcrumb-trail' );
+	add_theme_support( 'cleaner-caption' );
+	add_theme_support( 'cleaner-gallery' );
+	add_theme_support( 'get-the-image' );
+	add_theme_support( 'loop-pagination' );
+	//add_theme_support( 'theme-layouts' );
 
 	/* Add theme support for WordPress features. */
 	add_theme_support( 'automatic-feed-links' );
-	add_custom_background();
 				
 	/* Add actions */ 
+	add_action( 'init', 'dbc_remove_header_info' );
 	add_action( 'init', 'dbc_register_shortcodes' );
 	add_action( 'init', 'dbc_register_taxonomies' );
 	add_action( 'init', 'dbc_register_post_types' );	
@@ -67,8 +64,31 @@ function dbc_theme_setup() {
 	
 	if ( function_exists( 'add_image_size' ) ) { 
 		add_image_size( 'small-thumb', 80, 80, true ); //300 pixels wide (and unlimited height)
+	}
+
 }
 
+/**
+ * Removes some of the default header meta that WordPress adds in.
+ * Removes some of the default header meta that Hyrbid adds in.
+ * We're removing this to make the page HTML5 compatible.
+ *
+ * @since 0.3
+ */
+function dbc_remove_header_info() {
+	remove_action( 'wp_head', 'rsd_link', 1 );
+	remove_action( 'wp_head', 'wlwmanifest_link', 1 );
+	remove_action( 'wp_head', 'wp_generator', 1 );
+	remove_action( 'wp_head', 'start_post_rel_link', 1 );
+	remove_action( 'wp_head', 'index_rel_link', 1 );
+	remove_action( 'wp_head', 'adjacent_posts_rel_link', 1 );
+	remove_action( 'wp_head', 'hybrid_meta_robots', 1 );
+	remove_action( 'wp_head', 'hybrid_meta_author', 1 );
+	remove_action( 'wp_head', 'hybrid_meta_copyright', 1 );
+	remove_action( 'wp_head', 'hybrid_meta_revised', 1 );
+	remove_action( 'wp_head', 'hybrid_meta_description', 1 );
+	remove_action( 'wp_head', 'hybrid_meta_keywords', 1 );
+	remove_action( 'wp_head', 'hybrid_meta_template', 1 );
 }
 
 /**
@@ -78,15 +98,18 @@ function dbc_theme_setup() {
  */
 function dbc_load_scripts() {
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'jquery-functions', trailingslashit( THEME_URI ) . 'library/js/scripts.js', array( 'jquery' ), '0.2.1', true );
+	wp_enqueue_script( 'jquery-functions', trailingslashit( THEME_URI ) . 'js/scripts.js', array( 'jquery' ), '0.2.1', true );
+	
+	wp_enqueue_style( 'skeleton', trailingslashit( THEME_URI ) . 'css/skeleton.css', false, '0.3', 'screen' );
+	wp_enqueue_style( 'layout', trailingslashit( THEME_URI ) . 'css/layout.css', false, '0.3', 'screen' );
 	
 	if ( is_page_template( 'page-template-home.php' ) || is_page_template( 'page-media-home.php' ) ) {
-		wp_enqueue_style( 'front-page', trailingslashit( THEME_URI ) . 'library/css/home.css', false, '0.2.1', 'screen' );
-		wp_enqueue_style( 'orbit-css', trailingslashit( THEME_URI ) . 'library/css/orbit.css', false, '0.2.1', 'screen' );
+		wp_enqueue_style( 'front-page', trailingslashit( THEME_URI ) . 'css/home.css', false, '0.2.1', 'screen' );
+		wp_enqueue_style( 'orbit-css', trailingslashit( THEME_URI ) . 'css/orbit.css', false, '0.2.1', 'screen' );
 	}
 
 	if ( is_tax( 'note' ) || is_singular( 'note' ) || is_post_type_archive( 'note' ) )
-		wp_enqueue_style( 'note', trailingslashit( THEME_URI ) . 'library/css/note.css', false, '0.2.1', 'screen' );
+		wp_enqueue_style( 'note', trailingslashit( THEME_URI ) . 'css/note.css', false, '0.2.1', 'screen' );
 }
 	
 /**
@@ -109,7 +132,7 @@ function archive_redirect() {
  */
 function dbc_ie6_detection(){
 	echo '<!--[if IE 6]>';
-	echo '<script type="text/javascript" src="'. trailingslashit( TEMPLATEPATH ) .'library/js/ie6/warning.js' . '"></script><script>window.onload=function(){e("'. trailingslashit( TEMPLATEPATH ) .'/library/js/ie6/' .'")}</script>';
+	echo '<script type="text/javascript" src="'. trailingslashit( TEMPLATEPATH ) .'js/ie6/warning.js' . '"></script><script>window.onload=function(){e("'. trailingslashit( TEMPLATEPATH ) .'/js/ie6/' .'")}</script>';
 	echo '<![endif]-->';
 }
 
@@ -151,7 +174,7 @@ function change_login_redirect($redirect_to, $request_redirect_to, $user) {
 function dbc_register_widgets() {
 
 	/* Load each widget file. */
-	require_once( trailingslashit( TEMPLATEPATH ) . 'library/classes/widget-pages.php' );
+	require_once( trailingslashit( TEMPLATEPATH ) . 'widgets/widget-pages.php' );
 
 	/* Register each widget. */
 	register_widget( 'DBC_Widget_Pages' );
@@ -353,22 +376,22 @@ function dbc_slideshow_shortcode( $attr ) {
 			$preview_image = get_the_post_thumbnail( $post->id );
 				
 			$slideshow .= 	'<object id="player" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" name="player" width="655" height="358">';
-			$slideshow .= 	'<param name="movie" value="http://dentonbible.org/wp-content/themes/dbc/library/player/player.swf" />';
+			$slideshow .= 	'<param name="movie" value="http://dentonbible.org/wp-content/themes/dbc/player/player.swf" />';
 			$slideshow .= 	'<param name="allowfullscreen" value="true" />';
 			$slideshow .= 	'<param name="allowscriptaccess" value="always" />';
-			$slideshow .=   '<param name="flashvars="file='. $attachment->guid .'&image='. $preview_image .'&skin=http://dentonbible.org/wp-content/themes/dbc/library/player/modieus.zip">';
+			$slideshow .=   '<param name="flashvars="file='. $attachment->guid .'&image='. $preview_image .'&skin=http://dentonbible.org/wp-content/themes/dbc/player/modieus.zip">';
 	
 			$slideshow .= 	'<param name="flashvars" value="'. $attachment->guid .'" />';
 			$slideshow .= 	'<embed ';
 				$slideshow .= 	'type="application/x-shockwave-flash"';
 				$slideshow .= 	'id="player2"';
 				$slideshow .= 	'name="player2"';
-				$slideshow .= 	'src="http://dentonbible.org/wp-content/themes/dbc/library/player/player.swf"'; 
+				$slideshow .= 	'src="http://dentonbible.org/wp-content/themes/dbc/player/player.swf"'; 
 				$slideshow .= 	'width="655" ';
 				$slideshow .= 	'height="358"';
 				$slideshow .= 	'allowscriptaccess="always" ';
 				$slideshow .= 	'allowfullscreen="true"';
-				$slideshow .= 	'flashvars="file='. $attachment->guid .'&image='. $preview_image .'&skin=http://dentonbible.org/wp-content/themes/dbc/library/player/modieus.zip" ';
+				$slideshow .= 	'flashvars="file='. $attachment->guid .'&image='. $preview_image .'&skin=http://dentonbible.org/wp-content/themes/dbc/player/modieus.zip" ';
 			$slideshow .= 	'/>';
 			$slideshow .= 	'</object>';
 		
@@ -389,7 +412,7 @@ function dbc_slideshow_shortcode( $attr ) {
 
 		if ( !empty( $caption ) ) {
 			$slideshow .= '<div class="slideshow-caption">';
-			$slideshow .= '<a class="slideshow-caption-control">' . __( 'Caption', hybrid_get_textdomain() ) . '</a>';
+			$slideshow .= '<a class="slideshow-caption-control">' . __( 'Caption', 'dbc' ) . '</a>';
 			$slideshow .= '<div class="slideshow-caption-text">' . $caption . '</div>';
 			$slideshow .= '</div>';
 		}
@@ -400,8 +423,8 @@ function dbc_slideshow_shortcode( $attr ) {
 	$slideshow .= '</div><div class="slideshow-controls">';
 
 		$slideshow .= '<span class="slideshow-pager"></span>';
-		$slideshow .= '<a class="slider-prev">' . __( 'Previous', hybrid_get_textdomain() ) . '</a>';
-		$slideshow .= '<a class="slider-next">' . __( 'Next', hybrid_get_textdomain() ) . '</a>';
+		$slideshow .= '<a class="slider-prev">' . __( 'Previous', 'dbc' ) . '</a>';
+		$slideshow .= '<a class="slider-next">' . __( 'Next', 'dbc' ) . '</a>';
 
 	$slideshow .= '</div>';
 
@@ -479,13 +502,14 @@ function dbc_footer() {
 		
 		</div>
 	
-		<div class="footer-right">
+		<div class="footer-right vcard">
 	
-			<h6>Denton Bible Church</h6>
-			
-			<p>2300 E. University Dr.<br />
-			Denton, TX 76209<br />
-			(940) 297-6700</p>
+			<h6 class="org">Denton Bible Church</h6>
+			<div class="adr">
+				<div class="street-address">2300 E. University Dr.</div>
+				<span class="locality">Denton</span>, <span class="region">TX</span> <span class="postal-code">76209</span>
+			</div>
+			<div class="tel">(940) 297-6700</div>
 		
 		</div>
 	</div>
@@ -502,7 +526,7 @@ function dbc_register_post_types() {
 
 	global $blog_id;
 
-	$domain = hybrid_get_textdomain();
+	$domain = 'dbc';
 	$prefix = hybrid_get_prefix();
 
 	/* Labels for the publication post type. */
@@ -632,13 +656,13 @@ function dbc_register_post_types() {
 	    ?>
 	    <style type="text/css" media="screen">
 			#menu-posts-story .wp-menu-image {
-				background: url('<?php bloginfo('template_url') ?>/library/images/book-open-list.png') no-repeat 6px -17px !important;
+				background: url('<?php bloginfo('template_url') ?>/images/book-open-list.png') no-repeat 6px -17px !important;
 			}
 			#menu-posts-note .wp-menu-image {
-				background: url('<?php bloginfo('template_url') ?>/library/images/document-sticky-note.png') no-repeat 6px -17px !important;
+				background: url('<?php bloginfo('template_url') ?>/images/document-sticky-note.png') no-repeat 6px -17px !important;
 			}
 			#menu-posts-publication .wp-menu-image {
-				background: url('<?php bloginfo('template_url') ?>/library/images/document-pdf-text.png') no-repeat 6px -17px !important;
+				background: url('<?php bloginfo('template_url') ?>/images/document-pdf-text.png') no-repeat 6px -17px !important;
 			}
 			#menu-posts-story:hover .wp-menu-image, #menu-posts-story.wp-has-current-submenu .wp-menu-image,
 			#menu-posts-note:hover .wp-menu-image, #menu-posts-note.wp-has-current-submenu .wp-menu-image,

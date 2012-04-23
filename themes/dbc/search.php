@@ -13,7 +13,7 @@ get_header(); // Loads the header.php template. ?>
 
 	<?php do_atomic( 'before_content' ); // prototype_before_content ?>
 
-	<div id="content">
+	<div id="content" role="main">
 
 		<?php do_atomic( 'open_content' ); // prototype_open_content ?>
  

@@ -112,7 +112,7 @@ get_header(); // Loads the header.php template. ?>
 		}
 	</style>
 	
-	<div id="content">
+	<div id="content" role="main">
 
 		<?php do_atomic( 'open_content' ); // dbc_open_content ?>
 	
@@ -120,7 +120,7 @@ get_header(); // Loads the header.php template. ?>
 			
 			<div id="facebook-invite-intro">
 				
-				<div class="fb-send" data-href="http://dentonbible.org/about-us/visitor-information/"></div> Click "Send" and choose which Facebook friends to invite
+				<div class="fb-send" data-href="http://dentonbible.org/about-us/visitor-information/"></div> Click "Send" and choose which Facebook friends to invite or use an email address
 					
 			</div>
 			
@@ -131,7 +131,7 @@ get_header(); // Loads the header.php template. ?>
 
 			<div class="caption right">
 			
-				<p><img src="http://sheasumlin.files.wordpress.com/2009/07/tom_nelson_01.jpg" width="200" /></p>
+				<p><img src="//dentonbible.org/wp-content/themes/dbc/library/images/tom-rectangle.jpg" width="200" /></p>
 				
 				<p>Tom Nelson<br />
 				Senior Pastor</p>
@@ -151,7 +151,7 @@ get_header(); // Loads the header.php template. ?>
 		<section>
 			<h2>When are the services?</h2>
 						
-			<img src="http://aux.iconpedia.net/uploads/1516167603212363444.png" class="left" width="75" /></p>
+			<img src="//dentonbible.org/wp-content/themes/dbc/library/images/stopwatch.png" class="left" width="75" /></p>
 
 			<p>Denton Bible offers traditional worship with a choir and orchestra at both our <strong>9:00 A.M.</strong> and <strong>11:00 A.M.</strong> services, and a contemporary worship service at <strong>6:00 P.M.</strong></p>
 

@@ -15,7 +15,7 @@ get_header(); // Loads the header.php template. ?>
 	
 	<?php breadcrumb_trail(); ?>
 
-	<div id="content">
+	<div id="content" role="main">
 
 		<?php do_atomic( 'open_content' ); // dbc_open_content ?>
 
@@ -52,12 +52,12 @@ get_header(); // Loads the header.php template. ?>
 			
 					<?php get_the_image( array( 'size' => 'full' ) ); ?>
 					
-					<div class="entry-content">
+					<article class="entry-content">
 						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
-					</div><!-- .entry-summary -->
+						<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'dbc' ), 'after' => '</p>' ) ); ?>
+					</article><!-- .entry-summary -->
 								
-					<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "]', hybrid_get_textdomain() ) . '</div>' ); ?>
+					<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "]', 'dbc' ) . '</div>' ); ?>
 					
 					<?php do_atomic( 'after_entry' ); // dbc_after_entry ?>
 

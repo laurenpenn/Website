@@ -14,7 +14,7 @@ get_header(); // Loads the header.php template. ?>
 	
 	<?php breadcrumb_trail(); ?>
 
-	<div id="content">
+	<div id="content" role="main">
 
 		<?php do_atomic( 'open_content' ); // dbc_open_content ?>
 

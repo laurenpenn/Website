@@ -19,7 +19,7 @@ query_posts($query_string.'&paged='.$paged.'&posts_per_page=-1&orderby=title&ord
 	
 	<?php breadcrumb_trail(); ?>
 
-	<div id="content">
+	<div id="content" role="main">
 
 		<?php do_atomic( 'open_content' ); // dbc_open_content ?>
 
@@ -29,7 +29,7 @@ query_posts($query_string.'&paged='.$paged.'&posts_per_page=-1&orderby=title&ord
 			
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-			<div id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
+			<article id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
 
 				<?php do_atomic( 'before_entry' ); // hybrid_before_entry ?>
 
@@ -39,14 +39,14 @@ query_posts($query_string.'&paged='.$paged.'&posts_per_page=-1&orderby=title&ord
 
 				<div class="entry-summary">
 					<?php the_excerpt(); ?>
-					<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
+					<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'dbc' ), 'after' => '</p>' ) ); ?>
 				</div><!-- .entry-summary -->
 
-				<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "]', hybrid_get_textdomain() ) . '</div>' ); ?>
+				<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="| Tagged "] [entry-comments-link before=" | "]', 'dbc' ) . '</div>' ); ?>
 
 				<?php do_atomic( 'after_entry' ); // hybrid_after_entry ?>
 
-			</div><!-- .hentry -->
+			</article><!-- .hentry -->
 
 			<?php do_atomic( 'after_singular' ); // hybrid_after_singular ?>
 

@@ -91,7 +91,7 @@
 	
 		<div id="logo"><img src="<?php bloginfo( 'template_directory'); ?>/library/images/denton-bible-church.png" alt="Denton Bible Church" /></div>
 		
-		<div id="ohno">
+		<div id="ohno" role="main">
 			<div id="ohno-inside">
 				<h1>That page doesn't exist</h1>
 				<h2>there's a few reasons this page may not work:</h2>

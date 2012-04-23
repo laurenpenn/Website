@@ -12,12 +12,12 @@
 
 if ( is_active_sidebar( 'whats-happening' ) ) : ?>
 
-	<div id="whats-happening" class="sidebar aside">
+	<aside id="whats-happening" class="sidebar aside">
 
 		<h3>What's Happening</h3>		
 		
 		<?php dynamic_sidebar( 'whats-happening' ); ?>
 
-	</div><!-- #whats-happening .aside -->
+	</aside><!-- #whats-happening .aside -->
 
 <?php endif; ?>
