@@ -20,7 +20,7 @@ function dbc_theme_setup() {
 
 	/* Add theme support for core framework features. */
 	add_theme_support( 'hybrid-core-menus' );
-	add_theme_support( 'hybrid-core-sidebars' );
+	add_theme_support( 'hybrid-core-sidebars', array( 'primary' ) );
 	add_theme_support( 'hybrid-core-widgets' );
 	add_theme_support( 'hybrid-core-shortcodes' );
 	add_theme_support( 'hybrid-core-seo' );
@@ -34,7 +34,7 @@ function dbc_theme_setup() {
 	add_theme_support( 'cleaner-gallery' );
 	add_theme_support( 'get-the-image' );
 	add_theme_support( 'loop-pagination' );
-	add_theme_support( 'theme-layouts', array( 'layout-default' ) );
+	add_theme_support( 'theme-layouts', array( 'layout-default', '2c-l' ) );
 
 	/* Add theme support for WordPress features. */
 	add_theme_support( 'automatic-feed-links' );
