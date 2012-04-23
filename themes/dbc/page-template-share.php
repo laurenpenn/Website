@@ -131,7 +131,7 @@ get_header(); // Loads the header.php template. ?>
 
 			<div class="caption right">
 			
-				<p><img src="//dentonbible.org/wp-content/themes/dbc/library/images/tom-rectangle.jpg" width="200" /></p>
+				<p><img src="//dentonbible.org/wp-content/themes/dbc/images/tom-rectangle.jpg" width="200" /></p>
 				
 				<p>Tom Nelson<br />
 				Senior Pastor</p>
@@ -151,7 +151,7 @@ get_header(); // Loads the header.php template. ?>
 		<section>
 			<h2>When are the services?</h2>
 						
-			<img src="//dentonbible.org/wp-content/themes/dbc/library/images/stopwatch.png" class="left" width="75" /></p>
+			<img src="//dentonbible.org/wp-content/themes/dbc/images/stopwatch.png" class="left" width="75" /></p>
 
 			<p>Denton Bible offers traditional worship with a choir and orchestra at both our <strong>9:00 A.M.</strong> and <strong>11:00 A.M.</strong> services, and a contemporary worship service at <strong>6:00 P.M.</strong></p>
 
