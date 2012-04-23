@@ -34,7 +34,7 @@ function dbc_theme_setup() {
 	add_theme_support( 'cleaner-gallery' );
 	add_theme_support( 'get-the-image' );
 	add_theme_support( 'loop-pagination' );
-	//add_theme_support( 'theme-layouts' );
+	add_theme_support( 'theme-layouts', array( 'layout-default' ) );
 
 	/* Add theme support for WordPress features. */
 	add_theme_support( 'automatic-feed-links' );
