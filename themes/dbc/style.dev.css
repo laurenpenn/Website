@@ -344,6 +344,13 @@ pre code { font-size: 1em; }
 		box-shadow: none;
 		color: #999;	
 	}
+	#gforms_confirmation_message {
+        border: 1px solid #E6DB55;
+        background-color: #FFFBCC;
+        text-shadow: #FCFAEA 1px 1px;
+        color: #222
+        padding: 20px;
+	}
 	
 /* Alignment */
 .alignleft, .left {
