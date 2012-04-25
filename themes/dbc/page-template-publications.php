@@ -80,7 +80,7 @@ get_header(); // Loads the header.php template. ?>
 			
 				<div id="post-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
 			
-					<p><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/starting-point-cover.jpg" alt="Starting Point" class="alignleft" height="320" width="250" /></p>
+					<p><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/starting-point-cover.jpg" alt="Starting Point" class="alignleft" height="320" width="250" /></p>
 					
 					<h2>Starting Point - Quarterly</h2>
 									
@@ -100,7 +100,7 @@ get_header(); // Loads the header.php template. ?>
 	
 			<div id="common-ground" class="publications">
 
-				<p><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/common-ground-cover.gif" alt="Common Ground" class="alignleft" height="320" width="250" /></p>
+				<p><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/common-ground-cover.gif" alt="Common Ground" class="alignleft" height="320" width="250" /></p>
 								
 				<h2>Common Ground - Monthly</h2>
 	
@@ -149,7 +149,7 @@ get_header(); // Loads the header.php template. ?>
 	
 			<div id="first-cup" class="publications">
 
-				<p><img src="http://dentonbible.org/wp-content/themes/dbc/library/images/first-cup-cover.gif" alt="First Cup" class="alignleft" height="320" width="250" /></p>
+				<p><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/first-cup-cover.gif" alt="First Cup" class="alignleft" height="320" width="250" /></p>
 								
 				<h2>First Cup - Weekly</h2>
 	

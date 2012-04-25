@@ -37,11 +37,11 @@ get_header(); ?>
 				
 			</a>
 					
-			<a href="http://dentonbible.org/note/" class="feature-note"><img src="http://dentonbible.org/wp-content/themes/dbc/images/feature-notes.gif" alt="Notes from Tom Nelson" height="127" width="197" /></a>
+			<a href="http://dentonbible.org/note/" class="feature-note"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/feature-notes.gif" alt="Notes from Tom Nelson" height="127" width="197" /></a>
 			
-			<a href="http://dentonbible.org/about-us/calendar/" class="feature-calendar"><img src="http://dentonbible.org/wp-content/themes/dbc/images/feature-calendar.gif" alt="Calendar of Events" height="127" width="197" /></a>
+			<a href="http://dentonbible.org/about-us/calendar/" class="feature-calendar"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/feature-calendar.gif" alt="Calendar of Events" height="127" width="197" /></a>
 		
-			<a href="http://dentonbible.org/about-us/publications/" class="feature-publication"><img src="http://dentonbible.org/wp-content/themes/dbc/images/feature-publications.gif" alt="Denton Bible Church Publications" height="127" width="198" /></a>
+			<a href="http://dentonbible.org/about-us/publications/" class="feature-publication"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/feature-publications.gif" alt="Denton Bible Church Publications" height="127" width="198" /></a>
 		
 		</div><!-- #home-features -->
 		
