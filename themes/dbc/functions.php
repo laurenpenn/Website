@@ -34,7 +34,7 @@ function dbc_theme_setup() {
 	add_theme_support( 'cleaner-gallery' );
 	add_theme_support( 'get-the-image' );
 	add_theme_support( 'loop-pagination' );
-	add_theme_support( 'theme-layouts', array( 'layout-default', '2c-l' ) );
+	add_theme_support( 'theme-layouts', array( 'layout-default', '2c-l', '2c-r' ) );
 
 	/* Add theme support for WordPress features. */
 	add_theme_support( 'automatic-feed-links' );
@@ -98,7 +98,7 @@ function dbc_remove_header_info() {
  */
 function dbc_load_scripts() {
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'jquery-functions', trailingslashit( THEME_URI ) . 'js/scripts.js', array( 'jquery' ), '0.2.1', true );
+	wp_enqueue_script( 'jquery-functions', trailingslashit( THEME_URI ) . 'js/scripts.dev.js', array( 'jquery' ), '0.2.1', true );
 	
 	wp_enqueue_style( 'skeleton', trailingslashit( THEME_URI ) . 'css/skeleton.css', false, '0.3', 'screen' );
 	wp_enqueue_style( 'layout', trailingslashit( THEME_URI ) . 'css/layout.css', false, '0.3', 'screen' );
@@ -216,10 +216,7 @@ function dbc_disable_sidebars( $sidebars_widgets ) {
  */
 function dbc_one_column() {
 
-	if ( !is_active_sidebar( 'primary' ) && !is_active_sidebar( 'secondary' ) )
-		add_filter( 'get_post_layout', 'dbc_post_layout_one_column' );
-
-	elseif ( is_attachment() )
+	if ( is_attachment() )
 		add_filter( 'get_post_layout', 'dbc_post_layout_one_column' );
 
 	elseif ( is_search() ) 

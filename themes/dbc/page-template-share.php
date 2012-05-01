@@ -55,32 +55,6 @@ get_header(); // Loads the header.php template. ?>
 		}
 		.layout-default #content {
 			padding: 0;
-			width: 720px;
-		}
-		#content section {
-			font: 1.15em/1.5em "Georgia", "Times New Roman", Times, Serif;
-			-moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.2);
-			-webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.2);
-			-o-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.2);
-			box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.2);
-			padding: 60px 50px 40px;
-		}
-		#content section h2 {
-			color: #15100E;
-			font: 3em/1em "LeagueGothicRegular";
-			text-transform: uppercase;
-		}
-		#content section h3 {
-			color: #666;
-			font: 2em/1em "LeagueGothicRegular";
-			text-transform: none;
-		}
-		#content section p.intro:first-letter {
-			float: left;
-			font-size: 3.6em;
-			line-height: .8em;
-			margin-right: 3px;
-			padding: 2px 2px 0;
 		}
 		#content section .right {
 			margin: 0 40px 40px 50px;

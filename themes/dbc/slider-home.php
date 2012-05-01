@@ -21,12 +21,10 @@ if ( hybrid_get_setting( 'slider' ) == 'true' ) { ?>
 
 		while ( $feature_query->have_posts() ) : $feature_query->the_post(); ?>
 
-			<div class="<?php hybrid_entry_class( 'feature' ); ?>">
+<a href="<?php the_permalink(); ?>" class="orbit-slide">
+				<?php get_the_image( array( 'link_to_post' => false, 'default_size' => 'full', 'image_scan' => true ) ); ?>
 
-				<?php get_the_image( array( 'custom_key' => array( 'Medium', 'Feature Image' ), 'default_size' => 'full', 'image_scan' => true ) ); ?>
-
-			</div>
-
+</a>
 		<?php endwhile;  ?>
 
 	</div>

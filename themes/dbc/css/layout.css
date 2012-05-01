@@ -7,188 +7,66 @@
 * 8/17/2011
 */
 
-/* Smaller than standard 960 (devices and browsers) */
-@media only screen and (max-width: 959px) {
-	.addthis_toolbox,
-	#fdbk_tab {
-		display: none !important;
-	}
-
-	/* General and home page */
-	body #facebook-invite-intro {
-		font-size: 0.85em;
-	}
-	body #content {
-		width: 420px;
-	}
-	body #slider-container {
-		height: 160px;
-		width: 440px;
-	}
-	body #slider-container div.orbit-wrapper {
-		box-shadow: none;
-		width: 440px;
-	}
-	body #slider-container div.orbit-wrapper #slider {
-		width: 440px;
-	}
-	body #slider-container div.orbit-wrapper #slider .post {
-		height: auto;
-		width: 440px;
-	}
-	body #slider-container div.orbit-wrapper #slider .post img {
-		height: auto;
-		max-width: 440px;
-		width: 440px;
-	}
-	body #latest-message .latest-message-left,
-	body #latest-message .latest-message-right {
-		float: none;
-		width: auto;
-	}
-	body #mydbc {
-		margin: 0 0 5px;
-	}
-	body #mydbc .big-button {
-		font-size: 1.46em;
-		margin: 0 2px 0 0;
-	}
-	body #mydbc .big-button .league-gothic {
-		font-size: 2em;
-	}
-	body #mydbc .big-button.green {
-		line-height: 18px;
-		margin: 0;
-	}
-	body #mydbc .big-button.green .icon {
-		display: none;
-	}
-	body #home-features .feature-dbc-cares {
-		height: 60px;
-	}
-	body #home-features img {
-		height: auto;
-		width: 130px;	
-	}
+.wrap {
+    width: 99%;
 }
 
-/* Tablet Portrait size to standard 960 (devices and browsers) */
-@media only screen and (min-width: 768px) and (max-width: 959px) {}
+@media screen and (min-width: 480px) {
 
-/* All Mobile Sizes (devices and browser) */
-@media only screen and (max-width: 767px) {
-	
-	#facebook-invite,
-	#sidebar-home .widget {
-		display: none;
-	}
-	
-	body #menu-primary {
-		background: #fff;
-		margin: 10px 0;
-		padding: 20px 50px;
-	}
-	body #menu-primary li {
-		float: none;
-		text-align: left;
-		width: 100%;
-	}
-	body #menu-primary li a {
-		padding: 4px 0;
-	}
-	
-	body #content {
-		float: none;
-		padding: 10px 10px 0;
-		width: 400px;
-	}
-
-	body #slider-container {
-		height: 160px;
-		width: 400px;
-	}
-	body #slider-container div.orbit-wrapper {
-		box-shadow: none;
-		width: 400px;
-	}
-	body #slider-container div.orbit-wrapper #slider {
-		width: 400px;
-	}
-	body #slider-container div.orbit-wrapper #slider .post {
-		height: auto;
-		width: 400px;
-	}
-	body #slider-container div.orbit-wrapper #slider .post img {
-		height: auto;
-		max-width: 440px;
-		width: 400px;
-	}
-
-	body #mydbc .big-button {
-		font-size: 1.37em;
-		margin: 0 2px 0 0;
-	}
-	body #mydbc .big-button .league-gothic {
-		font-size: 2em;
-	}
-
-	body #home-features img {
-		height: auto;
-		width: 185px;	
-	}
-	
-	body #sidebar-home {
-		float: none;
-		width: 400px;
-	}	
-	body #sidebar-home #welcome {
-		margin: 0 auto;;
-	}	
 }
 
-/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-@media only screen and (min-width: 480px) and (max-width: 767px) {}
+@media screen and (min-width: 620px) { 
+    .wrap {
+        margin: 0 auto 10px; 
+        width: 93.75%;      /* 960/1024 */
+    }
+    #sidebar-home {
+        float: left;
+        padding: 5%;
+        width: 30.0625%;
+    }
+    #sidebar-primary {
+        float: left;
+        padding: 5%;
+        width: 16.0625%;
+    }
+    #content {
+        float: right;
+        width: 73.9375%;
+    }
+    .page-template-home #content {
+        width: 65%;
+    }
+    .layout-1c #content {
+        padding: 5%;
+        width: 90%;
+    }
+}
+@media screen and (max-width: 810px) {
+    #sidebar-home {
+        float: none;
+        padding: 5%;
+        width: 90%;
+    }
+    #sidebar-primary {
+        float: none;
+        padding: 5%;
+        width: 90%;
+    }
+    #content {
+        float: none;
+        width: 90%;
+    }
+    .layout-1c #content {
+        padding: 5%;
+        width: 90%;
+    }
+}
 
-/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (max-width: 479px) {
+/* Largest format */
+@media screen and (min-width: 1400px) {
+    .wrap {
+        width: 1232px;
+    }
 
-
-	body #content {
-		width: 280px;
-	}
-
-	body #slider-container {
-		height: 160px;
-		width: 280px;
-	}
-	body #slider-container div.orbit-wrapper {
-		box-shadow: none;
-		width: 280px;
-	}
-	body #slider-container div.orbit-wrapper #slider {
-		width: 280px;
-	}
-	body #slider-container div.orbit-wrapper #slider .post {
-		height: auto;
-		width: 280px;
-	}
-	body #slider-container div.orbit-wrapper #slider .post img {
-		height: auto;
-		max-width: 280px;
-		width: 280px;
-	}
-
-	body #home-features img {
-		height: auto;
-		width: 185px;	
-	}
-	
-	body #sidebar-home {
-		float: none;
-		width: 280px;
-	}	
-	body #sidebar-home #welcome {
-		margin: 0 auto;
-		width: 280px;
-	}
 }

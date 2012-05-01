@@ -1861,11 +1861,25 @@ jQuery.cookie = function (key, value, options) {
 	}
 })(jQuery);
 
+function initAddThis() {
+	addthis.init()
+}
+
 /*
  * Gentlemen, start your engines!
  */
 jQuery(document).ready(function($) {
 
+
+	// Lazy load AddThis widgets
+		//initAddThis();
+
+    $('#myfacebookbox').append('<div class="fb-like-box" data-href="http://www.facebook.com/dentonbible" data-height="395" data-show-faces="false" data-stream="true" data-header="false" data-force-wall="true"></div>'); 
+  
+    jQuery.getScript('http://connect.facebook.net/en_US/all.js#xfbml=1', function() { 
+        FB.init({status: true, cookie: true, xfbml: true}); 
+    }); 
+    
 	// for PDF auto-detection
 		$('a[href$=".pdf"]').addClass('fancybox-pdf');
 	
@@ -1927,14 +1941,15 @@ jQuery(document).ready(function($) {
 		$('.current_page_ancestor .toggle').toggleClass('contract').siblings('.children').slideToggle('fast');
 	
 	//Slider
-         $('#slider').orbit({
-			'animation' : 'horizontal-push',
-			'timer' : true,
-			'advanceSpeed' : 7000,
-			'bullets' : true,
-			'startClockOnMouseOut': true,
-			'startClockOnMouseOutAfter': 0
-         });
+		$('#slider').orbit({
+		     animation: 'fade',                  // fade, horizontal-slide, vertical-slide, horizontal-push
+		     timer: true, 			 // true or false to have the timer
+		     advanceSpeed: 7000, 		 // if timer is enabled, time between transitions 
+		     startClockOnMouseOut: true, 	 // if clock should start on MouseOut
+		     startClockOnMouseOutAfter: 0, 	 // how long after MouseOut should the timer start again
+		     bullets: true,			 // true or false to activate the bullet navigation
+		     fluid: '4x3'                         // or set a aspect ratio for content slides (ex: '4x3') 
+		});
          
      //Sticky sidebars
      	$('#sidebar-sticky').stickySidebar();
