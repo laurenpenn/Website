@@ -10,9 +10,6 @@
 body, body.wordpress {
 	padding-top: 26px !important;
 }
-.logged-in #global-wrapper {
-	top: 28px;
-}
 #global-wrapper {
 	background: #15100e;
 	border-bottom: 1px solid #3B2D28;
@@ -27,6 +24,7 @@ body, body.wordpress {
 	text-decoration: none;
 }
 #global-bar {
+    margin-bottom: 0 !important;
 	width: 100%;
 }
 	#global-wrapper div.menu {
@@ -35,13 +33,13 @@ body, body.wordpress {
 	#global-bar ul {
 		font-size: 11px;
 		list-style: none;
-		margin: 0 auto;
+		margin: 0;
 		padding: 3px 0;
 		overflow: hidden;
-		width: 960px;
 	}
 		#global-bar li {
 			float: left;
+			margin: 0;
 		}
 			#global-bar li a {
 				color: #9a8a79;
@@ -137,3 +135,26 @@ body, body.wordpress {
 		margin-right: 9px;
 		width: 19%;
 	}
+
+
+@media screen and (min-width: 480px) {
+    
+    
+}
+
+@media screen and (min-width: 620px) { 
+    #global-bar {
+        margin: 0 auto 10px; 
+        width: 93.75%;      /* 960/1024 */
+    }
+}
+@media screen and (max-width: 810px) {
+}
+
+/* Largest format */
+@media screen and (min-width: 1400px) {
+    #global-bar {
+        width: 1232px;
+    }
+
+}
