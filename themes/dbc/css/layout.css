@@ -1,24 +1,42 @@
 /*
-* Skeleton V1.1
-* Copyright 2011, Dave Gamache
-* www.getskeleton.com
-* Free to use under the MIT license.
-* http://www.opensource.org/licenses/mit-license.php
-* 8/17/2011
-*/
+ * As a responsive site this file is responsible for changing the layout of the
+ * page as the browser changes widths. The site is flexible up until it's wide
+ * enough to be 1232px. As the browser width increases more of the site is either
+ * revealed or made more readily accessible. For example, the sidebar is moved
+ * below the main content for mobile users.
+ */
 
 .wrap {
-    width: 99%;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
 }
 
+/* Not quite ready to make the home page fully responsive 
+.page-template-home .wrap {
+    width: 980px !important;
+}
+*/
+/* Small (old) Mobile
+ * For smaller mobile resolutions
+ * e.g. iPod Touch, iPhone 3G
+ ================================================== */
+@media screen and (max-width: 479px) {
+}
+
+/* Mobile and up
+ * e.g. Many Android devices
+ ================================================== */
 @media screen and (min-width: 480px) {
-
 }
 
-@media screen and (min-width: 620px) { 
+/* Large mobile and tablet
+ * e.g. iPhone 4, iPhone 4S
+ ================================================== */
+@media screen and (min-width: 620px) {
     .wrap {
-        margin: 0 auto 10px; 
-        width: 93.75%;      /* 960/1024 */
+        margin: 0 auto 10px;
+        width: 93.75%;
     }
     #sidebar-home {
         float: left;
@@ -42,6 +60,11 @@
         width: 90%;
     }
 }
+
+/* Mobile
+ * Anything smaller than 810px
+ * This is the threshold that we break the site out of a two column format
+ ================================================== */
 @media screen and (max-width: 810px) {
     #sidebar-home {
         float: none;
@@ -63,10 +86,33 @@
     }
 }
 
-/* Largest format */
+/* Largest format
+ * e.g. 1600x900, 1920x1080
+ ================================================== */
 @media screen and (min-width: 1400px) {
     .wrap {
         width: 1232px;
     }
 
+}
+
+/* Clearing
+ ================================================== */
+
+/* Self Clearing Goodness */
+.wrap:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
 }

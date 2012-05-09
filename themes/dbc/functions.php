@@ -97,19 +97,24 @@ function dbc_remove_header_info() {
  * @since 0.1
  */
 function dbc_load_scripts() {
+	wp_enqueue_script( 'respond', trailingslashit( THEME_URI ) . 'js/respond.js' );
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'jquery-functions', trailingslashit( THEME_URI ) . 'js/scripts.dev.js', array( 'jquery' ), '0.2.1', true );
+	wp_enqueue_script( 'modernizr', trailingslashit( THEME_URI ) . 'js/modernizr.foundation.js', array( 'jquery' ), '0.3', false );
+	wp_enqueue_script( 'foundation', trailingslashit( THEME_URI ) . 'js/foundation.js', array( 'jquery' ), '0.3', true );
+	wp_enqueue_script( 'fancybox', trailingslashit( THEME_URI ) . 'js/jquery.fancybox.pack.js', array( 'jquery' ), '0.3', true );
+	wp_enqueue_script( 'flexslider', trailingslashit( THEME_URI ) . 'js/jquery.flexslider-min.js', array( 'jquery' ), '0.3', true );
+	wp_enqueue_script( 'jquery-functions', trailingslashit( THEME_URI ) . 'js/scripts.dev.js', array( 'jquery' ), '0.3', true );
 	
-	wp_enqueue_style( 'skeleton', trailingslashit( THEME_URI ) . 'css/skeleton.css', false, '0.3', 'screen' );
 	wp_enqueue_style( 'layout', trailingslashit( THEME_URI ) . 'css/layout.css', false, '0.3', 'screen' );
+	wp_enqueue_style( 'fancybox', trailingslashit( THEME_URI ) . 'css/jquery.fancybox.css', false, '0.3', 'screen' );
 	
 	if ( is_page_template( 'page-template-home.php' ) || is_page_template( 'page-media-home.php' ) ) {
-		wp_enqueue_style( 'front-page', trailingslashit( THEME_URI ) . 'css/home.css', false, '0.2.1', 'screen' );
-		wp_enqueue_style( 'orbit-css', trailingslashit( THEME_URI ) . 'css/orbit.css', false, '0.2.1', 'screen' );
+		wp_enqueue_style( 'front-page', trailingslashit( THEME_URI ) . 'css/home.css', false, '0.3', 'screen' );
+		wp_enqueue_style( 'flexslider', trailingslashit( THEME_URI ) . 'css/flexslider.css', false, '0.3', 'screen' );
 	}
 
 	if ( is_tax( 'note' ) || is_singular( 'note' ) || is_post_type_archive( 'note' ) )
-		wp_enqueue_style( 'note', trailingslashit( THEME_URI ) . 'css/note.css', false, '0.2.1', 'screen' );
+		wp_enqueue_style( 'note', trailingslashit( THEME_URI ) . 'css/note.css', false, '0.3', 'screen' );
 }
 	
 /**
@@ -373,22 +378,22 @@ function dbc_slideshow_shortcode( $attr ) {
 			$preview_image = get_the_post_thumbnail( $post->id );
 				
 			$slideshow .= 	'<object id="player" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" name="player" width="655" height="358">';
-			$slideshow .= 	'<param name="movie" value="http://dentonbible.org/wp-content/themes/dbc/player/player.swf" />';
+			$slideshow .= 	'<param name="movie" value="'. trailingslashit( THEME_URI ) .'player/player.swf" />';
 			$slideshow .= 	'<param name="allowfullscreen" value="true" />';
 			$slideshow .= 	'<param name="allowscriptaccess" value="always" />';
-			$slideshow .=   '<param name="flashvars="file='. $attachment->guid .'&image='. $preview_image .'&skin=http://dentonbible.org/wp-content/themes/dbc/player/modieus.zip">';
+			$slideshow .=   '<param name="flashvars="file='. $attachment->guid .'&image='. $preview_image .'&skin='. trailingslashit( THEME_URI ) .'player/modieus.zip">';
 	
 			$slideshow .= 	'<param name="flashvars" value="'. $attachment->guid .'" />';
 			$slideshow .= 	'<embed ';
 				$slideshow .= 	'type="application/x-shockwave-flash"';
 				$slideshow .= 	'id="player2"';
 				$slideshow .= 	'name="player2"';
-				$slideshow .= 	'src="http://dentonbible.org/wp-content/themes/dbc/player/player.swf"'; 
+				$slideshow .= 	'src="'. trailingslashit( THEME_URI ) .'player/player.swf"'; 
 				$slideshow .= 	'width="655" ';
 				$slideshow .= 	'height="358"';
 				$slideshow .= 	'allowscriptaccess="always" ';
 				$slideshow .= 	'allowfullscreen="true"';
-				$slideshow .= 	'flashvars="file='. $attachment->guid .'&image='. $preview_image .'&skin=http://dentonbible.org/wp-content/themes/dbc/player/modieus.zip" ';
+				$slideshow .= 	'flashvars="file='. $attachment->guid .'&image='. $preview_image .'&skin='. trailingslashit( THEME_URI ) .'player/modieus.zip" ';
 			$slideshow .= 	'/>';
 			$slideshow .= 	'</object>';
 		

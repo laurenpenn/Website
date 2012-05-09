@@ -23,28 +23,43 @@ get_header(); ?>
 		<div id="mydbc">
 			<a class="big-button" href="https://secure.accessacs.com/access/login_guest.aspx?sn=92231">Register for an<br /><span class="league-gothic">Event</span></a>
 			<a class="big-button" href="https://secure.accessacs.com/access/login_guest.aspx?sn=92231&amp;sc=sgguest">Search for a<br /><span class="league-gothic">Small Group</span></a>
-			<a class="big-button green" href="http://dentonbible.org/admin/mydbc-life-faq/">Connect to<br /><span class="league-gothic">MyDBC Life</span> <span class="icon">MyDBC Life</span></a>
+			<a class="big-button" href="#">Sign up for the<br /><span class="league-gothic">Newsletter</span></a>
+			<a class="big-button green" href="<?php echo site_url(); ?>/admin/mydbc-life-faq/">Connect to<br /><span class="icon">MyDBC Life</span><span class="league-gothic">MyDBC Life</span></a>
 		</div><!-- #mydbc -->
 	
 		<?php get_template_part( 'latest-message' ); // loads latest-message.php ?>
 		
+		<div class="clear"></div>
+		
 		<div id="home-features">
 			
-			<a class="feature-dbc-cares" href="http://dentonbible.org/care/dbc-cares/">
-				<span class="logo">DBC Cares</span>
-				<span class="new"><span>NEW</span> Ministry</span>
-				<span class="text">Are you, or someone you know in our church family, in need?</span>
+			<div class="features">
+
+				<a href="<?php echo site_url(); ?>/care/dbc-cares/" class="feature" id="feature-dbccares">
+					<div class="feature-inner">
+						<h4 class="widget-title">DBC Cares</h4>
+						<p><img src="<?php echo get_template_directory_uri(); ?>/images/dbc-cares-logo.png" class="alignright" />Are you, or someone you know in our church family, in need?</p>
+					</div>
+				</a>
 				
-			</a>
-					
-			<a href="http://dentonbible.org/note/" class="feature-note"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/feature-notes.gif" alt="Notes from Tom Nelson" height="127" width="197" /></a>
+				<a href="<?php echo site_url(); ?>/notes/" class="feature" id="feature-notes">
+					<div class="feature-inner">
+						<h4 class="widget-title">Notes from Tom Nelson's desk</h4>
+						<p><img src="<?php echo get_template_directory_uri(); ?>/images/feature-notes-tom.png" class="alignright" />Occasional letters from Tom to the church body</p>
+					</div>
+				</a>
+							
+				<a href="<?php echo site_url(); ?>/about-us/calendar/" class="feature" id="feature-calendar">
+					<div class="feature-inner">
+						<h4 class="widget-title">Calendar of Events</h4>
+						<p><img src="<?php echo get_template_directory_uri(); ?>/images/feature-calendar.png" class="alignright" width="68" />All church events and information</p>
+					</div>
+				</a>
+				
+			</div>
 			
-			<a href="http://dentonbible.org/about-us/calendar/" class="feature-calendar"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/feature-calendar.gif" alt="Calendar of Events" height="127" width="197" /></a>
-		
-			<a href="http://dentonbible.org/about-us/publications/" class="feature-publication"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/feature-publications.gif" alt="Denton Bible Church Publications" height="127" width="198" /></a>
-		
 		</div><!-- #home-features -->
-		
+				
 		<?php do_atomic( 'close_content' ); // dbc_close_content ?>
 
 	</div><!-- #content -->

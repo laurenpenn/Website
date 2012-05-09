@@ -18,11 +18,23 @@
 	    width: 100% !important;
 	}
 
+.flex-container {
+    margin: 0 0 2em;
+}
+.flexslider img {
+    width: 100%;
+}
+.flex-direction-nav {
+    display: none;
+}
+.flex-container:hover .flex-direction-nav {
+    display: block;
+}
+
 /**
 * myDBC
 ************************************************/
 #mydbc {
-	font: 10px/33px "CartoGothicStdBook","Lucida Grande","Lucida Sans","Lucida Sans Unicode",Tahoma,Arial,Helvetica,sans-serif;	
 	margin: 0 0 15px;
 	overflow: hidden;
 	text-transform: uppercase;
@@ -37,14 +49,14 @@
 		border-radius: 3px;
 		color: #6e6e6e;
 		display: inline-block;
-		font-size:14px;
-		line-height: 18px;
-		margin-right: 16px;
-		padding: 10px;
+		font: 0.875em/2.063em "CartoGothicStdBook","Lucida Grande","Lucida Sans","Lucida Sans Unicode",Tahoma,Arial,Helvetica,sans-serif;
+		margin: 0 2.6% 0 0;
+		padding: 1%;
 		text-decoration: none;
 		text-shadow: 1px 1px 1px #fff;
 		text-transform: uppercase;
 		-moz-border-radius: 3px;
+		width: 16%;
 	}
 		#mydbc .big-button:hover {
 			background: #91a1ad;
@@ -52,11 +64,15 @@
 			color: #fff;
 			text-shadow: 1px 1px 1px #6e6e6e;
 		}
+		#mydbc .big-button:last-child {
+		    margin: 0;
+		}
 	#mydbc .big-button.green {
 		background: #E2E8D7;
 		border: 5px solid #C3CEB1;
-		line-height: 14px;
+		font: 0.875em/2.063em "CartoGothicStdBook","Lucida Grande","Lucida Sans","Lucida Sans Unicode",Tahoma,Arial,Helvetica,sans-serif;
 		margin: 0;
+        width: 30%;
 	}
 		#mydbc .big-button.green:hover {
 			background: #C3CEB1;
@@ -69,30 +85,34 @@
 	#mydbc .big-button.green .icon  {
 		background: url('../images/mydbc-icon.png') center center no-repeat;
 		display: inline-block;
-		height: 36px;
-		line-height: 50px;
+		float: right;
 		margin-left: 5px;
 		text-indent: -9999px;
 		width: 114px;		
 	}
 	#mydbc .league-gothic {
-		font: 32px/36px "LeagueGothicRegular";
+		font: 2.250em/1em "LeagueGothicRegular";
 	}
 
 /**
 * This Week's Message
 ************************************************/
 #latest-message {
+    background: #efece7; /* Old browsers */
+    background: -moz-linear-gradient(top,  #efece7 0%, #ffffff 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#efece7), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #efece7 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #efece7 0%,#ffffff 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #efece7 0%,#ffffff 100%); /* IE10+ */
+    background: linear-gradient(top,  #efece7 0%,#ffffff 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efece7', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 	border-left: 1px solid #D7D4CF;
 	border-top: 1px solid #D7D4CF;
 	margin-bottom: 10px;
-	padding: 10px;	
+	padding: 2%;	
 	overflow: hidden;
 	text-shadow: 1px 1px 0 #fff;
 }
-.gecko #latest-message { background: -moz-linear-gradient(center bottom , rgb(255, 255, 255) 0%, rgb(239, 236, 231) 100%) repeat scroll 0% 0% transparent; }
-.chrome #latest-message { background:-webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(255,255,255)),color-stop(1, rgb(239,236,231))) repeat scroll 0% 0% transparent; }
-.msie #latest-message { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#efece7, endColorstr=#ffffff); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#efece7, endColorstr=#ffffff)"; }
 	.latest-message-left {
 		float: left;
 		width: 60%;
@@ -102,8 +122,8 @@
 		width: 40%;
 	}
 		.latest-message-title {
-			color: #605149;
-			font-size: 12px;
+			color: #998775;
+			font: 1.250em/1em "LeagueGothicRegular";
 			text-transform: uppercase;
 		}
 		.latest-message-message-title ul {
@@ -112,11 +132,11 @@
 		}
 			.latest-message-message-title a {
 				color: #486374;
-				font-size: 14px;
+				font: bold 0.813em/1.625em Arial, Helvetica, sans-serif;
 			}
 		.latest-message-message-date {
 			color: #8b807a;
-			font-size: 10px;
+			font: bold 0.688em/1.625em Arial, Helvetica, sans-serif;
 			text-transform: uppercase;
 		}
 		.latest-message-listen a {
@@ -148,7 +168,7 @@
 	border-top: 1px solid #D2E1F2;
 	height: 50px;
 	margin: 0 0 9px;
-	padding: 6px 10px 0 10px;
+	padding: 2%;
 	overflow: hidden;
 	text-decoration: none !important;
 }
@@ -198,6 +218,57 @@
 .feature-calendar img {
 	margin-right: 10px;
 }
+
+.feature {
+    color: #000;
+    float: left;
+    padding: 0 1% 2%;
+    text-decoration: none !important;
+    width: 32%;
+}
+.feature:first-child,
+.feature:nth-child(4n) {
+    clear: both;
+    padding-left: 0;
+}
+.feature:nth-child(3n) {
+    padding-right: 0;
+}
+.feature-inner {
+    box-shadow: inset 0 0 5px rgba(0,0,0,.35);
+    overflow: hidden;
+    padding: 5% 6% 0;
+}
+.feature:hover .feature-inner {
+    box-shadow: inset 0 0 5px rgba(0,0,0,.35), 0 0 5px rgba(0,0,0,.25);
+}
+.feature-inner .widget-title {
+    color: #222;
+    font: 1em/1em "Georgia", "Times New Roman", Times, Serif;
+    margin: 0 0 0.625em;
+    text-shadow: 0 1px 0 #fff;
+}
+.feature-inner p {
+    font: italic 0.750em/1.625em "Georgia", "Times New Roman", Times, Serif;
+}
+
+#feature-dbccares .feature-inner {
+    background: #eee;
+    border: 5px solid #eee;
+}   
+#feature-notes .feature-inner {
+    background: #d1d9c3;
+    border: 5px solid #c3ceb1;
+}
+#feature-publications .feature-inner {
+    background: #eaeaea;
+    border: 5px solid #eaeaea;
+}
+#feature-calendar .feature-inner {
+    background: #eef2f4;
+    border: 5px solid #e2e9ee;
+}
+
 /**
 * Sidebar
 ************************************************/
