@@ -50,11 +50,11 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 				
 			<p>Denton Bible Church archives sermons from each Sunday and makes them available online. Watch, listen, download and share!</p>
 			
-			<p><a href="http://dbcmedia.org/" class="button" title="Denton Bible Media">Check Out DBC Media</a></p>
+			<p><a href="http://dbcmedia.org/" class="nice small radius white button" title="Denton Bible Media">Check Out DBC Media</a></p>
 			
 			<p>What better way to connect online with others in the church than Facebook?</p>
 			
-			<p><a href="http://facebook.com/dentonbible" class="button" title="Denton Bible on Facebook">Are you on Facebook too?</a></p>
+			<p><a href="http://facebook.com/dentonbible" class="nice small radius white button" title="Denton Bible on Facebook">Are you on Facebook too?</a></p>
 			
 		<?php } ?>	
 
