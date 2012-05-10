@@ -23,16 +23,25 @@
  * e.g. iPod Touch, iPhone 3G
  ================================================== */
 @media screen and (max-width: 479px) {
+	body {
+		background: red !important;
+	}
 }
 /* Mobile and up
  * e.g. Many Android devices
  ================================================== */
 @media screen and (min-width: 480px) {
+	body {
+		background: orange !important;
+	}
 }
 /* Large mobile and tablet
  * e.g. iPhone 4, iPhone 4S
  ================================================== */
 @media screen and (min-width: 620px) {
+	body {
+		background: yellow !important;
+	}
 	.wrap {
 		margin: 0 auto 10px;
 		width: 93.75%;
@@ -60,10 +69,26 @@
 	}
 }
 /* Mobile
+ * Anything smaller than 620px
+ ================================================== */
+@media screen and (max-width: 620px) {
+	.page-template-home #mydbc .big-button,
+	.page-template-home #mydbc .big-button.green {
+		margin: 0 0 3px !important;
+		width: 95% !important;
+	}
+	.page-template-home .feature {
+		width: 99%;
+	}
+}
+/* Mobile
  * Anything smaller than 810px
  * This is the threshold that we break the site out of a two column format
  ================================================== */
 @media screen and (max-width: 810px) {
+	body {
+		background: green !important;
+	}
 	#sidebar-home {
 		float: none;
 		padding: 5%;
@@ -117,13 +142,9 @@
 	.page-template-home #sidebar-home {
 		padding: 0 5% 5%;
 	}
-	.page-template-home #mydbc .big-button {
-		font: 1.2rem/2.063em Arial, Helvetica, sans-serif;
-		margin: 0;
-		width: auto;
-	}
+	.page-template-home #mydbc .big-button,
 	.page-template-home #mydbc .big-button.green {
-		font: 1.2rem/2.063em Arial, Helvetica, sans-serif;
+		font: 0.75em/2.063em Arial, Helvetica, sans-serif;
 		margin: 0;
 		width: auto;
 	}
@@ -132,6 +153,9 @@
  * e.g. 1600x900, 1920x1080
  ================================================== */
 @media screen and (min-width: 1400px) {
+	body {
+		background: #000 !important;
+	}
 	.wrap {
 		width: 1232px;
 	}

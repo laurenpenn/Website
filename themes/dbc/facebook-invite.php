@@ -31,6 +31,7 @@
 		cursor: pointer;
 		border-image: initial;
 		border-radius: 4px;
+		margin-left: 1em;
 	}
 	#facebook-invite a:hover {
 		background: #2B4477;
