@@ -44,15 +44,15 @@ get_header(); ?>
 				
 				<a href="<?php echo site_url(); ?>/notes/" class="feature" id="feature-notes">
 					<div class="feature-inner">
-						<h4 class="widget-title">Notes from Tom Nelson's desk</h4>
-						<p><img src="<?php echo get_template_directory_uri(); ?>/images/feature-notes-tom.png" class="alignright" />Occasional letters from Tom to the church body</p>
+						<h4 class="widget-title">Notes from Tom's  desk</h4>
+						<p><img src="<?php echo get_template_directory_uri(); ?>/images/feature-notes-tom.png" class="alignright" style="margin: 0 0 0.75em 0.75em;" />Occasionally, senior pastor Tom Nelson has a letter to share with the church body</p>
 					</div>
 				</a>
 							
 				<a href="<?php echo site_url(); ?>/about-us/calendar/" class="feature" id="feature-calendar">
 					<div class="feature-inner">
 						<h4 class="widget-title">Calendar of Events</h4>
-						<p><img src="<?php echo get_template_directory_uri(); ?>/images/feature-calendar.png" class="alignright" width="68" />All church events and information</p>
+						<p><img src="<?php echo get_template_directory_uri(); ?>/images/feature-calendar.png" class="alignright" width="68" />Find out what's going on this weekend or other ways you can get involved</p>
 					</div>
 				</a>
 				
