@@ -102,6 +102,7 @@
 body {
     background: #fff url('images/bg.gif');
     color: #000;
+    font-size: 16px;
     font: 1.6rem/1.625em "Georgia", "Times New Roman", Times, Serif;
 }
 
@@ -143,6 +144,7 @@ a:hover {
 }
 h1 {
     color: #15100E;
+    font-size: 48px;
     font: 4.8rem/1em "LeagueGothicRegular"; /* 48px */
 }
 h1 a {
@@ -150,6 +152,7 @@ h1 a {
 }
 h2 {
     color: #15100E;
+    font-size: 36px;
     font: 3.6rem/1em "LeagueGothicRegular";/* 36px */
 }
 h2 a {
@@ -157,51 +160,55 @@ h2 a {
 }
 h3 {
     color: #666;
+    font-size: 30px;
     font: 3.0rem/1em "LeagueGothicRegular";/* 30px */
 }
 h3 a {
     color: #5c5650;
 }
 h4 {
-    font: 2.0 r0em/1em "LeagueGothicRegular";/* 20px */
-        color: #5c5650;
-    }
-    h4 a {
-        color: #5c5650;
-    }
-    h5 {
-        color: #5c5650;
-        font-size: 1.3rem;
-    }
-    h5 a {
-        color: #5c5650;
-    }
-    h6 {
-        color: #847e78;
-        font-size: 1.3rem;
-    }
-    h6 a {
-        color: #847e78;
-    }
+	font-size: 20px;
+	font: 2.0rem/1em "LeagueGothicRegular";/* 20px */
+	color: #5c5650;
+}
+h4 a {
+	color: #5c5650;
+}
+h5 {
+	color: #5c5650;
+	font-size: 13px;
+	font-size: 1.3rem;
+}
+h5 a {
+	color: #5c5650;
+}
+h6 {
+	color: #847e78;
+	font-size: 13px;
+	font-size: 1.3rem;
+}
+h6 a {
+	color: #847e78;
+}
 
-    a img {
-        border: none
-    }
+a img {
+	border: none
+}
 
-    .entry-title a {
-        text-decoration: none;
-    }
+.entry-title a {
+	text-decoration: none;
+}
 
-    img {
-        height: auto;
-        max-width: 100%;
-    }
+img {
+	height: auto;
+	max-width: 100%;
+}
 
-    embed, iframe, object {
-        max-width: 100%;
-    }
+embed, iframe, object {
+	max-width: 100%;
+}
 
-  
+
     /* Text elements */
 strong, b {
     font-weight: bold;
@@ -265,6 +272,7 @@ iframe {
 
 /* Paragraphs */
 p {
+	font-size: 16px;
     font: 1.6rem/1.625em "Georgia", "Times New Roman", Times, Serif;
     margin: 0 0 1.125em 0;
 }
@@ -1435,12 +1443,14 @@ span.required {
 #sidebar-primary {
     color: #605149;
     float: left;
+    font-size: 12px;
     font: 1.2rem/1.625em Arial, Helvetica, Sans-serif; /* 12px */
     padding: 20px;
     text-shadow: 0 1px 0 #fff;
     width: 195px;
 }
 #sidebar-primary p {
+	font-size: 12px;
     font: 1.2rem/1.625em Arial, Helvetica, Sans-serif; /* 12px */
 }
 #sidebar-menu {
@@ -1506,6 +1516,7 @@ span.required {
  ************************************************/
 
 #footer {
+	font-size: 16px;
 	font: 1.6rem/1.625em Arial, Helvetica, sans-serif;
 }
 /* Wrapper for the entire footer */
@@ -1572,6 +1583,7 @@ span.required {
 
 #footer h5 {
     color: #745b48;
+    font-size: 18px;
     font-size: 1.8rem;
 }
 #footer .highlight {
@@ -1591,6 +1603,7 @@ span.required {
 
 #footer p {
     clear: both;
+    font-size: 16px;
     font: 1.6rem/1.625em Arial, Helvetica, sans-serif;
     margin: 0;
 }

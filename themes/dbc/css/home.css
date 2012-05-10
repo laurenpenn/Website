@@ -467,20 +467,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ece7dc', end
 			font: 20px/25px "CartoGothicStdBook";
 			text-align: left;
 		}
-		/*
-        .welcome-visiting-information a {
-            background: url('../images/sprite.png') -10px -10px no-repeat;
-            display: block;
-            height: 37px;
-            text-indent: -9999px;
-            width: 284px;
-        }*/
 		.welcome-visiting-information a {
+			background: #C7CAC5;
 			background: rgba(31,98,145,.15);
 			border: 1px solid #fff;
 			border-color: rgba(255,255,255,.55) rgba(0,0,0,.15) rgba(0,0,0,.15) rgba(255,255,255,.55);
 			border-radius: 3px;
-            box-shadow: inset 0 0 20px rgba(255,255,255,.15);
+			box-shadow: inset 0 0 20px rgba(255,255,255,.15);
 			color: #486374;
 			display: block;
 			font: 1em/1.625em "CartoGothicStdBook";
