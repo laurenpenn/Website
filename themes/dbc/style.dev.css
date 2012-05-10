@@ -1539,11 +1539,11 @@ span.required {
 }
 .footer-left {
     float: left;
-    width: 600px;
+    width: 65%;
 }
 .footer-right {
     float: right;
-    width: 235px;
+    width: 30%;
 }
 #footer a {
     color: #777069;
@@ -1608,4 +1608,7 @@ span.required {
 }
 #footer .credit {
     font-size: 10px;
-}    
+}
+#wpstats {
+	display: none;
+}
