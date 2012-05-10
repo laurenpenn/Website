@@ -376,4 +376,9 @@ jQuery(document).ready(function($) {
      //Sticky sidebars
      	$('#sidebar-sticky').stickySidebar();
 
+     //Responsive actions
+     	$('#sidebar-primary-switch').click(function() {
+     		$('#sidebar-primary').toggle();
+     	});
+     	
 });

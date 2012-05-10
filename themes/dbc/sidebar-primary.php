@@ -61,5 +61,6 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 		<?php do_atomic( 'after_sidebar_primary' ); // dbc_after_sidebar_primary ?>
 
 	</aside><!-- #sidebar-primary -->
+	<div id="sidebar-primary-switch" title="Toggle the menu">Toggle menu</div>
 
 <?php endif; ?>

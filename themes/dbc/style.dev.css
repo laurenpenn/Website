@@ -794,7 +794,6 @@ img.wp-smiley {
 /* Wrapper for the content and primary/secondary widget sections */
 #main {
     clear: both;
-    overflow: hidden;
 }
 #main .wrap {
     background: #fff;
@@ -1506,6 +1505,9 @@ span.required {
  * Footer
  ************************************************/
 
+#footer {
+	font: 1.6rem/1.625em Arial, Helvetica, sans-serif;
+}
 /* Wrapper for the entire footer */
 #footer-container {
     clear: both;
@@ -1558,7 +1560,7 @@ span.required {
     padding: 0px;
 }
 #footer .menu li.menu-item {
-    border-right: 1px solid #1d1916;
+    border-right: 1px solid #999;
     float: left;
     margin: 0;
     padding: 0 1em;
@@ -1568,8 +1570,9 @@ span.required {
     border: none;
 }
 
-#footer h6 {
+#footer h5 {
     color: #745b48;
+    font-size: 1.8rem;
 }
 #footer .highlight {
     color: #745b48;
@@ -1588,6 +1591,7 @@ span.required {
 
 #footer p {
     clear: both;
+    font: 1.6rem/1.625em Arial, Helvetica, sans-serif;
     margin: 0;
 }
 #footer h6 {

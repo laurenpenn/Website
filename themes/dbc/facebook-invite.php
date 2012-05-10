@@ -6,6 +6,7 @@
 		color: #fff;
 		font: bold 0.875em/1em "lucida grande",tahoma,verdana,arial,sans-serif;
 		line-height: 1em;
+		overflow: hidden;
 		padding: 10px;
 		text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.6);
 	}
@@ -40,7 +41,9 @@
 	
 	<div id="facebook-invite-intro">
 		
-		<span>Invite a friend to church!</span> A neighbor, a co-worker, or an old friend ... invite your Facebook friends to visit DBC. <a href="http://dentonbible.org/about-us/visitor-information/">Get Started</a>
+		<a href="http://dentonbible.org/about-us/visitor-information/">Get Started</a>
+		
+		<span>Invite a friend to church!</span> A neighbor, a co-worker, or an old friend ... invite your Facebook friends to visit DBC.
 			
 	</div>
 	

@@ -498,7 +498,7 @@ function dbc_footer() {
 	
 			<?php do_shortcode('[primary_menu]'); ?>
 			<p class="copyright">Copyright &#169; <?php echo date('Y'); ?> <a href="http://dentonbible.org">Denton Bible Church</a>, all rights reserved.</p>
-			<p class="credit">Designed by <a href="http://pixelightcreative.com/" class="highlight">Pixelight Creative</a> &amp; built by <a href="http://developdaly.com/" class="highlight">Develop Daly</a>. <a href="http://dentonbible.org/staff-registration/">Staff Registration</a> | <?php wp_loginout(); ?></p>
+			<p class="credit"><a href="http://dentonbible.org/staff-registration/">Staff Registration</a> | <?php wp_loginout(); ?></p>
 	
 			<?php //hybrid_footer(); // Hybrid footer hook ?>
 		
@@ -506,7 +506,7 @@ function dbc_footer() {
 	
 		<div class="footer-right vcard">
 	
-			<h6 class="org">Denton Bible Church</h6>
+			<h5 class="org">Denton Bible Church</h5>
 			<div class="adr">
 				<div class="street-address">2300 E. University Dr.</div>
 				<span class="locality">Denton</span>, <span class="region">TX</span> <span class="postal-code">76209</span>
