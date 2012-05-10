@@ -84,8 +84,8 @@
 		display: none;
 	}
 }
-/* Mobile
- * Anything smaller than 810px
+/* Tablet and smaller
+ * Anything smaller than 810px (iPad portrait)
  * This is the threshold that we break the site out of a two column format
  ================================================== */
 @media screen and (max-width: 810px) {
@@ -149,6 +149,20 @@
 		width: auto;
 	}
 }
+
+/* Standard monitor or landscape iPad
+ * e.g. 1024x768
+ ================================================== */
+@media screen and (max-width: 1024px) {
+	.page-template-home #mydbc .big-button,
+	.page-template-home #mydbc .big-button.green {
+		font: 0.65em/2.063em Arial, Helvetica, sans-serif;
+		margin: 0;
+		width: auto;
+	}
+}
+
+
 /* Largest format
  * e.g. 1600x900, 1920x1080
  ================================================== */
