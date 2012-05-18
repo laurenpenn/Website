@@ -50,8 +50,8 @@
 	border-radius: 3px;
 	color: #6e6e6e;
 	display: inline-block;
-	font-size: 12px;
-	font: 1.2rem/2 Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font: 1.0rem/2 Arial, Helvetica, sans-serif;
 	margin: 0 1% 0 0;	
 	text-decoration: none;
 	text-shadow: 1px 1px 1px #fff;
@@ -352,9 +352,4 @@
 .page-template-home #primary-home .widget-title, .page-template-home h3 {
 	color: #94532d;
 	text-shadow: 1px 1px 1px #fff;
-}
-
-/* IE7 hack. */
-*:first-child+ html .msie #mydbc .big-button.green .icon {
-	line-height: 20px;
 }

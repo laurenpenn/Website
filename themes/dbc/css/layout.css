@@ -73,11 +73,6 @@
 		text-indent: 1em;
 		width: 100%;
 	}
-	.page-template-home #mydbc .big-button,
-	.page-template-home #mydbc .big-button.green {
-		margin: 0 0 3px !important;
-		width: 95% !important;
-	}
 	.page-template-home .feature {
 		width: 99%;
 	}
@@ -90,7 +85,13 @@
  * This is the threshold that we break the site out of a two column format
  ================================================== */
 @media screen and (max-width: 810px) {
-	#sidebar-home {
+	.page-template-home #mydbc a.big-button,
+	.page-template-home #mydbc a.big-button.green {
+		margin: 0 0 3px;
+		width: 100%;
+	}
+	.page-template-home #sidebar-home {
+		clear: both;
 		float: none;
 		padding: 5%;
 		width: 90%;
@@ -146,23 +147,11 @@
 	}
 	.page-template-home #mydbc .big-button,
 	.page-template-home #mydbc .big-button.green {
-		font: 0.75em/2.063em Arial, Helvetica, sans-serif;
+		float: left;
 		margin: 0;
 		width: auto;
 	}
 }
-
-/* Standard monitor or landscape iPad
- * e.g. 1024x768
- ================================================== */
-@media screen and (max-width: 1024px) {
-	.page-template-home #mydbc a.big-button {
-		font-size: 11px;
-		font: 1.1rem/2 Arial, Helvetica, sans-serif;
-		margin: 0;
-	}
-}
-
 
 /* Largest format
  * e.g. 1600x900, 1920x1080
