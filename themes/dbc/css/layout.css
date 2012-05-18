@@ -156,11 +156,10 @@
  * e.g. 1024x768
  ================================================== */
 @media screen and (max-width: 1024px) {
-	.page-template-home #mydbc .big-button,
-	.page-template-home #mydbc .big-button.green {
-		font: 0.65em/2.063em Arial, Helvetica, sans-serif;
+	.page-template-home #mydbc a.big-button {
+		font-size: 11px;
+		font: 1.1rem/2 Arial, Helvetica, sans-serif;
 		margin: 0;
-		width: auto;
 	}
 }
 

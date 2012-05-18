@@ -47,38 +47,48 @@
 
 .page-template-home #mydbc .big-button {
 	background: #e2e9ee;
-	border: 5px solid #91a1ad;
 	border-radius: 3px;
 	color: #6e6e6e;
 	display: inline-block;
 	font-size: 12px;
 	font: 1.2rem/2 Arial, Helvetica, sans-serif;
-	margin: 0 2.5% 0 0;
-	padding: 1%;
+	margin: 0 1% 0 0;	
 	text-decoration: none;
 	text-shadow: 1px 1px 1px #fff;
 	text-transform: uppercase;
-	-moz-border-radius: 3px;
-	width: 16%;
+	width: 20%;
 }
 .page-template-home #mydbc .big-button:hover {
 	background: #91a1ad;
-	border: 5px solid #e2e9ee;
 	color: #fff;
 	text-shadow: 1px 1px 1px #6e6e6e;
 }
 .page-template-home #mydbc .big-button:last-child {
 	margin: 0;
 }
+.page-template-home #mydbc .big-button .inner {
+	border: 5px solid #91a1ad;
+	border-radius: 3px;
+	padding: 5px;
+}
+.page-template-home #mydbc .big-button.green .inner {
+	border: 5px solid #C3CEB1;
+	padding: 5px;
+}
+.page-template-home #mydbc .big-button:hover .inner {
+	border: 5px solid #e2e9ee;
+}
+.page-template-home #mydbc .big-button.green:hover .inner {
+	border: 5px solid #E2E8D7;
+}
 .page-template-home #mydbc .big-button.green {
 	background: #E2E8D7 url('../images/mydbc-icon.png') 90% center no-repeat;
-	border: 5px solid #C3CEB1;
+	float: right;
 	margin: 0;
-	width: 30%;
+	width: 35.5%;
 }
 .page-template-home #mydbc .big-button.green:hover {
 	background: #C3CEB1  url('../images/mydbc-icon.png') 90% center no-repeat;
-	border: 5px solid #E2E8D7;
 }
 .page-template-home .mydbc-life-desc {
 	font-size: 12px;
