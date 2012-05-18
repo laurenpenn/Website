@@ -574,8 +574,55 @@ img.wp-smiley {
 }
 #sidebar-header .widget-search {
     float: right;
-    width: 206px;
 }
+
+.widget-search form {
+	margin: 0;
+}
+.widget-search label {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+}
+.widget-search #search-texthybrid-search {
+	background: #fafafa url('images/search.png') no-repeat 5px 6px;
+	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+	border: 1px solid #ddd;
+	color: #888;
+	-moz-border-radius: 2px;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	float: right;
+	font-size: 14px;
+	height: 22px;
+	line-height: 1.2em;
+	padding: 4px 10px 4px 28px;
+	-webkit-transition-duration: 400ms;
+	-webkit-transition-property: width, background;
+	-webkit-transition-timing-function: ease;
+	-moz-transition-duration: 400ms;
+	-moz-transition-property: width, background;
+	-moz-transition-timing-function: ease;
+	-o-transition-duration: 400ms;
+	-o-transition-property: width, background;
+	-o-transition-timing-function: ease;
+	width: 72px;
+}
+.widget-search #search-texthybrid-search:focus {
+	background-color: #f9f9f9;
+	width: 196px;
+}
+
+.widget-search #search-submithybrid-search {
+	display: none;
+}
+
+
+
+
+
 #search-form, #cse-search-form {
     background: url('images/sprite.png') -317px -19px no-repeat;
     height: 34px;
