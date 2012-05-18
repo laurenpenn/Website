@@ -579,10 +579,10 @@ function dbc_register_post_types() {
 		'has_archive' => true,
 		'query_var' => true,
 		'can_export' => true,
-		'rewrite' => array( 'slug' => 'note', 'with_front' => false ),
+		'rewrite' => array( 'slug' => 'notes', 'with_front' => false ),
 		'capability_type' => 'post'
-	);						
-
+	);
+	
 	/* Labels for the story type. */
 	$story_labels = array(
 		'name' => __( 'Stories', $domain ),

@@ -44,7 +44,7 @@ get_header(); // Loads the header.php template. ?>
 							$pdf = dbc_get_post_pdf();
 							
 							if ( !empty( $pdf ) )
-								echo '<div class="tom-pdf"><a href="'. $pdf .'" class="button">View PDF</a></div>';
+								echo '<div class="tom-pdf"><a href="'. $pdf .'" class="button nice blue medium radius right">View PDF</a></div>';
 							?>
 
 							<div class="facebook-like">

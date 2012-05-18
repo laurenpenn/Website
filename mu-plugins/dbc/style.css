@@ -1,10 +1,22 @@
 /* Admin Bar */
-#wpadminbar #wp-admin-bar-admin a { background: #770000; }
-#wpadminbar #wp-admin-bar-admin a:hover { background: #630000; }
-.gecko #wpadminbar #wp-admin-bar-admin a { background: -moz-linear-gradient(center bottom , #770000 0%, #630000 100%) repeat scroll 0 0 transparent; }
-.gecko #wpadminbar #wp-admin-bar-admin a:hover { background: -moz-linear-gradient(center bottom , #540000 0%, #3F0000 100%) repeat scroll 0 0 transparent; }
-.chrome #wpadminbar #wp-admin-bar-admin a { background:-webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(99,0,0)),color-stop(1, rgb(119,0,0))) repeat scroll 0% 0% transparent; }
-.chrome #wpadminbar #wp-admin-bar-admin a:hover { background:-webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(84,0,0)),color-stop(1, rgb(63,0,0))) repeat scroll 0% 0% transparent; }
+#wpadminbar #wp-admin-bar-admin a {
+	background: #770000;
+}
+#wpadminbar #wp-admin-bar-admin a:hover {
+	background: #630000;
+}
+.gecko #wpadminbar #wp-admin-bar-admin a {
+	background: -moz-linear-gradient(center bottom , #770000 0%, #630000 100%) repeat scroll 0 0 transparent;
+}
+.gecko #wpadminbar #wp-admin-bar-admin a:hover {
+	background: -moz-linear-gradient(center bottom , #540000 0%, #3F0000 100%) repeat scroll 0 0 transparent;
+}
+.chrome #wpadminbar #wp-admin-bar-admin a {
+	background: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(99,0,0)),color-stop(1, rgb(119,0,0))) repeat scroll 0% 0% transparent;
+}
+.chrome #wpadminbar #wp-admin-bar-admin a:hover {
+	background: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(84,0,0)),color-stop(1, rgb(63,0,0))) repeat scroll 0% 0% transparent;
+}
 
 /* Global Bar */
 body, body.wordpress {
@@ -14,7 +26,8 @@ body, body.wordpress {
 	background: #15100e;
 	border-bottom: 1px solid #3B2D28;
 	color: #9a8a79;
-	font: 11px/18px "CartoGothicStdBook","Lucida Grande","Lucida Sans","Lucida Sans Unicode",Tahoma,Arial,Helvetica,sans-serif;
+	font-size: 11px;
+	font: 1.1rem/1.625 Arial, Helvetica, sans-serif;
 	position: absolute;
 	top: 0;
 	width: 100%;
@@ -24,137 +37,130 @@ body, body.wordpress {
 	text-decoration: none;
 }
 #global-bar {
-    margin-bottom: 0 !important;
+	margin-bottom: 0 !important;
 	width: 100%;
 }
-	#global-wrapper div.menu {
-		font-size: 11px;
-	}
-	#global-bar ul {
-		font-size: 11px;
-		list-style: none;
-		margin: 0;
-		padding: 3px 0;
-		overflow: hidden;
-	}
-		#global-bar li {
-			float: left;
-			margin: 0;
-		}
-			#global-bar li a {
-				color: #9a8a79;
-			}	
-			#global-bar #dbc-small {
-				float: left;
-			}
-				#global-bar #dbc-small a {
-					background: url('images/denton-bible-church-small.png') no-repeat;
-					display: block;
-					height: 20px;
-					text-indent: -9999px;
-					width: 239px;
-				}
-					#global-bar #dbc-small a:hover {
-						background: none;
-						text-align: center;
-						text-indent: 0;
-					}
-			#global-bar #ministry-guide-link {
-				float: right;
-				text-transform: uppercase;
-			}
-				#global-bar #ministry-guide-link a {
-					background:url('images/arrow-down.png') right center no-repeat;
-					padding-right: 16px;
-				}
-					#global-bar #ministry-guide-link .open {
-						background:url('images/arrow-up.png') right center no-repeat;
-					}
-			#global-bar #feedback {
-				float: right;
-				margin-right: 20px;
-			}
-			#global-bar #contact {
-				float: right;
-				margin-right: 20px;
-			}
+#global-bar ul {
+	list-style: none;
+	margin: 0;
+	padding: 3px 0;
+	overflow: hidden;
+}
+#global-bar li {
+	float: left;
+	margin: 0;
+}
+#global-bar li a {
+	color: #9a8a79;
+}
+#global-bar #dbc-small {
+	float: left;
+}
+#global-bar #dbc-small a {
+	background: url('images/denton-bible-church-small.png') no-repeat;
+	display: block;
+	height: 20px;
+	text-indent: -9999px;
+	width: 239px;
+}
+#global-bar #dbc-small a:hover {
+	background: none;
+	text-align: center;
+	text-indent: 0;
+}
+#global-bar #ministry-guide-link {
+	float: right;
+	text-transform: uppercase;
+}
+#global-bar #ministry-guide-link a {
+	background: url('images/arrow-down.png') right center no-repeat;
+	padding-right: 16px;
+}
+#global-bar #ministry-guide-link .open {
+	background: url('images/arrow-up.png') right center no-repeat;
+}
+#global-bar #feedback {
+	float: right;
+	margin-right: 20px;
+}
+#global-bar #contact {
+	float: right;
+	margin-right: 20px;
+}
 
 #global-wrapper #ministry-guide {
 	display: none;
 	margin: 0 auto;
 	overflow: hidden;
-	padding: 30px 30px 15px;
-	width: 960px;
+	padding: 2% 5%;
 }
-	#global-wrapper #ministry-guide h3 {
-		color: #94532d;
-		font-size: 12px;
-		margin: 0;
-		font-weigth: bold;
-		text-shadow: none;
-	}
+#global-wrapper #ministry-guide h3 {
+	color: #94532d;
+	font-size: 12px;
+	margin: 0;
+	font-weigth: bold;
+	text-shadow: none;
+}
+#global-wrapper #ministry-guide li {
+	float: left;
+	height: auto;
+	margin: 0 1% 0 0;
+	width: 23%;
+}
+#global-wrapper #ministry-guide li li {
+	float: none;
+	margin: 0;
+	width: 100%;
+}
+#global-wrapper #ministry-guide .menu.last {
+	margin: 0;
+}
+#global-wrapper #ministry-guide .current_page_item a, #global-wrapper #ministry-guide a:hover {
+	color: #94532D;
+}
+#global-wrapper #ministry-guide ul {
+	list-style: none;
+	margin: 0 0 15px;
+}
+#global-wrapper #ministry-guide a {
+	color: #c8b7a3;
+	height: auto;
+	text-indent: 0;
+}
+#global-wrapper #ministry-guide ul ul {
+	list-style: none;
+	margin: 0 0 0 10px;
+}
+#global-wrapper #ministry-guide ul ul a {
+	color: #777069;
+}
+#global-wrapper #ministry-guide ul ul ul {
+	font-style: italic;
+}
+#global-wrapper #ministry-guide .widget {
+	float: left;
+	margin-right: 9px;
+	width: 19%;
+}
+
+@media screen and (max-width: 620px) {
 	#global-wrapper #ministry-guide li {
-		float: left;
-		height: auto;
-		margin: 0 15px 0 0;
-		width: 23%;
+		width: 49%;
 	}
-		#global-wrapper #ministry-guide li li {
-			float: none;
-			margin: 0;
-			width: 100%;
-		}
-		#global-wrapper #ministry-guide .menu.last {
-			margin: 0;
-		}
-			#global-wrapper #ministry-guide .current_page_item a,
-			#global-wrapper #ministry-guide a:hover {
-				color: #94532D;
-			}	
-	#global-wrapper #ministry-guide ul {
-		list-style: none;
-		margin: 0 0 15px;
-	}
-	#global-wrapper #ministry-guide a {
-		color: #c8b7a3;
-		height: auto;
-		text-indent: 0;
-	}	
-		#global-wrapper #ministry-guide ul ul{
-			list-style: none;
-			margin: 0 0 0 10px;
-		}
-		#global-wrapper #ministry-guide ul ul a {
-			color: #777069;
-		}	
-		#global-wrapper #ministry-guide ul ul ul {
-			font-style: italic;
-		}	
-	#global-wrapper #ministry-guide .widget {
-		float: left;
-		margin-right: 9px;
-		width: 19%;
-	}
-
-
-@media screen and (min-width: 480px) {
-    
-    
 }
 
-@media screen and (min-width: 620px) { 
-    #global-bar {
-        margin: 0 auto 10px; 
-        width: 93.75%;      /* 960/1024 */
-    }
+@media screen and (min-width: 620px) {
+	#global-bar,
+	#ministry-guide {
+		margin: 0 auto 10px;
+		width: 93.75%; /* 960/1024 */
+	}
 }
-@media screen and (max-width: 810px) {
-}
-
 /* Largest format */
 @media screen and (min-width: 1400px) {
-    #global-bar {
-        width: 1232px;
-    }
+	#global-bar,
+	#ministry-guide {
+		width: 1232px;
+	}
 
 }

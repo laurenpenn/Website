@@ -33,6 +33,7 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 		<?php if ( is_post_type_archive( 'event' ) && function_exists( 'wp_get_post_type_archives' ) ): ?>
 
 			<div class="loop">
+				<h3 class="widget-title">Events Archive</h3>
 				<ul>
 					<?php wp_get_post_type_archives('event'); ?>
 				</ul>

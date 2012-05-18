@@ -16,12 +16,6 @@ get_header(); // Loads the header.php template. ?>
 
 		<?php do_atomic( 'open_content' ); // dbc_open_content ?>
 		
-		<div class="breadcrumb breadcrumbs">
-			<div class="breadcrumb-trail">
-				<span class="trail-before"><span class="breadcrumb-title">Browse:</span></span> <a class="trail-begin" rel="home" title="Denton Bible Church" href="http://dentonbible.org/note/">All Notes</a> <span class="sep">/</span> <span class="trail-end"><?php the_title(); ?></span>
-			</div>
-		</div>
-		
 		<div class="hfeed">
 			
 			<?php if ( have_posts() ) : ?>
@@ -44,11 +38,9 @@ get_header(); // Loads the header.php template. ?>
 							$pdf = dbc_get_post_pdf();
 							
 							if ( !empty( $pdf ) )
-								echo '<div class="tom-pdf"><a href="'. $pdf .'" class="button">View PDF</a></div>';
+								echo '<div class="tom-pdf"><a href="'. $pdf .'" class="button nice blue medium radius right">View PDF</a></div>';
 							?>
-							
-							<div class="tom-pdf"><a href="<?php echo $pdf; ?>" class="button">View PDF</a></div>
-							
+														
 							<div class="facebook-like">
 								<fb:like href="<?php echo urlencode(get_permalink($post->ID)); ?>" layout="button_count" show_faces="true" width="150"></fb:like>
 							</div>
