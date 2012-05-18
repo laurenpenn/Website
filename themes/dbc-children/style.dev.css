@@ -8,7 +8,7 @@
  * Template: dbc
  */
 
-@import url('../dbc/style.dev.css');
+@import url('../dbc/style.css');
 
 #site-title a {
 	background: none;
@@ -20,8 +20,8 @@
 	width: auto;
 }
 
-#welcome {
-	background: url('images/sprite.png') 0 -144px !important;
+.page-template-home #welcome {
+	background: url('images/welcome-bar-bg.jpg');
 }
 #welcome h3.widget-title {
 	color: #fff;
@@ -102,39 +102,6 @@
 
 #sidebar-primary {
     background: none;
-}
-#sidebar-subsidiary {
-    background: #fff url('images/bg-content.png') bottom no-repeat;
-    border-top: 5px solid #ccc;
-    margin: 0 auto;
-    overflow: hidden;
-    padding: 20px 10px 200px;
-    width: 940px;
-}
-#sidebar-subsidiary .widget {
-	float: left;
-}
-#sidebar-subsidiary .widget:nth-child(1){
-	width: 24%;
-}
-#sidebar-subsidiary .widget:nth-child(2){
-	width: 24%;
-}
-#sidebar-subsidiary .widget:nth-child(3){
-	width: 50%;
-}
-#sidebar-subsidiary .widget-title {
-	color: #000;
-}
-#sidebar-subsidiary ul {
-	margin: 0 0 18px 1em;
-}
-#sidebar-subsidiary li {
-	list-style: none;
-}
-
-#sidebar-subsidiary a {
-	color: #000;
 }
 .columns {
 	display: table-row;
