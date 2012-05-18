@@ -51,7 +51,8 @@
 	border-radius: 3px;
 	color: #6e6e6e;
 	display: inline-block;
-	font: 0.875em/2.063em "CartoGothicStdBook", "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font: 1.2rem/2 Arial, Helvetica, sans-serif;
 	margin: 0 2.5% 0 0;
 	padding: 1%;
 	text-decoration: none;
@@ -70,27 +71,18 @@
 	margin: 0;
 }
 .page-template-home #mydbc .big-button.green {
-	background: #E2E8D7;
+	background: #E2E8D7 url('../images/mydbc-icon.png') 90% center no-repeat;
 	border: 5px solid #C3CEB1;
-	font: 0.875em/2.063em "CartoGothicStdBook", "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Tahoma, Arial, Helvetica, sans-serif;
 	margin: 0;
 	width: 30%;
 }
 .page-template-home #mydbc .big-button.green:hover {
-	background: #C3CEB1;
+	background: #C3CEB1  url('../images/mydbc-icon.png') 90% center no-repeat;
 	border: 5px solid #E2E8D7;
 }
 .page-template-home .mydbc-life-desc {
 	font-size: 12px;
 	text-transform: none;
-}
-.page-template-home #mydbc .big-button.green .icon {
-	background: url('../images/mydbc-icon.png') center center no-repeat;
-	display: inline-block;
-	float: right;
-	margin-left: 5px;
-	text-indent: -9999px;
-	width: 114px;
 }
 .page-template-home #mydbc .league-gothic {
 	font: 2.250em/1em "LeagueGothicRegular";
@@ -287,184 +279,22 @@
 
 /* Welcome */
 .page-template-home #welcome {
-	background: #ece7dc; /* Old browsers */
-	background: -moz-linear-gradient(left,
-	#e7e1d3 4.9%,
-	#ebe5da 5%,
-	#e7e1d3 6%,
-
-	#e7e1d3 9.9%,
-	#e2daca 10%,
-	#e7e1d3 11%,
-
-	#e7e1d3 14.9%,
-	#ebe5da 15%,
-	#e7e1d3 16%,
-
-	#e7e1d3 19.9%,
-	#e2daca 20%,
-	#e7e1d3 21%,
-
-	#e7e1d3 24.9%,
-	#ebe5da 25%,
-	#e7e1d3 26%,
-
-	#e7e1d3 29.9%,
-	#e2daca 30%,
-	#e7e1d3 31%,
-
-	#e7e1d3 34.9%,
-	#ebe5da 35%,
-	#e7e1d3 36%,
-
-	#e7e1d3 39.9%,
-	#e2daca 40%,
-	#e7e1d3 41%,
-
-	#e7e1d3 44.9%,
-	#ebe5da 45%,
-	#e7e1d3 46%,
-
-	#e7e1d3 49.9%,
-	#e2daca 50%,
-	#e7e1d3 51%,
-
-	#e7e1d3 54.9%,
-	#ebe5da 55%,
-	#e7e1d3 56%,
-
-	#e7e1d3 59.9%,
-	#e2daca 60%,
-	#e7e1d3 61%,
-
-	#e7e1d3 64.9%,
-	#ebe5da 65%,
-	#e7e1d3 66%,
-
-	#e7e1d3 69.9%,
-	#e2daca 70%,
-	#e7e1d3 71%,
-
-	#e7e1d3 74.9%,
-	#ebe5da 75%,
-	#e7e1d3 76%,
-
-	#e7e1d3 79.9%,
-	#e2daca 80%,
-	#e7e1d3 81%,
-
-	#e7e1d3 84.9%,
-	#ebe5da 85%,
-	#e7e1d3 86%,
-
-	#e7e1d3 89.9%,
-	#e2daca 90%,
-	#e7e1d3 91%,
-
-	#e7e1d3 94.9%,
-	#ebe5da 95%,
-	#e7e1d3 96%,
-
-	#e7e1d3 99.9%
-
-	); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right top, color-stop(4%,#ece7dc), color-stop(5%,#d8c4a2), color-stop(6%,#ece7dc), color-stop(9%,#ece7dc), color-stop(10%,#d8c4a2), color-stop(11%,#ece7dc), color-stop(14%,#ece7dc), color-stop(15%,#d8c4a2), color-stop(16%,#ece7dc), color-stop(19%,#ece7dc), color-stop(20%,#d8c4a2), color-stop(21%,#ece7dc), color-stop(24%,#ece7dc), color-stop(25%,#d8c4a2), color-stop(26%,#ece7dc)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(left,
-	#e7e1d3 4.9%,
-	#ebe5da 5%,
-	#e7e1d3 6%,
-
-	#e7e1d3 9.9%,
-	#e2daca 10%,
-	#e7e1d3 11%,
-
-	#e7e1d3 14.9%,
-	#ebe5da 15%,
-	#e7e1d3 16%,
-
-	#e7e1d3 19.9%,
-	#e2daca 20%,
-	#e7e1d3 21%,
-
-	#e7e1d3 24.9%,
-	#ebe5da 25%,
-	#e7e1d3 26%,
-
-	#e7e1d3 29.9%,
-	#e2daca 30%,
-	#e7e1d3 31%,
-
-	#e7e1d3 34.9%,
-	#ebe5da 35%,
-	#e7e1d3 36%,
-
-	#e7e1d3 39.9%,
-	#e2daca 40%,
-	#e7e1d3 41%,
-
-	#e7e1d3 44.9%,
-	#ebe5da 45%,
-	#e7e1d3 46%,
-
-	#e7e1d3 49.9%,
-	#e2daca 50%,
-	#e7e1d3 51%,
-
-	#e7e1d3 54.9%,
-	#ebe5da 55%,
-	#e7e1d3 56%,
-
-	#e7e1d3 59.9%,
-	#e2daca 60%,
-	#e7e1d3 61%,
-
-	#e7e1d3 64.9%,
-	#ebe5da 65%,
-	#e7e1d3 66%,
-
-	#e7e1d3 69.9%,
-	#e2daca 70%,
-	#e7e1d3 71%,
-
-	#e7e1d3 74.9%,
-	#ebe5da 75%,
-	#e7e1d3 76%,
-
-	#e7e1d3 79.9%,
-	#e2daca 80%,
-	#e7e1d3 81%,
-
-	#e7e1d3 84.9%,
-	#ebe5da 85%,
-	#e7e1d3 86%,
-
-	#e7e1d3 89.9%,
-	#e2daca 90%,
-	#e7e1d3 91%,
-
-	#e7e1d3 94.9%,
-	#ebe5da 95%,
-	#e7e1d3 96%,
-
-	#e7e1d3 99.9%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(left,  #ece7dc 4%,#d8c4a2 5%,#ece7dc 6%,#ece7dc 9%,#d8c4a2 10%,#ece7dc 11%,#ece7dc 14%,#d8c4a2 15%,#ece7dc 16%,#ece7dc 19%,#d8c4a2 20%,#ece7dc 21%,#ece7dc 24%,#d8c4a2 25%,#ece7dc 26%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(left,  #ece7dc 4%,#d8c4a2 5%,#ece7dc 6%,#ece7dc 9%,#d8c4a2 10%,#ece7dc 11%,#ece7dc 14%,#d8c4a2 15%,#ece7dc 16%,#ece7dc 19%,#d8c4a2 20%,#ece7dc 21%,#ece7dc 24%,#d8c4a2 25%,#ece7dc 26%); /* IE10+ */
-	background: linear-gradient(left,  #ece7dc 4%,#d8c4a2 5%,#ece7dc 6%,#ece7dc 9%,#d8c4a2 10%,#ece7dc 11%,#ece7dc 14%,#d8c4a2 15%,#ece7dc 16%,#ece7dc 19%,#d8c4a2 20%,#ece7dc 21%,#ece7dc 24%,#d8c4a2 25%,#ece7dc 26%); /* W3C */
-	filter: progid :DXImageTransform.Microsoft.gradient( startColorstr='#ece7dc', endColorstr='#ece7dc',GradientType=1 ); /* IE6-9 */
-
+	background: #ece7dc;
 	box-shadow: inset 0 0 100px #ece0d9, 0 10px 6px -6px #ccc;
 	box-shadow: inset 0 0 100px rgba(148,83,45,.20), 0 10px 6px -6px rgba(0,0,0,.20);
-	padding: 2% 2% 2% 0;
-	margin: 0 0 1em -20px;
+	padding: 2%;
+	margin: 0 0 1em;
 }
 .page-template-home .welcome-inner {
-	border-bottom: 1px solid #f8f3ec;
-	border-right: 1px solid #f8f3ec;
-	border-top: 1px solid #f8f3ec;
+	border: 1px solid #f8f3ec;
+	box-shadow: inset 0 0 5px rgba(0,0,0,.35);
+	overflow: hidden;
 	padding: 5%;
 }
 .page-template-home #welcome .widget-title {
-	font: 20px/25px "CartoGothicStdBook";
+	font-size: 32px;
+	font: 3.2rem/1em "LeagueGothicRegular";
+	margin: 0;
 	text-align: left;
 }
 .page-template-home .welcome-visiting-information a {
@@ -476,8 +306,10 @@
 	box-shadow: inset 0 0 20px rgba(255,255,255,.15);
 	color: #486374;
 	display: block;
-	font: 1em/1.625em "CartoGothicStdBook";
-	padding: 2%;
+	font-size: 20px;
+	font: 2.0rem/1em "LeagueGothicRegular";
+	margin: 5px 0 0;
+	padding: 3% 2% 2%;
 	position: relative;
 	text-align: center;
 	text-transform: uppercase;
@@ -490,16 +322,19 @@
 }
 .page-template-home .welcome-service-times {
 	color: #486374;
-	font: 11px/15px "CartoGothicStdBook";
+	font-size: 11px;
+	font: 1.1rem/1.625 Arial, Helvetica, sans-serif;
 	text-transform: uppercase;
 }
 .page-template-home .welcome-service-times-data {
 	color: #605149;
-	font: 18px/22px "CartoGothicStdBook";
+	font-size: 18px;
+	font-size: 1.8rem;
 }
 .page-template-home .welcome-directions {
 	color: #605149;
-	font: 11px/20px "CartoGothicStdBook";
+	font-size: 11px;
+	font: 1.1rem/1.625 Arial, Helvetica, sans-serif;
 }
 .page-template-home .welcome-directions a {
 	color: #94532d;

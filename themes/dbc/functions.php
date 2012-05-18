@@ -57,7 +57,6 @@ function dbc_theme_setup() {
 	add_filter( 'body_class', 'dbc_body_class' );
 	add_filter( 'stylesheet_uri', 'dbc_debug_stylesheet', 10, 2 );
 	add_filter( 'sidebars_widgets', 'dbc_disable_sidebars' );
-	add_filter( 'breadcrumb_trail', 'dbc_breadcrumb_trail' );
 
 	/* Add shortcodes */
 	add_shortcode( 'primary_menu', 'dbc_shortcode_primary_menu' );
@@ -269,21 +268,6 @@ function dbc_get_sidebar_whats_happening() {
  */
 function dbc_shortcode_primary_menu($atts) {
 	return wp_nav_menu('primary');
-}
-
-/**
- * Displays the breadcrumb trail.  Calls the get_the_breadcrumb() function.
- * Use the get_the_breadcrumb_args filter hook.  The hybrid_breadcrumb_args 
- * filter is deprecated.
- *
- * @deprecated 0.5 Theme still needs this function.
- * @todo Find an elegant way to transition to breadcrumb_trail() 
- * in child themes and filter breadcrumb_trail_args instead.
- *
- * @since 0.1
- */
-function dbc_breadcrumb() {
-	dbc_breadcrumb_trail( array( 'front_page' => false, 'singular_post_taxonomy' => 'category' ) );
 }
 
 /**
@@ -807,14 +791,3 @@ function dbc_publication_link() {
 	return $link;
 
 }
-
-function dbc_breadcrumb_trail( $breadcrumb ) {
-	$sr_post_type = get_post_type();
-	$post_type = get_post_type_object( $sr_post_type );
-	$search = 'Home</a> <span class="sep">/</span>';
-	$replace = 'Home</a> <span class="sep">/</span> <a href="/' . $post_type->rewrite[slug] . '">' . $post_type->labels->name . '</a> <span class="sep">/</span>';
-	$breadcrumb = str_replace( $search, $replace, $breadcrumb );
-	return $breadcrumb;
-}
-
-?>

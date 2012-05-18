@@ -26,7 +26,7 @@ get_header(); ?>
 				<a class="big-button" href="https://secure.accessacs.com/access/login_guest.aspx?sn=92231">Register for an<br /><span class="league-gothic">Event</span></a>
 				<a class="big-button" href="https://secure.accessacs.com/access/login_guest.aspx?sn=92231&amp;sc=sgguest">Search for a<br /><span class="league-gothic">Small Group</span></a>
 				<a class="big-button" href="#">Sign up for the<br /><span class="league-gothic">Newsletter</span></a>
-				<a class="big-button green" href="<?php echo site_url(); ?>/admin/mydbc-life-faq/">Connect to<br /><span class="icon">MyDBC Life</span><span class="league-gothic">MyDBC Life</span></a>
+				<a class="big-button green" href="<?php echo site_url(); ?>/admin/mydbc-life-faq/">Connect to<br /><span class="league-gothic">MyDBC Life</span></a>
 			</div><!-- #mydbc -->
 		
 			<?php get_template_part( 'latest-message' ); // loads latest-message.php ?>

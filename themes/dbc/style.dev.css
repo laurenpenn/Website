@@ -6,38 +6,6 @@
 
 /* Register fonts */
 @font-face {
-	font-family: 'CartoGothicStdBook';
-	src: url('fonts/carto/CartoGothicStd-Book-webfont.eot');
-	src: local('☺'), url('fonts/carto/CartoGothicStd-Book-webfont.woff') format('woff'), url('fonts/carto/CartoGothicStd-Book-webfont.ttf') format('truetype'), url('fonts/carto/CartoGothicStd-Book-webfont.svg#webfont') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'CartoGothicStdItalic';
-	src: url('fonts/carto/CartoGothicStd-Italic-webfont.eot');
-	src: local('☺'), url('fonts/carto/CartoGothicStd-Italic-webfont.woff') format('woff'), url('fonts/carto/CartoGothicStd-Italic-webfont.ttf') format('truetype'), url('fonts/carto/CartoGothicStd-Italic-webfont.svg#webfont') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'CartoGothicStdBold';
-	src: url('fonts/carto/CartoGothicStd-Bold-webfont.eot');
-	src: local('☺'), url('fonts/carto/CartoGothicStd-Bold-webfont.woff') format('woff'), url('fonts/carto/CartoGothicStd-Bold-webfont.ttf') format('truetype'), url('fonts/carto/CartoGothicStd-Bold-webfont.svg#webfont') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'CartoGothicStdBoldItalic';
-	src: url('fonts/carto/CartoGothicStd-BoldItalic-webfont.eot');
-	src: local('☺'), url('fonts/carto/CartoGothicStd-BoldItalic-webfont.woff') format('woff'), url('fonts/carto/CartoGothicStd-BoldItalic-webfont.ttf') format('truetype'), url('fonts/carto/CartoGothicStd-BoldItalic-webfont.svg#webfont') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
     font-family: 'LeagueGothicRegular';
     src: url('fonts/league-gothic/league_gothic-webfont-webfont.eot');
 }
@@ -151,31 +119,19 @@ h1 {
     font-size: 48px;
     font: 4.8rem/1em "LeagueGothicRegular"; /* 48px */
 }
-h1 a {
-    color: #15100E;
-}
 h2 {
     color: #15100E;
     font-size: 36px;
     font: 3.6rem/1em "LeagueGothicRegular";/* 36px */
-}
-h2 a {
-    color: #486374;
 }
 h3 {
     color: #666;
     font-size: 30px;
     font: 3.0rem/1em "LeagueGothicRegular";/* 30px */
 }
-h3 a {
-    color: #5c5650;
-}
 h4 {
 	font-size: 20px;
 	font: 2.0rem/1em "LeagueGothicRegular";/* 20px */
-	color: #5c5650;
-}
-h4 a {
 	color: #5c5650;
 }
 h5 {
@@ -183,16 +139,10 @@ h5 {
 	font-size: 13px;
 	font-size: 1.3rem;
 }
-h5 a {
-	color: #5c5650;
-}
 h6 {
 	color: #847e78;
 	font-size: 13px;
 	font-size: 1.3rem;
-}
-h6 a {
-	color: #847e78;
 }
 
 a img {
@@ -323,7 +273,8 @@ dl dd {
 /* Blockquotes */
 blockquote {
     color: #7A8287;
-    font: normal 21px/34px "CartoGothicStdItalic";
+    font-size: 16px;
+    font-size: 1.6rem;
     margin: 0 2.5em;
 }
 blockquote em, blockquote cite {
@@ -588,7 +539,8 @@ img.wp-smiley {
 /* Subsite title */
 #subsite-title {
     float: left;
-    font: small-caps bold 36px/85px "CartoGothicStdBold", "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Tahoma;
+    font-size: 36px;
+    font: small-caps bold 3.6rem/1.625 Arial, Helvetica, sans-serif;
     margin-left: 40px;
 }
 #subsite-title a img {
@@ -931,24 +883,17 @@ section p.intro:first-letter {
 
 /* Archives */
 .loop-title {
-    color: #333;
-    font: 34px/55px "CartoGothicStdBold", Arial, Helvetica, sans-serif;
-    margin: 0;
+    color: #15100E;
+    font-size: 48px;
+    font: 4.8rem/1em "LeagueGothicRegular"; /* 48px */
 }
-.archive .hentry, .search .hentry {
-    border-left: 1px solid #D7D4CF;
-    border-top: 1px solid #D7D4CF;
-    margin-bottom: 18px;
-    overflow: hidden;
-    padding: 18px 18px 0;
+.archive .entry-title {
+	margin: 0;
 }
 .archive .hentry .thumbnail, .search .hentry .thumbnail {
     border: 1px solid #D7D4CF;
     float: left;
     margin: 0 18px 18px 0;
-}
-.archive .hentry.odd, .search .hentry.odd {
-    background: url('images/grad-horz-graywhite.gif') repeat-x;
 }
 .archive .hentry .entry-meta, .search .hentry .entry-meta {
     margin: 0;
@@ -1414,7 +1359,8 @@ span.required {
 /* Widgets in general */
 /* .widget { margin-bottom: 20px; } */
 .widget-posts .widget-title {
-    font: small-caps 16px/25px "CartoGothicStdBook";
+	font-size: 16px;
+    font: small-caps 1.6rem/1.625 Arial, Helvetica, sans-serif;
     letter-spacing: 0;
     margin: 0 0 10px;
     text-align: left;
@@ -1456,49 +1402,7 @@ span.required {
     margin-left: 21px;
 }
 
-#sidebar-primary .loop {
-    margin: 0 -20px 0;
-}
-#sidebar-primary .loop h3 {
-    background: #ccc;
-    border-bottom: 1px solid #ccc;
-    color: #fff;
-    margin-top: 1px;
-    font: 16px/26px "CartoGothicStdBold", Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 10px 20px;
-    text-shadow: none;
-    text-transform: uppercase;
-}
-#sidebar-primary .loop .all {
-    font: 11px/26px Arial, Helvetica, sans-serif;
-    float: right;
-    letter-spacing: 0;
-    text-transform: lowercase;
-}
-#sidebar-primary .loop .all a {
-    color: #666;
-}
-#sidebar-primary .loop ul {
-    background: #fff;
-    border-top: 1px solid #ccc;
-    list-style: none;
-    margin: 0 0 20px;
-}
-#sidebar-primary .loop li {
-    background: #ddd;
-    border-bottom: 1px solid #ccc;
-    margin-top: 1px;
-    padding: 10px 20px;
-    text-shadow: none;
-}
-#sidebar-primary .loop ul a {
-    color: #333;
-    font-weight: bold;
-}
-#sidebar-primary .loop .date {
-    font-size: 11px;
-}
+
 
 
 /**
@@ -1544,7 +1448,6 @@ span.required {
 }
 .footer-right {
     float: right;
-    width: 30%;
 }
 #footer a {
     color: #777069;

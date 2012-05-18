@@ -22,6 +22,7 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 		<?php if ( is_post_type_archive( 'story' ) && function_exists( 'wp_get_post_type_archives' ) ): ?>
 
 			<div class="loop">
+				<h3 class="widget-title">Stories Archive</h3>
 				<ul>
 					<?php wp_get_post_type_archives('story'); ?>
 				</ul>
