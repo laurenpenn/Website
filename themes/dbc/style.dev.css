@@ -1,4 +1,8 @@
 @import url('css/foundation.css');
+@import url('css/layout.css');
+@import url('css/home.css');
+
+@import url('css/jquery.fanybox.css');
 
 /* Register fonts */
 @font-face {
@@ -327,10 +331,6 @@ blockquote em, blockquote cite {
 }
 blockquote, q {
     quotes: none;
-}
-blockquote:before, blockquote:after, q:before, q:after {
-    content: '';
-    content: none
 }
 
 /* Object */
@@ -699,12 +699,8 @@ img.wp-smiley {
     font-size: 12px;
     height: 35px;
     line-height: 35px;
-    padding: 1em 0;
+    padding: 1em 5%;
     text-align: left;
-}
-.breadcrumb-trail {
-    margin: 0 auto 50px;
-    max-width: 600px;
 }
 .breadcrumb-title {
     color: #999;
@@ -921,7 +917,7 @@ section p.intro:first-letter {
 .loop-nav {
     color: #808080;
     font: 11px/21px "Georgia", "Times New Roman", Times, serif;
-    margin: 18px 0;
+    padding: 0 5% 5%;
     overflow: hidden;
 }
 
@@ -1003,7 +999,7 @@ section p.intro:first-letter {
 
 /**
  * Stories & Events
- ************************************************/
+ ***********************************************
 .page-template-publications #stories .hentry, .archive-story .hentry, .archive-event .hentry {
     background: none !important;
     border: none;
@@ -1071,16 +1067,10 @@ section p.intro:first-letter {
     position: relative;
 }
 
-.singular-story #content, .singular-event #content {
-    float: right;
-    margin: 0 150px 50px 0;
-    max-width: 600px;
-}
+*/
 
-.singular-story #sidebar-sticky, .singular-event #sidebar-sticky {
-    float: left;
-    margin: 30px 0 0 35px;
-    width: 108px;
+.singular-story .byline {
+	margin: 0 0 1em;
 }
 
 .fb-like.fb_edge_widget_with_comment.fb_iframe_widget {
@@ -1088,6 +1078,8 @@ section p.intro:first-letter {
     margin: 0 auto 5px;
     width: 42px;
 }
+
+
 
 /**
  * Featured slider
@@ -1440,14 +1432,12 @@ span.required {
 }
 
 /* Primary widget section */
-#sidebar-primary {
+#sidebar-primary,
+#sidebar-sticky {
     color: #605149;
-    float: left;
     font-size: 12px;
     font: 1.2rem/1.625em Arial, Helvetica, Sans-serif; /* 12px */
-    padding: 20px;
     text-shadow: 0 1px 0 #fff;
-    width: 195px;
 }
 #sidebar-primary p {
 	font-size: 12px;

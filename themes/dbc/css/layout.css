@@ -45,7 +45,8 @@
 		padding: 5%;
 		width: 30.0625%;
 	}
-	#sidebar-primary {
+	#sidebar-primary,
+	#sidebar-sticky {
 		float: left;
 		padding: 5%;
 		width: 16.0625%;
@@ -94,7 +95,8 @@
 		padding: 5%;
 		width: 90%;
 	}
-	#sidebar-primary {
+	#sidebar-primary,
+	#sidebar-sticky {
 		background: #fff;
 		border: 1px solid #eee;
 		border: 1px solid rgba(0, 0, 0, 0.2);
