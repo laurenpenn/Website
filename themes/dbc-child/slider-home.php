@@ -10,7 +10,7 @@
  */
 if ( hybrid_get_setting( 'slider' ) == 'true' ) { ?>
 <div id="slider-container"<?php if ( hybrid_get_setting( 'slider_16x9' ) == 'true' ) { echo ' class="widescreen"'; } ?>>
-	<div id="slider">
+	<div class="slider">
 	<?php
 		if ( hybrid_get_setting( 'feature_category' ) )
 			$feature_query = new WP_Query( array( 'posts_per_page' => hybrid_get_setting( 'feature_num_posts' ), 'order' => 'ASC' ) );
