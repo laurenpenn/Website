@@ -57,7 +57,6 @@ function dbc_theme_setup() {
 	add_filter( 'body_class', 'dbc_body_class' );
 	add_filter( 'stylesheet_uri', 'dbc_debug_stylesheet', 10, 2 );
 	add_filter( 'sidebars_widgets', 'dbc_disable_sidebars' );
-	add_filter( 'breadcrumb_trail', 'dbc_breadcrumb_trail' );
 
 	/* Add shortcodes */
 	add_shortcode( 'primary_menu', 'dbc_shortcode_primary_menu' );
@@ -97,24 +96,17 @@ function dbc_remove_header_info() {
  * @since 0.1
  */
 function dbc_load_scripts() {
-	wp_enqueue_script( 'respond', trailingslashit( THEME_URI ) . 'js/respond.js' );
+	wp_enqueue_script( 'respond', trailingslashit( THEME_URI ) . 'js/respond.min.js' );
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'modernizr', trailingslashit( THEME_URI ) . 'js/modernizr.foundation.js', array( 'jquery' ), '0.3', false );
 	wp_enqueue_script( 'foundation', trailingslashit( THEME_URI ) . 'js/foundation.js', array( 'jquery' ), '0.3', true );
 	wp_enqueue_script( 'fancybox', trailingslashit( THEME_URI ) . 'js/jquery.fancybox.pack.js', array( 'jquery' ), '0.3', true );
 	wp_enqueue_script( 'flexslider', trailingslashit( THEME_URI ) . 'js/jquery.flexslider-min.js', array( 'jquery' ), '0.3', true );
 	wp_enqueue_script( 'jquery-functions', trailingslashit( THEME_URI ) . 'js/scripts.dev.js', array( 'jquery' ), '0.3', true );
-	
-	wp_enqueue_style( 'layout', trailingslashit( THEME_URI ) . 'css/layout.css', false, '0.3', 'screen' );
-	wp_enqueue_style( 'fancybox', trailingslashit( THEME_URI ) . 'css/jquery.fancybox.css', false, '0.3', 'screen' );
-	
-	if ( is_page_template( 'page-template-home.php' ) || is_page_template( 'page-media-home.php' ) ) {
-		wp_enqueue_style( 'front-page', trailingslashit( THEME_URI ) . 'css/home.css', false, '0.3', 'screen' );
-		wp_enqueue_style( 'flexslider', trailingslashit( THEME_URI ) . 'css/flexslider.css', false, '0.3', 'screen' );
-	}
 
-	if ( is_tax( 'note' ) || is_singular( 'note' ) || is_post_type_archive( 'note' ) )
-		wp_enqueue_style( 'note', trailingslashit( THEME_URI ) . 'css/note.css', false, '0.3', 'screen' );
+	wp_register_style( 'foundation-ie', trailingslashit( THEME_URI ) . 'css/ie.css', false, '0.3', 'screen' );
+	$GLOBALS['wp_styles']->add_data( 'foundation-ie', 'conditional', 'lte IE 9' );
+	wp_enqueue_style( 'foundation-ie' );
 }
 	
 /**
@@ -276,21 +268,6 @@ function dbc_get_sidebar_whats_happening() {
  */
 function dbc_shortcode_primary_menu($atts) {
 	return wp_nav_menu('primary');
-}
-
-/**
- * Displays the breadcrumb trail.  Calls the get_the_breadcrumb() function.
- * Use the get_the_breadcrumb_args filter hook.  The hybrid_breadcrumb_args 
- * filter is deprecated.
- *
- * @deprecated 0.5 Theme still needs this function.
- * @todo Find an elegant way to transition to breadcrumb_trail() 
- * in child themes and filter breadcrumb_trail_args instead.
- *
- * @since 0.1
- */
-function dbc_breadcrumb() {
-	dbc_breadcrumb_trail( array( 'front_page' => false, 'singular_post_taxonomy' => 'category' ) );
 }
 
 /**
@@ -497,8 +474,8 @@ function dbc_footer() {
 		<div class="footer-left">
 	
 			<?php do_shortcode('[primary_menu]'); ?>
-			<p class="copyright">Copyright &#169; <?php echo date('Y'); ?> <a href="http://dentonbible.org">Denton Bible Church</a>, all rights reserved.</p>
-			<p class="credit">Designed by <a href="http://pixelightcreative.com/" class="highlight">Pixelight Creative</a> &amp; built by <a href="http://developdaly.com/" class="highlight">Develop Daly</a>. <a href="http://dentonbible.org/staff-registration/">Staff Registration</a> | <?php wp_loginout(); ?></p>
+			<p class="copyright">Copyright &#169; <?php echo date('Y'); ?> <a href="<?php echo site_url(); ?>">Denton Bible Church</a>, all rights reserved.</p>
+			<p class="credit"><a href="<?php echo site_url(); ?>/staff-registration/">Staff Registration</a> | <?php wp_loginout(); ?></p>
 	
 			<?php //hybrid_footer(); // Hybrid footer hook ?>
 		
@@ -506,7 +483,7 @@ function dbc_footer() {
 	
 		<div class="footer-right vcard">
 	
-			<h6 class="org">Denton Bible Church</h6>
+			<h5 class="org">Denton Bible Church</h5>
 			<div class="adr">
 				<div class="street-address">2300 E. University Dr.</div>
 				<span class="locality">Denton</span>, <span class="region">TX</span> <span class="postal-code">76209</span>
@@ -602,10 +579,10 @@ function dbc_register_post_types() {
 		'has_archive' => true,
 		'query_var' => true,
 		'can_export' => true,
-		'rewrite' => array( 'slug' => 'note', 'with_front' => false ),
+		'rewrite' => array( 'slug' => 'notes', 'with_front' => false ),
 		'capability_type' => 'post'
-	);						
-
+	);
+	
 	/* Labels for the story type. */
 	$story_labels = array(
 		'name' => __( 'Stories', $domain ),
@@ -814,14 +791,3 @@ function dbc_publication_link() {
 	return $link;
 
 }
-
-function dbc_breadcrumb_trail( $breadcrumb ) {
-	$sr_post_type = get_post_type();
-	$post_type = get_post_type_object( $sr_post_type );
-	$search = 'Home</a> <span class="sep">/</span>';
-	$replace = 'Home</a> <span class="sep">/</span> <a href="/' . $post_type->rewrite[slug] . '">' . $post_type->labels->name . '</a> <span class="sep">/</span>';
-	$breadcrumb = str_replace( $search, $replace, $breadcrumb );
-	return $breadcrumb;
-}
-
-?>

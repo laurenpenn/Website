@@ -17,8 +17,6 @@ query_posts($query_string.'&paged='.$paged.'&posts_per_page=-1&orderby=title&ord
 
 	<?php do_atomic( 'before_content' ); // dbc_before_content ?>
 	
-	<?php breadcrumb_trail(); ?>
-
 	<div id="content" role="main">
 
 		<?php do_atomic( 'open_content' ); // dbc_open_content ?>

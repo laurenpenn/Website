@@ -31,17 +31,18 @@ get_header(); // Loads the header.php template. ?>
 
 						<?php do_atomic( 'open_entry' ); // dbc_open_entry ?>
 
-						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 
 						<?php $publication_month = get_post_meta($post->ID, 'publication-month', true); ?>
 						<?php $publication_year = get_post_meta($post->ID, 'publication-year', true); ?>
-		
+						
 						<?php
 							if ( !empty( $publication_month ) )
 								echo apply_atomic_shortcode( 'byline', '<div class="byline">' . $publication_month .' ' . $publication_year . __( ' [entry-edit-link before=" | "]', 'dbc' ) . '</div>' );
 							else
 								echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( '[entry-published format="F Y"] [entry-edit-link before=" | "]', 'dbc' ) . '</div>' );
 						?>
+						
+						<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 						
 						<div class="entry-content">
 							<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'dbc' ) ); ?>

@@ -22,6 +22,7 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 		<?php if ( is_post_type_archive( 'story' ) && function_exists( 'wp_get_post_type_archives' ) ): ?>
 
 			<div class="loop">
+				<h3 class="widget-title">Stories Archive</h3>
 				<ul>
 					<?php wp_get_post_type_archives('story'); ?>
 				</ul>
@@ -32,6 +33,7 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 		<?php if ( is_post_type_archive( 'event' ) && function_exists( 'wp_get_post_type_archives' ) ): ?>
 
 			<div class="loop">
+				<h3 class="widget-title">Events Archive</h3>
 				<ul>
 					<?php wp_get_post_type_archives('event'); ?>
 				</ul>
@@ -61,5 +63,6 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 		<?php do_atomic( 'after_sidebar_primary' ); // dbc_after_sidebar_primary ?>
 
 	</aside><!-- #sidebar-primary -->
+	<div id="sidebar-primary-switch" title="Toggle the menu">Toggle menu</div>
 
 <?php endif; ?>

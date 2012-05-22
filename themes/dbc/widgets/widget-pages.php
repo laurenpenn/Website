@@ -38,10 +38,6 @@ class DBC_Widget_Pages extends WP_Widget {
 		/* Open the output of the widget. */
 		echo $before_widget;
 
-		/* If there is a title given, add it along with the $before_title and $after_title variables. */
-		if ( $instance['title'] )
-			echo $before_title . apply_filters( 'widget_title',  $instance['title'], $instance, $this->id_base ) . $after_title;
-
 		/* Output the page list. */
 
 		if(!$post->post_parent){
@@ -57,6 +53,11 @@ class DBC_Widget_Pages extends WP_Widget {
 		}
 		
 		if ($children) {
+			
+			/* If there is a title given, add it along with the $before_title and $after_title variables. */
+			if ( $instance['title'] )
+				echo $before_title . apply_filters( 'widget_title',  $instance['title'], $instance, $this->id_base ) . $after_title;
+		
 			echo '<ul id="sidebar-menu" class="quickTree menu">';
 			echo $children;
 			echo '</ul>';

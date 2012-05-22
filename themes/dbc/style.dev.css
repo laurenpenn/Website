@@ -1,38 +1,11 @@
 @import url('css/foundation.css');
+@import url('css/home.css');
+@import url('css/layout.css');
+
+
+@import url('css/jquery.fanybox.css');
 
 /* Register fonts */
-@font-face {
-	font-family: 'CartoGothicStdBook';
-	src: url('fonts/carto/CartoGothicStd-Book-webfont.eot');
-	src: local('☺'), url('fonts/carto/CartoGothicStd-Book-webfont.woff') format('woff'), url('fonts/carto/CartoGothicStd-Book-webfont.ttf') format('truetype'), url('fonts/carto/CartoGothicStd-Book-webfont.svg#webfont') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'CartoGothicStdItalic';
-	src: url('fonts/carto/CartoGothicStd-Italic-webfont.eot');
-	src: local('☺'), url('fonts/carto/CartoGothicStd-Italic-webfont.woff') format('woff'), url('fonts/carto/CartoGothicStd-Italic-webfont.ttf') format('truetype'), url('fonts/carto/CartoGothicStd-Italic-webfont.svg#webfont') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'CartoGothicStdBold';
-	src: url('fonts/carto/CartoGothicStd-Bold-webfont.eot');
-	src: local('☺'), url('fonts/carto/CartoGothicStd-Bold-webfont.woff') format('woff'), url('fonts/carto/CartoGothicStd-Bold-webfont.ttf') format('truetype'), url('fonts/carto/CartoGothicStd-Bold-webfont.svg#webfont') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'CartoGothicStdBoldItalic';
-	src: url('fonts/carto/CartoGothicStd-BoldItalic-webfont.eot');
-	src: local('☺'), url('fonts/carto/CartoGothicStd-BoldItalic-webfont.woff') format('woff'), url('fonts/carto/CartoGothicStd-BoldItalic-webfont.ttf') format('truetype'), url('fonts/carto/CartoGothicStd-BoldItalic-webfont.svg#webfont') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
 @font-face {
     font-family: 'LeagueGothicRegular';
     src: url('fonts/league-gothic/league_gothic-webfont-webfont.eot');
@@ -46,54 +19,6 @@
     font-style: normal;
 }
 
-/* Sidebar naviation (quickTree jQuery plugin) */
-.tree li {
-    list-style: none;
-    margin: 0;
-    padding-left: 21px;
-}
-.tree li.root {
-    padding-left: 0;
-}
-.tree li li {
-    background: url(images/quicktree/rootNode.gif) no-repeat 17px center;
-    margin-left: 10px;
-    padding-left: 31px;
-}
-.tree li li.root {
-    padding-left: 10px;
-    background: url(images/quicktree/justOne.gif) repeat-y 17px 0;
-}
-.tree li li.root.last {
-    background: none;
-}
-.tree li li.last {
-    background: url(images/quicktree/lastRoot.gif) no-repeat 17px 0;
-}
-.toggle {
-    background: url(images/quicktree/plusMinus.png) no-repeat;
-    cursor: pointer;
-    width: 16px;
-    _width: 13px;
-    height: 16px;
-    display: block;
-    float: left;
-    margin-top: 2px;
-    text-indent: -9999px;
-    line-height: 0;
-    font-size: 0;
-    padding: 0 5px 0 0;
-}
-.contract {
-    background-position: 0 -16px;
-}
-.expand:hover {
-    cursor: pointer;
-}
-.tree, .root .children {
-    margin: 0;
-}
-
 /**
  * Body
  ************************************************/
@@ -102,6 +27,9 @@
 body {
     background: #fff url('images/bg.gif');
     color: #000;
+    font-family: "Georgia", "Times New Roman", Times, Serif;
+    line-height: 1.625em;
+    font-size: 16px;
     font: 1.6rem/1.625em "Georgia", "Times New Roman", Times, Serif;
 }
 
@@ -143,65 +71,53 @@ a:hover {
 }
 h1 {
     color: #15100E;
+    font-size: 48px;
     font: 4.8rem/1em "LeagueGothicRegular"; /* 48px */
-}
-h1 a {
-    color: #15100E;
 }
 h2 {
     color: #15100E;
+    font-size: 36px;
     font: 3.6rem/1em "LeagueGothicRegular";/* 36px */
-}
-h2 a {
-    color: #486374;
 }
 h3 {
     color: #666;
+    font-size: 30px;
     font: 3.0rem/1em "LeagueGothicRegular";/* 30px */
 }
-h3 a {
-    color: #5c5650;
-}
 h4 {
-    font: 2.0 r0em/1em "LeagueGothicRegular";/* 20px */
-        color: #5c5650;
-    }
-    h4 a {
-        color: #5c5650;
-    }
-    h5 {
-        color: #5c5650;
-        font-size: 1.3rem;
-    }
-    h5 a {
-        color: #5c5650;
-    }
-    h6 {
-        color: #847e78;
-        font-size: 1.3rem;
-    }
-    h6 a {
-        color: #847e78;
-    }
+	font-size: 20px;
+	font: 2.0rem/1em "LeagueGothicRegular";/* 20px */
+	color: #5c5650;
+}
+h5 {
+	color: #5c5650;
+	font-size: 13px;
+	font-size: 1.3rem;
+}
+h6 {
+	color: #847e78;
+	font-size: 13px;
+	font-size: 1.3rem;
+}
 
-    a img {
-        border: none
-    }
+a img {
+	border: none
+}
 
-    .entry-title a {
-        text-decoration: none;
-    }
+.entry-title a {
+	text-decoration: none;
+}
 
-    img {
-        height: auto;
-        max-width: 100%;
-    }
+img {
+	height: auto;
+	max-width: 100%;
+}
 
-    embed, iframe, object {
-        max-width: 100%;
-    }
+embed, iframe, object {
+	max-width: 100%;
+}
 
-  
+
     /* Text elements */
 strong, b {
     font-weight: bold;
@@ -259,12 +175,14 @@ hr {
     margin-bottom: 18px;
 }
 iframe {
-    border: 0 solid #fff;;
+    border: 0 solid #fff;
 }
 
 
 /* Paragraphs */
 p {
+	font-size: 16px;
+	line-height: 1.625em;
     font: 1.6rem/1.625em "Georgia", "Times New Roman", Times, Serif;
     margin: 0 0 1.125em 0;
 }
@@ -311,7 +229,8 @@ dl dd {
 /* Blockquotes */
 blockquote {
     color: #7A8287;
-    font: normal 21px/34px "CartoGothicStdItalic";
+    font-size: 16px;
+    font-size: 1.6rem;
     margin: 0 2.5em;
 }
 blockquote em, blockquote cite {
@@ -319,10 +238,6 @@ blockquote em, blockquote cite {
 }
 blockquote, q {
     quotes: none;
-}
-blockquote:before, blockquote:after, q:before, q:after {
-    content: '';
-    content: none
 }
 
 /* Object */
@@ -580,7 +495,8 @@ img.wp-smiley {
 /* Subsite title */
 #subsite-title {
     float: left;
-    font: small-caps bold 36px/85px "CartoGothicStdBold", "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Tahoma;
+    font-size: 36px;
+    font: small-caps bold 3.6rem/1.625 Arial, Helvetica, sans-serif;
     margin-left: 40px;
 }
 #subsite-title a img {
@@ -593,17 +509,14 @@ img.wp-smiley {
 }
 #sidebar-header .widget_text {
     background: #0f0b0a;
-    border-bottom: 1px solid #444;
-    border-left: 1px solid #000;
-    border-right: 1px solid #444;
-    border-top: 1px solid #000;
+    border: 2px solid #fff;
     border-radius: 20px;
     color: #fff;
+    font-size: 13px;
+    font-size: 1.3rem;
     float: right;
     margin-right: 30px;
-    padding: 7px 15px;
-    text-shadow: -1px -1px 1px #000;
-    -moz-border-radius: 20px;
+    padding: 1px 15px;
 }
 #sidebar-header .widget_text a {
     color: #fff;
@@ -613,8 +526,55 @@ img.wp-smiley {
 }
 #sidebar-header .widget-search {
     float: right;
-    width: 206px;
 }
+
+.widget-search form {
+	margin: 0;
+}
+.widget-search label {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+}
+.widget-search #search-texthybrid-search {
+	background: #fafafa url('images/search.png') no-repeat 5px 6px;
+	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+	border: 1px solid #ddd;
+	color: #888;
+	-moz-border-radius: 2px;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	float: right;
+	font-size: 14px;
+	height: 22px;
+	line-height: 1.2em;
+	padding: 4px 10px 4px 28px;
+	-webkit-transition-duration: 400ms;
+	-webkit-transition-property: width, background;
+	-webkit-transition-timing-function: ease;
+	-moz-transition-duration: 400ms;
+	-moz-transition-property: width, background;
+	-moz-transition-timing-function: ease;
+	-o-transition-duration: 400ms;
+	-o-transition-property: width, background;
+	-o-transition-timing-function: ease;
+	width: 72px;
+}
+.widget-search #search-texthybrid-search:focus {
+	background-color: #f9f9f9;
+	width: 196px;
+}
+
+.widget-search #search-submithybrid-search {
+	display: none;
+}
+
+
+
+
+
 #search-form, #cse-search-form {
     background: url('images/sprite.png') -317px -19px no-repeat;
     height: 34px;
@@ -691,12 +651,8 @@ img.wp-smiley {
     font-size: 12px;
     height: 35px;
     line-height: 35px;
-    padding: 1em 0;
+    padding: 1em 5%;
     text-align: left;
-}
-.breadcrumb-trail {
-    margin: 0 auto 50px;
-    max-width: 600px;
 }
 .breadcrumb-title {
     color: #999;
@@ -794,7 +750,6 @@ img.wp-smiley {
 /* Wrapper for the content and primary/secondary widget sections */
 #main {
     clear: both;
-    overflow: hidden;
 }
 #main .wrap {
     background: #fff;
@@ -914,7 +869,7 @@ section p.intro:first-letter {
 .loop-nav {
     color: #808080;
     font: 11px/21px "Georgia", "Times New Roman", Times, serif;
-    margin: 18px 0;
+    padding: 0 5% 5%;
     overflow: hidden;
 }
 
@@ -928,24 +883,17 @@ section p.intro:first-letter {
 
 /* Archives */
 .loop-title {
-    color: #333;
-    font: 34px/55px "CartoGothicStdBold", Arial, Helvetica, sans-serif;
-    margin: 0;
+    color: #15100E;
+    font-size: 48px;
+    font: 4.8rem/1em "LeagueGothicRegular"; /* 48px */
 }
-.archive .hentry, .search .hentry {
-    border-left: 1px solid #D7D4CF;
-    border-top: 1px solid #D7D4CF;
-    margin-bottom: 18px;
-    overflow: hidden;
-    padding: 18px 18px 0;
+.archive .entry-title {
+	margin: 0;
 }
 .archive .hentry .thumbnail, .search .hentry .thumbnail {
     border: 1px solid #D7D4CF;
     float: left;
     margin: 0 18px 18px 0;
-}
-.archive .hentry.odd, .search .hentry.odd {
-    background: url('images/grad-horz-graywhite.gif') repeat-x;
 }
 .archive .hentry .entry-meta, .search .hentry .entry-meta {
     margin: 0;
@@ -996,7 +944,7 @@ section p.intro:first-letter {
 
 /**
  * Stories & Events
- ************************************************/
+ ***********************************************
 .page-template-publications #stories .hentry, .archive-story .hentry, .archive-event .hentry {
     background: none !important;
     border: none;
@@ -1064,16 +1012,10 @@ section p.intro:first-letter {
     position: relative;
 }
 
-.singular-story #content, .singular-event #content {
-    float: right;
-    margin: 0 150px 50px 0;
-    max-width: 600px;
-}
+*/
 
-.singular-story #sidebar-sticky, .singular-event #sidebar-sticky {
-    float: left;
-    margin: 30px 0 0 35px;
-    width: 108px;
+.singular-story .byline {
+	margin: 0 0 1em;
 }
 
 .fb-like.fb_edge_widget_with_comment.fb_iframe_widget {
@@ -1081,6 +1023,8 @@ section p.intro:first-letter {
     margin: 0 auto 5px;
     width: 42px;
 }
+
+
 
 /**
  * Featured slider
@@ -1415,7 +1359,8 @@ span.required {
 /* Widgets in general */
 /* .widget { margin-bottom: 20px; } */
 .widget-posts .widget-title {
-    font: small-caps 16px/25px "CartoGothicStdBook";
+	font-size: 16px;
+    font: small-caps 1.6rem/1.625 Arial, Helvetica, sans-serif;
     letter-spacing: 0;
     margin: 0 0 10px;
     text-align: left;
@@ -1433,15 +1378,16 @@ span.required {
 }
 
 /* Primary widget section */
-#sidebar-primary {
+#sidebar-primary,
+#sidebar-sticky {
     color: #605149;
-    float: left;
+    font-family: Arial, Helvetica, Sans-serif;
+    font-size: 12px;
     font: 1.2rem/1.625em Arial, Helvetica, Sans-serif; /* 12px */
-    padding: 20px;
     text-shadow: 0 1px 0 #fff;
-    width: 195px;
 }
 #sidebar-primary p {
+	font-size: 12px;
     font: 1.2rem/1.625em Arial, Helvetica, Sans-serif; /* 12px */
 }
 #sidebar-menu {
@@ -1456,56 +1402,64 @@ span.required {
 #sidebar-primary .dbc-pages .widget-title {
     margin-left: 21px;
 }
-
-#sidebar-primary .loop {
-    margin: 0 -20px 0;
-}
-#sidebar-primary .loop h3 {
-    background: #ccc;
-    border-bottom: 1px solid #ccc;
-    color: #fff;
-    margin-top: 1px;
-    font: 16px/26px "CartoGothicStdBold", Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 10px 20px;
-    text-shadow: none;
-    text-transform: uppercase;
-}
-#sidebar-primary .loop .all {
-    font: 11px/26px Arial, Helvetica, sans-serif;
-    float: right;
-    letter-spacing: 0;
-    text-transform: lowercase;
-}
-#sidebar-primary .loop .all a {
-    color: #666;
-}
-#sidebar-primary .loop ul {
-    background: #fff;
-    border-top: 1px solid #ccc;
+/* Sidebar naviation (quickTree jQuery plugin) */
+.tree li {
     list-style: none;
-    margin: 0 0 20px;
+    margin: 0;
+    padding-left: 21px;
 }
-#sidebar-primary .loop li {
-    background: #ddd;
-    border-bottom: 1px solid #ccc;
-    margin-top: 1px;
-    padding: 10px 20px;
-    text-shadow: none;
+.tree li.root {
+    padding-left: 0;
 }
-#sidebar-primary .loop ul a {
-    color: #333;
-    font-weight: bold;
+.tree li li {
+    background: url(images/quicktree/rootNode.gif) no-repeat 17px center;
+    margin-left: 10px;
+    padding-left: 31px;
 }
-#sidebar-primary .loop .date {
-    font-size: 11px;
+.tree li li.root {
+    padding-left: 10px;
+    background: url(images/quicktree/justOne.gif) repeat-y 17px 0;
 }
+.tree li li.root.last {
+    background: none;
+}
+.tree li li.last {
+    background: url(images/quicktree/lastRoot.gif) no-repeat 17px 0;
+}
+.toggle {
+    background: url(images/quicktree/plusMinus.png) no-repeat;
+    cursor: pointer;
+    width: 16px;
+    _width: 13px;
+    height: 16px;
+    display: block;
+    float: left;
+    margin-top: 2px;
+    text-indent: -9999px;
+    line-height: 0;
+    font-size: 0;
+    padding: 0 5px 0 0;
+}
+.contract {
+    background-position: 0 -16px;
+}
+.expand:hover {
+    cursor: pointer;
+}
+.tree, .root .children {
+    margin: 0;
+}
+
 
 
 /**
  * Footer
  ************************************************/
 
+#footer {
+	font-size: 16px;
+	font: 1.6rem/1.625em Arial, Helvetica, sans-serif;
+}
 /* Wrapper for the entire footer */
 #footer-container {
     clear: both;
@@ -1537,11 +1491,10 @@ span.required {
 }
 .footer-left {
     float: left;
-    width: 600px;
+    width: 65%;
 }
 .footer-right {
     float: right;
-    width: 235px;
 }
 #footer a {
     color: #777069;
@@ -1558,7 +1511,7 @@ span.required {
     padding: 0px;
 }
 #footer .menu li.menu-item {
-    border-right: 1px solid #1d1916;
+    border-right: 1px solid #999;
     float: left;
     margin: 0;
     padding: 0 1em;
@@ -1568,8 +1521,10 @@ span.required {
     border: none;
 }
 
-#footer h6 {
+#footer h5 {
     color: #745b48;
+    font-size: 18px;
+    font-size: 1.8rem;
 }
 #footer .highlight {
     color: #745b48;
@@ -1588,6 +1543,8 @@ span.required {
 
 #footer p {
     clear: both;
+    font-size: 16px;
+    font: 1.6rem/1.625em Arial, Helvetica, sans-serif;
     margin: 0;
 }
 #footer h6 {
@@ -1604,4 +1561,7 @@ span.required {
 }
 #footer .credit {
     font-size: 10px;
-}    
+}
+#wpstats {
+	display: none;
+}

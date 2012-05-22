@@ -80,7 +80,7 @@ get_header(); // Loads the header.php template. ?>
 							<input type="hidden" value="<?php the_permalink(); ?>" name="redirect_to">
 						</p>
 						
-						<p><a href="http://admin.dentonbible.org/wp-login.php?action=lostpassword">Lost your password?</a></p>
+						<p><a href="http://admin.<?php echo site_url(); ?>/wp-login.php?action=lostpassword">Lost your password?</a></p>
 						
 					</form>
 								

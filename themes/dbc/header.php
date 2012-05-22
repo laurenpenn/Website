@@ -74,3 +74,5 @@
 			<div class="wrap">
 				
 			<?php do_atomic( 'open_main' ); // prototype_open_main ?>
+			
+			<?php if ( !is_front_page() ) breadcrumb_trail(); ?>

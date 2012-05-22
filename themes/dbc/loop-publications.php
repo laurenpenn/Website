@@ -1,7 +1,7 @@
 
 <div id="whats-happening" class="aside">
 
-	<h3>What's Happening - <a href="http://dentonbible.org/about-us/publications/">see more</a></h3>
+	<h3>What's Happening - <a href="<?php echo site_url(); ?>/about-us/publications/">see more</a></h3>
 	
 	<?php 
 	$args = array (

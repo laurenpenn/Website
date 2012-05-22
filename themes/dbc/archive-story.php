@@ -11,8 +11,6 @@
 get_header(); // Loads the header.php template. ?>
 
 	<?php do_atomic( 'before_content' ); // dbc_before_content ?>
-	
-	<?php breadcrumb_trail(); ?>
 
 	<div id="content" role="main">
 
@@ -35,9 +33,9 @@ get_header(); // Loads the header.php template. ?>
 
 				<?php
 					if ( !empty( $publication_month ) )
-						echo apply_atomic_shortcode( 'byline', '<div class="byline">' . $publication_month .' ' . $publication_year . __( ' [entry-edit-link before=" | "]', 'dbc' ) . '</div>' );
+						echo apply_atomic_shortcode( 'byline', '<div class="byline">' . $publication_month .' ' . $publication_year . '</div>' );
 					else
-						echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( '[entry-published format="F Y"] [entry-edit-link before=" | "]', 'dbc' ) . '</div>' );
+						echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( '[entry-published format="F Y"]', 'dbc' ) . '</div>' );
 				?>
 				
 				<?php get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'small-thumb' ) ); ?>

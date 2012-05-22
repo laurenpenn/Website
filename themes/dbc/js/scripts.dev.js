@@ -367,13 +367,22 @@ jQuery(document).ready(function($) {
 		$('.current_page_ancestor .toggle').toggleClass('contract').siblings('.children').slideToggle('fast');
 	
 	//Slider
-		$('.flexslider').flexslider({
-			animation:			'slide',
-			controlsContainer:	'.flex-container',
-			pausePlay:			false
-		});
+		$('.slider').orbit({
+			'animation' : 'horizontal-push',
+			'bullets' : true,
+			'bulletthumbs': true,
+			'pauseOnHover': true,
+			'startClockOnMouseOut' : true,
+			'startClockOnMouseOutAfter' : 0
+		}); 
+
          
      //Sticky sidebars
      	$('#sidebar-sticky').stickySidebar();
 
+     //Responsive actions
+     	$('#sidebar-primary-switch').click(function() {
+     		$('#sidebar-primary').toggle();
+     	});
+     	
 });
