@@ -474,8 +474,8 @@ function dbc_footer() {
 		<div class="footer-left">
 	
 			<?php do_shortcode('[primary_menu]'); ?>
-			<p class="copyright">Copyright &#169; <?php echo date('Y'); ?> <a href="http://dentonbible.org">Denton Bible Church</a>, all rights reserved.</p>
-			<p class="credit"><a href="http://dentonbible.org/staff-registration/">Staff Registration</a> | <?php wp_loginout(); ?></p>
+			<p class="copyright">Copyright &#169; <?php echo date('Y'); ?> <a href="<?php echo site_url(); ?>">Denton Bible Church</a>, all rights reserved.</p>
+			<p class="credit"><a href="<?php echo site_url(); ?>/staff-registration/">Staff Registration</a> | <?php wp_loginout(); ?></p>
 	
 			<?php //hybrid_footer(); // Hybrid footer hook ?>
 		

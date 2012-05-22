@@ -42,7 +42,7 @@
 	
 	<div id="facebook-invite-intro">
 		
-		<a href="http://dentonbible.org/about-us/visitor-information/">Get Started</a>
+		<a href="<?php echo site_url(); ?>/about-us/visitor-information/">Get Started</a>
 		
 		<span>Invite a friend to church!</span> A neighbor, a co-worker, or an old friend ... invite your Facebook friends to visit DBC.
 			

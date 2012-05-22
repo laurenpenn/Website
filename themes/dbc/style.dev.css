@@ -19,54 +19,6 @@
     font-style: normal;
 }
 
-/* Sidebar naviation (quickTree jQuery plugin) */
-.tree li {
-    list-style: none;
-    margin: 0;
-    padding-left: 21px;
-}
-.tree li.root {
-    padding-left: 0;
-}
-.tree li li {
-    background: url(images/quicktree/rootNode.gif) no-repeat 17px center;
-    margin-left: 10px;
-    padding-left: 31px;
-}
-.tree li li.root {
-    padding-left: 10px;
-    background: url(images/quicktree/justOne.gif) repeat-y 17px 0;
-}
-.tree li li.root.last {
-    background: none;
-}
-.tree li li.last {
-    background: url(images/quicktree/lastRoot.gif) no-repeat 17px 0;
-}
-.toggle {
-    background: url(images/quicktree/plusMinus.png) no-repeat;
-    cursor: pointer;
-    width: 16px;
-    _width: 13px;
-    height: 16px;
-    display: block;
-    float: left;
-    margin-top: 2px;
-    text-indent: -9999px;
-    line-height: 0;
-    font-size: 0;
-    padding: 0 5px 0 0;
-}
-.contract {
-    background-position: 0 -16px;
-}
-.expand:hover {
-    cursor: pointer;
-}
-.tree, .root .children {
-    margin: 0;
-}
-
 /**
  * Body
  ************************************************/
@@ -75,6 +27,8 @@
 body {
     background: #fff url('images/bg.gif');
     color: #000;
+    font-family: "Georgia", "Times New Roman", Times, Serif;
+    line-height: 1.625em;
     font-size: 16px;
     font: 1.6rem/1.625em "Georgia", "Times New Roman", Times, Serif;
 }
@@ -221,13 +175,14 @@ hr {
     margin-bottom: 18px;
 }
 iframe {
-    border: 0 solid #fff;;
+    border: 0 solid #fff;
 }
 
 
 /* Paragraphs */
 p {
 	font-size: 16px;
+	line-height: 1.625em;
     font: 1.6rem/1.625em "Georgia", "Times New Roman", Times, Serif;
     margin: 0 0 1.125em 0;
 }
@@ -554,17 +509,14 @@ img.wp-smiley {
 }
 #sidebar-header .widget_text {
     background: #0f0b0a;
-    border-bottom: 1px solid #444;
-    border-left: 1px solid #000;
-    border-right: 1px solid #444;
-    border-top: 1px solid #000;
+    border: 2px solid #fff;
     border-radius: 20px;
     color: #fff;
+    font-size: 13px;
+    font-size: 1.3rem;
     float: right;
     margin-right: 30px;
-    padding: 7px 15px;
-    text-shadow: -1px -1px 1px #000;
-    -moz-border-radius: 20px;
+    padding: 1px 15px;
 }
 #sidebar-header .widget_text a {
     color: #fff;
@@ -1429,6 +1381,7 @@ span.required {
 #sidebar-primary,
 #sidebar-sticky {
     color: #605149;
+    font-family: Arial, Helvetica, Sans-serif;
     font-size: 12px;
     font: 1.2rem/1.625em Arial, Helvetica, Sans-serif; /* 12px */
     text-shadow: 0 1px 0 #fff;
@@ -1449,7 +1402,53 @@ span.required {
 #sidebar-primary .dbc-pages .widget-title {
     margin-left: 21px;
 }
-
+/* Sidebar naviation (quickTree jQuery plugin) */
+.tree li {
+    list-style: none;
+    margin: 0;
+    padding-left: 21px;
+}
+.tree li.root {
+    padding-left: 0;
+}
+.tree li li {
+    background: url(images/quicktree/rootNode.gif) no-repeat 17px center;
+    margin-left: 10px;
+    padding-left: 31px;
+}
+.tree li li.root {
+    padding-left: 10px;
+    background: url(images/quicktree/justOne.gif) repeat-y 17px 0;
+}
+.tree li li.root.last {
+    background: none;
+}
+.tree li li.last {
+    background: url(images/quicktree/lastRoot.gif) no-repeat 17px 0;
+}
+.toggle {
+    background: url(images/quicktree/plusMinus.png) no-repeat;
+    cursor: pointer;
+    width: 16px;
+    _width: 13px;
+    height: 16px;
+    display: block;
+    float: left;
+    margin-top: 2px;
+    text-indent: -9999px;
+    line-height: 0;
+    font-size: 0;
+    padding: 0 5px 0 0;
+}
+.contract {
+    background-position: 0 -16px;
+}
+.expand:hover {
+    cursor: pointer;
+}
+.tree, .root .children {
+    margin: 0;
+}
 
 
 

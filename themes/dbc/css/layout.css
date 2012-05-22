@@ -67,7 +67,7 @@
  * Anything smaller than 620px
  ================================================== */
 @media screen and (max-width: 620px) {
-	#menu-primary li {
+	#menu-primary .menu-item {
 		float: none;
 		text-align: left;
 		text-indent: 1em;
@@ -78,6 +78,17 @@
 	}
 	#facebook-invite {
 		display: none;
+	}
+	#sidebar-header.sidebar {
+	    float: none;
+	}
+	#sidebar-header.sidebar .widget_text {
+	    float: left;
+	    margin-top: 10px;
+	}
+	.page-template-home #home-features .feature {
+	    padding: 0 0 2%;
+	    width: 100%;
 	}
 }
 /* Tablet and smaller

@@ -94,7 +94,7 @@ get_header(); // Loads the header.php template. ?>
 			
 			<div id="facebook-invite-intro">
 				
-				<div class="fb-send" data-href="http://dentonbible.org/about-us/visitor-information/"></div> Click "Send" and choose which Facebook friends to invite or use an email address
+				<div class="fb-send" data-href="<?php echo site_url(); ?>/about-us/visitor-information/"></div> Click "Send" and choose which Facebook friends to invite or use an email address
 					
 			</div>
 			

@@ -100,13 +100,13 @@
 					<li>A search engine that has an <strong>out-of-date listing for us</strong></li>
 					<li>A <strong>mis-typed address</strong></li>
 				</ul>				
-				<form action="http://dentonbible.org/" id="search-form" class="search-form" method="get">
+				<form action="<?php echo site_url(); ?>" id="search-form" class="search-form" method="get">
 					<div>
 						<input type="text" onblur="if(this.value=='')this.value=this.defaultValue;" onfocus="if(this.value==this.defaultValue)this.value='';" value="Try searching..." id="search-text" name="s" class="search-text">
 						<input type="submit" value="Search" id="search-submit" name="submit" class="search-submit button">
 					</div>
 				</form>
-				<p style="text-align: center;">Or just <a href="http://dentonbible.org/">go to the home page</a>.</p>
+				<p style="text-align: center;">Or just <a href="<?php echo site_url(); ?>">go to the home page</a>.</p>
 			</div>
 			
 		</div>
