@@ -98,13 +98,19 @@ function dbc_remove_header_info() {
 function dbc_load_scripts() {
 	wp_enqueue_script( 'respond', trailingslashit( THEME_URI ) . 'js/respond.min.js' );
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'modernizr', trailingslashit( THEME_URI ) . 'js/modernizr.foundation.js', array( 'jquery' ), '0.3', false );
+	wp_enqueue_script( 'modernizr', trailingslashit( THEME_URI ) . 'js/modernizr.foundation.js', array( 'jquery' ), '3.0', false );
 	wp_enqueue_script( 'foundation', trailingslashit( THEME_URI ) . 'js/foundation.js', array( 'jquery' ), '0.3', true );
-	wp_enqueue_script( 'fancybox', trailingslashit( THEME_URI ) . 'js/jquery.fancybox.pack.js', array( 'jquery' ), '0.3', true );
-	wp_enqueue_script( 'flexslider', trailingslashit( THEME_URI ) . 'js/jquery.flexslider-min.js', array( 'jquery' ), '0.3', true );
-	wp_enqueue_script( 'jquery-functions', trailingslashit( THEME_URI ) . 'js/scripts.dev.js', array( 'jquery' ), '0.3', true );
+	wp_enqueue_script( 'fancybox', trailingslashit( THEME_URI ) . 'js/jquery.fancybox.pack.js', array( 'jquery' ), '3.0', true );
+	wp_enqueue_script( 'flexslider', trailingslashit( THEME_URI ) . 'js/jquery.flexslider-min.js', array( 'jquery' ), '3.0', true );
+	wp_enqueue_script( 'jquery-functions', trailingslashit( THEME_URI ) . 'js/scripts.dev.js', array( 'jquery' ), '3.0', true );
+	
+	wp_enqueue_style( 'foundation', trailingslashit( THEME_URI ) . 'css/foundation.css', false, '3.0', 'screen' );
+	wp_enqueue_style( 'layout', trailingslashit( THEME_URI ) . 'css/layout.css', false, '3.0', 'screen' );
+	wp_enqueue_style( 'style', trailingslashit( THEME_URI ) . 'style.css', false, '3.0', 'screen' );
+	wp_enqueue_style( 'home', trailingslashit( THEME_URI ) . 'css/home.css', false, '3.0', 'screen' );
+	wp_enqueue_style( 'fanybox', trailingslashit( THEME_URI ) . 'css/jquery.fanybox.css', false, '3.0', 'screen' );
 
-	wp_register_style( 'foundation-ie', trailingslashit( THEME_URI ) . 'css/ie.css', false, '0.3', 'screen' );
+	wp_register_style( 'foundation-ie', trailingslashit( THEME_URI ) . 'css/ie.css', false, '3.0', 'screen' );
 	$GLOBALS['wp_styles']->add_data( 'foundation-ie', 'conditional', 'lte IE 9' );
 	wp_enqueue_style( 'foundation-ie' );
 }
