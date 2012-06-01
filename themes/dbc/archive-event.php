@@ -33,7 +33,7 @@ query_posts($query_string.'&paged='.$paged.'&posts_per_page=-1&orderby=title&ord
 
 				<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 				
-				<?php get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'small-thumb' ) ); ?>
+				<?php get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'small-thumb', 'image_class' => 'thumbnail' ) ); ?>
 
 				<div class="entry-summary">
 					<?php the_excerpt(); ?>

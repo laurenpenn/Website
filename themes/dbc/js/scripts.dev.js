@@ -305,18 +305,6 @@ jQuery(document).ready(function($) {
     jQuery.getScript('http://connect.facebook.net/en_US/all.js#xfbml=1', function() { 
         FB.init({status: true, cookie: true, xfbml: true}); 
     }); 
-    
-	// for PDF auto-detection
-		$('a[href$=".pdf"]').addClass('fancybox-pdf');
-	
-	// setup FB for PDF using type iframe
-		$('a.fancybox-pdf').fancybox({
-		    'type'          : 'iframe',
-		    'titleShow'     : false,
-		    'autoScale'     : false,
-		    'width'         : '80%',
-		    'height'		: '90%'	
-		});
 
 	// Publication pagination
 		$('#first-cup-pagination a').live('click', function(e){

@@ -564,10 +564,6 @@ img.wp-smiley {
 	display: none;
 }
 
-
-
-
-
 #search-form, #cse-search-form {
     background: url('images/sprite.png') -317px -19px no-repeat;
     height: 34px;
@@ -608,6 +604,15 @@ img.wp-smiley {
         top: 110px !important;
         z-index: 99999;
     }
+}
+
+#cse table {
+    border: none;
+    margin: 0;
+}
+#cse td {
+    border: none;
+    padding: 0;
 }
 
 /**
@@ -1012,9 +1017,7 @@ section p.intro:first-letter {
 }
 
 .fb-like.fb_edge_widget_with_comment.fb_iframe_widget {
-    display: block;
-    margin: 0 auto 5px;
-    width: 42px;
+    margin: 0 0 5px;
 }
 
 

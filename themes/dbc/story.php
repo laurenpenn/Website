@@ -12,8 +12,6 @@
 get_header(); // Loads the header.php template. ?>
 
 	<?php do_atomic( 'before_content' ); // dbc_before_content ?>
-	
-	<?php breadcrumb_trail(); ?>
 
 	<div id="content" role="main">
 
@@ -75,9 +73,11 @@ get_header(); // Loads the header.php template. ?>
 		<div class="buttons">
 			<div class="fb-like" data-href="<?php echo urlencode(get_permalink($post->ID)); ?>" data-send="false" data-layout="box_count" data-width="42" data-show-faces="false"></div>
 			<p>
+				<a class="addthis_button_facebook"></a>
 				<a class="addthis_button_twitter"></a>
 				<a class="addthis_button_email"></a>
 				<a class="addthis_button_print"></a>
+				<a class="addthis_button_compact"></a>
 			</p>
 		</div>
 	</div><!-- #sidebar-sticky -->

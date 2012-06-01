@@ -38,7 +38,7 @@ get_header(); // Loads the header.php template. ?>
 						echo apply_atomic_shortcode( 'byline', '<div class="byline">' . __( '[entry-published format="F Y"]', 'dbc' ) . '</div>' );
 				?>
 				
-				<?php get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'small-thumb' ) ); ?>
+				<?php get_the_image( array( 'meta_key' => 'Thumbnail', 'size' => 'small-thumb', 'image_class' => 'thumbnail' ) ); ?>
 
 				<div class="entry-summary">
 					<?php the_excerpt(); ?>
