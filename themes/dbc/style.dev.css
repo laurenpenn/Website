@@ -49,7 +49,7 @@ body {
  ************************************************/
 /* Headers */
 h1, h2, h3, h4, h5, h6 {
-    font: 1em/1em "LeagueGothicRegular";
+    font: 1em/1.1em "LeagueGothicRegular";
     margin: 0 0 0.3em;
 }
 
@@ -65,21 +65,21 @@ a:hover {
 h1 {
     color: #15100E;
     font-size: 48px;
-    font: 4.8rem/1em "LeagueGothicRegular"; /* 48px */
+    font: 4.8rem/1.1em "LeagueGothicRegular"; /* 48px */
 }
 h2 {
     color: #15100E;
     font-size: 36px;
-    font: 3.6rem/1em "LeagueGothicRegular";/* 36px */
+    font: 3.6rem/1.1em "LeagueGothicRegular";/* 36px */
 }
 h3 {
     color: #666;
     font-size: 30px;
-    font: 3.0rem/1em "LeagueGothicRegular";/* 30px */
+    font: 3.0rem/1.1em "LeagueGothicRegular";/* 30px */
 }
 h4 {
 	font-size: 20px;
-	font: 2.0rem/1em "LeagueGothicRegular";/* 20px */
+	font: 2.0rem/1.1em "LeagueGothicRegular";/* 20px */
 	color: #5c5650;
 }
 h5 {
@@ -919,12 +919,19 @@ section p.intro:first-letter {
     clear: both;
     overflow: hidden;
 }
-#publication-archive .publications ul {
+
+#publication-archive #stories ul {
     list-style: none;
+    margin: 0 0 1.625em;
 }
-#publication-archive .publications ul li {
-    margin: 0 0 5px;
+#publication-archive #stories li {
+    clear: both;
 }
+#publication-archive #stories img.left {
+    margin: 0 18px 0 0;
+    width: 30px;
+}
+
 
 .archive.archive-publication ul {
     list-style: square;

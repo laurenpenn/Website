@@ -11,8 +11,6 @@
 get_header(); ?>
 
 	<?php do_atomic( 'before_content' ); // dbc_before_content ?>
-	
-	<?php get_template_part( 'facebook-invite' ); // loads facebook-invite.php ?>
 
 	<div id="content" role="main">
 
@@ -25,7 +23,7 @@ get_header(); ?>
 			<div id="mydbc">
 				<a class="big-button" href="https://secure.accessacs.com/access/login_guest.aspx?sn=92231"><div class="inner">Register for an<br /><span class="league-gothic">Event</span></div></a>
 				<a class="big-button" href="https://secure.accessacs.com/access/login_guest.aspx?sn=92231&amp;sc=sgguest"><div class="inner">Search for a<br /><span class="league-gothic">Small Group</span></div></a>
-				<a class="big-button" href="#"><div class="inner">Sign up for the<br /><span class="league-gothic">Newsletter</span></div></a>
+				<a class="big-button" href="<?php echo site_url(); ?>/about-us/publications/"><div class="inner">Read the latest<br /><span class="league-gothic">DBC News</span></div></a>
 				<a class="big-button green" href="<?php echo site_url(); ?>/admin/mydbc-life-faq/"><div class="inner">Connect to<br /><span class="league-gothic">MyDBC Life</span></div></a>
 			</div><!-- #mydbc -->
 		
