@@ -19,7 +19,7 @@ function dbc_theme_setup() {
 	require_once( trailingslashit( TEMPLATEPATH ) . 'admin/admin-theme.php' );
 
 	/* Add theme support for core framework features. */
-	add_theme_support( 'hybrid-core-menus' );
+	add_theme_support( 'hybrid-core-menus', array( 'primary' ) );
 	add_theme_support( 'hybrid-core-sidebars', array( 'primary' ) );
 	add_theme_support( 'hybrid-core-widgets' );
 	add_theme_support( 'hybrid-core-shortcodes' );
@@ -34,8 +34,9 @@ function dbc_theme_setup() {
 	add_theme_support( 'cleaner-gallery' );
 	add_theme_support( 'get-the-image' );
 	add_theme_support( 'loop-pagination' );
-	add_theme_support( 'theme-layouts', array( 'layout-default', '2c-l', '2c-r' ) );
-
+	//add_theme_support( 'theme-layouts', array( 'layout-default', '2c-l', '2c-r' ) );
+	add_theme_support( 'theme-layouts', array( '1c', '2c-l', '2c-r' ) );
+	
 	/* Add theme support for WordPress features. */
 	add_theme_support( 'automatic-feed-links' );
 				

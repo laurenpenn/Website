@@ -58,9 +58,10 @@
 	.page-template-home #content {
 		width: 65%;
 	}
-	.layout-1c #content {
-		width: 100%;
-	}
+    .layout-1c #content,
+    .home.page-template-default #content {
+        width: 100%;
+    }
 }
 /* Mobile
  * Anything smaller than 620px
