@@ -104,7 +104,7 @@ get_header(); // Loads the header.php template. ?>
 	
 					<h2>DBC Ministry Articles</h2>
 					
-					<p>Common Ground is a monthly newsletter providing a variety of ministry events and opportunities during the month it is published: It also includes articles about ministries, people, or current events relevant to our lives today. A new edition of the magazine is distributed around the first full week of each month.</p>
+					<p>Common Ground is a monthly e-newsletter providing a variety of ministry events and opportunities during the month it is published. It also includes articles about ministries, people, or current events relevant to our lives today. A new edition of the e-newsletter is distributed the first day of each month.</p>
 									
 					<ul id="common-ground-publications-inner">
 						<li><em>Recent stories...</em></li>
