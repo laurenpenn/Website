@@ -45,6 +45,8 @@ query_posts($query_string.'&paged='.$paged.'&posts_per_page=-1&orderby=title&ord
 				<?php do_atomic( 'after_entry' ); // hybrid_after_entry ?>
 
 			</article><!-- .hentry -->
+			
+			<hr>
 
 			<?php do_atomic( 'after_singular' ); // hybrid_after_singular ?>
 
