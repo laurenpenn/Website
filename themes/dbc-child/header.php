@@ -33,7 +33,7 @@
 
 			<?php do_atomic( 'open_header' ); // prototype_open_header ?>
 
-			<div class="wrap">
+			<div class="wrap row">
 
 				<div id="branding">
 					<?php dbc_child_site_title(); ?>
@@ -57,6 +57,6 @@
 
 		<div id="main">
 
-			<div class="wrap">
+			<div class="wrap row">
 
 			<?php do_atomic( 'open_main' ); // prototype_open_main ?>

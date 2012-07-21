@@ -15,6 +15,8 @@ get_header(); ?>
 	<?php do_atomic( 'before_content' ); // dbc_before_content ?>
 
 	<div id="content">
+		
+		<div class="hfeed">
 
 		<?php do_atomic( 'open_content' ); // prototype_open_content ?>
 
@@ -46,6 +48,8 @@ get_header(); ?>
 		<?php endif; ?>
 			
 		<?php do_atomic( 'close_content' ); // prototype_close_content ?>
+		
+		</div>
 
 	</div><!-- #content -->
 		

@@ -229,7 +229,7 @@ function dbc_one_column() {
 
 	elseif ( is_search() ) 
 		add_filter( 'get_post_layout', 'dbc_post_layout_one_column' );
-	
+		
 }
 
 /**

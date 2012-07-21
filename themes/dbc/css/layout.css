@@ -62,6 +62,9 @@
     .home.page-template-default #content {
         width: 100%;
     }
+    .page-template-home.layout-1c #content .hfeed {
+        padding: 2%;
+    }
 }
 /* Mobile
  * Anything smaller than 620px
@@ -170,6 +173,9 @@
 @media screen and (min-width: 1400px) {
 	.wrap {
 		width: 1232px;
+	}
+	.row {
+	    max-width: 1232px;
 	}
 }
 /* Clearing
