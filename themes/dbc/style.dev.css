@@ -26,6 +26,10 @@ body {
     font: 1.6rem/1.625em "Georgia", "Times New Roman", Times, Serif;
 }
 
+#container {
+    margin: 10px 0;
+}
+
 /* Ministry Guide */
 #ministry-guide h3 {
     color: #94532d;

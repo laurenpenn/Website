@@ -8,14 +8,12 @@
  * Template: dbc
  */
 
-@import url('../dbc/style.dev.css');
+@import url('../dbc/style.css');
 
 #site-title a {
 	background: none;
-	display: inline;
-	font: small-caps bold 36px/85px "CartoGothicStdBold","Lucida Grande","Lucida Sans","Lucida Sans Unicode",Tahoma;
+	font: small-caps normal 3em/1.2 "LeagueGothicRegular";
 	height: auto;
-	margin-left: 40px;
 	text-indent: 0;
 	width: auto;			
 }
