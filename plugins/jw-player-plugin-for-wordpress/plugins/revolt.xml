@@ -1,0 +1,25 @@
+<plugin>
+	<title>Revolt</title>
+	<filename>revolt.swf</filename>
+	<repository>revolt-1</repository>
+	<version>1</version>
+	<compatibility>Compatible with 4.1; flashvars work from 4.4</compatibility>
+	<author>LongTail Video</author>
+	<description>This plugin renders some cool visualizations in the display, great for audio playback. It contains 6 presets. All visualization code is developed by Antti Kupila (www.anttikupila.com).</description>
+	<href>http://developer.longtailvideo.com/trac/browser/plugins/revolt</href>
+	<page>http://www.longtailvideo.com/addons/plugins/42/Revolt</page>
+
+	<flashvars>
+		<flashvar type="field">
+			<name>gain</name>
+			<default>1</default>
+			<description>Amplification of the audio input for building the graphics. Set this higher (e.g. 1.5) for wilder graphics.</description>
+		</flashvar>
+		<flashvar type="field">
+			<name>timeout</name>
+			<default>10</default>
+			<description>Timeout in seconds before the preset is swapped. Defaults to 10.</description>
+		</flashvar>
+	</flashvars>
+
+</plugin>

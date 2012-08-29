@@ -1,0 +1,28 @@
+<plugin>
+    <title>Snapshot</title>
+    <filename>snapshot.swf</filename>
+    <repository>snapshot-1</repository>
+    <version>1.0</version>
+    <compatibility>Compatible with 4.4 or higher.</compatibility>
+    <author>LongTail Video</author>
+    <description>This plugins renders a JPG snapshot from a video frame. It sends the JPG to a serverside script for processing ("Get This" plugin for further instructions) and displays the returning URL. Note that the server hosting your FLV files needs to have a crossdomain XML for this to work properly.</description>
+    <href></href>
+    <page>http://www.longtailvideo.com/addons/plugins/96/Snapshot</page>
+    
+    <flashvars>
+        <flashvar type="field">
+            <name>script</name>
+            <default></default>
+            <description>This flashvar points to the location of the serverside script (PHP,ASP,..) that processes the snapshot. That script then must echo the HTTP url of the resulting image, so the player can display the result to the user.</description>
+        </flashvar>
+        <flashvar type="select">
+            <name>data</name>
+            <default>true</default>
+            <description>This flashvar is used to specify how the Snapshot plugin grabs a screenshot. If true, the plugin will send raw JPG data to the serverside script for processing. If false, the plugin will do a simple GET ping to the serverside script with the video position in seconds as a variable. You can use false if you want to generate the snapshot serverside (with your own PHP/ASP/etc script).</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+    </flashvars>
+</plugin>

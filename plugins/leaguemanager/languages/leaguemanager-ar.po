@@ -1,0 +1,1673 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: LeagueManager ar\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/leaguemanager\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: YL-Production.com <alex.delpiero10@hotmail.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Arabic\n"
+"X-Poedit-Country: SYRIAN ARAB REPUBLIC\n"
+
+#: admin/admin.php:24
+msgid "Match-Report"
+msgstr "تقرير المباراة"
+
+#: admin/admin.php:50
+#: admin/admin.php:52
+#: admin/export.php:16
+#: admin/import.php:29
+#: admin/index.php:37
+#: admin/index.php:75
+#: admin/tinymce/window.php:54
+#: admin/tinymce/window.php:89
+#: admin/tinymce/window.php:150
+#: admin/tinymce/window.php:195
+#: admin/upgrade.php:471
+#: lib/widget.php:31
+#: lib/widget.php:306
+#: view/archive-tennis.php:19
+#: view/archive.php:19
+msgid "League"
+msgstr "البطولة"
+
+#: admin/admin.php:54
+#: admin/championchip.php:20
+#: admin/index.php:13
+#: admin/match.php:59
+#: admin/seasons.php:36
+#: admin/settings.php:38
+#: admin/show-league.php:90
+#: admin/stats.php:59
+#: admin/team.php:27
+#: admin/tinymce/window.php:27
+#: sports/racing.php:280
+msgid "Leaguemanager"
+msgstr "مدير البطولات"
+
+#: admin/admin.php:54
+msgid "Overview"
+msgstr "نظرة عامة"
+
+#: admin/admin.php:55
+#: admin/admin.php:164
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: admin/admin.php:56
+msgid "Import"
+msgstr "استيراد"
+
+#: admin/admin.php:57
+msgid "Export"
+msgstr "تصدير"
+
+#: admin/admin.php:58
+msgid "Documentation"
+msgstr "ملف المساعدة"
+
+#: admin/admin.php:77
+msgid "Preferences"
+msgstr "خصائص"
+
+#: admin/admin.php:78
+#: admin/index.php:38
+#: admin/seasons.php:36
+#: admin/seasons.php:40
+msgid "Seasons"
+msgstr "مواسم"
+
+#: admin/admin.php:79
+#: admin/team.php:15
+msgid "Add Team"
+msgstr "أضف فريق"
+
+#: admin/admin.php:80
+#: admin/match.php:41
+msgid "Add Matches"
+msgstr "أضف مباريات"
+
+#: admin/admin.php:188
+#: admin/settings.php:74
+msgid "Order: Forwin, Fordraw, Forloss"
+msgstr "تريتب : فوز تعادل خسارة"
+
+#: admin/admin.php:188
+#: admin/seasons.php:68
+#: admin/stats.php:145
+#: admin/stats.php:184
+#: leaguemanager.php:299
+msgid "Edit"
+msgstr "تحرير"
+
+#: admin/admin.php:188
+#: leaguemanager.php:299
+msgid "Post"
+msgstr "جديد"
+
+#: admin/admin.php:188
+#: leaguemanager.php:299
+msgid "Save"
+msgstr "حفظ"
+
+#: admin/admin.php:188
+#: admin/stats.php:91
+#: admin/team.php:46
+#: admin/team.php:58
+#: admin/tinymce/window.php:225
+#: leaguemanager.php:299
+#: lib/stats.php:412
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: admin/admin.php:188
+#: leaguemanager.php:299
+msgid "Please wait..."
+msgstr "الرجاء الانتظار ..."
+
+#: admin/admin.php:188
+#: admin/index.php:27
+#: admin/seasons.php:48
+#: admin/show-league.php:126
+#: admin/show-league.php:264
+#: admin/stats.php:98
+#: admin/stats.php:126
+#: leaguemanager.php:299
+#: lib/stats.php:351
+#: lib/stats.php:417
+msgid "Delete"
+msgstr "حذف"
+
+#: admin/admin.php:188
+#: lib/core.php:810
+msgid "Yellow"
+msgstr "أصفر"
+
+#: admin/admin.php:188
+#: lib/core.php:810
+msgid "Red"
+msgstr "أحمر"
+
+#: admin/admin.php:188
+#: lib/core.php:810
+msgid "Yellow/Red"
+msgstr "أصفر/أحمر"
+
+#: admin/admin.php:188
+#: admin/stats.php:91
+#: admin/team.php:46
+#: admin/team.php:58
+#: admin/tinymce/window.php:229
+#: lib/stats.php:412
+msgid "Insert"
+msgstr "إدخال"
+
+#: admin/admin.php:188
+#: admin/stats.php:94
+#: lib/stats.php:413
+msgid "Insert Player"
+msgstr "أدخل لاعب"
+
+#: admin/admin.php:188
+#: admin/stats.php:94
+#: lib/stats.php:413
+msgid "Add Player from Team Roster"
+msgstr "أضف لاعب من قائمة اللاعبين"
+
+#: admin/admin.php:242
+msgid "Default"
+msgstr "افتراضي"
+
+#: admin/admin.php:287
+msgid "Update Standings Manually"
+msgstr "حدث الترتيب تلقائيا ً"
+
+#: admin/admin.php:287
+#: admin/documentation.php:19
+msgid "One-Point-Rule"
+msgstr "قاعدة النقطة الواحدة"
+
+#: admin/admin.php:287
+msgid "Two-Point-Rule"
+msgstr "قاعدة النقطتين"
+
+#: admin/admin.php:287
+msgid "Three-Point-Rule"
+msgstr "قاعدة الثلاث نقاط"
+
+#: admin/admin.php:287
+msgid "User defined"
+msgstr "حسب تحديد المستخدم"
+
+#: admin/admin.php:477
+msgid "League added"
+msgstr "البطولة أضيفت"
+
+#: admin/admin.php:494
+#: admin/admin.php:1014
+msgid "Settings saved"
+msgstr "الإعدادات حفظت"
+
+#: admin/admin.php:551
+#, php-format
+msgid "Season <strong>%s</strong> added"
+msgstr "موسم <strong>%s</strong> أضيف"
+
+#: admin/admin.php:631
+msgid "Team added"
+msgstr "الفريق أضيف"
+
+#: admin/admin.php:692
+msgid "Team updated"
+msgstr "تم تعديل الفريق"
+
+#: admin/admin.php:773
+msgid "Logo exists and is not uploaded. Set the overwrite option if you want to replace it."
+msgstr "الشعار موجود و لم يتم رفعه, اختر تعديل الشعارات إن أردت تبديل الشعار الحالي"
+
+#: admin/admin.php:783
+#: admin/admin.php:1213
+#, php-format
+msgid "The uploaded file could not be moved to %s."
+msgstr "الملف المرفوع لا يمكن نقله إلى %s."
+
+#: admin/admin.php:788
+msgid "The file type is not supported."
+msgstr "نمط المفات هذا غير مدعوم."
+
+#: admin/admin.php:928
+msgid "Updated League Results"
+msgstr "تحديث نتائج البطولة"
+
+#: admin/admin.php:1050
+msgid "Choose League"
+msgstr "اختر بطولة"
+
+#: admin/admin.php:1094
+msgid "Choose Season"
+msgstr "اختر موسم"
+
+#: admin/admin.php:1138
+msgid "Choose Match"
+msgstr "اختر مباراة"
+
+#: admin/admin.php:1217
+msgid "The uploaded file seems to be empty"
+msgstr "الملف المرفوع يبدو فارغاً"
+
+#: admin/admin.php:1271
+#, php-format
+msgid "%d Teams imported"
+msgstr "%d فرق أستوردت"
+
+#: admin/admin.php:1328
+#, php-format
+msgid "%d Matches imported"
+msgstr "%d مباريات أحضرت"
+
+#: admin/admin.php:1391
+#: admin/admin.php:1421
+#: admin/seasons.php:56
+#: admin/seasons.php:86
+#: admin/show-league.php:99
+#: admin/upgrade.php:481
+#: lib/widget.php:313
+#: view/archive-tennis.php:25
+#: view/archive.php:25
+msgid "Season"
+msgstr "موسم"
+
+#: admin/admin.php:1391
+#: admin/team.php:35
+#: admin/tinymce/window.php:45
+#: admin/tinymce/window.php:171
+#: view/standings-compact.php:27
+#: view/standings-extend.php:28
+#: view/teams.php:23
+msgid "Team"
+msgstr "فريق"
+
+#: admin/admin.php:1391
+#: admin/team.php:78
+#: view/team.php:29
+#: view/teams.php:28
+msgid "Website"
+msgstr "موقع إنترنت"
+
+#: admin/admin.php:1391
+#: admin/team.php:81
+#: view/team.php:28
+#: view/teams.php:24
+msgid "Coach"
+msgstr "مدرب"
+
+#: admin/admin.php:1391
+#: admin/team.php:84
+msgid "Home Team"
+msgstr "الفريق المضيف"
+
+#: admin/admin.php:1391
+#: admin/show-league.php:141
+#: view/standings-compact.php:29
+#: view/standings-extend.php:30
+msgid "Pld"
+msgstr "لعب"
+
+#: admin/admin.php:1391
+#: admin/show-league.php:142
+#: view/standings-extend.php:33
+#: view/teams.php:25
+msgid "W|Won"
+msgstr "فوز"
+
+#: admin/admin.php:1391
+#: admin/show-league.php:143
+#: view/standings-extend.php:36
+#: view/teams.php:26
+msgid "T|Tie"
+msgstr "تعادل"
+
+#: admin/admin.php:1391
+#: admin/show-league.php:144
+#: view/standings-extend.php:39
+#: view/teams.php:27
+msgid "L|Lost"
+msgstr "خسارة"
+
+#: admin/admin.php:1391
+msgid "Points2"
+msgstr "نقاط 2"
+
+#: admin/admin.php:1391
+#: sports/basketball.php:138
+#: sports/gymnastics.php:86
+#: sports/handball.php:88
+#: sports/hockey.php:256
+#: sports/other-two-scores.php:82
+#: sports/soccer.php:88
+msgid "Diff"
+msgstr "الفارق"
+
+#: admin/admin.php:1391
+#: admin/show-league.php:146
+#: view/standings-compact.php:31
+#: view/standings-extend.php:42
+msgid "Pts"
+msgstr "نقاط"
+
+#: admin/admin.php:1421
+#: admin/match.php:71
+#: admin/match.php:106
+#: admin/show-league.php:285
+#: sports/racing.php:195
+#: view/matches-racing.php:39
+msgid "Date"
+msgstr "تاريخ"
+
+#: admin/admin.php:1421
+#: admin/match.php:76
+#: sports/racing.php:196
+msgid "Match Day"
+msgstr "المرحلة"
+
+#: admin/admin.php:1421
+#: admin/match.php:108
+msgid "Home"
+msgstr "المضيف"
+
+#: admin/admin.php:1421
+#: admin/match.php:109
+msgid "Guest"
+msgstr "الضيف"
+
+#: admin/admin.php:1421
+#: admin/match.php:110
+#: admin/show-league.php:288
+#: sports/racing.php:198
+msgid "Location"
+msgstr "الملعب"
+
+#: admin/admin.php:1421
+#: admin/match.php:111
+#: admin/show-league.php:289
+#: sports/racing.php:200
+msgid "Begin"
+msgstr "بداية"
+
+#: admin/admin.php:1421
+#: admin/show-league.php:290
+#: view/matches-gymnastics.php:45
+#: view/matches-irish-gaelic-football.php:45
+#: view/matches-tennis.php:46
+#: view/matches-volleyball.php:44
+#: view/matches.php:46
+msgid "Score"
+msgstr "نتيجة"
+
+#: admin/championchip.php:20
+#: admin/championchip.php:21
+msgid "Championchip Finals"
+msgstr "نهائيات البطولة"
+
+#: admin/championchip.php:29
+msgid "Round"
+msgstr "جولة"
+
+#: admin/championchip.php:30
+#: admin/export.php:32
+#: admin/import.php:45
+#: admin/index.php:40
+#: admin/tinymce/window.php:42
+#: lib/widget.php:315
+#: view/archive-tennis.php:40
+#: view/archive.php:41
+#: view/team.php:24
+msgid "Matches"
+msgstr "مباريات"
+
+#: admin/championchip.php:68
+msgid "Save Finals Results"
+msgstr "حفظ النتائج النهائية"
+
+#: admin/championchip.php:71
+msgid "Add Final Matches"
+msgstr "أضف مباريات النهائي"
+
+#: admin/documentation.php:3
+#: admin/export.php:3
+#: admin/import.php:3
+#: admin/match.php:3
+#: admin/seasons.php:3
+#: admin/settings.php:3
+#: admin/stats.php:3
+#: admin/team.php:6
+msgid "You do not have sufficient permissions to access this page."
+msgstr "أنت لا تملك الصلاحيات الكافية لدخول هذه الصفحة."
+
+#: admin/documentation.php:9
+msgid "LeagueManager Documentation"
+msgstr "ملف المساعدة لمدير البطولات"
+
+#: admin/documentation.php:11
+#: admin/settings.php:49
+msgid "Sport"
+msgstr "رياضة"
+
+#: admin/documentation.php:12
+msgid "The sport type is important to enable certain rules. Gymnastics leagues have apparatus points which other leagues don't, Soccer has Halftime results, while Hocky is played in Thirds and Basketball in Quarters."
+msgstr "اختيار نوع الرياضة مهم من أجل تفعيل قواعدها ( لكل رياضة قواعدها الخاصة )"
+
+#: admin/documentation.php:16
+msgid "Point Rules"
+msgstr "قواعد احتساب النقاط"
+
+#: admin/documentation.php:17
+msgid "The second important option is the point rule, which automatically sets the number of points teams get for won matches, draw matches or lost matches. Some league types have specific rules. See the sections below for details."
+msgstr "ثاني خيار مهم هو اختيار قاعدة احتساب النقاط عند حالات الفوز و التعادل و الخسارة .. كل رياضة لها قواعدها الخاصة"
+
+#: admin/documentation.php:20
+msgid "The One-Point-Rule simply counts the number of won matches. This point system is used, e.g. in the MLB, NBA and NFL."
+msgstr "قاعدة النقطة الواحدة تحتسب نقطة عند كل فوز "
+
+#: admin/documentation.php:22
+msgid "Two-Point-Rule and Three-Point-Rule"
+msgstr "قاعدة النقطتين و الثلاث نقاط"
+
+#: admin/documentation.php:23
+msgid "The Two- and Three-Point-Rules are the most common ones. Teams get two or three points for won matches respectively and one point for draw."
+msgstr "قاعدتي النقطتين و الثلاث نقاط هما الأكثر شيوعا ً .. الفريق الفائز يحصل على نقطتين أو 3 و عند التعادل يحصل كل فريق على نقطة واحدة "
+
+#: admin/documentation.php:28
+msgid "Customization"
+msgstr "تخصيص"
+
+#: admin/documentation.php:29
+msgid "The Plugin is built iin a modular way with several Wordpress hooks to make customization as easy as possible. I here provide a list of available hooks with a short description."
+msgstr "هذه الإضافة بنيت بطريقة نموذجية لتتوافق مع العديد من إصدارات ووردبريس و ليكون التحكم بها سهلا ً قدر الإمكان .. أزودك هنا ببعض الأمور مع بعض الشروحات البسيطة "
+
+#: admin/documentation.php:31
+msgid "List of Wordpress Filters"
+msgstr "قائمة فلاتر الووردبريس"
+
+#: admin/documentation.php:35
+msgid "Can be used to add a new sport type to the settings selection menu."
+msgstr "يستخدم لإضافة نوع رياضة جديد إلى قائمة الإعدادات"
+
+#: admin/documentation.php:48
+msgid "Change Team Ranking based on sport specific rules. The sport type needs to be appended so its only called, when this type is active. I will use the example sport type <em>sport</em> from above."
+msgstr "تغيير تقييم الفرق يعتمد على قواعد كل رياضة. يجب أن تختار نوع رياضة حتى تتمكن من استدعائها,عندما يكون نمط الرياضة مفعلا ً.سأختار على سبيل المثال النمط  <em>الرياضة</em> من الأعلى."
+
+#: admin/export.php:8
+msgid "LeagueManager Export"
+msgstr "تصدير مدير البطولات"
+
+#: admin/export.php:9
+msgid "Here you can export teams and matches for a specific league."
+msgstr "تستطيع هنا تصدير فرق و مباريات لأي بطولة أخرى"
+
+#: admin/export.php:10
+msgid "Once you&#8217;ve saved the download file, you can use the Import function on another WordPress blog to import this blog."
+msgstr "حالما&#8217;تحفظ الملف المحمل, ستسطيع اتسخدام خاصية الاستيراد على أي ووردبريس أخرى"
+
+#: admin/export.php:13
+#: leaguemanager.php:299
+msgid "Options"
+msgstr "خيارات"
+
+#: admin/export.php:28
+#: admin/import.php:41
+msgid "Data"
+msgstr "داتا"
+
+#: admin/export.php:31
+#: admin/import.php:44
+#: admin/index.php:39
+#: admin/tinymce/window.php:44
+#: view/teams.php:20
+msgid "Teams"
+msgstr "فرق"
+
+#: admin/export.php:37
+msgid "Download File"
+msgstr "حمل الملف"
+
+#: admin/import.php:14
+msgid "LeagueManager Import"
+msgstr "استورد مدير البطولات"
+
+#: admin/import.php:16
+msgid "Choose a CSV file to upload and import data from"
+msgstr "اختر ملف الـ CSV لرفعه و احضار البيانات منه"
+
+#: admin/import.php:23
+msgid "File"
+msgstr "ملف"
+
+#: admin/import.php:26
+msgid "Delimiter"
+msgstr "محدد"
+
+#: admin/import.php:26
+msgid "For tab delimited files use TAB as delimiter"
+msgstr "لتبويب ملفات محددة استخدم TAB كمحدد"
+
+#: admin/import.php:51
+msgid "Upload file and import"
+msgstr "ارفع ملف و استورد"
+
+#: admin/index.php:26
+#: admin/seasons.php:47
+#: admin/show-league.php:125
+#: admin/show-league.php:263
+#: admin/stats.php:125
+msgid "Bulk Actions"
+msgstr "كتلة الإجرائيات"
+
+#: admin/index.php:29
+#: admin/seasons.php:50
+#: admin/show-league.php:128
+#: admin/show-league.php:266
+#: admin/stats.php:128
+msgid "Apply"
+msgstr "تفعيل"
+
+#: admin/index.php:72
+#: admin/index.php:78
+msgid "Add League"
+msgstr "أضف بطولة"
+
+#: admin/match.php:13
+msgid "Edit Match"
+msgstr "عدل مباراة"
+
+#: admin/match.php:33
+#, php-format
+msgid "Edit Matches &#8211; %d. Match Day"
+msgstr "عدل المباريات &#8211; %d. مرحلة"
+
+#: admin/match.php:34
+#: admin/show-league.php:254
+msgid "Edit Matches"
+msgstr "عدل مباريات"
+
+#: admin/match.php:87
+#: admin/show-league.php:140
+#: admin/show-league.php:286
+#: admin/team.php:88
+msgid "Group"
+msgstr "مجموعة"
+
+#: admin/match.php:100
+msgid "Note: Matches with different Home and Guest Teams will be added to the database."
+msgstr "ملاحظة : المبارايات التي تحتوي على مضيف و ضيف مختلفين ستضاف إلى قاعدة البيانات"
+
+#: admin/seasons.php:15
+#: admin/upgrade.php:458
+msgid "Season was empty"
+msgstr "الموسم فارغ"
+
+#: admin/seasons.php:57
+msgid "Match Days"
+msgstr "المراحل"
+
+#: admin/seasons.php:58
+#: admin/stats.php:137
+msgid "Actions"
+msgstr "إجرائيات"
+
+#: admin/seasons.php:78
+#: admin/seasons.php:108
+msgid "Edit Season"
+msgstr "عدل موسم"
+
+#: admin/seasons.php:78
+msgid "Add new Season"
+msgstr "أضف موسم جديد"
+
+#: admin/seasons.php:80
+#: admin/stats.php:156
+#: admin/stats.php:184
+msgid "Add New"
+msgstr "أضف جديد"
+
+#: admin/seasons.php:88
+msgid "Usually 4-digit year, e.g. 2008. Can also be any kind of string, e.g. 0809"
+msgstr "عادة 4 أرقام مثال : 2008 .. يمكنك أيضا ً استخدام أي نمط مثال :08/09"
+
+#: admin/seasons.php:92
+msgid "Number of Match Days"
+msgstr "عدد المراحل"
+
+#: admin/seasons.php:99
+msgid "No Teams"
+msgstr "لا يوجد فرق"
+
+#: admin/seasons.php:101
+msgid "Check this to not automatically get teams from database and add them to the season"
+msgstr "اختر هنا من أجل عدم الاحضار التلقائي للفرق من قاعدة البيانات و إضافتهم للموسم"
+
+#: admin/seasons.php:108
+msgid "Add Season"
+msgstr "أضف موسم"
+
+#: admin/settings-global.php:5
+msgid "Leaguemanager Global Settings"
+msgstr "إعدادات مدير البطولات العامة"
+
+#: admin/settings-global.php:6
+msgid "Color Scheme"
+msgstr "لون الشكل الخارجي"
+
+#: admin/settings-global.php:9
+msgid "Table Headers"
+msgstr "ترويسات الجدول"
+
+#: admin/settings-global.php:12
+msgid "Table Rows"
+msgstr "صفوف الجدول"
+
+#: admin/settings-global.php:21
+#: admin/settings.php:157
+msgid "Save Preferences"
+msgstr "حفظ الخصائص"
+
+#: admin/settings.php:38
+#: admin/settings.php:40
+msgid "League Preferences"
+msgstr "خصائص البطولة"
+
+#: admin/settings.php:46
+msgid "Title"
+msgstr "عنوان"
+
+#: admin/settings.php:56
+#, php-format
+msgid "Check the <a href='%s'>Documentation</a> for details"
+msgstr "انظر <a href='%s'>المساعدة</a> للتفاصيل"
+
+#: admin/settings.php:60
+msgid "Point Rule"
+msgstr "قاعدة احتساب النقاط"
+
+#: admin/settings.php:67
+#, php-format
+msgid "For details on point rules see the <a href='%s'>Documentation</a>"
+msgstr "من أجل التفاصيل عن القواعد احتساب النقاط انظر إلى <a href='%s'>ملف المساعدة</a>"
+
+#: admin/settings.php:81
+msgid "Point Format"
+msgstr "تنسيق احتساب النقاط"
+
+#: admin/settings.php:93
+msgid "Point formats for primary and seconday points (e.g. Goals)"
+msgstr "تنسيق النقاط أولي / ثانوي مثال : الأهداف"
+
+#: admin/settings.php:97
+msgid "Team Ranking"
+msgstr "تقييم الفريق"
+
+#: admin/settings.php:100
+msgid "Automatic"
+msgstr "تلقائي"
+
+#: admin/settings.php:101
+msgid "Manual"
+msgstr "يدوي"
+
+#: admin/settings.php:103
+msgid "Team Ranking via Drag & Drop probably will only work in Firefox"
+msgstr "تقييم الفرق بواسطة السحب و الإفلات تعمل فقط في فايرفوكس"
+
+#: admin/settings.php:107
+msgid "Mode"
+msgstr "النمط"
+
+#: admin/settings.php:117
+msgid "Upload Directory"
+msgstr "ارفع مسار"
+
+#: admin/settings.php:121
+msgid "Default Match Start Time"
+msgstr "توقيت بدء المباريات الافتراضي"
+
+#: admin/settings.php:138
+msgid "Groups"
+msgstr "مجموعات"
+
+#: admin/settings.php:139
+msgid "Separate Groups by semicolon ;"
+msgstr "افصل بين المجموعات بـ ;"
+
+#: admin/settings.php:142
+msgid "Standings Table Display"
+msgstr "عرض ترتيب الجدول"
+
+#: admin/settings.php:144
+msgid "Played Games"
+msgstr "مباريات الملعوبة"
+
+#: admin/settings.php:145
+msgid "Won Games"
+msgstr "مباريات تم الفوز بها"
+
+#: admin/settings.php:146
+msgid " Tie Games"
+msgstr "مباريات انتهت بالتعادل"
+
+#: admin/settings.php:147
+msgid "Lost Games"
+msgstr "مباريات خسرت"
+
+#: admin/show-league.php:34
+#, php-format
+msgid "%d Match added"
+msgid_plural "%d Matches added"
+
+#: admin/show-league.php:43
+#, php-format
+msgid "%d Match updated"
+msgid_plural "%d Matches updated"
+
+#: admin/show-league.php:52
+msgid "Standings Table updated"
+msgstr "تم تحديث ترتيب الجدول"
+
+#: admin/show-league.php:85
+msgid "You need to add at least one season"
+msgstr "تحتاج لإضافة موسم واحد على الأقل"
+
+#: admin/show-league.php:105
+#: view/archive-tennis.php:30
+#: view/archive.php:30
+#: view/matches-gymnastics.php:34
+#: view/matches-irish-gaelic-football.php:34
+#: view/matches-racing.php:28
+#: view/matches-tennis.php:35
+#: view/matches-volleyball.php:33
+#: view/matches.php:34
+msgid "Show"
+msgstr "عرض"
+
+#: admin/show-league.php:117
+#: admin/show-league.php:131
+#: admin/tinymce/window.php:40
+#: lib/widget.php:116
+#: lib/widget.php:328
+msgid "Table"
+msgstr "جدول الترتيب"
+
+#: admin/show-league.php:135
+#: admin/show-league.php:284
+msgid "ID"
+msgstr "رقم التعريف"
+
+#: admin/show-league.php:139
+#: view/crosstable.php:22
+msgid "Club"
+msgstr "نادي"
+
+#: admin/show-league.php:147
+msgid "+/- Points"
+msgstr "+/- نقاط"
+
+#: admin/show-league.php:161
+#: admin/team.php:54
+#: view/standings-compact.php:43
+#: view/standings-extend.php:53
+#: view/team.php:20
+msgid "Logo"
+msgstr "شعار"
+
+#: admin/show-league.php:235
+msgid "Save Standings"
+msgstr "حفظ الإعدادات"
+
+#: admin/show-league.php:239
+#: admin/show-league.php:280
+#: view/matches-gymnastics.php:42
+#: view/matches-irish-gaelic-football.php:42
+#: view/matches-tennis.php:43
+#: view/matches-volleyball.php:41
+#: view/matches.php:43
+msgid "Match Plan"
+msgstr "خطة المباراة"
+
+#: admin/show-league.php:251
+#: admin/show-league.php:273
+#: view/matches-gymnastics.php:24
+#: view/matches-irish-gaelic-football.php:24
+#: view/matches-racing.php:25
+#: view/matches-tennis.php:25
+#: view/matches-volleyball.php:23
+#: view/matches.php:24
+#, php-format
+msgid "%d. Match Day"
+msgstr "%d. مرحلة"
+
+#: admin/show-league.php:271
+#: view/matches-racing.php:23
+msgid "Show all Matches"
+msgstr "أعرض كل المباريات"
+
+#: admin/show-league.php:276
+#: sports/racing.php:296
+msgid "Filter"
+msgstr "فلتر"
+
+#: admin/show-league.php:287
+#: admin/tinymce/window.php:43
+#: admin/tinymce/window.php:120
+#: view/matches-gymnastics.php:44
+#: view/matches-irish-gaelic-football.php:44
+#: view/matches-tennis.php:45
+#: view/matches-volleyball.php:43
+#: view/matches.php:45
+msgid "Match"
+msgstr "مباراة"
+
+#: admin/show-league.php:323
+msgid "Update Results"
+msgstr "حدث النتائج"
+
+#: admin/stats.php:59
+#: lib/stats.php:156
+msgid "Match Statistics"
+msgstr "إحصائيات المباراة"
+
+#: admin/stats.php:63
+#, php-format
+msgid "Match Statistics &#8211; %s v.s. %s"
+msgstr "إحصائيات &#8211; %s ضد %s"
+
+#: admin/stats.php:106
+msgid "Insert more"
+msgstr "أدرج أكثر"
+
+#: admin/stats.php:111
+msgid "Save Statistics"
+msgstr "حفظ الاحصائيات"
+
+#: admin/stats.php:117
+msgid "Statistics Settings"
+msgstr "إعدادات الإحصائيات"
+
+#: admin/stats.php:131
+msgid "Statistics"
+msgstr "إحصائيات"
+
+#: admin/stats.php:135
+#: admin/stats.php:164
+#: sports/racing.php:307
+#: view/match-racing.php:20
+#: view/matches-racing.php:41
+msgid "Name"
+msgstr "اسم"
+
+#: admin/stats.php:136
+msgid "Number of Fields"
+msgstr "عدد الحقول"
+
+#: admin/stats.php:154
+msgid "Edit Statistics Field"
+msgstr "عدل حقل الإحصائيات"
+
+#: admin/stats.php:154
+msgid "Add Statistics Field"
+msgstr "أضف حقل الإحصائيات"
+
+#: admin/stats.php:179
+msgid "Add Field"
+msgstr "أضف حقل"
+
+#: admin/team.php:13
+msgid "Edit Team"
+msgstr "عدل فريق"
+
+#: admin/team.php:23
+#, php-format
+msgid "Unable to create directory %s. Is its parent directory writable by the server?"
+msgstr "غير قادر على إنشاء المسار %s.هل المسار الأب قابل للكتابة ?"
+
+#: admin/team.php:42
+#: sports/racing.php:290
+#: view/matches-volleyball.php:27
+#: view/matches.php:28
+msgid "Choose Team"
+msgstr "اختر فريق"
+
+#: admin/team.php:49
+msgid "Add Team from Database"
+msgstr "أضف فريق من قاعدة البيانات"
+
+#: admin/team.php:66
+msgid "Add Logo from Url"
+msgstr "أضف شعار من URL"
+
+#: admin/team.php:68
+msgid "Supported file types"
+msgstr "أنماط الملفات المدعومة"
+
+#: admin/team.php:71
+msgid "Overwrite existing image"
+msgstr "احفظ فوق الصورة الموجودة"
+
+#: admin/team.php:72
+msgid "Delete Logo"
+msgstr "حذف الشعار"
+
+#: admin/team.php:100
+#: lib/stats.php:340
+msgid "Team Roster"
+msgstr "قائمة الفريق"
+
+#: admin/team.php:103
+#: lib/ajax.php:129
+#: lib/stats.php:208
+#: sports/tennis.php:417
+msgid "None"
+msgstr "----"
+
+#: admin/team.php:111
+#: lib/ajax.php:144
+#: lib/ajax.php:185
+msgid "Select Group (Optional)"
+msgstr "اختر مجموعة (اختياري)"
+
+#: admin/tinymce/window.php:41
+#: view/archive.php:45
+#: view/crosstable.php:20
+#: view/crosstable.php:47
+msgid "Crosstable"
+msgstr "عبر الجدول"
+
+#: admin/tinymce/window.php:57
+#: admin/tinymce/window.php:92
+#: admin/tinymce/window.php:153
+#: admin/tinymce/window.php:198
+msgid "No League"
+msgstr "لا يوجد بطولة"
+
+#: admin/tinymce/window.php:69
+#: admin/tinymce/window.php:104
+#: admin/tinymce/window.php:210
+msgid "Display"
+msgstr "عرض"
+
+#: admin/tinymce/window.php:72
+msgid "Extend"
+msgstr "ممدد"
+
+#: admin/tinymce/window.php:73
+msgid "Compact"
+msgstr "عادي"
+
+#: admin/tinymce/window.php:74
+msgid "Slim"
+msgstr "نحيل"
+
+#: admin/tinymce/window.php:79
+#: lib/widget.php:336
+msgid "Show Logos"
+msgstr "اعرض الشعارات"
+
+#: admin/tinymce/window.php:107
+msgid "Match day based"
+msgstr "معتمد على المراحل"
+
+#: admin/tinymce/window.php:108
+msgid "All"
+msgstr "الكل"
+
+#: admin/tinymce/window.php:109
+msgid "Only Home Team"
+msgstr "فقط الفريق المضيف"
+
+#: admin/tinymce/window.php:123
+msgid "No Match"
+msgstr "لا يوجد مباريات"
+
+#: admin/tinymce/window.php:174
+msgid "No Team"
+msgstr "لا يوجد فريق"
+
+#: admin/tinymce/window.php:212
+msgid "Embed"
+msgstr "تضمين"
+
+#: admin/tinymce/window.php:213
+#: view/crosstable.php:47
+msgid "Popup"
+msgstr "قافزة"
+
+#: admin/upgrade.php:13
+msgid "Upgrade database structure..."
+msgstr "حدث بنية قاعدة البيانات"
+
+#: admin/upgrade.php:396
+msgid "finished"
+msgstr "انتهى"
+
+#: admin/upgrade.php:416
+#: admin/upgrade.php:435
+msgid "Upgrade LeagueManager"
+msgstr "حدث مدير البطولات"
+
+#: admin/upgrade.php:417
+msgid "Your database for LeagueManager is out-of-date, and must be upgraded before you can continue."
+msgstr "مدير البطولات لم يحدث بعد .. يجب أن تحدثه قبل المتابعة"
+
+#: admin/upgrade.php:418
+msgid "The upgrade process may take a while, so please be patient."
+msgstr "عملية التحديث قد تأخذ وقتا ً .. لطفا ً انتظر"
+
+#: admin/upgrade.php:419
+msgid "Start upgrade now"
+msgstr "ابدأ التحديث"
+
+#: admin/upgrade.php:437
+msgid "Upgrade successful"
+msgstr "اكتمل التحديث بنجاح"
+
+#: admin/upgrade.php:438
+msgid "Continue"
+msgstr "متابعة"
+
+#: admin/upgrade.php:456
+msgid "Successfully set Season for Matches and Teams"
+msgstr "تم تعيين موسم للمباريات و الفرق بنجاح"
+
+#: admin/upgrade.php:466
+msgid "Upgrade to Version 2.9.2"
+msgstr "حدث إلى الإصدار 2.9.2"
+
+#: admin/upgrade.php:485
+msgid "New League"
+msgstr "بطولة جديدة"
+
+#: admin/upgrade.php:488
+msgid "Keep League"
+msgstr "حافظ على البطولة"
+
+#: admin/upgrade.php:496
+msgid "Old Season"
+msgstr "موسم قديم"
+
+#: admin/upgrade.php:500
+msgid "Submit"
+msgstr "اعتمد"
+
+#: leaguemanager.php:299
+msgid "Page Revisions"
+msgstr "مراجعات الصفحة"
+
+#: leaguemanager.php:299
+msgid "Insert time"
+msgstr "تاريخ الادخال"
+
+#: lib/ajax.php:210
+msgid "The image cannot be on a remote server"
+msgstr "لا توجد الصورة على الريموت سيرفر"
+
+#: lib/championchip.php:51
+#: lib/championchip.php:65
+msgid "Championchip"
+msgstr "البطولة"
+
+#: lib/championchip.php:79
+msgid "Teams Advance"
+msgstr "تقدم الفرق"
+
+#: lib/championchip.php:94
+msgid "Final"
+msgstr "نهائي"
+
+#: lib/championchip.php:96
+msgid "Semi Final"
+msgstr "نصف نهائي"
+
+#: lib/championchip.php:98
+msgid "Quarter Final"
+msgstr "ربع نهائي"
+
+#: lib/championchip.php:101
+#, php-format
+msgid "Last-%d"
+msgstr "آخر-%d"
+
+#: lib/core.php:196
+msgid "Other"
+msgstr "آخر"
+
+#: lib/shortcodes.php:221
+#: lib/shortcodes.php:287
+#: lib/widget.php:272
+msgid "Report"
+msgstr "تقرير"
+
+#: lib/shortcodes.php:224
+#: lib/shortcodes.php:290
+#: lib/shortcodes.php:392
+#: lib/widget.php:264
+msgid "o.P.|on penalty"
+msgstr "ضربات جزاء"
+
+#: lib/shortcodes.php:226
+#: lib/shortcodes.php:292
+#: lib/shortcodes.php:394
+#: lib/widget.php:266
+msgid "AET|after extra time"
+msgstr "بعد وقت إضافي"
+
+#: lib/shortcodes.php:588
+#, php-format
+msgid "Could not load template %s.php"
+msgstr "لم استطيع تحميل القالب %s.php"
+
+#: lib/stats.php:117
+msgid "Activate Match Statistics"
+msgstr "فعل إحصائيات المباراة"
+
+#: lib/stats.php:132
+#: lib/stats.php:144
+msgid "Stats"
+msgstr "إحصائيات"
+
+#: lib/stats.php:267
+msgid "Statistics Field added"
+msgstr "تمت إضافة حقل إحصائيات"
+
+#: lib/stats.php:285
+msgid "Statistics Fields updated"
+msgstr "تم تعديل حقل إحصائيات"
+
+#: lib/stats.php:324
+msgid "Saved Statstics"
+msgstr "تم حفظ حقل إحصائيات"
+
+#: lib/stats.php:340
+msgid "Text"
+msgstr "نص"
+
+#: lib/stats.php:343
+msgid "Stats Field"
+msgstr "حقل إحصائيات"
+
+#: lib/widget.php:30
+msgid "League results and upcoming matches at a glance"
+msgstr "لمحة عن نتائج البطولة و المباريات القادمة"
+
+#: lib/widget.php:160
+#: view/team.php:35
+msgid "Next Match"
+msgstr "المباراة القادمة"
+
+#: lib/widget.php:183
+#: lib/widget.php:261
+#: view/team.php:37
+#: view/team.php:48
+#, php-format
+msgid "<strong>%d.</strong> Match Day"
+msgstr "<strong>%d.</strong> مرحلة"
+
+#: lib/widget.php:234
+#: view/team.php:46
+msgid "Last Match"
+msgstr "المباراة الأخيرة"
+
+#: lib/widget.php:316
+#: lib/widget.php:327
+msgid "Do not show"
+msgstr "لا تعرض"
+
+#: lib/widget.php:316
+msgid "Last Matches"
+msgstr "آخر المباريات"
+
+#: lib/widget.php:316
+msgid "Next Matches"
+msgstr "المباريات التالية"
+
+#: lib/widget.php:316
+msgid "Next & Last Matches"
+msgstr "المباريات الأخيرة و التالية"
+
+#: lib/widget.php:324
+msgid "Only own matches"
+msgstr "فقط مبارياتنا"
+
+#: lib/widget.php:325
+msgid "Limit"
+msgstr "محدود"
+
+#: lib/widget.php:327
+msgid "Compact Version"
+msgstr "إصدار كومباكت ( محدود )"
+
+#: lib/widget.php:327
+msgid "Extend Version"
+msgstr "إصدار موسع"
+
+#: lib/widget.php:338
+msgid "Link to report"
+msgstr "اربط إلى تقرير"
+
+#: lib/widget.php:339
+msgid "Date Format"
+msgstr "احذف تنسيق"
+
+#: sports/baseball.php:61
+msgid "Baseball"
+msgstr "بيسبول"
+
+#: sports/baseball.php:188
+#: sports/baseball.php:229
+msgid "RF|Runs For"
+msgstr "ركض لـ"
+
+#: sports/baseball.php:188
+#: sports/baseball.php:229
+msgid "RA|Runs Against"
+msgstr "ركض ضد"
+
+#: sports/baseball.php:188
+msgid "PCT|Percent Win"
+msgstr "نسبة الفوز"
+
+#: sports/baseball.php:188
+msgid "GB|Games Behind"
+msgstr "لعبة خلف"
+
+#: sports/baseball.php:188
+#: sports/baseball.php:229
+#: sports/baseball.php:254
+msgid "SO|Shutouts"
+msgstr "تسديدات للخارج"
+
+#: sports/baseball.php:254
+#: sports/baseball.php:304
+msgid "RF|Runs for"
+msgstr "ركض لـ"
+
+#: sports/baseball.php:254
+#: sports/baseball.php:304
+msgid "RA|Runs against"
+msgstr "ركض ضد"
+
+#: sports/baseball.php:304
+msgid "PCT|Percentage win"
+msgstr "نسبة الفوز"
+
+#: sports/baseball.php:304
+msgid "GB|games behind"
+msgstr "لعبة خلف"
+
+#: sports/basketball.php:54
+msgid "Basketball"
+msgstr "كرة السلة"
+
+#: sports/basketball.php:138
+msgid "Baskets"
+msgstr "في السلة"
+
+#: sports/basketball.php:173
+#: sports/basketball.php:202
+msgid "Quarters"
+msgstr "الأرباع"
+
+#: sports/basketball.php:173
+#: sports/basketball.php:202
+#: sports/handball.php:123
+#: sports/handball.php:149
+#: sports/hockey.php:291
+#: sports/hockey.php:321
+#: sports/soccer.php:123
+#: sports/soccer.php:149
+msgid "Overtime"
+msgstr "وقت إضافي"
+
+#: sports/cornhole.php:44
+msgid "Cornhole"
+msgstr "حفرة الزاوية"
+
+#: sports/electronic.php:27
+msgid "PC &#8211; Shooter"
+msgstr "PC &#8211; المسدد"
+
+#: sports/electronic.php:27
+msgid "PC &#8211; Strategy"
+msgstr "PC &#8211; الخطة"
+
+#: sports/electronic.php:27
+msgid "PC &#8211; Role-Playing Game"
+msgstr "PC &#8211; خطة اللعبة"
+
+#: sports/gymnastics.php:54
+msgid "Gymnastics"
+msgstr "الجمباز"
+
+#: sports/gymnastics.php:86
+#: sports/gymnastics.php:145
+#: view/matches-gymnastics.php:46
+msgid "AP|apparatus points"
+msgstr "جهاز النقطة"
+
+#: sports/gymnastics.php:121
+msgid "Apparatus Points"
+msgstr "جهاز النقطة"
+
+#: sports/handball.php:56
+msgid "Handball"
+msgstr "كرة اليد"
+
+#: sports/handball.php:88
+#: sports/hockey.php:256
+#: sports/irish-gaelic-football.php:66
+#: sports/irish-gaelic-football.php:91
+#: sports/soccer.php:88
+msgid "Goals"
+msgstr "الأهداف"
+
+#: sports/handball.php:123
+#: sports/handball.php:149
+#: sports/soccer.php:123
+#: sports/soccer.php:149
+msgid "Halftime"
+msgstr "الشوط الأول"
+
+#: sports/handball.php:123
+#: sports/handball.php:149
+#: sports/hockey.php:291
+#: sports/hockey.php:321
+#: sports/soccer.php:123
+#: sports/soccer.php:149
+msgid "Penalty"
+msgstr "ضربة جزاء"
+
+#: sports/hockey.php:27
+#: sports/hockey.php:178
+msgid "German Icehockey League (DEL)"
+msgstr "الهوكي الألماني"
+
+#: sports/hockey.php:27
+#: sports/hockey.php:181
+msgid "National Hockey League (NHL)"
+msgstr "الهوكي الدولي"
+
+#: sports/hockey.php:179
+msgid "The DEL uses a more complicated form of the Three-Point-Rule. The winner after regular time gets three points, the loser none. The winner after overtime gets two points and the loser one. This rule was also applied at the Icehockey Worldchampionchip in 2008."
+msgstr "الـ DEL يستخدم قاعدة النقاط الثلاث"
+
+#: sports/hockey.php:182
+msgid "The NHL uses a derivative of the Two-Point-Rule. The winner after regular time and overtime gains two points whereas the loser after overtime and penalty gets one."
+msgstr "الـ NHL يستخدم قاعدة النقطتين"
+
+#: sports/hockey.php:291
+#: sports/hockey.php:321
+msgid "Thirds"
+msgstr "ثلثا"
+
+#: sports/irish-gaelic-football.php:53
+msgid "Irish Gaelic Football"
+msgstr "كرة القدم الإيرلندية"
+
+#: sports/irish-gaelic-football.php:66
+#: sports/irish-gaelic-football.php:91
+msgid "Points"
+msgstr "نقاط"
+
+#: sports/other-two-scores.php:50
+msgid "Sports with two Scores"
+msgstr "رياضات بنتيجتين"
+
+#: sports/other-two-scores.php:82
+msgid "Scores"
+msgstr "نتائج"
+
+#: sports/pool.php:60
+msgid "Pool Billiard"
+msgstr "بلياردو"
+
+#: sports/pool.php:139
+#: sports/pool.php:179
+#: sports/pool.php:203
+#: sports/pool.php:250
+msgid "For"
+msgstr "لـ"
+
+#: sports/pool.php:139
+#: sports/pool.php:179
+#: sports/pool.php:203
+#: sports/pool.php:250
+msgid "Against"
+msgstr "ضد"
+
+#: sports/racing.php:55
+msgid "Racing"
+msgstr "سباق"
+
+#: sports/racing.php:70
+#: sports/racing.php:280
+msgid "Race Results"
+msgstr "نتائج السباق"
+
+#: sports/racing.php:83
+#: sports/racing.php:95
+#: sports/racing.php:131
+#: sports/racing.php:199
+#: view/match-racing.php:22
+#: view/matches-racing.php:45
+msgid "Race Type"
+msgstr "نوع السباق"
+
+#: sports/racing.php:83
+#: sports/racing.php:107
+msgid "Results"
+msgstr "نتائج"
+
+#: sports/racing.php:95
+#: sports/racing.php:201
+msgid "Description"
+msgstr "وصف"
+
+#: sports/racing.php:193
+msgid "Add"
+msgstr "إضافة"
+
+#: sports/racing.php:197
+#: view/matches-racing.php:43
+msgid "Event"
+msgstr "حدث"
+
+#: sports/racing.php:281
+#, php-format
+msgid "Racing Results - %s"
+msgstr "نتائج السباق - %s"
+
+#: sports/racing.php:308
+#: view/match-racing.php:21
+#: view/matches-racing.php:44
+msgid "Category"
+msgstr "تصنيف"
+
+#: sports/racing.php:309
+#: view/match-racing.php:23
+#: view/matches-racing.php:46
+msgid "Result"
+msgstr "نتيجة"
+
+#: sports/racing.php:310
+#: view/match-racing.php:24
+#: view/matches-racing.php:47
+msgid "Other Info"
+msgstr "معلومات أخرى"
+
+#: sports/racing.php:326
+msgid "Save Team Results"
+msgstr "احفظ نتائج الفريق"
+
+#: sports/racing.php:330
+msgid "No Team Roster found."
+msgstr "لا يوجد قوائم فرق"
+
+#: sports/racing.php:366
+msgid "Race Results Saved"
+msgstr "نتائج السباق حفظت"
+
+#: sports/rugby.php:65
+#: sports/rugby.php:78
+msgid "Rugby"
+msgstr "ركبي"
+
+#: sports/rugby.php:231
+msgid "Game Points"
+msgstr "نقاط اللعبة"
+
+#: sports/rugby.php:274
+#: sports/rugby.php:300
+msgid "Tries"
+msgstr "محاولات"
+
+#: sports/rugby.php:274
+#: sports/rugby.php:300
+msgid "Conversions"
+msgstr "محادثات"
+
+#: sports/rugby.php:274
+#: sports/rugby.php:300
+msgid "Penaltykicks"
+msgstr "ضربات جزاء"
+
+#: sports/rugby.php:354
+msgid "Gamepoints"
+msgstr "نقاط لعبة"
+
+#: sports/soccer.php:56
+msgid "Soccer"
+msgstr "كرة القدم"
+
+#: sports/tennis.php:75
+#: sports/tennis.php:88
+msgid "Tennis"
+msgstr "التنس الأرضي"
+
+#: sports/tennis.php:117
+msgid "Number of Sets"
+msgstr "عدد الأشواط"
+
+#: sports/tennis.php:367
+msgid "Straight Set"
+msgstr "أشواط على التوالي"
+
+#: sports/tennis.php:367
+msgid "Split Set"
+msgstr "أشواط متقطعة"
+
+#: sports/tennis.php:367
+#: sports/tennis.php:526
+msgid "Games Allowed"
+msgstr "ألعاب مسموحة"
+
+#: sports/tennis.php:409
+msgid "Home Partner"
+msgstr "الزوج المضيف"
+
+#: sports/tennis.php:409
+msgid "Guest Partner"
+msgstr "الزوج الضيف"
+
+#: sports/tennis.php:438
+#: sports/tennis.php:470
+#: sports/volleyball.php:152
+#: sports/volleyball.php:195
+#: sports/volleyball.php:221
+#: sports/volleyball.php:274
+msgid "Sets"
+msgstr "أشواط"
+
+#: sports/tennis.php:526
+msgid "Straight Set Win"
+msgstr "فوز لأشواط متتالية"
+
+#: sports/tennis.php:526
+msgid "Split Set Win"
+msgstr "فوز لأشواط متقطعة"
+
+#: sports/tennis.php:526
+msgid "Straight Set Lost"
+msgstr "خسارة لأشواط متقطعة"
+
+#: sports/tennis.php:526
+msgid "Split Set Lost"
+msgstr "خسارة لأشواط متقطعة"
+
+#: sports/volleyball.php:60
+msgid "Volleyball"
+msgstr "كرة الطائرة"
+
+#: sports/volleyball.php:152
+#: sports/volleyball.php:274
+msgid "Ballpoints"
+msgstr "نقاط الكرة"
+
+#: view/archive-tennis.php:35
+#: view/archive.php:35
+#: view/standings-compact.php:19
+#: view/standings-extend.php:20
+msgid "Standings"
+msgstr "الترتيب"
+
+#: view/match-racing.php:18
+#: view/matches-racing.php:37
+msgid "Races"
+msgstr "السباقات"
+
+#: view/matches-gymnastics.php:28
+#: view/matches-irish-gaelic-football.php:28
+#: view/matches-tennis.php:29
+msgid "Chose Team"
+msgstr "اختر فريق"
+
+#: view/standings-compact.php:21
+#: view/standings-extend.php:22
+msgid "Pos|Position"
+msgstr "المركز"
+
+#: view/team.php:23
+msgid "Rank"
+msgstr "التقييم"
+
+#: view/team.php:25
+msgid "Win"
+msgstr "فوز"
+
+#: view/team.php:26
+msgid "Tie"
+msgstr "تعادل"
+
+#: view/team.php:27
+msgid "Defeat"
+msgstr "هزيمة"
+
+#. Plugin Name of an extension
+msgid "LeagueManager"
+msgstr "مدير البطولات"
+
+#. Plugin URI of an extension
+msgid "http://kolja.galerie-neander.de/plugins/leaguemanager/"
+msgstr "صفحة مدير البطولات"
+
+#. Description of an extension
+msgid "Manage and present sports league results."
+msgstr "إدارة نتائج بطولات رياضية"
+
+#. Author of an extension
+msgid "Kolja Schleich"
+msgstr "كوليا سكليتش"
+
+#. Author URI of an extension
+msgid "http://kolja.galerie-neander.de/"
+msgstr "صفحة كوليا"
+

@@ -1,0 +1,11 @@
+<plugin>
+    <title>YouSearch</title>
+    <filename>yousearch.swf</filename>
+    <repository>yousearch-1</repository>
+    <version>1.0</version>
+    <compatibility>Compatible with 4.2 or higher.</compatibility>
+    <author>LongTail Video</author>
+    <description>A simple overlay that allows the user to search for YouTube videos and play the results in the JW Player.</description>
+    <href></href>
+    <page>http://www.longtailvideo.com/addons/plugins/45/YouSearch</page>
+</plugin>

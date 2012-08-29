@@ -1,0 +1,55 @@
+These optional files are just provided to give you the full
+benefit of podpress. The intention is that none of these are
+required for use of podPress.
+
+Full Documentation is located at
+
+http://podcasterswiki.com/index.php?title=PodPress_Documentation#Optional_Files
+
+*************************************************************************
+* Non-Permalinks stats support.                                         *
+*************************************************************************
+Copy this directory to your 
+podpress_trac\.htaccess
+podpress_trac\index.php
+
+*************************************************************************
+* Feedcaching support. Means less load on your webserver                *
+*************************************************************************
+index.php
+
+-------------------------------------------------------------------
+The rest is for wordpress 1.5 and 2.0.x users ONLY!
+-------------------------------------------------------------------
+
+*************************************************************************
+* Full featured and fully compliant feed generation                     *
+*************************************************************************
+wp1.5_2.0/wp-feed.php - Adds support for alternative feed types
+wp1.5_2.0/wp-podcast.php - Gives user support for ?feed=podcast
+wp1.5_2.0/wp-atom.php - ATOM 1.0 compliant feed generation
+wp1.5_2.0/wp-commentsrss2.php - RSS2 comment feed, and needed for audio comment 
+                            enclosures. 
+
+*************************************************************************
+* Podcast downloads via bittorrent                                      *
+* checks for .torrent file in podcast posting, and uses it              *
+* as preference if it exists                                            *
+*************************************************************************
+wp1.5_2.0/torrentcast.php
+
+*************************************************************************
+* Premium Podcasting support files                                      *
+*************************************************************************
+wp1.5_2.0/premiumcast.php - users use this as their feed URL
+wp1.5_2.0/wp-premium.php - adds premium as a feed type. 
+                 Generates RSS2 compliant feed and requires wp-feed.php
+wp1.5_2.0/wp-feed.php - Adds support for alternative feed types
+
+*************************************************************************
+* CategoryCasting support file                                          *
+* Until wordpress adds the nessesary hook                               *
+* this is required for categorycasting to work in WP 2.0.x versions     *
+*************************************************************************
+wp1.5_2.0/wp-admin/categories.php
+Replace your wp-admin/categories.php with this one.

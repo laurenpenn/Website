@@ -1,0 +1,135 @@
+<plugin>
+    <title>Tip Jar</title>
+    <filename>tipjar.swf</filename>
+    <repository>tipjar-1</repository>
+    <version>1.0</version>
+    <compatibility>Compatible with 4.2 or higher</compatibility>
+    <author>Jarón Barends</author>
+    <description>The TipJar Plugin allows you to receive donations on your Paypal account. A popup window with a Donate button is shown when the video is completed, when the video is paused, or both. You can define your own title and text or even skin the popup window completely. If you want, you can also trigger the opening of the popup window through other plugins.</description>
+    <href></href>
+    <page>http://www.longtailvideo.com/addons/plugins/53/TipJar</page>
+    
+    <flashvars>
+        <flashvar type="field">
+            <name>title</name>
+            <default></default>
+            <description>The title of the popup window (the plugin will run without this flashvar, but won't show a title).</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>text</name>
+            <default></default>
+            <description>The main text in the popup window (the plugin will run without this flashvar, but won't show a text).</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>business</name>
+            <default></default>
+            <description>Email address for your PayPal account. (when this flashvar isn't set, the plugin won't initialize but send a warning to firebug's console).</description>
+        </flashvar>
+        <flashvar type="select">
+            <name>show_complete</name>
+            <default>true</default>
+            <description>When set to true, the popup window is shown when the video completes.</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>\
+        <flashvar type="select">
+            <name>show_pause</name>
+            <default>false</default>
+            <description>When set to true, the popup window is shown when the video is paused.</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+        <flashvar type="select">
+            <name>sandbox</name>
+            <default>false</default>
+            <description>When set to true, clicking the donation button takes you to the Paypal developers website (https://www.sandbox.paypal.com/) instead of the "real" Paypal website. You'll need a (free) account on the developers site (https://developer.paypal.com/). Set this to true for testing purposes only!</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+        <flashvar type="field">
+            <name>sandbox_business</name>
+            <default></default>
+            <description>Email address for your paypal seller account in Paypal's sandbox site (https://www.sandbox.paypal.com).</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>amount</name>
+            <default></default>
+            <description>The suggested donation (users can change this).</description>
+        </flashvar>
+        <flashvar type="select">
+            <name>currency_code</name>
+            <default>USD</default>
+            <description>The currency of the donation. Default is USD.</description>
+            <select>
+                <option>EUR</option>
+                <option>USD</option>
+                <option>AUD</option>
+                <option>GBP</option>
+                <option>CAD</option>
+                <option>DKK</option>
+                <option>HUF</option>
+                <option>HKD</option>
+                <option>ILS</option>
+                <option>JPY</option>
+                <option>MXN</option>
+                <option>NZD</option>
+                <option>NOK</option>
+                <option>PLN</option>
+                <option>SGD</option>
+                <option>CZK</option>
+                <option>SEK</option>
+                <option>CHF</option>
+            </select>
+        </flashvar>
+        <flashvar type="field">
+            <name>return_url</name>
+            <default></default>
+            <description>The URL to which the customer's browser is returned after completing the payment; for example, a URL on your site that displays a "Thank you for your payment" page.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>cancel_return</name>
+            <default></default>
+            <description>A URL to which the customer's browser is returned if payment is canceled; for example, a URL on your website that displays a "Payment Canceled" page.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>image_url</name>
+            <default></default>
+            <description>The URL of the 150x50-pixel image displayed as your logo in the upper left corner of PayPal's pages. Must be URL-encoded.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>invoice</name>
+            <default></default>
+            <description>Passthrough variable you can use to identify your invoice number for this purchase.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>item_name</name>
+            <default></default>
+            <description>Description of item. If omitted, customers can enter an item name at time of purchase.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>item_number</name>
+            <default></default>
+            <description>Passthrough variable for you to track purchases or donations, passed back to you at payment completion.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>custom</name>
+            <default></default>
+            <description>Passthrough variable; never presented to your customer.</description>
+        </flashvar>
+        <flashvar type="select">
+            <name>show_start</name>
+            <default>false</default>
+            <description>Gives the option to show the popup window when the player loads.</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+    </flashvars>
+</plugin>

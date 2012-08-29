@@ -1,0 +1,300 @@
+<!--Copyright 2010  LongTail Video Inc.-->
+<player>
+  <title>JW FLV Player</title>
+  <filename>player.swf</filename>
+  <version>5</version>
+  <author>LongTail Video</author>
+  <description>
+    This is the JW FLV Player.
+  </description>
+  <href>http://developer.longtailvideo.com/trac/browser/trunk/fl5</href>
+
+  <flashvars section="Appearance" type="Basic Player Settings">
+    <flashvar type="select">
+      <name>controlbar</name>
+      <default>bottom</default>
+      <description>Position of the controlbar. Can be set to bottom, over and none.</description>
+      <select>
+        <option>bottom</option>
+        <option>top</option>
+        <option>over</option>
+        <option>none</option>
+      </select>
+    </flashvar>
+    <flashvar type="field">
+      <name>skin</name>
+      <default></default>
+      <description>The skin to be used by the player. To see what each skin looks like please visit the
+        <![CDATA[<a href="http://www.longtailvideo.com/addons/skins/?utm_source=WordPress&utm_medium=Product&utm_campaign=WordPress" target="_blank">JW Player Skins Page</a>]]>
+        .
+      </description>
+    </flashvar>
+    <flashvar type="select">
+      <name>dock</name>
+      <default>false</default>
+      <description>Set this to true to show the dock with large buttons in the top right of the player. Available since
+        4.5.
+      </description>
+      <select>
+        <option>false</option>
+        <option>true</option>
+      </select>
+    </flashvar>
+  </flashvars>
+
+  <flashvars section="General" type="Basic Player Settings">
+    <flashvar type="select">
+      <name>autostart</name>
+      <default>false</default>
+      <description>Automatically start playback on load.</description>
+      <select>
+        <option>false</option>
+        <option>true</option>
+      </select>
+    </flashvar>
+    <flashvar type="field">
+      <name>height</name>
+      <default>280</default>
+      <description>Height of the display in pixels.</description>
+    </flashvar>
+    <flashvar type="field">
+      <name>width</name>
+      <default>400</default>
+      <description>Width of the display in pixels.</description>
+    </flashvar>
+  </flashvars>
+
+  <flashvars section="Javascript Interaction" type="None">
+    <flashvar type="field">
+      <name>playerready</name>
+      <default></default>
+      <description>Javascript callback when the player has completed its setup.</description>
+    </flashvar>
+  </flashvars>
+
+  <flashvars section="Colors And Icons" type="Advanced Player Settings">
+    <flashvar type="select">
+      <name>icons</name>
+      <default>true</default>
+      <description>Set this to false to hide the play button and buffering icon in the middle of the video.
+      </description>
+      <select>
+        <option>false</option>
+        <option>true</option>
+      </select>
+    </flashvar>
+    <flashvar type="field">
+      <name>backcolor</name>
+      <default></default>
+      <description>Background color (hex value) of the controlbar and playlist. This is white with the default skin.
+      </description>
+    </flashvar>
+    <flashvar type="field">
+      <name>frontcolor</name>
+      <default></default>
+      <description>Color (hex value) of all icons and texts in the controlbar and playlist as a hex code.</description>
+    </flashvar>
+    <flashvar type="field">
+      <name>lightcolor</name>
+      <default></default>
+      <description>Color (hex value) of an icon or text when you rollover it with the mouse as a hex code.</description>
+    </flashvar>
+    <flashvar type="field">
+      <name>screencolor</name>
+      <default></default>
+      <description>Background color (hex value) of the display as a hex code.</description>
+    </flashvar>
+  </flashvars>
+
+  <flashvars section="Playlist" type="Advanced Player Settings">
+    <flashvar type="field">
+      <name>item</name>
+      <default>0</default>
+      <description>PlaylistItem that should start to play. Use this to start the player with a specific item selected.
+      </description>
+    </flashvar>
+    <flashvar type="select">
+      <name>playlist.position</name>
+      <default>none</default>
+      <description>Position of the playlist. Can be set to bottom, over, right or none.</description>
+      <select>
+        <option>bottom</option>
+        <option>over</option>
+        <option>right</option>
+        <option>none</option>
+      </select>
+    </flashvar>
+    <flashvar type="field">
+      <name>playlistsize</name>
+      <default>180</default>
+      <description>When below this refers to the height, when right this refers to the width of the playlist.
+      </description>
+    </flashvar>
+    <flashvar type="select">
+      <name>repeat</name>
+      <default>none</default>
+      <description>What to do when the mediafile has ended.</description>
+      <select>
+        <option>none</option>
+        <option>list</option>
+        <option>always</option>
+        <option>single</option>
+      </select>
+    </flashvar>
+    <flashvar type="select">
+      <name>shuffle</name>
+      <default>false</default>
+      <description>Randomly choose which playlist item to play.</description>
+      <select>
+        <option>false</option>
+        <option>true</option>
+      </select>
+    </flashvar>
+  </flashvars>
+
+  <flashvars section="Rendering" type="Advanced Player Settings">
+    <flashvar type="field">
+      <name>bufferlength</name>
+      <default>1</default>
+      <description>Number of seconds of the file that has to be loaded before starting. Set this to a low value to
+        enable instant-start and to a high value to get less mid-stream buffering.
+      </description>
+    </flashvar>
+    <flashvar type="select">
+      <name>smoothing</name>
+      <default>true</default>
+      <description>This sets the smoothing of videos, so you won't see blocks when a video is upscaled. Set this to
+        false to get performance improvements with old computers / big files. Available since 4.4.
+      </description>
+      <select>
+        <option>false</option>
+        <option>true</option>
+      </select>
+    </flashvar>
+    <flashvar type="select">
+      <name>stretching</name>
+      <default>uniform</default>
+      <description>Defines how to resize images in the display. Can be none (no stretching), exactfit
+        (disproportionate), uniform (stretch with black borders) or fill (uniform, but completely fill the display).
+      </description>
+      <select>
+        <option>exactfit</option>
+        <option>fill</option>
+        <option>none</option>
+        <option>uniform</option>
+      </select>
+    </flashvar>
+    <flashvar type="select">
+      <name>wmode</name>
+      <default>opaque</default>
+      <description>Sets the Window Mode property of the Flash movie for transparency, layering, and positioning in the
+        browser.
+      </description>
+      <select>
+        <option>opaque</option>
+        <option>transparent</option>
+      </select>
+    </flashvar>
+  </flashvars>
+
+  <flashvars section="Sound" type="Advanced Player Settings">
+    <flashvar type="select">
+      <name>mute</name>
+      <default>false</default>
+      <description>Mute all sounds on startup. This can be overridden by a user's cookie, which stores the user's last
+        muting state.
+      </description>
+      <select>
+        <option>false</option>
+        <option>true</option>
+      </select>
+    </flashvar>
+    <flashvar type="field">
+      <name>volume</name>
+      <default>90</default>
+      <description>Startup volume of the player. Can be 0 to 100. The user's last volume setting is saved in a cookie
+        and overrides this flashvar.
+      </description>
+    </flashvar>
+  </flashvars>
+
+  <flashvars section="Streaming" type="Advanced Player Settings">
+    <flashvar type="field">
+      <name>provider</name>
+      <default></default>
+      <description>this is determines what type of mediafile this item is, and thus which provider the player should use
+        for playback. By default, the type is detected by the player based upon the file extension. If there's no
+        suitable extension or the player detects the type wrong, it can be manually set.
+      </description>
+    </flashvar>
+    <flashvar type="field">
+      <name>streamer</name>
+      <default></default>
+      <description>location of an rtmp/http server instance to use for streaming. Can be an RTMP application or external
+        PHP/ASP file.
+      </description>
+    </flashvar>
+  </flashvars>
+
+  <flashvars section="Playlist Properties" type="None">
+    <flashvar type="field">
+      <name>playlistfile</name>
+      <default></default>
+      <description>Location of an XML playlist which will be loaded as the player starts.</description>
+    </flashvar>
+    <flashvar type="field">
+      <name>author</name>
+      <default></default>
+      <description>Author of the video, shown in the display or playlist.</description>
+    </flashvar>
+    <flashvar type="field">
+      <name>date</name>
+      <default></default>
+      <description>Publish date of the media file.</description>
+    </flashvar>
+    <flashvar type="field">
+      <name>description</name>
+      <default></default>
+      <description>Text description of the file.</description>
+    </flashvar>
+    <flashvar type="field">
+      <name>duration</name>
+      <default></default>
+      <description>duration of the file in seconds.</description>
+    </flashvar>
+    <flashvar type="field">
+      <name>file</name>
+      <default></default>
+      <description>location of the mediafile or playlist to play.</description>
+    </flashvar>
+    <flashvar type="field">
+      <name>image</name>
+      <default></default>
+      <description>location of a preview image; shown in display and playlist.</description>
+    </flashvar>
+    <flashvar type="field">
+      <name>link</name>
+      <default></default>
+      <description>url to an external page the display, controlbar and playlist can link to.</description>
+    </flashvar>
+    <flashvar type="field">
+      <name>start</name>
+      <default>0</default>
+      <description>position in seconds where playback has to start. Won't work for regular (progressive) videos, but
+        only for streaming (HTTP/RTMP).
+      </description>
+    </flashvar>
+    <flashvar type="field">
+      <name>tags</name>
+      <default></default>
+      <description>keywords associated with the media file. Available since 4.3.</description>
+    </flashvar>
+    <flashvar type="field">
+      <name>title</name>
+      <default></default>
+      <description>title of the video, shown in the display or playlist.</description>
+    </flashvar>
+
+  </flashvars>
+
+</player>

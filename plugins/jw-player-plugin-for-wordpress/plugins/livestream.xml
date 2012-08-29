@@ -1,0 +1,44 @@
+<plugin>
+    <title>Livestream</title>
+    <filename>livestream.swf</filename>
+    <repository>livestream-1</repository>
+    <version>1.0</version>
+    <compatibility>Compatible with 4.1 or higher.</compatibility>
+    <author>LongTail Video</author>
+    <description>This plugin automatically polls an RTMP stream for availability every XX seconds. If the stream is there, it will kick in. If not, the plugin will keep retrying. It allows users to wait for a live event without having to refresh their page.</description>
+    <href></href>
+    <page>http://www.longtailvideo.com/addons/plugins/97/Livestream</page>
+    
+    <flashvars>
+        <flashvar type="field">
+            <name>file</name>
+            <default></default>
+            <description>This flashvar contains the name of the RTMP stream to check/load.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>streamer</name>
+            <default></default>
+            <description>RTMP server to pull the stream from (e.g. rtmp://myserver.com/live-app).</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>image</name>
+            <default></default>
+            <description>This flashvar indicates the placeholding image associated with the livestream. It is shown when the live stream ends. It should typically say something like "thanks for watching."</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>interval</name>
+            <default></default>
+            <description>Interval in seconds for polling the livestream.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>message</name>
+            <default></default>
+            <description>Message to show in the display when polling the livestream.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>tags</name>
+            <default></default>
+            <description>If you run multiple livestreams with one server setup, set this flashvar to filter which videos will be polled and loaded from the livestream. The livestream will only be polled when the tags of the video align with the tags you enter here.</description>
+        </flashvar>
+    </flashvars>
+</plugin>

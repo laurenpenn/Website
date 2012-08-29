@@ -1,0 +1,46 @@
+#media-upload .playlist-item {
+  border: 1px solid;
+  min-height: 36px;
+  position: relative;
+  margin-top: -1px;
+  width: 100%;
+}
+
+#playlist-items, .imgedit-group {
+  border-color: #DFDFDF;
+}
+
+.playlist-item {
+  border-color: #DFDFDF;
+}
+
+.playlist-item .pinkynail {
+  float: left;
+  margin: 2px;
+  max-height: 32px;
+  max-width: 40px;
+}
+
+.playlist-item .filename {
+  line-height: 36px;
+  overflow: hidden;
+  padding: 0 10px;
+}
+
+#media-upload .ui-sortable .playlist-item {
+  cursor: move;
+}
+
+.sorthelper {
+	height: 37px;
+	width: 300px;
+	display: block;
+}
+
+.menu_order_input {
+  border: none;
+  cursor: default;
+  font-size: 10px;
+  padding: 1px;
+  width: 23px;
+}

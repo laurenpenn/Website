@@ -1,0 +1,203 @@
+<plugin>
+    <title>Flow</title>
+    <filename>flow.swf</filename>
+    <repository>flow-1</repository>
+    <version>1.1</version>
+    <compatibility>Compatible with 4.6 and later.</compatibility>
+    <author>Wesley Luyten</author>
+    <description>The Flow plugin provides a slick, 3D animation for users to flip through your playlist items. The plugin automatically grabs thumbnail images from any playlist and renders them three-dimensionally in a row. Users can navigate through the playlist by clicking on a thumbnail image or using the left/right arrow keys and space bar to select items.</description>
+    <href></href>
+    <page>http://www.longtailvideo.com/addons/plugins/121/Flow</page>
+    
+    <flashvars>
+        <flashvar type="field">
+            <name>coverheight</name>
+            <default></default>
+            <description>This flashvar is used to set the height of the thumbnail images.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>coverwidth</name>
+            <default>150</default>
+            <description>Maximum width of the cover.</description>
+        </flashvar>
+        <flashvar type="select">
+            <name>showtext</name>
+            <default>false</default>
+            <description>This flashvar is used to indicate if title and description text should appear under the thumbnail images.</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+        <flashvar type="field">
+            <name>position</name>
+            <default></default>
+            <description>This flashvar is used to indicate the position of the plugin. If left blank, it will appear over the display area. (bottom | left | right | top)</description>
+            <select>
+                <option></option>
+                <option>bottom</option>
+                <option>left</option>
+                <option>right</option>
+                <option>top</option>
+            </select>
+        </flashvar>
+        <flashvar type="field">
+            <name>size</name>
+            <default></default>
+            <description>This flashvar is used to specify the height of the plugin if it is being positioning to the top, bottom, left or right of the display area. If the position flashvar isn't set, then size is ignored.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>defaultcover</name>
+            <default></default>
+            <description>Default image if no thumbnail is available.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>xposition</name>
+            <default></default>
+            <description>Horizontal position of the plugin.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>yposition</name>
+            <default></default>
+            <description>Vertical Position of the plugin</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>covergap</name>
+            <default>40</default>
+            <description>Horizontal width between covers.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>coverangle</name>
+            <default>60</default>
+            <description>Angle of not selected covers in degrees.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>coverdepth</name>
+            <default>150</default>
+            <description>Depth of not selected covers.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>coveroffset</name>
+            <default>60</default>
+            <description>Horizontal width between selected cover and not selected covers.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>opacitydecrease</name>
+            <default>0.1</default>
+            <description>Decrease of opacity of the covers going back (min:0, max:1).</description>
+        </flashvar>
+        <flashvar type="select">
+            <name>showreflection</name>
+            <default>false</default>
+            <description>Show a reflection of the cover (true or false).</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+        <flashvar type="field">
+            <name>reflectionoffset</name>
+            <default>0</default>
+            <description>Vertical offset of reflection.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>titleoffset</name>
+            <default>5</default>
+            <description>Vertical offset of title.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>descriptionoffset</name>
+            <default>25</default>
+            <description>Vertical offset of description.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>font</name>
+            <default>Arial Rounded MT Bold</default>
+            <description>Font of title and description.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>fontsize</name>
+            <default>12</default>
+            <description>Size of font.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>color</name>
+            <default>f1f1f1</default>
+            <description>Color of font.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>tweentime</name>
+            <default>0.6</default>
+            <description>Elapsed time of one tween animation.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>framerate</name>
+            <default>30</default>
+            <description>Frame rate of plugin.</description>
+        </flashvar>
+        <flashvar type="select">
+            <name>autorotate</name>
+            <default>false</default>
+            <description>Set this true to auto rotate the covers (true | false).</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+        <flashvar type="field">
+            <name>rotatedelay</name>
+            <default>2500</default>
+            <description>Delay in milliseconds when auto rotated.</description>
+        </flashvar>
+        <flashvar type="select">
+            <name>controlbaricon</name>
+            <default>false</default>
+            <description>Show a button in the control bar (true | false).</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+        <flashvar type="select">
+            <name>onidle</name>
+            <default>show</default>
+            <description>Show or hide plugin when player is idle (show | hide).</description>
+            <select>
+                <option>hide</option>
+                <option>show</option>
+            </select>
+        </flashvar>
+        <flashvar type="select">
+            <name>onpaused</name>
+            <default>show</default>
+            <description>Show or hide plugin when player is paused (show | hide).</description>
+            <select>
+                <option>hide</option>
+                <option>show</option>
+            </select>
+        </flashvar>
+        <flashvar type="select">
+            <name>onplaying</name>
+            <default>show</default>
+            <description>Show or hide plugin when player is playing (show | hide).</description>
+            <select>
+                <option>hide</option>
+                <option>show</option>
+            </select>
+        </flashvar>
+        <flashvar type="select">
+            <name>oncompleted</name>
+            <default>show</default>
+            <description>Show or hide plugin when player is completed (show | hide).</description>
+            <select>
+                <option>hide</option>
+                <option>show</option>
+            </select>
+        </flashvar>
+        <flashvar type="field">
+            <name>file</name>
+            <default></default>
+            <description>Delay in milliseconds when auto rotated.</description>
+        </flashvar>
+    </flashvars>
+</plugin>

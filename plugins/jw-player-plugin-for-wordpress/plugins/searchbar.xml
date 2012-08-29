@@ -1,0 +1,34 @@
+<plugin>
+    <title>Searchbar</title>
+    <filename>searchbar.swf</filename>
+    <repository>searchbar-1</repository>
+    <version>1.0</version>
+    <compatibility>Compatible with 4.1 or higher.</compatibility>
+    <author>LongTail Video</author>
+    <description>This plugin displays a small searchbar in the player. When pressing the submit button, the plugin sends the search query to a serverside script. The script should return the search results as a feed format the player can read. These results are loaded into the player.  This plugin is compatible with version 4.1 of the player. Positioning the plugin to top or bottom only works from version 4.4.</description>
+    <href></href>
+    <page>http://www.longtailvideo.com/addons/plugins/112/Searchbar</page>
+    
+    <flashvars>
+        <flashvar type="field">
+            <name>color</name>
+            <default>CC0000</default>
+            <description>Color of the submit button.  The button will automatically be set to the lightcolor flashvar of the overall player if it is specified instead.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>label</name>
+            <default>Search</default>
+            <description>Label of the submit button.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>position</name>
+            <default></default>
+            <description>Set this to either top or bottom if you want to display the searchbar outside of the display space. The searchbar is 40px high and will stretch itself over the full width of the player.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>script</name>
+            <default></default>
+            <description>Location of the serverside search script. By default, this is a script from Youtube. The plugin automatically replaces the QUERY string with the actual search query from the input box. The script should return the search results in the form of one of the XML formats the player reads.</description>
+        </flashvar>
+    </flashvars>
+</plugin>

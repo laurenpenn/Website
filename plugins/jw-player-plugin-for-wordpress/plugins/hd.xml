@@ -1,0 +1,39 @@
+<plugin>
+	<title>HD Plugin</title>
+	<filename>hd.swf</filename>
+	<repository>hd-1</repository>
+	<version>1.4</version>
+	<compatibility>Compatible with 4.3; dock button works from 4.5</compatibility>
+	<author>LongTail Video</author>
+	<description>This plugin implements an HD quality toggle in the controlbar.  An icon is shown to do the toggle, and the value is saved as a cookie.  This plugin works best for single files, but playlist work too (a new playlist is loaded on switch).  For the 4.5 button or higher, the plugin can also place a button in the dock.</description>
+	<href>http://developer.longtailvideo.com/trac/browser/plugins/hd</href>
+	<page>http://www.longtailvideo.com/addons/plugins/65/HD</page>
+
+	<flashvars>
+		<flashvar type="field">
+			<name>file</name>
+			<default></default>
+			<description>Location of the HD video the player should load.  The regular 'file' flashvar holds the location of the fallback video.</description>
+		</flashvar>
+		<flashvar type="select">
+		    <select>
+		      <option>false</option>
+		      <option>true</option>
+		    </select>
+			<name>fullscreen</name>
+			<default>false</default>
+			<description>When "true", HD is automatically turned on/off when switching fullscreen.  This implies the video will start with the regular file.</description>
+		</flashvar>
+		<flashvar type="select">
+		    <select>
+		      <option>false</option>
+		      <option>true</option>
+		    </select>
+			<name>state</name>
+			<default>true</default>
+			<description>Set this to "false" to let the player start with the low-quality video.  Set this to "true" to always start with HD, no matter the cookied state.</description>
+		</flashvar>
+
+	</flashvars>
+
+</plugin>
