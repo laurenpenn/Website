@@ -1,0 +1,77 @@
+/**
+ * Tabs Stylesheet
+ * For use with the Hybrid Tabs plugin
+ *
+ * @since 0.1
+ */
+
+.tab-content {
+	display: none;
+	}
+.t1 {
+	display: block;
+	}
+
+/**
+* Primary tabs and content-area widget tabs
+***********************************************/
+#content .widget-tabs, #primary .widget-tabs {
+	margin: 0 0 20px 0 !important;
+	padding: 0 !important;
+	background: transparent !important;
+	border: none !important;
+	}
+
+#content .widget-tabs .widget-inside, #primary .widget-tabs .widget-inside {
+	padding: 0 !important;
+	background: transparent !important;
+	border: none !important;
+	}
+#content .widget-tabs ul.tabs, #primary .widget-tabs ul.tabs {
+	overflow: hidden;
+	list-style: none;
+	margin: 0 0 7px 0;
+	}
+#content .widget-tabs li.t, #primary .widget-tabs li.t {
+	float: left;
+	display: inline;
+	margin: 0 7px 0 0;
+	padding: 0;
+	font: normal normal bold 13px/13px Arial, Verdana, sans-serif;
+	background: transparent;
+	border: 1px solid #ccc !important;
+	text-align: center;
+	}
+#content .widget-tabs li.t a, #primary .widget-tabs li.t a {
+	display: block;
+	padding: 11px 15px;
+	font-weight: bold;
+	color: #666;
+	background: #fff;
+	}
+#content .widget-tabs li.t a:hover, #primary .widget-tabs li.t a:hover {
+	background: #eee;
+	text-decoration: none;
+	}
+#content .widget-tabs li.t a.tab-current, #primary .widget-tabs li.t a.tab-current {
+	color: #fff;
+	color: #f7f7f7;
+	background: #0C386E;
+	}
+#content .widget-tabs .tab-content, #primary .widget-tabs .tab-content {
+	overflow: hidden;
+	clear: left;
+	padding: 9px 9px 0 9px;
+	background: #fff;
+	border: 1px solid #ccc;
+	}
+
+/**
+* Primary widget tabs
+************************************************/
+#primary .widget-tabs ul.tabs {
+	width: 320px;
+	}
+#primary .widget-tabs li.t4 {
+	margin: 0;
+	}
