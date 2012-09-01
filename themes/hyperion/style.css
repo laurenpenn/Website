@@ -1,0 +1,15 @@
+/*
+Theme Name: Hyperion
+Theme URI: http://digitonik.com
+Description: A clean and stylish theme for business, portfolios, and blogging.
+Version: 1.0
+Author: Digitonik
+Author URI: http://digitonik.com
+Tags: Hyperion
+*/
+
+@import "style/css/reset.css";
+@import "style/css/typography.css";
+@import "style/css/layout.css";
+@import "style/css/sliders.css";
+@import "style/css/superfish.css";

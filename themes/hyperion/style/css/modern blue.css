@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* CSS Document */
+
+body { background: #86C9EF url('../../style/images/modern-blue-bg.png') top center no-repeat; }
+
+#headerwrap {
+	background: url('../../style/images/menu-bg-modern.png') top left repeat-x;
+}
+
+#carousel-wrapper {
+	background: url('../../style/images/carousel-bg-modern-blue.png') no-repeat top center;
+}
+
+.hp-menu li {
+	background:	none;
+}
+
+.sf-sub-indicator {
+	background:		url('../../style/images/arrows-blue.png') no-repeat -10px -100px;
+}
+
+.thumb {
+	background: url('../../style/images/carousel-nav-blue.png') no-repeat;
+}
+
+a.thumb {
+	background: url('../../style/images/carousel-nav-blue.png') no-repeat;
+}
+
+#intouch {
+	background: url('../../style/images/intouch-bg-blue.png') bottom right no-repeat;
+}
+
+#footer-wrap {
+	background: url('../../style/images/modern-blue-bg.png') top center no-repeat;
+}
+
+#footer h3 {
+	border-bottom: 1px solid #7ebadb;
+}
+
+#footer .footer-widget ul li a {
+	border-bottom: 1px solid #7ebadb;
+}
+
+
+#footer .footer-widget ul li a:hover {
+	background: #98d1f1;
+}
