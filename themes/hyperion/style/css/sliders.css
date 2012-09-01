@@ -1,0 +1,233 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*Compact Slider specific styles.*/
+#carousel-wrapper-compact {
+	position:absolute;
+	top: 105px;
+	width: 100%;
+	display: block;
+	z-index: 10;
+	height: 353px;
+	background: url('../../style/images/carousel-bg-compact-white.png') no-repeat top center;
+}
+
+#carousel-holder-compact {
+	width: 960px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 12;
+	display: block;
+	height: 374px;
+	padding: 48px 0 28px 0;
+	overflow: hidden;
+}
+
+/*Wide Slider . Some of these also control the styling of the Compact slider*/
+/*  FULLWIDTH SLIDER  */
+#nobar { width: 100%; overflow:hidden; }
+
+#carousel-wrapper {
+	position:absolute;
+	top: 130px;
+	width: 100%;
+	display: block;
+	z-index: 10;
+	height: 353px;
+	background: url('../../style/images/carousel-bg.png') no-repeat top center;
+}
+
+#carousel-holder {
+	width: 960px;
+	margin: 0 auto;
+	position: relative;
+	display: block;
+	height: 384px;
+	padding: 48px 0 18px 0;
+}
+
+a.meh {
+	position:absolute;
+	top: 0;
+	z-index: 20;
+	width: 960px;
+	height: 317px; 
+	display: block;
+}
+
+.textholder {
+	z-index: 10;
+}
+
+.textholder p {
+	position: absolute;
+	padding: 5px;
+	line-height: 18pt;
+	top: 16px;
+	left: 50px;
+	z-index: 100;
+	font-size: 18pt;
+	font-weight: bold;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	background: #ffffff;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.textholder a {
+	padding: 5px 5px 5px 35px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 18pt;
+	line-height: 16pt;
+	position: absolute;
+	left: 10px;
+	top: 21px;
+	width: auto;
+	height: 22px;
+	display: block;
+	background: #ffffff url('../../style/images/view-button.png')  5px 5px no-repeat;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;	
+}
+
+.textholder h3 {
+	position: absolute;
+	font-weight: normal;
+	top: 15px;
+	left: 10px;
+	color: #000000;
+	z-index: 100;
+	font-size: 30px;
+}
+
+.thumbs {
+	text-align: center;
+	width: 150px;
+	margin: 20px 0 0 850px;
+	z-index: 14;
+	position: relative;
+	
+}
+
+#carousel-holder h2 {
+	font-size: 4em;
+	position: absolute;
+	bottom: 0;
+	color: #000000;
+	left: 0;
+}
+
+#carousel {
+	width: 960px;
+	margin: 0 auto;
+}
+
+#carousel ul {
+    list-style: none;
+    width: 20000px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+#carousel li {
+    display: inline;
+    float: left;
+} 
+
+#carousel li span p {
+	display: none;
+}
+
+.thumb {
+	display: block;
+	width: 14px;
+	height: 14px;
+	float: left;
+	margin: 2px;
+	background: url('../../style/images/carousel-nav.png') no-repeat;
+	display: inline;
+	cursor: pointer;
+	text-indent: -9999px;
+}
+
+a.thumb {
+	width:14px;
+	height:14px;
+	float: left;
+	cursor: pointer;
+	margin:3px;
+	background: url('../../style/images/carousel-nav.png') no-repeat;
+	display:block;
+	text-indent: -9999px;
+}
+
+a.thumb:hover {
+	background-position:0 -14px;
+}
+
+a.thumb.active {
+	background-position:0 -28px;
+}
+
+/*FADING SLIDER*/
+#sliderWrap {
+	width: 100%;
+    padding: 40px 0;
+}
+
+#slider {
+    width: 979px; /* important to be same as image width */
+    height: 356px; /* important to be same as image height */
+	margin: 0 auto;
+    position: relative; /* important */
+	overflow: hidden; /* important */
+	background: url('../../style/images/carousel-bg-compact.png') no-repeat;
+}
+#sliderContent {
+    width: 960px; /* important to be same as image width or wider */
+    position: absolute;
+	top: 19px;
+	left: 9px;
+}
+.sliderImage {
+    float: left;
+    position: relative;
+	display: none;
+}
+.sliderImage span {
+    position: absolute;
+	font: 14px/15px Arial, Helvetica, sans-serif;
+    padding: 10px;
+    width: 940px;
+    background-color: #CCC;
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+	-khtml-opacity: 0.8;
+    opacity: 0.8;
+    color: #000;
+    display: none;
+}
+
+.sliderImage span strong {
+    font-size: 32px;
+	line-height: 32pt;
+}
+.slidertop {
+	top: 0;
+	left: 0;
+}
+.sliderbottom {
+	bottom: 3px;
+    left: 0;
+}
+
+.sliderleft {
+	top: 0;
+    left: 0;
+	width: 190px !important;
+	height: 297px;
+}

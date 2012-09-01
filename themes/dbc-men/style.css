@@ -130,6 +130,9 @@ dl.tabs dd.active {
     border-left: 1px solid #699;
     border-right: 1px solid #699;
 }
+.page-template-home .tabs-content.contained {
+    border-top: 1px solid #069;
+}
 
 /* Features */
 #features {

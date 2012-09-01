@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- map file should be located in path (set in html) folder                                                                                             -->
+<!-- tl_long is longitute of top left corner, the default values is -180, tl_lat  is latitude  of top left corner, the default values is 90              -->
+<!-- br_long is longitute of top left corner, the default values is 180, br_lat  is latitude  of top left corner, the default values is -90              -->
+<!-- you should only set longitudes and latitudes if you want to calibrate your map and you know these values. Otherwise you can delete these attributes -->
+<!-- you can set default zoom level, zoom_x and zoom_y. To find out the numbers, you should turn developer mode on (in settings file), zoom map to required position, copy zoom info to clipboard (using right click menu) and paste it here -->
+<map map_file="http://dbcm.org/wp-content/plugins/ammap/maps/world3.swf" tl_long="-168.49" tl_lat="83.63" br_long="190.3" br_lat="-55.58" zoom_x="0%" zoom_y="0%" zoom="100%">
+	<!--areas are movie clips inside map file. areas can have child objects:movies, labels & lines -->
+	<!-- check online help for all possible area's attributes -->
+	<areas>
+		<area id="976" title="Afghanistan" mc_name="AF" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="977" title="land Islands" mc_name="AX" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="978" mc_name="AL" title="Albania" color="#DC3912" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="979" title="Algeria" mc_name="DZ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="981" title="Andorra" mc_name="AD" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="982" title="Angola" mc_name="AO" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="983" title="Anguilla" mc_name="AI" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="960" title="Antigua and Barbuda" mc_name="AG" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="29" mc_name="AR" title="Argentina" color="#FF9900" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>&lt;h3&gt;Missionaries&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/kurt-and-lorena-grothe/"&gt;Kurt and Lorena Grothe&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/greg-and-caro-travis/"&gt;Greg and Caro Travis&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;strong&gt;About the Country...&lt;/strong&gt;&#13;
+&#13;
+Argentina is a beautifully diverse country, with mountain scenes that rival those of Colorado, painted deserts, glaciers, beaches, and modern cities that remind one of Paris, New York or Madrid. Its people are extraordinarily varied as well, from native tribesmen to millions of Italian and Spanish descent, to Germans, Jews, Muslims, and even Koreans.&#13;
+&#13;
+&lt;strong&gt;What's the Need?&lt;/strong&gt;&#13;
+&#13;
+The overwhelming majority of the population does not have a saving relationship with Jesus Christ. Though the traditions of Catholicism pervade this society, the heart of the gospel is absent. One might find a group of people praying to Mary or dropping coins in a box or even practicing charitable deeds, but there are few who renounce their own righteousness and depend upon the grace of God through Christ.&#13;
+&#13;
+&lt;strong&gt;What are our SERVE missionaries up to?&lt;/strong&gt;&#13;
+&#13;
+The SERVE missionaries in Argentina are dedicated to cultivating, equipping, and mobilizing pastors and leaders of local churches throughout Argentina. The hope and expectation of this team is that the native church might be more encouraged and better prepared to do the work of proclaiming the gospel to the lost and building up the faith and ministry of those who already believe. The primary tool for the task is the Bible Training Center for Pastors, which is basically a seminary curriculum condensed into two years. God has really blessed the work, bringing together pastors from congregations that do not normally get along and opening doors for communication and understanding through their studies together.&#13;
+&#13;
+&amp;nbsp;</description>
+		</area>
+		<area id="987" title="Armenia" mc_name="AM" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="988" title="Aruba" mc_name="AW" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="989" title="Australia" mc_name="AU" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="360" mc_name="AT" title="Austria" color="#FF9900" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>&lt;h3&gt;Missionaries&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/tim-and-lori-ford/"&gt;Tim and Lori Ford&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/kasey-krominga/"&gt;Kasey Krominga&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/adam-spencer/"&gt;Adam Spencer&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/matt-and-liz-eck/"&gt;Matt and Liz Eck&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/russ-and-roswitha-clowdus/"&gt;Russ and Roswitha Clowdus&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;strong&gt;About the Country ...&lt;/strong&gt;&#13;
+&#13;
+Slightly smaller than the size of Maine, Austria is home for more than eight million people. Austria is known for it's beautiful landscape and being the birthplace of famous composers such as Mozart, Haydn, and Strauss. The capital, Vienna, is a cosmopolitan city with people from many different backgrounds.&#13;
+&#13;
+&lt;strong&gt;What's the Need?&lt;/strong&gt;&#13;
+&#13;
+People are growing up in Austria as a "Christian" country and identify themselves as such, but they really have no idea what that means. The state-sponsored church seems ineffective. There are also thousands of Muslim refugees that need to be reached with the love of Christ.&#13;
+&#13;
+&lt;strong&gt;What are our SERVE Missionaries up to?&lt;/strong&gt;&#13;
+&#13;
+The SERVE missionaries in Austria endeavor to disciple the local Body of Christ to live out their faith and impact their culture. The Austria Team accomplishes this by partnering with youth organizations, a local refugee ministry, and intentionally training and equipping local church leadership.</description>
+		</area>
+		<area id="991" title="Azerbaijan" mc_name="AZ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="992" title="Bahamas" mc_name="BS" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="993" title="Bahrain" mc_name="BH" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="994" title="Bangladesh" mc_name="BD" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="995" title="Barbados" mc_name="BB" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="996" title="Belarus" mc_name="BY" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="997" title="Belgium" mc_name="BE" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="998" title="Belize" mc_name="BZ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="999" mc_name="BJ" title="Benin" color="Serve Missionary" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1000" title="Bermuda" mc_name="BM" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1001" title="Bhutan" mc_name="BT" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1002" title="Bolivia, Plurinational State Of" mc_name="BO" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1003" title="Bonaire, Sint Eustatius And Saba" mc_name="BQ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1004" title="Bosnia And Herzegovina" mc_name="BA" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1005" title="Botswana" mc_name="BW" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1007" mc_name="BR" title="Brazil" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>	
+		<area id="1009" title="Brunei Darussalam" mc_name="BN" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1010" title="Bulgaria" mc_name="BG" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1011" title="Burkina Faso" mc_name="BF" color="Serve Missionary" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="" mc_name="VF" title="BURKINA FASO" color="#FF9900" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>
+				<![CDATA[SERVE Missionaries, Endorsed Affiliate Missionaries, BTCP]]>
+			</description>
+		</area>	
+		<area id="1012" title="Burundi" mc_name="BI" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1013" title="Cambodia" mc_name="KH" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1014" mc_name="CM" title="Cameroon" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1015" title="Canada" mc_name="CA" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1016" title="Cape Verde" mc_name="CV" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1017" title="Cayman Islands" mc_name="KY" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1018" title="Central African Republic" mc_name="CF" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="" mc_name="CF" title="CENTRAL AFRICAN REPUBLIC" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>
+				<![CDATA[SERVE Missionaries, Endorsed Affiliate Missionaries, BTCP]]>
+			</description>
+		</area>
+		<area id="1019" mc_name="TD" title="Chad" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1020" title="Chile" mc_name="CL" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="325" mc_name="CN" title="China" color="#FF9900" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>&lt;strong&gt;About the Country ...&lt;/strong&gt;&#13;
+&#13;
+&amp;nbsp;&#13;
+&#13;
+&lt;strong&gt;What's the Need?&lt;/strong&gt;&#13;
+&#13;
+&amp;nbsp;&#13;
+&#13;
+&lt;strong&gt;What are our SERVE Missionaries up to?&lt;/strong&gt;</description>
+		</area>
+		<area id="1024" mc_name="CO" title="Colombia" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1025" title="Comoros" mc_name="KM" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1027" mc_name="CD" title="Congo, The Democratic Republic Of The" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="" mc_name="CD" title="THE DEMOCRATIC REPUBLIC OF THE CONGO" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>
+				<![CDATA[SERVE Missionaries, Endorsed Affiliate Missionaries, BTCP]]>
+			</description>
+		</area>
+		<area id="1029" title="Costa Rica" mc_name="CR" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1086" mc_name="CIT" title="Ivory Coast" color="Serve Missionary" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1031" title="Croatia" mc_name="HR" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1032" mc_name="CU" title="Cuba" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1033" title="Curaçao" mc_name="CW" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1034" title="Cyprus" mc_name="CY" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1035" title="Czech Republic" mc_name="CZ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1036" title="Denmark" mc_name="DK" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1037" title="Djibouti" mc_name="DJ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1038" title="Dominica" mc_name="DM" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1039" title="Dominican Republic" mc_name="DO" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1040" mc_name="EC" title="Ecuador" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1041" title="Egypt" mc_name="EG" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1042" title="El Salvador" mc_name="SV" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1043" title="Equatorial Guinea" mc_name="GQ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1044" title="Eritrea" mc_name="ER" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1045" title="Estonia" mc_name="EE" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1046" title="Ethiopia" mc_name="ET" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1048" title="Faroe Islands" mc_name="FO" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1047" title="Falkland Islands (Malvinas)" mc_name="FK" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1049" title="Fiji" mc_name="FJ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1050" title="Finland" mc_name="FI" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="162" mc_name="FR" title="France" color="#FF9900" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>&lt;h3&gt;Missionaries&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/jill-senechal/"&gt;Jill Senechal&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/willie-and-karina-s/"&gt;Willie and Karina Server&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/daniel-and-marie-orozco/"&gt;Daniel and Marie Orozco&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/amy-j/"&gt;Amy Jez&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/ray-franks/"&gt;Ray Franks&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/ross-and-carmie-duncan/"&gt;Ross and Carmie Duncan&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/james-and-jen-arnold/"&gt;James and Jen Arnold&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;strong&gt;About the Country ...&lt;/strong&gt;&#13;
+&#13;
+The fashion city of Paris is the capital of France, but our missionaries are currently located in the east of France between Nice and Saint-Paul, on the coast of the Mediterranean Sea.&#13;
+&#13;
+&lt;strong&gt;What's the Need?&lt;/strong&gt;&#13;
+&#13;
+In France, less than 1% of the population are professing Christians and there is a major Muslim population. The need is great for evangelism and discipleship, demonstrating the love of Christ.&#13;
+&#13;
+&lt;strong&gt;What are our SERVE Missionaries up to?&lt;/strong&gt;&#13;
+&#13;
+The France Team is serving in and through two English speaking international churches, in Nice and in nearby St. Paul. In addition to evangelism and discipleship, the team teaches BTCL and CCBT classes, leads worship, works with children's Sunday School programs, and coordinates short term mission trips for Denton Bible Church.</description>
+		</area>
+		<area id="1052" title="French Guiana" mc_name="GF" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1055" title="Gabon" mc_name="GA" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1056" title="Gambia" mc_name="GM" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1057" title="Georgia" mc_name="GE" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1058" title="Germany" mc_name="DE" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1059" title="Ghana" mc_name="GH" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1061" title="Greece" mc_name="GR" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1062" title="Greenland" mc_name="GL" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1063" title="Grenada" mc_name="GD" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1064" title="Guadeloupe" mc_name="GP" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1066" title="Guatemala" mc_name="GT" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1068" title="Guinea" mc_name="GN" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1069" title="Guinea-Bissau" mc_name="GW" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1070" title="Guyana" mc_name="GY" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1071" title="Haiti" mc_name="HT" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1074" title="Honduras" mc_name="HN" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1075" title="Hong Kong" mc_name="HK" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1076" title="Hungary" mc_name="HU" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1077" title="Iceland" mc_name="IS" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="36" mc_name="IN" title="India" color="#FF9900" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>&lt;h3&gt;Missionaries&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/adam-and-lillie-scott/"&gt;Adam and Lillie Scott&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/babu-and-sally-george/"&gt;Babu and Sally George&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;strong&gt;About the Country ...&lt;/strong&gt;&#13;
+&#13;
+&amp;nbsp;&#13;
+&#13;
+&lt;strong&gt;What's the Need?&lt;/strong&gt;&#13;
+&#13;
+Less than 6% of the population in India is Christian; the majority professing Hinduism. The people of India also face challenges such as poverty, poor treatment of women and children, and religious extremists. There is a great need for the Gospel to be shared in India.&#13;
+&#13;
+&lt;strong&gt;What are our SERVE Missionaries up to?&lt;/strong&gt;&#13;
+&#13;
+&amp;nbsp;</description>
+		</area>
+		<area id="1079" mc_name="ID" title="Indonesia" color="#DC3912" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1080" title="Iran, Islamic Republic Of" mc_name="IR" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1081" title="Iraq" mc_name="IQ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1082" title="Ireland" mc_name="IE" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1084" title="Israel" mc_name="IL" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1085" mc_name="IT" title="Italy" color="#DC3912" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1087" title="Jamaica" mc_name="JM" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="" title="JAMMU AND KASHMIR" mc_name="KA"/>
+		<area id="1088" mc_name="JP" title="Japan" color="#109618" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1090" title="Jordan" mc_name="JO" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1091" title="Kazakhstan" mc_name="KZ" color="#109618" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description>&lt;h3&gt;Missionaries&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/john-kelly-attwood/"&gt;John &amp;#038; Kelly Attwood&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;</description></area>
+		<area id="39" mc_name="KE" title="Kenya" color="#FF9900" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>&lt;h3&gt;Missionaries&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/ben-warren/"&gt;Ben Warren&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/joe-and-christina-pytleski/"&gt;Joe and Christina Pytleski&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/dennis-and-allison-omondi/"&gt;Dennis and Allison Omondi&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;strong&gt;About the Country ...&lt;/strong&gt;&#13;
+&#13;
+Only a little bit smaller than the state of Texas, Kenya lies on the equator in the east coast of Africa. The people of Kenya are known for being very relational. While there are political issues often arising in Kenya, God is definitely at work spreading His truth to all the people of Kenya. The Kenya team is based in Mombasa, a city of about  one million people situated in the Coast province of Kenya. Mombasa is located about 250 miles from Nairobi (the capital city of Kenya) and is the second largest city in Kenya.&#13;
+&#13;
+&lt;strong&gt;What's the Need?&lt;/strong&gt;&#13;
+&#13;
+There is a need for pastors throughout Kenya to be discipled and trained so they can shepherd Kenyans in their own churches. The current need at the local church in Mombasa is development of the church structure from just people meeting together every Sunday to being involved in the community as lights and salts for Jesus.&#13;
+&lt;div&gt;&lt;strong&gt;What are our SERVE Missionaries up to?&lt;/strong&gt;&lt;/div&gt;&#13;
+&lt;div&gt;&lt;/div&gt;&#13;
+&lt;div&gt;&lt;/div&gt;&#13;
+&lt;div&gt;&lt;/div&gt;&#13;
+&lt;div&gt;&lt;/div&gt;&#13;
+&lt;div&gt;&lt;/div&gt;&#13;
+&lt;div&gt;The SERVE missionaries in Kenya are currently training and teaching Kenyan pastors and church leaders using the BTCP curriculum, and working with the Word of Life Fellowship Church in Mombasa. The team has a big heart for church development and discipleship. They desire to see God be glorified in their town of Mombasa and beyond as they equip Kenyan pastors and send them out to their hometowns in Kenya.&lt;/div&gt;&#13;
+&lt;div&gt;&lt;/div&gt;&#13;
+&lt;strong&gt;&#13;
+&lt;/strong&gt;</description>
+		</area>
+		<area id="1131" title="Nauru" mc_name="NR" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1094" title="North Korea" mc_name="KP" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1095" mc_name="KR" title="South Korea" color="#DC3912" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="" title="KOSOVO" mc_name="KV"/>
+		<area id="1096" title="Kuwait" mc_name="KW" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1097" title="Kyrgyzstan" mc_name="KG" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1098" title="Lao People&amp;#8217;S Democratic Republic" mc_name="LA" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1099" title="Latvia" mc_name="LV" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1100" title="Lebanon" mc_name="LB" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1101" title="Lesotho" mc_name="LS" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1102" title="Liberia" mc_name="LR" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1103" title="Libya" mc_name="LY" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1104" title="Liechtenstein" mc_name="LI" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1105" title="Lithuania" mc_name="LT" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1106" title="Luxembourg" mc_name="LU" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1108" title="Macedonia, The Former Yugoslav Republic Of" mc_name="MK" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1109" title="Madagascar" mc_name="MG" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1110" title="Malawi" mc_name="MW" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1111" title="Malaysia" mc_name="MY" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1113" mc_name="ML" title="Mali" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1114" title="Malta" mc_name="MT" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1116" title="Martinique" mc_name="MQ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1117" title="Mauritania" mc_name="MR" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1118" title="Mauritius" mc_name="MU" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="43" mc_name="MX" title="México" color="#FF9900" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>&lt;h3&gt;Missionaries&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/bryan-and-placy-fox/"&gt;Bryan and Placy Fox&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/tim-and-tonantzi-bedford/"&gt;Tim and Tona Bedford&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/paul-and-denise-lambert/"&gt;Paul and Denise Lambert&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;strong&gt;About the Country ...&lt;/strong&gt;&#13;
+&#13;
+Mexico is a vibrant country with a dynamic Latin culture. It is almost three times the size of Texas and home to over 114 million people.&#13;
+&#13;
+&lt;strong&gt;What's the Need?&lt;/strong&gt;&#13;
+&#13;
+With poverty, corruption in politics, and drug dealing such a major party of Mexican society, there is a great need for the Gospel to be shared and discipleship relationships to be formed.&#13;
+&#13;
+&lt;strong&gt;What are our SERVE Missionaries up to?&lt;/strong&gt;&#13;
+&#13;
+The SERVE missionaries in Mexico are currently located in Monterrey and Xalapa working deeply with churches in those two locations. They have Bible training centers and other ministries in other locations in the republic. On a wide level they train church leaders in Bible, theology, pastoral ministry, etc using curricula such as BTCP as well as conferences and church consultations. On a deep level, they work more closely with specific local churches with whom they have much in common with in terms of theology and ministry philosophy. This involves helping to develop church infrastructure, lay leadership, new ministries, vision and strategy, etc.&#13;
+&#13;
+&amp;nbsp;</description>
+		</area>
+		<area id="1122" title="Moldova, Republic Of" mc_name="MD" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1124" title="Mongolia" mc_name="MN" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1125" title="Montenegro" mc_name="ME" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1126" title="Montserrat" mc_name="MS" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1127" title="Morocco" mc_name="MA" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1128" title="Mozambique" mc_name="MZ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1129" mc_name="MM" title="Myanmar" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1130" title="Namibia" mc_name="NA" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="" title="NAURU" mc_name="NR"/>
+		<area id="1132" mc_name="NP" title="Nepal" color="#DC3912" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1133" title="Netherlands" mc_name="NL" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1134" title="New Caledonia" mc_name="NC" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1135" title="New Zealand" mc_name="NZ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1136" title="Nicaragua" mc_name="NI" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1137" mc_name="NE" title="Niger" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1138" title="Nigeria" mc_name="NG" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1142" title="Norway" mc_name="NO" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1143" title="Oman" mc_name="OM" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1144" title="Pakistan" mc_name="PK" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1145" title="Palau" mc_name="PW" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1146" title="Palestinian Territory, Occupied" mc_name="PS" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1147" title="Panama" mc_name="PA" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1148" mc_name="PG" title="Papua New Guinea" color="#DC3912" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>&lt;h3&gt;Missionaries&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/mike-michele-griffs/"&gt;Mike &amp;#038; Michele Griffs&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;</description>
+		</area>
+		<area id="1149" title="Paraguay" mc_name="PY" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1150" mc_name="PE" title="Peru" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1151" title="Philippines" mc_name="PH" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1153" title="Poland" mc_name="PL" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1154" title="Portugal" mc_name="PT" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1155" title="Puerto Rico" mc_name="PR" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1156" title="Qatar" mc_name="QA" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1157" title="Réunion" mc_name="RE" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1158" mc_name="RO" title="Romania" color="Serve Missionary" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="50" mc_name="RU" title="Russia" color="#FF9900" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>&lt;h3&gt;Missionaries&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/adam-and-heather-r/"&gt;Adam and Heather Richardson&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;strong&gt;About the Country ...&lt;/strong&gt;&#13;
+&#13;
+&amp;nbsp;&#13;
+&#13;
+&lt;strong&gt;What's the Need?&lt;/strong&gt;&#13;
+&#13;
+&amp;nbsp;&#13;
+&#13;
+&lt;strong&gt;What are our SERVE Missionaries up to?&lt;/strong&gt;</description>
+		</area>
+		<area id="1160" title="Rwanda" mc_name="RW" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1163" title="Saint Kitts And Nevis" mc_name="KN" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1164" title="Saint Lucia" mc_name="LC" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1165" title="Saint Martin (French Part)" mc_name="MF" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1167" title="Saint Vincent And The Grenadines" mc_name="VC" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1168" title="Samoa" mc_name="WS" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1170" title="Sao Tome And Principe" mc_name="ST" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1171" title="Saudi Arabia" mc_name="SA" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1172" mc_name="SN" title="Senegal" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1173" title="Serbia" mc_name="RS" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1175" title="Sierra Leone" mc_name="SL" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1176" title="Singapore" mc_name="SG" color="#109618" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description>&lt;h3&gt;Missionaries&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/phil-stella-carter/"&gt;Phil &amp;#038; Stella Carter&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;</description></area>
+		<area id="1178" title="Slovakia" mc_name="SK" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1179" title="Slovenia" mc_name="SI" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1180" mc_name="SB" title="Solomon Islands" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1181" title="Somalia" mc_name="SO" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1182" title="South Africa" mc_name="ZA" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1183" title="South Georgia And The South Sandwich Islands" mc_name="GS" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="53" mc_name="ES" title="Spain" color="#FF9900" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>&lt;h3&gt;Missionaries&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/nico-and-annie-tranchini/"&gt;Nico and Annie Tranchini&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="http://dbcm.org/missionary/memo-and-suzanne-terrazas/"&gt;Memo and Suzanne Terrazas&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;strong&gt;About the Country ...&lt;/strong&gt;&#13;
+&#13;
+Just south of France in western Europe, Spain is home to over 45 million people. It is famous for its bullfighting and Barcelona soccer team that was the winner of the 2010 World Cup.&#13;
+&#13;
+&lt;strong&gt;What's the Need?&lt;/strong&gt;&#13;
+&#13;
+Spain is now a post-Christian country, secular by nature. Although Catholicism is the major religion in Spain, it is interesting to hear the words of the archbishop of Madrid: &lt;em&gt;"It is an indisputable face that many people who live in Spain [Madrid] today not only do not know the Gospel, but they live as though God did not exist." &lt;/em&gt;Therefore there is an obvious need for evangelism and discipleship in Spain.&#13;
+&#13;
+&lt;strong&gt;What are our SERVE Missionaries up to?&lt;/strong&gt;&#13;
+&#13;
+The SERVE missionaries is Spain are seeking to glorify God by preaching, teaching and teaching BTCP classes in Spain. They are currently in Lanzarote, which is located just off the northwest coast of mainland Africa, 100 km west of the border between Morocco and the Western Sahara. This will allow them to impact not only Spain, but Africa as well. Nico has been training pastors and local missionaries in Sudan and Egypt. Also the Church in Lanzarote is sponsoring a soup kitchen in Equatorial Guinea, the only Spanish speaking country in Africa.</description>
+		</area>
+		<area id="1186" title="Sri Lanka" mc_name="LK" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1187" title="Sudan" mc_name="SD" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1184" title="South Sudan" mc_name="SS" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1188" title="Suriname" mc_name="SR" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1189" title="Svalbard And Jan Mayen" mc_name="SJ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1190" title="Swaziland" mc_name="SZ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1191" title="Sweden" mc_name="SE" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1192" title="Switzerland" mc_name="CH" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1193" title="Syrian Arab Republic" mc_name="SY" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1194" title="Taiwan, Province Of China" mc_name="TW" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1195" title="Tajikistan" mc_name="TJ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1196" title="Tanzania, United Republic Of" mc_name="TZ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1197" title="Thailand" mc_name="TH" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1198" title="Timor-Leste" mc_name="TL" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1199" mc_name="TG" title="Togo" color="Serve Missionary" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1201" title="Tonga" mc_name="TO" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1202" title="Trinidad And Tobago" mc_name="TT" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1203" title="Tunisia" mc_name="TN" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1204" title="Turkey" mc_name="TR" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1205" title="Turkmenistan" mc_name="TM" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1206" title="Turks And Caicos Islands" mc_name="TC" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1208" mc_name="UG" title="Uganda" color="#109618" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1209" title="Ukraine" mc_name="UA" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="" mc_name="UE" title="UNITED ARAB EMIRATES" color="#DC3912" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>
+				<![CDATA[SERVE Missionaries, Endorsed Affiliate Missionaries]]>
+			</description>
+		</area>
+		<area id="1211" title="United Kingdom" mc_name="GB" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1212" mc_name="US" title="United States" color="#FF9900" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1214" title="Uruguay" mc_name="UY" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1215" title="Uzbekistan" mc_name="UZ" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1216" title="Vanuatu" mc_name="VU" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="" mc_name="VZ" title="VENEZUELA" color="#3366CC" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description>
+				<![CDATA[SERVE Missionaries, Endorsed Affiliate Missionaries, BTCP]]>
+			</description>
+		</area>
+		<area id="1218" mc_name="VN" title="Viet Nam" color="Serve Missionary" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%">
+			<description/>
+		</area>
+		<area id="1219" title="Virgin Islands, British" mc_name="VG" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1220" title="Virgin Islands, U.S." mc_name="VI" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1222" title="Western Sahara" mc_name="EH" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1223" title="Yemen" mc_name="YE" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1224" title="Zambia" mc_name="ZM" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1225" title="Zimbabwe" mc_name="ZW" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1067" title="Guernsey" mc_name="GG" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1089" title="Jersey" mc_name="JE" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1083" title="Isle Of Man" mc_name="IM" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="1112" title="Maldives" mc_name="MV" color="" text_box_x="30" text_box_y="30%" text_box_width="250" text_box_height="30%"><description/></area>
+		<area id="" title="borders" mc_name="borders" color="#FFFFFF" balloon="false"/>
+		<area id="" title="Kashmir line of control (UN)" mc_name="KA_line_of_control" color="#FFFFFF" balloon="false" alpha="0"/>
+	</areas>
+	<!-- movies are movie clips loaded on top of a map. Movies can have child objects:movies, labels & lines -->
+	<!-- movies can be bounded to a map or to a stage. To bound to a map you should indicate longitude (long) and latitude (lat). To bound to the stage you should indicate x and y (in pixels or percents) -->
+	<!-- there are several build in movies, which you don't need to load. To use them, use one of the following names for "file" attribute: rectangle, border, circle, target -->
+	<!-- check online help for all possible area's attributes -->
+	<movies>
+		<!-- the following movie is bounded to a map (is moving together with a map when map is dragged or moved). However the size is not changing, as "fixed_size" is set to "true". If you set it to false (or just delete it), the target will be resized together with the map. -->
+		<!-- the following movie is loaded. You can load swf, jpg, gif, png files. You can find a lot of icons in swf format in ammap/icons folder. This movie is bounded to a stage, and is not moved or resized together with the map -->
+		<movie lat="33.232966" long="-97.107009" x="59.6667%" y="77.5%" file="http://dbcm.org/wp-content/plugins/ammap/icons/pin.swf" title="Singapore" text_box_width="250" text_box_height="30%" id="1750" mc_name="" color="" text_box_x="30" text_box_y="30%">
+			<description/>
+		</movie>
+	</movies>
+</map>

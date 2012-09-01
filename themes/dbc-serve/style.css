@@ -1,822 +1,552 @@
-/**
- * Theme Name: SERVE
- * Description: A custom theme for Denton Bible Church.
- * Version: 0.1
- * Author: Develop Daly
- * Author URI: http://developdaly.com
- * Tags: buddypress
- * Template: dbc
- */
-
-@import url('../dbc/style.dev.css');
-
-body {
-	background: #eee;
-	font: 14px/25px arial, sans-serif;
-}
-.wrap {
-	max-width: 1000px;
-	width: auto;
-}
-#container {
-	background: none;
-}
-
-#main .wrap {
-	border: 1px solid #ccc;
-	border-top: none;
-	-moz-border-radius: 0 0 2px 2px;
-	-webkit-border-radius: 0 0 2px 2px;
-	-webkit-box-shadow: 1px 1px 3px #ccc;
-	box-shadow: 1px 1px 3px #ccc;
-}
-#main .wrap, #content {
-	margin-bottom: 5px;
-}
-#footer .wrap {
-	background: #fff;
-	border: 1px solid #ccc;
-	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
-	-webkit-box-shadow: 1px 1px 3px #ccc;
-	box-shadow: 1px 1px 3px #ccc;
-}
-
-a, #content a {
-	color: #36C;
-	text-decoration: none;
-}
-
-.aligncenter {
-	text-align: center;
-}
-
-.widget-title {
-	color: #D76D46;
-}
-
-#site-title {
-	margin: 10px 0;
-}
-#site-title a {
-	background: url('images/logo-small.gif') no-repeat;
-	display: inline-block;
-	height: 135px;
-	text-indent: -9999px;
-	width: 135px;		
-}
-#site-description {
-	display: inline-block;
-	float: left;
-	font: 14px/135px Courier;
-	margin: 10px 0 10px 15px;
-	text-shadow: 1px 1px 1px #fff;
-}
-
-#search-form {
-	background: none;
-	height: 34px;
-	padding: 0;
-	width: 206px;
-}
-	#search-text {
-		background: #fff;
-		border: 1px solid #D9D9D9;
-		border-top: 1px solid silver;
-		color: #999795;
-		font: 12px/27px Arial, Helvetica, sans-serif;
-		padding: 6px 10px;
-	}
-	#search-text:hover, #search-text:focus {
-		border: 1px solid #4d90fe;
-		border-top: 1px solid #4d90fe;
-		box-shadow: inset 0px 1px 2px rgba(0,0,0,.3);
-		color: #000;
-	}
-	#search-submit {
-		background: none;
-	}
-
-/* Search Form */
-#header #searchform {
-	position: absolute;
-	top: 3.8em;
-	right: 7.6%;
-	text-align: right;
-}
-#header #searchform div {
-	margin: 0;
-}
-#header #search-text {
-	float: right;
-	-webkit-transition-duration: 400ms;
-	-webkit-transition-property: width, background;
-	-webkit-transition-timing-function: ease;
-	-moz-transition-duration: 400ms;
-	-moz-transition-property: width, background;
-	-moz-transition-timing-function: ease;
-	-o-transition-duration: 400ms;
-	-o-transition-property: width, background;
-	-o-transition-timing-function: ease;
-	width: 72px;
-	background: #fff url(images/search.png) no-repeat 5px 6px !important;
-	-moz-border-radius: 2px;
-	border-radius: 2px;
-	font-size: 14px;
-	height: 22px;
-	line-height: 1.2em;
-	padding: 4px 10px 4px 28px;
-}
-#header #search-text:focus {
-	background-color: #f9f9f9;
-	width: 196px;
-}
-#header #search-textearchsubmit {
-	display: none;
-}
-#header .only-search #searchform {
-	top: 5px;
-	z-index: 1;
-}
-#header .only-search #s {
-	background-color: #666;
-	border-color: #000;
-	color: #222;
-}
-#header .only-search #s,
-#header .only-search #s:focus {
-	width: 85%;
-}
-#header .only-search #s:focus {
-	background-color: #bbb;
-}
-#header .with-image #searchform {
-	top: auto;
-	bottom: -27px;
-	max-width: 195px;
-}
-#header .only-search + #access div {
-	padding-right: 205px;
-}
-/**
-* Page navigation
-************************************************/
-#menu-primary {
-	font-size: 12px;
-	font-weight: bold;
-}
-#menu-primary .wrap {
-	background: #f9f9f9;
-	border: 1px solid #ccc;
-	-moz-border-radius: 2px 2px 0 0;
-	-webkit-border-radius: 2px 2px 0 0;
-	-webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,.1);
-	box-shadow: inset 1px 1px 3px rgba(0,0,0,.1);
-}
-#menu-primary li a {
-	border: 1px solid #f9f9f9;
-	color: #666;
-	text-shadow: 1px 1px 1px #fff;
-}
-#menu-primary li.current_page_item a, #menu-primary li.current_page_item a:hover {
-	-webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,.1);
-	box-shadow: inset 0 0 3px rgba(77,144,254,.5);
-	background: #fff;
-	border: 1px solid rgba(77,144,254,.3);
-	color: rgba(215,109,70,1);
-}
-#menu-primary li a:hover {
-	background: #f9f9f9;
-	-webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,.1);
-	box-shadow: inset 0 0 3px rgba(0,0,0,.1);
-	border: 1px solid rgba(0,0,0,.1);
-	color: rgba(215,109,70,1);
-}
-#menu-primary li a:focus {
-	background: #f9f9f9;
-	-webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,.3);
-	box-shadow: inset 0 0 3px rgba(0,0,0,.3);
-	border: 1px solid rgba(0,0,0,.3);
-	color: rgba(215,109,70,1);
-}
-
-/**
-* Sidebar
-************************************************/
-
-#sidebar-menu {
-	margin: -20px -20px 20px;
-}
-.widget-dbc-pages .toggle {
-	margin: 7px 10px 0 10px;
-	padding: 0;
-}
-.widget-dbc-pages #sidebar-menu li a {
-	background: rgba(51,51,51,1);
-	-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.5);
-	box-shadow: inset 0 1px 3px rgba(0,0,0,.5);
-	border-bottom: 1px solid #ccc;
-	color: #fff;
-	display: block;
-	padding: 5px 20px 5px 36px;	
-	text-shadow: none;
-}
-.widget-dbc-pages #sidebar-menu.tree li {
-	padding-left: 0;
-}
-.widget-dbc-pages #sidebar-menu.tree li li {
-	background: none;
-	margin: 0;
-	padding: 0;
-}
-.widget-dbc-pages #sidebar-menu.tree li li a {
-	background: rgba(51,51,51,.8);
-	padding-left: 36px;;
-}
-.widget-dbc-pages #sidebar-menu.tree li li li a {
-	background: rgba(0,0,0,.6);
-	padding-left: 60px;;
-}
-.widget-dbc-pages #sidebar-menu.tree li.current_page_item a {
-	background: rgba(77,144,254,.8);
-}.widget-dbc-pages #sidebar-menu.tree li.current_page_item.root .children a {
-	background: rgba(51,51,51,.8);
-}
-
-#sidebar-primary img {
-	background: #f1f1f1;
-	border: 3px solid #fff;
-	height: auto;
-	max-width: 185px;
-	padding: 2px;
-	width: auto;
-}
-
-#sidebar-primary .missionary {
-	text-align: center;
-}
-#sidebar-primary .missionary .avatar {
-	width: 100px;
-}
-
-#sidebar-primary #team,
-#sidebar-primary #locations {
-	background: #f0f0f0;
-	border-top: 1px solid #ccc;
-	margin: 0 -20px;
-	padding: 20px;
-}
-
-#sidebar-primary .button {
-	width: 90%;
-}
-
-#sidebar-primary li {
-	line-height: 18px;
-}
-
-#blog-preview {
-	font-size: 11px;
-	line-height: 15px;
-	margin: 0 20px 20px;
-}
-/**
-* Content
-************************************************/
-#content .page-title {
-	font: 32px/48px Georgia, serif;
-	text-decoration: none !important;
-}
-#content .page-title a {
-	color: #333;
-}
-
-a.button, #content a.button {
-	background-color: #3D9400;
-	background-image: -webkit-linear-gradient(top,#D76D46,#BF5D39);
-	background-image: -moz-linear-gradient(top,#D76D46,#BF5D39);
-	background-image: -ms-linear-gradient(top,#D76D46,#BF5D39);
-	background-image: -o-linear-gradient(top,#D76D46,#BF5D39);
-	background-image: linear-gradient(top,#D76D46,#BF5D39);
-	border: 1px solid #BF5D39;
-	border-radius: 2px;
-	color: white;
-	font-size: 11px;
-	font-weight: bold;
-	height: 27px;
-	margin-right: 16px;
-	line-height: 27px;
-	min-width: 54px;
-	outline: 0;
-	padding: 0 8px;
-	text-align: center;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
-	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
-}
-a.button:hover, #content a.button:hover {
-	background-color: #368200;
-	background-image: -webkit-linear-gradient(top,#BF5D39,#B55430);
-	background-image: -moz-linear-gradient(top,#BF5D39,#B55430);
-	background-image: -ms-linear-gradient(top,#BF5D39,#B55430);
-	background-image: -o-linear-gradient(top,#BF5D39,#B55430);
-	background-image: linear-gradient(top,#BF5D39,#B55430)
-	border: 1px solid #B55430;
-	text-shadow: 0 1px rgba(0,0,0,0.3);
-}
-
-	
-#sort-bar {
-    border-radius: 2px 2px 2px 2px;
-    -moz-border-radius: 2px 2px 2px 2px;
-    -webkit-border-radius: 2px 2px 2px 2px;
-    background: #eee;
-    height: 42px;
-    margin: 0 0 20px 0;
-    padding: 0;
-    z-index: 9999;
-}
-#sort-bar ul, #sort-bar li {
-    float: left;
-    list-style: none outside none;
-    margin: 0;
-    padding: 0;
-}
-#sort-bar li {
-    border-left: 1px solid #ccc;
-    padding: 9px 20px;
-    float: right;
-    list-style: none outside none;
-    margin: 0;
-    padding: 9px 20px;
-}
-#sort-bar li.first {
-    border-left: 0 none;
-    padding-left: 10px;
-}
-#sort-bar dt, #sort-bar dd {
-    float: left;
-    margin: 0;
-    padding: 0;
-}
-#sort-bar dt {
-    color: #999999;
-    font-size: 11px;
-    line-height: 24px;
-    margin: 0 6px 0 0;
-}
-#sort-bar dl {
-    margin: 0;
-    padding: 0;
-}
-#sort-bar ul, #sort-bar #sort-bar li {
-    list-style: none outside none;
-}
-#sort-bar .sort .drop-down-menu {
-    width: 148px;
-}
-#sort-bar .drop-down-menu {
-    border-radius: 2px 2px 2px 2px;
-    -moz-border-radius: 2px 2px 2px 2px;
-    -webkit-border-radius: 2px 2px 2px 2px;
-    background: #ccc;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    z-index: 800;
-}
-#sort-bar .drop-down-menu div {
-    background: url('images/icons.gif') no-repeat scroll right -62px transparent;
-    color: #333;
-    cursor: pointer;
-    font-size: 13px;
-    line-height: 24px;
-    padding: 0 21px 0 7px;
-}
-#sort-bar .drop-down-menu ul {
-    border-radius: 0 0 2px 2px;
-    -moz-border-radius: 0 0 2px 2px;
-    -webkit-border-radius: 0 0 2px 2px;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.35);
-    -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.35);
-    -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.35);
-    background: none repeat scroll 0 0 #42403B;
-    display: none;
-    left: 0;
-    position: absolute;
-    top: 24px;
-    width: inherit;
-}
-#sort-bar .drop-down-menu ul li {
-    border-color: #726F6A -moz-use-text-color -moz-use-text-color;
-    border-right: medium none;
-    border-style: solid none none;
-    border-width: 1px medium medium;
-    float: none;
-    padding: 0;
-    width: inherit;
-}
-#sort-bar a {
-    outline: medium none;
-    text-decoration: none;
-}
-#sort-bar .drop-down-menu ul li a {
-    color: #FEFEFE;
-    display: block;
-    font-size: 13px;
-    line-height: 30px;
-    overflow: hidden;
-    padding: 0 7px 0 18px;
-    white-space: nowrap;
-}
-#sort-bar .drop-down-menu ul li a.selected {
-    background: url("images/icons.gif") no-repeat scroll 2px -80px transparent;
-}
-
-
-.page-template-intl-locations .location {
-	float: left;
-	width: 33%;
-}
-.page-template-intl-locations .location .entry-title {
-	margin-bottom: 5px;
-}
-.page-template-intl-locations .location img {
-	height: auto;
-	max-width: 185px;
-	width: 90%;	
-}
-
-#team {
-	overflow: hidden;
-}
-#team .missionary {
-	float: left;
-	width: 25%;
-}
-#team .missionary p {
-	margin: 0;
-}
-#team .missionary .avatar {
-	border: none;
-	border-radius: 0;
-	box-shadow: none;
-}
-#team .missionary h3 {
-	font-size: 11px;
-	font-weight: normal;
-	line-height: 13px;
-}
-
-
-#serve-domestic {
-	border-bottom: 1px solid #ccc;
-	border-top: 1px solid #ccc;
-	font-size: 12px;
-	padding: 5px 0;
-	text-align: center;
-	
-}
-
-#content #diamond-recent-posts {
-	background: #f9f9f9;
-	border: 1px solid #f1f1f1;
-	padding: 10px;
-}
-#content #diamond-recent-posts {
-	margin: 0 0 20px 50px;
-	width: 250px;
-}
-#diamond-recent-posts h2 {
-	margin: 0;
-	padding: 0 0 10px;
-}
-
-#diamond-recent-posts ul {
-	border-top: 1px solid #ccc;
-	list-style: none;
-	margin: 0 -10px;
-	padding: 0;
-}
-
-#diamond-recent-posts li {
-	border-bottom: 1px solid #ccc;
-	padding: 5px 20px;
-}
-#content #diamond-recent-posts .avatar {
-	height: 30px;
-	width: 30px;
-}
-
-.page-template-missionaries .missionary,
-.page-template-intl-locations .location {
-	background: none;
-	border-left: none;
-	border-top: none;
-	float: left;
-	width: 25%;
-}
-
-.page-template-missionaries .missionary p,
-.page-template-intl-locations .location p {
-	margin: 0;
-}
-
-.page-template-intl-locations .location {
-	height: 180px;
-}
-
-.page-template-missionaries .missionary:nth-child(3n+3),
-.page-template-intl-locations .location:nth-child(3n+3) {
-	border-right: none;
-}
-
-.page-template-missionaries .missionary:nth-child(4n+5),
-.page-template-intl-locations .location:nth-child(4n+5) {
-	clear: both;
-}
-
-.page-template-missionaries .missionary h2,
-.page-template-intl-locations .location h2 {
-	font-size: 11px;
-	font-weight: normal;
-	line-height: 13px;
-	margin: 0 0 5px;
-}
-
-.page-template-missionaries .missionary .thumbnail,
-.page-template-intl-locations .location .thumbnail {
-	border: 1px solid #fff;
-	float: none;
-	margin: 0;
-}
-
-.missionaries-location {
-	border-bottom: 1px solid #ccc;
-	clear: both;
-	padding: 5px;
-}
-
-
-/**
-* intro
-************************************************/
-#intro {
-	overflow: hidden;
-}
-#slider-container {
-	float: right;
-	margin-right: -25px !important;
-}
-#paths {
-	font: 10px/33px "CartoGothicStdBook","Lucida Grande","Lucida Sans","Lucida Sans Unicode",Tahoma,Arial,Helvetica,sans-serif;	
-	float: left;
-	margin: 0 0 15px;
-	overflow: hidden;
-	text-transform: uppercase;
-}
-	#paths .right {
-		margin-bottom: 0;
-	}
-	
-	#paths .big-button {
-		background: #e2e9ee;
-		border: 5px solid #91a1ad;
-		border-radius: 3px;
-		color: #6e6e6e;
-		display: inline-block;
-		font-size:14px;
-		line-height: 14px;
-		margin: 8px 16px 8px 0;
-		padding: 10px;
-		text-decoration: none;
-		text-shadow: 1px 1px 1px #fff;
-		text-transform: uppercase;
-		-moz-border-radius: 3px;
-		width: 250px;
-	}
-		#paths .big-button:hover {
-			background: #91a1ad;
-			border: 5px solid #e2e9ee;
-			color: #fff;
-			text-shadow: 1px 1px 1px #6e6e6e;
-		}
-	#paths .league-gothic {
-		font: 32px/36px "LeagueGothicRegular";
-	}
-
-/* =Responsive Structure
------------------------------------------------ */
-
-@media (max-width: 800px) {
-	/* Simplify the basic layout */
-	#main #content {
-		margin: 0;
-		width: auto;
-	}
-	.columns-3 .column {
-		margin: 0 0.5%;
-		width: 49%;
-	}
-	.columns-3 .col-3 {
-		clear: both;
-		float: none;
-		margin: 0 23.5%;		
-	}
-	#main #diamond-recent-posts {
-		float: none;
-		margin: 0;
-		width: auto;
-	}
-	/* Remove the margin on singular articles */
-	.singular .entry-header,
-	.singular .entry-content,
-	.singular footer.entry-meta,
-	.singular #comments-title {
-		width: 100%;
-	}
-	/* Simplify the pullquotes and pull styles */
-	.singular blockquote.pull {
-		margin: 0 0 1.625em;
-	}
-	.singular .pull.alignleft {
-		margin: 0 1.625em 0 0;
-	}
-	.singular .pull.alignright {
-		margin: 0 0 0 1.625em;
-	}
-	.singular .entry-meta .edit-link a {
-		left: 0;
-		position: absolute;
-		top: 40px;
-	}
-	.singular #author-info {
-		margin: 2.2em -8.8% 0;
-		padding: 20px 8.8%;
-	}
-	/* Make sure we have room for our comment avatars */
-	.commentlist {
-		width: 100%;
-	}
-	.commentlist > li.comment,
-	.commentlist .pingback {
-		margin-left: 102px;
-		width: auto;
-	}
-	/* And a full-width comment form */
-	#respond {
-		width: auto;
-	}
-	/* No need to float footer widgets at this size */
-	#colophon #supplementary .widget-area {
-		float: none;
-		margin-right: 0;
-		width: auto;
-	}
-	/* No need to float 404 widgets at this size */
-	.error404 #main .widget {
-		float: none;
-		margin-right: 0;
-		width: auto;
-	}
-	/* Make sure embeds fit their containers */
-	embed,
-	object {
-		max-width: 100%;
-	}
-
-}
-@media (max-width: 650px) {
-	/* @media (max-width: 650px) Reduce font-sizes for better readability on smaller devices */
-	body, input, textarea {
-		font-size: 13px;
-	}
-	#site-title a {
-		font-size: 24px;
-	}
-	#site-description {
-		font-size: 12px;
-	}
-	#access ul {
-		font-size: 12px;
-	}
-	article.intro .entry-content {
-		font-size: 12px;
-	}
-	.entry-title {
-		font-size: 21px;
-	}
-	.featured-post .entry-title {
-		font-size: 14px;
-	}
-	.singular .entry-title {
-		font-size: 28px;
-	}
-	.entry-meta {
-		font-size: 12px;
-	}
-	blockquote {
-		margin: 0;
-	}
-	blockquote.pull {
-		font-size: 17px;
-	}
-	.columns-3 .column {
-		margin: 0 0.5%;
-		text-align: center;
-		width: 100%;
-	}
-	#main #diamond-recent-posts {
-		float: none;
-		margin: 0;
-		width: auto;
-	}
-	/* Reposition the site title and description slightly */
-	#site-title {
-		padding: 5.30625em 0 0;
-	}
-	#site-title,
-	#site-description {
-		margin-right: 0;
-	}
-	/* Make sure the logo and search form don't collide */
-	#header #searchform {
-		top: 1.625em !important;
-	}
-	/* Floated content doesn't work well at this size */
-	.alignleft,
-	.alignright {
-		float: none;
-		margin-left: 0;
-		margin-right: 0;
-	}
-	/* Make sure the post-post navigation doesn't collide with anything */
-	#nav-single {
-		display: block;
-		position: static;
-	}
-	.singular .hentry {
-		padding: 1.625em 0 0;
-	}
-	.singular.page .hentry {
-		padding: 1.625em 0 0;
-	}
-	/* Talking avatars take up too much room at this size */
-	.commentlist > li.comment,
-	.commentlist > li.pingback {
-		margin-left: 0 !important;
-	}
-	.commentlist .avatar {
-		background: transparent;
-		display: block;
-		padding: 0;
-		position: static;
-	}
-	.commentlist .children .avatar {
-		background: none;
-		left: 2.2em;
-		padding: 0;
-		position: absolute;
-		top: 2.2em;
-	}
-	/* Use the available space in the smaller comment form */
-	#respond input[type="text"] {
-		width: 95%;
-	}
-	#respond .comment-form-author .required,
-	#respond .comment-form-email .required {
-		left: 95%;
-	}
-	#content .gallery-columns-3 .gallery-item {
-		width: 31%;
-		padding-right: 2%;
-	}
-	#content .gallery-columns-3 .gallery-item img {
-		width: 100%;
-		height: auto;
-	}
-
-}
-@media (max-width: 450px) {
-	#content .gallery-columns-2 .gallery-item {
-		width: 45%;
-		padding-right: 4%;
-	}
-	#content .gallery-columns-2 .gallery-item img {
-		width: 100%;
-		height: auto;
-	}
-
-}
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-	body {
-		padding: 0;
-	}
-	#page {
-		margin-top: 0;
-	}
-	#header {
-		border-top: none;
-	}
-
+/**
+ * Theme Name: SERVE
+ * Description: A custom theme for Denton Bible Church.
+ * Version: 0.1
+ * Author: Develop Daly
+ * Author URI: http://developdaly.com
+ * Tags: buddypress
+ * Template: dbc
+ */
+
+@import url('../dbc/style.css');
+
+#site-title {
+	margin: 10px 0;
+}
+#site-title a {
+	background: url('images/logo-small.gif') no-repeat;
+	display: inline-block;
+	height: 100px;
+	text-indent: -9999px;
+	width: 100px;		
+}
+#site-description {
+	display: inline-block;
+	float: left;
+	font: 30px/100px "Georgia", "Times New Roman", Times, Serif;
+	margin: 10px 0 10px 15px;
+	text-shadow: 1px 1px 1px #fff;
+}
+
+#search-form {
+	background: none;
+	height: 34px;
+	padding: 0;
+	width: 206px;
+}
+	#search-text {
+		background: #fff;
+		border: 1px solid #D9D9D9;
+		border-top: 1px solid silver;
+		color: #999795;
+		font: 12px/27px Arial, Helvetica, sans-serif;
+		padding: 6px 10px;
+	}
+	#search-text:hover, #search-text:focus {
+		border: 1px solid #4d90fe;
+		border-top: 1px solid #4d90fe;
+		box-shadow: inset 0px 1px 2px rgba(0,0,0,.3);
+		color: #000;
+	}
+	#search-submit {
+		background: none;
+	}
+
+#sidebar-primary .team .missionary {
+	width: 48%;
+}
+
+#sidebar-primary li {
+	line-height: 18px;
+}
+
+#blog-preview {
+    background: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    margin: 0 0 1.125em;
+    padding: 20px 20px 20px 40px;
+    overflow: hidden;    
+}
+/**
+* Content
+************************************************/
+#content .page-title {
+	font: 32px/48px Georgia, serif;
+	text-decoration: none !important;
+}
+#content .page-title a {
+	color: #333;
+}
+	
+#sort-bar {
+    border-radius: 2px 2px 2px 2px;
+    -moz-border-radius: 2px 2px 2px 2px;
+    -webkit-border-radius: 2px 2px 2px 2px;
+    background: #eee;
+    height: 42px;
+    margin: 0 0 20px 0;
+    padding: 0;
+    z-index: 9999;
+}
+#sort-bar ul, #sort-bar li {
+    float: left;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+#sort-bar li {
+    border-left: 1px solid #ccc;
+    padding: 9px 20px;
+    float: right;
+    list-style: none outside none;
+    margin: 0;
+    padding: 9px 20px;
+}
+#sort-bar li.first {
+    border-left: 0 none;
+    padding-left: 10px;
+}
+#sort-bar dt, #sort-bar dd {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+#sort-bar dt {
+    color: #999999;
+    font-size: 11px;
+    line-height: 24px;
+    margin: 0 6px 0 0;
+}
+#sort-bar dl {
+    margin: 0;
+    padding: 0;
+}
+#sort-bar ul, #sort-bar #sort-bar li {
+    list-style: none outside none;
+}
+#sort-bar .sort .drop-down-menu {
+    width: 148px;
+}
+#sort-bar .drop-down-menu {
+    border-radius: 2px 2px 2px 2px;
+    -moz-border-radius: 2px 2px 2px 2px;
+    -webkit-border-radius: 2px 2px 2px 2px;
+    background: #ccc;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 800;
+}
+#sort-bar .drop-down-menu div {
+    background: url('images/icons.gif') no-repeat scroll right -62px transparent;
+    color: #333;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 24px;
+    padding: 0 21px 0 7px;
+}
+#sort-bar .drop-down-menu ul {
+    border-radius: 0 0 2px 2px;
+    -moz-border-radius: 0 0 2px 2px;
+    -webkit-border-radius: 0 0 2px 2px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.35);
+    background: none repeat scroll 0 0 #42403B;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 24px;
+    width: inherit;
+}
+#sort-bar .drop-down-menu ul li {
+    border-color: #726F6A -moz-use-text-color -moz-use-text-color;
+    border-right: medium none;
+    border-style: solid none none;
+    border-width: 1px medium medium;
+    float: none;
+    padding: 0;
+    width: inherit;
+}
+#sort-bar a {
+    outline: medium none;
+    text-decoration: none;
+}
+#sort-bar .drop-down-menu ul li a {
+    color: #FEFEFE;
+    display: block;
+    font-size: 13px;
+    line-height: 30px;
+    overflow: hidden;
+    padding: 0 7px 0 18px;
+    white-space: nowrap;
+}
+#sort-bar .drop-down-menu ul li a.selected {
+    background: url("images/icons.gif") no-repeat scroll 2px -80px transparent;
+}
+
+
+.page-template-intl-locations .location {
+	float: left;
+	width: 33%;
+}
+.page-template-intl-locations .location .entry-title {
+	margin-bottom: 5px;
+}
+.page-template-intl-locations .location img {
+	height: auto;
+	max-width: 185px;
+	width: 90%;	
+}
+
+.team {
+	background: #f0f0f0;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	margin: 0 0 1.125em;
+	padding: 20px;
+	overflow: hidden;
+}
+.team .missionary {
+	float: left;
+	padding: 0 1%;
+	width: 18%;
+}
+.team .missionary p {
+	margin: 0;
+}
+.team .missionary .avatar {
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	width: 100%
+}
+
+#serve-domestic {
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	font-size: 12px;
+	padding: 5px 0;
+	text-align: center;
+	
+}
+
+#content #diamond-recent-posts {
+	background: #f9f9f9;
+	border: 1px solid #f1f1f1;
+	padding: 10px;
+}
+#content #diamond-recent-posts {
+	margin: 0 0 20px 50px;
+	width: 250px;
+}
+#diamond-recent-posts h2 {
+	margin: 0;
+	padding: 0 0 10px;
+}
+
+#diamond-recent-posts ul {
+	border-top: 1px solid #ccc;
+	list-style: none;
+	margin: 0 -10px;
+	padding: 0;
+}
+
+#diamond-recent-posts li {
+	border-bottom: 1px solid #ccc;
+	padding: 5px 20px;
+}
+#content #diamond-recent-posts .avatar {
+	height: 30px;
+	width: 30px;
+}
+
+.page-template-missionaries .hfeed,
+.page-template-intl-locations .hfeed {
+	overflow: hidden;
+}
+
+.archive-missionary .missionary,
+.archive-location .location {
+	background: none;
+	border-left: none;
+	border-top: none;
+	float: left;
+	margin: 0 0 20px;
+	width: 25%;
+}
+
+.archive-missionary .missionary img,
+.archive-location .location img {
+	width: 90%;
+}
+
+.missionaries-location {
+	border-bottom: 1px solid #ccc;
+	clear: both;
+	padding: 5px;
+}
+
+
+/**
+* intro
+************************************************/
+#intro {
+	overflow: hidden;
+}
+#slider-container {
+	float: right;
+	margin-right: -25px !important;
+}
+#paths {
+	font: 10px/33px "CartoGothicStdBook","Lucida Grande","Lucida Sans","Lucida Sans Unicode",Tahoma,Arial,Helvetica,sans-serif;	
+	margin: 0 0 15px;
+	overflow: hidden;
+	text-transform: uppercase;
+}
+	#paths .right {
+		margin-bottom: 0;
+	}
+	
+	#paths .big-button {
+		background: #e2e9ee;
+		border: 5px solid #91a1ad;
+		border-radius: 3px;
+		color: #6e6e6e;
+		display: inline-block;
+		font-size:14px;
+		line-height: 14px;
+		margin: 8px 16px 8px 0;
+		padding: 10px;
+		text-decoration: none;
+		text-shadow: 1px 1px 1px #fff;
+		text-transform: uppercase;
+		-moz-border-radius: 3px;
+		width: 92%;
+	}
+		#paths .big-button:hover {
+			background: #91a1ad;
+			border: 5px solid #e2e9ee;
+			color: #fff;
+			text-shadow: 1px 1px 1px #6e6e6e;
+		}
+	#paths .league-gothic {
+		font: 32px/36px "LeagueGothicRegular";
+	}
+
+/* =Responsive Structure
+----------------------------------------------- */
+
+@media (max-width: 800px) {
+	/* Simplify the basic layout */
+	#main #content {
+		margin: 0;
+		width: auto;
+	}
+	.columns-3 .column {
+		margin: 0 0.5%;
+		width: 49%;
+	}
+	.columns-3 .col-3 {
+		clear: both;
+		float: none;
+		margin: 0 23.5%;		
+	}
+	#main #diamond-recent-posts {
+		float: none;
+		margin: 0;
+		width: auto;
+	}
+	/* Remove the margin on singular articles */
+	.singular .entry-header,
+	.singular .entry-content,
+	.singular footer.entry-meta,
+	.singular #comments-title {
+		width: 100%;
+	}
+	/* Simplify the pullquotes and pull styles */
+	.singular blockquote.pull {
+		margin: 0 0 1.625em;
+	}
+	.singular .pull.alignleft {
+		margin: 0 1.625em 0 0;
+	}
+	.singular .pull.alignright {
+		margin: 0 0 0 1.625em;
+	}
+	.singular .entry-meta .edit-link a {
+		left: 0;
+		position: absolute;
+		top: 40px;
+	}
+	.singular #author-info {
+		margin: 2.2em -8.8% 0;
+		padding: 20px 8.8%;
+	}
+	/* Make sure we have room for our comment avatars */
+	.commentlist {
+		width: 100%;
+	}
+	.commentlist > li.comment,
+	.commentlist .pingback {
+		margin-left: 102px;
+		width: auto;
+	}
+	/* And a full-width comment form */
+	#respond {
+		width: auto;
+	}
+	/* No need to float footer widgets at this size */
+	#colophon #supplementary .widget-area {
+		float: none;
+		margin-right: 0;
+		width: auto;
+	}
+	/* No need to float 404 widgets at this size */
+	.error404 #main .widget {
+		float: none;
+		margin-right: 0;
+		width: auto;
+	}
+	/* Make sure embeds fit their containers */
+	embed,
+	object {
+		max-width: 100%;
+	}
+
+}
+@media (max-width: 650px) {
+	/* @media (max-width: 650px) Reduce font-sizes for better readability on smaller devices */
+	body, input, textarea {
+		font-size: 13px;
+	}
+	#site-title a {
+		font-size: 24px;
+	}
+	#site-description {
+		font-size: 12px;
+	}
+	#access ul {
+		font-size: 12px;
+	}
+	article.intro .entry-content {
+		font-size: 12px;
+	}
+	.entry-title {
+		font-size: 21px;
+	}
+	.featured-post .entry-title {
+		font-size: 14px;
+	}
+	.singular .entry-title {
+		font-size: 28px;
+	}
+	.entry-meta {
+		font-size: 12px;
+	}
+	blockquote {
+		margin: 0;
+	}
+	blockquote.pull {
+		font-size: 17px;
+	}
+	.columns-3 .column {
+		margin: 0 0.5%;
+		text-align: center;
+		width: 100%;
+	}
+	#main #diamond-recent-posts {
+		float: none;
+		margin: 0;
+		width: auto;
+	}
+	/* Reposition the site title and description slightly */
+	#site-title {
+		padding: 5.30625em 0 0;
+	}
+	#site-title,
+	#site-description {
+		margin-right: 0;
+	}
+	/* Make sure the logo and search form don't collide */
+	#header #searchform {
+		top: 1.625em !important;
+	}
+	/* Floated content doesn't work well at this size */
+	.alignleft,
+	.alignright {
+		float: none;
+		margin-left: 0;
+		margin-right: 0;
+	}
+	/* Make sure the post-post navigation doesn't collide with anything */
+	#nav-single {
+		display: block;
+		position: static;
+	}
+	.singular .hentry {
+		padding: 1.625em 0 0;
+	}
+	.singular.page .hentry {
+		padding: 1.625em 0 0;
+	}
+	/* Talking avatars take up too much room at this size */
+	.commentlist > li.comment,
+	.commentlist > li.pingback {
+		margin-left: 0 !important;
+	}
+	.commentlist .avatar {
+		background: transparent;
+		display: block;
+		padding: 0;
+		position: static;
+	}
+	.commentlist .children .avatar {
+		background: none;
+		left: 2.2em;
+		padding: 0;
+		position: absolute;
+		top: 2.2em;
+	}
+	/* Use the available space in the smaller comment form */
+	#respond input[type="text"] {
+		width: 95%;
+	}
+	#respond .comment-form-author .required,
+	#respond .comment-form-email .required {
+		left: 95%;
+	}
+	#content .gallery-columns-3 .gallery-item {
+		width: 31%;
+		padding-right: 2%;
+	}
+	#content .gallery-columns-3 .gallery-item img {
+		width: 100%;
+		height: auto;
+	}
+
+}
+@media (max-width: 450px) {
+	#content .gallery-columns-2 .gallery-item {
+		width: 45%;
+		padding-right: 4%;
+	}
+	#content .gallery-columns-2 .gallery-item img {
+		width: 100%;
+		height: auto;
+	}
+
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+	body {
+		padding: 0;
+	}
+	#page {
+		margin-top: 0;
+	}
+	#header {
+		border-top: none;
+	}
+
 }

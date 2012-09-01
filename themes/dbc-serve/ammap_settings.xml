@@ -30,9 +30,9 @@
 	<layers></layers><!-- [movies,labels,lines] Use this setting to change the sequence of layers. The left-most layer will be behind all the other layers. Please note that objects with x/y coordinates will still be placed on top of objects with long/lat coordinates. -->
 	<background>
 		<!-- background -->
-		<color>#ffffff</color><!-- [#444444] (hex color code) -->
+		<color></color><!-- [#444444] (hex color code) -->
 		<alpha></alpha><!-- [0] (0 - 100) use 0 if you are using custom swf or jpg for background -->
-		<border_color>#ffffff</border_color><!-- [#000000] (hex color code) -->
+		<border_color></border_color><!-- [#000000] (hex color code) -->
 		<border_alpha></border_alpha><!-- [0] (0 - 100) -->
 		<file></file><!-- [] (filename) swf or jpg file of a background. This file must be located in path/ folder (set in html file) -->
 		<stretch></stretch><!-- [false] (true / false) should we stretch background over the whole width/heigh? -->
@@ -74,7 +74,7 @@
 		<x></x><!-- [] (Number or Number%) x position of small map. If not defined, will be aligned to right side -->
 		<y></y><!-- [] (Number or Number%) y position of small map. If not defined, will be aligned to bottom -->
 		<width></width><!-- [25%] (Number or Number%) width of small map (height is calculated automatically) -->
-		<color>#FFCC00</color><!-- [] (hex color code) leave empty if you want to keep original map color -->
+		<color>#ffffff</color><!-- [] (hex color code) leave empty if you want to keep original map color -->
 		<border_width></border_width><!-- [5] (Number) -->
 		<border_color></border_color><!-- [#FFFFFF] (hex color code) -->
 		<rectangle_color></rectangle_color><!-- [#FFFFFF] (hex color code) color of rectangle, indicating active area on a small map -->
@@ -98,12 +98,12 @@
 	<area>
 		<!-- areas are movie clips which are already in map swf file, usualy countries. areas should be listed in data file -->
 		<balloon_text>
-			<![CDATA[{value} missionaries in {title}]]>              <!-- [] ({title} {value} {percents} {description}) You can add your own HTML formated text (only some of html tags are supported) -->
+			<![CDATA[{title} - {description}]]>              <!-- [] ({title} {value} {percents} {description}) You can add your own HTML formated text (only some of html tags are supported) -->
 		</balloon_text>
-		<active_only_if_value_set>true</active_only_if_value_set><!-- [false] (true / false) if set to true, areas (countries) without defined value in data file will not display balloon and will not change color on roll over -->
+		<active_only_if_value_set>false</active_only_if_value_set><!-- [false] (true / false) if set to true, areas (countries) without defined value in data file will not display balloon and will not change color on roll over -->
 		<color_solid>000000</color_solid><!-- [#990000] (hex color code) color of area with highest value-->
 		<color_light>DDDDDD</color_light><!-- [#FFCC00] (hex color code) color of areas with value = 0 or value is not set -->
-		<color_hover>#CC0000</color_hover><!-- [] (hex color code) -->
+		<color_hover>#000000</color_hover><!-- [] (hex color code) -->
 		<color_selected></color_selected><!-- [] (hex color code) If not specified, original area color will be used -->
 		<disable_when_clicked>true</disable_when_clicked>         <!-- [false] (true / false) if this area is currently selected, roll over and click events of this area will be disabled if this set to true -->
 	</area>
@@ -231,8 +231,8 @@
 	<balloon>
 		<!-- balloon is shown when user roll overs the objects -->
 		<enabled></enabled><!-- [true] (true / false) -->
-		<max_width></max_width><!-- [30%] (Number or Number%) -->
-		<color></color><!-- [#880000] (hex color code) balloon background color -->
+		<max_width>50%</max_width><!-- [30%] (Number or Number%) -->
+		<color>00A6FC</color><!-- [#880000] (hex color code) balloon background color -->
 		<alpha></alpha><!-- [100] (0 - 100) -->
 		<text_color></text_color><!-- [0xFFFFFF] (hex color code) -->
 		<text_size></text_size><!-- [text_size] (Number) -->
