@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/north_korea.swf" tl_long="124.190011" tl_lat="43.006314" br_long="130.675056" br_lat="37.602389" zoom="90%" zoom_x="54.3%" zoom_y="8.84%">
+
+  <areas>
+      <area mc_name="KP_PY" title="P'yŏngyang"></area>
+      <area mc_name="KP_PM" title="P'yŏngan-namdo"></area>
+      <area mc_name="KP_PB" title="P'yŏngan-bukto"></area>
+      <area mc_name="KP_CH" title="Chagang-do"></area>
+      <area mc_name="KP_WN" title="Hwanghae-namdo"></area>
+      <area mc_name="KP_WK" title="Hwanghae-bukto"></area>
+      <area mc_name="KP_KW" title="Kangwŏn-do"></area>
+      <area mc_name="KP_HN" title="Hamgyŏng-namdo"></area>
+      <area mc_name="KP_HG" title="Hamgyŏng-bukto"></area>
+      <area mc_name="KP_YG" title="Yanggang-do"></area>
+      <area mc_name="KP_NJ" title="Rason"></area>
+      <area mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="P'yongyang" file="target" color="#CC0000" height="10" width="10" lat="39.019556" long="125.7557" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="438" y="119" text_size="18" color="#FFFFFF" remain="false">
+      <text>North Korea</text>
+    </label>
+  </labels>
+</map>

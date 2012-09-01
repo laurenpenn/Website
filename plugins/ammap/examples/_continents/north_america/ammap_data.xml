@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- map file should be located in path (set in html) folder                                                                                             -->
+<!-- tl_long is longitude of top left corner, the default values is -180, tl_lat  is latitude  of top left corner, the default values is 90              -->
+<!-- br_long is longitute of top left corner, the default values is 180, br_lat  is latitude  of top left corner, the default values is -90              -->
+<!-- you should only set longitudes and latitudes if you want to calibrate your map and you know these values. Otherwise you can delete these attributes -->
+<!-- you can set default zoom level, zoom_x and zoom_y. To find out the numbers, you should turn developer mode on (in settings file), zoom map to required position, copy zoom info to clipboard (using right click menu) and paste it here -->
+
+<map map_file="maps/north_america.swf" tl_long="-178.7" tl_lat="83.65" br_long="-12.63" br_lat="6.17" zoom="171.4286%" zoom_x="-2.31%" zoom_y="-70.2%">
+  <!--areas are movie clips inside map file. areas can have child objects:movies, labels & lines -->
+  <!-- check online help for all possible area's attributes -->
+  <areas>
+     <!-- USA - States -->
+    <area mc_name="US_AL" color="adcf4f" title="Alabama"></area>
+    <area mc_name="US_AK" color="adcf4f" title="Alaska"></area>
+    <area mc_name="US_AZ" color="adcf4f" title="Arizona"></area>
+    <area mc_name="US_AR" color="adcf4f" title="Arkansas"></area>
+    <area mc_name="US_CA" color="adcf4f" title="California"></area>
+    <area mc_name="US_CO" color="adcf4f" title="Colorado"></area>
+    <area mc_name="US_CT" color="adcf4f" title="Connecticut"></area>
+    <area mc_name="US_DE" color="adcf4f" title="Delaware"></area>
+    <area mc_name="US_DC" color="adcf4f" title="District of Columbia"></area>
+    <area mc_name="US_FL" color="adcf4f" title="Florida"></area>
+    <area mc_name="US_GA" color="adcf4f" title="Georgia"></area>
+    <area mc_name="US_HI" color="adcf4f" title="Hawaii"></area>
+    <area mc_name="US_ID" color="adcf4f" title="Idaho"></area>
+    <area mc_name="US_IL" color="adcf4f" title="Illinois"></area>
+    <area mc_name="US_IN" color="adcf4f" title="Indiana"></area>
+    <area mc_name="US_IA" color="adcf4f" title="Iowa"></area>
+    <area mc_name="US_KS" color="adcf4f" title="Kansas"></area>
+    <area mc_name="US_KY" color="adcf4f" title="Kentucky"></area>
+    <area mc_name="US_LA" color="adcf4f" title="Louisiana"></area>
+    <area mc_name="US_ME" color="adcf4f" title="Maine"></area>
+    <area mc_name="US_MD" color="adcf4f" title="Maryland"></area>
+    <area mc_name="US_MA" color="adcf4f" title="Massachusetts"></area>
+    <area mc_name="US_MI" color="adcf4f" title="Michigan"></area>
+    <area mc_name="US_MN" color="adcf4f" title="Minnesota"></area>
+    <area mc_name="US_MS" color="adcf4f" title="Mississippi"></area>
+    <area mc_name="US_MO" color="adcf4f" title="Missouri"></area>
+    <area mc_name="US_MT" color="adcf4f" title="Montana"></area>
+    <area mc_name="US_NE" color="adcf4f" title="Nebraska"></area>
+    <area mc_name="US_NV" color="adcf4f" title="Nevada"></area>
+    <area mc_name="US_NH" color="adcf4f" title="New Hampshire"></area>
+    <area mc_name="US_NJ" color="adcf4f" title="New Jersey"></area>
+    <area mc_name="US_NM" color="adcf4f" title="New Mexico"></area>
+    <area mc_name="US_NY" color="adcf4f" title="New York"></area>
+    <area mc_name="US_NC" color="adcf4f" title="North Carolina"></area>
+    <area mc_name="US_ND" color="adcf4f" title="North Dakota"></area>
+    <area mc_name="US_OH" color="adcf4f" title="Ohio"></area>
+    <area mc_name="US_OK" color="adcf4f" title="Oklahoma"></area>
+    <area mc_name="US_OR" color="adcf4f" title="Oregon"></area>
+    <area mc_name="US_PA" color="adcf4f" title="Pennsylvania"></area>
+    <area mc_name="US_RI" color="adcf4f" title="Rhode Island"></area>
+    <area mc_name="US_SC" color="adcf4f" title="South Carolina"></area>
+    <area mc_name="US_SD" color="adcf4f" title="South Dakota"></area>
+    <area mc_name="US_TN" color="adcf4f" title="Tennessee"></area>
+    <area mc_name="US_TX" color="adcf4f" title="Texas"></area>
+    <area mc_name="US_UT" color="adcf4f" title="Utah"></area>
+    <area mc_name="US_VT" color="adcf4f" title="Vermont"></area>
+    <area mc_name="US_VA" color="adcf4f" title="Virginia"></area>
+    <area mc_name="US_WA" color="adcf4f" title="Washington"></area>
+    <area mc_name="US_WV" color="adcf4f" title="West Virginia"></area>
+    <area mc_name="US_WI" color="adcf4f" title="Wisconsin"></area>
+    <area mc_name="US_WY" color="adcf4f" title="Wyoming"></area>
+     <!-- Canada - Provinces -->
+    <area mc_name="CA_BC" color="8da8df" title="British Columbia"></area>
+    <area mc_name="CA_AB" color="8da8df" title="Alberta"></area>
+    <area mc_name="CA_SK" color="8da8df" title="Saskatchewan"></area>
+    <area mc_name="CA_MB" color="8da8df" title="Manitoba"></area>
+    <area mc_name="CA_ON" color="8da8df" title="Ontario"></area>
+    <area mc_name="CA_QC" color="8da8df" title="Quebec"></area>
+    <area mc_name="CA_NB" color="8da8df" title="New Brunswick"></area>
+    <area mc_name="CA_NS" color="8da8df" title="Nova Scotia"></area>
+    <area mc_name="CA_PE" color="8da8df" title="Prince Edward Island"></area>
+    <area mc_name="CA_NL" color="8da8df" title="Newfoundland and Labrador"></area>
+    <area mc_name="CA_YT" color="8da8df" title="Yukon"></area>
+    <area mc_name="CA_NT" color="8da8df" title="Northwest Territories"></area>
+    <area mc_name="CA_NU" color="8da8df" title="Nunavut"></area>
+     <!-- Mexico - States -->
+    <area mc_name="MX_AG" color="f4c74e" title="Aguascalientes"></area>
+    <area mc_name="MX_BN" color="f4c74e" title="Baja California"></area>
+    <area mc_name="MX_BS" color="f4c74e" title="Baja California Sur"></area>
+    <area mc_name="MX_CM" color="f4c74e" title="Campeche"></area>
+    <area mc_name="MX_CP" color="f4c74e" title="Chiapas"></area>
+    <area mc_name="MX_CH" color="f4c74e" title="Chihuahua"></area>
+    <area mc_name="MX_CA" color="f4c74e" title="Coahuila"></area>
+    <area mc_name="MX_CL" color="f4c74e" title="Colima"></area>
+    <area mc_name="MX_DF" color="f4c74e" title="Distrito Federal (Mexico)"></area>
+    <area mc_name="MX_DU" color="f4c74e" title="Durango"></area>
+    <area mc_name="MX_GJ" color="f4c74e" title="Guanajuato"></area>
+    <area mc_name="MX_GR" color="f4c74e" title="Guerrero"></area>
+    <area mc_name="MX_HI" color="f4c74e" title="Hidalgo"></area>
+    <area mc_name="MX_JA" color="f4c74e" title="Jalisco"></area>
+    <area mc_name="MX_MX" color="f4c74e" title="Mexico"></area>
+    <area mc_name="MX_MC" color="f4c74e" title="Michoacan"></area>
+    <area mc_name="MX_MR" color="f4c74e" title="Morelos"></area>
+    <area mc_name="MX_NA" color="f4c74e" title="Nayarit"></area>
+    <area mc_name="MX_NL" color="f4c74e" title="Nuevo Leon"></area>
+    <area mc_name="MX_OA" color="f4c74e" title="Oaxaca"></area>
+    <area mc_name="MX_PU" color="f4c74e" title="Puebla"></area>
+    <area mc_name="MX_QE" color="f4c74e" title="Queretaro"></area>
+    <area mc_name="MX_QR" color="f4c74e" title="Quintana Roo"></area>
+    <area mc_name="MX_SL" color="f4c74e" title="San Luis Potosi"></area>
+    <area mc_name="MX_SI" color="f4c74e" title="Sinaloa"></area>
+    <area mc_name="MX_SO" color="f4c74e" title="Sonora"></area>
+    <area mc_name="MX_TB" color="f4c74e" title="Tabasco"></area>
+    <area mc_name="MX_TM" color="f4c74e" title="Tamaulipas"></area>
+    <area mc_name="MX_TL" color="f4c74e" title="Tlaxcala"></area>
+    <area mc_name="MX_VE" color="f4c74e" title="Veracruz"></area>
+    <area mc_name="MX_YU" color="f4c74e" title="Yucatan"></area>
+    <area mc_name="MX_ZA" color="f4c74e" title="Zacatecas"></area>
+     <!-- Greenland -->
+    <area mc_name="GL" color="8e3557" title="Greenland"></area>
+     <!-- Central America -->
+    <area mc_name="BZ" color="8e3557" title="Belize"></area>
+    <area mc_name="CR" color="8da8df" title="Costa Rica"></area>
+    <area mc_name="SV" color="f4c74e" title="El Salvador"></area>
+    <area mc_name="GT" color="adcf4f" title="Guatemala"></area>
+    <area mc_name="HN" color="8da8df" title="Honduras"></area>
+    <area mc_name="NI" color="adcf4f" title="Nicaragua"></area>
+    <area mc_name="PA" color="8e3557" title="Panama"></area>
+     <!-- Caribbean Islands and Bermuda -->
+    <area mc_name="BM" color="8e3557" title="Bermuda"></area>
+    <area mc_name="AI" color="8da8df" title="Anguilla"></area>
+    <area mc_name="AG" color="f4c74e" title="Atingua and Barbuda"></area>
+    <area mc_name="AW" color="adcf4f" title="Aruba"></area>
+    <area mc_name="BS" color="8e3557" title="Bahamas"></area>
+    <area mc_name="BB" color="8da8df" title="Barbados"></area>
+    <area mc_name="CU" color="8da8df" title="Cuba"></area>
+    <area mc_name="DM" color="adcf4f" title="Dominica"></area>
+    <area mc_name="DO" color="8e3557" title="Dominican Republic"></area>
+    <area mc_name="GD" color="8da8df" title="Grenada"></area>
+    <area mc_name="GP" color="f4c74e" title="Guadeloupe"></area>
+    <area mc_name="HT" color="adcf4f" title="Haiti"></area>
+    <area mc_name="JM" color="8e3557" title="Jamaica"></area>
+    <area mc_name="MQ" color="8da8df" title="Martinique"></area>
+    <area mc_name="MS" color="f4c74e" title="Montserrat"></area>
+    <area mc_name="AN" color="8e3557" title="Netherlands Antilles"></area>
+    <area mc_name="PR" color="adcf4f" title="Puerto Rico"></area>
+    <area mc_name="LC" color="adcf4f" title="Saint Lucia"></area>
+    <area mc_name="VC" color="f4c74e" title="Saint Vincent and the Grenedines"></area>
+    <area mc_name="KN" color="adcf4f" title="Saint Kitts and Nevis"></area>
+    <area mc_name="MF" color="8e3557" title="Saint Martin"></area>
+    <area mc_name="VI" color="8da8df" title="US Virgin Islands"></area>
+    <area mc_name="VG" color="f4c74e" title="British Virgin Islands"></area>
+    <area mc_name="TC" color="adcf4f" title="Turks and Caicos Islands"></area>
+    <area mc_name="KY" color="8e3557" title="Cayman Islands"></area>
+    <area mc_name="TT" color="8e3557" title="Trinidad and Tobago"></area>
+     <!-- Northern tip of South America - reference only -->
+    <area mc_name="SouthAmerica" color="f4c74e" title="South America"></area>
+    <area mc_name="borders" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <labels>
+    <label x="73.7093%" y="69.8178%" text_size="18" color="#FFFFFF" remain="false">
+      <text>North and Central America</text>
+    </label>
+  </labels>
+</map>

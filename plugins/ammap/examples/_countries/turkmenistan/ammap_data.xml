@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/turkmenistan.swf" tl_long="52.441468" tl_lat="42.795343" br_long="66.684584" br_lat="35.129585" zoom="90%" zoom_x="7.24%" zoom_y="13.21%">
+  <areas>
+    <area mc_name="TM_AL" title="Ahal"></area>
+    <area mc_name="TM_BA" title="Balkan"></area>
+    <area mc_name="TM_DA" title="Daşoguz"></area>
+    <area mc_name="TM_LE" title="Lebap"></area>
+    <area mc_name="TM_MA" title="Mary"></area>
+    <area title="borders_inside" mc_name="orders_inside" color="#ffffff" balloon="false"></area>
+    <area title="borders_outside" mc_name="borders_outside" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Ashkhabad" file="target" color="#CC0000" height="10" width="10" lat="37.95042" long="58.390121" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="715" y="160" text_size="18" color="#FFFFFF" remain="false">
+      <text>Turkmenistan</text>
+    </label>
+  </labels>
+</map>

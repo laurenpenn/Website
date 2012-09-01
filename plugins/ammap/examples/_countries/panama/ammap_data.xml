@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/panama.swf" tl_long="-83.050410" tl_lat="9.641148" br_long="-77.172892" br_lat="7.201777" zoom="90%" zoom_x="5.92%" zoom_y="32.25%">
+
+  <areas>
+      <area mc_name="PA_BC" title="Bocas del Toro"></area>
+      <area mc_name="PA_CH" title="Chiriquí"></area>
+      <area mc_name="PA_CC" title="Coclé"></area>
+      <area mc_name="PA_CL" title="Colón"></area>
+      <area mc_name="PA_DR" title="Darién"></area>
+      <area mc_name="PA_EM" title="Emberá"></area>
+      <area mc_name="PA_HE" title="Herrera"></area>
+      <area mc_name="PA_SB" title="Kuna Yala"></area>
+      <area mc_name="PA_LS" title="Los Santos"></area>
+      <area mc_name="PA_NB" title="Ngäbe Buglé"></area>
+      <area mc_name="PA_PN" title="Panamá"></area>
+      <area mc_name="PA_VR" title="Veraguas"></area>
+      <area mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Panama City" file="target" color="#CC0000" height="10" width="10" lat="8.976111" long="-79.535934" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="730" y="75" text_size="18" color="#FFFFFF" remain="false">
+      <text>Panama</text>
+    </label>
+  </labels>
+</map>

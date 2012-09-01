@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/world3.swf" url="#movie1" zoom="330%" zoom_x="-124.85%" zoom_y="-87.05%">
+  <areas>
+      <area title="ALBANIA" mc_name="AL" value="3544841"></area>
+      <area title="ANTIGUA AND BARBUDA" mc_name="AG"></area>
+      <area title="ARMENIA" mc_name="AM" value="3330099"></area>
+      <area title="AUSTRIA" mc_name="AT" value="8169929"></area>
+      <area title="AZERBAIJAN" mc_name="AZ" value="7798497"></area>
+      <area title="BELARUS" mc_name="BY" value="10335382"></area>
+      <area title="BELGIUM" mc_name="BE" value="10274595"></area>
+      <area title="BOSNIA AND HERZEGOVINA" mc_name="BA" value="3964388"></area>
+      <area title="BULGARIA" mc_name="BG" value="7621337"></area>
+      <area title="CROATIA" mc_name="HR" value="4390751"></area>
+      <area title="CZECH REPUBLIC" mc_name="CZ" value="10256760"></area>
+      <area title="DENMARK" mc_name="DK" value="5368854"></area>
+      <area title="ESTONIA" mc_name="EE" value="1415681"></area>
+      <area title="FAEROE ISLANDS" mc_name="FO" value="46011"></area>
+      <area title="FINLAND" mc_name="FI" value="5183545"></area>
+      <area title="FRANCE" mc_name="FR" value="60765983"></area>
+      <area title="GEORGIA" mc_name="GE" value="4960951"></area>
+      <area title="GERMANY" mc_name="DE" value="83251851"></area>
+      <area title="GREECE" mc_name="GR" value="10645343"></area>
+      <area title="HUNGARY" mc_name="HU" value="10075034"></area>
+      <area title="ICELAND" mc_name="IS" value="279384"></area>
+      <area title="IRELAND" mc_name="IE" value="4234925"></area>
+      <area title="ITALY" mc_name="IT" value="59715625"></area>
+      <area title="KOSOVO" mc_name="KV" value="2100000"></area>
+      <area title="LATVIA" mc_name="LV" value="2366515"></area>
+      <area title="LIECHTENSTEIN" mc_name="LI" value="32842"></area>
+      <area title="LITHUANIA" mc_name="LT" value="3601138"></area>
+      <area title="LUXEMBOURG" mc_name="LU" value="448569"></area>
+      <area title="MACEDONIA" mc_name="MK" value="2054800"></area>
+      <area title="MALTA" mc_name="MT" value="397499"></area>
+      <area title="MOLDOVA" mc_name="MD" value="4434547"></area>
+      <area title="MONTENEGRO" mc_name="ME" value="500000"></area>
+      <area title="NETHERLANDS" mc_name="NL" value="16491461"></area>
+      <area title="NORWAY" mc_name="NO" value="4525116"></area>
+      <area title="POLAND" mc_name="PL" value="38625478"></area>
+      <area title="PORTUGAL" mc_name="PT" value="10084245"></area>
+      <area title="ROMANIA" mc_name="RO" value="22303552"></area>
+      <area title="SERBIA" mc_name="RS" value="9780000"></area>
+      <area title="SLOVAKIA" mc_name="SK" value="5422366"></area>
+      <area title="SLOVENIA" mc_name="SI" value="1932917"></area>
+      <area title="SPAIN" mc_name="ES" value="40077100"></area>
+      <area title="SVALBARD AND JAN MAYEN" mc_name="SJ" value="2868"></area>
+      <area title="SWEDEN" mc_name="SE" value="8876744"></area>
+      <area title="SWITZERLAND" mc_name="CH" value="7301994"></area>
+      <area title="UKRAINE" mc_name="UA" value="48396470"></area>
+      <area title="UNITED KINGDOM" mc_name="GB" value="59778002"></area>
+  </areas>
+
+  <movies>
+  <movie oid="movie1" text_box_x="36" text_box_y="366" text_box_width="190" text_box_height="120" title="Map chart example">
+    <description>
+      <![CDATA[This is map chart example. The more people live in a country, the more intence colour is. Dragging, zooming and small map is disabled]]>
+    </description>
+  
+    
+  <labels>
+    <label x="38" y="291" text_size="15" width="50%" align="left">
+      <text><![CDATA[<b>Population in Europe</b>]]></text>    
+    </label>
+  </labels>
+  </movie>  
+</movies>
+
+</map>

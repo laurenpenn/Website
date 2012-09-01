@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/tunisia.swf" tl_long="7.529808" tl_lat="37.560181" br_long="11.598695" br_lat="30.236344" zoom="90%" zoom_x="93.76%" zoom_y="2.29%">
+  <areas>
+      <area mc_name="TN_AN" title="Ariana"></area>
+      <area mc_name="TN_BJ" title="Béja"></area>
+      <area mc_name="TN_BA" title="Ben Arous"></area>
+      <area mc_name="TN_BZ" title="Bizerte"></area>
+      <area mc_name="TN_GB" title="Gabès"></area>
+      <area mc_name="TN_GF" title="Gafsa"></area>
+      <area mc_name="TN_JE" title="Jendouba"></area>
+      <area mc_name="TN_KR" title="Kairouan"></area>
+      <area mc_name="TN_KS" title="Kassérine"></area>
+      <area mc_name="TN_KB" title="Kebili"></area>
+      <area mc_name="TN_KF" title="Le Kef"></area>
+      <area mc_name="TN_MH" title="Mahdia"></area>
+      <area mc_name="TN_MN" title="Manouba"></area>
+      <area mc_name="TN_ME" title="Médenine"></area>
+      <area mc_name="TN_MS" title="Monastir"></area>
+      <area mc_name="TN_NB" title="Nabeul"></area>
+      <area mc_name="TN_SF" title="Sfax"></area>
+      <area mc_name="TN_SZ" title="Sidi Bou Zid"></area>
+      <area mc_name="TN_SL" title="Siliana"></area>
+      <area mc_name="TN_SS" title="Sousse"></area>
+      <area mc_name="TN_TA" title="Tataouine"></area>
+      <area mc_name="TN_TO" title="Tozeur"></area>
+      <area mc_name="TN_TU" title="Tunis"></area>
+      <area mc_name="TN_ZA" title="Zaghouan"></area>
+      <area title="borders" mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area title="borders" mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Tunis" file="target" color="#666666" height="10" width="10" lat="36.798672" long="10.17263" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="620" y="498" text_size="18" color="#FFFFFF" remain="false">
+      <text>Tunisia</text>
+    </label>
+  </labels>
+</map>

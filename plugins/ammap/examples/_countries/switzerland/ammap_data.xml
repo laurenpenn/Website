@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/switzerland.swf" tl_long="5.956597" tl_lat="47.807781" br_long="10.492565" br_lat="45.817196" zoom="85%" zoom_x="5.53%" zoom_y="14.45%">
+  <areas>
+    <area mc_name="CH_AG" title="Aargau"></area>
+    <area mc_name="CH_AI" title="Appenzell Inner-Rhoden"></area>
+    <area mc_name="CH_AR" title="Appenzell Ausser-Rhoden"></area>
+    <area mc_name="CH_BE" title="Bern"></area>
+    <area mc_name="CH_BL" title="Basel-Landschaft"></area>
+    <area mc_name="CH_BS" title="Basel-Stadt"></area>
+    <area mc_name="CH_FR" title="Fribourg"></area>
+    <area mc_name="CH_GE" title="Genève"></area>
+    <area mc_name="CH_GL" title="Glarus"></area>
+    <area mc_name="CH_GR" title="Graubünden"></area>
+    <area mc_name="CH_JU" title="Jura"></area>
+    <area mc_name="CH_LU" title="Lucerne"></area>
+    <area mc_name="CH_NE" title="Neuchâtel"></area>
+    <area mc_name="CH_NW" title="Nidwalden"></area>
+    <area mc_name="CH_OW" title="Obwalden"></area>
+    <area mc_name="CH_SG" title="Sankt Gallen"></area>
+    <area mc_name="CH_SH" title="Schaffhausen"></area>
+    <area mc_name="CH_SO" title="Solothurn"></area>
+    <area mc_name="CH_SZ" title="Schwyz"></area>
+    <area mc_name="CH_TG" title="Thurgau"></area>
+    <area mc_name="CH_TI" title="Ticino"></area>
+    <area mc_name="CH_UR" title="Uri"></area>
+    <area mc_name="CH_VD" title="Vaud"></area>
+    <area mc_name="CH_VS" title="Valais"></area>
+    <area mc_name="CH_ZH" title="Zürich"></area>
+    <area mc_name="CH_ZG" title="Zug"></area>
+    <area mc_name="borders" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Bern" file="target" color="#666666" height="10" width="10" lat="46.948251" long="7.43995" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="380" y="104" text_size="18" color="#FFFFFF" remain="false">
+      <text>Switzerland</text>
+    </label>
+  </labels>
+</map>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/costa_rica.swf" tl_long="-85.950538" tl_lat="11.216739" br_long="-82.555935" br_lat="8.032817" zoom="85%" zoom_x="24.84%" zoom_y="8.83%">
+  <areas>
+    <area mc_name="CR_AL" title="Alajuela"></area>
+    <area mc_name="CR_CA" title="Cartago"></area>
+    <area mc_name="CR_GU" title="Guanacaste"></area>
+    <area mc_name="CR_HE" title="Heredia"></area>
+    <area mc_name="CR_LI" title="Limón"></area>
+    <area mc_name="CR_PU" title="Puntarenas"></area>
+    <area mc_name="CR_SJ" title="San José"></area>
+    <area mc_name="CR_LAR" title="Laguna de Arenal" color="#0098FF" balloon="true"></area>
+    <area mc_name="borders_lake" title="lake borders" color="#0066FF" balloon="false"></area>
+    <area mc_name="borders_inside" title="borders" color="#FFFFFF" balloon="false"></area>
+    <area mc_name="borders_outside" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="San José" file="target" color="#666666" height="10" width="10" lat="9.93047" long="-84.078621" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="133" y="362" text_size="18" color="#FFFFFF" remain="false">
+      <text>Costa Rica</text>
+    </label>
+  </labels>
+</map>

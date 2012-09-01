@@ -1,0 +1,528 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>amMap JavaScript control example</title>
+</head>
+<style>
+  body{
+  	background-color: #FFFFFF;
+  	font-family: Tahoma;
+  	font-size: 12px;
+  }
+</style>
+
+<body>
+  <b><font color="red">Attention! Because of security restrictions in most cases this example will work only if you upload files to your web server.</font></b><br><br>
+  
+  <!-- ammap script-->
+  <!-- saved from url=(0013)about:internet -->
+  <script type="text/javascript" src="../../ammap/swfobject.js"></script>
+  	<div id="flashcontent">
+  		<strong>You need to upgrade your Flash Player</strong>
+  	</div>
+  
+  	<script type="text/javascript">
+  		// <![CDATA[		
+  		var so = new SWFObject("../../ammap/ammap.swf", "ammap", "720", "400", "8", "#FFFFFF");
+  		so.addVariable("path", "../../ammap/");
+  		so.addVariable("map_id", "ammap");
+  		so.addVariable("settings_file", escape("ammap_settings.xml"));
+  		so.addVariable("data_file", escape("ammap_data.xml"));
+  		so.write("flashcontent");
+  		// ]]>
+  	</script>
+  <!-- end of ammap script -->
+  
+  <script type="text/javascript">
+  
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // Functions that control the map ////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////
+  
+  
+    // SET DATA //////////////////////////////////////////////////////////////////////////////
+    // flashMovie.setData(data, rebuild)
+    // This function can be used for setting the maps's data on the fly.
+    // If rebuild is set to "true" the amMap will override, rather than append all currently 
+    // set data.
+    function setData() {
+      // gets data from the text area with id "data"
+      var data = document.getElementById("data").value;
+      // sets data
+      flashMovie.setData(data);
+    }
+         
+    
+    // SET SETTINGS //////////////////////////////////////////////////////////////////////////
+    // flashMove.setSettings(settings[, rebuild])
+    // This function can be used to set some part or all the settings. The settings should be
+    // in XML format, inside <settings></settings>. The "rebuild" parameter is optional and 
+    // can be "true" or "false". "false" means that the new settings will not be applied right
+    // after this function is called. They will can be applied using flashMovie.rebuild()
+    // function or by adding some more setings with the "rebuild" set to "true". The default
+    // value of "rebuild" is "true".
+    function setSettings() {
+      var settings = document.getElementById("settings").value;
+      flashMovie.setSettings(settings);
+    }   
+    
+    // REBUILD MAP ///////////////////////////////////////////////////////////////////////////
+    // flashMovie.rebuild();
+    // This function might be used to rebuild the map after several portions of settings were
+    // set using setSettings(settings, rebuild) function, with the rebuild set to false
+    function rebuild() {
+      flashMovie.rebuild();
+    }
+    
+    // RELOAD DATA ///////////////////////////////////////////////////////////////////////////
+    // flashMove.reloadData([file_name])
+    // This function will reload the data. The file_name variable is optional, if you do not
+    // set it here, data from the original file will be reloaded.       
+    function reloadData() {
+      flashMovie.reloadData(); 
+    }
+    
+    // RELOAD SETTINGS ///////////////////////////////////////////////////////////////////////
+    // flashMovie.reloadSettings([file_name])
+    // This function will reload the settings. The file_name variable is optional, if you do
+    // not set it here, settings from the original file will be reloaded. 
+    function reloadSettings() {
+      flashMovie.reloadSettings();
+    }
+    
+    // RELOAD ALL ////////////////////////////////////////////////////////////////////////////
+    // flashMovie.reloadAll([data_file_name][,settings_file_name])
+    // This function will reload both data and settings. The names of the files are optional. 
+    // If you do not set them, the original file names will be used.
+    function reloadAll() {
+      flashMovie.reloadAll();
+    }
+    
+    // SET PARAM /////////////////////////////////////////////////////////////////////////////
+    // flashMovie.setParam(param, value)
+    // This function lets you change a single setting. The parameter names are formed using 
+    // the section name and the parameter name, separated with a period. For example: 
+    // background.alpha or zoom.enabled 
+    function setParam() {
+      // gets param name from a field with id "param"
+      var param = document.getElementById("param").value;
+      // gets param value from a field with id "value"
+      var value = document.getElementById("value").value;
+      // sets param
+      flashMovie.setParam(param, value);
+    }
+          
+    // GET PARAM /////////////////////////////////////////////////////////////////////////////
+    // flashMovie.getParam(param)
+    // This function will ask Flash to return the value of a setting. The parameter name is
+    // formed in the same way as the setParam function (described above). When you call this
+    // function to return the setting value, Flash will return the value by calling the 
+    // amReturnParam(chart_id, param_value) function
+    function getParam() {
+      // get the param name from a field with id "getparam"
+      var param = document.getElementById("getparam").value;            
+      flashMovie.getParam(param);
+    } 
+    
+    // GET DATA //////////////////////////////////////////////////////////////////////////////
+    // flashMovie.getData()
+    // This function will ask Flash to return the whole data. When you call this function to
+    // return the data, Flash will call the amReturnData(map_id, data) function.
+    function getData() {
+      flashMovie.getData();
+    }   
+          
+    // GET SETTINGS //////////////////////////////////////////////////////////////////////////
+    // flashMovie.getSettings()
+    // This function will ask Flash to return the whole settings XML. When you call this 
+    // function to return the settings, Flash will call the 
+    // amReturnSettings(map_id, settings) function. 
+    function getSettings() {
+      flashMovie.getSettings();
+    }   
+          
+    // EXPORT AS IMAGE ///////////////////////////////////////////////////////////////////////
+    // flashMovie.exportImage([file_name]) 
+    // This function will start the process of exporting the chart as an image. The file_name
+    // is a name of a file to which image data will be posted (files provided in the download 
+    // package are export.php and export.aspx). The file_name is optional and can be set in 
+    // the <export_as_image><file> setting.
+    function exportImage() {
+      flashMovie.exportImage('../../ammap/export.php');  
+    }
+    
+    // PRINT /////////////////////////////////////////////////////////////////////////////////
+    // flashMovie.print()
+    // This function will print the chart. 
+    function print(){
+      flashMovie.print();
+    }
+          
+    // PRINT AS BITMAP ///////////////////////////////////////////////////////////////////////
+    // flashMovie.printAsBitmap()
+    function printAsBitmap(){
+      flashMovie.printAsBitmap();
+    }
+  
+    // SET ZOOM
+    // flashMovie.setZoom(zoom_level,zoom_x,zoom_y,instant);
+    // This function will set the new zoom level and position for the map. "instant" can be
+    // "true" or "false". If set to "true", the map will change the zoom position instantly,
+    // without animation. The default value is "false".
+    function setZoom() {
+      var zoom_level = document.getElementById("zoom_level").value;    
+      var zoom_x = document.getElementById("zoom_x").value;
+      var zoom_y = document.getElementById("zoom_y").value;
+      flashMovie.setZoom(zoom_level,zoom_x,zoom_y, false); 
+    }
+    
+    // SET ZOOM
+    // flashMovie.setZoomLongLat(zoom_level,longitude,latitude,instant);
+    // This function will set the new zoom level and position for the map using longitude and
+    // latitude. "instant" can be "true" or "false". If set to "true", the map will change
+    // the zoom position instantly, without animation. The default value is "false".
+    function setZoomLongLat() {
+      var zoom_level = document.getElementById("zoom_level_ll").value;    
+      var longitude = document.getElementById("zoom_long").value;
+      var latitude = document.getElementById("zoom_lat").value;
+      flashMovie.setZoomLongLat(zoom_level,longitude,latitude, false); 
+    }    
+         
+    // GET LONGITUDE AND LATITUDE OF A MOUSE POINTER
+    // flashMovie.getLongLat();
+    // This function will return longitude and latitude of the mouse pointer. The values will
+    // be returned by calling amSetLongLat(map_id, long, lat) function
+    function getLongLat(){
+      flashMovie.getLongLat();
+    }
+    
+    
+    // GET X a Y POSITION OF A MOUSE POINTER
+    // flashMovie.getStageXY();
+    // This function will return x and y position of a mouse in pixels and in percents. The 
+    // values will ve returned by calling amSetStageXY(map_id, x, y, x_percent, y_percent)
+    // function
+    function getStageXY(){
+      flashMovie.getStageXY();
+    }
+    
+    // GET MAP ZOOM LEVEL AND POSITION
+    // flashMovie.getZoomInfo();
+    // This function will return map zoom level and zoom position. The values will be returned
+    // by calling amSetZoomInfo(map_id, x, y, level) function
+    function getZoomInfo(){
+       if (flashMovie) {
+          flashMovie.getZoomInfo();
+       }
+    }
+    
+    // GET CURRENT MAP VIEWSTATE CENTER COORDINATES
+    // flashMovie.getCenterCoords();
+    // This function will return center coordinates of the center of the currently visible 
+    // map portion. The values will be returned by calling 
+    // amSetCenterCoords(map_id, long, lat, level) function
+    function getCenterCoords(){
+       if (flashMovie) {
+          flashMovie.getCenterCoords();
+       }
+    }
+    
+    // GET CURRENT MAP VIEWSTATE BOUNDS
+    // flashMovie.getCurrentBounds();
+    // This function will return SW and NEW coordinates of the currently visible 
+    // map portion. The values will be returned by calling 
+    // amSetCurrentBounds(map_id, sw_lng, sw_lat, ne_lng, ne_lat) function
+    function getCurrentBounds(){
+       if (flashMovie) {
+          flashMovie.getCurrentBounds();
+       }
+    }
+    
+    // CLICK ON OBJECT
+    // flashMovie.clickObject(id);
+    // this function will act as if user clicked on some object - area, movie or label. The
+    // Object must have oid attribute set, for example: <area oid="UK" .....> 
+    function clickObject(){
+      var id = document.getElementById("objectid").value;
+      flashMovie.clickObject(id);
+    }
+    
+    // ZOOM-IN
+    // flashMovie.zoomIn()
+    // the map will zoom-in by one step. You can call this function on mouseWheel event. 
+    // amMap has a possibility to zoom-in and out with mouseWheel, however it is not working
+    // properly with wmode set to "transparent" or "opaque"
+    function zoomIn(){
+      flashMovie.zoomIn()
+    }
+    // ZOOM-OUT
+    // flashMovie.zoomOut()
+    // the map will zoom-in by one step. You can call this function on mouseWheel event. 
+    // amMap has a possibility to zoom-in and out with mouseWheel, however it is not working
+    // properly with wmode set to "transparent" or "opaque"
+    function zoomOut(){
+      flashMovie.zoomOut()
+    }
+    
+    // SET COLOR OF THE OBJECT
+    // flashMovie.setColor(id, color);
+    // this function sets the color of the object with the respective oid 
+		// attribute  
+    function setColor(){
+      var id = document.getElementById("setcolorid").value;
+      var color = document.getElementById("setcolorcolor").value;
+      flashMovie.setColor(id, color);
+    }
+    
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // Functions that are called by the chart ////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////  
+    
+    // MAP COMPLETED /////////////////////////////////////////////////////////////////////////   
+    // amMapCompleted(chart_id)
+    // This function is called when the map is fully loaded and initialized.
+    function amMapCompleted(map_id){
+      // get the flash object into "flashMovie" variable   
+      flashMovie = document.getElementById(map_id);
+      // tell the field with id "mapfinished" that this chart was initialized
+      document.getElementById("mapfinished").value = map_id;
+    }
+    
+    // PROCESS COMPLETED /////////////////////////////////////////////////////////////////////   
+    // amProcessCompleted(map_id, process_name)
+    // This function is called when the map finishes doing some task triggered by another 
+    // JavaScript function 
+    function amProcessCompleted(map_id, process_name){
+      document.getElementById("processcompleted").value = process_name;           
+    }  
+    
+    // RETURN DATA ///////////////////////////////////////////////////////////////////////////
+    // amReturnData(map_id, data)
+    // This function is called when you request data from a map 
+    // by calling the flashMove.getData() function.
+    function amReturnData(map_id, data){
+      document.getElementById("data").value = unescape(data);
+    }
+    
+    // RETURN PARAM //////////////////////////////////////////////////////////////////////////
+    // amReturnParam(chart_id, param)
+    // This function is called when you request a setting from a map  
+    // by calling the flashMovie.getParam(param) function.
+    function amReturnParam(map_id, param){
+      document.getElementById("returnedparam").value = unescape(param);
+    }
+    
+    // RETURN SETTINGS ///////////////////////////////////////////////////////////////////////
+    // amReturnSettings(map_id, settings)
+    // This function is called when you request settings from a map 
+    // by calling flashMovie.getSettings() function.  
+    function amReturnSettings(chart_id, settings){
+      document.getElementById("settings").value = unescape(settings);
+    }
+    
+    // RETURN IMAGE DATA /////////////////////////////////////////////////////////////////////
+    // amReturnImageData(map_id, data)
+    // This function is called when the export to image process is finished and might be used
+    // as alternative way to get image data (instead of posting it to some file)
+    function amReturnImageData(map_id, data){
+      // your own functions here
+    }      
+    
+    // ERROR /////////////////////////////////////////////////////////////////////////////////
+    // amError(map_id, message)
+    // This function is called when an error occurs, such as no data, or file not found.
+    function amError(map_id, message){
+      alert(message);
+    }      
+    
+    // RETURN LONGITUDE AND LATITUDE OF A MOUSE POINTER
+    // amSetLongLat(map_id, long, lat)
+    // This function is called by the chart when you request this information by calling
+    // getLongLat() function
+    function amSetLongLat(map_id, long, lat){
+       document.getElementById("longitude").value = long;
+       document.getElementById("latitude").value = lat;
+    }
+  
+    // RETURN X AND Y OF A MOUSE POINTER
+    // amSetStageXY(map_id, x, y, x_percent, y_percent)
+    // This function is called by the chart when you request this information by calling
+    // getStageXY() function
+    function amSetStageXY(map_id, x, y, x_percent, y_percent){
+       document.getElementById("stage_x").value = x;
+       document.getElementById("stage_y").value = y;
+       document.getElementById("stage_xp").value = x_percent;
+       document.getElementById("stage_yp").value = y_percent;         
+    }
+    
+    // RETURN ZOOM LEVEL AND POSITION
+    // amSetZoomInfo(map_id, x, y, level)
+    // This function is called by the chart when you request this information by calling
+    // getZoomInfo() function 
+    function amSetZoomInfo(map_id, x, y, level){
+       document.getElementById("zoom_x").value = x;
+       document.getElementById("zoom_y").value = y;
+       document.getElementById("zoom_level").value = level;
+    }
+    
+    // RETURN CURRENT CENTER COORDINATES
+    // amSetCenterCoords(map_id, long, lat, zoom)
+    // This function is called by the chart when you request this information by calling
+    // getCenterCoords() function 
+    function amSetCenterCoords(map_id, long, lat, zoom) {
+       document.getElementById("center_long").value = long;
+       document.getElementById("center_lat").value = lat;
+       document.getElementById("center_level").value = zoom;
+    }
+    
+    // RETURN CURRENT MAP BOUNDS
+    // amSetCurrentBounds (map_id, sw_lng, sw_lat, ne_lng, ne_lat)
+    // This function is called by the chart when you request this information by calling
+    // getCurrentBounds() function 
+    function amSetCurrentBounds (map_id, sw_lng, sw_lat, ne_lng, ne_lat) {
+       document.getElementById("sw_lng").value = sw_lng;
+       document.getElementById("sw_lat").value = sw_lat;
+       document.getElementById("ne_lng").value = ne_lng;
+       document.getElementById("ne_lat").value = ne_lat;
+    }
+    
+    // REGISTER MOUSE CLICK ON AN OBJECT
+    // amRegisterClick(map_id, object_id, title, value)
+    // This function is called when user clicks on some object - area, movie or label.  
+    function amRegisterClick(map_id, object_id, title, value){
+        document.getElementById("objectid").value = object_id;
+    }
+    
+    // REGISTER MOUSE CLICK ANYWHERE ON THE MAP
+    // amRegisterClickAnywhere(map_id, object_id, title, value)
+    // This function is called when user clicks on some object - area, movie or label.  
+    function amRegisterClickAnywhere(map_id, object_id, title, value){
+        document.getElementById("anywhere_id").value = object_id;
+        document.getElementById("anywhere_title").value = title;
+        document.getElementById("anywhere_value").value = value;
+    }
+    
+    // REGISTER ROLL-OVER THE OBJECT
+    // amRegisterHover(map_id, object_id, title, value)
+    // This function is called when user rolls-over on some object - area, movie or label.
+    function amRegisterHover(map_id, object_id, title, value){
+        document.getElementById("objecthoverid").value = title;
+    }
+		
+		// REGISTER ROLL-OUT THE OBJECT
+    // amRegisterRollout(map_id, object_id, title, value)
+    // This function is called when user rolls-out off some object - area, movie or label.
+    function amRegisterRollout(map_id, object_id, title, value){
+        document.getElementById("objectrolloutid").value = title;
+    } 
+    
+    // REGISTER MOVIE DRAG END
+    // amRegisterDrag(map_id, object_id, long, lat, x, y)
+    // This function is called when user finishes dragging a draggable object.
+    // If movie was placed using long/lat coordinates, new long/lat coordinates will be returned.
+    // If movie was placed using x/y, new x/y will be returned.
+    function amRegisterDrag(map_id, object_id, long, lat, x, y){
+        alert(object_id + ' ' + long + ' ' + lat + ' ' + x + ' ' + y);
+    }      
+  
+  </script>
+  
+  
+    <form>
+      <hr noshade size="1">
+      Map initialized: <input type="text" id="mapfinished">
+      Process completed: <input type="text" id="processcompleted">
+      <hr noshade size="1">
+      
+      <input type="button" value="export image" onclick="exportImage();" />            	    
+      <input type="button" value="print" onclick="print();" />
+      <input type="button" value="print as bitmap" onclick="printAsBitmap();" />
+      <hr noshade size="1">
+      
+      <input type="button" value="reload Data" onclick="reloadData();" />
+    	<input type="button" value="reload Settings" onclick="reloadSettings();" />
+    	<input type="button" value="reload All" onclick="reloadAll();" />
+      <hr noshade size="1">
+      
+      clicked on object:<input type="text" id="objectid"/>
+      <input type="button" value="click object" onclick="clickObject();" />
+      
+      rolled-over object:<input type="text" id="objecthoverid"/>
+			rolled-out object:<input type="text" id="objectrolloutid"/>
+      <hr noshade size="1">
+      
+      clicked anywhere id: <input type="text" id="anywhere_id"/>
+      title: <input type="text" id="anywhere_title"/>
+      <hr noshade size="1">
+          
+      <textarea id="data" rows="6" cols="62"></textarea><br>
+      <input type="button" value="Get data" onclick="getData();" />
+      <input type="button" value="Set Data" onclick="setData();" />
+      
+      <hr noshade size="1">	 
+      Param: <input type="text" id="param" value="small_map.enabled"/>
+      Value: <input type="text" id="value" value="false"/>
+      <input type="button" value="set param" onclick="setParam();" />
+      
+      <hr noshade size="1">   
+      Param: <input type="text" id="getparam" value="background.color">   		
+      Value: <input type="text" id="returnedparam" />
+      <input type="button" value="get param" onclick="getParam();" />
+      <hr noshade size="1">    
+          
+      longitude:<input type="text" id="longitude"/>
+      latitude:<input type="text" id="latitude"/>
+      Right click on a map and select &quot;get longitude and latitude&quot; menu item.
+      <hr noshade size="1">
+          
+      stage x:<input type="text" id="stage_x" size="15" />
+      stage y:<input type="text" id="stage_y" size="15" />
+      stage x (%):<input type="text" id="stage_xp" size="15" />
+      stage_y (%):<input type="text" id="stage_yp" size="15" />
+      Right click on a map and select &quot;get mouse X and Y&quot; menu item.
+      <hr noshade size="1">      
+          
+      <br>
+      zoom_x:<input type="text" id="zoom_x" size="15" />
+      zoom_y:<input type="text" id="zoom_y" size="15" />  
+      zoom_level:<input type="text" id="zoom_level" size="15" />
+      <input type="button" value="get zoom info" onclick="getZoomInfo();" />
+      <input type="button" value="set zoom" onclick="setZoom();" />
+      <hr noshade size="1"> 
+      
+      <br>
+      center_long:<input type="text" id="center_long"/>
+      center_lat:<input type="text" id="center_lat"/>  
+      center_level:<input type="text" id="center_level"/>
+      <input type="button" value="get center coords" onclick="getCenterCoords();" />
+      <hr noshade size="1"> 
+      
+      <br>
+      SW (long/lat):<input type="text" id="sw_lng" size="15" /><input type="text" id="sw_lat" size="15" />
+      NE (long/lat):<input type="text" id="ne_lng" size="15" /><input type="text" id="ne_lat" size="15" />
+      <input type="button" value="get current bounds" onclick="getCurrentBounds();" />
+      <hr noshade size="1">
+      
+      <br>
+			oid: <input type="text" id="setcolorid"/>
+      color: <input type="text" id="setcolorcolor"/>
+      <input type="button" value="set color" onclick="setColor();" />
+      <hr noshade size="1"> 
+      
+      <br>
+      long:<input type="text" id="zoom_long"/>
+      lat:<input type="text" id="zoom_lat"/>  
+      zoom_level:<input type="text" id="zoom_level_ll"/>      
+      <input type="button" value="set zoom" onclick="setZoomLongLat();" />
+      <hr noshade size="1">       
+      
+      <textarea id="settings" rows="6" cols="62"></textarea><br>
+      <input type="button" value="Get settings" onclick="getSettings();" />
+      <input type="button" value="Set settings" onclick="setSettings();" />
+      <input type="button" value="Rebuild" onclick="rebuild();" />  
+      <hr noshade size="1">	      
+            
+    </form>
+  </body>
+</html>

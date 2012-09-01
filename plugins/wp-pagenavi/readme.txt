@@ -1,9 +1,11 @@
 === WP-PageNavi ===
 Contributors: GamerZ, scribu
 Tags: navigation, pagination, paging, pages
-Requires at least: 3.1
-Tested up to: 3.3
-Stable tag: 2.82
+Requires at least: 3.2
+Tested up to: 3.4
+Stable tag: 2.83
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Adds a more advanced paging navigation interface.
 
@@ -24,9 +26,9 @@ You can either install it automatically from the WordPress admin, or do it manua
 1. Unzip the archive and put the `wp-pagenavi` folder into your plugins folder (/wp-content/plugins/).
 1. Activate the plugin from the Plugins menu.
 
-= Archives =
+= Usage =
 
-In your theme, you need to find calls to `next_posts_link()` and `previous_posts_link()` and replace them.
+In your theme, you need to find calls to next_posts_link() and previous_posts_link() and replace them.
 
 In the Twentyten theme, it looks like this:
 
@@ -38,8 +40,6 @@ In the Twentyten theme, it looks like this:
 You would replace those two lines with this:
 
 `<?php wp_pagenavi(); ?>`
-
-= Multipart pages =
 
 For multipart pages, you would look for code like this:
 
@@ -89,6 +89,11 @@ You can do that like so:
 `<?php wp_pagenavi( array( 'options' => PageNavi_Core::$options->get_defaults() ) ); ?>`
 
 == Changelog ==
+
+= 2.83 =
+* added 'echo' parameter
+* added Estonian and Bengali translations
+* updated scbFramework
 
 = 2.82 =
 * fixed prev/next links not appearing in some conditions

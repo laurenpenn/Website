@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/nigeria.swf" tl_long="2.668683" tl_lat="13.891763" br_long="14.679994" br_lat="4.270164" zoom="90%" zoom_x="17.32%" zoom_y="3.85%">
+  <areas>
+      <area mc_name="NG_AB" title="Abia"></area>
+      <area mc_name="NG_AD" title="Adamawa"></area>
+      <area mc_name="NG_AK" title="Akwa Ibom"></area>
+      <area mc_name="NG_AN" title="Anambra"></area>
+      <area mc_name="NG_BA" title="Bauchi"></area>
+      <area mc_name="NG_BY" title="Bayelsa"></area>
+      <area mc_name="NG_BE" title="Benue"></area>
+      <area mc_name="NG_BO" title="Borno"></area>
+      <area mc_name="NG_CR" title="Cross River"></area>
+      <area mc_name="NG_DE" title="Delta"></area>
+      <area mc_name="NG_EB" title="Ebonyi"></area>
+      <area mc_name="NG_ED" title="Edo"></area>
+      <area mc_name="NG_EK" title="Ekiti"></area>
+      <area mc_name="NG_EN" title="Enugu"></area>
+      <area mc_name="NG_FC" title="Federal Capital Territory"></area>
+      <area mc_name="NG_GO" title="Gombe"></area>
+      <area mc_name="NG_IM" title="Imo"></area>
+      <area mc_name="NG_JI" title="Jigawa"></area>
+      <area mc_name="NG_KD" title="Kaduna"></area>
+      <area mc_name="NG_KN" title="Kano"></area>
+      <area mc_name="NG_KT" title="Katsina"></area>
+      <area mc_name="NG_KE" title="Kebbi"></area>
+      <area mc_name="NG_KO" title="Kogi"></area>
+      <area mc_name="NG_KW" title="Kwara"></area>
+      <area mc_name="NG_LA" title="Lagos"></area>
+      <area mc_name="NG_NA" title="Nassarawa"></area>
+      <area mc_name="NG_NI" title="Niger"></area>
+      <area mc_name="NG_OG" title="Ogun"></area>
+      <area mc_name="NG_ON" title="Ondo"></area>
+      <area mc_name="NG_OS" title="Osun"></area>
+      <area mc_name="NG_OY" title="Oyo"></area>
+      <area mc_name="NG_PL" title="Plateau"></area>
+      <area mc_name="NG_RI" title="Rivers"></area>
+      <area mc_name="NG_SO" title="Sokoto"></area>
+      <area mc_name="NG_TA" title="Taraba"></area>
+      <area mc_name="NG_YO" title="Yobe"></area>
+      <area mc_name="NG_ZA" title="Zamfara"></area>
+      <area mc_name="NG_LKC" title="Lake Chad"color="#1C83E7" balloon="false" alpha="0"></area>
+      <area mc_name="borders_LKC" title="borders - Lake Chad" color="#003FD5" balloon="false" alpha="0"></area>
+      <area mc_name="borders_outside" title="borders" color="#ffffff" balloon="false" alpha="0"></area>
+      <area mc_name="borders_inside" title="borders" color="#ffffff" balloon="false"></area>
+  </areas>lat="9.193671" long="7.155102"
+
+  <movies>
+    <movie title="Abuja" file="target" color="#666666" height="10" width="10" long="7.2509" lat="9.073718" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="999" y="423" text_size="18" color="#FFFFFF" remain="false">
+      <text>Nigeria</text>
+    </label>
+  </labels>
+</map>

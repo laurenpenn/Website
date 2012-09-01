@@ -3,7 +3,7 @@ Contributors: axelseaa
 Tags: expire, posts, pages, schedule
 Requires at least: 3.2
 Tested up to: 3.4
-Stable tag: 1.6
+Stable tag: 1.6.1
 
 Allows you to add an expiration date to posts which you can configure to either delete the post, change it to a draft, or update the 
 post categories.
@@ -15,7 +15,7 @@ area that will allow you to seperataly control whether or not posts/pages are ei
 also choose to have the post categories change at expiration time.  If you choose to change the post category, the default action of changing 
 the status will be ignored.
 
-The plugin hooks into the wp cron processes and runs every minute.
+The plugin hooks into the wp cron processes and runs every minute by default, but can be configured to use any cron schedule (hourly, twicedaily, daily, etc).
 
 The expiration date can be displayed within the actual post by using the [postexpirator] tag.  The format attribute will override the plugin 
 default display format.  See the [PHP Date Function](http://us2.php.net/manual/en/function.date.php) for valid date/time format options. 
@@ -44,6 +44,15 @@ This section describes how to install the plugin and get it working.
 3. Settings screen
 
 == Changelog ==
+
+**Version 1.6.1**
+
+* Tweaked error messages, removed clicks for reset cron event
+* Switched cron schedule functions to use "current_time('timestamp')"
+* Cleaned up default values code
+* Added option to allow user to select any cron schedule (minute, hourly, twicedaily, daily) - including other defined schedules
+* Added option to set default expiration duration - options are none, custom, or publish time
+* Code cleanup - php notice
 
 **Version 1.6**
 
@@ -132,6 +141,9 @@ NOTE: After upgrading, you may need to reset the cron schedules.  Following onsc
 * Initial Release
 
 == Upgrade Notice ==
+
+= 1.6.1 =
+Tweaked error messages, added option to allow user to select cron schedule and set default exiration duration
 
 = 1.6 =
 Fixed invalid html

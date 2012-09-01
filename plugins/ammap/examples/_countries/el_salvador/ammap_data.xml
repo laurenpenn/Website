@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/el_salvador.swf" tl_long="-90.125151" tl_lat="14.450692" br_long="-87.683552" br_lat="13.152490" zoom="90%" zoom_x="6.01%" zoom_y="7.17%">
+
+  <areas>
+      <area mc_name="SV_AH" title="Ahuachapán"></area>
+      <area mc_name="SV_CA" title="Cabañas"></area>
+      <area mc_name="SV_CH" title="Chalatenango"></area>
+      <area mc_name="SV_CU" title="Cuscatlán"></area>
+      <area mc_name="SV_LI" title="La Libertad"></area>
+      <area mc_name="SV_PA" title="La Paz"></area>
+      <area mc_name="SV_UN" title="La Unión"></area>
+      <area mc_name="SV_MO" title="Morazán"></area>
+      <area mc_name="SV_SM" title="San Miguel"></area>
+      <area mc_name="SV_SS" title="San Salvador"></area>
+      <area mc_name="SV_SA" title="Santa Ana"></area>
+      <area mc_name="SV_SV" title="San Vicente"></area>
+      <area mc_name="SV_SO" title="Sonsonate"></area>
+      <area mc_name="SV_US" title="Usulután"></area>
+      <area mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="San Salvador" file="target" color="#CC0000" height="10" width="10" lat="13.69743" long="-89.199097" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="730" y="75" text_size="18" color="#FFFFFF" remain="false">
+      <text>El Salvador</text>
+    </label>
+  </labels>
+</map>

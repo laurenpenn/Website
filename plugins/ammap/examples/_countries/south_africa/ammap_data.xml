@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/south_africa.swf" tl_long="16.458622" tl_lat="-22.127170" br_long="38.003723" br_lat="-46.982910" zoom="178%" zoom_x="15.94%" zoom_y="5.76%">
+  <areas>
+    <area mc_name="ZA_EC" title="Eastern Cape"></area>
+    <area mc_name="ZA_PE" title="Prince Edward Islands"></area>
+    <area mc_name="ZA_FS" title="Free State"></area>
+    <area mc_name="ZA_GT" title="Gauteng"></area>
+    <area mc_name="ZA_NL" title="KwaZulu-Natal"></area>
+    <area mc_name="ZA_NP" title="Limpopo"></area>
+    <area mc_name="ZA_MP" title="Mpumalanga"></area>
+    <area mc_name="ZA_NC" title="Northern Cape"></area>
+    <area mc_name="ZA_NW" title="North West"></area>
+    <area mc_name="ZA_WC" title="Western Cape"></area>
+    <area mc_name="LS" title="Lesotho" color="#CCCCCC"></area>
+    <area mc_name="borders_LS" title="borders" color="#999999" balloon="false"></area>
+    <area mc_name="borders_ZA" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Pretoria" file="target" color="#666666" height="10" width="10" lat="-25.731513" long="28.170723" fixed_size="true"></movie>
+    <movie title="Bloemfontein" file="target" color="#666666" height="10" width="10" lat="-29.1024" long="26.208427" fixed_size="true"></movie>
+    <movie title="Cape Town" file="target" color="#666666" height="10" width="10" lat="-33.916667" long="18.416667" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="380" y="113" text_size="18" color="#FFFFFF" remain="false">
+      <text>South Africa</text>
+    </label>
+  </labels>
+</map>

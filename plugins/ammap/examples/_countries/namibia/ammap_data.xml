@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/namibia.swf" tl_long="11.733826" tl_lat="-16.959400" br_long="25.258081" br_lat="-28.972644" zoom="90%" zoom_x="28.69%" zoom_y="5.16%">
+  <areas>
+      <area mc_name="NA_CA" title="Caprivi"></area>
+      <area mc_name="NA_ER" title="Erongo"></area>
+      <area mc_name="NA_HA" title="Hardap"></area>
+      <area mc_name="NA_KA" title="Karas"></area>
+      <area mc_name="NA_KH" title="Khomas"></area>
+      <area mc_name="NA_KU" title="Kunene"></area>
+      <area mc_name="NA_OW" title="Ohangwena"></area>
+      <area mc_name="NA_OK" title="Okavango"></area>
+      <area mc_name="NA_OH" title="Omaheke"></area>
+      <area mc_name="NA_OS" title="Omusati"></area>
+      <area mc_name="NA_ON" title="Oshana"></area>
+      <area mc_name="NA_OT" title="Oshikoto"></area>
+      <area mc_name="NA_OD" title="Otjozondjupa"></area>
+      <area title="borders" mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area title="borders" mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Windhoek" file="target" color="#CC0000" height="10" width="10" lat="-22.570066" long="17.076787" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="688" y="413" text_size="18" color="#FFFFFF" remain="false">
+      <text>Namibia</text>
+    </label>
+  </labels>
+</map>

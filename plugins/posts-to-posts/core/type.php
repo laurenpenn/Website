@@ -2,7 +2,7 @@
 
 class P2P_Connection_Type {
 
-	public $indeterminate = false;
+	public $indeterminate;
 
 	public $object;
 
@@ -24,12 +24,7 @@ class P2P_Connection_Type {
 		}
 
 		if ( $this->object['from'] == $this->object['to'] ) {
-			if ( 'post' == $this->object['to'] ) {
-				$common = array_intersect( $this->side['from']->post_type, $this->side['to']->post_type );
-
-				if ( !empty( $common ) )
-					$this->indeterminate = true;
-			}
+			$this->indeterminate = $this->side['from']->is_indeterminate( $this->side['to'] );
 		} else {
 			$args['self_connections'] = true;
 		}
@@ -80,14 +75,12 @@ class P2P_Connection_Type {
 
 	private function set_labels( &$args ) {
 		foreach ( array( 'from', 'to' ) as $key ) {
-			$labels = _p2p_pluck( $args, $key . '_labels' );
+			$labels = $this->side[ $key ]->get_labels();
+			$labels['create'] = __( 'Create connections', P2P_TEXTDOMAIN );
 
-			if ( empty( $labels ) )
-				$labels = $this->side[ $key ]->get_labels();
-			else
-				$labels = (object) $labels;
+			_p2p_append( $labels, (array) _p2p_pluck( $args, $key . '_labels' ) );
 
-			$this->labels[ $key ] = $labels;
+			$this->labels[ $key ] = (object) $labels;
 		}
 	}
 
@@ -115,6 +108,12 @@ class P2P_Connection_Type {
 	}
 
 	public function __call( $method, $args ) {
+		if ( ! method_exists( 'P2P_Directed_Connection_Type', $method ) ) {
+			trigger_error( "Method '$method' does not exist.", E_USER_ERROR );
+			return;
+		}
+
+		// TODO: make find_direction() return the normalized item and pass that along
 		$directed = $this->find_direction( $args[0] );
 		if ( !$directed ) {
 			trigger_error( sprintf( "Can't determine direction for '%s' type.", $this->name ), E_USER_WARNING );
@@ -146,48 +145,93 @@ class P2P_Connection_Type {
 	 *
 	 * @param mixed A post type, object or object id.
 	 * @param bool Whether to return an instance of P2P_Directed_Connection_Type or just the direction
+	 * @param string An object type, such as 'post' or 'user'
 	 *
 	 * @return bool|object|string False on failure, P2P_Directed_Connection_Type instance or direction on success.
 	 */
-	public function find_direction( $arg, $instantiate = true ) {
+	public function find_direction( $arg, $instantiate = true, $object_type = null ) {
 		if ( is_array( $arg ) )
 			$arg = reset( $arg );
 
+		if ( $object_type ) {
+			$direction = $this->direction_from_object_type( $object_type );
+			if ( !$direction )
+				return false;
+
+			if ( in_array( $direction, array( 'from', 'to' ) ) )
+				return $this->set_direction( $direction, $instantiate );
+		}
+
+		$direction = $this->direction_from_item( $arg );
+
+		if ( $direction )
+			return $this->set_direction( $direction, $instantiate );
+
+		return false;
+	}
+
+	public function direction_from_item( $arg ) {
 		foreach ( array( 'from', 'to' ) as $direction ) {
-			if ( !$this->side[ $direction ]->item_recognize( $arg ) )
+			$item = $this->side[ $direction ]->item_recognize( $arg );
+
+			if ( !$item )
 				continue;
 
 			if ( $this->indeterminate )
 				$direction = $this->reciprocal ? 'any' : 'from';
 
-			return $this->set_direction( $direction, $instantiate );
+			return $direction;
 		}
 
 		return false;
 	}
 
-	// Used in each_connected()
-	private function find_direction_multiple( $post_types ) {
-		$possible_directions = array();
+	public function direction_from_object_type( $current ) {
+		$from = $this->object['from'];
+		$to = $this->object['to'];
 
+		if ( $from == $to && $current == $from )
+			return 'any';
+
+		if ( $current == $from )
+			return 'to';
+
+		if ( $current == $to )
+			return 'from';
+
+		return false;
+	}
+
+	public function direction_from_types( $object_type, $post_types = null ) {
 		foreach ( array( 'from', 'to' ) as $direction ) {
-			if ( 'post' == $this->object[$direction] ) {
-				foreach ( $post_types as $post_type ) {
-					if ( !$this->side[ $direction ]->item_recognize( $post_type ) ) {
-						$possible_directions[] = $direction;
-						break;
-					}
-				}
+			if ( !$this->_type_check( $direction, $object_type, $post_types ) )
+				continue;
+
+			if ( $this->indeterminate )
+				$direction = $this->reciprocal ? 'any' : 'from';
+
+			return $direction;
+		}
+
+		return false;
+	}
+
+	private function _type_check( $direction, $object_type, $post_types ) {
+		if ( $object_type != $this->object[ $direction ] )
+			return false;
+
+		$side = $this->side[ $direction ];
+
+		if ( !method_exists( $side, 'recognize_post_type' ) )
+			return true;
+
+		foreach ( (array) $post_types as $post_type ) {
+			if ( $side->recognize_post_type( $post_type ) ) {
+				return true;
 			}
 		}
 
-		if ( empty( $possible_directions ) )
-			return false;
-
-		if ( count( $possible_directions ) > 1 )
-			return 'any';
-
-		return reset( $possible_directions );
+		return false;
 	}
 
 	/** Alias for get_prev() */
@@ -277,11 +321,22 @@ class P2P_Connection_Type {
 		$post_types = array_unique( wp_list_pluck( $items, 'post_type' ) );
 
 		if ( count( $post_types ) > 1 ) {
-			$direction = $this->find_direction_multiple( $post_types );
 			$extra_qv['post_type'] = 'any';
-		} else {
-			$direction = $this->find_direction( $post_types[0], false );
 		}
+
+		$possible_directions = array();
+
+		foreach ( array( 'from', 'to' ) as $direction ) {
+			if ( 'post' == $this->object[$direction] ) {
+				foreach ( $post_types as $post_type ) {
+					if ( $this->side[ $direction ]->recognize_post_type( $post_type ) ) {
+						$possible_directions[] = $direction;
+					}
+				}
+			}
+		}
+
+		$direction = _p2p_compress_direction( $possible_directions );
 
 		if ( !$direction )
 			return false;
@@ -306,10 +361,7 @@ class P2P_Connection_Type {
 			$$key = $this->side[ $key ]->get_desc();
 		}
 
-		if ( $this->indeterminate )
-			$arrow = '&harr;';
-		else
-			$arrow = '&rarr;';
+		$arrow = $this->indeterminate ? '&harr;' : '&rarr;';
 
 		$label = "$from $arrow $to";
 

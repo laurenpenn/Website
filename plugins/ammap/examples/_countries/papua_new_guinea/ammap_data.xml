@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/papua_new_guinea.swf" tl_long="129.276552" tl_lat="0.325876" br_long="155.970681" br_lat="-11.657568" zoom="90%" zoom_x="3.99%" zoom_y="18.95%">
+  <areas>
+      <area mc_name="PG_NS" title="Bougainville"></area>
+      <area mc_name="PG_CE" title="Central"></area>
+      <area mc_name="PG_CH" title="Chimbu"></area>
+      <area mc_name="PG_EH" title="Eastern Highlands"></area>
+      <area mc_name="PG_EN" title="East New Britain"></area>
+      <area mc_name="PG_ES" title="East Sepik"></area>
+      <area mc_name="PG_EG" title="Enga"></area>
+      <area mc_name="PG_GU" title="Gulf"></area>
+      <area mc_name="PG_MD" title="Madang"></area>
+      <area mc_name="PG_MN" title="Manus"></area>
+      <area mc_name="PG_MB" title="Milne Bay"></area>
+      <area mc_name="PG_MR" title="Morobe"></area>
+      <area mc_name="PG_NC" title="National Capital District"></area>
+      <area mc_name="PG_NI" title="New Ireland"></area>
+      <area mc_name="PG_NO" title="Northern"></area>
+      <area mc_name="PG_SA" title="Sandaun"></area>
+      <area mc_name="PG_SH" title="Southern Highlands"></area>
+      <area mc_name="PG_WE" title="Western"></area>
+      <area mc_name="PG_WH" title="Western Highlands"></area>
+      <area mc_name="PG_WN" title="West New Britain"></area>
+      <area mc_name="ID_PA" title="Papua, Indonesia"></area>
+      <area mc_name="ID_IB" title="Papua Barat, Indonesia"></area>
+     <area mc_name="borders_international" color="#333333" balloon="false" alpha="90"></area>
+     <area mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+     <area mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Port Moresby" file="target" color="#CC0000" height="10" width="10" lat="-9.47959" long="147.188522" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="999" y="423" text_size="18" color="#FFFFFF" remain="false">
+      <text>Papua New Guinea</text>
+    </label>
+  </labels>
+</map>

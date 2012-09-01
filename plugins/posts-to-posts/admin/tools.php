@@ -23,20 +23,7 @@ class P2P_Tools_Page extends scbAdminPage {
 
 		P2P_Storage::install();
 
-		if ( isset( $_GET['p2p-upgrade'] ) ) {
-			$n = P2P_Storage::upgrade();
-
-			update_option( 'p2p_storage', P2P_Storage::$version );
-
-			echo scb_admin_notice( sprintf( __( 'Upgraded %d connections.', P2P_TEXTDOMAIN ), $n ) );
-		} elseif ( $current_ver ) {
-			echo scb_admin_notice( sprintf(
-				__( 'The Posts 2 Posts connections need to be upgraded. <a href="%s">Proceed.</a>', P2P_TEXTDOMAIN ),
-				admin_url( 'tools.php?page=connection-types&p2p-upgrade=1' )
-			) );
-		} else {
-			update_option( 'p2p_storage', P2P_Storage::$version );
-		}
+		update_option( 'p2p_storage', P2P_Storage::$version );
 	}
 
 	function form_handler() {
@@ -80,22 +67,35 @@ class P2P_Tools_Page extends scbAdminPage {
 			)
 		);
 
-		foreach ( $this->get_connection_counts() as $p2p_type => $count ) {
-			$row = array(
-				'p2p_type' => $p2p_type,
-				'count' => number_format_i18n( $count )
+		$connection_counts = $this->get_connection_counts();
+
+		if ( empty( $connection_counts ) ) {
+			$data['has-rows'] = false;
+			$data['no-rows'] = __( 'No connection types registered.', P2P_TEXTDOMAIN );
+			$data['no-rows2'] = sprintf(
+				__( 'To register a connection type, see <a href="%s">the wiki</a>.', P2P_TEXTDOMAIN ),
+				'https://github.com/scribu/wp-posts-to-posts/wiki/'
 			);
+		} else {
+			$data['has-rows'] = array(true);
 
-			$ctype = p2p_type( $p2p_type );
+			foreach ( $connection_counts as $p2p_type => $count ) {
+				$row = array(
+					'p2p_type' => $p2p_type,
+					'count' => number_format_i18n( $count )
+				);
 
-			if ( $ctype ) {
-				$row['desc'] = $ctype->get_desc();
-			} else {
-				$row['desc'] = __( 'Convert to registered connection type:', P2P_TEXTDOMAIN ) . scbForms::form_wrap( $this->get_dropdown( $p2p_type ), $this->nonce );
-				$row['class'] = 'error';
+				$ctype = p2p_type( $p2p_type );
+
+				if ( $ctype ) {
+					$row['desc'] = $ctype->get_desc();
+				} else {
+					$row['desc'] = __( 'Convert to registered connection type:', P2P_TEXTDOMAIN ) . scbForms::form_wrap( $this->get_dropdown( $p2p_type ), $this->nonce );
+					$row['class'] = 'error';
+				}
+
+				$data['rows'][] = $row;
 			}
-
-			$data['rows'][] = $row;
 		}
 
 		echo P2P_Mustache::render( 'connection-types', $data );

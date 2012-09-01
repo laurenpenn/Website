@@ -3,7 +3,7 @@ Contributors: _mjk_, jorbin, addthis_paul, joesullivan
 Tags: share, addthis, social, bookmark, sharing, bookmarking, widget,AddThis, addtoany, aim, bookmark, buzz, del.icio.us, Digg,e-mail, email, Facebook, google bookmarks, google buzz, myspace,network, NewsVine, Reddit, Share, share this, sharethis, social, socialize, stumbleupon, twitter, windows live, yahoo buzz, pintrest, widget
 Requires at least: 2.9
 Tested up to: 3.3.2
-Stable tag: 2.4.2
+Stable tag: 2.4.3
 
 The AddThis Social Bookmarking Widget allows any visitor to bookmark and share your site easily with over 330 popular services. 
 
@@ -191,41 +191,44 @@ Fixed nondeterministic bug with the_title(), causing the title to occasionally a
 
 
 == Upgrade Notice ==
+= 2.4.3 =
+Fixed admin console bug for non-administrators.
+
 = 2.4.1 = 
-Bug Fixes
+Bug fixes.
 
 = 2.4.0 =
-Better Performance and improved UI
+Better performance and improved UI.
 
 = 2.3.2 =
-New option for opting out of copy text tracking
+New option for opting out of copy text tracking.
 
 = 2.3.0 = 
-Improve the Settings interface and add Google Analytics Integration
+Improve the Settings interface and add Google Analytics integration.
 
 = 2.2.1 = 
-Add 3.2 compatability
+Add 3.2 compatability.
 
 = 2.2.0 =
-More Customization options
+More customization options.
 
 = 2.1.0 =
-More Features, More Filters, More Social Goodness
+More features, more filters, more social goodness.
 
 = 2.0.5 =
-Force service codes to be lowercase and, if opting out of clickback tracking, set config to force opting out
+Force service codes to be lowercase and, if opting out of clickback tracking, set config to force opting out.
 
 = 2.0.4 =
-Fix conflict with other plugins and other bug fixes
+Fix conflict with other plugins and other bug fixes.
 
 = 2.0.3 = 
-Still work in themes that don't have wp_head and wp_footer
+Still work in themes that don't have wp_head and wp_footer.
 
 = 2.0.2 =
-Bug Fixes, enhanced customization
+Bug fixes, enhanced customization.
 
 = 2.0.1 =
-Bug Fixes, more filters, small tweak to options
+Bug fixes, more filters, small tweak to options.
 
 = 2.0.0 =
 More and better options for sharing widgets.  Redesigned analytics dashboard widget and interface.  

@@ -2,7 +2,7 @@
 /**
  * Module Name: Extra Sidebar Widgets
  * Module Description: Easily add images, Twitter updates, and your site's RSS links to your theme's sidebar.
- * Sort Order: 20
+ * Sort Order: 13
  * First Introduced: 1.2
  */
 
@@ -23,11 +23,5 @@ function jetpack_widgets_configuration_load() {
 	wp_safe_redirect( admin_url( 'widgets.php' ) );
 	exit;
 }
-	
+
 jetpack_load_widgets();
-
-add_action( 'widgets_init', 'facebook_likebox_widget_init' );
-
-function facebook_likebox_widget_init() {
-	register_widget( 'WPCOM_Widget_Facebook_LikeBox' );
-}

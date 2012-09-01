@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/kosovo_unmik.swf" tl_long="" tl_lat="" br_long="" br_lat="" zoom="90%" zoom_x="20.33%" zoom_y="3.15%">
+  <areas>
+    <area mc_name="KO_DA" title="Đakovica (Đakovički okrug)"/>
+    <area mc_name="KO_GN" title="Gnjilane (Gnjilanski okrug)"/>
+    <area mc_name="KO_KM" title="Kosovska Mitrovica (Kosovskomitrovački okrug)"/>
+    <area mc_name="KO_PE" title="Peć (Pećki okrug)"/>
+    <area mc_name="KO_PR" title="Pristina (Prištinski okrug)"/>
+    <area mc_name="KO_PZ" title="Prizren (Prizrenski okrug)"/>
+    <area mc_name="KO_UR" title="Uroševac (Uroševački okrug)"/>
+    <area title="borders" mc_name="borders" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Pristina" file="target" color="#CC0000" height="10" width="10" lat="42.66983" long="21.15004" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="168" y="558" text_size="18" color="#FFFFFF" remain="false">
+      <text>Kosovo</text>
+    </label>
+  </labels>
+</map>

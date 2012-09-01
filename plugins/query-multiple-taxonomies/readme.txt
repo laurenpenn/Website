@@ -1,9 +1,9 @@
 === Query Multiple Taxonomies ===
 Contributors: scribu
 Tags: drill-down, query, widget, navigation, taxonomy
-Requires at least: 3.1
-Tested up to: 3.2
-Stable tag: 1.5.1
+Requires at least: 3.2
+Tested up to: 3.4
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,16 +28,14 @@ Links: [**Documentation**](http://github.com/scribu/wp-query-multiple-taxonomies
 
 == Screenshots ==
 
-1. Drill-down navigation widgets
-2. Drill-down widgets in the admin
+1. Lists mode
+2. Checkboxes mode
+3. Dropdowns mode
+4. Widget configuration
 
-== Frequently Asked Questions ==
+= How can I order the taxonomies in the widget? =
 
-= Error on activation: "Parse error: syntax error, unexpected T_CLASS..." =
-
-Make sure your host is running PHP 5. Add this line to wp-config.php to check:
-
-`var_dump(PHP_VERSION);`
+Just drag them around.
 
 = How do I define a custom taxonomy? =
 
@@ -67,10 +65,34 @@ If you need to get specific, you can use the `is_multitax()` conditional tag, wh
 
 `is_multitax( array('tax_a', 'tax_b') )` -> true if both tax_a and tax_b were queried
 
+= How can I customize the display even further? =
+
+Copy any file from the `templates` directory into a directory called `qmt` in
+your theme and modify it at will.
+
+For example to change the checkbox mode display,
+
+copy
+
+`wp-content/plugins/query-multiple-taxonomies/templates/checkboxes.html`
+
+to
+
+`wp-content/themes/YOUR-THEME/qmt/checkboxes.html`
+
+and change it however you want.
+
 == Changelog ==
 
+= 1.6.1 =
+* fixed activation error
+* fixed error in PHP 5.4
+
 = 1.6 =
-* added {{count}} tag
+* added checkbox mode
+* added {{count}} tag. props khakulov
+* added Ukranian translation. props Jurko Chervony
+* [more info](http://scribu.net/wordpress/query-multiple-taxonomies/qmt-1-6.html)
 
 = 1.5.1 =
 * fixed issue with custom post types

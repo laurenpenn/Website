@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/morocco_western_sahara.swf" tl_long="-17.107061" tl_lat="35.923729" br_long="-0.996172" br_lat="20.768422" zoom="90%" zoom_x="6.01%" zoom_y="7.17%">
+
+  <areas>
+      <area mc_name="MA_CO" title="Chaouia - Ouardigha"></area>
+      <area mc_name="MA_DA" title="Doukkala - Abda"></area>
+      <area mc_name="MA_FB" title="F?s - Boulemane"></area>
+      <area mc_name="MA_GB" title="Gharb - Chrarda - Béni Hssen"></area>
+      <area mc_name="MA_GC" title="Grand Casablanca"></area>
+      <area mc_name="MA_GE" title="Guelmim - Es-Semara"></area>
+      <area mc_name="MA_LB" title="La?youne - Boujdour - Sakia"></area>
+      <area mc_name="MA_MK" title="Marrakech - Tensift - Al Haouz"></area>
+      <area mc_name="MA_MT" title="Mekn?s - Tafilalet"></area>
+      <area mc_name="MA_OR" title="Oriental"></area>
+      <area mc_name="MA_RZ" title="Rabat - Salé - Zemmour - Zaer"></area>
+      <area mc_name="MA_SM" title="Souss - Massa - Dra?"></area>
+      <area mc_name="MA_TD" title="Tadla - Azilal"></area>
+      <area mc_name="MA_TO" title="Tanger - Tétouan"></area>
+      <area mc_name="MA_TH" title="Taza - Al Hoceima - Taounate"></area>
+      <area mc_name="EH_BO" title="Boujdour" color="#FF9900"></area>
+      <area mc_name="EH_ES" title="Es Semara" color="#FF9900"></area>
+      <area mc_name="EH_LA" title="Laayoune" color="#FF9900"></area>
+      <area mc_name="EH_OD" title="Oued el Dahab" color="#FF9900"></area>
+      <area mc_name="border_divider" color="#FFFFFF" balloon="false"></area>
+      <area mc_name="MA_borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area mc_name="MA_borders_inside" color="#FFFFFF" balloon="false"></area>
+      <area mc_name="EH_borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area mc_name="EH_borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Rabat" file="target" color="#CC0000" height="10" width="10" lat="34.020885" long="-6.841654" fixed_size="true"></movie>
+    <movie title="El Aai?n" file="target" color="#CC0000" height="10" width="10" lat="27.16234" long="-13.20162" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="730" y="75" text_size="18" color="#FFFFFF" remain="false">
+      <text>Morocco and Western Sahara</text>
+    </label>
+  </labels>
+</map>

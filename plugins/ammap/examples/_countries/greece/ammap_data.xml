@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/greece.swf" tl_long="19.374861" tl_lat="41.749607" br_long="28.245126" br_lat="34.801341" zoom="85%" zoom_x="22.02%" zoom_y="7%">
+  <areas>
+    <area mc_name="GR_DO" title="Dodekanissa"></area>
+    <area mc_name="GR_IP" title="Ipiros"></area>
+    <area mc_name="GR_KK" title="Kiklades"></area>
+    <area mc_name="GR_KR" title="Kriti (Crete)"></area>
+    <area mc_name="GR_MK" title="Makedonia"></area>
+    <area mc_name="GR_MA" title="Mount Athos"></area>
+    <area mc_name="GR_NE" title="Nissia Egeou"></area>
+    <area mc_name="GR_NI" title="Nissia Ioniou"></area>
+    <area mc_name="GR_PP" title="Peloponissos"></area>
+    <area mc_name="GR_TH" title="Thraki"></area>
+    <area mc_name="GR_TS" title="Thessalia (Thessaly)"></area>
+    <area mc_name="GR_SE" title="Sterea Ellada"></area>
+    <area mc_name="GR_SK" title="Skiros"></area>
+    <area mc_name="borders_inside" title="borders" color="#FFFFFF" balloon="false"></area>
+    <area mc_name="borders_outside" title="borders" color="#FFFFFF" balloon="false" alpha="0"></area>
+  </areas>
+
+  <movies>
+    <movie title="Athens" file="target" color="#666666" height="10" width="10" lat="37.97615" long="23.736415" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="795" y="231" text_size="18" color="#FFFFFF" remain="false">
+      <text>Greece</text>
+    </label>
+  </labels>
+</map>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/dominican_republic.swf" tl_long="-72.009694" tl_lat="19.934733" br_long="-68.325263" br_lat="17.469318" zoom="90%" zoom_x="20.29%" zoom_y="5.79%">
+  <areas>
+      <area mc_name="DO_AZ" title="Azua"></area>
+      <area mc_name="DO_BR" title="Bahoruco"></area>
+      <area mc_name="DO_BH" title="Barahona"></area>
+      <area mc_name="DO_DA" title="Dajabón"></area>
+      <area mc_name="DO_NC" title="Distrito Nacional"></area>
+      <area mc_name="DO_DU" title="Duarte"></area>
+      <area mc_name="DO_EP" title="Elías Piña"></area>
+      <area mc_name="DO_SE" title="El Seybo"></area>
+      <area mc_name="DO_ES" title="Espaillat"></area>
+      <area mc_name="DO_HM" title="Hato Mayor"></area>
+      <area mc_name="DO_SC" title="Hermanas Mirabal"></area>
+      <area mc_name="DO_IN" title="Independencia"></area>
+      <area mc_name="DO_AL" title="La Altagracia"></area>
+      <area mc_name="DO_RO" title="La Romana"></area>
+      <area mc_name="DO_VE" title="La Vega"></area>
+      <area mc_name="DO_MT" title="María Trinidad Sánchez"></area>
+      <area mc_name="DO_MN" title="Monseñor Nouel"></area>
+      <area mc_name="DO_MC" title="Monte Cristi"></area>
+      <area mc_name="DO_MP" title="Monte Plata"></area>
+      <area mc_name="DO_PN" title="Pedernales"></area>
+      <area mc_name="DO_PV" title="Peravia"></area>
+      <area mc_name="DO_PP" title="Puerto Plata"></area>
+      <area mc_name="DO_SM" title="Samaná"></area>
+      <area mc_name="DO_SZ" title="Sánchez Ramírez"></area>
+      <area mc_name="DO_CR" title="San Cristóbal"></area>
+      <area mc_name="DO_JO" title="San José de Ocoa"></area>
+      <area mc_name="DO_JU" title="San Juan"></area>
+      <area mc_name="DO_PM" title="San Pedro de Macorís"></area>
+      <area mc_name="DO_ST" title="Santiago"></area>
+      <area mc_name="DO_SR" title="Santiago Rodríguez"></area>
+      <area mc_name="DO_SD" title="Santo Domingo"></area>
+      <area mc_name="DO_VA" title="Valverde"></area>
+      <area mc_name="borders_inside" title="borders" color="#FFFFFF" balloon="false"></area>
+      <area mc_name="borders_outside" title="borders" color="#FFFFFF" balloon="false" alpha="0"></area>
+  </areas>
+
+  <movies>
+    <movie title="Santo Domingo" file="target" color="#666666" height="10" width="10" lat="18.482141" long="-69.909935" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="632" y="52" text_size="18" color="#FFFFFF" remain="false">
+      <text>Dominican Republic</text>
+    </label>
+  </labels>
+</map>

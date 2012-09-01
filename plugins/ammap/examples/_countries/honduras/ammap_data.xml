@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/honduras.swf" tl_long="-89.351340" tl_lat="17.418868" br_long="-82.405282" br_lat="12.984059" zoom="90%" zoom_x="6.01%" zoom_y="7.17%">
+
+  <areas>
+      <area mc_name="HN_AT" title="Atlántida"></area>
+      <area mc_name="HN_CH" title="Choluteca"></area>
+      <area mc_name="HN_CL" title="Colón"></area>
+      <area mc_name="HN_CM" title="Comayagua"></area>
+      <area mc_name="HN_CP" title="Copán"></area>
+      <area mc_name="HN_CR" title="Cortés"></area>
+      <area mc_name="HN_EP" title="El Paraíso"></area>
+      <area mc_name="HN_FM" title="Francisco Morazán"></area>
+      <area mc_name="HN_GD" title="Gracias a Dios"></area>
+      <area mc_name="HN_IN" title="Intibucá"></area>
+      <area mc_name="HN_IB" title="Islas de la Bahía"></area>
+      <area mc_name="HN_LP" title="La Paz"></area>
+      <area mc_name="HN_LE" title="Lempira"></area>
+      <area mc_name="HN_OC" title="Ocotepeque"></area>
+      <area mc_name="HN_OL" title="Olancho"></area>
+      <area mc_name="HN_SB" title="Santa Bárbara"></area>
+      <area mc_name="HN_VA" title="Valle"></area>
+      <area mc_name="HN_YO" title="Yoro"></area>
+      <area mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Tegucigalpa" file="target" color="#CC0000" height="10" width="10" lat="14.09506" long="-87.211967" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="730" y="75" text_size="18" color="#FFFFFF" remain="false">
+      <text>Honduras</text>
+    </label>
+  </labels>
+</map>

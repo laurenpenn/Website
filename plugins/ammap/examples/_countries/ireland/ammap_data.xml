@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/ireland.swf" tl_long="-10.668966" tl_lat="55.434972" br_long="-5.422566" br_lat="51.420340" zoom="85%" zoom_x="40.97%" zoom_y="8.88%">
+  <areas>
+    <area mc_name="IE_CW" title="Carlow"></area>
+    <area mc_name="IE_CN" title="Cavan"></area>
+    <area mc_name="IE_CE" title="Clare"></area>
+    <area mc_name="IE_CK" title="Cork"></area>
+    <area mc_name="IE_DL" title="Donegal"></area>
+    <area mc_name="IE_DN" title="Dublin"></area>
+    <area mc_name="IE_SD" title="South Dublin"></area>
+    <area mc_name="IE_LR" title="Dún Laoghaire & Rathdown"></area>
+    <area mc_name="IE_FL" title="Fingal"></area>
+    <area mc_name="IE_GY" title="Galway"></area>
+    <area mc_name="IE_KY" title="Kerry"></area>
+    <area mc_name="IE_KE" title="Kildare"></area>
+    <area mc_name="IE_KK" title="Kilkenny"></area>
+    <area mc_name="IE_LS" title="Laois"></area>
+    <area mc_name="IE_LM" title="Leitrim"></area>
+    <area mc_name="IE_LK" title="Limerick"></area>
+    <area mc_name="IE_LD" title="Longford"></area>
+    <area mc_name="IE_LH" title="Louth"></area>
+    <area mc_name="IE_MO" title="Mayo"></area>
+    <area mc_name="IE_MH" title="Meath"></area>
+    <area mc_name="IE_MN" title="Monaghan"></area>
+    <area mc_name="IE_OY" title="Offaly"></area>
+    <area mc_name="IE_RN" title="Roscommon"></area>
+    <area mc_name="IE_SO" title="Sligo"></area>
+    <area mc_name="IE_TN" title="Tipperary North"></area>
+    <area mc_name="IE_TS" title="Tipperary South"></area>
+    <area mc_name="IE_WD" title="Waterford"></area>
+    <area mc_name="IE_WH" title="Westmeath"></area>
+    <area mc_name="IE_WX" title="Wexford"></area>
+    <area mc_name="IE_WW" title="Wicklow"></area>
+    <area mc_name="GB_NI" title="Northern Ireland" color="FF6600"></area>
+    <area mc_name="borders" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Dublin" file="target" color="#666666" height="10" width="10" lat="53.3437" long="-6.249569" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="133" y="153" text_size="18" color="#FFFFFF" remain="false">
+      <text>Ireland</text>
+    </label>
+  </labels>
+</map>

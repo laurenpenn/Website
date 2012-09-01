@@ -4,7 +4,7 @@ Plugin Name: Simple Facebook Connect
 Plugin URI: http://ottopress.com/wordpress-plugins/simple-facebook-connect/
 Description: Makes it easy for your site to use Facebook Connect, in a wholly modular way.
 Author: Otto
-Version: 1.4
+Version: 1.5
 Author URI: http://ottodestruct.com
 License: GPL2
 

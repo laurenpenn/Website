@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/netherlands.swf" tl_long="3.359523" tl_lat="53.560582" br_long="7.227268" br_lat="50.751063" zoom="85%">
+  <areas>
+    <area mc_name="NL_DR" title="Drenthe"></area>
+    <area mc_name="NL_FL" title="Flevoland"></area>
+    <area mc_name="NL_FR" title="Friesland"></area>
+    <area mc_name="NL_GE" title="Gelderland"></area>
+    <area mc_name="NL_GR" title="Groningen"></area>
+    <area mc_name="NL_LI" title="Limburg"></area>
+    <area mc_name="NL_NB" title="Noord-Brabant"></area>
+    <area mc_name="NL_NH" title="Noord-Holland"></area>
+    <area mc_name="NL_OV" title="Overijssel"></area>
+    <area mc_name="NL_UT" title="Utrecht"></area>
+    <area mc_name="NL_ZE" title="Zeeland"></area>
+    <area mc_name="NL_ZH" title="Zuid-Holland"></area>
+    <area mc_name="borders" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Amsterdam" file="target" color="#666666" height="10" width="10" lat="52.373958" long="4.894568" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="133" y="153" text_size="18" color="#FFFFFF" remain="false">
+      <text>Netherlands</text>
+    </label>
+  </labels>
+</map>

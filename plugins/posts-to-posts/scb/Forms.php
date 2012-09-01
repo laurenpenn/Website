@@ -60,34 +60,26 @@ class scbForms {
 // ____________WRAPPERS____________
 
 
-	// Wraps the given content in a <form><table>
 	static function form_table_wrap( $content, $nonce = 'update_options' ) {
-		$output = self::table_wrap( $content );
-		$output = self::form_wrap( $output, $nonce );
-
-		return $output;
+		return self::form_wrap( self::table_wrap( $content ), $nonce );
 	}
 
-	// Wraps the given content in a <form> tag
 	static function form_wrap( $content, $nonce = 'update_options' ) {
-		$output = "\n<form method='post' action=''>\n";
-		$output .= $content;
-		$output .= wp_nonce_field( $action = $nonce, $name = "_wpnonce", $referer = true , $echo = false );
-		$output .= "\n</form>\n";
-
-		return $output;
+		return html( "form method='post' action=''",
+			$content,
+			wp_nonce_field( $nonce, '_wpnonce', $referer = true, $echo = false )
+		);
 	}
 
-	// Wraps the given content in a <table>
 	static function table_wrap( $content ) {
-		$output = "\n<table class='form-table'>\n" . $content . "\n</table>\n";
-
-		return $output;
+		return html( "table class='form-table'", $content );
 	}
 
-	// Wraps the given content in a <tr><td>
 	static function row_wrap( $title, $content ) {
-		return "\n<tr>\n\t<th scope='row'>" . $title . "</th>\n\t<td>\n\t\t" . $content . "\t</td>\n\n</tr>";
+		return html( "tr",
+			html( "th scope='row'", $title ),
+			html( "td", $content )
+		);
 	}
 
 
@@ -141,15 +133,14 @@ class scbForms {
 	 *
 	 * @param array $fields List of args that would be sent to scbForms::input()
 	 * @param array $data The data to validate. Defaults to $_POST
+	 * @param array $to_update Existing data to populate. Necessary for nested values
 	 *
 	 * @return array
 	 */
-	static function validate_post_data( $fields, $data = null ) {
+	static function validate_post_data( $fields, $data = null, $to_update = array() ) {
 		if ( null === $data ) {
 			$data = stripslashes_deep( $_POST );
 		}
-
-		$to_update = array();
 
 		foreach ( $fields as $field ) {
 			$value = scbForms::get_value( $field['name'], $data );
@@ -266,12 +257,34 @@ class scbForm {
 }
 
 
-abstract class scbFormField {
+interface scbFormField_I {
+
+	/**
+	 * Generate the corresponding HTML for a field
+	 *
+	 * @param mixed $value The value to use
+	 *
+	 * @return string
+	 */
+	function render( $value = null );
+
+	/**
+	 * Validates a value against a field.
+	 *
+	 * @param mixed $value The value to check
+	 *
+	 * @return mixed null if the validation failed, sanitized value otherwise.
+	 */
+	function validate( $value );
+}
+
+
+abstract class scbFormField implements scbFormField_I {
 
 	protected $args;
 
 	public static function create( $args ) {
-		if ( is_a( $args, __CLASS__ ) )
+		if ( is_a( $args, 'scbFormField_I' ) )
 			return $args;
 
 		if ( empty( $args['name'] ) ) {
@@ -279,8 +292,13 @@ abstract class scbFormField {
 		}
 
 		if ( isset( $args['value'] ) && is_array( $args['value'] ) ) {
-			$args['values'] = $args['value'];
+			$args['choices'] = $args['value'];
 			unset( $args['value'] );
+		}
+
+		if ( isset( $args['values'] ) ) {
+			$args['choices'] = $args['values'];
+			unset( $args['values'] );
 		}
 
 		if ( isset( $args['extra'] ) && !is_array( $args['extra'] ) )
@@ -293,8 +311,9 @@ abstract class scbFormField {
 			'wrap_each' => scbForms::TOKEN,
 		) );
 
-		if ( isset( $args['values'] ) )
-			self::_expand_values( $args );
+		// depends on $args['desc']
+		if ( isset( $args['choices'] ) )
+			self::_expand_choices( $args );
 
 		switch ( $args['type'] ) {
 		case 'radio':
@@ -302,10 +321,12 @@ abstract class scbFormField {
 		case 'select':
 			return new scbSelectField( $args );
 		case 'checkbox':
-			if ( isset( $args['values'] ) )
+			if ( isset( $args['choices'] ) )
 				return new scbMultipleChoiceField( $args );
 			else
 				return new scbSingleCheckboxField( $args );
+		case 'custom':
+			return new scbCustomField( $args );
 		default:
 			return new scbTextField( $args );
 		}
@@ -323,13 +344,6 @@ abstract class scbFormField {
 		return isset( $this->args[ $key ] );
 	}
 
-	/**
-	 * Generate the corresponding HTML for a field
-	 *
-	 * @param mixed $value The value to use
-	 *
-	 * @return string
-	 */
 	public function render( $value = null ) {
 		if ( null === $value && isset( $this->default ) )
 			$value = $this->default;
@@ -349,15 +363,6 @@ abstract class scbFormField {
 
 	// The actual rendering
 	abstract protected function _render( $args );
-
-	/**
-	 * Validates a value against a field.
-	 *
-	 * @param mixed $value The value to check
-	 *
-	 * @return mixed null if the validation failed, sanitized value otherwise.
-	 */
-	abstract public function validate( $value );
 
 	// Handle args for a single checkbox or radio input
 	protected static function _checkbox( $args ) {
@@ -415,15 +420,15 @@ abstract class scbFormField {
 			return $input . ' ' . $desc;
 	}
 
-	private static function _expand_values( &$args ) {
-		$values =& $args['values'];
+	private static function _expand_choices( &$args ) {
+		$choices =& $args['choices'];
 
-		if ( !empty( $values ) && !self::is_associative( $values ) ) {
+		if ( !empty( $choices ) && !self::is_associative( $choices ) ) {
 			if ( is_array( $args['desc'] ) ) {
-				$values = array_combine( $values, $args['desc'] );	// back-compat
+				$choices = array_combine( $choices, $args['desc'] );	// back-compat
 				$args['desc'] = false;
 			} elseif ( !isset( $args['numeric'] ) || !$args['numeric'] ) {
-				$values = array_combine( $values, $values );
+				$choices = array_combine( $choices, $choices );
 			}
 		}
 	}
@@ -469,7 +474,7 @@ class scbTextField extends scbFormField {
 abstract class scbSingleChoiceField extends scbFormField {
 
 	public function validate( $value ) {
-		if ( isset( $this->values[ $value ] ) )
+		if ( isset( $this->choices[ $value ] ) )
 			return $value;
 
 		return null;
@@ -510,10 +515,10 @@ class scbSelectField extends scbSingleChoiceField {
 			);
 		}
 
-		foreach ( $values as $value => $title ) {
+		foreach ( $choices as $value => $title ) {
 			$options[] = array(
 				'value' => $value,
-				'selected' => ( (string) $value == (string) $selected ),
+				'selected' => ( $value == $selected ),
 				'title' => $title
 			);
 		}
@@ -541,16 +546,16 @@ class scbRadiosField extends scbSelectField {
 
 		if ( array( 'foo' ) == $selected ) {
 			// radio buttons should always have one option selected
-			$selected = key( $values );
+			$selected = key( $choices );
 		}
 
 		$opts = '';
-		foreach ( $values as $value => $title ) {
+		foreach ( $choices as $value => $title ) {
 			$single_input = scbFormField::_checkbox( array(
 				'name' => $name,
 				'type' => 'radio',
 				'value' => $value,
-				'checked' => ( (string) $value == (string) $selected ),
+				'checked' => ( $value == $selected ),
 				'desc' => $title,
 				'desc_pos' => 'after'
 			) );
@@ -566,7 +571,7 @@ class scbRadiosField extends scbSelectField {
 class scbMultipleChoiceField extends scbFormField {
 
 	public function validate( $value ) {
-		return array_intersect( array_keys( $this->values ), (array) $value );
+		return array_intersect( array_keys( $this->choices ), (array) $value );
 	}
 
 	protected function _render( $args ) {
@@ -581,7 +586,7 @@ class scbMultipleChoiceField extends scbFormField {
 			$checked = array();
 
 		$opts = '';
-		foreach ( $values as $value => $title ) {
+		foreach ( $choices as $value => $title ) {
 			$single_input = scbFormField::_checkbox( array(
 				'name' => $name . '[]',
 				'type' => 'checkbox',
@@ -631,6 +636,35 @@ class scbSingleCheckboxField extends scbFormField {
 
 	protected function _set_value( &$args, $value ) {
 		$args['checked'] = ( $value || ( isset( $args['value'] ) && $value == $args['value'] ) );
+	}
+}
+
+
+class scbCustomField implements scbFormField_I {
+
+	protected $args;
+
+	function __construct( $args ) {
+		$this->args = wp_parse_args( $args, array(
+			'render' => 'var_dump',
+			'sanitize' => 'wp_filter_kses',
+		) );
+	}
+
+	public function __get( $key ) {
+		return $this->args[ $key ];
+	}
+
+	public function __isset( $key ) {
+		return isset( $this->args[ $key ] );
+	}
+
+	public function render( $value = null ) {
+		return call_user_func( $this->render, $value, $this );
+	}
+
+	public function validate( $value ) {
+		return call_user_func( $this->sanitize, $value, $this );
 	}
 }
 

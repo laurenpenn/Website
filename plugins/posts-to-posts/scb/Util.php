@@ -119,7 +119,7 @@ class scbUtil {
 
 // Return a standard admin notice
 function scb_admin_notice( $msg, $class = 'updated' ) {
-	return "<div class='$class fade'><p>$msg</p></div>\n";
+	return html( "div class='$class fade'", html( "p", $msg ) );
 }
 
 // Transform a list of objects into an associative array
@@ -145,6 +145,8 @@ function scb_list_fold( $list, $key, $value ) {
  */
 if ( ! function_exists( 'html' ) ):
 function html( $tag ) {
+	static $SELF_CLOSING_TAGS = array( 'area', 'base', 'basefont', 'br', 'hr', 'input', 'img', 'link', 'meta' );
+
 	$args = func_get_args();
 
 	$tag = array_shift( $args );
@@ -165,7 +167,7 @@ function html( $tag ) {
 		list( $closing ) = explode( ' ', $tag, 2 );
 	}
 
-	if ( in_array( $closing, array( 'area', 'base', 'basefont', 'br', 'hr', 'input', 'img', 'link', 'meta' ) ) ) {
+	if ( in_array( $closing, $SELF_CLOSING_TAGS ) ) {
 		return "<{$tag} />";
 	}
 

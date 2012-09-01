@@ -2,54 +2,39 @@
 
 class P2P_Query {
 
-	static function expand_shortcut_qv( &$q ) {
-		$qv_map = array(
+	protected $ctypes, $items, $query, $meta;
+	protected $orderby, $order, $order_num;
+
+	/**
+	 * Create instance from mixed query vars
+	 *
+	 * @param array Query vars to collect parameters from
+	 * @return:
+	 * - null means ignore current query
+	 * - WP_Error instance if the query is invalid
+	 * - P2P_Query instance on success
+	 */
+	public static function create_from_qv( &$q, $object_type ) {
+		$shortcuts = array(
 			'connected' => 'any',
 			'connected_to' => 'to',
 			'connected_from' => 'from',
 		);
 
-		foreach ( $qv_map as $key => $direction ) {
+		foreach ( $shortcuts as $key => $direction ) {
 			if ( !empty( $q[ $key ] ) ) {
 				$q['connected_items'] = _p2p_pluck( $q, $key );
 				$q['connected_direction'] = $direction;
 			}
 		}
-	}
 
-	static function get_qv( $q ) {
-		if ( !isset( $q['p2p_type'] ) ) {
+		if ( !isset( $q['connected_type'] ) ) {
 			if ( isset( $q['connected_items'] ) ) {
-				trigger_error( "P2P queries without 'connected_type' are no longer supported." );
+				return new WP_Error( 'no_connection_type', "Queries without 'connected_type' are no longer supported." );
 			}
-			return false;
-		}
 
-		$qv['p2p_type'] = $q['p2p_type'];
-
-		$qv_list = array(
-			'items', 'direction', 'meta',
-			'orderby', 'order_num', 'order'
-		);
-
-		foreach ( $qv_list as $key ) {
-			$qv[$key] = isset( $q["connected_$key"] ) ?  $q["connected_$key"] : false;
-		}
-
-		return $qv;
-	}
-
-	/**
-	 * Sets 'p2p_type' => array( connection_type => direction )
-	 *
-	 * @return:
-	 * null means ignore current query
-	 * false means trigger 404
-	 * true means proceed
-	 */
-	static function expand_connected_type( &$q, $item, $object_type ) {
-		if ( !isset( $q['connected_type'] ) )
 			return;
+		}
 
 		$ctypes = (array) _p2p_pluck( $q, 'connected_type' );
 
@@ -57,6 +42,8 @@ class P2P_Query {
 			$directions = (array) _p2p_pluck( $q, 'connected_direction' );
 		else
 			$directions = array();
+
+		$item = isset( $q['connected_items'] ) ? $q['connected_items'] : 'any';
 
 		$p2p_types = array();
 
@@ -69,51 +56,91 @@ class P2P_Query {
 			if ( isset( $directions[$i] ) ) {
 				$directed = $ctype->set_direction( $directions[$i] );
 			} else {
-				$directed = self::find_direction( $ctype, $item, $object_type );
+				$directed = $ctype->find_direction( $item, true, $object_type );
 			}
 
 			if ( !$directed )
 				continue;
 
-			$p2p_types[ $p2p_type ] = $directed->get_direction();
+			$p2p_types[] = $directed;
 		}
 
 		if ( empty( $p2p_types ) )
-			return false;
+			return new WP_Error( 'no_direction', "Could not find direction(s)." );
 
-		if ( 1 == count( $p2p_types ) )
-			$q = $directed->get_connected_args( $q );
-		else
-			$q['p2p_type'] = $p2p_types;
+		if ( 1 == count( $p2p_types ) ) {
+			$directed = $p2p_types[0];
 
-		return true;
+			if ( $orderby_key = $directed->get_orderby_key() ) {
+				$q = wp_parse_args( $q, array(
+					'connected_orderby' => $orderby_key,
+					'connected_order' => 'ASC',
+					'connected_order_num' => true,
+				) );
+			}
+
+			$q = array_merge_recursive( $q, array(
+				'connected_meta' => $directed->data
+			) );
+
+			$q = $directed->get_opposite( 'side' )->get_base_qv( $q );
+
+			$q = apply_filters( 'p2p_connected_args', $q, $directed, $item );
+		}
+
+		$p2p_q = new P2P_Query;
+
+		$p2p_q->ctypes = $p2p_types;
+		$p2p_q->items = $item;
+
+		foreach ( array( 'meta', 'orderby', 'order_num', 'order' ) as $key ) {
+			$p2p_q->$key = isset( $q["connected_$key"] ) ? $q["connected_$key"] : false;
+		}
+
+		$p2p_q->query = isset( $q['connected_query'] ) ? $q['connected_query'] : array();
+
+		return $p2p_q;
 	}
 
-	static function alter_clauses( $clauses, $q, $main_id_column ) {
+	protected function __construct() {}
+
+	public function __get( $key ) {
+		return $this->$key;
+	}
+
+	private function do_other_query( $side ) {
+		$qv = array_merge( $this->query, array(
+			'fields' => 'ids',
+			'p2p:per_page' => -1
+		) );
+
+		if ( 'any' != $this->items )
+			$qv['p2p:include'] = _p2p_normalize( $this->items );
+
+		return $side->capture_query( $side->get_base_qv( $side->translate_qv( $qv ) ) );
+	}
+
+	/**
+	 * For low-level query modifications
+	 */
+	public function alter_clauses( &$clauses, $main_id_column ) {
 		global $wpdb;
 
 		$clauses['fields'] .= ", $wpdb->p2p.*";
 
 		$clauses['join'] .= " INNER JOIN $wpdb->p2p";
 
-		// Handle main query
-		if ( 'any' == $q['items'] ) {
-			$search = false;
-		} else {
-			$search = implode( ',', array_map( 'absint', _p2p_normalize( $q['items'] ) ) );
-		}
-
 		$where_parts = array();
 
-		foreach ( $q['p2p_type'] as $p2p_type => $direction ) {
-			if ( 0 === $p2p_type ) // used by migration script
-				$part = "1 = 1";
-			else
-				$part = $wpdb->prepare( "$wpdb->p2p.p2p_type = %s", $p2p_type );
+		foreach ( $this->ctypes as $directed ) {
+			if ( null === $directed ) // used by migration script
+				continue;
+
+			$part = $wpdb->prepare( "$wpdb->p2p.p2p_type = %s", $directed->name );
 
 			$fields = array( 'p2p_from', 'p2p_to' );
 
-			switch ( $direction ) {
+			switch ( $directed->get_direction() ) {
 
 			case 'from':
 				$fields = array_reverse( $fields );
@@ -121,22 +148,20 @@ class P2P_Query {
 			case 'to':
 				list( $from, $to ) = $fields;
 
-				$part .= " AND $main_id_column = $wpdb->p2p.$from";
+				$search = $this->do_other_query( $directed->get_current( 'side' ) );
 
-				if ( $search ) {
-					$part .= " AND $wpdb->p2p.$to IN ($search)";
-				}
+				$part .= " AND $main_id_column = $wpdb->p2p.$from";
+				$part .= " AND $wpdb->p2p.$to IN ($search)";
 
 				break;
 			default:
-				if ( $search ) {
-					$part .= " AND (
-						($main_id_column = $wpdb->p2p.p2p_to AND $wpdb->p2p.p2p_from IN ($search)) OR
-						($main_id_column = $wpdb->p2p.p2p_from AND $wpdb->p2p.p2p_to IN ($search))
-					)";
-				} else {
-					$part .= " AND ($main_id_column = $wpdb->p2p.p2p_to OR $main_id_column = $wpdb->p2p.p2p_from)";
-				}
+				$part .= sprintf ( " AND (
+					($main_id_column = $wpdb->p2p.p2p_to AND $wpdb->p2p.p2p_from IN (%s)) OR
+					($main_id_column = $wpdb->p2p.p2p_from AND $wpdb->p2p.p2p_to IN (%s))
+				)",
+					$this->do_other_query( $directed->get_current( 'side' ) ),
+					$this->do_other_query( $directed->get_opposite( 'side' ) )
+				);
 			}
 
 			$where_parts[] = '(' . $part . ')';
@@ -144,61 +169,36 @@ class P2P_Query {
 
 		if ( 1 == count( $where_parts ) )
 			$clauses['where'] .= " AND " . $where_parts[0];
-		else
+		elseif ( !empty( $where_parts ) )
 			$clauses['where'] .= " AND (" . implode( ' OR ', $where_parts ) . ")";
 
 		// Handle custom fields
-		if ( !empty( $q['meta'] ) ) {
-			$meta_clauses = _p2p_meta_sql_helper( $q['meta'] );
+		if ( !empty( $this->meta ) ) {
+			$meta_clauses = _p2p_meta_sql_helper( $this->meta );
 			foreach ( $meta_clauses as $key => $value ) {
 				$clauses[ $key ] .= $value;
 			}
 		}
 
 		// Handle ordering
-		if ( $q['orderby'] ) {
+		if ( $this->orderby ) {
 			$clauses['join'] .= $wpdb->prepare( "
 				LEFT JOIN $wpdb->p2pmeta AS p2pm_order ON (
 					$wpdb->p2p.p2p_id = p2pm_order.p2p_id AND p2pm_order.meta_key = %s
 				)
-			", $q['orderby'] );
+			", $this->orderby );
 
-			$order = ( 'DESC' == strtoupper( $q['order'] ) ) ? 'DESC' : 'ASC';
+			$order = ( 'DESC' == strtoupper( $this->order ) ) ? 'DESC' : 'ASC';
 
 			$field = 'meta_value';
 
-			if ( $q['order_num'] )
+			if ( $this->order_num )
 				$field .= '+0';
 
 			$clauses['orderby'] = "p2pm_order.$field $order";
 		}
 
 		return $clauses;
-	}
-
-	private function find_direction( $ctype, $arg, $object_type ) {
-		$opposite_side = self::choose_side( $object_type,
-			$ctype->object['from'],
-			$ctype->object['to']
-		);
-
-		if ( in_array( $opposite_side, array( 'from', 'to' ) ) )
-			return $ctype->set_direction( $opposite_side );
-
-		return $ctype->find_direction( $arg );
-	}
-
-	private static function choose_side( $current, $from, $to ) {
-		if ( $from == $to && $current == $from )
-			return 'any';
-
-		if ( $current == $from )
-			return 'to';
-
-		if ( $current == $to )
-			return 'from';
-
-		return false;
 	}
 }
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/belize.swf" tl_long="-89.224335" tl_lat="18.497391" br_long="-87.485767" br_lat="15.892503" zoom="90%" zoom_x="6.01%" zoom_y="7.17%">
+
+  <areas>
+      <area mc_name="BZ_BZ" title="Belize"></area>
+      <area mc_name="BZ_CY" title="Cayo"></area>
+      <area mc_name="BZ_CZ" title="Corozal"></area>
+      <area mc_name="BZ_OW" title="Orange Walk"></area>
+      <area mc_name="BZ_SC" title="Stann Creek"></area>
+      <area mc_name="BZ_TO" title="Toledo"></area>
+      <area mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Belmopan" file="target" color="#CC0000" height="10" width="10" lat="17.265" long="-88.787952" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="730" y="75" text_size="18" color="#FFFFFF" remain="false">
+      <text>Belize</text>
+    </label>
+  </labels>
+</map>

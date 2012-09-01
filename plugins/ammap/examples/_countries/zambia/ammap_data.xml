@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/zambia.swf" tl_long="21.998773" tl_lat="-8.223429" br_long="33.706900" br_lat="-18.080616" zoom="90%" zoom_x="19.61%" zoom_y="2.9%">
+  <areas>
+      <area mc_name="ZM_CE" title="Central"></area>
+      <area mc_name="ZM_CO" title="Copperbelt"></area>
+      <area mc_name="ZM_EA" title="Eastern"></area>
+      <area mc_name="ZM_LP" title="Luapula"></area>
+      <area mc_name="ZM_LS" title="Lusaka"></area>
+      <area mc_name="ZM_NO" title="Northern"></area>
+      <area mc_name="ZM_NW" title="North-Western"></area>
+      <area mc_name="ZM_SO" title="Southern"></area>
+      <area mc_name="ZM_WE" title="Western"></area>
+      <area title="borders" mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area title="borders" mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Lusaka" file="target" color="#CC0000" height="10" width="10" lat="-15.40884" long="28.2824" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="777" y="490" text_size="18" color="#FFFFFF" remain="false">
+      <text>Zambia</text>
+    </label>
+  </labels>
+</map>

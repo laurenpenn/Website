@@ -5,21 +5,9 @@
  */
 class Jetpack_XMLRPC_Server {
 	/**
-	 * A reference to $GLOBALS['wp_xmlrpc_server'];
-	 */
-	var $wp_xmlrpc_server = null;
-
-	/**
 	 * The current error object
 	 */
 	var $error = null;
-
-	/**
-	 * Since we're not extending wp_xmlrpc_server via wp_xmlrpc_server_class, store it as a reference.
-	 */
-	function Jetpack_XMLRPC_Server( &$wp_xmlrpc_server ) {
-		$this->wp_xmlrpc_server =& $wp_xmlrpc_server;
-	}
 
 	/**
 	 * Whitelist of the XML-RPC methods available to the Jetpack Server. If the 
@@ -99,13 +87,13 @@ class Jetpack_XMLRPC_Server {
 		$user = wp_authenticate( 'username', 'password' );
 		if ( is_wp_error( $user ) ) {
 			if ( 'authentication_failed' == $user->get_error_code() ) { // Generic error could mean most anything.
-				$this->error =& new Jetpack_Error( 'invalid_request', 'Invalid Request', 403 );
+				$this->error = new Jetpack_Error( 'invalid_request', 'Invalid Request', 403 );
 			} else {
 				$this->error = $user;
 			}
 			return false;
 		} else if ( !$user ) { // Shouldn't happen.
-			$this->error =& new Jetpack_Error( 'invalid_request', 'Invalid Request', 403 );
+			$this->error = new Jetpack_Error( 'invalid_request', 'Invalid Request', 403 );
 			return false;
 		}
 
@@ -185,17 +173,8 @@ class Jetpack_XMLRPC_Server {
 		$jetpack = Jetpack::init();
 		$post = $jetpack->get_post( $id );
 
-		if (
-			is_array( $post )
-		&&
-			empty( $post['post_password'] )
-		&&
-			in_array( $post['post_type'], get_post_types( array( 'public' => true ) ) )
-		&&
-			in_array( $post['post_status'], get_post_stati( array( 'public' => true ) ) )
-		) {
+		if ( $jetpack->is_post_public( $post ) )
 			return $post;
-		}
 
 		return false;
 	}

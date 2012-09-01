@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/egypt.swf" tl_long="24.698620" tl_lat="31.667485" br_long="36.894654" br_lat="21.725177" zoom="90%" zoom_x="28.69%" zoom_y="5.16%">
+  <areas>
+    <area mc_name="EG_DQ" title="Ad Daqahlīyah"/>
+    <area mc_name="EG_BA" title="Al Bahr al Ahmar"/>
+    <area mc_name="EG_BH" title="Al Buhayrah"/>
+    <area mc_name="EG_FY" title="Al Fayyūm"/>
+    <area mc_name="EG_GH" title="Al Gharbīyah"/>
+    <area mc_name="EG_IK" title="Al Iskandarīyah"/>
+    <area mc_name="EG_IS" title="Al Ismā`īlīyah"/>
+    <area mc_name="EG_GZ" title="Al Jīzah"/>
+    <area mc_name="EG_MF" title="Al Minūfīyah"/>
+    <area mc_name="EG_MN" title="Al Minyā"/>
+    <area mc_name="EG_CR" title="Al Qāhirah"/>
+    <area mc_name="EG_QL" title="Al Qalyūbīyah"/>
+    <area mc_name="EG_UQ" title="Al Uqsur"/>
+    <area mc_name="EG_WJ" title="Al Wādī al Jadīd"/>
+    <area mc_name="EG_SQ" title="Ash Sharqīyah"/>
+    <area mc_name="EG_SW" title="As Suways"/>
+    <area mc_name="EG_AN" title="Aswān"/>
+    <area mc_name="EG_AT" title="Asyūt"/>
+    <area mc_name="EG_BN" title="Banī Suwayf"/>
+    <area mc_name="EG_BS" title="Būr Sa`īd"/>
+    <area mc_name="EG_DT" title="Dumyāt"/>
+    <area mc_name="EG_HW" title="Helwan"/>
+    <area mc_name="EG_JS" title="Janūb Sīnā'"/>
+    <area mc_name="EG_KS" title="Kafr ash Shaykh"/>
+    <area mc_name="EG_MT" title="Matrūh"/>
+    <area mc_name="EG_QN" title="Qinā"/>
+    <area mc_name="EG_SS" title="Shamal Sīnā'"/>
+    <area mc_name="EG_SO" title="Sixth of October"/>
+    <area mc_name="EG_SJ" title="Sūhāj"/>
+    <area mc_name="EG_HT" title="Hala'Ib Triangle"/>
+    <area mc_name="EG_TER" title="Disputed Territory"/>
+    <area title="borders" mc_name="borders_outside" color="#ffffff" balloon="false" alpha="0"></area>
+    <area title="borders" mc_name="borders_inside" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Cairo (Al Qāhirah)" file="target" color="#CC0000" height="10" width="10" lat="30.068588" long="31.241627" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="999" y="423" text_size="18" color="#FFFFFF" remain="false">
+      <text>Egypt</text>
+    </label>
+  </labels>
+</map>

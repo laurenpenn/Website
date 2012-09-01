@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/moldova.swf" tl_long="26.649381" tl_lat="48.495537" br_long="30.181365" br_lat="45.461908" zoom="85%" zoom_x="44.95%" zoom_y="9.98%">
+  <areas>
+    <area mc_name="MD_AN" title="Anenii Noi"></area>
+    <area mc_name="MD_BT" title="Bălţi"></area>
+    <area mc_name="MD_BA" title="Basarabeasca"></area>
+    <area mc_name="MD_BR" title="Briceni"></area>
+    <area mc_name="MD_CH" title="Cahul"></area>
+    <area mc_name="MD_CA" title="Călăraşi"></area>
+    <area mc_name="MD_CN" title="Cantemir"></area>
+    <area mc_name="MD_CU" title="Căuşeni"></area>
+    <area mc_name="MD_CV" title="Chişinău"></area>
+    <area mc_name="MD_CS" title="Cimişlia"></area>
+    <area mc_name="MD_CR" title="Criuleni"></area>
+    <area mc_name="MD_DO" title="Donduşeni"></area>
+    <area mc_name="MD_DR" title="Drochia"></area>
+    <area mc_name="MD_DB" title="Dubăsari"></area>
+    <area mc_name="MD_ED" title="Edinet"></area>
+    <area mc_name="MD_FA" title="Făleşti"></area>
+    <area mc_name="MD_FL" title="Floreşti"></area>
+    <area mc_name="MD_GA" title="Găgăuzia"></area>
+    <area mc_name="MD_GL" title="Glodeni"></area>
+    <area mc_name="MD_HI" title="înceşti"></area>
+    <area mc_name="MD_IA" title="Ialoveni"></area>
+    <area mc_name="MD_LE" title="Leova"></area>
+    <area mc_name="MD_NI" title="Nisporeni"></area>
+    <area mc_name="MD_OC" title="Ocniţa"></area>
+    <area mc_name="MD_OH" title="Orhei"></area>
+    <area mc_name="MD_RZ" title="Rîşcani"></area>
+    <area mc_name="MD_RS" title="Rεscani"></area>
+    <area mc_name="MD_SD" title="Şoldăneşt"></area>
+    <area mc_name="MD_SO" title="Soroca"></area>
+    <area mc_name="MD_SV" title="Ştefan Vodă"></area>
+    <area mc_name="MD_ST" title="Străşeni"></area>
+    <area mc_name="MD_SI" title="Sîngerei"></area>
+    <area mc_name="MD_TA" title="Taraclia"></area>
+    <area mc_name="MD_TE" title="Teleneşti"></area>
+    <area mc_name="MD_TG" title="Tighina"></area>
+    <area mc_name="MD_DU" title="Transnistria"></area>
+    <area mc_name="MD_UG" title="Ungheni"></area>
+    <area mc_name="borders_inside" title="borders" color="#FFFFFF" balloon="false"></area>
+    <area mc_name="borders_outside" title="borders" color="#FFFFFF" alpha="0" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Chişinău" file="target" color="#666666" height="10" width="10" lat="47.02573" long="28.83831" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="133" y="153" text_size="18" color="#FFFFFF" remain="false">
+      <text>Moldova</text>
+    </label>
+  </labels>
+</map>

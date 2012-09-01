@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/venezuela.swf" tl_long="-73.386524" tl_lat="12.545658" br_long="-59.805618" br_lat="0.645377" zoom="90%" zoom_x="14.5%" zoom_y="5.92%">
+  <areas>
+    <area mc_name="VE_AM" title="Amazonas"></area>
+    <area mc_name="VE_AN" title="Anzoátegui"></area>
+    <area mc_name="VE_AP" title="Apure"></area>
+    <area mc_name="VE_AR" title="Aragua"></area>
+    <area mc_name="VE_BA" title="Barinas"></area>
+    <area mc_name="VE_BO" title="Bolivar"></area>
+    <area mc_name="VE_CA" title="Carabobo"></area>
+    <area mc_name="VE_CO" title="Cojedes"></area>
+    <area mc_name="VE_DA" title="Delta Amacuro"></area>
+    <area mc_name="VE_DF" title="Distrito Capital"></area>
+    <area mc_name="VE_FA" title="Falcón"></area>
+    <area mc_name="VE_GU" title="Guárico"></area>
+    <area mc_name="VE_LA" title="Lara"></area>
+    <area mc_name="VE_ME" title="Mérida"></area>
+    <area mc_name="VE_MI" title="Miranda"></area>
+    <area mc_name="VE_MO" title="Monagas"></area>
+    <area mc_name="VE_NE" title="Neuva Esparta"></area>
+    <area mc_name="VE_PO" title="Portuguesa"></area>
+    <area mc_name="VE_SU" title="Sucre"></area>
+    <area mc_name="VE_TA" title="Táchira"></area>
+    <area mc_name="VE_TR" title="Trujillo"></area>
+    <area mc_name="VE_VA" title="Vargas"></area>
+    <area mc_name="VE_YA" title="Yaracuy"></area>
+    <area mc_name="VE_ZU" title="Zulia"></area>
+    <area mc_name="VE_DP" title="Dependencias Federales"></area>
+    <area mc_name="AN" title="Netherland Antilles" color="#ff9900"></area>
+    <area mc_name="AW" title="Aruba" color="#ff9900"></area>
+    <area title="borders_outside" mc_name="borders_outside" color="#ffffff" balloon="false" alpha="0"></area>
+    <area title="borders_inside" mc_name="borders_inside" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Caracas" file="target" color="#CC0000" height="10" width="10" lat="10.49605" long="-66.898277" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="237" y="601" text_size="18" color="#FFFFFF" remain="false">
+      <text>Venezuela</text>
+    </label>
+  </labels>
+</map>

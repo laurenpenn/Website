@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=otto%
 Tags: facebook, connect, simple, otto, otto42, javascript, comments, share, status
 Requires at least: 3.3
 Tested up to: 3.3
-Stable Tag: 1.4
+Stable Tag: 1.5
 License: GPLv2
 License URI: http://www.opensource.org/licenses/GPL-2.0
 
@@ -150,6 +150,9 @@ The Login module can optionally make the system use Facebook avatars instead of 
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 1.5 =
+* Fix for broken Like button due to Facebook implementing breaking changes without telling anybody about it in advance.
 
 = 1.4 =
 * Corrected some internationalization issues

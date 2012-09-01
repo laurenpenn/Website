@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/french_guiana.swf" tl_long="-54.603322" tl_lat="5.754967" br_long="-51.647544" br_lat="2.113161" zoom="90%" zoom_x="30.92%" zoom_y="5.52%">
+  <areas>
+    <area mc_name="GF_CY" title="Cayenne"/>
+    <area mc_name="GF_SL" title="Saint-Laurent-du-Maron"/>
+    <area title="borders" mc_name="borders" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Cayenne" file="target" color="#CC0000" height="10" width="10" lat="4.93461" long="-52.33033" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="867" y="250" text_size="18" color="#FFFFFF" remain="false">
+      <text>French Guiana</text>
+    </label>
+  </labels>
+</map>

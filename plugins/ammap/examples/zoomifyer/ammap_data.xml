@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="../examples/zoomifyer/image.jpg" zoom_x="0%" zoom_y="0%">
+  <movies>
+    <movie file="rectangle" y="266" x="0" width="100%" height="35"/>
+  </movies>
+  <labels>
+    <label x="250" y="280" zoom="100%" color_hover="#CC0000">
+      <text><![CDATA[<b>100%</b>]]></text>
+    </label>
+    <label x="315" y="280" url="#top" color_hover="#CC0000">
+      <text><![CDATA[<b>Fit to screen</b>]]></text>
+    </label>    
+  </labels>
+</map>

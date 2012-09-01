@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/nicaragua.swf" zoom="86.6071%" zoom_x="5.58%" zoom_y="3.74%">
+  <areas>
+    <area mc_name="boaco" title="Boaco"></area>
+    <area mc_name="jinotepe" title="Jinotepe"></area>
+    <area mc_name="chinandega" title="Chinandega"></area>
+    <area mc_name="juigalpa" title="Juigalpa"></area>
+    <area mc_name="esteli" title="Estelí"></area>
+    <area mc_name="granada" title="Granada"></area>
+    <area mc_name="jinotega" title="Jinotega"></area>
+    <area mc_name="leon" title="León"></area>
+    <area mc_name="somoto" title="Somoto"></area>
+    <area mc_name="managua" title="Managua"></area>
+    <area mc_name="masaya" title="Masaya"></area>
+    <area mc_name="matagalpa" title="Matagalpa"></area>
+    <area mc_name="ocotal" title="Ocotal"></area>
+    <area mc_name="rivas" title="Rivas"></area>
+    <area mc_name="san_carlos" title="San Carlos"></area>
+    <area mc_name="bilwi" title="Bilwi"></area>
+    <area mc_name="bluefields" title="Bluefields"></area>
+ </areas>
+
+  <movies>
+    <movie title="Managua. Click to zoom in" file="target" color="#CC0000" width="30" height="30" long="-8.1623" lat="-31.0968" zoom="423%" zoom_x="-121.33%" zoom_y="-235.54%" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="20.7174%" y="6.81%" text_size="18" color="#FFFFFF" remain="false">
+      <text>Nicaragua</text>
+    </label>
+  </labels>
+</map>

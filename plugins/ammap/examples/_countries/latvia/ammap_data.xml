@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/latvia.swf" tl_long="20.96893" tl_lat="58.085964" br_long="28.2434" br_lat="55.672595" zoom="85%" zoom_x="8.15%" zoom_y="9.93%">
+
+  <areas>
+    <area mc_name="LV_AI" title="Aizkraukle"></area>
+    <area mc_name="LV_AL" title="Alūksne"></area>
+    <area mc_name="LV_BL" title="Balvi"></area>
+    <area mc_name="LV_BU" title="Bauska"></area>
+    <area mc_name="LV_CE" title="Cēsis"></area>
+    <area mc_name="LV_DG" title="Daugavpils"></area>
+    <area mc_name="LV_DO" title="Dobele"></area>
+    <area mc_name="LV_GU" title="Gulbene"></area>
+    <area mc_name="LV_JK" title="Jēkabpils"></area>
+    <area mc_name="LV_JG" title="Jelgava"></area>
+    <area mc_name="LV_KR" title="Krāslava"></area>
+    <area mc_name="LV_KU" title="Kuldīga"></area>
+    <area mc_name="LV_LP" title="Liepāja"></area>
+    <area mc_name="LV_LM" title="Limbaži"></area>
+    <area mc_name="LV_LU" title="Ludza"></area>
+    <area mc_name="LV_MA" title="Madona"></area>
+    <area mc_name="LV_OG" title="Ogre"></area>
+    <area mc_name="LV_PR" title="Preili"></area>
+    <area mc_name="LV_RZ" title="Rēzekne"></area>
+    <area mc_name="LV_RG" title="Riga"></area>
+    <area mc_name="LV_SA" title="Saldus"></area>
+    <area mc_name="LV_TA" title="Talsi"></area>
+    <area mc_name="LV_TU" title="Tukum"></area>
+    <area mc_name="LV_VK" title="Valka"></area>
+    <area mc_name="LV_VM" title="Valmiera"></area>
+    <area mc_name="LV_VN" title="Ventspils"></area>
+    <area mc_name="borders" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Riga" file="target" color="#666666" height="10" width="10" lat="56.946" long="24.114905" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="9.5313%" y="17.9201%" text_size="18" color="#FFFFFF" remain="false">
+      <text>Districts of Latvia</text>
+    </label>
+  </labels>
+</map>

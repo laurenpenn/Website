@@ -2,10 +2,15 @@
 
 include_once dirname( __FILE__ ).'/sharing-sources.php';
 
-define( 'WP_SHARING_PLUGIN_VERSION', '0.3' );
+define( 'WP_SHARING_PLUGIN_VERSION', '0.3.1' );
 
 class Sharing_Service {
 	private $global = false;
+	var $default_sharing_label = '';
+
+	public function __construct() {
+		$this->default_sharing_label = __( 'Share this:', 'jetpack' );
+	}
 
 	/**
 	 * Gets a generic list of all services, without any config
@@ -46,7 +51,9 @@ class Sharing_Service {
 			'stumbleupon'   => 'Share_Stumbleupon',
 			'twitter'       => 'Share_Twitter',
 			'press-this'    => 'Share_PressThis',
-			'google-plus-1' => 'Share_GooglePlus1'
+			'google-plus-1' => 'Share_GooglePlus1',
+			'tumblr'        => 'Share_Tumblr',
+			'pinterest'     => 'Share_Pinterest',
 		);
 		
 		// Add any custom services in
@@ -88,22 +95,16 @@ class Sharing_Service {
 	}
 	
 	public function delete_service( $service_id ) {
-		$service = $this->get_service( $service_id );
-
-		if ( $service ) {
-			$options = get_option( 'sharing-options' );
-			if ( isset( $options[$service_id] ) )
-				unset( $options[$service_id] );
-				
-			$key = array_search( $service_id, $options['global']['custom'] );
-			if ( $key !== false )
-				unset( $options['global']['custom'][$key] );
-
-			update_option( 'sharing-options', $options );				
-			return true;
-		}
+		$options = get_option( 'sharing-options' );
+		if ( isset( $options[$service_id] ) )
+			unset( $options[$service_id] );
 		
-		return false;
+		$key = array_search( $service_id, $options['global']['custom'] );
+		if ( $key !== false )
+			unset( $options['global']['custom'][$key] );
+		
+		update_option( 'sharing-options', $options );
+		return true;
 	}
 	
 	public function set_blog_services( array $visible, array $hidden ) {
@@ -166,6 +167,10 @@ class Sharing_Service {
 
 		$blog = apply_filters( 'sharing_services_enabled', $blog );
 
+		// Add CSS for NASCAR
+		if ( count( $blog['visible'] ) || count( $blog['hidden'] ) )
+			add_filter( 'post_flair_block_css', 'post_flair_service_enabled_sharing' );
+
 		// Convenience for checking if a service is present
 		$blog['all'] = array_flip( array_merge( array_keys( $blog['visible'] ), array_keys( $blog['hidden'] ) ) );
 		return $blog;
@@ -187,13 +192,13 @@ class Sharing_Service {
 		$options = get_option( 'sharing-options' );
 
 		// No options yet
-		if ( ! is_array( $options ) )
+		if ( !is_array( $options ) )
 			$options = array();
 
 		// Defaults
 		$options['global'] = array(
 			'button_style'  => 'icon-text',
-			'sharing_label' => __( 'Share this:', 'jetpack' ),
+			'sharing_label' => $this->default_sharing_label,
 			'open_links'    => 'same',
 			'show'          => array( 'post', 'page' ),
 			'custom'        => isset( $options['global']['custom'] ) ? $options['global']['custom'] : array()
@@ -202,18 +207,22 @@ class Sharing_Service {
 		$options['global'] = apply_filters( 'sharing_default_global', $options['global'] );
 
 		// Validate options and set from our data
-		if ( isset( $data['button_style'] ) && in_array( $data['button_style'], array( 'icon-text', 'icon', 'text' ) ) )
+		if ( isset( $data['button_style'] ) && in_array( $data['button_style'], array( 'icon-text', 'icon', 'text', 'official' ) ) )
 			$options['global']['button_style'] = $data['button_style'];
 
-		if ( isset( $data['sharing_label'] ) )
-			$options['global']['sharing_label'] = trim( wp_kses( stripslashes( $data['sharing_label'] ), array() ) );
+		if ( isset( $data['sharing_label'] ) ) {
+			if ( $this->default_sharing_label === $data['sharing_label'] ) {
+				$options['global']['sharing_label'] = false;
+			} else {
+				$options['global']['sharing_label'] = trim( wp_kses( stripslashes( $data['sharing_label'] ), array() ) );
+			}
+		}
 
 		if ( isset( $data['open_links'] ) && in_array( $data['open_links'], array( 'new', 'same' ) ) )
 			$options['global']['open_links'] = $data['open_links'];
 
 		$shows = array_values( get_post_types( array( 'public' => true ) ) );
 		$shows[] = 'index';
-
 		if ( isset( $data['show'] ) ) {
 			if ( is_scalar( $data['show'] ) ) {
 				switch ( $data['show'] ) {
@@ -265,6 +274,11 @@ class Sharing_Service {
 				break;
 			}
 		}
+
+		if ( false === $this->global['sharing_label'] ) {
+			$this->global['sharing_label'] = $this->default_sharing_label;
+		}
+
 		return $this->global;
 	}
 	
@@ -284,22 +298,25 @@ class Sharing_Service {
 	}
 	
 	// Soon to come to a .org plugin near you!
-	public function get_total( $service_name = false, $post_id = false ) {
+	public function get_total( $service_name = false, $post_id = false, $_blog_id = false ) {
 		global $wpdb, $blog_id;
+		if ( !$_blog_id ) {
+			$_blog_id = $blog_id;
+		}
 		if ( $service_name == false ) {
 			if ( $post_id > 0 ) {
 				// total number of shares for this post
-				return (int) $wpdb->get_var( $wpdb->prepare( "SELECT SUM( count ) FROM sharing_stats WHERE blog_id = %d AND post_id = %d", $blog_id, $post_id ) );
+				return (int) $wpdb->get_var( $wpdb->prepare( "SELECT SUM( count ) FROM sharing_stats WHERE blog_id = %d AND post_id = %d", $_blog_id, $post_id ) );
 			} else {
 				// total number of shares for this blog
-				return (int) $wpdb->get_var( $wpdb->prepare( "SELECT SUM( count ) FROM sharing_stats WHERE blog_id = %d", $blog_id ) );
+				return (int) $wpdb->get_var( $wpdb->prepare( "SELECT SUM( count ) FROM sharing_stats WHERE blog_id = %d", $_blog_id ) );
 			}
 		}
 		
 		if ( $post_id > 0 )
-			return (int) $wpdb->get_var( $wpdb->prepare( "SELECT SUM( count ) FROM sharing_stats WHERE blog_id = %d AND post_id = %d AND share_service = %s", $blog_id, $post_id, $service_name ) );
+			return (int) $wpdb->get_var( $wpdb->prepare( "SELECT SUM( count ) FROM sharing_stats WHERE blog_id = %d AND post_id = %d AND share_service = %s", $_blog_id, $post_id, $service_name ) );
 		else
-			return (int) $wpdb->get_var( $wpdb->prepare( "SELECT SUM( count ) FROM sharing_stats WHERE blog_id = %d AND share_service = %s", $blog_id, $service_name ) );
+			return (int) $wpdb->get_var( $wpdb->prepare( "SELECT SUM( count ) FROM sharing_stats WHERE blog_id = %d AND share_service = %s", $_blog_id, $service_name ) );
 	}
 	
 	public function get_services_total( $post_id = false ) {
@@ -373,16 +390,38 @@ class Sharing_Post_Total {
 	}
 }
 
+function sharing_register_post_for_share_counts( $post_id ) {
+	global $jetpack_sharing_counts;
+
+	if ( ! isset( $jetpack_sharing_counts ) || ! is_array( $jetpack_sharing_counts ) )
+		$jetpack_sharing_counts = array();
+
+	$jetpack_sharing_counts[ (int) $post_id ] = get_permalink( $post_id );
+}
+
 function sharing_add_footer() {
-	if ( apply_filters( 'sharing_js', true ) )
+	global $jetpack_sharing_counts;
+
+	if ( apply_filters( 'sharing_js', true ) ) {
+
+		if ( is_array( $jetpack_sharing_counts ) && count( $jetpack_sharing_counts ) ) :
+?>
+
+	<script type="text/javascript">
+		WPCOM_sharing_counts = <?php echo json_encode( array_flip( $jetpack_sharing_counts ) ); ?>
+	</script>
+<?php
+		endif;
+
 		wp_print_scripts( 'sharing-js' );
+	}
 	
 	$sharer = new Sharing_Service();
 	$enabled = $sharer->get_blog_services();
 	foreach ( array_merge( $enabled['visible'], $enabled['hidden'] ) AS $service ) {
 		$service->display_footer();
 	}
-} 
+}
 
 function sharing_add_header() {
 	$sharer = new Sharing_Service();
@@ -391,10 +430,11 @@ function sharing_add_header() {
 	foreach ( array_merge( $enabled['visible'], $enabled['hidden'] ) AS $service ) {
 		$service->display_header();
 	}
-
+	
 	if ( count( $enabled['all'] ) > 0 )
-		wp_enqueue_style( 'sharedaddy', plugin_dir_url( __FILE__ ) .'sharing.css' );
+		wp_enqueue_style( 'sharedaddy', plugin_dir_url( __FILE__ ) .'sharing.css', array(), WP_SHARING_PLUGIN_VERSION );
 }
+add_action( 'wp_head', 'sharing_add_header', 1 );
 
 function sharing_process_requests() {
 	global $post;
@@ -409,6 +449,7 @@ function sharing_process_requests() {
 		}		
 	}
 }
+add_action( 'template_redirect', 'sharing_process_requests' );
 
 function sharing_display( $text = '' ) {
 	global $post, $wp_current_filter;
@@ -420,7 +461,13 @@ function sharing_display( $text = '' ) {
 	if ( in_array( 'get_the_excerpt', (array) $wp_current_filter ) ) {
 		return $text;
 	}
-	
+
+	if ( is_attachment() && in_array( 'the_excerpt', (array) $wp_current_filter ) ) {
+		// Many themes run the_excerpt() conditionally on an attachment page, then run the_content().
+		// We only want to output the sharing buttons once.  Let's stick with the_content().
+		return $text;
+	}
+
 	$sharer = new Sharing_Service();
 	$global = $sharer->get_global_options();
 
@@ -441,7 +488,11 @@ function sharing_display( $text = '' ) {
 
 	if ( !empty( $switched_status ) )
 		$show = false;
-
+	
+	// Allow to be used on P2 ajax requests for latest posts.
+	if ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_REQUEST['action'] ) && 'get_latest_posts' == $_REQUEST['action'] )
+		$show = true;
+		
 	$sharing_content = '';
 	
 	if ( $show ) {
@@ -453,25 +504,27 @@ function sharing_display( $text = '' ) {
 			$dir = get_option( 'text_direction' );
 
 			// Wrapper
-			$sharing_content .= '<div class="snap_nopreview sharing robots-nocontent">';
-			$sharing_content .= '<ul>';
+			$sharing_content .= '<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-' . $global['button_style'] . ' sd-sharing">';
+			if ( $global['sharing_label'] != '' )
+				$sharing_content .= '<h3 class="sd-title">' . $global['sharing_label'] . '</h3>';
+			$sharing_content .= '<div class="sd-content"><ul>';
 			
 			// Visible items
 			$visible = '';
-			foreach ( $enabled['visible'] AS $id => $service ) {
+			foreach ( $enabled['visible'] as $id => $service ) {
 				// Individual HTML for sharing service
-				$visible .= '<li class="share-'.$service->get_class().' share-regular">';
-				$visible .= $service->get_display( $post );
-				$visible .= '</li>';
+				$visible .= '<li class="share-' . $service->get_class() . '">' . $service->get_display( $post ) . '</li>';
 			}
 
 			$parts = array();
-			if ( $global['sharing_label'] != '' )
-				$parts[] = '<li class="sharing_label">'.$global['sharing_label'].'</li>';
-
 			$parts[] = $visible;
-			if ( count( $enabled['hidden'] ) > 0 )
-				$parts[] = '<li class="share-custom"><a href="#" class="sharing-anchor">'._x( 'Share', 'dropdown button', 'jetpack' ).'</a></li>';
+			if ( count( $enabled['hidden'] ) > 0 ) {
+				if ( count( $enabled['visible'] ) > 0 )
+					$expand = __( 'More', 'jetpack' );
+				else
+					$expand = __( 'Share', 'jetpack' );
+				$parts[] = '<li><a href="#" class="sharing-anchor sd-button share-more"><span>'.$expand.'</span></a></li>';
+			}
 
 			if ( $dir == 'rtl' )
 				$parts = array_reverse( $parts );
@@ -493,7 +546,7 @@ function sharing_display( $text = '' ) {
 					$sharing_content .= '<ul>';
 	
 				$count = 1;
-				foreach ( $enabled['hidden'] AS $id => $service ) {
+				foreach ( $enabled['hidden'] as $id => $service ) {
 					// Individual HTML for sharing service
 					$sharing_content .= '<li class="share-'.$service->get_class().'">';
 					$sharing_content .= $service->get_display( $post );
@@ -509,10 +562,10 @@ function sharing_display( $text = '' ) {
 				$sharing_content .= '<li class="share-end"></li></ul></div></div>';
 			}
 
-			$sharing_content .= '<div class="sharing-clear"></div></div>';
+			$sharing_content .= '<div class="sharing-clear"></div></div></div></div>';
 			
 			// Register our JS
-			wp_register_script( 'sharing-js', plugin_dir_url( __FILE__ ).'sharing.js', array( 'jquery' ), '0.1' );
+			wp_register_script( 'sharing-js', plugin_dir_url( __FILE__ ).'sharing.js', array( 'jquery' ), '20120131' );
 			add_action( 'wp_footer', 'sharing_add_footer' );
 		}
 	}
@@ -522,8 +575,3 @@ function sharing_display( $text = '' ) {
 
 add_filter( 'the_content', 'sharing_display', 19 );
 add_filter( 'the_excerpt', 'sharing_display', 19 );
-
-// Register our CSS
-add_action( 'wp_head', 'sharing_add_header', 1 );
-
-add_action( 'template_redirect', 'sharing_process_requests' );

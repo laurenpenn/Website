@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/portugal.swf" tl_long="-31.264178" tl_lat="42.153432" br_long="-6.190805" br_lat="30.02704" zoom="85%" zoom_x="6.78%" zoom_y="16.11%">
+  <areas>
+    <area mc_name="PT_11" title="Norte"></area>
+    <area mc_name="PT_16" title="Centro"></area>
+    <area mc_name="PT_17" title="Lisboa  e Vale do Tejo"></area>
+    <area mc_name="PT_18" title="Alentejo"></area>
+    <area mc_name="PT_15" title="Algarve"></area>
+    <area mc_name="PT_20" title="Azores (Açores)"></area>
+    <area mc_name="PT_30" title="Madeira"></area>
+    <area mc_name="borders" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Lisbon (Lisboa)" file="target" color="#666666" height="10" width="10" lat="38.725679" long="-9.150371" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="133" y="153" text_size="18" color="#FFFFFF" remain="false">
+      <text>Portugal</text>
+    </label>
+  </labels>
+</map>

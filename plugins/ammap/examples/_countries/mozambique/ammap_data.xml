@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/mozambique.swf" tl_long="30.216360" tl_lat="-10.470238" br_long="40.838974" br_lat="-26.869918" zoom="90%" zoom_x="28.69%" zoom_y="5.16%">
+  <areas>
+      <area mc_name="MZ_CD" title="Cabo Delgado"></area>
+      <area mc_name="MZ_GA" title="Gaza"></area>
+      <area mc_name="MZ_IN" title="Inhambane"></area>
+      <area mc_name="MZ_MN" title="Manica"></area>
+      <area mc_name="MZ_MP" title="Maputo"></area>
+      <area mc_name="MZ_MC" title="Maputo City"></area>
+      <area mc_name="MZ_NM" title="Nampula"></area>
+      <area mc_name="MZ_NS" title="Niassa"></area>
+      <area mc_name="MZ_SO" title="Sofala"></area>
+      <area mc_name="MZ_TE" title="Tete"></area>
+      <area mc_name="MZ_ZA" title="Zambézia"></area>
+      <area title="borders" mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area title="borders" mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Maputo" file="target" color="#CC0000" height="10" width="10" lat="-25.9681" long="32.58065" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="477" y="448" text_size="18" color="#FFFFFF" remain="false">
+      <text>Mozambique</text>
+    </label>
+  </labels>
+</map>

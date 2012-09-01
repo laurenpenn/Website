@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/hungary2.swf" tl_long="16.114278" tl_lat="48.58597" br_long="22.897" br_lat="45.737024" zoom="85%" zoom_x="6.78%" zoom_y="16.11%">
+  <areas>
+      <area mc_name="HU_BK" title="Bács-Kiskun  "></area>
+      <area mc_name="HU_BA" title="Baranya  "></area>
+      <area mc_name="HU_BE" title="Békés  "></area>
+      <area mc_name="HU_BZ" title="Borsod-Abaúj-Zemplén  "></area>
+      <area mc_name="HU_BU" title="Budapest  "></area>
+      <area mc_name="HU_CS" title="Csongrád  "></area>
+      <area mc_name="HU_FE" title="Fejér  "></area>
+      <area mc_name="HU_GS" title="Győr-Moson-Sopron "></area>
+      <area mc_name="HU_HB" title="Hajdú-Bihar  "></area>
+      <area mc_name="HU_HE" title="Heves  "></area>
+      <area mc_name="HU_JN" title="Jász-Nagykun-Szolnok  "></area>
+      <area mc_name="HU_KE" title="Komárom-Esztergom "></area>
+      <area mc_name="HU_NO" title="Nógrád  "></area>
+      <area mc_name="HU_PE" title="Pest  "></area>
+      <area mc_name="HU_SO" title="Somogy  "></area>
+      <area mc_name="HU_SZ" title="Szabolcs-Szatmár-Bereg "></area>
+      <area mc_name="HU_TO" title="Tolna  "></area>
+      <area mc_name="HU_VA" title="Vas  "></area>
+      <area mc_name="HU_VE" title="Veszprém  "></area>
+      <area mc_name="HU_ZA" title="Zala  "></area>
+    <area mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+    <area mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Budapest" file="target" color="#666666" height="10" width="10" lat="47.506225" long="19.06482" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="133" y="153" text_size="18" color="#FFFFFF" remain="false">
+      <text>Hungary</text>
+    </label>
+  </labels>
+</map>

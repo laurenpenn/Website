@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/armenia.swf" tl_long="43.449890" tl_lat="41.301458" br_long="46.630102" br_lat="38.830468" zoom="85%" zoom_x="24.84%" zoom_y="8.83%">
+  <areas>
+    <area mc_name="AM_AG" title="Aragatsotn"></area>
+    <area mc_name="AM_AR" title="Ararat"></area>
+    <area mc_name="AM_AV" title="Armavir"></area>
+    <area mc_name="AM_ER" title="Yerevan"></area>
+    <area mc_name="AM_GR" title="Gegharkunik"></area>
+    <area mc_name="AM_KT" title="Kotayk"></area>
+    <area mc_name="AM_LO" title="Lori"></area>
+    <area mc_name="AM_SH" title="Shirak"></area>
+    <area mc_name="AM_SU" title="Syunik"></area>
+    <area mc_name="AM_TV" title="Tavush"></area>
+    <area mc_name="AM_VD" title="Vayots Dzor"></area>
+    <area mc_name="borders_inside" title="borders" color="#FFFFFF" balloon="false"></area>
+    <area mc_name="borders_outside" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Yerevan" file="target" color="#666666" height="10" width="10" lat="40.187558" long="44.512748" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="771" y="263" text_size="18" color="#FFFFFF" remain="false">
+      <text>Armenia</text>
+    </label>
+  </labels>
+</map>

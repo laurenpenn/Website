@@ -2,15 +2,13 @@
 
 interface P2P_Field {
 	function get_title();
-	function render( $p2p_id, $post_id );
+	function render( $p2p_id, $item );
 }
 
 class P2P_Box {
 	private $ctype;
 
 	private $args;
-
-	private $ptype;
 
 	private $columns;
 
@@ -20,14 +18,14 @@ class P2P_Box {
 		'post_status' => 'any',
 	);
 
-	function __construct( $args, $ctype ) {
+	function __construct( $args, $columns, $ctype ) {
 		$this->args = $args;
+
+		$this->columns = $columns;
 
 		$this->ctype = $ctype;
 
 		$this->labels = $this->ctype->get_opposite( 'labels' );
-
-		$this->init_columns();
 	}
 
 	public function init_scripts() {
@@ -41,31 +39,13 @@ class P2P_Box {
 		) );
 	}
 
-	protected function init_columns() {
-		$title_class = $this->get_column_title_class();
-
-		$this->columns = array(
-			'delete' => new P2P_Field_Delete,
-			'title' => new $title_class( $this->labels->singular_name ),
-		);
-
-		foreach ( $this->ctype->fields as $key => $data ) {
-			$this->columns[ 'meta-' . $key ] = new P2P_Field_Generic( $key, $data );
-		}
-
-		if ( $orderby_key = $this->ctype->get_orderby_key() ) {
-			$this->columns['order'] = new P2P_Field_Order( $orderby_key );
-		}
-	}
-
-	protected function get_column_title_class() {
-		$object_type = $this->ctype->get_opposite( 'object' );
-
-		return 'P2P_Field_Title_' . ucfirst( $object_type );
-	}
-
 	function render( $post ) {
-		$this->connected_items = $this->get_folded_connections( $post->ID );
+		$extra_qv = array_merge( self::$admin_box_qv, array(
+			'p2p:context' => 'admin_box',
+			'p2p:per_page' => -1
+		) );
+
+		$this->connected_items = $this->ctype->get_connected( $post, $extra_qv, 'abstract' )->items;
 
 		$data = array(
 			'attributes' => $this->render_data_attributes(),
@@ -74,17 +54,6 @@ class P2P_Box {
 		);
 
 		echo P2P_Mustache::render( 'box', $data );
-	}
-
-	protected function get_folded_connections( $post ) {
-		$extra_qv = array_merge( self::$admin_box_qv, array(
-			'p2p:context' => 'admin_box',
-			'p2p:per_page' => -1
-		) );
-
-		$query = $this->ctype->get_connected( $post, $extra_qv, 'abstract' );
-
-		return scb_list_fold( $query->items, 'p2p_id', 'ID' );
 	}
 
 	protected function render_data_attributes() {
@@ -109,8 +78,8 @@ class P2P_Box {
 			$data['hide'] = 'style="display:none"';
 
 		$tbody = array();
-		foreach ( $this->connected_items as $p2p_id => $item_id ) {
-			$tbody[] = $this->connection_row( $p2p_id, $item_id );
+		foreach ( $this->connected_items as $item ) {
+			$tbody[] = $this->connection_row( $item->p2p_id, $item );
 		}
 		$data['tbody'] = $tbody;
 
@@ -126,16 +95,18 @@ class P2P_Box {
 
 	protected function render_create_connections( $post ) {
 		$data = array(
-			'label' => __( 'Create connections:', P2P_TEXTDOMAIN )
+			'label' => $this->labels->create,
 		);
 
-		if ( 'one' == $this->ctype->get_opposite( 'cardinality' ) && !empty( $this->connected_items ) )
-			$data['hide'] = 'style="display:none"';
+		if ( 'one' == $this->ctype->get_opposite( 'cardinality' ) ) {
+			if ( !empty( $this->connected_items ) )
+				$data['hide'] = 'style="display:none"';
+		}
 
 		// Search tab
 		$tab_content = P2P_Mustache::render( 'tab-search', array(
 			'placeholder' => $this->labels->search_items,
-			'view-all' => __( 'View All', P2P_TEXTDOMAIN ),
+			'candidates' => $this->post_rows( $post->ID )
 		) );
 
 		$data['tabs'][] = array(
@@ -163,17 +134,17 @@ class P2P_Box {
 		return $data;
 	}
 
-	protected function connection_row( $p2p_id, $post_id, $render = false ) {
-		return $this->table_row( $this->columns, $p2p_id, $post_id, $render );
+	protected function connection_row( $p2p_id, $item, $render = false ) {
+		return $this->table_row( $this->columns, $p2p_id, $item, $render );
 	}
 
-	protected function table_row( $columns, $p2p_id, $post_id, $render = false ) {
+	protected function table_row( $columns, $p2p_id, $item, $render = false ) {
 		$data = array();
 
 		foreach ( $columns as $key => $field ) {
 			$data['columns'][] = array(
 				'column' => $key,
-				'content' => $field->render( $p2p_id, $post_id )
+				'content' => $field->render( $p2p_id, $item )
 			);
 		}
 
@@ -192,18 +163,18 @@ class P2P_Box {
 
 		$candidate = $this->ctype->get_connectable( $current_post_id, $extra_qv );
 
-		if ( empty( $candidate->items ) )
-			return false;
+		if ( empty( $candidate->items ) ) {
+			return html( 'div class="p2p-notice"', $this->labels->not_found );
+		}
 
 		$data = array();
 
 		$columns = array(
-			'create' => new P2P_Field_Create,
-			'title' => $this->columns['title']
+			'create' => new P2P_Field_Create( $this->columns['title'] ),
 		);
 
 		foreach ( $candidate->items as $item ) {
-			$data['rows'][] = $this->table_row( $columns, 0, $item->ID );
+			$data['rows'][] = $this->table_row( $columns, 0, $item );
 		}
 
 		if ( $candidate->total_pages > 1 ) {
@@ -236,7 +207,7 @@ class P2P_Box {
 		$args = array(
 			'post_title' => $_POST['post_title'],
 			'post_author' => get_current_user_id(),
-			'post_type' => $this->ctype->get_opposite( 'side' )->post_type[0]
+			'post_type' => $this->ctype->get_opposite( 'side' )->first_post_type()
 		);
 
 		$from = absint( $_POST['from'] );
@@ -259,10 +230,20 @@ class P2P_Box {
 
 		$p2p_id = $this->ctype->connect( $from, $to );
 
-		if ( is_wp_error( $p2p_id ) )
-			$r = array( 'error' => sprintf( __( "Can't create connection: %s", P2P_TEXTDOMAIN ), $p2p_id->get_error_message() ) );
-		else
-			$r = array( 'row' => $this->connection_row( $p2p_id, $to, true ) );
+		if ( is_wp_error( $p2p_id ) ) {
+			$r = array(
+				'error' => sprintf(
+					__( "Can't create connection: %s", P2P_TEXTDOMAIN ),
+					$p2p_id->get_error_message()
+				)
+			);
+		} else {
+			$item = $this->ctype->get_opposite('side')->item_recognize( $to );
+
+			$r = array(
+				'row' => $this->connection_row( $p2p_id, $item, true )
+			);
+		}
 
 		die( json_encode( $r ) );
 	}
@@ -280,51 +261,24 @@ class P2P_Box {
 	}
 
 	public function ajax_search() {
-		die( json_encode( $this->_ajax_search( $_GET ) ) );
+		$this->refresh_candidates();
 	}
 
 	private function refresh_candidates() {
-		$results = $this->_ajax_search( $_POST );
+		$rows = $this->post_rows( $_REQUEST['from'], $_REQUEST['paged'], $_REQUEST['s'] );
+
+		$results = compact( 'rows' );
 
 		die( json_encode( $results ) );
-	}
-
-	private function _ajax_search( $args ) {
-		$rows = $this->post_rows( $args['from'], $args['paged'], $args['s'] );
-
-		if ( $rows ) {
-			$results = compact( 'rows' );
-		} else {
-			$results = array(
-				'msg' => $this->labels->not_found,
-			);
-		}
-
-		return $results;
 	}
 
 	protected function can_create_post() {
 		if ( !$this->args->can_create_post )
 			return false;
 
-		if ( 'post' != $this->ctype->get_opposite( 'object' ) )
-			return false;
-
 		$side = $this->ctype->get_opposite( 'side' );
 
-		if ( count( $side->post_type ) > 1 )
-			return false;
-
-		if ( count( $side->query_vars ) > 1 )
-			return false;
-
-		return true;
-	}
-
-	public function check_capability() {
-		$show = $this->ctype->get_opposite( 'side' )->check_capability();
-
-		return apply_filters( 'p2p_admin_box_show', $show, $this->ctype, $GLOBALS['post'] );
+		return $side->can_create_item();
 	}
 }
 

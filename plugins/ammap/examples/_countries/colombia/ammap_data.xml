@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/colombia.swf" tl_long="-81.719363" tl_lat="12.58954" br_long="-66.869199" br_lat="-4.237857" zoom="90%" zoom_x="13.77%" zoom_y="5.64%">
+  <areas>
+    <area mc_name="CO_AM" title="Amazonas"/>
+    <area mc_name="CO_AN" title="Antioquia"/>
+    <area mc_name="CO_AR" title="Arauca"/>
+    <area mc_name="CO_AT" title="Atlántic"/>
+    <area mc_name="CO_BL" title="Bolívar"/>
+    <area mc_name="CO_BY" title="Boyacá"/>
+    <area mc_name="CO_CL" title="Caldas"/>
+    <area mc_name="CO_CQ" title="Caquetá"/>
+    <area mc_name="CO_CS" title="Casanare"/>
+    <area mc_name="CO_CA" title="Cauca"/>
+    <area mc_name="CO_CE" title="Cesar"/>
+    <area mc_name="CO_CH" title="Chocó"/>
+    <area mc_name="CO_CO" title="Córdoba"/>
+    <area mc_name="CO_CU" title="Cundinamarca"/>
+    <area mc_name="CO_DC" title="Distrito Capital de Bogotá"/>
+    <area mc_name="CO_GN" title="Guainía"/>
+    <area mc_name="CO_GV" title="Guaviare"/>
+    <area mc_name="CO_HU" title="Huila"/>
+    <area mc_name="CO_LG" title="La Guajira"/>
+    <area mc_name="CO_MA" title="Magdalena"/>
+    <area mc_name="CO_ME" title="Meta"/>
+    <area mc_name="CO_NA" title="Nariño"/>
+    <area mc_name="CO_NS" title="Norte de Santander"/>
+    <area mc_name="CO_PU" title="Putumayo"/>
+    <area mc_name="CO_QD" title="Quindío"/>
+    <area mc_name="CO_RI" title="Risaralda"/>
+    <area mc_name="CO_SA" title="San Andrés y Providencia"/>
+    <area mc_name="CO_ST" title="Santander"/>
+    <area mc_name="CO_SU" title="Sucre"/>
+    <area mc_name="CO_TO" title="Tolima"/>
+    <area mc_name="CO_VC" title="Valle del Cauca"/>
+    <area mc_name="CO_VP" title="Vaupés"/>
+    <area mc_name="CO_VD" title="Vichada"/>
+    <area title="borders" mc_name="borders" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Bogotá" file="target" color="#CC0000" height="10" width="10" lat="4.614622" long="-74.084831" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="683" y="166" text_size="18" color="#FFFFFF" remain="false">
+      <text>Colombia</text>
+    </label>
+  </labels>
+</map>

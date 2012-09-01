@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/kyrgyzstan.swf" tl_long="69.26028" tl_lat="43.255748" br_long="80.290238" br_lat="39.170053" zoom="80%" zoom_x="4.29%" zoom_y="10%">
+  <areas>
+    <area mc_name="KG_BA" title="Batken" url="!ammap_data_batken.xml"/>
+    <area mc_name="KG_CU" title="Chüy" url="!ammap_data_chuy.xml"/>
+    <area mc_name="KG_DA" title="Jalal-Abad" url="!ammap_data_jalal_abad.xml"/>
+    <area mc_name="KG_NA" title="Naryn" url="!ammap_data_naryn.xml"/>
+    <area mc_name="KG_OS" title="Osh" url="!ammap_data_osh.xml"/>
+    <area mc_name="KG_TL" title="Talas" url="!ammap_data_talas.xml"/>
+    <area mc_name="KG_YK" title="Ysyk-Köl" url="!ammap_data_ysyk_kol.xml"/>
+    <area mc_name="KG_YK_YKL" title="Ysyk-Köl Lake" color="#0098FF" balloon="false"></area>
+    <area mc_name="KG_NA_SKL" title="Song-Köl Lake" color="#0098FF" balloon="false"></area>
+    <area mc_name="KG_NA_CKL" title="Chatyr-Köl Lake" color="#0098FF" balloon="false"></area>
+    <area mc_name="KG_DA_TKR" title="Toktogul Reservoir" color="#0098FF" balloon="false"></area>
+    <area title="borders" mc_name="borders" color="#ffffff" balloon="false"></area>
+    <area title="borders_lake" mc_name="lakes_borders" color="#0066FF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="???" file="target" color="#CC0000" height="10" width="10" lat="" long="" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="439" y="128" text_size="18" color="#FFFFFF" remain="false">
+      <text>Kyrgyzstan</text>
+    </label>
+  </labels>
+</map>

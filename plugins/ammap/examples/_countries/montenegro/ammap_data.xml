@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/montenegro.swf" tl_long="18.438653" tl_lat="43.564940" br_long="20.376631" br_lat="41.848788"zoom="85%" zoom_x="41.62%" zoom_y="9.06%">
+  <areas>
+    <area mc_name="ME_AN" title="Andrijevica"></area>
+    <area mc_name="ME_BA" title="Bar"></area>
+    <area mc_name="ME_BE" title="Berane"></area>
+    <area mc_name="ME_BP" title="Bijelo Polje"></area>
+    <area mc_name="ME_BU" title="Budva"></area>
+    <area mc_name="ME_CE" title="Cetinje	"></area>
+    <area mc_name="ME_DA" title="Danilovgrad"></area>
+    <area mc_name="ME_HN" title="Herceg Novi"></area>
+    <area mc_name="ME_KL" title="Kolašin"></area>
+    <area mc_name="ME_KT" title="Kotor"></area>
+    <area mc_name="ME_MK" title="Mojkovac"></area>
+    <area mc_name="ME_NK" title="Nikšić"></area>
+    <area mc_name="ME_PV" title="Plav"></area>
+    <area mc_name="ME_PL" title="Pljevlja"></area>
+    <area mc_name="ME_PU" title="Plužine"></area>
+    <area mc_name="ME_PG" title="Podgorica"></area>
+    <area mc_name="ME_RO" title="Rožaje"></area>
+    <area mc_name="ME_SA" title="Šavnik"></area>
+    <area mc_name="ME_TI" title="Tivat"></area>
+    <area mc_name="ME_UL" title="Ulcinj"></area>
+    <area mc_name="ME_ZA" title="Žabljak"></area>
+    <area mc_name="ME_SLK" title="Skadar Lake" color="#0098FF"></area>
+    <area mc_name="borders_lake" title="borders_lake" color="#0066FF" balloon="false"></area>
+    <area mc_name="borders" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Podgorica" file="target" color="#666666" height="10" width="10" lat="42.436341" long="19.264404" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="191" y="275" text_size="18" color="#FFFFFF" remain="false">
+      <text>Montenegro</text>
+    </label>
+  </labels>
+</map>

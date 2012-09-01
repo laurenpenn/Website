@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ammap</title>
+<style>
+  body{
+    margin: 0px;
+  }
+</style>
+</head>
+
+<body onLoad="ammap.focus()">
+<!-- saved from url=(0013)about:internet -->
+<!-- ammap script-->
+  <script type="text/javascript" src="../../../ammap/swfobject.js"></script>
+	<div id="flashcontent">
+		<strong>You need to upgrade your Flash Player</strong>
+	</div>
+
+	<script type="text/javascript">
+		// <![CDATA[		
+		var so = new SWFObject("../../../ammap/ammap.swf", "ammap", "100%", "100%", "8", "#3A79C1");
+    so.addVariable("path", "../../../ammap/");
+		so.addVariable("data_file", escape("ammap_data.xml"));
+    so.addVariable("settings_file", escape("ammap_settings.xml"));		
+		so.addVariable("preloader_color", "#999999");
+		so.write("flashcontent");
+		// ]]>
+	</script>
+<!-- end of ammap script -->
+</body>
+</html>

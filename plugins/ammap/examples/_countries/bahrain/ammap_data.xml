@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/bahrain.swf" tl_long="50.229582" tl_lat="26.288726" br_long="50.688767" br_lat="25.798738" zoom="90%" zoom_x="10.78%" zoom_y="5.56%">
+  <areas>
+    <area mc_name="BH_CA" title="Capital"/>
+    <area mc_name="BH_CE" title="Central"/>
+    <area mc_name="BH_MU" title="Muharraq"/>
+    <area mc_name="BH_NO" title="Northern"/>
+    <area mc_name="BH_SO" title="Southern"/>
+    <area title="borders_inside" mc_name="borders_inside" color="#ffffff" balloon="false"></area>
+    <area title="borders_outside" mc_name="borders_outside" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Manama" file="target" color="#CC0000" height="10" width="10" lat="26.2257" long="50.57795" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="198" y="535" text_size="18" color="#FFFFFF" remain="false">
+      <text>Bahrain</text>
+    </label>
+  </labels>
+</map>
+

@@ -1,13 +1,13 @@
 === OptionTree ===
 Contributors: valendesigns
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=accounts@valendesigns.com&item_name=OptionTree
-Tags: admin, theme options, options, admin interface, ajax
-Requires at least: 3.0
-Tested up to: 3.2.1
-Stable tag: 1.1.8.1
+Donate link: http://bit.ly/NuXI3T
+Tags: admin, theme options, meta boxes, options, admin interface, ajax
+Requires at least: 3.3
+Tested up to: 3.5
+Stable tag: 2.0.9
 License: GPLv2
 
-Extremely customizable Theme Options interface for WordPress.
+Theme Options UI Builder for WordPress. A simple way to create & save Theme Options and Meta Boxes for free or premium themes.
 
 == Description ==
 
@@ -17,13 +17,7 @@ With OptionTree you can create as many Theme Options as your project requires an
 
 Included is the ability to Import/Export all the theme options and data for packaging with custom themes or local development. With the Import/Export feature you can get a theme set up on a live server in minutes. Theme authors can now create different version of their themes and include them with the download. It makes setting up different theme styles & options easier than ever because a theme user installs the plugin and theme and either adds their own settings or imports your defaults.
 
-**Update**: v1.1.8.1 Removed get_option_tree() in the WordPress admin area due to theme conflicts.
-
-**Update**: Since v1.1.8 you can build custom CSS code that will automatically get inserted into dynamic.css (created by the server) or any file you choose, just be sure it's permissions are writable. As well, typography & background options were added with a ton of filters to extend them.
-
-**Update**: Since v1.1.7 you can create layouts (theme variations) and import/export those layouts. You can also activate them at anytime from the Theme Options page. Added an upload feature to the slider.
-
-**Update**: Since v1.1.6 it's now possible to have a default XML file included in your theme to populate the theme options and hide the 'Settings' and 'Documentation' pages from the end uses. You can read more about this in the plugins built in documentation by clicking the 'Theme Integration' tab.
+A new feature in OptionTree 2.0 is the ability to include the plugin directly in your themes root directory. Not only does that mean your theme is guaranteed to have the plugin installed you also get the ability to interact directly with OptionTree through settings and meta box arrays. You can now tell OptionTree what settings you want and know that nobody will break your theme by changing settings through the UI Builder. It's just a better plugin now!
 
 OptionTree is a project sponsored by <a href="http://themeforest.net/?ref=valendesigns">ThemeForest</a>, the largest WordPress theme marketplace on the web, and was originally conceived to help ThemeForest authors quickly power up their themes. But it's here for the benefit of one and all, so option up folks!
 
@@ -31,22 +25,84 @@ OptionTree is a project sponsored by <a href="http://themeforest.net/?ref=valend
 
 1. Upload `option-tree` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. If included in your theme, import the XML file & data by going to `OptionTree->Settings->Import`
 1. Click the `OptionTree->Documentation` link in the WordPress admin sidebar menu for further setup assistance.
 
 == Frequently Asked Questions ==
 
 = Is this plugin PHP5 only? =
 
-Sorry, but yes. OptionTree requires PHP5 to work correctly (so does WP 3.2+).
+Yes. OptionTree requires PHP5 to work correctly (so does WP 3.2+).
 
 == Screenshots ==
 
-1. Settings
-2. Theme Options
+1. Theme Options
+2. Settings
 3. Documentation
 
 == Changelog ==
+
+= 2.0.9 =
+* Fixed the issue where the Textarea Simple and CSS option types were mysteriously being ran through wpautop.
+* Added missing class setting to Textarea, Textarea Simple, & CSS option types.
+* Fixed theme-options.php exported array where label values were not correct.
+* Change GET to POST for all AJAX calls to fix a bug where some servers would not allow long strings to be passed in GET variables.
+* Added the 'ot_after_validate_setting' filter to the validation function.
+* Added $field_id to the ot_validate_setting() for more precise filtering.
+* Added the ot_reverse_wpautop() function that you can run input through just incase you need it.
+* Updated the docs to include information on why WYSIWYG editors are not allowed in meta boxes and that they revert to a Textarea Simple.
+* Update option-tree.pot file.
+
+= 2.0.8 =
+* Add auto import for backwards compatibility of old 1.x files.
+* Added the ability to export settings into a fully functional theme-options.php.
+* Fix typo in docs regarding the filter demo code.
+* Removed slashes in the section and contextual help titles.
+* Made colorpicker input field alignment more cross browser compatible.
+
+= 2.0.7 =
+* Fixed the load order to be compatible with 1.x version themes that think the get_option_tree() function doesn't exist yet.
+* Tested and compatible with Cudazi themes, but the nag message is still visible.
+
+= 2.0.6 =
+* Run the 'option_tree' array through validation when importing data and layouts.
+* Fix a bug where list items and sliders were not allowing the user to select the input field.
+* Add a filter that allows you to not load resources for meta boxes if you're not going to use them.
+* Update option-tree.pot file.
+
+= 2.0.5 =
+* Change the way the 'option_tree_settings' array validates. Strip out those damn slashes!
+
+= 2.0.4 =
+* Run the 'option_tree' array through validation when upgrading from the 1.0 branch to the 2.0 branch for the first time.
+* Fix a typo in the slider array where textarea's were not saving the first time due to an incorrect array key.
+
+= 2.0.3 =
+* Had an incorrect conditional statement causing an issue where the plugin was attempting to create the 'option-tree' image attachment page, even though it was already created.
+* The above also fixed a conflict with 'The Events Calendar' plugin.
+
+= 2.0.2 =
+* Added I18n support, let the translations begin. The option-tree.pot file is inside the languages directory.
+* Trim whitespace on imported choices array.
+* Fixed the CSS insert function not having a value to save.
+
+= 2.0.1 =
+* Import from table was not mapping settings correctly. It is now.
+
+= 2.0 =
+* Complete rewrite form the ground up.
+* Better Theme Options UI Builder.
+* New in-plugin documentation.
+* Brand new responsive UI.
+* Add new option types, most notable the List Item which should eventually replace the Slider.
+* Added the simpler ot_get_option() function to eventually replace get_option_tree().
+* Added support for Meta Boxes.
+* Added Theme Mode where you can now include the plugin directly in your theme.
+* Better validation on saved data.
+* Simplified the import process.
+* Added support for contextual help.
+* Permanently move the Theme Option to the Appearance tab.
+* Added a ton of filters.
+* Made huge improvements to the code base and tested rigorously.
 
 = 1.1.8.1 =
 * Removed get_option_tree() in the WordPress admin area due to theme conflicts.
@@ -125,6 +181,9 @@ Sorry, but yes. OptionTree requires PHP5 to work correctly (so does WP 3.2+).
 * Initial version
 
 == Upgrade Notice ==
+
+= 2.0.9 =
+The plugin has undertaken a complete rebuild! If you are not the theme developer, I urge you to contact that person before you upgrade and ask them to test the themes compatibility.
 
 = 1.1.8.1 =
 Removed get_option_tree() in the WordPress admin area due to theme conflicts.

@@ -9,7 +9,7 @@ $sfc_like_defaults = array(
 		'send' => 'false',		// true or false
 		'action'=>'like',		// like or recommend
 		'colorscheme'=>'light',		// light or dark
-		'font' => 'lucida+grande',	// arial, lucida+grande, seqoe+ui, tahoma, trebuchet+ms, or verdana
+		'font' => 'lucida grande',	// arial, lucida grande, seqoe ui, tahoma, trebuchet ms, or verdana
 		);
 
 function get_sfc_like_button($args='') {

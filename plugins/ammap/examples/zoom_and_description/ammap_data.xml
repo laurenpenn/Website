@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/world3.swf" zoom="330%" zoom_x="-127.63%" zoom_y="-83.99%">
+  <areas>
+      <area mc_name='LT' title='LITHUANIA' color='#CC0000' value="0" zoom="1294.2678%" zoom_x="-640.51%" zoom_y="-496.21%" text_box_x="30" text_box_y="30%" text_box_width="350" text_box_height="50%">
+       <description>
+        <![CDATA[<img src="photo.jpg" width="300" height="225"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Lithuania is situated in northern Europe. It has around 99 kilometres of sandy coastline. Lithuania's major warm-water port, Klaipeda, lies at the narrow mouth of the Curonian Lagoon, a shallow lagoon extending south to Kaliningrad. The main river, the Nemunas River, and some of its tributaries carry international shipping vessels. The Lithuanian landscape has been smoothed by glaciers. The highest areas are the moraines in the western uplands and eastern highlands, none of which are taller than 300 metres (1,000 ft) above sea level. The terrain features numerous lakes and wetlands; a mixed forest zone covers 30% of the country. The climate lies between maritime and continental, with wet, moderate winters and summers. According to one geographical computation method, Lithuania's capital, Vilnius, lies only a few kilometres south of the geographical centre of Europe.]]>
+       </description>
+       <movies>
+        <movie long="14.1001" lat="39.8281959548531" file="icons/pin.swf" title="Vilnius" fixed_size="true"></movie>
+        <movie long="12.8688" lat="41.2374048565797" file="icons/pin.swf" title="Kaunas" fixed_size="true"></movie>
+        <movie long="10.2361" lat="43.3335883714809" file="icons/pin.swf" title="Klaipeda" fixed_size="true"></movie>
+      </movies> 
+      <lines>
+        <line long="14.1001,12.8688" lat="39.8281959548531,41.2374048565797" arrow="middle"/>
+        <line long="12.8688,10.2361" lat="41.2374048565797,43.3335883714809" arrow="middle"/>
+      </lines>
+      </area>
+      <area title="borders" mc_name="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+</map>

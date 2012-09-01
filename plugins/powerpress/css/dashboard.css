@@ -1,0 +1,45 @@
+/* PowerPress Dashboard CSS */
+
+/* Dashboard Notice, based on Dashboard Browser Nag  */
+#powerpress_dashboard_notice_1 a.update-browser-link {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+#powerpress_dashboard_notice_1 a {
+	text-decoration: underline;
+}
+
+#powerpress_dashboard_notice_1.postbox {
+	background-color: #e29808;
+	background-image: none;
+	border-color: #edc048;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: #fff;
+}
+
+#powerpress_dashboard_notice_1.postbox h3 {
+	border-bottom-color: #f6e2ac;
+	text-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	background: transparent none;
+	color: #fff;
+}
+
+#powerpress_dashboard_notice_1 a {
+	color: #fff;
+}
+
+#powerpress_dashboard_notice_1.browser-insecure a.browse-happy-link,
+#powerpress_dashboard_notice_1.browser-insecure a.update-browser-link {
+	text-shadow: #871b15 0 1px 0;
+}
+
+#powerpress_dashboard_notice_1 a.browse-happy-link,
+#powerpress_dashboard_notice_1 a.update-browser-link {
+	text-shadow: #d29a04 0 1px 0;
+}

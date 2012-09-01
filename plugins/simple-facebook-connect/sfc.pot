@@ -1,0 +1,890 @@
+# Copyright (C) 2012 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/simple-facebook-connect\n"
+"POT-Creation-Date: 2012-06-12 21:01:26+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: sfc-base.php:27
+msgid "Login with Facebook"
+msgstr ""
+
+#: sfc-base.php:28
+msgid "User registration (must also enable Login)"
+msgstr ""
+
+#: sfc-base.php:29
+msgid "Like Button"
+msgstr ""
+
+#: sfc-base.php:30
+msgid "Share Button"
+msgstr ""
+
+#: sfc-base.php:31
+msgid "Publisher (send posts to Facebook)"
+msgstr ""
+
+#: sfc-base.php:32
+msgid "Sidebar widgets (enables all widgets, use the ones you want)"
+msgstr ""
+
+#: sfc-base.php:33
+msgid "Allow FB Login to Comment (for non-registered users)"
+msgstr ""
+
+#: sfc-base.php:34
+msgid "Integrate FB Comments (needs automatic publishing enabled)"
+msgstr ""
+
+#: sfc-base.php:35
+msgid "Photo Posting (integrate FB Photo Albums into the Media display)"
+msgstr ""
+
+#: sfc-base.php:149
+msgid ""
+"Simple Facebook Connect needs configuration information on its <a href=\"%s"
+"\">settings</a> page."
+msgstr ""
+
+#: sfc-base.php:155
+msgid "Main Settings"
+msgstr ""
+
+#: sfc-base.php:156
+msgid "Facebook Application ID"
+msgstr ""
+
+#: sfc-base.php:157
+msgid "Facebook Application Secret"
+msgstr ""
+
+#: sfc-base.php:158
+msgid "Facebook Fan Page"
+msgstr ""
+
+#: sfc-base.php:160 sfc-help.php:44
+msgid "SFC Modules"
+msgstr ""
+
+#: sfc-base.php:161
+msgid "Modules"
+msgstr ""
+
+#: sfc-base.php:163
+msgid "Facebook Metadata"
+msgstr ""
+
+#: sfc-base.php:164
+msgid "Default Image"
+msgstr ""
+
+#: sfc-base.php:165
+msgid "Default Description"
+msgstr ""
+
+#: sfc-base.php:175 sfc-base.php:184
+msgid "Simple Facebook Connect"
+msgstr ""
+
+#: sfc-base.php:185
+msgid "Options relating to the Simple Facebook Connect plugins."
+msgstr ""
+
+#: sfc-base.php:192
+msgid "About the Author"
+msgstr ""
+
+#: sfc-base.php:216
+msgid ""
+"To connect your site to Facebook, you will need a Facebook Application.\r\n"
+"If you have already created one, please insert your Application Secret and "
+"Application ID below."
+msgstr ""
+
+#: sfc-base.php:218
+msgid "Can't find your key?"
+msgstr ""
+
+#: sfc-base.php:220
+msgid ""
+"Get a list of your applications from here: <a target=\"_blank\" href="
+"\"https://developers.facebook.com/apps\">Facebook Application List</a>"
+msgstr ""
+
+#: sfc-base.php:221
+msgid ""
+"Select the application you want, then copy and paste the Application Secret "
+"and Application ID from there."
+msgstr ""
+
+#: sfc-base.php:224
+msgid "Haven't created an application yet?"
+msgstr ""
+
+#: sfc-base.php:224
+msgid "Don't worry, it's easy!"
+msgstr ""
+
+#: sfc-base.php:226
+msgid ""
+"Go to this link to create your application: <a target=\"_blank\" href="
+"\"https://developers.facebook.com/apps\">Facebook Application Setup</a>"
+msgstr ""
+
+#: sfc-base.php:228
+msgid ""
+"You can get the API information from the application on the\r\n"
+"<a target=\"_blank\" href=\"https://developers.facebook.com/apps\">Facebook "
+"Application List</a> page."
+msgstr ""
+
+#: sfc-base.php:230
+msgid ""
+"Select the application you created, then copy and paste the Application "
+"Secret and Application ID from there."
+msgstr ""
+
+#: sfc-base.php:249 sfc-base.php:256
+msgid "(required)"
+msgstr ""
+
+#: sfc-base.php:263
+msgid ""
+"If you use a Fan Page for your site, you can fill in the ID number of the "
+"Fan Page here. To get the ID number, go to the Fan Page on Facebook,\r\n"
+"find the \"Edit Page\" link, and click it. The Fan Page ID number will be in "
+"the URL of the Edit page."
+msgstr ""
+
+#: sfc-base.php:271
+msgid ""
+"SFC is a modular system. Click the checkboxes by the sub-plugins of SFC that "
+"you want to use. All of these are optional."
+msgstr ""
+
+#: sfc-base.php:291
+msgid ""
+"SFC automatically populates your site with OpenGraph meta tags for Facebook "
+"and other sites to use for things like sharing and publishing."
+msgstr ""
+
+#: sfc-base.php:298
+msgid ""
+"SFC will automatically choose images from your content if they are "
+"available. When they are not available, you can specify the URL to a default "
+"image to use here."
+msgstr ""
+
+#: sfc-base.php:306
+msgid ""
+"SFC will automatically create descriptions for single post pages based on "
+"the excerpt of the content. For other pages, you can put in a default "
+"description here."
+msgstr ""
+
+#: sfc-base.php:591
+msgid "Help is available!"
+msgstr ""
+
+#: sfc-base.php:592
+msgid ""
+"Make sure to check the Help dropdown box for information on installing and "
+"using Simple Facebook Connect."
+msgstr ""
+
+#: sfc-comments.php:27 sfc-photos.php:29 sfc-photos.php:126
+#: sfc-publish.php:197
+msgid "Connect with Facebook"
+msgstr ""
+
+#: sfc-comments.php:172
+msgid "Hi"
+msgstr ""
+
+#: sfc-comments.php:172
+msgid "You are connected with your Facebook account."
+msgstr ""
+
+#: sfc-comments.php:173
+msgid "Logout"
+msgstr ""
+
+#: sfc-comments.php:177
+msgid "Share Comment on Facebook"
+msgstr ""
+
+#: sfc-help.php:15
+msgid ""
+"\r\n"
+"\t\t<p>To connect your site to Facebook, you will need a Facebook "
+"Application.\r\n"
+"\t\tIf you have already created one, please insert your Application Secret "
+"and Application ID below.</p>\r\n"
+"\t\t<p><strong>Can't find your key?</strong></p>\r\n"
+"\t\t<ol>\r\n"
+"\t\t<li>Get a list of your applications from here: <a target='_blank' "
+"href='https://developers.facebook.com/apps'>Facebook Application List</a></"
+"li>\r\n"
+"\t\t<li>Select the application you want, then copy and paste the Application "
+"Secret and Application ID from there.</li>\r\n"
+"\t\t</ol>\r\n"
+"\r\n"
+"\t\t<p><strong>Haven't created an application yet?</strong> Don't worry, "
+"it's easy!</p>\r\n"
+"\t\t<ol>\r\n"
+"\t\t<li>Go to this link to create your application: <a target='_blank' "
+"href='https://developers.facebook.com/apps'>Facebook Application List</a></"
+"li>\r\n"
+"\t\t<li>After creating the application, put <strong>%s</strong> in as the "
+"Site URL in the Website section.</li>\r\n"
+"\t\t<li>You can get the information from the application on the\r\n"
+"\t\t<a target='_blank' href='https://developers.facebook.com/apps'>Facebook "
+"Application List</a> page.</li>\r\n"
+"\t\t<li>Select the application you created, then copy and paste the "
+"Application Secret, and Application ID from there.</li>\r\n"
+"\t\t</ol>\r\n"
+"\t"
+msgstr ""
+
+#: sfc-help.php:38
+msgid "Connecting to Facebook"
+msgstr ""
+
+#: sfc-help.php:45
+msgid ""
+"<p>Each separate module can be enabled or disabled using the checkboxes "
+"below. \r\n"
+"\t\t\tOnly enable the modules you want to use, and the rest will not run at "
+"all!</p> \r\n"
+"\t\t\t<p>This is how SFC remains quick and fast. Non-activated modules never "
+"get loaded into memory, \r\n"
+"\t\t\tand so will take no extra time or processing power.</p>\r\n"
+"\t\t\t<p>You can see more information about each module in its individual "
+"help tab.</p>"
+msgstr ""
+
+#: sfc-help.php:55
+msgid "Login and Register"
+msgstr ""
+
+#: sfc-help.php:56
+msgid ""
+"<p>The Login module will allow you to log into the WordPress site using your "
+"Facebook credentials.</p>\r\n"
+"\t\t\t<p>Each existing user can activate their Facebook credentials for "
+"login by visiting their User Profile page.</p>\r\n"
+"\t\t\t<p>If you also enable the Register module, then SFC will modify the "
+"default registration screen to allow new users to register \r\n"
+"\t\t\tusing the Facebook registration plugin. This plugin will also allow "
+"non-Facebook users to register.</p>\r\n"
+"\t\t\t<p>The Login module has one option, which is to enable Facebook "
+"avatars in preference to Gravatars. If this is turned on, any \r\n"
+"\t\t\tuser with Facebook credentials attached to their WordPress account "
+"will show their Facebook avatar instead of the normal Gravatar.</p>"
+msgstr ""
+
+#: sfc-help.php:67
+msgid "Like and Share"
+msgstr ""
+
+#: sfc-help.php:68
+msgid ""
+"<p>The Like module will allow you to automatically or manually add Facebook "
+"like buttons to your posts.</p>\r\n"
+"\t\t\t<p>The automatic option will add Like buttons to all posts, pages, and "
+"other forms of content on your site.</p>\r\n"
+"\t\t\t<p>If you want to be more selective, you can edit your theme to have "
+"the <code>sfc_like_button();</code> function call where you \r\n"
+"\t\t\twant the Like buttons to appear.</p>\r\n"
+"\t\t\t<p>You can also use the <code>[fb-like]</code> shortcode in your "
+"posts, for more specific usage.</p>\r\n"
+"\t\t\t<p>Facebook also used to have an option known as the Share button. "
+"They have deprecated this button, and it will no longer\r\n"
+"\t\t\twork with their newer codebase.</p>\r\n"
+"\t\t\t<p>Therefore, the Share module will allow you to automatically or "
+"manually add Facebook like buttons to your posts which are styled \r\n"
+"\t\t\tso as to be approximately the same look and feel of the former Share "
+"button.</p>\r\n"
+"\t\t\t<p>The automatic option will add Like buttons to all posts, pages, and "
+"other forms of content on your site.</p>\r\n"
+"\t\t\t<p>If you want to be more selective, you can edit your theme to have "
+"the <code>sfc_share_button();</code> function call where you \r\n"
+"\t\t\twant the Like buttons to appear.</p>\r\n"
+"\t\t\t<p>You can also use the <code>[fb-share]</code> shortcode in your "
+"posts, for more specific usage.</p>"
+msgstr ""
+
+#: sfc-help.php:86
+msgid "Publish"
+msgstr ""
+
+#: sfc-help.php:87
+msgid ""
+"<p>The Publish module will allow you to automatically or manually send posts "
+"to your Facebook Profile or Page Walls.</p>\r\n"
+"\t\t\t<p>The automatic option can be configured on the main SFC Settings "
+"screen, and publishing happens transparently, with \r\n"
+"\t\t\tvery little configuration. You will need to grant the proper "
+"permissions and Save the settings page before this will work.</p>\r\n"
+"\t\t\t<p>The manual option is performed through the Edit Post screen. A new "
+"meta box will exist allowing you to publish to your Profile \r\n"
+"\t\t\tor Page using a popup box. The post must be published, and public, for "
+"this option to appear.</p>"
+msgstr ""
+
+#: sfc-help.php:97
+msgid "Widgets"
+msgstr ""
+
+#: sfc-help.php:98
+msgid ""
+"<p>The Widgets module adds several widgets to the Appearance->Widgets "
+"screen, allowing for various widgets to be used in your\r\n"
+"\t\t\ttheme's sidebar or other widget areas. Most of these widgets are "
+"duplicating Facebook widgets, and thus will have their own configuration.</p>"
+"\r\n"
+"\t\t\t<p>The Fan Box widget is a special case, as it can be independently "
+"styled using CSS. The Fan Box CSS box on the main SFC Settings page will\r\n"
+"\t\t\tallow you to add custom CSS for this widget to use.</p>"
+msgstr ""
+
+#: sfc-help.php:107
+msgid "Comments"
+msgstr ""
+
+#: sfc-help.php:108
+msgid ""
+"<p>The Comments module will let your users use Facebook credentials to make "
+"comments, and also offer those users \r\n"
+"\t\t\tthe option to share their comments, and your post, on Facebook. This "
+"basically eliminates the need for users to type in \r\n"
+"\t\t\ttheir Names and Email addresses.</p>\r\n"
+"\t\t\t<p>For newer themes that use the <code>comment_form()</code> function "
+"in WordPress, this is completely automatic. For older themes, \r\n"
+"\t\t\tyou may need to edit your theme's comments form to contain the "
+"necessary hooks to make the module work. Please see the \r\n"
+"\t\t\t<a href='http://wordpress.org/extend/plugins/simple-facebook-connect/"
+"faq/'>FAQ</a> for more information on this.</p>\r\n"
+"\t\t\t<p>Note that some themes do checking for 'required' elements via "
+"Javascript. Because Facebook Comments get these fields \r\n"
+"\t\t\tfilled on the back end, the theme may need to be modified to both "
+"display the button or to eliminate the javascript checks.</p>"
+msgstr ""
+
+#: sfc-help.php:121
+msgid "Comments Integration"
+msgstr ""
+
+#: sfc-help.php:122
+msgid ""
+"<p>The Comment Integration module uses the data saved from the automatic "
+"Publishing module to check the published stories on \r\n"
+"\t\t\tFacebook for comments. It will then periodically poll Facebook to get "
+"those comments, and integrate them back into the normally \r\n"
+"\t\t\tdisplayed comments stream on your post.</p>\r\n"
+"\t\t\t<p>Note that this is not guaranteed to work in all cases. It polls on "
+"a 6 hour basis, and sometimes Facebook is non-repsonsive, and so\r\n"
+"\t\t\tthe comments won't be available. This is a 'best-effort' operation.</p>"
+"\r\n"
+"\t\t\t<p>Because these comments are not actually on your site, the module "
+"also removes the 'Reply' link from them, so as to prevent people from\r\n"
+"\t\t\treplying to comments made elsewhere, and which the original author "
+"will not be able to see.</p>"
+msgstr ""
+
+#: sfc-help.php:134
+msgid "Photos"
+msgstr ""
+
+#: sfc-help.php:135
+msgid ""
+"<p>The Photos module adds a new tab to the Media Uploader on the Edit Post "
+"pages, which will show your Facebook photo \r\n"
+"\t\t\talbums and let you easily embed pictures from Facebook into your posts."
+"</p>\r\n"
+"\t\t\t<p>This module is new and considered to be 'alpha' quality, so don't "
+"count on it to work for all cases at present.</p>"
+msgstr ""
+
+#: sfc-like.php:87
+msgid "Like Button Settings"
+msgstr ""
+
+#: sfc-like.php:88
+msgid "Like Button Position"
+msgstr ""
+
+#: sfc-like.php:89
+msgid "Like Button Layout"
+msgstr ""
+
+#: sfc-like.php:90
+msgid "Like Button Action"
+msgstr ""
+
+#: sfc-like.php:91
+msgid "Send Button"
+msgstr ""
+
+#: sfc-like.php:95
+msgid "Choose where you want the like button added to your content."
+msgstr ""
+
+#: sfc-like.php:103 sfc-share.php:88
+msgid "Before the content of your post"
+msgstr ""
+
+#: sfc-like.php:104 sfc-share.php:89
+msgid "After the content of your post"
+msgstr ""
+
+#: sfc-like.php:105 sfc-share.php:90
+msgid "Before AND After the content of your post"
+msgstr ""
+
+#: sfc-like.php:106
+msgid ""
+"Manually add the button to your theme or posts (use the sfc_like_button() "
+"function in your theme)"
+msgstr ""
+
+#: sfc-like.php:116
+msgid "Standard"
+msgstr ""
+
+#: sfc-like.php:117
+msgid "Button with counter"
+msgstr ""
+
+#: sfc-like.php:118
+msgid "Box with counter"
+msgstr ""
+
+#: sfc-like.php:128
+msgid "Like"
+msgstr ""
+
+#: sfc-like.php:129
+msgid "Recommend"
+msgstr ""
+
+#: sfc-like.php:139
+msgid "Enabled"
+msgstr ""
+
+#: sfc-like.php:140
+msgid "Disabled"
+msgstr ""
+
+#: sfc-like.php:155
+msgid "Facebook Like Button"
+msgstr ""
+
+#: sfc-like.php:156
+msgid "Facebook Like Button (SFC)"
+msgstr ""
+
+#: sfc-like.php:188 sfc-widgets.php:90 sfc-widgets.php:199 sfc-widgets.php:335
+#: sfc-widgets.php:440 sfc-widgets.php:605 sfc-widgets.php:688
+msgid "Title:"
+msgstr ""
+
+#: sfc-like.php:191
+msgid "URL:"
+msgstr ""
+
+#: sfc-like.php:195
+msgid "Width (pixels):"
+msgstr ""
+
+#: sfc-login.php:21
+msgid "Facebook Connect"
+msgstr ""
+
+#: sfc-login.php:26
+msgid "Connect this WordPress account to Facebook"
+msgstr ""
+
+#: sfc-login.php:31
+msgid "Connected as"
+msgstr ""
+
+#: sfc-login.php:35
+msgid "Disconnect this account from WordPress"
+msgstr ""
+
+#: sfc-login.php:122
+msgid "Facebook Profile"
+msgstr ""
+
+#: sfc-login.php:171
+msgid "ERROR"
+msgstr ""
+
+#: sfc-login.php:171
+msgid ""
+"Cannot log you in. There is no account on this site connected to that "
+"Facebook user identity."
+msgstr ""
+
+#: sfc-login.php:222
+msgid "Login Settings"
+msgstr ""
+
+#: sfc-login.php:223
+msgid "Facebook Avatars"
+msgstr ""
+
+#: sfc-login.php:228
+msgid ""
+"Settings for the SFC-Login plugin. Users can connect their individual WP "
+"Logins to FB Logins on the Users->Your Profile screen."
+msgstr ""
+
+#: sfc-login.php:235
+msgid "Use Facebook Avatars in preference to Gravatars"
+msgstr ""
+
+#: sfc-photos.php:28
+msgid ""
+"You don't appear to be logged into Facebook. Click the button below to login "
+"and grant photo access."
+msgstr ""
+
+#: sfc-photos.php:73 sfc-photos.php:116
+msgid ""
+"Facebook is being really, really slow and not responding to requests in a "
+"reasonable period of time. Try again later."
+msgstr ""
+
+#: sfc-photos.php:82
+msgid "This album appears to be empty"
+msgstr ""
+
+#: sfc-photos.php:84 sfc-photos.php:91
+msgid "Go Back"
+msgstr ""
+
+#: sfc-photos.php:125
+msgid ""
+"Either you have no photo albums on Facebook, or you have not granted the "
+"site permission to access them. Either way, click the button below to login "
+"and grant access."
+msgstr ""
+
+#: sfc-publish.php:12
+msgid "Facebook Publisher"
+msgstr ""
+
+#: sfc-publish.php:19
+msgid "Publish Settings"
+msgstr ""
+
+#: sfc-publish.php:20
+msgid "Automatic Publishing"
+msgstr ""
+
+#: sfc-publish.php:21
+msgid "Extended Permissions"
+msgstr ""
+
+#: sfc-publish.php:22
+msgid "Token Checks"
+msgstr ""
+
+#: sfc-publish.php:27
+msgid ""
+"Settings for the SFC-Publish plugin. The manual Facebook Publishing buttons "
+"can be found on the Edit Post or Edit Page screen, after you publish a post. "
+"If you can't find them, try scrolling down or seeing if you have the box "
+"disabled in the Options dropdown."
+msgstr ""
+
+#: sfc-publish.php:37
+msgid "Automatically Publish to Facebook Fan Page"
+msgstr ""
+
+#: sfc-publish.php:43
+msgid "Automatically Publish to Facebook Profile:"
+msgstr ""
+
+#: sfc-publish.php:50
+msgid ""
+"In order for the SFC-Publish plugin to be able to publish your posts "
+"automatically, you must grant some \"Extended Permissions\"\r\n"
+"to the plugin."
+msgstr ""
+
+#: sfc-publish.php:52
+msgid ""
+"To do so, click this button. This will also cause the page to refresh, in "
+"order to save the results."
+msgstr ""
+
+#: sfc-publish.php:73
+msgid "<strong>Oops! There's a problem.</strong>"
+msgstr ""
+
+#: sfc-publish.php:75
+msgid ""
+"It seems that your server setup cannot support making SSL connections to "
+"other servers. Since Facebook requires \r\n"
+"\t\tSSL to connect to their API servers, then SFC can't directly connect to "
+"Facebook on this server configuration. \r\n"
+"\t\tThis means that the plugin will not be able to retrieve access tokens "
+"properly, nor automatically publish anything \r\n"
+"\t\tto page or user walls."
+msgstr ""
+
+#: sfc-publish.php:80
+msgid ""
+"To fix the problem, you need to ask your webhost to enable OpenSSL support "
+"or Curl support. With either of these enabled,\r\n"
+"\t\tthis message will go away and all should be well."
+msgstr ""
+
+#: sfc-publish.php:86
+msgid ""
+"In order for SFC to be able to automatically publish to Facebook, it must "
+"retrieve and save \"tokens\" from Facebook. The status of each of these is "
+"given below."
+msgstr ""
+
+#: sfc-publish.php:90
+msgid "User ID and Access Token found!"
+msgstr ""
+
+#: sfc-publish.php:92
+msgid "No User or Access Token found. Try re-saving this page."
+msgstr ""
+
+#: sfc-publish.php:96
+msgid "Application Access Token found!"
+msgstr ""
+
+#: sfc-publish.php:98
+msgid "Application Access Token not found. Try re-saving this page."
+msgstr ""
+
+#: sfc-publish.php:102
+msgid "Fan Page Access Token found!"
+msgstr ""
+
+#: sfc-publish.php:104
+msgid "Fan Page Access Token not found. Try re-saving this page."
+msgstr ""
+
+#: sfc-publish.php:116
+msgid "Why would you put private posts on Facebook, for all to see?"
+msgstr ""
+
+#: sfc-publish.php:121
+msgid "After publishing the post, you can send it to Facebook from here."
+msgstr ""
+
+#: sfc-publish.php:159
+msgid "Publish to your Facebook Profile"
+msgstr ""
+
+#: sfc-publish.php:176
+msgid "Publish to Facebook Fan Page"
+msgstr ""
+
+#: sfc-publish.php:185
+msgid ""
+"If you can see this, then there is some form of problem showing you the "
+"Facebook publishing buttons. This may be caused by a plugin conflict or some "
+"form of bad javascript on this page. Try reloading or disabling other "
+"plugins to find the source of the problem."
+msgstr ""
+
+#: sfc-register.php:29
+msgid "Choose a username"
+msgstr ""
+
+#: sfc-share.php:75
+msgid "Share Button Settings"
+msgstr ""
+
+#: sfc-share.php:76
+msgid "Share Button Position"
+msgstr ""
+
+#: sfc-share.php:77
+msgid "Share Button Type"
+msgstr ""
+
+#: sfc-share.php:81
+msgid ""
+"Facebook no longer supports the Share button. Therefore it has been replaced "
+"with the similar versions of the Like button."
+msgstr ""
+
+#: sfc-share.php:91
+msgid ""
+"Manually add the button to your theme or posts (use the sfc_share_button "
+"function in your theme, or the [fb-share] shortcode in your posts)"
+msgstr ""
+
+#: sfc-share.php:102
+msgid "Button Count"
+msgstr ""
+
+#: sfc-share.php:103
+msgid "Box Count"
+msgstr ""
+
+#: sfc-share.php:106
+msgid "Preview:"
+msgstr ""
+
+#: sfc-widgets.php:55
+msgid "Facebook Activity Feed"
+msgstr ""
+
+#: sfc-widgets.php:56
+msgid "Facebook Activity Feed (SFC)"
+msgstr ""
+
+#: sfc-widgets.php:93 sfc-widgets.php:202 sfc-widgets.php:347
+msgid "Width of the widget in pixels:"
+msgstr ""
+
+#: sfc-widgets.php:96 sfc-widgets.php:205
+msgid "Height of the widget in pixels:"
+msgstr ""
+
+#: sfc-widgets.php:99 sfc-widgets.php:208
+msgid "Border color:"
+msgstr ""
+
+#: sfc-widgets.php:102 sfc-widgets.php:211
+msgid "Color scheme:"
+msgstr ""
+
+#: sfc-widgets.php:104 sfc-widgets.php:213
+msgid "light"
+msgstr ""
+
+#: sfc-widgets.php:105 sfc-widgets.php:214
+msgid "dark"
+msgstr ""
+
+#: sfc-widgets.php:108 sfc-widgets.php:217
+msgid "Font:"
+msgstr ""
+
+#: sfc-widgets.php:164
+msgid "Facebook Recommendations"
+msgstr ""
+
+#: sfc-widgets.php:165
+msgid "Facebook Recommendations (SFC)"
+msgstr ""
+
+#: sfc-widgets.php:294
+msgid "Facebook Fan Box"
+msgstr ""
+
+#: sfc-widgets.php:295
+msgid "Facebook Fan Box (SFC)"
+msgstr ""
+
+#: sfc-widgets.php:338
+msgid "Show Facebook Logo Bar?"
+msgstr ""
+
+#: sfc-widgets.php:341
+msgid "Show Stream Stories? "
+msgstr ""
+
+#: sfc-widgets.php:344
+msgid "Number of Fans to Show:"
+msgstr ""
+
+#: sfc-widgets.php:350
+msgid "Height of the widget in pixels (0 for automatic):"
+msgstr ""
+
+#: sfc-widgets.php:361
+msgid "Fan Box Settings"
+msgstr ""
+
+#: sfc-widgets.php:362
+msgid "Fanbox Custom CSS"
+msgstr ""
+
+#: sfc-widgets.php:366
+msgid ""
+"Use this area to add any custom CSS you like to the Facebook Fan Box display."
+msgstr ""
+
+#: sfc-widgets.php:403
+msgid "Facebook User Status (needs user profile number)"
+msgstr ""
+
+#: sfc-widgets.php:404
+msgid "Facebook Status (SFC)"
+msgstr ""
+
+#: sfc-widgets.php:443
+msgid "Facebook User Profile Number:"
+msgstr ""
+
+#: sfc-widgets.php:448
+msgid "You have to grant permissions for the widget to get your Status updates"
+msgstr ""
+
+#: sfc-widgets.php:574
+msgid "Fans"
+msgstr ""
+
+#: sfc-widgets.php:576
+msgid "ON FACEBOOK"
+msgstr ""
+
+#: sfc-widgets.php:583
+msgid "Facebook Chicklet"
+msgstr ""
+
+#: sfc-widgets.php:584
+msgid "Facebook Chicklet (SFC)"
+msgstr ""
+
+#: sfc-widgets.php:652
+msgid "Facebook Live Stream"
+msgstr ""
+
+#: sfc-widgets.php:653
+msgid "Facebook Live Stream (SFC)"
+msgstr ""
+
+#: sfc-widgets.php:691
+msgid "Width of the widget in pixels (minimum 200):"
+msgstr ""
+
+#: sfc-widgets.php:694
+msgid "Height of the widget in pixels (minimum 400):"
+msgstr ""
+
+#: sfc.php:36
+msgid ""
+"Simple Facebook Connect requires PHP 5 and WordPress 3.3 to function. Please "
+"upgrade or deactivate the SFC plugin."
+msgstr ""
+
+#: sfc.php:43 sfc.php:52
+msgid "Settings"
+msgstr ""
+
+#: sfc.php:44
+msgid "Donate"
+msgstr ""

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/angola.swf" tl_long="11.667522" tl_lat="-4.372036" br_long="24.083069" br_lat="-18.043294" zoom="90%" zoom_x="28.69%" zoom_y="5.16%">
+  <areas>
+      <area mc_name="AO_BO" title="Bengo"></area>
+      <area mc_name="AO_BG" title="Benguela"></area>
+      <area mc_name="AO_BI" title="Bié"></area>
+      <area mc_name="AO_CB" title="Cabinda"></area>
+      <area mc_name="AO_CC" title="Cuando Cubango"></area>
+      <area mc_name="AO_CN" title="Cuanza Norte"></area>
+      <area mc_name="AO_CS" title="Cuanza Sul"></area>
+      <area mc_name="AO_CU" title="Cunene"></area>
+      <area mc_name="AO_HM" title="Huambo"></area>
+      <area mc_name="AO_HL" title="Huíla"></area>
+      <area mc_name="AO_LU" title="Luanda"></area>
+      <area mc_name="AO_LN" title="Lunda Norte"></area>
+      <area mc_name="AO_LS" title="Lunda Sul"></area>
+      <area mc_name="AO_ML" title="Malanje"></area>
+      <area mc_name="AO_MX" title="Moxico"></area>
+      <area mc_name="AO_NA" title="Namibe"></area>
+      <area mc_name="AO_UI" title="Uíge"></area>
+      <area mc_name="AO_ZA" title="Zaire"></area>
+      <area title="borders" mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area title="borders" mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Luanda City" file="target" color="#CC0000" height="10" width="10" lat="-8.81241" long="13.23503" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="859" y="423" text_size="18" color="#FFFFFF" remain="false">
+      <text>Angola</text>
+    </label>
+  </labels>
+</map>

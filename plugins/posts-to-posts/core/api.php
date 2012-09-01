@@ -171,7 +171,7 @@ function _p2p_get_connections( $p2p_type, $args = array() ) {
 		if ( empty( $$key ) )
 			return array();
 
-		$value = scbUtil::array_to_sql( (array) $$key );
+		$value = scbUtil::array_to_sql( _p2p_normalize( $$key ) );
 
 		$where .= " AND p2p_$key IN ($value)";
 	}
@@ -228,8 +228,8 @@ function p2p_create_connection( $p2p_type, $args ) {
 		'meta' => array()
 	) ), EXTR_SKIP );
 
-	$from = absint( $from );
-	$to = absint( $to );
+	list( $from ) = _p2p_normalize( $from );
+	list( $to ) = _p2p_normalize( $to );
 
 	if ( !$from || !$to )
 		return false;
@@ -250,6 +250,8 @@ function p2p_create_connection( $p2p_type, $args ) {
 
 	foreach ( $meta as $key => $value )
 		p2p_add_meta( $p2p_id, $key, $value );
+
+	do_action( 'p2p_created_connection', $p2p_id );
 
 	return $p2p_id;
 }
@@ -282,6 +284,8 @@ function p2p_delete_connection( $p2p_id ) {
 		return 0;
 
 	$p2p_ids = array_map( 'absint', (array) $p2p_id );
+
+	do_action( 'p2p_delete_connections', $p2p_ids );
 
 	$where = "WHERE p2p_id IN (" . implode( ',', $p2p_ids ) . ")";
 
@@ -339,6 +343,16 @@ function p2p_distribute_connected( $items, $connected, $prop_name ) {
 		$indexed_list[ $item->ID ] = $item;
 	}
 
+	$groups = p2p_triage_connected( $connected );
+
+	foreach ( $groups as $outer_item_id => $connected_items ) {
+		$indexed_list[ $outer_item_id ]->$prop_name = $connected_items;
+	}
+}
+
+function p2p_triage_connected( $connected ) {
+	$groups = array();
+
 	foreach ( $connected as $inner_item ) {
 		if ( $inner_item->ID == $inner_item->p2p_from ) {
 			$outer_item_id = $inner_item->p2p_to;
@@ -349,7 +363,9 @@ function p2p_distribute_connected( $items, $connected, $prop_name ) {
 			continue;
 		}
 
-		array_push( $indexed_list[ $outer_item_id ]->$prop_name, $inner_item );
+		$groups[ $outer_item_id ][] = $inner_item;
 	}
+
+	return $groups;
 }
 

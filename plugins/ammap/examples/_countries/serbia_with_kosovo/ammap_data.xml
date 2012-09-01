@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/serbia_kosovo.swf" tl_long="18.815320" tl_lat="46.189888" br_long="23.006225" br_lat="41.783410" zoom="90%" zoom_x="51.67%" zoom_y="6.38%">
+  <areas>
+    <area mc_name="RS_BG" title="Belgrade (Grad Beograd)"/>
+    <area mc_name="RS_BO" title="Bor (Borski Okrug)"/>
+    <area mc_name="RS_BR" title="Braničevo (Braničevski Okrug)"/>
+    <area mc_name="RS_SD" title="Central Banat (Srednje-Banatski Okrug)"/>
+    <area mc_name="RS_PD" title="Podunavlje (Podunavski Okrug)"/>
+    <area mc_name="RS_JA" title="Jablanica (Jablanički Okrug)"/>
+    <area mc_name="RS_KB" title="Kolubara (Kolubarski Okrug)"/>
+    <area mc_name="RS_KO" title="Kosovo (Kosovski Okrug)"/>
+    <area mc_name="RS_KM" title="Kosovsko-Mitrovica (Kosovsko-Mitrovački Okrug)"/>
+    <area mc_name="RS_KP" title="Kosovsko-Pomoravlje (Kosovsko-Pomoravski Okrug)"/>
+    <area mc_name="RS_MA" title="Mačva (Mačvanski Okrug)"/>
+    <area mc_name="RS_MR" title="Moravica (Moravički Okrug)"/>
+    <area mc_name="RS_NS" title="Nišava (Nišavski Okrug)"/>
+    <area mc_name="RS_SC" title="North Bačka (Severno-Bački Okrug)"/>
+    <area mc_name="RS_SN" title="North Banat (Severno-Banatski Okrug)"/>
+    <area mc_name="RS_PC" title="Pčinja (Pčinjski Okrug)"/>
+    <area mc_name="RS_PE" title="Peć (Pećki Okrug)"/>
+    <area mc_name="RS_PI" title="Pirot (Pirotski Okrug)"/>
+    <area mc_name="RS_PM" title="Pomoravlje (Pomoravski Okrug)"/>
+    <area mc_name="RS_PZ" title="Prizren (Prizrenski Okrug)"/>
+    <area mc_name="RS_RN" title="Rasina (Rasinski Okrug)"/>
+    <area mc_name="RS_RS" title="Raška (Raški Okrug)"/>
+    <area mc_name="RS_JC" title="South Bačka (Južno-Bački Okrug)"/>
+    <area mc_name="RS_JN" title="South Banat (Južno-Banatski Okru)"/>
+    <area mc_name="RS_SM" title="Srem (Sremski Okrug)"/>
+    <area mc_name="RS_SU" title="Šumadija (Šumadijski Okrug)"/>
+    <area mc_name="RS_TO" title="Toplica (Toplički Okrug)"/>
+    <area mc_name="RS_ZC" title="West Bačka (Zapadno-Bački Okrug)"/>
+    <area mc_name="RS_ZJ" title="Zaječar (Zaječarski Okrug)"/>
+    <area mc_name="RS_ZL" title="Zlatibor (Zlatiborski Okrug)"/>
+    <area title="borders" mc_name="borders" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Belgrade" file="target" color="#CC0000" height="10" width="10" lat="44.811877" long="20.464145" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="168" y="558" text_size="18" color="#FFFFFF" remain="false">
+      <text>Serbia (with Kosovo)</text>
+    </label>
+  </labels>
+</map>

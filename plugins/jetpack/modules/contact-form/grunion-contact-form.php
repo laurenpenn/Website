@@ -260,10 +260,15 @@ function contact_form_shortcode( $atts, $content ) {
 	else
 		$contact_form_last_id = $id;
 
-	ob_start();
-		wp_nonce_field( 'contact-form_' . $id );
-		$nonce = ob_get_contents();
-	ob_end_clean();
+	if ( is_user_logged_in() ) {
+		ob_start();
+			wp_nonce_field( 'contact-form_' . $id );
+			$nonce = ob_get_contents();
+			$nonce = "\t\t$nonce\n";
+		ob_end_clean();
+	} else {
+		$nonce = '';
+	}
 
 
 	$body = contact_form_parse( $content );
@@ -283,7 +288,7 @@ function contact_form_shortcode( $atts, $content ) {
 	$r .= $body;
 	$r .= "\t<p class='contact-submit'>\n";
 	$r .= "\t\t<input type='submit' value='" . __( "Submit &#187;", 'jetpack' ) . "' class='pushbutton-wide'/>\n";
-	$r .= "\t\t$nonce\n";
+	$r .= $nonce;
 	$r .= "\t\t<input type='hidden' name='contact-form-id' value='$id' />\n";
 	$r .= "\t</p>\n";
 	$r .= "</form>\n</div>";
@@ -351,10 +356,12 @@ function contact_form_send_message( $to, $subject, $widget ) {
 	if ( ( $widget && 'widget-' . $widget != $_POST['contact-form-id'] ) || ( !$widget && $post->ID != $_POST['contact-form-id'] ) )
 		return;
 
-	if ( $widget )
-		check_admin_referer( 'contact-form_widget-' . $widget );
-	else
-		check_admin_referer( 'contact-form_' . $post->ID );
+	if ( is_user_logged_in() ) {
+		if ( $widget )
+			check_admin_referer( 'contact-form_widget-' . $widget );
+		else
+			check_admin_referer( 'contact-form_' . $post->ID );
+	}
 
 	global $contact_form_values, $contact_form_errors, $current_user, $user_identity;
 	global $contact_form_fields, $contact_form_message;
@@ -677,7 +684,7 @@ function contact_form_init() {
 			'not_found'          => __( 'No feedback found', 'jetpack' ),
 			'not_found_in_trash' => __( 'No feedback found', 'jetpack' )
 		),
-		'menu_icon'         => GRUNION_PLUGIN_URL . '/images/grunion-menu.png',
+		'menu_icon'         => GRUNION_PLUGIN_URL . 'images/grunion-menu.png',
 		'show_ui'           => TRUE,
 		'show_in_admin_bar' => FALSE,
 		'public'            => FALSE,
@@ -719,7 +726,7 @@ function grunion_media_button( ) {
 	$plugin_url = esc_url( GRUNION_PLUGIN_URL );
 	$site_url = admin_url( "/admin-ajax.php?post_id=$iframe_post_id&amp;grunion=form-builder&amp;action=grunion_form_builder&amp;TB_iframe=true&amp;width=768" );
 
-	echo '<a href="' . $site_url . '&id=add_form" class="thickbox" title="' . $title . '"><img src="' . $plugin_url . '/images/grunion-form.png" alt="' . $title . '" width="13" height="12" /></a>';
+	echo '<a href="' . $site_url . '&id=add_form" class="thickbox" title="' . $title . '"><div class="grunion-menu-button" alt="' . $title . '"></div></a>';
 }
 
 
@@ -741,8 +748,37 @@ function menu_alter() {
     echo '
 	<style>
 	#menu-posts-feedback .wp-menu-image img { display: none; }
-	#adminmenu .menu-icon-feedback:hover div.wp-menu-image, #adminmenu .menu-icon-feedback.wp-has-current-submenu div.wp-menu-image, #adminmenu .menu-icon-feedback.current div.wp-menu-image { background: url("' .GRUNION_PLUGIN_URL . '/images/grunion-menu-hover.png") no-repeat 6px 7px !important; }
-	#adminmenu .menu-icon-feedback div.wp-menu-image, #adminmenu .menu-icon-feedback div.wp-menu-image, #adminmenu .menu-icon-feedback div.wp-menu-image { background: url("' . GRUNION_PLUGIN_URL . '/images/grunion-menu.png") no-repeat 6px 7px !important; }
+	#adminmenu .menu-icon-feedback:hover div.wp-menu-image,
+	#adminmenu .menu-icon-feedback.wp-has-current-submenu div.wp-menu-image,
+	#adminmenu .menu-icon-feedback.current div.wp-menu-image {
+		background: url("' .GRUNION_PLUGIN_URL . 'images/grunion-menu-hover.png") no-repeat 6px 7px;
+	}
+	#adminmenu .menu-icon-feedback div.wp-menu-image {
+		background: url("' . GRUNION_PLUGIN_URL . 'images/grunion-menu.png") no-repeat 6px 7px;
+	}
+	.grunion-menu-button {
+		background: url("' . GRUNION_PLUGIN_URL . 'images/grunion-form.png") no-repeat;
+		width: 13px;
+		height: 12px;
+		display: inline-block;
+	}
+	@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	    #adminmenu .menu-icon-feedback:hover div.wp-menu-image,
+		#adminmenu .menu-icon-feedback.wp-has-current-submenu div.wp-menu-image,
+		#adminmenu .menu-icon-feedback.current div.wp-menu-image {
+			background: url("' .GRUNION_PLUGIN_URL . 'images/grunion-menu-hover-2x.png") no-repeat 6px 7px;
+			background-size: 15px 16px;
+		}
+		#adminmenu .menu-icon-feedback div.wp-menu-image {
+			background: url("' . GRUNION_PLUGIN_URL . 'images/grunion-menu-2x.png") no-repeat 6px 7px;
+			background-size: 15px 16px;
+		}
+	    .grunion-menu-button {
+			background-image: url("' . GRUNION_PLUGIN_URL . 'images/grunion-form-2x.png");
+			background-size: 13px 12px;
+			vertical-align: bottom;
+		}
+	}
 	</style>';
 }
 

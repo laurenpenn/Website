@@ -1,0 +1,20 @@
+<map map_file="maps/australia.swf" tl_long="112.905770" tl_lat="-10.135691" br_long="158.962512" br_lat="-54.753059" zoom="111.0119%" zoom_x="39%" zoom_y="8%">
+  <areas>
+    <area mc_name="AU_ACT" title="Australian Capital Territory"></area>
+    <area mc_name="AU_NSW" title="New South Wales"></area>
+    <area mc_name="AU_NT" title="Northern Territory"></area>
+    <area mc_name="AU_QLD" title="Queensland"></area>
+    <area mc_name="AU_SA" title="South Australia"></area>
+    <area mc_name="AU_TAS" title="Tasmania"></area>
+    <area mc_name="AU_VIC" title="Victoria"></area>
+    <area mc_name="AU_WA" title="Western Australia"></area>
+    <area mc_name="borders_outside" title="borders" color="#ffffff" balloon="false" alpha="0"></area>
+    <area mc_name="borders_inside" title="borders" color="#ffffff" balloon="false"></area>
+  </areas>
+  
+  <movies>
+    <movie long="149.126556" lat="-35.306541" title="Canberra. Click to zoom" file="target" color="#CC0000" width="10" height="10" fixed_size="true" zoom="467%" zoom_x="-269.4%" zoom_y="-183.76%"></movie>
+    <movie long="151.0504" lat="-33.834274" title="Sydney" file="circle" color="#CC0000" width="5" height="5" fixed_size="true"></movie>
+  </movies>
+
+</map>
