@@ -1,0 +1,2894 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: BackWPup v2.1.12\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/backwpup\n"
+"POT-Creation-Date: 2011-08-04 18:37:34+00:00\n"
+"PO-Revision-Date: 2012-07-08 14:36:31+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: job/file_list.php:5
+#, php-format
+#@ backwpup
+msgid "%d. try for make list of files to backup...."
+msgstr "%d. 正在列出备份文件..."
+
+#: job/file_list.php:66
+#@ backwpup
+msgid "No files to backup"
+msgstr ""
+
+#: job/file_list.php:68
+#, php-format
+#@ backwpup
+msgid "%1$d files with %2$s to backup"
+msgstr "总大小：%2$s（%1$d 个文件）"
+
+#: job/file_list.php:93
+#, php-format
+#@ backwpup
+msgid "File or folder \"%s\" is not readable!"
+msgstr ""
+
+#: job/file_list.php:95
+#, php-format
+#@ backwpup
+msgid "Link \"%s\" not followed"
+msgstr ""
+
+#: job/file_list.php:101
+#, php-format
+#@ backwpup
+msgid "\"%s\" is not a file or directory"
+msgstr ""
+
+#: job/job_run.php:69
+#@ backwpup
+msgid "Job restart terminated, bcause old job runs again!"
+msgstr ""
+
+#: job/job_run.php:72
+#@ backwpup
+msgid "Job restarted, bcause inactivity!"
+msgstr ""
+
+#: job/job_run.php:74
+#, php-format
+#@ backwpup
+msgid "Second Prozess is running, bcause old job runs! Start type is %s"
+msgstr ""
+
+#: job/job_run.php:102
+#, php-format
+#@ backwpup
+msgid "Can not find job step file: %s"
+msgstr ""
+
+#: job/job_run.php:110
+#, php-format
+#@ default
+msgid "[INFO]: BackWPup version %1$s, WordPress version %4$s Copyright &copy; %2$s %3$s"
+msgstr ""
+
+#: job/job_run.php:111
+#@ backwpup
+msgid "[INFO]: BackWPup comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions."
+msgstr "[INFO]: BackWPup 无需授权，绝对免费！"
+
+#: job/job_run.php:112
+#@ backwpup
+msgid "[INFO]: BackWPup job:"
+msgstr "[INFO]: BackWPup 任务："
+
+#: job/job_run.php:114
+#@ backwpup
+msgid "[INFO]: BackWPup cron:"
+msgstr "[INFO]: BackWPup Cron:"
+
+#: job/job_run.php:119
+#@ backwpup
+msgid "[INFO]: PHP ver.:"
+msgstr "[INFO]: PHP 版本："
+
+#: job/job_run.php:121
+#, php-format
+#@ backwpup
+msgid "[INFO]: PHP Safe mode is ON! Maximum script execution time is %1$d sec."
+msgstr "[INFO]: PHP Safe mode is ON! Maximum script execution time is %1$d sec."
+
+#: job/job_run.php:122
+#@ backwpup
+msgid "[INFO]: MySQL ver.:"
+msgstr "[INFO]: MySQL 版本："
+
+#: job/job_run.php:125
+#@ backwpup
+msgid "[INFO]: curl ver.:"
+msgstr "[INFO]: cURL 版本："
+
+#: job/job_run.php:127
+#@ backwpup
+msgid "[INFO]: Temp folder is:"
+msgstr "[INFO]: 临时文件夹："
+
+#: job/job_run.php:129
+#@ backwpup
+msgid "[INFO]: Backup file is:"
+msgstr "[INFO]: 备份文件："
+
+#: job/job_run.php:140
+#@ backwpup
+msgid "No destination defineid for backup!!! Please correct job settings"
+msgstr ""
+
+#: job/job_run.php:162
+#@ backwpup
+msgid "Step arborted has too many trys!"
+msgstr ""
+
+#: job/job_run.php:164
+#, php-format
+#@ backwpup
+msgid "Can not find job step function %s!"
+msgstr ""
+
+#: job/dest_msazure.php:5
+#, php-format
+#@ backwpup
+msgid "%d. try sending backup to a Microsoft Azure (Blob)..."
+msgstr ""
+
+#: job/dest_msazure.php:14
+#, php-format
+#@ backwpup
+msgid "Microsoft Azure container \"%s\" not exists!"
+msgstr ""
+
+#: job/dest_msazure.php:17
+#, php-format
+#@ backwpup
+msgid "Connected to Microsoft Azure container \"%s\""
+msgstr ""
+
+#: job/dest_msazure.php:20
+#@ backwpup
+msgid "Upload to MS Azure now started... "
+msgstr "开始备份到MS Azure..."
+
+#: job/dest_dropbox.php:37
+#: job/dest_gstorage.php:27
+#: job/dest_msazure.php:25
+#: job/dest_s3.php:30
+#: job/dest_sugarsync.php:37
+#, php-format
+#@ backwpup
+msgid "Backup transferred to %s"
+msgstr "传输到 %s"
+
+#: job/dest_msazure.php:29
+#@ backwpup
+msgid "Can not transfer backup to Microsoft Azure!"
+msgstr ""
+
+#: job/dest_msazure.php:50
+#, php-format
+#@ backwpup
+msgid "One file deleted on Microsoft Azure container"
+msgid_plural "%d files deleted on Microsoft Azure container"
+msgstr[0] ""
+msgstr[1] ""
+
+#: job/dest_msazure.php:55
+#, php-format
+#@ backwpup
+msgid "Microsoft Azure API: %s"
+msgstr "Microsoft Azure API: %s"
+
+#: job/backup_create.php:13
+#, php-format
+#@ backwpup
+msgid "%d. try to create backup zip archive..."
+msgstr "%d. 正在压缩备份文件..."
+
+#: job/backup_create.php:18
+#, php-format
+#@ backwpup
+msgid "Can not add \"%s\" to zip archive!"
+msgstr ""
+
+#: job/backup_create.php:25
+#@ backwpup
+msgid "(4) ER_SEEK"
+msgstr ""
+
+#: job/backup_create.php:27
+#@ backwpup
+msgid "(5) ER_READ"
+msgstr ""
+
+#: job/backup_create.php:29
+#@ backwpup
+msgid "(9) ER_NOENT"
+msgstr ""
+
+#: job/backup_create.php:31
+#@ backwpup
+msgid "(10) ER_EXISTS"
+msgstr ""
+
+#: job/backup_create.php:33
+#@ backwpup
+msgid "(11) ER_OPEN"
+msgstr ""
+
+#: job/backup_create.php:35
+#@ backwpup
+msgid "(14) ER_MEMORY"
+msgstr ""
+
+#: job/backup_create.php:37
+#@ backwpup
+msgid "(18) ER_INVAL"
+msgstr ""
+
+#: job/backup_create.php:39
+#@ backwpup
+msgid "(19) ER_NOZIP"
+msgstr ""
+
+#: job/backup_create.php:41
+#@ backwpup
+msgid "(21) ER_INCONS"
+msgstr ""
+
+#: job/backup_create.php:42
+#, php-format
+#@ backwpup
+msgid "Zip returns status: %s"
+msgstr ""
+
+#: job/backup_create.php:45
+#@ backwpup
+msgid "Backup zip archive create done!"
+msgstr "压缩备份文件完成！"
+
+#: job/backup_create.php:48
+#@ backwpup
+msgid "Can not create backup zip archive $s!"
+msgstr ""
+
+#: job/backup_create.php:59
+#, php-format
+#@ backwpup
+msgid "%d. try to create backup zip (PclZip) archive..."
+msgstr "%d. 正在压缩(PclZip)备份文件..."
+
+#: job/backup_create.php:68
+#, php-format
+#@ backwpup
+msgid "Zip archive create error: %s"
+msgstr ""
+
+#: job/backup_create.php:72
+#@ backwpup
+msgid "Backup zip archive create done"
+msgstr "压缩备份文件完成"
+
+#: job/backup_create.php:89
+#@ backwpup
+msgid "Can not create tar arcive file!"
+msgstr ""
+
+#: job/backup_create.php:92
+#, php-format
+#@ backwpup
+msgid "%1$d. try to create %2$s archive file..."
+msgstr ""
+
+#: job/backup_create.php:100
+#, php-format
+#@ backwpup
+msgid "File \"%s\" not readable!"
+msgstr ""
+
+#: job/backup_create.php:115
+#, php-format
+#@ backwpup
+msgid "File name \"%1$s\" to long to save corectly in %2$s archive!"
+msgstr ""
+
+#: job/backup_create.php:117
+#, php-format
+#@ backwpup
+msgid "File path \"%1$s\" to long to save corectly in %2$s archive!"
+msgstr ""
+
+#: job/backup_create.php:195
+#, php-format
+#@ backwpup
+msgid "%s archive creation done"
+msgstr ""
+
+#: job/backup_create.php:199
+#, php-format
+#@ backwpup
+msgid "Archive size is %s"
+msgstr "压缩文件大小为 %s"
+
+#: job/backup_create.php:206
+#, php-format
+#@ backwpup
+msgid "PCL ZIP Error \"%1$s\" on file %2$s!"
+msgstr ""
+
+#: job/db_check.php:13
+#: job/db_check.php:29
+#: job/db_check.php:44
+#: job/db_dump.php:13
+#: job/db_dump.php:25
+#: job/db_dump.php:108
+#: job/db_dump.php:118
+#: job/db_optimize.php:13
+#: job/db_optimize.php:28
+#: job/job_functions.php:34
+#: job/job_functions.php:47
+#, php-format
+#@ backwpup
+msgid "Database error %1$s for query %2$s"
+msgstr "Database error %1$s for query %2$s"
+
+#: job/job_functions.php:107
+#, php-format
+#@ backwpup
+msgid "Memory increased from %1$s to %2$s"
+msgstr ""
+
+#: job/job_functions.php:109
+#, php-format
+#@ backwpup
+msgid "Can not increase memory limit is %1$s"
+msgstr ""
+
+#: job/job_functions.php:118
+#@ backwpup
+msgid "Set Blog to maintenance mode"
+msgstr "设置为维护模式"
+
+#: job/job_functions.php:132
+#@ backwpup
+msgid "Cannot set Blog to maintenance mode! Root folder is not writeable!"
+msgstr "不能设置为维护模式！根目录不可写！"
+
+#: job/job_functions.php:135
+#@ backwpup
+msgid "Set Blog to normal mode"
+msgstr "设置回正常模式"
+
+#: job/job_functions.php:211
+#, php-format
+#@ backwpup
+msgid "No MySQL connection: %s"
+msgstr ""
+
+#: job/job_functions.php:226
+#, php-format
+#@ backwpup
+msgid "No MySQL connection to database: %s"
+msgstr ""
+
+#: job/job_functions.php:250
+#@ backwpup
+msgid "[WARNING]"
+msgstr ""
+
+#: job/job_functions.php:256
+#@ backwpup
+msgid "[ERROR]"
+msgstr ""
+
+#: job/job_functions.php:260
+#@ backwpup
+msgid "[DEPRECATED]"
+msgstr ""
+
+#: job/job_functions.php:263
+#@ backwpup
+msgid "[STRICT NOTICE]"
+msgstr ""
+
+#: job/job_functions.php:266
+#@ backwpup
+msgid "[RECOVERABLE ERROR]"
+msgstr ""
+
+#: job/job_functions.php:342
+#, php-format
+#@ backwpup
+msgid "One old log deleted"
+msgid_plural "%d old logs deleted"
+msgstr[0] "一个日志被删除"
+msgstr[1] "%d 个日志被删除"
+
+#: job/job_functions.php:346
+#, php-format
+#@ backwpup
+msgid "Job done in %s sec."
+msgstr "任务完成于 %s 秒内"
+
+#: job/job_functions.php:459
+#, php-format
+#@ backwpup
+msgid "BackWPup log from %1$s: %2$s"
+msgstr ""
+
+#: job/job_functions.php:509
+#@ backwpup
+msgid "To many restarts...."
+msgstr ""
+
+#: job/job_functions.php:530
+#@ backwpup
+msgid "Script stop! Will started again now!"
+msgstr ""
+
+#: job/dest_folder.php:25
+#, php-format
+#@ backwpup
+msgid "One backup file deleted"
+msgid_plural "%d backup files deleted"
+msgstr[0] "一个备份文件被删除"
+msgstr[1] "%d 个备份文件被删除"
+
+#: job/dest_dropbox.php:6
+#, php-format
+#@ backwpup
+msgid "%d. Try to sending backup file to DropBox..."
+msgstr "%d. 正在备份文件到Dropbox..."
+
+#: job/dest_dropbox.php:17
+#, php-format
+#@ backwpup
+msgid "Authed with DropBox from %s"
+msgstr "%s 认证于 Dropbox"
+
+#: job/dest_dropbox.php:22
+#@ backwpup
+msgid "No free space left on DropBox!!!"
+msgstr "Dropbox没空余容量了！"
+
+#: job/dest_dropbox.php:26
+#, php-format
+#@ backwpup
+msgid "%s free on DropBox"
+msgstr "Dropbox空余容量还有 %s"
+
+#: job/dest_dropbox.php:31
+#@ backwpup
+msgid "Upload to DropBox now started... "
+msgstr "开始备份到Dropbox..."
+
+#: job/dest_dropbox.php:42
+#: job/dest_dropbox.php:67
+#, php-format
+#@ backwpup
+msgid "DropBox API: %s"
+msgstr "Dropbox API: %s"
+
+#: job/dest_dropbox.php:63
+#, php-format
+#@ backwpup
+msgid "One file deleted on DropBox"
+msgid_plural "%d files deleted on DropBox"
+msgstr[0] "Dropbox中一个文件被删除"
+msgstr[1] "Dropbox中 %d 个文件被删除"
+
+#: job/wp_export.php:11
+#, php-format
+#@ backwpup
+msgid "%d. try for wordpress export to XML file..."
+msgstr "%d. 正在导出XML..."
+
+#: job/wp_export.php:38
+#: job/wp_export.php:40
+#@ backwpup
+msgid "cURL:"
+msgstr ""
+
+#: job/wp_export.php:81
+#, php-format
+#@ backwpup
+msgid "Add XML export \"%1$s\" to backup list with %2$s"
+msgstr ""
+
+#: job/job_start.php:10
+#@ backwpup
+msgid "A job already running!"
+msgstr ""
+
+#: job/job_start.php:20
+#@ backwpup
+msgid "Temp dir not writeable"
+msgstr ""
+
+#: job/job_start.php:106
+#, php-format
+#@ backwpup
+msgid "Can not create folder for log files: %s"
+msgstr ""
+
+#: job/job_start.php:117
+#@ backwpup
+msgid "Log folder not writeable!"
+msgstr "日志文件夹不可写！"
+
+#: job/job_start.php:142
+#, php-format
+#@ backwpup
+msgid "BackWPup log for %1$s from %2$s at %3$s"
+msgstr ""
+
+#: job/job_start.php:170
+#, php-format
+#@ backwpup
+msgid "Can not create folder for backups: %1$s"
+msgstr ""
+
+#: job/job_start.php:182
+#@ backwpup
+msgid "Backup folder not writeable!"
+msgstr ""
+
+#: job/db_optimize.php:4
+#, php-format
+#@ backwpup
+msgid "%d. try for database optimize..."
+msgstr "%d. 正在优化数据库..."
+
+#: job/db_optimize.php:35
+#: job/db_optimize.php:37
+#: job/db_optimize.php:39
+#, php-format
+#@ backwpup
+msgid "Result of table optimize for %1$s is: %2$s"
+msgstr ""
+
+#: job/db_optimize.php:41
+#@ backwpup
+msgid "Database optimize done!"
+msgstr "数据库优化完成！"
+
+#: job/db_optimize.php:44
+#@ backwpup
+msgid "No tables to optimize"
+msgstr ""
+
+#: job/dest_rsc.php:4
+#@ backwpup
+msgid "Try to sending backup file to Rackspace Cloud..."
+msgstr ""
+
+#: job/dest_rsc.php:13
+#@ backwpup
+msgid "Connected to Rackspase ..."
+msgstr ""
+
+#: job/dest_rsc.php:29
+#: job/dest_rsc.php:63
+#: job/dest_rsc.php:92
+#@ backwpup
+msgid "Rackspase Cloud API:"
+msgstr "Rackspase Cloud API:"
+
+#: job/dest_rsc.php:34
+#@ backwpup
+msgid "Rackspase Cloud Container not exists:"
+msgstr "Rackspase Cloud 容器不存在："
+
+#: job/dest_rsc.php:53
+#@ backwpup
+msgid "Upload to RSC now started ... "
+msgstr "开始备份到RSC..."
+
+#: job/dest_rsc.php:56
+#@ backwpup
+msgid "Backup File transferred to RSC://"
+msgstr ""
+
+#: job/dest_rsc.php:60
+#@ backwpup
+msgid "Can not transfer backup to RSC."
+msgstr ""
+
+#: job/dest_rsc.php:85
+#@ backwpup
+msgid "Can not delete file on RSC://"
+msgstr ""
+
+#: job/dest_rsc.php:88
+#, php-format
+#@ backwpup
+msgid "One file deleted on RSC container"
+msgid_plural "%d files deleted on RSC container"
+msgstr[0] ""
+msgstr[1] ""
+
+#: job/dest_sugarsync.php:6
+#, php-format
+#@ backwpup
+msgid "%d. try sending backup to SugarSync..."
+msgstr ""
+
+#: job/dest_sugarsync.php:15
+#, php-format
+#@ backwpup
+msgid "Authed to SugarSync with Nick %s"
+msgstr ""
+
+#: job/dest_sugarsync.php:19
+#@ backwpup
+msgid "No free space left on SugarSync!!!"
+msgstr ""
+
+#: job/dest_sugarsync.php:24
+#, php-format
+#@ backwpup
+msgid "%s free on SugarSync"
+msgstr ""
+
+#: job/dest_sugarsync.php:31
+#@ backwpup
+msgid "Upload to SugarSync now started... "
+msgstr "开始备份到SugarSync..."
+
+#: job/dest_sugarsync.php:39
+#@ backwpup
+msgid "Can not transfer backup to SugarSync!"
+msgstr ""
+
+#: job/dest_sugarsync.php:62
+#, php-format
+#@ backwpup
+msgid "One file deleted on SugarSync folder"
+msgid_plural "%d files deleted on SugarSync folder"
+msgstr[0] ""
+msgstr[1] ""
+
+#: job/dest_sugarsync.php:66
+#, php-format
+#@ backwpup
+msgid "SugarSync API: %s"
+msgstr "SugarSync API: %s"
+
+#: job/dest_s3.php:4
+#, php-format
+#@ backwpup
+msgid "%d. try sending backup file to Amazon S3..."
+msgstr ""
+
+#: job/dest_s3.php:14
+#, php-format
+#@ backwpup
+msgid "Connected to S3 Bucket: %s"
+msgstr ""
+
+#: job/dest_s3.php:24
+#@ backwpup
+msgid "Upload to Amazon S3 now started... "
+msgstr "开始备份到Amazon S3..."
+
+#: job/dest_s3.php:34
+#, php-format
+#@ backwpup
+msgid "Can not transfer backup to S3! (%1$d) %2$s"
+msgstr ""
+
+#: job/dest_s3.php:37
+#, php-format
+#@ backwpup
+msgid "S3 Bucket \"%s\" not exists!"
+msgstr ""
+
+#: job/dest_s3.php:40
+#: job/dest_s3.php:69
+#, php-format
+#@ backwpup
+msgid "Amazon API: %s"
+msgstr "Amazon API: %s"
+
+#: job/dest_s3.php:61
+#, php-format
+#@ backwpup
+msgid "Can not delete backup on S3://%s"
+msgstr ""
+
+#: job/dest_s3.php:64
+#, php-format
+#@ backwpup
+msgid "One file deleted on S3 Bucket"
+msgid_plural "%d files deleted on S3 Bucket"
+msgstr[0] ""
+msgstr[1] ""
+
+#: job/dest_mail.php:6
+#, php-format
+#@ backwpup
+msgid "%d. try to sending backup with mail..."
+msgstr ""
+
+#: job/dest_mail.php:22
+#@ backwpup
+msgid "Send mail with SMTP"
+msgstr "使用SMTP发送电子邮件"
+
+#: job/dest_mail.php:26
+#@ backwpup
+msgid "Send mail with Sendmail"
+msgstr "使用 Sendmail() 发送电子邮件"
+
+#: job/dest_mail.php:29
+#@ backwpup
+msgid "Send mail with PHP mail"
+msgstr "使用 PHP mail() 发送电子邮件"
+
+#: job/dest_mail.php:32
+#@ backwpup
+msgid "Creating mail"
+msgstr ""
+
+#: job/dest_mail.php:36
+#, php-format
+#@ backwpup
+msgid "BackWPup archive from %1$s: %2$s"
+msgstr ""
+
+#: job/dest_mail.php:38
+#, php-format
+#@ backwpup
+msgid "Backup archive: %s"
+msgstr ""
+
+#: job/dest_mail.php:43
+#@ backwpup
+msgid "Backup archive too big for sending by mail!"
+msgstr ""
+
+#: job/dest_mail.php:50
+#@ backwpup
+msgid "Adding backup archive to mail"
+msgstr ""
+
+#: job/dest_mail.php:54
+#@ backwpup
+msgid "Send mail...."
+msgstr "正在发送电子邮件..."
+
+#: job/dest_mail.php:56
+#, php-format
+#@ backwpup
+msgid "Error \"%s\" on sending mail!"
+msgstr ""
+
+#: job/dest_mail.php:59
+#@ backwpup
+msgid "Mail send!!!"
+msgstr ""
+
+#: job/db_check.php:4
+#, php-format
+#@ backwpup
+msgid "%d. try for database check..."
+msgstr "%d. 正在检查数据库..."
+
+#: job/db_check.php:34
+#: job/db_check.php:36
+#: job/db_check.php:38
+#, php-format
+#@ backwpup
+msgid "Result of table check for %1$s is: %2$s"
+msgstr ""
+
+#: job/db_check.php:49
+#: job/db_check.php:51
+#: job/db_check.php:53
+#, php-format
+#@ backwpup
+msgid "Result of table repair for %1$s is: %2$s"
+msgstr ""
+
+#: job/db_check.php:59
+#@ backwpup
+msgid "Database check done!"
+msgstr "数据库检查完成！"
+
+#: job/db_check.php:61
+#@ backwpup
+msgid "No tables to check"
+msgstr ""
+
+#: job/dest_gstorage.php:4
+#, php-format
+#@ backwpup
+msgid "%d. try sending backup to Google Storage..."
+msgstr ""
+
+#: job/dest_gstorage.php:16
+#, php-format
+#@ backwpup
+msgid "Connected to GStorage Bucket: %s"
+msgstr ""
+
+#: job/dest_gstorage.php:21
+#@ backwpup
+msgid "Upload to GStorage now started... "
+msgstr "开始备份到GStorage..."
+
+#: job/dest_gstorage.php:31
+#, php-format
+#@ backwpup
+msgid "Can not transfer backup to GStorage! (%1$d) %2$s"
+msgstr ""
+
+#: job/dest_gstorage.php:34
+#, php-format
+#@ backwpup
+msgid "GStorage Bucket \"%s\" not exists!"
+msgstr ""
+
+#: job/dest_gstorage.php:37
+#: job/dest_gstorage.php:66
+#: pages/func_backwpupbackups.php:392
+#: pages/header_backwpupbackups.php:50
+#, php-format
+#@ backwpup
+msgid "GStorage API: %s"
+msgstr "GStorage API: %s"
+
+#: job/dest_gstorage.php:58
+#, php-format
+#@ backwpup
+msgid "Can not delete backup on GStorage://%s"
+msgstr ""
+
+#: job/dest_gstorage.php:61
+#, php-format
+#@ backwpup
+msgid "One file deleted on GStorage Bucket"
+msgid_plural "%d files deleted on GStorage Bucket"
+msgstr[0] ""
+msgstr[1] ""
+
+#: job/db_dump.php:4
+#, php-format
+#@ backwpup
+msgid "%d. try for database dump..."
+msgstr "%d. 正在导出数据库..."
+
+#: job/db_dump.php:57
+#, php-format
+#@ backwpup
+msgid "Dump database table \"%s\""
+msgstr "导出数据库表 \"%s\""
+
+#: job/db_dump.php:74
+#@ backwpup
+msgid "Database dump done!"
+msgstr "数据库导出完成！"
+
+#: job/db_dump.php:76
+#@ backwpup
+msgid "Can not create database dump!"
+msgstr ""
+
+#: job/db_dump.php:79
+#@ backwpup
+msgid "No tables to dump"
+msgstr ""
+
+#: job/db_dump.php:85
+#, php-format
+#@ backwpup
+msgid "Add database dump \"%1$s\" with %2$s to backup file list"
+msgstr "添加大小为 %2$s 的数据库SQL文件 \"%1$s\" 到备份文件列表"
+
+#: job/dest_ftp.php:9
+#, php-format
+#@ backwpup
+msgid "%d. try to sending backup file to a FTP Server..."
+msgstr ""
+
+#: job/dest_ftp.php:15
+#, php-format
+#@ backwpup
+msgid "Connected by SSL-FTP to Server: %s"
+msgstr ""
+
+#: job/dest_ftp.php:17
+#, php-format
+#@ backwpup
+msgid "Can not connect by SSL-FTP to Server: %s"
+msgstr ""
+
+#: job/dest_ftp.php:21
+#@ backwpup
+msgid "PHP function to connect with SSL-FTP to server not exists!"
+msgstr ""
+
+#: job/dest_ftp.php:27
+#, php-format
+#@ backwpup
+msgid "Connected to FTP server: %s"
+msgstr ""
+
+#: job/dest_ftp.php:29
+#, php-format
+#@ backwpup
+msgid "Can not connect to FTP server: %s"
+msgstr ""
+
+#: job/dest_ftp.php:36
+#: job/dest_ftp.php:43
+#: job/dest_ftp.php:55
+#: job/dest_ftp.php:83
+#, php-format
+#@ backwpup
+msgid "FTP Client command: %s"
+msgstr ""
+
+#: job/dest_ftp.php:38
+#: job/dest_ftp.php:41
+#: job/dest_ftp.php:45
+#: job/dest_ftp.php:58
+#: job/dest_ftp.php:60
+#: job/dest_ftp.php:86
+#: job/dest_ftp.php:88
+#: job/dest_ftp.php:91
+#: job/dest_ftp.php:93
+#, php-format
+#@ backwpup
+msgid "FTP Server reply: %s"
+msgstr ""
+
+#: job/dest_ftp.php:86
+#@ backwpup
+msgid "Entering Passive Mode"
+msgstr ""
+
+#: job/dest_ftp.php:88
+#@ backwpup
+msgid "Can not Entering Passive Mode"
+msgstr ""
+
+#: job/dest_ftp.php:91
+#@ backwpup
+msgid "Entering Normal Mode"
+msgstr ""
+
+#: job/dest_ftp.php:93
+#@ backwpup
+msgid "Can not Entering Normal Mode"
+msgstr ""
+
+#: job/dest_ftp.php:60
+#@ backwpup
+msgid "Error getting SYSTYPE"
+msgstr ""
+
+#: job/dest_ftp.php:69
+#, php-format
+#@ backwpup
+msgid "FTP Folder \"%s\" created!"
+msgstr ""
+
+#: job/dest_ftp.php:72
+#, php-format
+#@ backwpup
+msgid "FTP Folder \"%s\" can not created!"
+msgstr ""
+
+#: job/dest_ftp.php:97
+#@ backwpup
+msgid "Upload to FTP now started ... "
+msgstr "开始备份到FTP..."
+
+#: job/dest_ftp.php:110
+#, php-format
+#@ backwpup
+msgid "Backup transferred to FTP server: %s"
+msgstr ""
+
+#: job/dest_ftp.php:106
+#@ backwpup
+msgid "Can not transfer backup to FTP server!"
+msgstr ""
+
+#: job/dest_ftp.php:131
+#, php-format
+#@ backwpup
+msgid "Can not delete \"%s\" on FTP server!"
+msgstr ""
+
+#: job/dest_ftp.php:134
+#, php-format
+#@ backwpup
+msgid "One file deleted on FTP Server"
+msgid_plural "%d files deleted on FTP Server"
+msgstr[0] ""
+msgstr[1] ""
+
+#: pages/page_backwpupbackups.php:8
+#@ backwpup
+msgid "BackWPup Manage Backups"
+msgstr "BackWPup 备份文件管理"
+
+#: pages/tools/db_restore.php:34
+#: pages/tools/db_restore.php:53
+#: pages/tools/db_restore.php:68
+#: pages/tools/db_restore.php:79
+#: pages/tools/db_restore.php:82
+#: pages/tools/db_restore.php:85
+#: pages/tools/db_restore.php:90
+#@ backwpup
+msgid "ERROR:"
+msgstr ""
+
+#: pages/tools/db_restore.php:34
+#, php-format
+#@ backwpup
+msgid "Pleace set <i>$table_prefix  = '%1$s';</i> in wp-config.php"
+msgstr ""
+
+#: pages/tools/db_restore.php:53
+#, php-format
+#@ backwpup
+msgid "Pleace set <i>define('DB_CHARSET', '%1$s');</i> in wp-config.php"
+msgstr ""
+
+#: pages/tools/db_restore.php:68
+#: pages/tools/db_restore.php:79
+#: pages/tools/db_restore.php:82
+#: pages/tools/db_restore.php:85
+#: pages/tools/db_restore.php:90
+#, php-format
+#@ backwpup
+msgid "BackWPup database error %1$s for query %2$s"
+msgstr ""
+
+#: pages/tools/db_restore.php:74
+#, php-format
+#@ backwpup
+msgid "%1$s Database Querys done."
+msgstr "%1$s Database Querys done."
+
+#: pages/tools/db_restore.php:75
+#@ backwpup
+msgid "Make changes for Blogurl and ABSPATH if needed."
+msgstr ""
+
+#: pages/tools/db_restore.php:92
+#@ backwpup
+msgid "Restore Done. Please delete the SQL file after restoring."
+msgstr ""
+
+#: backwpup-functions.php:507
+#: pages/page_backwpuplogs.php:8
+#@ backwpup
+msgid "BackWPup Logs"
+msgstr "BackWPup 日志列表"
+
+#: pages/func_backwpuplogs.php:68
+#@ backwpup
+msgid "No Logs."
+msgstr "无日志"
+
+#: pages/func_backwpup.php:47
+#: pages/func_backwpup.php:103
+#: pages/func_backwpupbackups.php:130
+#: pages/func_backwpupbackups.php:227
+#: pages/func_backwpupeditjob.php:25
+#: pages/func_backwpuplogs.php:73
+#: pages/func_backwpuplogs.php:127
+#@ default
+#@ backwpup
+msgid "Delete"
+msgstr "删除"
+
+#: pages/func_backwpuplogs.php:80
+#@ backwpup
+msgid "Job"
+msgstr "任务"
+
+#: pages/func_backwpup.php:57
+#: pages/func_backwpupeditjob.php:171
+#: pages/func_backwpuplogs.php:81
+#@ backwpup
+msgid "Type"
+msgstr "类型"
+
+#: pages/func_backwpuplogs.php:82
+#@ backwpup
+msgid "Backup/Log Date/Time"
+msgstr "日期 @ 时间：任务名"
+
+#: pages/func_backwpuplogs.php:83
+#@ backwpup
+msgid "Status"
+msgstr "状态"
+
+#: pages/func_backwpupbackups.php:184
+#: pages/func_backwpuplogs.php:84
+#@ backwpup
+msgid "Size"
+msgstr "大小"
+
+#: pages/func_backwpuplogs.php:85
+#@ backwpup
+msgid "Runtime"
+msgstr "花费时间"
+
+#: pages/func_backwpuplogs.php:124
+#@ backwpup
+msgid "View log"
+msgstr "查看日志"
+
+#: pages/func_backwpuplogs.php:126
+#@ backwpup
+msgid "View"
+msgstr "查看"
+
+#: pages/func_backwpup.php:149
+#: pages/func_backwpupbackups.php:228
+#: pages/func_backwpuplogs.php:128
+#@ backwpup
+msgid "Download"
+msgstr "下载"
+
+#: backwpup-functions.php:429
+#: pages/func_backwpuplogs.php:135
+#, php-format
+#@ backwpup
+msgid "%d ERROR"
+msgid_plural "%d ERRORS"
+msgstr[0] "%d 个错误发生"
+msgstr[1] "%d 个错误发生"
+
+#: backwpup-functions.php:431
+#: pages/func_backwpuplogs.php:137
+#, php-format
+#@ backwpup
+msgid "%d WARNING"
+msgid_plural "%d WARNINGS"
+msgstr[0] "%d 个警告"
+msgstr[1] "%d 个警告"
+
+#: backwpup-functions.php:433
+#: pages/func_backwpuplogs.php:139
+#@ backwpup
+msgid "O.K."
+msgstr "完成"
+
+#: pages/func_backwpuplogs.php:147
+#@ backwpup
+msgid "only Log"
+msgstr "只有日志"
+
+#: pages/func_backwpup.php:128
+#: pages/func_backwpup.php:144
+#: pages/func_backwpuplogs.php:153
+#@ backwpup
+msgid "sec."
+msgstr "秒"
+
+#: pages/header_backwpupworking.php:11
+#@ backwpup
+msgid "A job alredy running!!! Pleace try again if its done."
+msgstr ""
+
+#: pages/header_backwpupworking.php:23
+#@ backwpup
+msgid "A job is running!!!"
+msgstr ""
+
+#: pages/header_backwpupworking.php:27
+#@ backwpup
+msgid "Nothing..."
+msgstr "暂无"
+
+#: pages/header_backwpupworking.php:32
+#@ backwpup
+msgid "Here you see working jobs or logfiles"
+msgstr ""
+
+#: pages/page_backwpupworking.php:9
+#@ backwpup
+msgid "BackWPup Working"
+msgstr "BackWPup 进行中的任务"
+
+#: pages/page_backwpupworking.php:33
+#@ backwpup
+msgid "Warnings:"
+msgstr ""
+
+#: pages/page_backwpupworking.php:37
+#@ backwpup
+msgid "Errors:"
+msgstr ""
+
+#: pages/page_backwpup.php:8
+#@ backwpup
+msgid "BackWPup Jobs"
+msgstr "BackWPup 任务列表"
+
+#: backwpup-functions.php:7
+#: pages/page_backwpup.php:8
+#: pages/page_backwpupeditjob.php:25
+#@ backwpup
+msgid "Add New"
+msgstr "新建任务"
+
+#: pages/page_backwpuptools.php:8
+#@ backwpup
+msgid "BackWPup Tools"
+msgstr "BackWPup 工具"
+
+#: pages/page_backwpuptools.php:15
+#@ backwpup
+msgid "Database restore"
+msgstr "数据库还原"
+
+#: pages/page_backwpuptools.php:18
+#@ backwpup
+msgid "DB Restore"
+msgstr "数据库还原"
+
+#: pages/page_backwpuptools.php:21
+#: pages/page_backwpuptools.php:40
+#@ backwpup
+msgid "Restore"
+msgstr ""
+
+#: pages/page_backwpuptools.php:37
+#@ backwpup
+msgid "SQL File to restore:"
+msgstr ""
+
+#: pages/page_backwpuptools.php:43
+#@ backwpup
+msgid "Copy SQL file to blog root folder to use for a restoring."
+msgstr "使用前请复制SQL文件到根目录。"
+
+#: pages/page_backwpuptools.php:51
+#@ backwpup
+msgid "Import Jobs settings"
+msgstr "导入任务设置"
+
+#: pages/page_backwpuptools.php:54
+#@ backwpup
+msgid "Select file to import:"
+msgstr "选择需要导入的文件："
+
+#: pages/page_backwpuptools.php:56
+#: pages/page_backwpuptools.php:61
+#@ backwpup
+msgid "Upload"
+msgstr "确认上传"
+
+#: pages/page_backwpuptools.php:62
+#@ backwpup
+msgid "Select jobs to import"
+msgstr ""
+
+#: pages/page_backwpuptools.php:66
+#@ backwpup
+msgid "Import Type"
+msgstr "导入类型"
+
+#: pages/page_backwpuptools.php:66
+#@ backwpup
+msgid "No Import"
+msgstr ""
+
+#: pages/page_backwpuptools.php:68
+#@ backwpup
+msgid "Overwrite"
+msgstr ""
+
+#: pages/page_backwpuptools.php:68
+#@ backwpup
+msgid "Append"
+msgstr ""
+
+#: pages/page_backwpuptools.php:70
+#: pages/page_backwpuptools.php:75
+#: pages/page_backwpuptools.php:77
+#: pages/page_backwpuptools.php:78
+#@ backwpup
+msgid "Import"
+msgstr ""
+
+#: pages/page_backwpuptools.php:114
+#@ backwpup
+msgid "Jobs imported!"
+msgstr "导入任务成功！"
+
+#: pages/header_backwpupsettings.php:46
+#@ backwpup
+msgid "Settings saved"
+msgstr "设置已保存"
+
+#: pages/header_backwpuplogs.php:59
+#@ backwpup
+msgid "Here you can manage the log files of the jobs. You can download, view, or delete them."
+msgstr ""
+
+#: backwpup-functions.php:11
+#: backwpup-functions.php:522
+#: pages/header_backwpupbackups.php:327
+#: pages/header_backwpuplogs.php:61
+#: pages/page_backwpupsettings.php:79
+#@ backwpup
+msgid "Logs"
+msgstr "日志"
+
+#: pages/func_backwpupbackups.php:490
+#: pages/header_backwpupbackups.php:140
+#@ backwpup
+msgid "Login failure!"
+msgstr "登录失败！"
+
+#: pages/header_backwpupbackups.php:325
+#@ backwpup
+msgid "Here you see a list of backup files. Change the destionation to jobname:destination to become a list of backups from other destinations and jobs. Then you kann delete or download backup files."
+msgstr ""
+
+#: pages/func_backwpup.php:41
+#@ backwpup
+msgid "No Jobs."
+msgstr "暂无任务"
+
+#: pages/func_backwpup.php:46
+#: pages/func_backwpup.php:102
+#@ default
+#@ backwpup
+msgid "Export"
+msgstr "导出"
+
+#: pages/func_backwpup.php:55
+#@ backwpup
+msgid "ID"
+msgstr ""
+
+#: pages/func_backwpup.php:56
+#@ backwpup
+msgid "Job Name"
+msgstr "任务名"
+
+#: pages/func_backwpup.php:58
+#@ backwpup
+msgid "Information"
+msgstr "信息"
+
+#: pages/func_backwpup.php:59
+#@ backwpup
+msgid "Next Run"
+msgstr "下次执行时间"
+
+#: pages/func_backwpup.php:60
+#@ backwpup
+msgid "Last Run"
+msgstr "上次执行时间"
+
+#: pages/func_backwpup.php:97
+#@ backwpup
+msgid "Edit:"
+msgstr "编辑 "
+
+#: pages/func_backwpup.php:100
+#@ default
+msgid "Edit"
+msgstr ""
+
+#: pages/func_backwpup.php:101
+#@ backwpup
+msgid "Copy"
+msgstr "复制"
+
+#: pages/func_backwpup.php:104
+#@ backwpup
+msgid "Run Now"
+msgstr "立即执行"
+
+#: backwpup-functions.php:486
+#: pages/func_backwpup.php:107
+#@ backwpup
+msgid "View!"
+msgstr "查看"
+
+#: backwpup-functions.php:487
+#: pages/func_backwpup.php:108
+#@ backwpup
+msgid "Abort!"
+msgstr ""
+
+#: pages/func_backwpup.php:128
+#@ backwpup
+msgid "Running since:"
+msgstr "执行于"
+
+#: pages/func_backwpup.php:132
+#@ backwpup
+msgid "Inactive"
+msgstr ""
+
+#: pages/func_backwpup.php:135
+#@ backwpup
+msgid "<a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">Cron</a>:"
+msgstr ""
+
+#: pages/func_backwpup.php:144
+#@ backwpup
+msgid "Runtime:"
+msgstr "花费时间："
+
+#: pages/func_backwpup.php:146
+#@ backwpup
+msgid "None"
+msgstr ""
+
+#: pages/func_backwpup.php:149
+#@ backwpup
+msgid "Download last Backup"
+msgstr "下载上一个备份"
+
+#: pages/func_backwpup.php:151
+#@ backwpup
+msgid "View last Log"
+msgstr "查看上一次的日志"
+
+#: pages/func_backwpup.php:151
+#@ backwpup
+msgid "Log"
+msgstr "日志"
+
+#: pages/func_backwpup.php:240
+#@ backwpup
+msgid "DB Size:"
+msgstr "数据库大小："
+
+#: pages/func_backwpup.php:242
+#@ backwpup
+msgid "DB Tables:"
+msgstr "数据库表数："
+
+#: pages/func_backwpup.php:243
+#@ backwpup
+msgid "DB Rows:"
+msgstr "数据库记录数："
+
+#: pages/func_backwpup.php:248
+#@ backwpup
+msgid "Files Size:"
+msgstr "文件大小："
+
+#: pages/func_backwpup.php:250
+#@ backwpup
+msgid "Files count:"
+msgstr "文件数："
+
+#: pages/header_backwpup.php:44
+#@ backwpup
+msgid "Copy of"
+msgstr "副本"
+
+#: pages/header_backwpup.php:100
+#@ backwpup
+msgid "Aborted by user!!!"
+msgstr ""
+
+#: pages/header_backwpup.php:115
+#@ backwpup
+msgid "Job will be terminated."
+msgstr ""
+
+#: pages/header_backwpup.php:118
+#@ backwpup
+msgid "Process killed with PID:"
+msgstr ""
+
+#: pages/header_backwpup.php:120
+#@ backwpup
+msgid "Can't kill process with PID:"
+msgstr ""
+
+#: pages/header_backwpup.php:136
+#@ backwpup
+msgid "Here is the job overview with some information. You can see some further information of the jobs, how many can be switched with the view button. Also you can manage the jobs or abbort working jobs. Some links are added to have direct access to the last log or download."
+msgstr ""
+
+#: pages/page_backwpupsettings.php:10
+#@ backwpup
+msgid "BackWPup Settings"
+msgstr "BackWPup 设置"
+
+#: pages/page_backwpupsettings.php:17
+#@ backwpup
+msgid "Send Mail"
+msgstr "发送电子邮件"
+
+#: pages/page_backwpupsettings.php:18
+#@ backwpup
+msgid "Here you can set the options for email sending. The settings will be used in jobs for sending backups via email or for sending log files."
+msgstr "这里可以自定义发送电子邮件的方式，作用于备份功能和发送日志。"
+
+#: pages/page_backwpupsettings.php:21
+#@ backwpup
+msgid "Sender email"
+msgstr "发件人电子邮件地址"
+
+#: pages/page_backwpupsettings.php:26
+#@ backwpup
+msgid "Sender name"
+msgstr "发件人"
+
+#: pages/page_backwpupsettings.php:30
+#@ backwpup
+msgid "Send mail method"
+msgstr "发送方式"
+
+#: pages/page_backwpupsettings.php:34
+#@ backwpup
+msgid "PHP: mail()"
+msgstr ""
+
+#: pages/page_backwpupsettings.php:35
+#@ backwpup
+msgid "Sendmail"
+msgstr "Sendmail"
+
+#: pages/page_backwpupsettings.php:36
+#@ backwpup
+msgid "SMTP"
+msgstr "SMTP"
+
+#: pages/page_backwpupsettings.php:42
+#@ backwpup
+msgid "Sendmail path"
+msgstr "Sendmail() 路径"
+
+#: pages/page_backwpupsettings.php:49
+#@ backwpup
+msgid "SMTP hostname"
+msgstr "SMTP地址"
+
+#: pages/func_backwpupeditjob.php:232
+#: pages/page_backwpupsettings.php:52
+#@ backwpup
+msgid "Port:"
+msgstr "端口："
+
+#: pages/page_backwpupsettings.php:56
+#@ backwpup
+msgid "SMTP secure connection"
+msgstr "SMTP安全连接"
+
+#: backwpup-functions.php:441
+#: backwpup-functions.php:471
+#: backwpup-functions.php:499
+#: pages/page_backwpupsettings.php:59
+#@ backwpup
+msgid "none"
+msgstr "不使用"
+
+#: pages/page_backwpupsettings.php:66
+#@ backwpup
+msgid "SMTP username"
+msgstr "SMTP用户名"
+
+#: pages/page_backwpupsettings.php:72
+#@ backwpup
+msgid "SMTP password"
+msgstr "SMTP密码"
+
+#: pages/page_backwpupsettings.php:80
+#@ backwpup
+msgid "Here you can set Logfile related options."
+msgstr "这里是日志相关设置"
+
+#: pages/page_backwpupsettings.php:83
+#@ backwpup
+msgid "Log file Folder"
+msgstr "日志文件夹"
+
+#: pages/page_backwpupsettings.php:88
+#@ backwpup
+msgid "Max. Log Files in Folder"
+msgstr "文件夹做多存放的文件数"
+
+#: pages/func_backwpupeditjob.php:224
+#: pages/page_backwpupsettings.php:90
+#@ backwpup
+msgid "(Oldest files will deleted first.)"
+msgstr "（优先删除旧文件）"
+
+#: pages/page_backwpupsettings.php:94
+#: pages/page_backwpupsettings.php:95
+#@ backwpup
+msgid "Compression"
+msgstr "压缩"
+
+#: pages/page_backwpupsettings.php:97
+#@ backwpup
+msgid "Gzip Log files!"
+msgstr "Gzip压缩日志文件"
+
+#: backwpup-functions.php:5
+#: backwpup-functions.php:521
+#: pages/page_backwpupsettings.php:101
+#@ backwpup
+msgid "Jobs"
+msgstr "任务列表"
+
+#: pages/page_backwpupsettings.php:102
+#@ backwpup
+msgid "Here you can set Job related options."
+msgstr "这里是任务相关设置"
+
+#: pages/page_backwpupsettings.php:105
+#@ backwpup
+msgid "Max. retrys for job steps"
+msgstr "任务最大尝试次数"
+
+#: pages/page_backwpupsettings.php:110
+#@ backwpup
+msgid "Max. retrys for job script retries"
+msgstr "任务脚本最大尝试次数"
+
+#: pages/page_backwpupsettings.php:115
+#@ backwpup
+msgid "PHP zip class"
+msgstr "PHP zip 类"
+
+#: pages/page_backwpupsettings.php:116
+#@ backwpup
+msgid "PHP zip"
+msgstr ""
+
+#: pages/page_backwpupsettings.php:118
+#@ backwpup
+msgid "Use PHP zip class if available! Normaly PCL Zip class will used."
+msgstr "优先使用 PHP zip 类，一般情况使用 PCL Zip 类。"
+
+#: pages/page_backwpupsettings.php:123
+#@ backwpup
+msgid "WP Admin Bar"
+msgstr "管理工具栏"
+
+#: pages/page_backwpupsettings.php:124
+#@ backwpup
+msgid "Will you see BackWPup in the WordPress Admin Bar?"
+msgstr "是否需要在管理工具栏显示BackWPup"
+
+#: pages/page_backwpupsettings.php:127
+#: pages/page_backwpupsettings.php:128
+#@ backwpup
+msgid "Admin Bar"
+msgstr "管理工具栏"
+
+#: pages/page_backwpupsettings.php:130
+#@ backwpup
+msgid "Show BackWPup Links in Admin Bar."
+msgstr "在管理工具栏显示BackWPup"
+
+#: pages/page_backwpupsettings.php:135
+#@ backwpup
+msgid "Http basic authentication"
+msgstr "HTTP basic authentication"
+
+#: pages/page_backwpupsettings.php:136
+#@ backwpup
+msgid "Is your blog behind a http basic authentication (.htaccess)? Then you must set the username and password four authentication."
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:234
+#: pages/func_backwpupeditjob.php:325
+#: pages/page_backwpupsettings.php:139
+#@ backwpup
+msgid "Username:"
+msgstr "用户名："
+
+#: pages/func_backwpupeditjob.php:236
+#: pages/func_backwpupeditjob.php:377
+#: pages/page_backwpupsettings.php:144
+#@ backwpup
+msgid "Password:"
+msgstr "密码："
+
+#: pages/page_backwpupsettings.php:149
+#@ backwpup
+msgid "WP-Cron"
+msgstr ""
+
+#: pages/page_backwpupsettings.php:150
+#@ backwpup
+msgid "If you would use the cron job of your hoster you must point it to the url:"
+msgstr "如果你使用的是主机的 Cron，指向的URL为："
+
+#: pages/page_backwpupsettings.php:153
+#: pages/page_backwpupsettings.php:154
+#@ backwpup
+msgid "Disable WP-Cron"
+msgstr "禁止 WP-Cron"
+
+#: pages/page_backwpupsettings.php:156
+#@ backwpup
+msgid "Use your host's Cron Job and disable WP-Cron"
+msgstr "使用主机的 Cron 而不是 WP-Cron"
+
+#: pages/page_backwpupsettings.php:160
+#: pages/page_backwpupsettings.php:161
+#@ backwpup
+msgid "Use cron service of backwpup.com"
+msgstr "使用由 backwpup.com 提供的 Cron"
+
+#: pages/page_backwpupsettings.php:163
+#@ backwpup
+msgid "If you check this, the job schedule will submited to backwpup.com. Backwpup.com will call your blog wp-cron.php to start. <em>Use this service only if you have not a cron service of your hoster, or a blog that has a few visitors.</em> The cron service can start cron behind a basic authentication, on that the http authentication data will transferd too! Please make a little donation for the plugin if you use this servcie. The service can be removed by me without a massage."
+msgstr "如果勾选此选项，计划任务将会托管在 Backwpup.com，Backwpup.com 会帮完成计划任务。请注意，仅在您的主机不支持 Cron 或访问人数过少的情况下才选择此方案。此 Cron 服务是基于 Http basic authentication 的，也就是说您的 Http basic authentication 信息也会一起被托管出去！如果使用此方案，那请捐助一下我吧！在不告知的情况下作者有权单方面删除此托管。"
+
+#: pages/func_backwpupeditjob.php:18
+#@ backwpup
+msgid "PHP curl functions not available! Most backup destinations deaktivated!"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:25
+#@ backwpup
+msgid ""
+"You are about to delete this Job. \n"
+"  'Cancel' to stop, 'OK' to delete."
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:28
+#@ backwpup
+msgid "Save Changes"
+msgstr "保存设置"
+
+#: pages/func_backwpupeditjob.php:38
+#@ backwpup
+msgid "File Prefix:"
+msgstr "文件前缀："
+
+#: pages/func_backwpupeditjob.php:40
+#@ backwpup
+msgid "File Formart:"
+msgstr "文件格式："
+
+#: pages/func_backwpupeditjob.php:43
+#: pages/func_backwpupeditjob.php:45
+#@ backwpup
+msgid "Zip"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:46
+#@ backwpup
+msgid "Tar"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:48
+#: pages/func_backwpupeditjob.php:50
+#@ backwpup
+msgid "Tar GZip"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:52
+#: pages/func_backwpupeditjob.php:54
+#@ backwpup
+msgid "Tar BZip2"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:55
+#@ backwpup
+msgid "Preview:"
+msgstr "预览文件名："
+
+#: pages/func_backwpupeditjob.php:60
+#@ backwpup
+msgid "E-Mail-Adress:"
+msgstr "电子邮箱地址："
+
+#: pages/func_backwpupeditjob.php:62
+#@ backwpup
+msgid "Only send an e-mail if there are errors."
+msgstr "只有出现错误的时候才发邮件给我。"
+
+#: pages/func_backwpupeditjob.php:91
+#@ backwpup
+msgid "Activate scheduling"
+msgstr "开启计划执行"
+
+#: pages/func_backwpupeditjob.php:92
+#@ backwpup
+msgid "advanced"
+msgstr "高级"
+
+#: pages/func_backwpupeditjob.php:93
+#@ backwpup
+msgid "basic"
+msgstr "一般"
+
+#: pages/func_backwpupeditjob.php:97
+#@ backwpup
+msgid "Minutes: "
+msgstr "分钟："
+
+#: pages/func_backwpupeditjob.php:99
+#: pages/func_backwpupeditjob.php:111
+#: pages/func_backwpupeditjob.php:122
+#: pages/func_backwpupeditjob.php:133
+#: pages/func_backwpupeditjob.php:153
+#@ backwpup
+msgid "Any (*)"
+msgstr "任意(*)"
+
+#: pages/func_backwpupeditjob.php:108
+#@ backwpup
+msgid "Hours:"
+msgstr "小时："
+
+#: pages/func_backwpupeditjob.php:120
+#@ backwpup
+msgid "Day of Month:"
+msgstr "几号："
+
+#: pages/func_backwpupeditjob.php:131
+#@ backwpup
+msgid "Month:"
+msgstr "月份："
+
+#: pages/func_backwpupeditjob.php:135
+#@ backwpup
+msgid "January"
+msgstr "一月"
+
+#: pages/func_backwpupeditjob.php:136
+#@ backwpup
+msgid "February"
+msgstr "二月"
+
+#: pages/func_backwpupeditjob.php:137
+#@ backwpup
+msgid "March"
+msgstr "三月"
+
+#: pages/func_backwpupeditjob.php:138
+#@ backwpup
+msgid "April"
+msgstr "四月"
+
+#: pages/func_backwpupeditjob.php:139
+#@ backwpup
+msgid "May"
+msgstr "五月"
+
+#: pages/func_backwpupeditjob.php:140
+#@ backwpup
+msgid "June"
+msgstr "六月"
+
+#: pages/func_backwpupeditjob.php:141
+#@ backwpup
+msgid "July"
+msgstr "七月"
+
+#: pages/func_backwpupeditjob.php:142
+#@ backwpup
+msgid "Augest"
+msgstr "八月"
+
+#: pages/func_backwpupeditjob.php:143
+#@ backwpup
+msgid "September"
+msgstr "九月"
+
+#: pages/func_backwpupeditjob.php:144
+#@ backwpup
+msgid "October"
+msgstr "十月"
+
+#: pages/func_backwpupeditjob.php:145
+#@ backwpup
+msgid "November"
+msgstr "十一月"
+
+#: pages/func_backwpupeditjob.php:146
+#@ backwpup
+msgid "December"
+msgstr "十二月"
+
+#: pages/func_backwpupeditjob.php:151
+#@ backwpup
+msgid "Day of Week:"
+msgstr "星期几："
+
+#: pages/func_backwpupeditjob.php:155
+#: pages/func_backwpupeditjob.php:191
+#@ backwpup
+msgid "Sunday"
+msgstr "星期日"
+
+#: pages/func_backwpupeditjob.php:156
+#: pages/func_backwpupeditjob.php:192
+#@ backwpup
+msgid "Monday"
+msgstr "星期一"
+
+#: pages/func_backwpupeditjob.php:157
+#: pages/func_backwpupeditjob.php:193
+#@ backwpup
+msgid "Tuesday"
+msgstr "星期二"
+
+#: pages/func_backwpupeditjob.php:158
+#: pages/func_backwpupeditjob.php:194
+#@ backwpup
+msgid "Wednesday"
+msgstr "星期三"
+
+#: pages/func_backwpupeditjob.php:159
+#: pages/func_backwpupeditjob.php:195
+#@ backwpup
+msgid "Thursday"
+msgstr "星期四"
+
+#: pages/func_backwpupeditjob.php:160
+#: pages/func_backwpupeditjob.php:196
+#@ backwpup
+msgid "Friday"
+msgstr "星期五"
+
+#: pages/func_backwpupeditjob.php:161
+#: pages/func_backwpupeditjob.php:197
+#@ backwpup
+msgid "Saturday"
+msgstr "星期六"
+
+#: pages/func_backwpupeditjob.php:176
+#@ backwpup
+msgid "Hour"
+msgstr "小时"
+
+#: pages/func_backwpupeditjob.php:179
+#@ backwpup
+msgid "Minute"
+msgstr "分钟"
+
+#: pages/func_backwpupeditjob.php:183
+#@ backwpup
+msgid "monthly"
+msgstr "每月"
+
+#: pages/func_backwpupeditjob.php:184
+#@ backwpup
+msgid "on"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:189
+#@ backwpup
+msgid "weekly"
+msgstr "每周"
+
+#: pages/func_backwpupeditjob.php:203
+#@ backwpup
+msgid "daily"
+msgstr "每天"
+
+#: pages/func_backwpupeditjob.php:209
+#@ backwpup
+msgid "hourly"
+msgstr "每小时"
+
+#: pages/func_backwpupeditjob.php:221
+#@ backwpup
+msgid "Full Path to folder for Backup Files:"
+msgstr "需要备份文件的完整路径："
+
+#: pages/func_backwpupeditjob.php:223
+#@ backwpup
+msgid "Your WordPress dir is:"
+msgstr "WordPress的根目录路径："
+
+#: pages/func_backwpupeditjob.php:224
+#: pages/func_backwpupeditjob.php:384
+#@ backwpup
+msgid "Max. backup files in folder:"
+msgstr "文件夹最大存放文件数："
+
+#: pages/func_backwpupeditjob.php:230
+#@ backwpup
+msgid "Hostname:"
+msgstr "主机名："
+
+#: pages/func_backwpupeditjob.php:238
+#@ backwpup
+msgid "Folder on Server:"
+msgstr "FTP 文件夹："
+
+#: pages/func_backwpupeditjob.php:241
+#@ backwpup
+msgid "Max. backup files in FTP folder:"
+msgstr "FTP文件夹最多存放文件数："
+
+#: pages/func_backwpupeditjob.php:241
+#: pages/func_backwpupeditjob.php:260
+#: pages/func_backwpupeditjob.php:285
+#: pages/func_backwpupeditjob.php:312
+#: pages/func_backwpupeditjob.php:335
+#: pages/func_backwpupeditjob.php:362
+#: pages/func_backwpupeditjob.php:384
+#@ backwpup
+msgid "(Oldest files will be deleted first.)"
+msgstr "（优先删除旧文件）"
+
+#: pages/func_backwpupeditjob.php:242
+#@ backwpup
+msgid "Use SSL-FTP Connection."
+msgstr "使用SSL-FTP连接"
+
+#: pages/func_backwpupeditjob.php:243
+#@ backwpup
+msgid "Use FTP Passiv mode."
+msgstr "使用被动模式"
+
+#: pages/func_backwpupeditjob.php:250
+#@ backwpup
+msgid "Access Key ID:"
+msgstr "Access Key ID:"
+
+#: pages/func_backwpupeditjob.php:252
+#@ backwpup
+msgid "Secret Access Key:"
+msgstr "Secret Access Key:"
+
+#: pages/func_backwpupeditjob.php:254
+#: pages/func_backwpupeditjob.php:279
+#@ backwpup
+msgid "Bucket:"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:257
+#: pages/func_backwpupeditjob.php:282
+#@ backwpup
+msgid "Create bucket:"
+msgstr "创建 Bucket："
+
+#: pages/func_backwpupeditjob.php:257
+#@ backwpup
+msgid "Bucket Region"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:257
+#@ backwpup
+msgid "EU (Ireland)"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:257
+#@ backwpup
+msgid "Asia Pacific (Singapore)"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:257
+#@ backwpup
+msgid "Asia Pacific (Japan)"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:258
+#: pages/func_backwpupeditjob.php:283
+#@ backwpup
+msgid "Folder in bucket:"
+msgstr "Bucket 中的文件夹："
+
+#: pages/func_backwpupeditjob.php:260
+#: pages/func_backwpupeditjob.php:285
+#@ backwpup
+msgid "Max. backup files in bucket folder:"
+msgstr "Bucket 文件夹最多存放文件数："
+
+#: pages/func_backwpupeditjob.php:261
+#@ backwpup
+msgid "Save Backups with reduced redundancy!"
+msgstr "使用差异备份"
+
+#: pages/func_backwpupeditjob.php:264
+#: pages/func_backwpupeditjob.php:288
+#: pages/func_backwpupeditjob.php:315
+#: pages/func_backwpupeditjob.php:338
+#: pages/func_backwpupeditjob.php:365
+#: pages/func_backwpupeditjob.php:387
+#@ backwpup
+msgid "Create Account"
+msgstr "注册帐号"
+
+#: pages/func_backwpupeditjob.php:265
+#: pages/func_backwpupeditjob.php:289
+#@ backwpup
+msgid "Find Keys"
+msgstr "找 Keys"
+
+#: pages/func_backwpupeditjob.php:266
+#: pages/func_backwpupeditjob.php:290
+#: pages/func_backwpupeditjob.php:340
+#: pages/func_backwpupeditjob.php:366
+#: pages/func_backwpupeditjob.php:388
+#@ backwpup
+msgid "Webinterface"
+msgstr "官网"
+
+#: pages/func_backwpupeditjob.php:275
+#: pages/func_backwpupeditjob.php:304
+#@ backwpup
+msgid "Access Key:"
+msgstr "Access Key:"
+
+#: pages/func_backwpupeditjob.php:277
+#@ backwpup
+msgid "Secret:"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:300
+#@ backwpup
+msgid "Host:"
+msgstr "主机地址："
+
+#: pages/func_backwpupeditjob.php:301
+#@ backwpup
+msgid "Normely: blob.core.windows.net"
+msgstr "一般情况为 blob.core.windows.net"
+
+#: pages/func_backwpupeditjob.php:302
+#@ backwpup
+msgid "Account Name:"
+msgstr "用户名："
+
+#: pages/func_backwpupeditjob.php:306
+#: pages/func_backwpupeditjob.php:329
+#@ backwpup
+msgid "Container:"
+msgstr "容器："
+
+#: pages/func_backwpupeditjob.php:309
+#: pages/func_backwpupeditjob.php:332
+#@ backwpup
+msgid "Create Container:"
+msgstr "创建容器："
+
+#: pages/func_backwpupeditjob.php:310
+#@ backwpup
+msgid "Folder in Container:"
+msgstr "容器中的文件夹："
+
+#: pages/func_backwpupeditjob.php:312
+#: pages/func_backwpupeditjob.php:335
+#@ backwpup
+msgid "Max. backup files in container folder:"
+msgstr "容器文件夹最多存放文件数："
+
+#: pages/func_backwpupeditjob.php:316
+#: pages/func_backwpupeditjob.php:339
+#@ backwpup
+msgid "Find Key"
+msgstr "找 Key"
+
+#: pages/func_backwpupeditjob.php:327
+#@ backwpup
+msgid "API Key:"
+msgstr "API Key:"
+
+#: pages/func_backwpupeditjob.php:333
+#@ backwpup
+msgid "Folder in container:"
+msgstr "容器中的文件夹："
+
+#: pages/func_backwpupeditjob.php:349
+#@ backwpup
+msgid "Login:"
+msgstr "登陆："
+
+#: pages/func_backwpupeditjob.php:351
+#@ backwpup
+msgid "Not authenticated!"
+msgstr "未绑定"
+
+#: pages/func_backwpupeditjob.php:351
+#@ backwpup
+msgid "Authenticate!"
+msgstr "点击绑定"
+
+#: pages/func_backwpupeditjob.php:353
+#@ backwpup
+msgid "Authenticated!"
+msgstr "已绑定"
+
+#: pages/func_backwpupeditjob.php:353
+#@ backwpup
+msgid "Delete!"
+msgstr "删除"
+
+#: pages/func_backwpupeditjob.php:355
+#: pages/func_backwpupeditjob.php:379
+#@ backwpup
+msgid "Root:"
+msgstr "根目录："
+
+#: pages/func_backwpupeditjob.php:357
+#@ backwpup
+msgid "dropbox"
+msgstr "Dropbox"
+
+#: pages/func_backwpupeditjob.php:358
+#@ backwpup
+msgid "sandbox (disabled by DropBox)"
+msgstr "Sandbox （已被Dropbox取消）"
+
+#: pages/func_backwpupeditjob.php:360
+#: pages/func_backwpupeditjob.php:382
+#@ backwpup
+msgid "Folder:"
+msgstr "文件夹："
+
+#: pages/func_backwpupeditjob.php:362
+#@ backwpup
+msgid "Max. backup files in Dropbox folder:"
+msgstr "在Dropbox文件夹中最多存放的备份文件数："
+
+#: pages/func_backwpupeditjob.php:375
+#: pages/func_backwpupeditjob.php:395
+#@ backwpup
+msgid "E-mail address:"
+msgstr "电子邮箱地址："
+
+#: pages/func_backwpupeditjob.php:398
+#@ backwpup
+msgid "Max. File Size for sending Backups with mail:"
+msgstr "电子邮件可发送最大文件大小："
+
+#: pages/func_backwpupeditjob.php:456
+#@ backwpup
+msgid "Working as <a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">Cron</a> job schedule:"
+msgstr "<a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">Cron</a> 计划任务："
+
+#: pages/func_backwpupeditjob.php:462
+#, php-format
+#@ backwpup
+msgid "ATTENTION: Job runs every %d mins.!!!"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:468
+#, php-format
+#@ backwpup
+msgid "ATTENTION: Job runs every %d houers.!!!"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:472
+#@ backwpup
+msgid "ATTENTION: Can't calculate cron!!!"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:474
+#@ backwpup
+msgid "Next runtime:"
+msgstr "下次执行时间："
+
+#: pages/func_backwpupeditjob.php:500
+#: pages/func_backwpupeditjob.php:565
+#@ backwpup
+msgid "Missing access key!"
+msgstr "Access Key 为空！"
+
+#: pages/func_backwpupeditjob.php:507
+#: pages/func_backwpupeditjob.php:572
+#@ backwpup
+msgid "Missing secret access key!"
+msgstr "Secret Access Key 为空！"
+
+#: pages/func_backwpupeditjob.php:531
+#: pages/func_backwpupeditjob.php:598
+#@ backwpup
+msgid "No bucket fount!"
+msgstr "找不到 Bucket！"
+
+#: pages/func_backwpupeditjob.php:633
+#: pages/func_backwpupeditjob.php:762
+#@ backwpup
+msgid "Missing Username!"
+msgstr "用户名为空！"
+
+#: pages/func_backwpupeditjob.php:640
+#@ backwpup
+msgid "Missing API Key!"
+msgstr "API为空！"
+
+#: pages/func_backwpupeditjob.php:661
+#@ backwpup
+msgid "No Containerss found!"
+msgstr "找不到容器！"
+
+#: pages/func_backwpupeditjob.php:696
+#@ backwpup
+msgid "Missing Hostname!"
+msgstr "主机名为空！"
+
+#: pages/func_backwpupeditjob.php:703
+#@ backwpup
+msgid "Missing Account Name!"
+msgstr "用户名为空！"
+
+#: pages/func_backwpupeditjob.php:710
+#@ backwpup
+msgid "Missing Access Key!"
+msgstr "Access Key 为空！"
+
+#: pages/func_backwpupeditjob.php:727
+#@ backwpup
+msgid "No Container found!"
+msgstr "找不到容器！"
+
+#: pages/func_backwpupeditjob.php:769
+#@ backwpup
+msgid "Missing Password!"
+msgstr "密码为空！"
+
+#: pages/func_backwpupeditjob.php:789
+#@ backwpup
+msgid "No Syncfolders found!"
+msgstr ""
+
+#: pages/page_backwpupeditjob.php:8
+#@ backwpup
+msgid "Job Type"
+msgstr "任务类型"
+
+#: pages/page_backwpupeditjob.php:9
+#@ backwpup
+msgid "Job Schedule"
+msgstr "计划任务"
+
+#: pages/header_backwpupeditjob.php:275
+#@ backwpup
+msgid "Backup to Folder"
+msgstr "备份到文件夹"
+
+#: pages/header_backwpupeditjob.php:276
+#@ backwpup
+msgid "Backup to E-Mail"
+msgstr "电子邮件发送备份"
+
+#: pages/page_backwpupeditjob.php:25
+#@ backwpup
+msgid "BackWPup Job Settings"
+msgstr "BackWPup 任务设置"
+
+#: pages/page_backwpupeditjob.php:45
+#: pages/page_backwpupeditjob.php:71
+#@ backwpup
+msgid "Enter Job name here"
+msgstr ""
+
+#: pages/page_backwpupeditjob.php:77
+#@ backwpup
+msgid "Database Jobs"
+msgstr "数据库任务"
+
+#: pages/page_backwpupeditjob.php:80
+#@ backwpup
+msgid "Database tables to use:"
+msgstr "需要备份的数据库表："
+
+#: pages/page_backwpupeditjob.php:90
+#@ backwpup
+msgid "Use short INSERTs instead of full (with keys)"
+msgstr "使用较短的 INSERTs 而不是带 keys 的完整语句"
+
+#: pages/page_backwpupeditjob.php:91
+#@ backwpup
+msgid "Set Blog Maintenance Mode on Database Operations"
+msgstr "当进行数据库操作时设置为维护模式"
+
+#: backwpup-functions.php:353
+#: pages/page_backwpupeditjob.php:96
+#@ backwpup
+msgid "File Backup"
+msgstr "文件备份"
+
+#: pages/page_backwpupeditjob.php:98
+#@ backwpup
+msgid "Blog Folders to Backup:"
+msgstr "需要备份的文件夹："
+
+#: pages/page_backwpupeditjob.php:101
+#@ backwpup
+msgid "root"
+msgstr "根目录"
+
+#: pages/page_backwpupeditjob.php:104
+#: pages/page_backwpupeditjob.php:120
+#: pages/page_backwpupeditjob.php:136
+#: pages/page_backwpupeditjob.php:152
+#: pages/page_backwpupeditjob.php:168
+#@ backwpup
+msgid "Exclude:"
+msgstr "不包括："
+
+#: pages/page_backwpupeditjob.php:117
+#@ backwpup
+msgid "Content"
+msgstr ""
+
+#: pages/page_backwpupeditjob.php:133
+#@ backwpup
+msgid "Plugins"
+msgstr "插件"
+
+#: pages/page_backwpupeditjob.php:149
+#@ backwpup
+msgid "Themes"
+msgstr "主题"
+
+#: pages/page_backwpupeditjob.php:165
+#@ backwpup
+msgid "Blog Uploads"
+msgstr "上传文件"
+
+#: pages/page_backwpupeditjob.php:182
+#@ backwpup
+msgid "Include Folders to Backup:"
+msgstr "备份包括的文件夹："
+
+#: pages/page_backwpupeditjob.php:183
+#: pages/page_backwpupeditjob.php:187
+#@ backwpup
+msgid "Example:"
+msgstr "例子："
+
+#: pages/page_backwpupeditjob.php:186
+#@ backwpup
+msgid "Exclude Files/Folders from Backup:"
+msgstr "备份不包括的文件或文件夹："
+
+#: pages/header_backwpupeditjob.php:22
+#@ backwpup
+msgid "Dropbox authentication complete!"
+msgstr "Dropbox绑定成功！"
+
+#: pages/header_backwpupeditjob.php:24
+#@ backwpup
+msgid "Wrong Token for Dropbox authentication received!"
+msgstr "Dropbox绑定返回了错误的Token！"
+
+#: pages/header_backwpupeditjob.php:27
+#@ backwpup
+msgid "No Dropbox authentication received!"
+msgstr "Dropbox绑定返回为空！"
+
+#: pages/header_backwpupeditjob.php:224
+#@ backwpup
+msgid "Dropbox authentication deleted!"
+msgstr "Dropbox绑定已删除！"
+
+#: pages/header_backwpupeditjob.php:261
+#, php-format
+#@ backwpup
+msgid "Job '%1' changes saved."
+msgstr "任务 %1 设置已保存"
+
+#: pages/header_backwpupeditjob.php:261
+#@ backwpup
+msgid "Jobs overview."
+msgstr "任务总览"
+
+#: pages/header_backwpupeditjob.php:273
+#@ backwpup
+msgid "Backup File"
+msgstr "备份文件"
+
+#: pages/header_backwpupeditjob.php:274
+#@ backwpup
+msgid "Send log"
+msgstr "发送日志"
+
+#: pages/header_backwpupeditjob.php:278
+#@ backwpup
+msgid "Backup to FTP Server"
+msgstr "备份到FTP"
+
+#: pages/header_backwpupeditjob.php:280
+#@ backwpup
+msgid "Backup to Dropbox"
+msgstr "备份到Dropbox"
+
+#: pages/header_backwpupeditjob.php:282
+#@ backwpup
+msgid "Backup to SugarSync"
+msgstr "备份到SugarSync"
+
+#: pages/header_backwpupeditjob.php:284
+#@ backwpup
+msgid "Backup to Amazon S3"
+msgstr "备份到Amazon S3"
+
+#: pages/header_backwpupeditjob.php:286
+#@ backwpup
+msgid "Backup to Google storage"
+msgstr "备份到Google storage"
+
+#: pages/header_backwpupeditjob.php:288
+#@ backwpup
+msgid "Backup to Micosoft Azure (Blob)"
+msgstr "备份到Micosoft Azure (Blob)"
+
+#: pages/header_backwpupeditjob.php:290
+#@ backwpup
+msgid "Backup to Rackspace Cloud"
+msgstr "备份到Rackspace Cloud"
+
+#: pages/func_backwpupbackups.php:125
+#@ backwpup
+msgid "No Files found."
+msgstr "暂无"
+
+#: pages/func_backwpupbackups.php:145
+#@ backwpup
+msgid "Change Destination"
+msgstr "切换任务"
+
+#: pages/func_backwpupbackups.php:182
+#@ backwpup
+msgid "File"
+msgstr "文件"
+
+#: pages/func_backwpupbackups.php:183
+#: pages/func_backwpupbackups.php:185
+#@ backwpup
+msgid "Folder"
+msgstr "文件夹"
+
+#: pages/func_backwpupbackups.php:186
+#@ backwpup
+msgid "Time"
+msgstr "时间"
+
+#: pages/func_backwpupbackups.php:227
+#@ backwpup
+msgid ""
+"You are about to delete this Backup Archive. \n"
+"  'Cancel' to stop, 'OK' to delete."
+msgstr ""
+
+#: pages/func_backwpupbackups.php:242
+#@ backwpup
+msgid "?"
+msgstr ""
+
+#. translators: plugin header field 'Name'
+#: backwpup-functions.php:4
+#: backwpup-functions.php:293
+#: backwpup-functions.php:518
+#: backwpup.php:0
+#@ backwpup
+#@ textdomain
+msgid "BackWPup"
+msgstr ""
+
+#: backwpup-functions.php:9
+#@ backwpup
+msgid "Working"
+msgstr "进行中的任务"
+
+#: backwpup-functions.php:13
+#: backwpup-functions.php:523
+#@ backwpup
+msgid "Backups"
+msgstr "备份文件管理"
+
+#: backwpup-functions.php:15
+#@ backwpup
+msgid "Tools"
+msgstr "工具"
+
+#: backwpup-functions.php:17
+#: backwpup-functions.php:274
+#@ backwpup
+msgid "Settings"
+msgstr "设置"
+
+#: backwpup-functions.php:109
+#: backwpup-functions.php:119
+#: backwpup-functions.php:132
+#: backwpup-functions.php:144
+#@ backwpup
+msgid "For more information:"
+msgstr "更多："
+
+#: backwpup-functions.php:285
+#@ backwpup
+msgid "Support"
+msgstr "支持"
+
+#: backwpup-functions.php:112
+#: backwpup-functions.php:122
+#: backwpup-functions.php:135
+#: backwpup-functions.php:147
+#: backwpup-functions.php:284
+#@ backwpup
+msgid "FAQ"
+msgstr ""
+
+#: backwpup-functions.php:114
+#: backwpup-functions.php:124
+#: backwpup-functions.php:137
+#: backwpup-functions.php:149
+#: backwpup-functions.php:286
+#@ backwpup
+msgid "Donate"
+msgstr "捐助"
+
+#: backwpup-functions.php:92
+#: backwpup-functions.php:99
+#: backwpup-functions.php:131
+#: backwpup-functions.php:143
+#@ backwpup
+msgid "BackWPup comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions."
+msgstr "无需授权，绝对免费！"
+
+#: backwpup-functions.php:274
+#@ backwpup
+msgid "Go to Settings Page"
+msgstr "前去设置"
+
+#: backwpup-functions.php:350
+#@ backwpup
+msgid "WP XML Export"
+msgstr "WP XML 导出"
+
+#: backwpup-functions.php:356
+#@ backwpup
+msgid "Database Backup"
+msgstr "数据库备份"
+
+#: backwpup-functions.php:359
+#@ backwpup
+msgid "Optimize Database Tables"
+msgstr "优化数据库表"
+
+#: backwpup-functions.php:362
+#@ backwpup
+msgid "Check Database Tables"
+msgstr "检查数据库表"
+
+#: backwpup-functions.php:427
+#@ backwpup
+msgid "View Log:"
+msgstr "查看日志："
+
+#: backwpup-functions.php:459
+#@ backwpup
+msgid "How many of the lastes logs would you like to display?"
+msgstr ""
+
+#: backwpup-functions.php:485
+#, php-format
+#@ backwpup
+msgid "working since %d sec."
+msgstr ""
+
+#: backwpup-functions.php:492
+#@ backwpup
+msgid "Edit Job"
+msgstr ""
+
+#: backwpup-functions.php:508
+#@ backwpup
+msgid "BackWPup Aktive Jobs"
+msgstr ""
+
+#: backwpup-functions.php:520
+#@ backwpup
+msgid "See Working!"
+msgstr "查看过程"
+
+#: backwpup-functions.php:524
+#@ backwpup
+msgid "BackWPup Job"
+msgstr ""
+
+#: backwpup-functions.php:737
+#@ backwpup
+msgid "- PHP 5.2.4 or higher is needed!"
+msgstr "- 需要 PHP 5.2.4 或更高版本！"
+
+#: backwpup-functions.php:769
+#@ backwpup
+msgid "- WP-Cron isn't working, please check it!"
+msgstr ""
+
+#. translators: plugin header field 'PluginURI'
+#: backwpup-functions.php:87
+#: backwpup-functions.php:107
+#: backwpup-functions.php:129
+#: backwpup.php:0
+#@ backwpup
+msgid "http://backwpup.com"
+msgstr ""
+
+#. translators: plugin header field 'Author'
+#: backwpup.php:0
+#@ backwpup
+msgid "Daniel H&uuml;sken"
+msgstr ""
+
+#. translators: plugin header field 'AuthorURI'
+#: backwpup.php:0
+#@ backwpup
+msgid "http://danielhuesken.de"
+msgstr ""
+
+#: backwpup-functions.php:733
+#, php-format
+#@ backwpup
+msgid "- WordPress %d or higher is needed!"
+msgstr "- 需要 WordPress %d 或更高版本！"
+
+#: backwpup-functions.php:753
+#, php-format
+#@ backwpup
+msgid "- Log folder '%s' does not exists!"
+msgstr ""
+
+#: backwpup-functions.php:756
+#, php-format
+#@ backwpup
+msgid "- Log folder '%s' is not writeable!"
+msgstr ""
+
+#: backwpup-functions.php:759
+#, php-format
+#@ backwpup
+msgid "- Log folder '%s' is not in open_basedir path!"
+msgstr ""
+
+#: backwpup-functions.php:762
+#, php-format
+#@ backwpup
+msgid "- WP_CONTENT_URL '%s' must set as a full URL!"
+msgstr ""
+
+#: backwpup-functions.php:765
+#, php-format
+#@ backwpup
+msgid "- WP_PLUGIN_URL '%s' must set as a full URL!"
+msgstr ""
+
+#: backwpup-functions.php:825
+#@ backwpup
+msgid "New"
+msgstr "新建的任务"
+
+#. translators: plugin header field 'Description'
+#: backwpup.php:0
+#@ backwpup
+msgid "WordPress Backup and more..."
+msgstr ""
+
+#: job/job_functions.php:487
+#, php-format
+#@ backwpup
+msgid "Signal %d send to script!"
+msgstr ""
+
+#: job/job_functions.php:507
+#@ backwpup
+msgid "Can not restart on alternate cron...."
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:257
+#@ backwpup
+msgid "US-Standard (Northern Virginia & Washington State)"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:257
+#@ backwpup
+msgid "US-West 1 (Northern California)"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:257
+#@ backwpup
+msgid "US-West 2 (Oregon)"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:257
+#@ backwpup
+msgid "South America (Sao Paulo)"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:257
+#@ backwpup
+msgid "United States GovCloud"
+msgstr ""
+
+#: pages/func_backwpupeditjob.php:257
+#@ backwpup
+msgid "United States GovCloud FIPS 140-2"
+msgstr ""
+
+#: backwpup-functions.php:90
+#: backwpup-functions.php:97
+#@ backwpup
+msgid "Plugin Info"
+msgstr ""
+
+#: backwpup-functions.php:104
+#@ backwpup
+msgid "Overview"
+msgstr ""
+
+#: backwpup-functions.php:111
+#: backwpup-functions.php:121
+#: backwpup-functions.php:134
+#: backwpup-functions.php:146
+#@ backwpup
+msgid "Documentation"
+msgstr ""
+
+#: backwpup-functions.php:113
+#: backwpup-functions.php:123
+#: backwpup-functions.php:136
+#: backwpup-functions.php:148
+#@ backwpup
+msgid "Support Forums"
+msgstr ""
+
+#: backwpup-functions.php:115
+#: backwpup-functions.php:125
+#: backwpup-functions.php:138
+#: backwpup-functions.php:150
+#@ backwpup
+msgid "Google+"
+msgstr ""
+
+#: backwpup-functions.php:744
+#, php-format
+#@ backwpup
+msgid "- Temp folder '%s' does not exists!"
+msgstr ""
+
+#: backwpup-functions.php:747
+#, php-format
+#@ backwpup
+msgid "- Temp folder '%s' is not writeable!"
+msgstr ""
+
+#. translators: plugin header field 'Version'
+#: backwpup.php:0
+#@ backwpup
+msgid "2.1.12"
+msgstr ""
+
+#: job/job_run.php:116
+#@ backwpup
+msgid "[INFO]: BackWPup job started by cron"
+msgstr ""
+
+#: job/job_run.php:118
+#@ backwpup
+msgid "[INFO]: BackWPup job started manualy"
+msgstr ""
+

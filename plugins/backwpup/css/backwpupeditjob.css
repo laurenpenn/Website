@@ -1,0 +1,48 @@
+#icon-backwpup {
+	background: url('BackWPup32.png') no-repeat;
+}
+
+#cron-min, #cron-hour, #cron-day, #cron-month, #cron-weekday  {
+	overflow:auto;
+	white-space:nowrap;
+	height:7em;
+}
+#cron-min-box , #cron-hour-box, #cron-day-box, #cron-month-box, #cron-weekday-box {
+	border-color:#CEE1EF;
+	border-style:solid;
+	border-width:2px;
+	margin:5px 0px 5px 5px;
+	padding:2px 2px;
+	width:85px;
+	float:left;
+}
+#dbtables {
+	border-color:#CEE1EF; 
+	border-style:solid; 
+	border-width:2px;
+	height:10em; 
+	margin:3px 15px 3px 15px; 
+	overflow:auto; 
+	padding:0.5em 0.5em;
+	white-space:nowrap;
+}
+.dests {
+	float:left;
+	width:80%;
+}
+.destlinks {
+	font-style:italic;
+	letter-spacing:1px;
+	font-weight:bold;
+	line-height:20px;
+	white-space:nowrap;
+}
+#cron-text {
+	line-height:20px;
+	color:#804000;
+}
+#schedbasic {
+	border-color:#CEE1EF; 
+	border-style:solid; 
+	border-width:2px;
+}

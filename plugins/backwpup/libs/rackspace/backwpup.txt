@@ -1,0 +1,22 @@
+in cloudfiles_http.php
+changed lines
+1284 to
+
+        if ($conn_type == "PUT_OBJ") {
+            curl_setopt($ch, CURLOPT_PUT, 1);
+            curl_setopt($ch, CURLOPT_READFUNCTION, array(&$this, '_read_cb'));
+			/* start Backwpup */
+			if (function_exists('curl_progresscallback') and defined('CURLOPT_PROGRESSFUNCTION')) {
+				curl_setopt($ch, CURLOPT_NOPROGRESS, false);
+				curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, 'curl_progresscallback');
+				curl_setopt($ch, CURLOPT_BUFFERSIZE, 512);
+			} else {
+				@set_time_limit(300);
+			}
+			/* end Backwpup */
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        }
+		
+for get upload prozess.
+
+deletetd share content type is set by backwpup.
