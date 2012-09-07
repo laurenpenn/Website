@@ -46,9 +46,9 @@ a.mediumbutton  {
 
 
 #topbg {
-	width:980px;
-	height: 75px;
-	background: url(images/white_blue/topbg.png) no-repeat;
+	width: 980px;
+	height: 112px;
+	background:#fff;
 	display: block;
 }
 
