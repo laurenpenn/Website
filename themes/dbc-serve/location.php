@@ -39,8 +39,8 @@ get_header(); // Loads the header.php template. ?>
 								array(
 									'taxonomy' => 'type',
 									'field' => 'slug',
-									'terms' => 'affiliate',
-									'operator' => 'NOT IN'
+									'terms' => 'serve',
+									'operator' => 'IN'
 								)
 							)
 						) );
