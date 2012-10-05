@@ -10,7 +10,7 @@
  */
 
 
-$feature_query = new WP_Query( array( 'category_name' => 'home-slider', 'post_type' => 'slider', 'posts_per_page' => 10, 'order' => 'ASC' ) );
+$feature_query = new WP_Query( array( 'category_name' => 'singles-slider', 'post_type' => 'slider', 'posts_per_page' => 10, 'order' => 'ASC' ) );
 	
 if ( $feature_query->have_posts() ) : ?>
 		
