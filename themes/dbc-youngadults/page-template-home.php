@@ -53,19 +53,19 @@ get_header(); // Loads the header.php template. ?>
 		<div id="features" class="row">
 			
 			<div class="three columns">
-				<a href="<?php echo site_url(); ?>/blog/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/blog.png" alt="Blog" /></a>
+				<a href="<?php echo site_url(); ?>/connect/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/connect-button.jpg" alt="Connect" /></a>
 			</div>
 			
 			<div class="three columns">
-				<a href="<?php echo site_url(); ?>/studies/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/studies.png" alt="Studies" /></a>
+				<a href="<?php echo site_url(); ?>/grow/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/grow-button.jpg" alt="Grow" /></a>
 			</div>
 			
 			<div class="three columns">
-				<a href="<?php echo site_url(); ?>/outreach/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/outreach.png" alt="Outreach" /></a>
+				<a href="<?php echo site_url(); ?>/gather/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/gather-button.jpg" alt="Gather" /></a>
 			</div>
 			
 			<div class="three columns">
-				<a href="<?php echo site_url(); ?>/discipleship/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/discipleship.png" alt="Discipleship" /></a>
+				<a href="<?php echo site_url(); ?>/serve/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/serve-button.jpg" alt="Serve" /></a>
 			</div>
 						
 		</div>
