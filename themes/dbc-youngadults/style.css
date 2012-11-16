@@ -65,7 +65,7 @@ a {
 	margin: 0;
 }
 #site-title a {
-    background: url('images/real-men-logo.png') no-repeat;
+    background: url('images/YoungAdultsLogo_web.jpg') no-repeat;
     display: block;
     height: 68px;
     text-indent: -9999px;
@@ -169,7 +169,7 @@ dl.tabs dd.active {
 #sidebar-primary a {
 	border-bottom: 1px solid #ccc;
 	color: #033;
-	font: 20px/22px "LeagueGothicRegular";	
+	font: 15px/17px "Helvetica";	
 	text-decoration: none;
 }
 #sidebar-primary a:hover {

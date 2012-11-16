@@ -18,32 +18,13 @@ get_header(); // Loads the header.php template. ?>
 		
 		<div class="row">
 			
-			<div class="eight columns">
-				
-				<?php get_template_part( 'slider-married' ); // loads slider-married.php ?>
-				
+			<div class="four columns">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/ymbf-logo.png" alt="young adults" />
 			</div>
 			
-			<div id="social-icons" class="four columns">
+			<div class="eight columns">
 				
-				<h2>Find what you're looking for...</h2>
-				
-				<?php get_template_part( 'searchform' ); ?>
-				
-				<h2>Connect with us here...</h2>
-				
-				<div class="three columns">				
-				<a href="http://www.facebook.com/mensministryofdbc"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-facebook.png" alt="Facebook" /></a>
-				</div>
-				<div class="three columns">		
-				<a href="https://twitter.com/REALMENofDBC"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-twitter.png" alt="Twitter" /></a>
-				</div>
-				<div class="three columns">		
-				<a href="https://vimeo.com/user9865105"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-vimeo.png" alt="Vimeo" /></a>
-				</div>
-				<div class="three columns">		
-				<a href="http://www.goodreads.com/user/show/7333648-the-men-s-ministry-of-denton-bible-church"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/icon-goodreads.png" alt="Goodreads" /></a>
-				</div>
+				<?php get_template_part( 'slider-home' ); // loads slider-home.php ?>
 				
 			</div>
 			
@@ -52,22 +33,34 @@ get_header(); // Loads the header.php template. ?>
 		<div id="features" class="row">
 			
 			<div class="three columns">
-				<a href="<?php echo site_url(); ?>/blog/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/blog.png" alt="Blog" /></a>
+				<a href="<?php echo site_url(); ?>/gather/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/gather-button.jpg" alt="Gather" /></a>
 			</div>
 			
 			<div class="three columns">
-				<a href="<?php echo site_url(); ?>/studies/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/studies.png" alt="Studies" /></a>
+				<a href="<?php echo site_url(); ?>/grow/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/grow-button.jpg" alt="Grow" /></a>
 			</div>
 			
 			<div class="three columns">
-				<a href="<?php echo site_url(); ?>/outreach/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/outreach.png" alt="Outreach" /></a>
+				<a href="<?php echo site_url(); ?>/connect/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/connect-button.jpg" alt="Connect" /></a>
 			</div>
 			
 			<div class="three columns">
-				<a href="<?php echo site_url(); ?>/discipleship/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/discipleship.png" alt="Discipleship" /></a>
+				<a href="<?php echo site_url(); ?>/serve/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/serve-button.jpg" alt="Serve" /></a>
 			</div>
 						
 		</div>
+		
+		<div class="row">
+		
+			<div class="eight columns">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/videoplayer.jpg" alt="video player" />
+			</div>
+			
+			<div class="four columns">
+				<h2>About Young Married Bible Fellowship</h2>
+			</div>
+			
+		</div>	
 
 		<div class="row">
 			
