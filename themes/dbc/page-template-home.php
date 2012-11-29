@@ -42,10 +42,10 @@ get_header(); ?>
 						</div>
 					</a>
 					
-					<a href="<?php echo site_url(); ?>/notes/" class="feature" id="feature-notes">
+					<a href="<?php echo site_url(); ?>/dbcmc2013/" class="feature" id="feature-notes">
 						<div class="feature-inner">
-							<h4 class="widget-title">Notes from Tom's  desk</h4>
-							<p><img src="<?php echo get_template_directory_uri(); ?>/images/feature-notes.png" alt="Occasionally, senior pastor Tom Nelson has a letter to share with the church body." /></p>
+							<h4 class="widget-title">Upcoming Conferences</h4>
+							<p><img src="<?php echo get_template_directory_uri(); ?>/images/feature-conferences.png" alt="Marriage and Missions conferences." /></p>
 						</div>
 					</a>
 								
