@@ -30,7 +30,7 @@
 
 /* Contains everything */
 body {
-    background: maroon;
+    background: #707070;
     color: #000;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.625em;
@@ -39,7 +39,7 @@ body {
 }
 
 #container {
-    background: #800000 url('images/bg.gif');
+    background: #707070 url('images/bg.gif');
     padding: 20px 0 0;
 }
 
@@ -178,7 +178,7 @@ dl.tabs dd.active {
 
 /* Footer */
 #footer {
-    background: #298513;
+    background: #707070;
     color: #fff;
     padding: 20px 0;
 }
