@@ -65,17 +65,17 @@ a {
 	margin: 0;
 }
 #site-title a {
-    background: url('images/YoungAdultsLogo_web.jpg') no-repeat;
+    background: url() no-repeat;
     display: block;
-    height: 68px;
+    height: 0px;
     text-indent: -9999px;
-    width: 181px;
+    width: 0px;
 }
 
 /* Menu */
 #menu-primary .nav-bar {
     background: none; 
-    margin: 15px 0 0;   
+    margin: 15px 77px 0;   
 }
 #menu-primary .nav-bar .menu-item {
     border: none;
