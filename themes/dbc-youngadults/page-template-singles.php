@@ -19,7 +19,7 @@ get_header(); // Loads the header.php template. ?>
 			
 					
 			<div class="four columns">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/young-singles-logo.png" alt="young adults" />
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/YSBF-logo-web.png" alt="Young Singles Bible Fellowship" />
 			</div>
 			
 			<div class="eight columns">
