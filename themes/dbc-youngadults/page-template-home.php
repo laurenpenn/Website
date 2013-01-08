@@ -35,11 +35,11 @@ get_header(); // Loads the header.php template. ?>
 		<div id="features" class="row">
 			
 			<div class="six columns">
-				<a href="<?php echo site_url(); ?>/married-home/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/YMBF-button.jpg" alt="Young Married Bible Fellowship" /></a>
+				<a href="<?php echo site_url(); ?>/married-home/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/MBF-button.png" alt="Married Bible Fellowship" /></a>
 			</div>
 			
 			<div class="six columns">
-				<a href="<?php echo site_url(); ?>/singles-home/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/YoungSingles-button.jpg" alt="Young Singles" /></a>
+				<a href="<?php echo site_url(); ?>/singles-home/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/YSBF-button.png" alt="Young Singles Bible Fellowship" /></a>
 			</div>
 						
 		</div>
