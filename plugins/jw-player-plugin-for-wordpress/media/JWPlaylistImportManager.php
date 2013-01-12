@@ -50,13 +50,13 @@ function media_jwplayer_insert_form($errors) {
 <form enctype="multipart/form-data" method="post" action="<?php echo esc_attr($form_action_url); ?>" class="media-upload-form validate" id="playlist-form" style="width: 626px;">
   <?php wp_nonce_field('media-form'); ?>
 
-  <h3 class="media-title"><?php _e("Insert a playlist"); ?></h3>
-  <p><?php _e("This tab allows you to insert one of your playlists into your post.  To construct a playlist please visit the Playlist Media page."); ?></p>
+  <h3 class="media-title"><?php _e("Insert a playlist", 'jw-player-plugin-for-wordpress'); ?></h3>
+  <p><?php _e("This tab allows you to insert one of your playlists into your post.  To construct a playlist please visit the Playlist Media page.", 'jw-player-plugin-for-wordpress'); ?></p>
   <div id="media-items">
     <div class="media-item">
       <div class="alignleft actions" style="margin: 1em;">
         <div class="hide-if-no-js">
-          <label for="<?php echo LONGTAIL_KEY . "playlist_select"; ?>"><strong><?php _e("Select Playlist:"); ?></strong></label>
+          <label for="<?php echo LONGTAIL_KEY . "playlist_select"; ?>"><strong><?php _e("Select Playlist:", 'jw-player-plugin-for-wordpress'); ?></strong></label>
           <select id="<?php echo LONGTAIL_KEY . "playlist_select"; ?>" name="<?php echo LONGTAIL_KEY . "playlist_select"; ?>">
             <?php foreach ($playlists as $playlist_list) { ?>
             <option value="<?php echo $playlist_list->ID; ?>" <?php selected($playlist_list->ID, $current_playlist); ?>>
@@ -73,7 +73,7 @@ function media_jwplayer_insert_form($errors) {
       <div class="clear"></div>
 
       <p class="ml-submit" style="padding: 0 0; margin: 1em;">
-        <label for="<?php echo LONGTAIL_KEY . "player_select"; ?>"><strong><?php _e("Select Player:"); ?></strong></label>
+        <label for="<?php echo LONGTAIL_KEY . "player_select"; ?>"><strong><?php _e("Select Player:", 'jw-player-plugin-for-wordpress'); ?></strong></label>
         <select name="<?php echo LONGTAIL_KEY . "player_select"; ?>" id="<?php echo LONGTAIL_KEY . "player_select"; ?>">
           <option value="Default">Default</option>
           <?php $configs = LongTailFramework::getConfigs(); ?>
@@ -85,7 +85,7 @@ function media_jwplayer_insert_form($errors) {
             <?php } ?>
           <?php } ?>
         </select>
-        <input type="button" class="button-primary" onmousedown="insertPlaylist();" name="insert-gallery" id="insert-gallery" value="<?php esc_attr_e( 'Insert Playlist' ); ?>" />
+        <input type="button" class="button-primary" onmousedown="insertPlaylist();" name="insert-gallery" id="insert-gallery" value="<?php esc_attr_e('Insert Playlist', 'jw-player-plugin-for-wordpress'); ?>" />
       </p>
     </div>
   </div>

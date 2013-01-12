@@ -1,6 +1,5 @@
 jQuery(document).ready(function($) {   
     $( "#tabs" ).tabs();
-
     var thickDims, tbWidth, tbHeight; 
     thickDims = function() {
         var tbWindow = $('#TB_window'), H = $(window).height(), W = $(window).width(), w, h;
@@ -76,25 +75,35 @@ jQuery(document).ready(function($) {
         return false;
     });
 
-    $('#above_more').click( function() {
-        $('#above .select_row').children('.radio').children('input').not(':checked').not('always').parent().parent().toggleClass('hidden');
-        $(this).children('span').toggleClass('hidden');
-        return false;
-    });
-    $('#below_more').click( function() {
-        $('#below .select_row').children('.radio').children('input').not(':checked').not('always').parent().parent().toggleClass('hidden');
-        $(this).children('span').toggleClass('hidden');
-        return false;
-    });
+    /**
+    * Handle enable disable top and bottom share buttons
+    */
+   $("#enable_above, #enable_below").click(enableShareIconsClickHandler);
+  
+   function enableShareIconsClickHandler(){
+       toggleShareIconsContainer($(this));
+   }
+  function toggleShareIconsContainer(element){
+       var animationContainer = element.closest("td").find(".select_row");
+       if (!element.attr("checked")) {
+          animationContainer.css("opacity", 0.4);
+          animationContainer.find("input").attr("disabled", true);
+       } else {
+          animationContainer.css("opacity", 1);
+          animationContainer.find("input").attr("disabled", false);
+       }
+   }
+   toggleShareIconsContainer($("#enable_above"));
+   toggleShareIconsContainer($("#enable_below"));
    
     var show_above =  $('input[name="addthis_settings[show_above]"]');
     var show_below = $('input[name="addthis_settings[show_below]"]');
-    if ( show_above.attr('checked') != "undefined" && show_above.attr('checked') == true)
+    if ( show_above.prop('checked') != "undefined" && show_above.prop('checked') == true)
     {
         $('.above_option').toggleClass('hide');
     }
    
-    if ( show_below.attr('checked') != "undefined" && show_below.attr('checked') == true)
+    if ( show_below.prop('checked') != "undefined" && show_below.prop('checked') == true)
     {
         $('.below_option').toggleClass('hide');
     }
@@ -110,7 +119,7 @@ jQuery(document).ready(function($) {
 
     var aboveCustom = $('#above_custom_button'); 
     var aboveCustomShow = function(){
-        if ( aboveCustom.attr('checked') != 'undefined' &&  aboveCustom.attr('checked') == true)
+        if ( aboveCustom.prop('checked') != 'undefined' &&  aboveCustom.prop('checked') == true)
         {
             $('.above_option_custom').removeClass('hidden');
         }
@@ -121,7 +130,7 @@ jQuery(document).ready(function($) {
     };
     var belowCustom = $('#below_custom_button'); 
     var belowCustomShow = function(){
-        if ( belowCustom.attr('checked') != 'undefined' &&  belowCustom.attr('checked') == true)
+        if ( belowCustom.prop('checked') != 'undefined' &&  belowCustom.prop('checked') == true)
         {
             $('.below_option_custom').removeClass('hidden');
         }
@@ -133,7 +142,7 @@ jQuery(document).ready(function($) {
 
     var aboveCustomString = $('#above_custom_string'); 
     var aboveCustomStringShow = function(){
-        if ( aboveCustomString.attr('checked') != 'undefined' &&  aboveCustomString.attr('checked') == true)
+        if ( aboveCustomString.prop('checked') != 'undefined' &&  aboveCustomString.prop('checked') == true)
         {
             $('.above_custom_string_input').removeClass('hidden');
         }
@@ -161,4 +170,123 @@ jQuery(document).ready(function($) {
 
     $('input[name="addthis_settings[above]"]').change( function(){aboveCustomShow(); aboveCustomStringShow();} );
     $('input[name="addthis_settings[below]"]').change( function(){belowCustomShow(); belowCustomStringShow();} );
+    
+    /**
+     * Hide Theming and branding options when user selects version 3.0 or above
+     */   
+    var ATVERSION_250 = 250;
+    var AT_VERSION_300 = 300;
+    var MANUAL_UPDATE = -1;
+    var AUTO_UPDATE = 0;
+    var REVERTED = 1;
+    var atVersionUpdateStatus = $("#addthis_atversion_update_status").val();
+    if (atVersionUpdateStatus == REVERTED) {
+        $(".classicFeature").show();
+    } else {
+        $(".classicFeature").hide();
+    }
+    
+    /**
+     * Revert to older version after the user upgrades
+     */
+    $(".addthis-revert-atversion").click(function(){
+       $("#addthis_atversion_update_status").val(REVERTED);
+       $("#addthis_atversion_hidden").val(ATVERSION_250);
+       $(this).closest("form").submit();
+       return false;
+    });
+   /**
+    * Update to a newer version
+    */ 
+   $(".addthis-update-atversion").click(function(){
+       $("#addthis_atversion_update_status").val(MANUAL_UPDATE);
+       $("#addthis_atversion_hidden").val(AT_VERSION_300);
+       $(this).closest("form").submit();
+       return false;
+   });
+
+   var addthis_credential_validation_status = $("#addthis_credential_validation_status");
+   var addthis_validation_message = $("#addthis-credential-validation-message");
+   var addthis_profile_validation_message = $("#addthis-profile-validation-message");
+   //Validate the Addthis credentials
+   window.skipValidationInternalError = false;
+   function validate_addthis_credentials() {
+        $.ajax(
+            {"url" : addthis_option_params.wp_ajax_url,
+             "type" : "post",
+             "data" : {"action" : addthis_option_params.addthis_validate_action,
+                      "addthis_profile" : $("#addthis_profile").val(),
+                      "addthis_username" : $("#addthis_username").val(),
+                      "addthis_password" : $("#addthis_password").val()
+                  },
+             "dataType" : "json",
+             "beforeSend" : function() {
+                 $(".addthis-admin-loader").show();
+                 addthis_validation_message.html("").next().hide();
+                 addthis_profile_validation_message.html("").next().hide();
+             },
+             "success": function(data) {
+                 addthis_validation_message.show();
+                 addthis_profile_validation_message.show();
+
+                 if (data.credentialmessage == "error" || (data.profileerror == "false" && data.credentialerror == "false")) {
+                     if (data.credentialmessage != "error") {
+                         addthis_credential_validation_status.val(1);
+                     } else {
+                         window.skipValidationInternalError = true;
+                     }
+                     $("#addthis_settings").submit();
+                 } else {
+                     addthis_validation_message.html(data.credentialmessage);
+                     addthis_profile_validation_message.html(data.profilemessage);
+                     if (data.profilemessage != "") {
+                         $('html, body').animate({"scrollTop":0}, 'slow');
+                     }
+                 }
+
+             },
+             "complete" :function(data) {
+                 $(".addthis-admin-loader").hide();
+             },
+             "error" : function(jqXHR, textStatus, errorThrown) {
+                 console.log(textStatus, errorThrown);
+             }
+         });
+    }
+    //Prevent default form submission
+    $("#addthis_settings").submit(function(){
+        if(window.skipValidationInternalError) {
+            return true;
+        }
+        var isProfileEmpty = $.trim($("#addthis_profile").val()) == "";
+        var isUsernameEmpty = $.trim($("#addthis_username").val()) == "";
+        var isPasswordEmpty = $.trim($("#addthis_password").val()) == "";
+        var isAnyFieldEmpty = isProfileEmpty || isUsernameEmpty || isPasswordEmpty;
+        var validationRequired = addthis_credential_validation_status.val() == 0;
+        
+        if(isUsernameEmpty != isPasswordEmpty) {
+            var emptyLabel = isUsernameEmpty ? "username" : "password";
+            addthis_validation_message.html("&#x2716; AddThis " + emptyLabel + " is required to view analytics").next().hide();
+            return false;
+        } else if (isProfileEmpty && !isUsernameEmpty && !isPasswordEmpty) {
+            addthis_profile_validation_message.html("&#x2716; AddThis profile ID is required to view analytics").next().hide();
+            $('html, body').animate({"scrollTop":0}, 'slow');
+            return false;
+        } else if (!validationRequired || isAnyFieldEmpty) {
+            return true;
+        } else if(!isAnyFieldEmpty && validationRequired) {
+            validate_addthis_credentials();
+            return false;
+        }
+    });
+    
+    $("#addthis_username, #addthis_password, #addthis_profile").change(function(){
+       addthis_credential_validation_status.val(0);
+       if($.trim($("#addthis_profile").val()) == "") {
+            addthis_profile_validation_message.next().hide();
+       }
+       if(($.trim($("#addthis_username").val()) == "") || ($.trim($("#addthis_password").val()) == "")) {
+            addthis_validation_message.next().hide();
+       }
+    });
 });

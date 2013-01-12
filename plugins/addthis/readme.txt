@@ -1,9 +1,9 @@
 === AddThis === 
-Contributors: _mjk_, jorbin, addthis_paul, joesullivan
+Contributors: srijith.v, solchea, jorbin, _mjk_, addthis_paul, joesullivan 
 Tags: share, addthis, social, bookmark, sharing, bookmarking, widget,AddThis, addtoany, aim, bookmark, buzz, del.icio.us, Digg,e-mail, email, Facebook, google bookmarks, google buzz, myspace,network, NewsVine, Reddit, Share, share this, sharethis, social, socialize, stumbleupon, twitter, windows live, yahoo buzz, pintrest, widget
 Requires at least: 2.9
-Tested up to: 3.3.2
-Stable tag: 2.4.3
+Tested up to: 3.5
+Stable tag: 3.0.2
 
 The AddThis Social Bookmarking Widget allows any visitor to bookmark and share your site easily with over 330 popular services. 
 
@@ -12,9 +12,9 @@ Get more traffic back to your site by installing the AddThis WordPress plugin. W
 
 Optionally, sign up for a free AddThis.com account to see how your visitors are sharing your content: which services they're using for sharing, which content is shared the most, and more.
 
-We also have plugins available for <a href='http://wordpress.org/extend/plugins/addthis-follow/'>Increasing followers on social networks</a> and <a href='http://wordpress.org/extend/plugins/addthis-welcome/'>Welcoming users based on social behavior</a>.
+We also have plugins available for <a href='http://wordpress.org/extend/plugins/addthis-follow/'>increasing followers on social networks</a>, <a href='http://wordpress.org/extend/plugins/addthis-welcome/'>welcoming users based on social behavior</a>, and <a href='http://wordpress.org/extend/plugins/addthis-social-sign-in'>adding social authentication</a> to your WordPress blog.
 
-Tell us what you think <a href='http://www.surveymonkey.com/s/53FDFRF'>Help make AddThis even better by taking this short customer survey.</a>
+Help make AddThis even better by taking this <a href='http://www.surveymonkey.com/s/53FDFRF'>short customer survey.</a>
 
 <a href="http://www.addthis.com/blog">AddThis Blog</a> | <a href="http://www.addthis.com/privacy">Privacy Policy</a>
 
@@ -59,7 +59,7 @@ All of the options required through this plugin require javascript.   JavaScript
 1. It's free!
 
 = Who else uses AddThis? =
-Over 1,200,000 sites have installed AddThis. With over a billion unique users, AddThis is helping share content all over the world, in more than sixty languages. You might be surprised who's sharing their website using AddThis--<a href="http://www.addthis.com/features#partners">here are just a few</a>.
+Over 14,000,000 sites have installed AddThis. With over a billion unique users, AddThis is helping share content all over the world, in more than sixty languages. You might be surprised who's sharing their website using AddThis--<a href="http://www.addthis.com/features#partners">here are just a few</a>.
 
 = What services does AddThis support? =
 We currently support over 330 services, from email and blogging platforms to social networks and news aggregators, and we add new services every month. Want to know if your favorite service is supported? This list is accurate up to the minute: <a href="http://www.addthis.com/services">http://www.addthis.com/services</a>.
@@ -78,6 +78,29 @@ In the screen options you can enable the AddThis meta box.  Check the box and sa
 PHP 5+ is preferred; PHP 4 is supported.
 
 == Changelog ==
+= 3.0.2 = 
+* Bug fix: Conflict with WpSuperCache resolved
+* Wordpress 3.5 style conflicts resolved
+
+= 3.0.1 = 
+* Bug fix: Issues with usernames/passwords with special characters
+
+= 3.0 =
+* UX changes in admin settings
+* Credential verification in Admin settings. If AddThis account details are wrong it will be notified to user. 
+* Bug fixes
+
+= 2.5.1 =
+* Added hashtag support for Twitter
+* Conflict removed with <a href="http://wordpress.org/extend/plugins/addthis-follow/">AddThis Follow</a> and <a href="http://wordpress.org/extend/plugins/addthis-welcome/">AddThis Welcome Bar</a> Wordpress plugins
+* Bug fixes
+
+= 2.5.0 =
+* <a href="http://www.addthis.com/blog/2012/09/13/introducing-our-new-sharing-experience">New streamlined and simplified share menu</a>
+* Added Instant Share for Facebook and Twitter
+* Updated Pinterest support
+* Bug fixes
+
 = 2.4.1 =
 * Bug fixes
 
@@ -191,6 +214,22 @@ Fixed nondeterministic bug with the_title(), causing the title to occasionally a
 
 
 == Upgrade Notice ==
+
+= 3.0.2 = 
+Bug fixes.
+
+= 3.0.1 = 
+Bug fixes.
+
+= 3.0 =
+Updated UI, AddThis account verification and bug fixes.
+
+= 2.5.1 =
+Bug fixes.
+
+= 2.5.0 =
+Updated share menu, Instant Share, Pinterest updates and bug fixes.
+
 = 2.4.3 =
 Fixed admin console bug for non-administrators.
 

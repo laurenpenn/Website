@@ -18,7 +18,7 @@ function dest_dropbox() {
       trigger_error(sprintf(__('Authed with DropBox from %s','backwpup'),$info['display_name']),E_USER_NOTICE);
     }
     //Check Quota
-    $dropboxfreespase=$info['quota_info']['quota']-$info['quota_info']['shared']-$info['quota_info']['normal'];
+    $dropboxfreespase=(float)$info['quota_info']['quota']-(float)$info['quota_info']['shared']-(float)$info['quota_info']['normal'];
     if (filesize($STATIC['JOB']['backupdir'].$STATIC['backupfile'])>$dropboxfreespase) {
       trigger_error(__('No free space left on DropBox!!!','backwpup'),E_USER_ERROR);
       $WORKING['STEPSDONE'][]='DEST_DROPBOX'; //set done

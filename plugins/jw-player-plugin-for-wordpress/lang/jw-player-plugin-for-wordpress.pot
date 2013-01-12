@@ -1,0 +1,732 @@
+# Copyright (C) 2012 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/jw-player-plugin-for-"
+"wordpress\n"
+"POT-Creation-Date: 2012-07-18 15:48:19+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: admin/AdminContext.php:70
+msgid "The '%s' Player was successfully deleted."
+msgstr ""
+
+#: admin/AdminContext.php:73 admin/PlayerState.php:221
+msgid "Create Custom Player"
+msgstr ""
+
+#: admin/AdminContext.php:74
+msgid "Custom Player"
+msgstr ""
+
+#: admin/AdminContext.php:94
+msgid "The '%s' Player was successfully saved."
+msgstr ""
+
+#: admin/AdminContext.php:96
+msgid ""
+"The '%1$s' failed to save.  Please make sure the %2$s exists and is "
+"writable.  "
+msgstr ""
+
+#: admin/AdminState.php:90
+msgid ""
+"A player with this name already exists and will be overwritten.  Would you "
+"like to continue?"
+msgstr ""
+
+#: admin/AdminState.php:96 media/JWPlaylistManager.php:289
+msgid "Save"
+msgstr ""
+
+#: admin/AdminState.php:98
+msgid "Previous"
+msgstr ""
+
+#: admin/AdminState.php:99
+msgid "Cancel"
+msgstr ""
+
+#: admin/AdminState.php:100
+msgid "Next"
+msgstr ""
+
+#: admin/AdvancedState.php:90
+msgid "Additional Flashvars"
+msgstr ""
+
+#: admin/AdvancedState.php:101
+msgid ""
+"Enter one additional flashvar (name=value) per line that you would like to "
+"be used by this player.  <strong>Note:</strong> Overriding the standard "
+"flashvars could lead to unexpected behavior. "
+msgstr ""
+
+#: admin/FlashVarState.php:130 admin/SettingsPage.php:133
+msgid "Player Settings"
+msgstr ""
+
+#: admin/LTASState.php:3
+msgid ""
+"The LongTail AdSolution (LTAS) is a service which allows you to monetize "
+"your content through pre-roll, post-roll and overlay ads from premium video "
+"advertisers.  To use this service you must have an account.  For more "
+"information visit <a href=http://www.longtailvideo.com/adsolution%s "
+"target=_blank>http://www.longtailvideo.com/adsolution</a>.<br/><br/"
+"><strong>To sign up for this service, <a href=https://dashboard."
+"longtailvideo.com/signup.aspx%s target=_blank>click here to create an "
+"account</a>.</strong>"
+msgstr ""
+
+#: admin/LTASState.php:4
+msgid ""
+"<a href=https://dashboard.longtailvideo.com/%s target=_blank>AdSolution "
+"Dashboard.</a>"
+msgstr ""
+
+#: admin/LTASState.php:94
+msgid "Your LTAS channel code.  Obtained from the %s"
+msgstr ""
+
+#: admin/LicensePage.php:10
+msgid ""
+"By default, this plugin uses the latest non-commercial version of the JW "
+"Player.  Use of the player, skins and plugins is free for non-commercial "
+"use.  If you operate a commercial site (i.e., sells products, runs ads, or "
+"is owned by a company), you are required to purchase a license for the "
+"products you use."
+msgstr ""
+
+#: admin/LicensePage.php:11
+msgid ""
+"Purchasing a license will remove the JW Player watermark and allow you to "
+"set your own watermark if desired.  In addition, you will be able to use "
+"commercial-only plugins, such as advertising plugins."
+msgstr ""
+
+#: admin/LicensePage.php:12
+msgid "Purchase a License"
+msgstr ""
+
+#: admin/LicensePage.php:15
+msgid ""
+"Once you have purchased a license for the commercial player, you can upload "
+"it here."
+msgstr ""
+
+#: admin/LicensePage.php:16
+msgid "Upload Commercial Player"
+msgstr ""
+
+#: admin/PlayerState.php:3
+msgid ""
+"The JW Player&trade; is used to deliver video content through your WordPress "
+"website.  For more information please visit <a href=http://www.longtailvideo."
+"com/%s target=_blank>LongTail Video</a>."
+msgstr ""
+
+#: admin/PlayerState.php:4
+msgid ""
+"<strong>Optional:</strong> This section allows you to create custom players. "
+"It is possible to configure flashvars, skins and plugins."
+msgstr ""
+
+#: admin/PlayerState.php:5
+msgid ""
+"To obtain a licensed player, please purchase a license from LongTail Video."
+msgstr ""
+
+#: admin/PlayerState.php:114
+msgid "JW Player Status"
+msgstr ""
+
+#: admin/PlayerState.php:122 admin/PlayerState.php:124
+msgid "Installed"
+msgstr ""
+
+#: admin/PlayerState.php:122
+msgid "Not detected"
+msgstr ""
+
+#: admin/PlayerState.php:124
+msgid "Not detected (SWFObject will be used instead)"
+msgstr ""
+
+#: admin/PlayerState.php:127
+msgid "Click Here to Upgrade"
+msgstr ""
+
+#: admin/PlayerState.php:130
+msgid "Current Player"
+msgstr ""
+
+#: admin/PlayerState.php:130
+msgid "Version Unknown"
+msgstr ""
+
+#: admin/PlayerState.php:131
+msgid ""
+"The player is being loaded from an alternate location (<strong>%s</strong>) "
+"and is not being managed by the plugin."
+msgstr ""
+
+#: admin/PlayerState.php:133
+msgid "<strong>Current Player:</strong> Version Unknown"
+msgstr ""
+
+#: admin/PlayerState.php:134 admin/PlayerState.php:149
+msgid "Click Here to Reinstall"
+msgstr ""
+
+#: admin/PlayerState.php:148
+msgid "<strong>Current Player:</strong> Version Unknown "
+msgstr ""
+
+#: admin/PlayerState.php:181
+msgid "Out-of-the-Box"
+msgstr ""
+
+#: admin/PlayerState.php:190 admin/PlayerState.php:210
+msgid "Copy"
+msgstr ""
+
+#: admin/PlayerState.php:195
+msgid "New Player"
+msgstr ""
+
+#: admin/PlayerState.php:211
+msgid "Edit"
+msgstr ""
+
+#: admin/PlayerState.php:212 media/JWPlaylistManager.php:290
+msgid "Delete"
+msgstr ""
+
+#: admin/PluginState.php:135
+msgid "Learn more..."
+msgstr ""
+
+#: admin/PluginState.php:204
+msgid ""
+"Enter a comma delimited list of additional plugins you would like to be used "
+"by this player.  <strong>Note:</strong> Flashvars for these plugins will "
+"need to be set in the Additional Flashvars section under the Advanced "
+"Settings tab."
+msgstr ""
+
+#: admin/SettingsPage.php:53
+msgid "Files and settings deleted.  The plugin can now be deactivated."
+msgstr ""
+
+#: admin/SettingsPage.php:65
+msgid "JW Player Plugin Settings"
+msgstr ""
+
+#: admin/SettingsPage.php:71
+msgid "Shortcode Settings"
+msgstr ""
+
+#: admin/SettingsPage.php:73
+msgid ""
+"Configure the source for each page type.  This is dependent on your theme "
+"which can either pull from <strong>the_content</strong> or "
+"<strong>the_excerpt</strong>.  Optionally you can disable embedding on a "
+"specific page type.  This will strip out the shortcode."
+msgstr ""
+
+#: admin/SettingsPage.php:76
+msgid "Category Pages:"
+msgstr ""
+
+#: admin/SettingsPage.php:78 admin/SettingsPage.php:90
+#: admin/SettingsPage.php:102 admin/SettingsPage.php:114
+msgid "Excerpt"
+msgstr ""
+
+#: admin/SettingsPage.php:80 admin/SettingsPage.php:92
+#: admin/SettingsPage.php:104 admin/SettingsPage.php:116
+msgid "Content"
+msgstr ""
+
+#: admin/SettingsPage.php:82 admin/SettingsPage.php:94
+#: admin/SettingsPage.php:106 admin/SettingsPage.php:118
+msgid "Disable"
+msgstr ""
+
+#: admin/SettingsPage.php:84
+msgid "Configure JW Player shortcode behavior on category pages."
+msgstr ""
+
+#: admin/SettingsPage.php:88
+msgid "Search Pages:"
+msgstr ""
+
+#: admin/SettingsPage.php:96
+msgid "Configure JW Player shortcode behavior on search result pages."
+msgstr ""
+
+#: admin/SettingsPage.php:108
+msgid "Configure JW Player shortcode behavior on tag pages."
+msgstr ""
+
+#: admin/SettingsPage.php:120
+msgid "Configure JW Player shortcode behavior on the home page."
+msgstr ""
+
+#: admin/SettingsPage.php:137
+msgid "Enable Alternative Player Location:"
+msgstr ""
+
+#: admin/SettingsPage.php:139 admin/SettingsPage.php:179
+#: admin/SettingsPage.php:189 admin/SettingsPage.php:199
+#: admin/SettingsPage.php:222 admin/SettingsPage.php:232
+msgid "Yes"
+msgstr ""
+
+#: admin/SettingsPage.php:141 admin/SettingsPage.php:181
+#: admin/SettingsPage.php:191 admin/SettingsPage.php:201
+#: admin/SettingsPage.php:224 admin/SettingsPage.php:234
+msgid "No"
+msgstr ""
+
+#: admin/SettingsPage.php:143
+msgid ""
+"When enabled the plugin will load the player from the specified location."
+msgstr ""
+
+#: admin/SettingsPage.php:147
+msgid "Player Location:"
+msgstr ""
+
+#: admin/SettingsPage.php:150
+msgid ""
+"Configure the location the player.swf and jwplayer.js files should be loaded "
+"from."
+msgstr ""
+
+#: admin/SettingsPage.php:154
+msgid "Select Primary Mode:"
+msgstr ""
+
+#: admin/SettingsPage.php:156
+msgid "Flash"
+msgstr ""
+
+#: admin/SettingsPage.php:158
+msgid "HTML5"
+msgstr ""
+
+#: admin/SettingsPage.php:160
+msgid "Select which mode the player will default to (Flash or HTML5)."
+msgstr ""
+
+#: admin/SettingsPage.php:173
+msgid "Content Settings"
+msgstr ""
+
+#: admin/SettingsPage.php:177
+msgid "Show Duration on Images:"
+msgstr ""
+
+#: admin/SettingsPage.php:183
+msgid ""
+"Controls whether the duration field is visible when editing the meta data "
+"for images."
+msgstr ""
+
+#: admin/SettingsPage.php:187
+msgid "Show Insert Button on Images:"
+msgstr ""
+
+#: admin/SettingsPage.php:193
+msgid ""
+"Controls whether the insert button is visible when editing the meta data for "
+"images."
+msgstr ""
+
+#: admin/SettingsPage.php:197
+msgid "Enable Facebook Open Graph Data:"
+msgstr ""
+
+#: admin/SettingsPage.php:203
+msgid ""
+"Whether or not Facebook Open Graph information should be inserted into the "
+"page for sharing on Facebook."
+msgstr ""
+
+#: admin/SettingsPage.php:216
+msgid "Site Settings"
+msgstr ""
+
+#: admin/SettingsPage.php:220
+msgid "Use SSL when loading the player:"
+msgstr ""
+
+#: admin/SettingsPage.php:226
+msgid ""
+"Controls whether the plugin will load the player, configs and skins using "
+"https if your site is https.  <strong>Note:</strong>You will need to resave "
+"your players after making a change."
+msgstr ""
+
+#: admin/SettingsPage.php:230
+msgid "Load jwplayer.js/swfobject.js in page head:"
+msgstr ""
+
+#: admin/SettingsPage.php:236
+msgid ""
+"Controls whether the plugin will insert the jwplayer.js or swfobject.js "
+"files into the head of every page.  If set to No jwplayer.js or swfobject.js "
+"will only be included on pages where the jwplayer.js shortcode is used."
+msgstr ""
+
+#: admin/SettingsPage.php:249
+msgid "Uninstall"
+msgstr ""
+
+#: admin/SettingsPage.php:255
+msgid ""
+"To fully remove the plugin, click the Uninstall button.  Deactivating "
+"without uninstalling will not remove the data created by the plugin."
+msgstr ""
+
+#: admin/SettingsPage.php:257
+msgid "WARNING:"
+msgstr ""
+
+#: admin/SettingsPage.php:258
+msgid ""
+"This cannot be undone.  Since this is deleting data from your database, it "
+"is recommended that you create a backup."
+msgstr ""
+
+#: admin/SettingsPage.php:260
+msgid "Uninstall plugin"
+msgstr ""
+
+#: admin/SettingsPage.php:260
+msgid ""
+"You are about to Uninstall this plugin from WordPress.\\nThis action is not "
+"reversible.\\n\\nChoose [Cancel] to Stop, [OK] to Uninstall.\\n"
+msgstr ""
+
+#: admin/UpdatePage.php:124
+msgid "JW Player Upgrade"
+msgstr ""
+
+#: admin/UpdatePage.php:131 admin/UpdatePage.php:166
+msgid "JW Player Install"
+msgstr ""
+
+#: admin/UpdatePage.php:137
+msgid ""
+"Successfully downloaded and installed the latest player version, JW Player "
+msgstr ""
+
+#: admin/UpdatePage.php:138
+msgid ""
+"If you have a specific version of the JW Player you wish to install (eg. "
+"licensed version), then you can install it using the <a href='admin.php?"
+"page=jwplayer-update'>upgrade page</a>."
+msgstr ""
+
+#: admin/UpdatePage.php:150
+msgid ""
+"Not able to download JW Player.  Please check your internet connection. <br/"
+">\n"
+"    If you already have the JW Player then you can install it using the <a "
+"href='admin.php?page=jwplayer-update'>upgrade page</a>.<br/>\n"
+"    Alternatively you may FTP the player files directly to your site.  Place "
+"the player.swf and jwplayer.js files in %s/player/. <br/> "
+msgstr ""
+
+#: admin/UpdatePage.php:154
+msgid ""
+"Not able to install JW Player.\n"
+"    Please make sure the %s/player/ directory exists (and is writabe) and "
+"then visit the <a href='admin.php?page=jwplayer-update'>upgrade page</a>.<br/"
+">\n"
+"    Alternatively you may FTP the player.swf and jwplayer.js files directly "
+"to your site. <br/>"
+msgstr ""
+
+#: admin/UpdatePage.php:158
+msgid ""
+"The necessary zip classes are missing.  Please FTP the player manually.  <br/"
+">Place the player.swf and jwplayer.js files in %s/player/."
+msgstr ""
+
+#: admin/UpdatePage.php:160
+msgid ""
+"Could not find player.swf or jwplayer.js.  Either they are not present or "
+"the archive is invalid.<br/>\n"
+"    Alternatively you may FTP the player files directly to your site.  Place "
+"the player.swf and jwplayer.js files in %s/player/."
+msgstr ""
+
+#: admin/UpdatePage.php:171
+msgid "Successfully installed your player, JW Player "
+msgstr ""
+
+#: admin/UpdatePage.php:174
+msgid "JW Player was not detected."
+msgstr ""
+
+#: admin/UpdatePage.php:186
+msgid ""
+"Not able to install JW Player.  Please make sure the %s directory exists "
+"(and is writabe) and then visit the <a href='admin.php?page=jwplayer-"
+"update'>upgrade page</a>.  "
+msgstr ""
+
+#: admin/UpdatePage.php:189
+msgid ""
+"The necessary zip classes are missing.  Please upload the player manually "
+"instead using the <a href='admin.php?page=jwplayer-update'>upgrade page</a>."
+msgstr ""
+
+#: admin/UpdatePage.php:192
+msgid ""
+"Could not find player.swf or yt.swf.  Either they are not present or the "
+"archive is invalid."
+msgstr ""
+
+#: admin/UpdatePage.php:195
+msgid "Not a valid zip archive."
+msgstr ""
+
+#: admin/UpdatePage.php:286
+msgid ""
+"Upload your own zip package. Use this to upgrade to the licensed version or "
+"to install a specific version of the player.  To obtain a licensed player, "
+"please purchase a license from <a href=\"https://www.longtailvideo.com/order/"
+"%s\" target=_blank>LongTail Video</a>."
+msgstr ""
+
+#: admin/UpdatePage.php:289
+msgid "Install JW Player:"
+msgstr ""
+
+#: admin/UpdatePage.php:291
+msgid "Upload"
+msgstr ""
+
+#: admin/UpdatePage.php:310
+msgid "Automatically Upgrade"
+msgstr ""
+
+#: admin/UpdatePage.php:316
+msgid ""
+"Automatically download the latest Non-commercial version of the JW Player to "
+"your web server."
+msgstr ""
+
+#: admin/UpdatePage.php:319
+msgid "Install Latest JW Player"
+msgstr ""
+
+#: jwplayermodule.php:29
+msgid ""
+"For tips on how to make sure this folder is writable please refer to <a href="
+"\"http://codex.wordpress.org/Changing_File_Permissions\">http://codex."
+"wordpress.org/Changing_File_Permissions</a>."
+msgstr ""
+
+#: jwplayermodule.php:39
+msgid ""
+"Sorry, the JWPlayer Plugin for WordPress works only under WordPress 2.7 or "
+"higher."
+msgstr ""
+
+#: jwplayermodule.php:46
+msgid ""
+"Sorry, the JWPlayer Plugin for WordPress only works with PHP Version 5 or "
+"higher."
+msgstr ""
+
+#: jwplayermodule.php:196
+msgid ""
+"Activation of the JW Player Plugin for WordPress could not complete "
+"successfully.  The following directories could not be created automatically: "
+"</p><ul><li>-\n"
+"     %s</li><li>- %s/configs</li><li>- %s/player</li></ul><p>Please ensure "
+"these directories are writable.  "
+msgstr ""
+
+#: jwplayermodule.php:208
+msgid ""
+"To complete installation of the JW Player Plugin for WordPress, please click "
+"install.  "
+msgstr ""
+
+#: jwplayermodule.php:218
+msgid "Licensing"
+msgstr ""
+
+#: jwplayermodule.php:219
+msgid "Upgrade"
+msgstr ""
+
+#: jwplayermodule.php:220
+msgid "Settings"
+msgstr ""
+
+#: jwplayermodule.php:221
+msgid "Playlists"
+msgstr ""
+
+#: media/JWMediaFunctions.php:132 media/JWMediaFunctions.php:156
+msgid "Duration"
+msgstr ""
+
+#: media/JWMediaFunctions.php:141
+msgid "Thumbnail URL"
+msgstr ""
+
+#: media/JWMediaFunctions.php:146
+msgid "Thumbnail"
+msgstr ""
+
+#: media/JWMediaFunctions.php:151
+msgid "Creator"
+msgstr ""
+
+#: media/JWMediaFunctions.php:161
+msgid "HTML5 file"
+msgstr ""
+
+#: media/JWMediaFunctions.php:171
+msgid "Download file"
+msgstr ""
+
+#: media/JWMediaFunctions.php:186
+msgid "Streamer"
+msgstr ""
+
+#: media/JWMediaFunctions.php:191 media/JWPlaylistManager.php:310
+msgid "File"
+msgstr ""
+
+#: media/JWMediaFunctions.php:196
+msgid "Provider"
+msgstr ""
+
+#: media/JWMediaFunctions.php:202
+msgid "Insert JW Player"
+msgstr ""
+
+#: media/JWMediaFunctions.php:204
+msgid "Select Player"
+msgstr ""
+
+#: media/JWPlaylistImportManager.php:53
+msgid "Insert a playlist"
+msgstr ""
+
+#: media/JWPlaylistImportManager.php:54
+msgid ""
+"This tab allows you to insert one of your playlists into your post.  To "
+"construct a playlist please visit the Playlist Media page."
+msgstr ""
+
+#: media/JWPlaylistImportManager.php:59
+msgid "Select Playlist:"
+msgstr ""
+
+#: media/JWPlaylistImportManager.php:76
+msgid "Select Player:"
+msgstr ""
+
+#: media/JWPlaylistImportManager.php:88
+msgid "Insert Playlist"
+msgstr ""
+
+#: media/JWPlaylistManager.php:89
+msgid "&laquo;"
+msgstr ""
+
+#: media/JWPlaylistManager.php:90
+msgid "&raquo;"
+msgstr ""
+
+#: media/JWPlaylistManager.php:146
+msgid "JW Player Plugin Playlist Manager"
+msgstr ""
+
+#: media/JWPlaylistManager.php:258
+msgid "Your playlist must have a valid name."
+msgstr ""
+
+#: media/JWPlaylistManager.php:265
+msgid "Are you sure wish to delete the Playlist?"
+msgstr ""
+
+#: media/JWPlaylistManager.php:274
+msgid "New Playlist:"
+msgstr ""
+
+#: media/JWPlaylistManager.php:276
+msgid "Create Playlist"
+msgstr ""
+
+#: media/JWPlaylistManager.php:281
+msgid "Playlist:"
+msgstr ""
+
+#: media/JWPlaylistManager.php:293
+msgid "Media List"
+msgstr ""
+
+#: media/JWPlaylistManager.php:298
+msgid "Search Media:"
+msgstr ""
+
+#: media/JWPlaylistManager.php:300
+msgid "Search Media"
+msgstr ""
+
+#: media/JWPlaylistManager.php:311
+msgid "Author"
+msgstr ""
+
+#: media/JWPlaylistManager.php:312
+msgid "Date"
+msgstr ""
+
+#: media/JWPlaylistManager.php:333 media/JWPlaylistManager.php:387
+msgid "Y/m/d"
+msgstr ""
+
+#: media/JWPlaylistManager.php:338
+msgid "Drag items from the Media List to start building your playlist."
+msgstr ""
+
+#: media/JWPlaylistManager.php:399
+msgid "Available Media:"
+msgstr ""
+
+#: media/JWShortcode.php:167
+msgid "[PLAYLIST not found]"
+msgstr ""
+
+#: media/JWURLImportManager.php:66
+msgid "Add media file from URL"
+msgstr ""
+
+#: media/JWURLImportManager.php:73
+msgid "URL"
+msgstr ""
+
+#: media/JWURLImportManager.php:81
+msgid "Add Media"
+msgstr ""
+
+#: media/JWURLImportManager.php:113
+msgid "Save all changes"
+msgstr ""

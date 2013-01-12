@@ -24,12 +24,7 @@ abstract class P2P_Factory {
 
 			$directions = self::determine_directions( $ctype, $object_type, $post_type, $args->show );
 
-			$title = $ctype->title;
-
-			if ( count( $directions ) > 1 && $title['from'] == $title['to'] ) {
-				$title['from'] .= __( ' (from)', P2P_TEXTDOMAIN );
-				$title['to']   .= __( ' (to)', P2P_TEXTDOMAIN );
-			}
+			$title = self::get_title( $directions, $ctype );
 
 			foreach ( $directions as $direction ) {
 				$key = ( 'to' == $direction ) ? 'to' : 'from';
@@ -41,28 +36,26 @@ abstract class P2P_Factory {
 		}
 	}
 
+	protected static function get_title( $directions, $ctype ) {
+		$title = array(
+			'from' => $ctype->get_field( 'title', 'from' ),
+			'to' => $ctype->get_field( 'title', 'to' )
+		);
+
+		if ( count( $directions ) > 1 && $title['from'] == $title['to'] ) {
+			$title['from'] .= __( ' (from)', P2P_TEXTDOMAIN );
+			$title['to']   .= __( ' (to)', P2P_TEXTDOMAIN );
+		}
+
+		return $title;
+	}
+
 	protected static function determine_directions( $ctype, $object_type, $post_type, $show_ui ) {
 		$direction = $ctype->direction_from_types( $object_type, $post_type );
 		if ( !$direction )
 			return array();
 
-		if ( $ctype->indeterminate && $ctype->reciprocal ) {
-			if ( $show_ui )
-				$directions = array( 'any' );
-			else
-				$directions = array();
-		} else {
-			if ( $ctype->indeterminate ) {
-				$direction = 'any';
-			}
-
-			$directions = array_intersect(
-				_p2p_expand_direction( $show_ui ),
-				_p2p_expand_direction( $direction )
-			);
-		}
-
-		return $directions;
+		return $ctype->_directions_for_admin( $direction, $show_ui );
 	}
 
 	abstract function add_item( $directed, $object_type, $post_type, $title );

@@ -1,22 +1,22 @@
 === Twitter Widget Pro ===
-Contributors: aaroncampbell
+Contributors: aaroncampbell, PeteMall, range, saracannon
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9993090
 Tags: twitter, widget, feed
 Requires at least: 3.0
-Tested up to: 3.4.1
-Stable tag: 2.3.9
+Tested up to: 3.5
+Stable tag: 2.4.1
 
 A widget that properly handles twitter feeds, including parsing @username, #hashtags, and URLs into links.
 
 == Description ==
 
-A widget that properly handles twitter feeds, including @username, #hashtag, and
-link parsing.  It supports displaying profiles images, and even lets you control
-whether to display the time and date of a tweet or how log ago it happened
-(about 5 hours ago, etc).
+A widget that properly handles twitter feeds, including parsing @username,
+#hashtag, and URLs into links.  It supports displaying profiles images, and even
+lets you control whether to display the time and date of a tweet or how log ago
+it happened (about 5 hours ago, etc).
 
 <a href="http://bluedogwebservices.com/wordpress-plugin/twitter-widget-pro/">Twitter Widget Pro</a>
-Brought to you by <a href="http://bluedogwebservices.com/" title="WordPress Development">BlueDog Web Services</a>
+Brought to you by <a href="http://ran.ge/" title="WordPress Development">Ran.ge</a>
 
 == Installation ==
 
@@ -130,6 +130,18 @@ Aparently the database queries required to display the friends feed was causing 
 
 == Upgrade Notice ==
 
+= 2.4.1 =
+Better support for hashtags with international characters & new German translation
+
+= 2.4.0 =
+Better linking to fix issues with links followed by punctuation plus support for extended characters in hashtags
+
+= 2.3.11 =
+Fix issue with "Include Retweets" not unchecking
+
+= 2.3.10 =
+Update feeds and links to Ran.ge, moves screenshots outside of plugin zip
+
 = 2.3.9 =
 Display dates based on your WordPress timezone setting
 
@@ -161,6 +173,28 @@ Fixes an issue with the intents and follow settings not being saved
 Fewer "could not connect to Twitter" messages, new links (reply, retweet, favorite), new follow button, and avatar fixes
 
 == Changelog ==
+
+= 2.4.1 =
+* Make sure hashtags are parsed UTF-8
+* Add German translation
+
+= 2.4.0 =
+* Better linking of URLs, especially handling of punctuation at end of URLs
+* Support for extended characters in hashtags
+* Allow externally linked images to serve via ssl
+* More efficient regex for link parsing
+* Link FTP links
+* Link E-Mail addresses
+* Complete conversion to Range plugin framework from Xavisys framework
+* Added place to check API usage
+
+= 2.3.11 =
+* Fix issue with "Include Retweets" not unchecking
+
+= 2.3.10 =
+* Update feeds and links to Ran.ge
+* Move assets to assets dir
+* Pull in some Range branding to replace Xavisys branding
 
 = 2.3.9 =
 * Display dates based on your WordPress timezone setting

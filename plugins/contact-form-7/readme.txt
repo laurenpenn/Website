@@ -2,9 +2,9 @@
 Contributors: takayukister
 Donate link: http://contactform7.com/donate/
 Tags: contact, form, contact form, feedback, email, ajax, captcha, akismet, multilingual
-Requires at least: 3.2
-Tested up to: 3.4.1
-Stable tag: 3.2.1
+Requires at least: 3.3
+Tested up to: 3.5
+Stable tag: 3.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,13 +14,21 @@ Just another contact form plugin. Simple but flexible.
 
 Contact Form 7 can manage multiple contact forms, plus you can customize the form and the mail contents flexibly with simple markup. The form supports Ajax-powered submitting, CAPTCHA, Akismet spam filtering and so on.
 
-* [Docs](http://contactform7.com/docs/)
-* [FAQ](http://contactform7.com/faq/)
-* [Support](http://contactform7.com/support/)
+= Docs & Support =
+
+You can find [docs](http://contactform7.com/docs/), [FAQ](http://contactform7.com/faq/) and more detailed information about Contact Form 7 on [contactform7.com](http://contactform7.com/). If you were unable to find the answer to your question on the FAQ or in any of the documentation, you should check the [support forum](http://wordpress.org/support/plugin/contact-form-7) on WordPress.org. If you can't locate any topics that pertain to your particular issue, post a new topic for it.
 
 = Contact Form 7 Needs Your Support =
 
-It is hard to continue development and support for this plugin without contributions from users like you. If you enjoy using Contact Form 7 and find it useful, please consider [__making a donation__](http://contactform7.com/donate/). Your donation will help encourage and support the plugin's continued development and better user support.
+It is hard to continue development and support for this free plugin without contributions from users like you. If you enjoy using Contact Form 7 and find it useful, please consider [__making a donation__](http://contactform7.com/donate/). Your donation will help encourage and support the plugin's continued development and better user support.
+
+= Recommended Plugins =
+
+The following are other recommended plugins by the author of Contact Form 7.
+
+* [Flamingo](http://wordpress.org/extend/plugins/flamingo/) - With Flamingo, you can save submitted messages via contact forms in the database.
+* [Really Simple CAPTCHA](http://wordpress.org/extend/plugins/really-simple-captcha/) - Really Simple CAPTCHA is a simple CAPTCHA module which works well with Contact Form 7.
+* [Bogo](http://wordpress.org/extend/plugins/bogo/) - Bogo is a straight-forward multilingual plugin that doesn't cause headaches.
 
 = Translators =
 
@@ -44,7 +52,7 @@ It is hard to continue development and support for this plugin without contribut
 * Dutch (nl_NL) - [Chris Devriese](http://www.100it.be/), [Martin Hein](http://www.split-a-pixel.nl/), [Rene](http://wpwebshop.com/)
 * Esperanto (eo_EO) - Arkadiusz Zychewicz
 * Estonian (et) - [Peeter Rahuvarm](http://www.kraabus.ee), Egon Elbre
-* Finnish (fi) - [Miika Turunen](http://www.webwork.fi/), [Mediajalostamo](http://www.mediajalostamo.fi/)
+* Finnish (fi) - [Miika Turunen](http://www.webwork.fi/), [Mediajalostamo](http://www.mediajalostamo.fi/), [Jani Alha](http://www.wysiwyg.fi/)
 * French (fr_FR) - [Jillij](http://www.jillij.com/), [Oncle Tom](http://case.oncle-tom.net/), [Maître Mô](http://maitremo.fr/)
 * Galician (gl_ES) - [Arume Desenvolvementos Informáticos](http://www.arumeinformatica.es/)
 * Georgian (ka_GE) - [Nodar Rocko Davituri](http://davituri.com/)
@@ -54,6 +62,7 @@ It is hard to continue development and support for this plugin without contribut
 * Hindi (hi_IN) - [Tarun Joshi](http://www.readers-cafe.net/), [Ashish](http://outshinesolutions.com/)
 * Hungarian (hu_HU) - [Andras Hirschler](http://hia.itblog.hu/), [János Csárdi-Braunstein](http://blogocska.org/), [Farkas Győző](http://www.sakraft.hu/)
 * Indonesian (Bahasa Indonesia; id_ID) - [Hendry Lee](http://blogbuildingu.com/), [Belajar Seo Indonesia](http://dhany.web.id/panduan-seo)
+* Irish (ga_IE) - [Vikas Arora](http://www.wiznicworld.com/)
 * Italian (it_IT) - [Bruno](http://www.brunosalzano.com), [Gianni Diurno](http://gidibao.net/)
 * Japanese (ja) - [Takayuki Miyoshi](http://ideasilo.wordpress.com)
 * Korean (ko_KR) - Seong Eun Lee, [Jong-In Kim](http://incommunity.codex.kr/wordpress/)
@@ -75,9 +84,9 @@ It is hard to continue development and support for this plugin without contribut
 * Slovene (sl_SI) - [Mihael Simonič](http://smihael.bplaced.net), Jani Roskar
 * Spanish (es_ES) - [Jordi Sancho](http://www.qasolutions.net/blog), [Vladimir Prieto](http://vladimir.prie.to/), [Federico Mikaelian](http://www.fedemika.com.ar/), [Matias Baldanza](http://matiasbaldanza.com/), [Carlos Agnese](http://albumdecarlitos.com.ar/)
 * Swedish (sv_SE) - [Fredrik Jonsson](http://www.fredda-o-ac.se/), [the Swedish community](http://wp-support.se/)
-* Tagalog (tl) - [Rupert Agnew Lanuza](http://wheretobuy.com.ph/)
+* Tagalog (tl) - [Rupert Agnew Lanuza](http://wheretobuy.com.ph/), [Hanne](http://pointen.dk/)
 * Tamil (ta) - [Nitin Aggarwal](http://offshoreally.com/)
-* Thai (th) - [kazama](http://blog.wordthai.com/), [ToshiK](http://www.tuntikorn.com/)
+* Thai (th) - [ToshiK](http://www.tuntikorn.com/), [kazama](http://blog.wordthai.com/)
 * Turkish (tr_TR) - [Roman Neumuller](http://katpatuka.wordpress.com), [Hasan Yılmaz](http://hedefturkce.com/), [Emin Buğra Saral](http://www.rahmetli.info/)
 * Ukrainian (uk) - [Andrey Kovba](http://myserver.com.ua/), [Ukrainian WordPress localization team](http://wordpress.co.ua/plugins/contact-form-7.html)
 * Vietnamese (vi) - Thanh Hải, Hà, [Khang Minh](http://betterwp.net/)
@@ -113,30 +122,38 @@ Do you have questions or issues with Contact Form 7? Use these support channels 
 
 == Changelog ==
 
-= 3.2.1 =
+= 3.3.2 =
 
-* Fixed: Error for use of array_key_exists function with invalid first argument.
-* Fixed: Adding unnecessary rewrite rules.
-* Fixed: "Screen Options" doesn't appear on each contact form edit screen.
-* Change the comment_type value sent to Akismet from 'contactform7' to 'contact-form' following their blog post.
-* Introduce wpcf7_add_meta_boxes function and action with the same name. This makes it easier to add custom meta boxes to the edit screen.
-* Pass meta informations of each form submission (e.g. client's IP address) to Flamingo.
-* The jQuery Form Plugin (jquery.form.js) has been updated to 3.14 and compressed with YUI compressor.
-* Translation for Basque has been created.
-* Translations for German, Italian, and Polish have been updated.
+* Fixed: Add the additional headers only when they are not empty.
+* Fixed: Don't load hidden files in the modules folder.
+* The jQuery Form Plugin (jquery.form.js) has been updated to 3.23.
+* Irish translation has been created by Vikas Arora.
+* Translations for German, Thai, Hungarian and Tagalog have been updated.
 
-= 3.2 =
+= 3.3.1 =
 
-* Enhanced admin panel. Introduced list table view for contact forms.
-* Moved the Contact menu to the upper position (just below the Comments).
-* Show alert message when Jetpack contact form is active.
-* Introduced Flamingo module.
-* Made capabilities more customizable.
-* wpcf7_admin_url() is deprecated. Use admin_url() or menu_page_url() instead.
-* Changed the default defined value of constants WPCF7_PLUGIN_DIR and WPCF7_PLUGIN_URL.
-* The jQuery Form Plugin (jquery.form.js) has been updated to 3.09 and compressed with YUI compressor.
-* Translations for Latvian, Swedish, and Czech have been updated.
+* Fixed: Apply esc_html() to response outputs. In the case it is necessary to use HTML tags in the response messages, new wpcf7_form_response_output filter is available.
+* Fixed: Don't use $_POST for internal data passing. Use global $wpcf7 variable instead.
+* Fixed: Treat array value correctly in the Akismet module.
+* Fixed: Escape outputs of [_user_agent] spacial mail tags used in the HTML mode.
+* Fixed: Don't show the notice about conflicting with Jetpack to new users who rarely see such conflicts.
+* The jQuery Form Plugin (jquery.form.js) has been updated to 3.18.
+* Translations for Danish and Finnish have been updated.
+
+= 3.3 =
+
+* New: Introduce a new special mail tag [_user_agent] for user agent information.
+* New: Make WordPress Comment Blacklist applicable for inputs through contact forms.
+* New: Introduce new form of mail tag [\_raw\_{field name}]. This allows to output raw user input those have not been modified with pipes.
+* New: Make mail tags available in response messages.
+* New: Introduce new additional setting on_submit. It works like on_sent_ok and has one-line JavaScript code, but on_submit code is fired regardless of whether or not the mail has been sent successfully.
+* New: Introduce 5 new jQuery custom event triggers (invalid.wpcf7, spam.wpcf7, mailsent.wpcf7, mailfailed.wpcf7, submit.wpcf7).
+* Fix: Nonce used in a form have been changed to have no time limit.
+* Fix: Make every post meta’s key have underscore prefix.
+* The jQuery Form Plugin (jquery.form.js) has been updated to 3.15 and compressed with YUI compressor.
+* The required WordPress version has been changed and now requires WordPress 3.3 or higher. If you use WordPress 3.2, you will need to upgrade WordPress.
+* Translations for Arabic and German have been updated.
 
 == Upgrade Notice ==
 
-The current version of Contact Form 7 requires WordPress 3.2 or higher. If you use older version of WordPress, you need to upgrade WordPress first.
+The current version of Contact Form 7 requires WordPress 3.3 or higher. If you use older version of WordPress, you need to upgrade WordPress first.

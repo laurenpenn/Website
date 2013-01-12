@@ -76,16 +76,18 @@ function gf_is_match(formId, rule){
         for(var i=0; i< inputs.length; i++){
             var fieldValue = gf_get_value(jQuery(inputs[i]).val());
 
-            //find specific checkbox item
-            if(fieldValue != rule["value"])
+            //find specific checkbox/radio item. Skip if this is not the specific item and the operator is not one that targets a range of values (i.e. greater than and less than)
+            var isRangeOperator = jQuery.inArray(rule["operator"], ["<", ">"]) >= 0;
+            if(fieldValue != rule["value"] && !isRangeOperator)
                 continue;
 
             //blank value if item isn't checked
             if(!jQuery(inputs[i]).is(":checked"))
                 fieldValue = "";
 
-            if(gf_matches_operation(fieldValue, rule["value"], rule["operator"]))
+            if(gf_matches_operation(fieldValue, rule["value"], rule["operator"])){
                 return true;
+            }
         }
     }
     else{
@@ -95,11 +97,15 @@ function gf_is_match(formId, rule){
         //transform regular value into array to support multi-select (which returns an array of selected items)
         var values = (val instanceof Array) ? val : [val];
 
+        var matchCount = 0;
         for(var i=0; i < values.length; i++){
             var fieldValue = gf_get_value(values[i]);
-            if(gf_matches_operation(fieldValue, rule["value"], rule["operator"]))
-                return true;
+            if(gf_matches_operation(fieldValue, rule["value"], rule["operator"])){
+                matchCount++;
+            }
         }
+        //If operator is Is Not, none of the value can match
+        return rule["operator"] == "isnot" ? matchCount == values.length : matchCount > 0;
     }
     return false;
 }
@@ -179,6 +185,7 @@ function gf_do_field_action(formId, action, fieldId, isInit, callback){
 
         //calling callback function on the last dependent field, to make sure it is only called once
         do_callback = (i+1) == dependent_fields.length ? callback : null;
+
         gf_do_action(action, targetId, conditional_logic["animation"], conditional_logic["defaults"][dependent_fields[i]], isInit, do_callback);
     }
 }
@@ -191,25 +198,35 @@ function gf_do_next_button_action(formId, action, fieldId, isInit){
 }
 
 function gf_do_action(action, targetId, useAnimation, defaultValues, isInit, callback){
+
     if(action == "show"){
         if(useAnimation && !isInit){
-            jQuery(targetId).slideDown(callback);
+            if(jQuery(targetId).length > 0)
+                jQuery(targetId).slideDown(callback);
+            else if(callback)
+                callback();
+
         }
         else{
             jQuery(targetId).show();
-            if(callback)
+            if(callback){
                 callback();
+            }
         }
     }
     else{
-        //if field is not already hidde, reset its values to the default
+        //if field is not already hidden, reset its values to the default
         var child = jQuery(targetId).children().first();
+
         if(!gformIsHidden(child)){
             gf_reset_to_default(targetId, defaultValues);
         }
 
         if(useAnimation && !isInit){
-            jQuery(targetId).slideUp(callback);
+            if(jQuery(targetId).length > 0)
+                jQuery(targetId).slideUp(callback);
+            else if(callback)
+                callback();
         }
         else{
             jQuery(targetId).hide();
@@ -224,10 +241,28 @@ function gf_reset_to_default(targetId, defaultValue){
     //cascading down conditional logic to children to suppport nested conditions
     //text fields and drop downs
     var target = jQuery(targetId).find('select, input[type="text"], input[type="number"], textarea');
-    if(target){
-        var val = defaultValue ? defaultValue : "";
-        target.val(val).trigger('change');
-    }
+
+    var target_index = 0;
+
+    target.each(function(){
+        var val = "";
+
+        if(jQuery(this).is('select:not([multiple])'))
+            val = jQuery(this).find('option').eq(0).val();
+
+        if(jQuery.isArray(defaultValue)){
+            val = defaultValue[target_index];
+        }
+        else if(jQuery.isPlainObject(defaultValue)){
+            val = defaultValue[jQuery(this).attr("name")];
+        }
+        else if(defaultValue){
+            val = defaultValue;
+        }
+
+        jQuery(this).val(val).trigger('change');
+        target_index++;
+    });
 
     //checkboxes and radio buttons
     var elements = jQuery(targetId).find('input[type="radio"], input[type="checkbox"]');
@@ -238,7 +273,7 @@ function gf_reset_to_default(targetId, defaultValue){
         var isChecked = jQuery(this).is(':checked') ? true : false;
 
         //does input need to be marked as checked or unchecked?
-        var doCheck = jQuery.inArray(jQuery(this).attr('id'), defaultValue) > -1;
+        var doCheck = defaultValue ? jQuery.inArray(jQuery(this).attr('id'), defaultValue) > -1 : false;
 
         //if value changed, trigger click event
         if(isChecked != doCheck){

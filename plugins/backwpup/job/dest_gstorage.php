@@ -10,7 +10,7 @@ function dest_gstorage() {
   try {
     $gstorage = new AmazonS3(array('key'=>$STATIC['JOB']['GStorageAccessKey'],'secret'=>$STATIC['JOB']['GStorageSecret'],'certificate_authority'=>true));
     //set up s3 for google
-    $gstorage->set_hostname('commondatastorage.googleapis.com');
+    $gstorage->set_hostname('storage.googleapis.com');
     $gstorage->allow_hostname_override(false);
     if ($gstorage->if_bucket_exists($STATIC['JOB']['GStorageBucket'])) {
       trigger_error(sprintf(__('Connected to GStorage Bucket: %s','backwpup'),$STATIC['JOB']['GStorageBucket']),E_USER_NOTICE);

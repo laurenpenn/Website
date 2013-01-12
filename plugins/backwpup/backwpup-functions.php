@@ -1,5 +1,5 @@
 <?PHP
-//Thems Option menu entry
+//Option menu entry
 function backwpup_admin_menu() {
 	add_menu_page( __('BackWPup','backwpup'), __('BackWPup','backwpup'), BACKWPUP_USER_CAPABILITY, 'backwpup', 'backwpup_menu_page', BACKWPUP_PLUGIN_BASEURL.'/css/BackWPup16.png');
 	$hook = add_submenu_page( 'backwpup', __('Jobs','backwpup'), __('Jobs','backwpup'), BACKWPUP_USER_CAPABILITY, 'backwpup', 'backwpup_menu_page' );
@@ -84,73 +84,37 @@ function backwpup_contextual_help($help='') {
 	$help='<p>'.$help.'</p>';
 
 	if ( method_exists( $current_screen, 'add_help_tab' ) ) {
-		if ( 'http://backwpup.de'==__('http://backwpup.com','backwpup')) {
-			$current_screen->add_help_tab( array(
-				'id'			=> 'plugininfo',
-				'title'		 => __( 'Plugin Info', 'backwpup' ),
-				'content'	   =>
-				'<p><a href="http://backwpup.de" target="_blank">BackWPup</a> v. ' . BACKWPUP_VERSION . ', <a href="http://www.gnu.org/licenses/gpl-2.0" target="_blank">GPLv2</a> &copy 2009-' . date( 'Y' ) . ' <a href="http://danielhuesken.de" target="_blank">Daniel H&uuml;sken</a></p><p>' . __( 'BackWPup comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions.', 'backwpup' ) . '</p>'
-			) );
-		} else {
-			$current_screen->add_help_tab( array(
-				'id'			=> 'plugininfo',
-				'title'		 => __( 'Plugin Info', 'backwpup' ),
-				'content'	   =>
-				'<p><a href="http://backwpup.com" target="_blank">BackWPup</a> v. ' . BACKWPUP_VERSION . ', <a href="http://www.gnu.org/licenses/gpl-2.0" target="_blank">GPLv2</a> &copy 2009-' . date( 'Y' ) . ' <a href="http://danielhuesken.de" target="_blank">Daniel H&uuml;sken</a></p><p>' . __( 'BackWPup comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions.', 'backwpup' ) . '</p>'
-			) );
-		}
+		$current_screen->add_help_tab( array(
+			'id'			=> 'plugininfo',
+			'title'		 => __( 'Plugin Info', 'backwpup' ),
+			'content'	   =>
+			'<p><a href="http://backwpup.com" target="_blank">BackWPup</a> v. ' . BACKWPUP_VERSION . ', <a href="http://www.gnu.org/licenses/gpl-3.0" target="_blank">GPLv3</a> &copy 2012-' . date( 'Y' ) . ' <a href="http://inpsyde.com" target="_blank">Inpsyde GmbH</a> '.__( 'Author:','backwpup').' <a href="http://danielhuesken.de" target="_blank">Daniel H&uuml;sken</a></p><p>' . __( 'BackWPup comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions.', 'backwpup' ) . '</p>'
+		) );		
 		$current_screen->add_help_tab( array(
 			'id'			=> 'overview',
 			'title'		 => __( 'Overview', 'backwpup' ),
 			'content'	   => $help
 		) );
-		if ( 'http://backwpup.de'==__('http://backwpup.com','backwpup')) {
-			$current_screen->set_help_sidebar(
-				'<p><strong>' . __( 'For more information:', 'backwpup' ) . '</strong></p>' .
-						'<p><a href="http://backwpup.de" target="_blank">BackWPup</a></p>' .
-						'<p><a href="http://backwpup.de/handbuch/" target="_blank">'.__('Documentation','backwpup').'</a></p>' .
-						'<p><a href="http://backwpup.de/faq/" target="_blank">'.__('FAQ','backwpup').'</a></p>' .
-						'<p><a href="http://backwpup.de/forums/" target="_blank"'.__('Support Forums','backwpup').'</a></p>' .
-						'<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Y6UHQE4NKFFKY" target="_blank">'.__('Donate','backwpup').'</a></p>' .
-						'<p><a href="https://plus.google.com/112659782148359984250/" target="_blank">'.__('Google+','backwpup').'</a></p>'
-			);
-		} else {
-			$current_screen->set_help_sidebar(
-				'<p><strong>' . __( 'For more information:', 'backwpup' ) . '</strong></p>' .
-						'<p><a href="http://backwpup.com" target="_blank">BackWPup</a></p>' .
-						'<p><a href="http://backwpup.com/manual/" target="_blank">'.__('Documentation','backwpup').'</a></p>' .
-						'<p><a href="http://backwpup.com/faq/" target="_blank">'.__('FAQ','backwpup').'</a></p>' .
-						'<p><a href="http://backwpup.com/forums/" target="_blank"'.__('Support Forums','backwpup').'</a></p>' .
-						'<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q3QSVRSFXBLSE" target="_blank">'.__('Donate','backwpup').'</a></p>' .
-						'<p><a href="https://plus.google.com/112659782148359984250/" target="_blank">'.__('Google+','backwpup').'</a></p>'
-			);
-		}
+		$current_screen->set_help_sidebar(
+			'<p><strong>' . __( 'For more information:', 'backwpup' ) . '</strong></p>' .
+					'<p><a href="http://backwpup.com" target="_blank">BackWPup</a></p>' .
+					'<p><a href="http://inpsyde.com" target="_blank">Inpsyde GmbH</a></p>' .
+					'<p><a href="http://wordpress.org/extend/plugins/backwpup/faq/" target="_blank">'.__('FAQ','backwpup').'</a></p>' .
+					'<p><a href="http://wordpress.org/support/plugin/backwpup/" target="_blank"'.__('Support Forums','backwpup').'</a></p>' .
+					'<p><a href="https://plus.google.com/112659782148359984250/" target="_blank">'.__('Google+','backwpup').'</a></p>'
+		);
+		
 	} elseif ( function_exists( 'add_contextual_help' ) ) { //for WP < 3.3 help
-		if ( 'http://backwpup.de'==__('http://backwpup.com','backwpup')) {
-			add_contextual_help( $current_screen,$help.
-					'<p><a href="http://backwpup.de" target="_blank">BackWPup</a> v. ' . BACKWPUP_VERSION . ', <a href="http://www.gnu.org/licenses/gpl-2.0" target="_blank">GPLv2</a> &copy 2009-' . date( 'Y' ) . ' <a href="http://danielhuesken.de" target="_blank">Daniel H&uuml;sken</a></p><p>' . __( 'BackWPup comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions.', 'backwpup' ) . '</p>' .
-							'<p><strong>' . __( 'For more information:', 'backwpup' ) . '</strong></p><p>' .
-							' <a href="http://backwpup.de" target="_blank">BackWPup</a> |' .
-							' <a href="http://backwpup.de/handbuch/" target="_blank">'.__('Documentation', 'backwpup').'</a> |' .
-							' <a href="http://backwpup.de/faq/" target="_blank">'.__('FAQ', 'backwpup').'</a> |' .
-							' <a href="http://backwpup.de/forums/" target="_blank">'.__('Support Forums', 'backwpup').'</a> |' .
-							' <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Y6UHQE4NKFFKY" target="_blank">'.__('Donate', 'backwpup').'</a> |' .
-							' <a href="https://plus.google.com/112659782148359984250/" target="_blank">'.__('Google+', 'backwpup').'</a> ' .
-							'</p>'
-			);
-		} else {
-			add_contextual_help( $current_screen,$help.
-					'<p><a href="http://backwpup.com" target="_blank">BackWPup</a> v. ' . BACKWPUP_VERSION . ', <a href="http://www.gnu.org/licenses/gpl-2.0" target="_blank">GPLv2</a> &copy 2009-' . date( 'Y' ) . ' <a href="http://danielhuesken.de" target="_blank">Daniel H&uuml;sken</a></p><p>' . __( 'BackWPup comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions.', 'backwpup' ) . '</p>' .
-							'<p><strong>' . __( 'For more information:', 'backwpup' ) . '</strong></p><p>' .
-							' <a href="http://backwpup.com" target="_blank">BackWPup</a> |' .
-							' <a href="http://backwpup.com/manual/" target="_blank">'.__('Documentation', 'backwpup').'</a> |' .
-							' <a href="http://backwpup.com/faq/" target="_blank">'.__('FAQ', 'backwpup').'</a> |' .
-							' <a href="http://backwpup.com/forums/" target="_blank">'.__('Support Forums', 'backwpup').'</a> |' .
-							' <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q3QSVRSFXBLSE" target="_blank">'.__('Donate', 'backwpup').'</a> |' .
-							' <a href="https://plus.google.com/112659782148359984250/" target="_blank">'.__('Google+', 'backwpup').'</a> ' .
-							'</p>'
-			);
-		}
+		add_contextual_help( $current_screen,$help.
+				'<p><a href="http://backwpup.de" target="_blank">BackWPup</a> v. ' . BACKWPUP_VERSION . ', <a href="http://www.gnu.org/licenses/gpl-2.0" target="_blank">GPLv2</a> &copy 2009-' . date( 'Y' ) . ' <a href="http://danielhuesken.de" target="_blank">Daniel H&uuml;sken</a></p><p>' . __( 'BackWPup comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions.', 'backwpup' ) . '</p>' .
+						'<p><strong>' . __( 'For more information:', 'backwpup' ) . '</strong></p><p>' .
+						' <a href="http://backwpup.com" target="_blank">BackWPup</a> |' .
+						' <a href="http://inpsyde.com" target="_blank">Inpsyde GmbH</a> |' .
+						' <a href="http://wordpress.org/extend/plugins/backwpup/faq/" target="_blank">'.__('FAQ', 'backwpup').'</a> |' .
+						' <a href="http://wordpress.org/support/plugin/backwpup/" target="_blank">'.__('Support Forums', 'backwpup').'</a> |' .
+						' <a href="https://plus.google.com/112659782148359984250/" target="_blank">'.__('Google+', 'backwpup').'</a> ' .
+						'</p>'
+		);
 	}
 }
 
@@ -257,9 +221,9 @@ function backwpup_plugin_links($links, $file) {
 	if (!current_user_can('install_plugins'))
 		return $links;
 	if ($file == BACKWPUP_PLUGIN_BASEDIR.'/backwpup.php') {
-		$links[] = '<a href="http://backwpup.com/faq/" target="_blank">' . __('FAQ','backwpup') . '</a>';
-		$links[] = '<a href="http://backwpup.com/forums/" target="_blank">' . __('Support','backwpup') . '</a>';
-		$links[] = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q3QSVRSFXBLSE" target="_blank">' . __('Donate','backwpup') . '</a>';
+		$links[] = '<a href="http://inpsyde.com" target="_blank">Inpsyde GmbH</a>';
+		$links[] = '<a href="http://wordpress.org/extend/plugins/backwpup/faq/" target="_blank">' . __('FAQ','backwpup') . '</a>';
+		$links[] = '<a href="http://wordpress.org/support/plugin/backwpup/" target="_blank">' . __('Support','backwpup') . '</a>';
 	}
 	return $links;
 }
@@ -746,11 +710,11 @@ function backwpup_env_checks() {
 	if (strtolower(substr(WP_PLUGIN_URL,0,7))!='http://' and strtolower(substr(WP_PLUGIN_URL,0,8))!='https://') { // check logs folder
 		$message.=sprintf(__("- WP_PLUGIN_URL '%s' must set as a full URL!",'backwpup'),WP_PLUGIN_URL).'<br />';
 	}
-	if (false !== $nextrun=wp_next_scheduled('backwpup_cron')) {
-		if (empty($nextrun) or $nextrun<(time()-(3600*24))) {  //check cron jobs work
-			$message.=__("- WP-Cron isn't working, please check it!","backwpup") .'<br />';
-		}
-	}
+	//if (false !== $nextrun=wp_next_scheduled('backwpup_cron')) {
+	//	if (empty($nextrun) or $nextrun<(time()-(3600*24))) {  //check cron jobs work
+	//		$message.=__("- WP-Cron isn't working, please check it!","backwpup") .'<br />';
+	//	}
+	//}
 	//put massage if one
 	if (!empty($message))
 		$backwpup_admin_message = '<div id="message" class="error fade"><strong>BackWPup:</strong><br />'.$message.'</div>';
@@ -952,7 +916,7 @@ function backwpup_get_job_vars($jobid='',$jobnewsettings='') {
 	if (substr($jobsettings['backupdir'],0,1)!='/' and substr($jobsettings['backupdir'],1,1)!=':' and !empty($jobsettings['backupdir'])) //add abspath if not absolute
 		$jobsettings['backupdir']=rtrim(str_replace('\\','/',ABSPATH),'/').'/'.$jobsettings['backupdir'];
 	$jobsettings['backupdir']=trailingslashit(str_replace('//','/',str_replace('\\','/',trim($jobsettings['backupdir']))));
-	if ($jobsettings['backupdir']=='/')
+	if ( $jobsettings[ 'backupdir' ] == '/' || $jobsettings[ 'backupdir' ] == trailingslashit( str_replace( '\\', '/', WP_CONTENT_DIR ) ) || $jobsettings[ 'backupdir' ] == trailingslashit( str_replace( '\\', '/', ABSPATH ) ) )
 		$jobsettings['backupdir']='';
 
 	if (!isset($jobsettings['maxbackups']) or !is_int($jobsettings['maxbackups']))

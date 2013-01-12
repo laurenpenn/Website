@@ -380,6 +380,7 @@ class Jetpack_Comments extends Highlander_Comments_Base {
 				$comment_meta['hc_post_as']         = 'wordpress';
 				$comment_meta['hc_avatar']          = stripslashes( $_POST['hc_avatar'] );
 				$comment_meta['hc_foreign_user_id'] = stripslashes( $_POST['hc_userid'] );
+				$comment_meta['hc_wpcom_id_sig']    = stripslashes( $_POST['hc_wpcom_id_sig'] ); //since 1.9
 				break;
 
 			case 'jetpack' :
@@ -463,10 +464,10 @@ h1 span {
 <script type="text/javascript">
 try {
 	window.parent.location = <?php echo json_encode( $url ); ?>;
-	window.parent.location.reload();
+	window.parent.location.reload( true );
 } catch ( e ) {
 	window.location = <?php echo json_encode( $url ); ?>;
-	window.location.reload();
+	window.location.reload( true );
 }
 ellipsis = document.getElementById( 'ellipsis' );
 function toggleEllipsis() {

@@ -3,14 +3,14 @@ function backwpup_jobedit_metabox_save($jobvalue) {
   ?>
   <div class="submitbox" id="submitjobedit">
   <div id="minor-publishing">
-  <div id="minor-publishing-actions"> 
-  <div id="preview-action"> 
-  </div> 
-  <div class="clear"></div> 
+  <div id="minor-publishing-actions">
+  <div id="preview-action">
+  </div>
+  <div class="clear"></div>
   </div>
   <div id="misc-publishing-actions">
-  <div class="misc-pub-section misc-pub-section-last"> 
-  <?php 
+  <div class="misc-pub-section misc-pub-section-last">
+  <?php
   foreach (backwpup_backup_types() as $type) {
     echo "<input class=\"jobtype-select checkbox\" id=\"jobtype-select-".$type."\" type=\"checkbox\"".checked(true,in_array($type,explode('+',$jobvalue['type'])),false)." name=\"type[]\" value=\"".$type."\"/> ".backwpup_backup_types($type);
   }
@@ -25,7 +25,7 @@ function backwpup_jobedit_metabox_save($jobvalue) {
     <a class="submitdelete deletion" href="<?PHP echo wp_nonce_url(backwpup_admin_url('admin.php').'?page=backwpup&action=delete&jobs[]='.$jobvalue['jobid'], 'bulk-jobs'); ?>" onclick="if ( confirm('<?PHP echo esc_js(__("You are about to delete this Job. \n  'Cancel' to stop, 'OK' to delete.","backwpup")); ?>') ) { return true;}return false;"><?php _e('Delete', 'backwpup'); ?></a>
   </div>
   <div id="publishing-action">
-    <?php submit_button( __('Save Changes', 'backwpup'), 'primary', 'save', false, array( 'tabindex' => '2', 'accesskey' => 'p' ) ); ?>
+    <?php submit_button( __('Save Changes', 'backwpup'), 'primary', 'savebackwpup', false, array( 'tabindex' => '2', 'accesskey' => 'p' ) ); ?>
   </div>
   <div class="clear"></div>
   </div>
@@ -51,8 +51,8 @@ function backwpup_jobedit_metabox_backupfile($jobvalue) {
   if (function_exists('bzopen'))
     echo '<input class="radio" type="radio"'.checked('.tar.bz2',$jobvalue['fileformart'],false).' name="fileformart" value=".tar.bz2" />'.__('Tar BZip2','backwpup').'<br />';
   else
-    echo '<input class="radio" type="radio"'.checked('.tar.bz2',$jobvalue['fileformart'],false).' name="fileformart" value=".tar.bz2" disabled="disabled" />'.__('Tar BZip2','backwpup').'<br />';  
-  _e('Preview:','backwpup'); 
+    echo '<input class="radio" type="radio"'.checked('.tar.bz2',$jobvalue['fileformart'],false).' name="fileformart" value=".tar.bz2" disabled="disabled" />'.__('Tar BZip2','backwpup').'<br />';
+  _e('Preview:','backwpup');
   echo '<br /><i><span id="backupfileprefix">'.$jobvalue['fileprefix'].'</span>'.backwpup_date_i18n('Y-m-d_H-i-s').'<span id="backupfileformart">'.$jobvalue['fileformart'].'</span></i>';
 }
 
@@ -60,7 +60,7 @@ function backwpup_jobedit_metabox_sendlog($jobvalue) {
   _e('E-Mail-Adress:','backwpup'); ?>
   <input name="mailaddresslog" id="mailaddresslog" type="text" value="<?PHP echo $jobvalue['mailaddresslog'];?>" class="large-text" /><br />
   <input class="checkbox" value="1" type="checkbox" <?php checked($jobvalue['mailerroronly'],true); ?> name="mailerroronly" /> <?PHP _e('Only send an e-mail if there are errors.','backwpup'); ?>
-  <?PHP 
+  <?PHP
 }
 
 function backwpup_jobedit_metabox_schedule($jobvalue) {
@@ -95,7 +95,7 @@ function backwpup_jobedit_metabox_schedule($jobvalue) {
     <div id="schedadvanced" <?PHP if ($jobvalue['cronselect']!='advanced') echo 'style="display:none;"';?>>
       <div id="cron-min-box">
         <b><?PHP _e('Minutes: ','backwpup'); ?></b><br />
-        <?PHP 
+        <?PHP
         echo '<input class="checkbox" type="checkbox"'.checked(in_array("*",$minutes,true),true,false).' name="cronminutes[]" value="*" /> '.__('Any (*)','backwpup').'<br />';
         echo '<div id="cron-min">';
         for ($i=0;$i<60;$i=$i+5) {
@@ -106,7 +106,7 @@ function backwpup_jobedit_metabox_schedule($jobvalue) {
       </div>
       <div id="cron-hour-box">
         <b><?PHP _e('Hours:','backwpup'); ?></b><br />
-        <?PHP 
+        <?PHP
 
         echo '<input class="checkbox" type="checkbox"'.checked(in_array("*",$hours,true),true,false).' name="cronhours[]" value="*" /> '.__('Any (*)','backwpup').'<br />';
         echo '<div id="cron-hour">';
@@ -118,7 +118,7 @@ function backwpup_jobedit_metabox_schedule($jobvalue) {
       </div>
       <div id="cron-day-box">
         <b><?PHP _e('Day of Month:','backwpup'); ?></b><br />
-        <?PHP 
+        <?PHP
         echo '<input class="checkbox" type="checkbox"'.checked(in_array("*",$mday,true),true,false).' name="cronmday[]" value="*" /> '.__('Any (*)','backwpup').'<br />';
         echo '<div id="cron-day">';
         for ($i=1;$i<=31;$i++) {
@@ -129,7 +129,7 @@ function backwpup_jobedit_metabox_schedule($jobvalue) {
       </div>
       <div id="cron-month-box">
         <b><?PHP _e('Month:','backwpup'); ?></b><br />
-        <?PHP   
+        <?PHP
         echo '<input class="checkbox" type="checkbox"'.checked(in_array("*",$mday,true),true,false).' name="cronmon[]" value="*" /> '.__('Any (*)','backwpup').'<br />';
         echo '<div id="cron-month">';
         echo '<input class="checkbox" type="checkbox"'.checked(in_array("1",$mday,true),true,false).' name="cronmon[]" value="1" /> '.__('January','backwpup').'<br />';
@@ -149,7 +149,7 @@ function backwpup_jobedit_metabox_schedule($jobvalue) {
       </div>
       <div id="cron-weekday-box">
         <b><?PHP _e('Day of Week:','backwpup'); ?></b><br />
-        <?PHP 
+        <?PHP
         echo '<input class="checkbox" type="checkbox"'.checked(in_array("*",$wday,true),true,false).' name="cronwday[]" value="*" /> '.__('Any (*)','backwpup').'<br />';
         echo '<div id="cron-weekday">';
         echo '<input class="checkbox" type="checkbox"'.checked(in_array("0",$wday,true),true,false).' name="cronwday[]" value="0" /> '.__('Sunday','backwpup').'<br />';
@@ -189,11 +189,11 @@ function backwpup_jobedit_metabox_schedule($jobvalue) {
       <td><?PHP echo '<input class="radio" type="radio"'.checked(true,is_numeric($wday[0]),false).' name="cronbtype" value="week" />'.__('weekly','backwpup'); ?></td>
       <td><select name="weekcronwday">
           <?PHP   echo '<option '.selected(in_array("0",$wday,true),true,false).'  value="0" />'.__('Sunday','backwpup').'</option>';
-              echo '<option '.selected(in_array("1",$wday,true),true,false).'  value="1" />'.__('Monday','backwpup').'</option>'; 
-              echo '<option '.selected(in_array("2",$wday,true),true,false).'  value="2" />'.__('Tuesday','backwpup').'</option>'; 
-              echo '<option '.selected(in_array("3",$wday,true),true,false).'  value="3" />'.__('Wednesday','backwpup').'</option>'; 
-              echo '<option '.selected(in_array("4",$wday,true),true,false).'  value="4" />'.__('Thursday','backwpup').'</option>'; 
-              echo '<option '.selected(in_array("5",$wday,true),true,false).'  value="5" />'.__('Friday','backwpup').'</option>'; 
+              echo '<option '.selected(in_array("1",$wday,true),true,false).'  value="1" />'.__('Monday','backwpup').'</option>';
+              echo '<option '.selected(in_array("2",$wday,true),true,false).'  value="2" />'.__('Tuesday','backwpup').'</option>';
+              echo '<option '.selected(in_array("3",$wday,true),true,false).'  value="3" />'.__('Wednesday','backwpup').'</option>';
+              echo '<option '.selected(in_array("4",$wday,true),true,false).'  value="4" />'.__('Thursday','backwpup').'</option>';
+              echo '<option '.selected(in_array("5",$wday,true),true,false).'  value="5" />'.__('Friday','backwpup').'</option>';
               echo '<option '.selected(in_array("6",$wday,true),true,false).'  value="6" />'.__('Saturday','backwpup').'</option>'; ?>
         </select></td>
       <td><select name="weekcronhours"><?PHP for ($i=0;$i<24;$i++) {echo '<option '.selected(in_array("$i",$hours,true),true,false).'  value="'.$i.'" />'.$i.'</option>';} ?></select></td>
@@ -220,7 +220,7 @@ function backwpup_jobedit_metabox_destfolder($jobvalue) {
   ?>
   <b><?PHP _e('Full Path to folder for Backup Files:','backwpup'); ?></b><br />
   <input name="backupdir" id="backupdir" type="text" value="<?PHP echo $jobvalue['backupdir'];?>" class="large-text" /><br />
-  <span class="description"><?PHP _e('Your WordPress dir is:','backwpup'); echo ' '.trailingslashit(str_replace('\\','/',ABSPATH));?></span><br />&nbsp;<br />
+  <span class="description"><?PHP _e('A sampel Folder is:','backwpup'); echo ' '.trailingslashit( str_replace( '\\', '/', WP_CONTENT_DIR ) ) . trailingslashit( sanitize_file_name( get_bloginfo( 'name' ) ) );?></span><br />&nbsp;<br />
   <?PHP _e('Max. backup files in folder:','backwpup'); ?> <input name="maxbackups" id="maxbackups" type="text" size="3" value="<?PHP echo $jobvalue['maxbackups'];?>" class="small-text" /><span class="description"><?PHP _e('(Oldest files will deleted first.)','backwpup');?></span>
   <?PHP
 }
@@ -232,15 +232,15 @@ function backwpup_jobedit_metabox_destftp($jobvalue) {
   <b><?PHP _e('Port:','backwpup'); ?></b><br />
   <input name="ftphostport" type="text" value="<?PHP echo $jobvalue['ftphostport'];?>" class="small-text" /><br />
   <b><?PHP _e('Username:','backwpup'); ?></b><br />
-  <input name="ftpuser" type="text" value="<?PHP echo $jobvalue['ftpuser'];?>" class="user large-text" /><br />
+  <input name="ftpuser" type="text" value="<?PHP echo $jobvalue['ftpuser'];?>" class="user large-text" autocomplete="off" /><br />
   <b><?PHP _e('Password:','backwpup'); ?></b><br />
-  <input name="ftppass" type="password" value="<?PHP echo backwpup_base64($jobvalue['ftppass']);?>" class="password large-text" /><br />
+  <input name="ftppass" type="password" value="<?PHP echo backwpup_base64($jobvalue['ftppass']);?>" class="password large-text" autocomplete="off" /><br />
   <b><?PHP _e('Folder on Server:','backwpup'); ?></b><br />
   <input name="ftpdir" type="text" value="<?PHP echo $jobvalue['ftpdir'];?>" class="large-text" /><br />
   <?PHP if (!is_numeric($jobvalue['ftpmaxbackups'])) $jobvalue['ftpmaxbackups']=0; ?>
   <?PHP _e('Max. backup files in FTP folder:','backwpup'); ?> <input name="ftpmaxbackups" type="text" size="3" value="<?PHP echo $jobvalue['ftpmaxbackups'];?>" class="small-text" /><span class="description"><?PHP _e('(Oldest files will be deleted first.)','backwpup');?></span><br />
   <input class="checkbox" value="1" type="checkbox" <?php checked($jobvalue['ftpssl'],true); ?> name="ftpssl" /> <?PHP _e('Use SSL-FTP Connection.','backwpup'); ?><br />
-  <input class="checkbox" value="1" type="checkbox" <?php checked($jobvalue['ftppasv'],true); ?> name="ftppasv" /> <?PHP _e('Use FTP Passive mode.','backwpup'); ?><br />      
+  <input class="checkbox" value="1" type="checkbox" <?php checked($jobvalue['ftppasv'],true); ?> name="ftppasv" /> <?PHP _e('Use FTP Passive mode.','backwpup'); ?><br />
   <?PHP
 }
 
@@ -296,7 +296,7 @@ function backwpup_jobedit_metabox_destgstorage($jobvalue) {
 function backwpup_jobedit_metabox_destazure($jobvalue) {
   ?>
   <div class="dests">
-    
+
     <b><?PHP _e('Host:','backwpup'); ?></b><br />
     <input id="msazureHost" name="msazureHost" type="text" value="<?PHP echo $jobvalue['msazureHost'];?>" class="large-text" /><span class="description"><?PHP _e('Normely: blob.core.windows.net','backwpup');?></span><br />
     <b><?PHP _e('Account Name:','backwpup'); ?></b><br />
@@ -309,7 +309,7 @@ function backwpup_jobedit_metabox_destazure($jobvalue) {
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?PHP _e('Create Container:','backwpup'); ?><input name="newmsazureContainer" type="text" value="" class="text" /> <br />
     <b><?PHP _e('Folder in Container:','backwpup'); ?></b><br />
     <input name="msazuredir" type="text" value="<?PHP echo $jobvalue['msazuredir'];?>" class="large-text" /><br />
-    <?PHP _e('Max. backup files in container folder:','backwpup'); ?><input name="msazuremaxbackups" type="text" size="3" value="<?PHP echo $jobvalue['msazuremaxbackups'];?>" class="small-text" /><span class="description"><?PHP _e('(Oldest files will be deleted first.)','backwpup');?></span><br />  
+    <?PHP _e('Max. backup files in container folder:','backwpup'); ?><input name="msazuremaxbackups" type="text" size="3" value="<?PHP echo $jobvalue['msazuremaxbackups'];?>" class="small-text" /><span class="description"><?PHP _e('(Oldest files will be deleted first.)','backwpup');?></span><br />
   </div>
   <div class="destlinks">
     <a href="http://www.microsoft.com/windowsazure/offers/" target="_blank"><?PHP _e('Create Account','backwpup'); ?></a><br />
@@ -323,16 +323,16 @@ function backwpup_jobedit_metabox_destrsc($jobvalue) {
   ?>
   <div class="dests">
     <b><?PHP _e('Username:','backwpup'); ?></b><br />
-    <input id="rscUsername" name="rscUsername" type="text" value="<?PHP echo $jobvalue['rscUsername'];?>" class="large-text" /><br />
+    <input id="rscUsername" name="rscUsername" type="text" value="<?PHP echo $jobvalue['rscUsername'];?>" class="large-text" autocomplete="off"/><br />
     <b><?PHP _e('API Key:','backwpup'); ?></b><br />
-    <input id="rscAPIKey" name="rscAPIKey" type="text" value="<?PHP echo $jobvalue['rscAPIKey'];?>" class="large-text" /><br />
+    <input id="rscAPIKey" name="rscAPIKey" type="text" value="<?PHP echo $jobvalue['rscAPIKey'];?>" class="large-text" autocomplete="off" /><br />
     <b><?PHP _e('Container:','backwpup'); ?></b><br />
     <input id="rscContainerselected" name="rscContainerselected" type="hidden" value="<?PHP echo $jobvalue['rscContainer'];?>" />
     <?PHP if (!empty($jobvalue['rscUsername']) and !empty($jobvalue['rscAPIKey'])) backwpup_get_rsc_container(array('rscUsername'=>$jobvalue['rscUsername'],'rscAPIKey'=>$jobvalue['rscAPIKey'],'rscselected'=>$jobvalue['rscContainer'])); ?>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?PHP _e('Create Container:','backwpup'); ?><input name="newrscContainer" type="text" value="" class="text" /> <br />
     <b><?PHP _e('Folder in container:','backwpup'); ?></b><br />
     <input name="rscdir" type="text" value="<?PHP echo $jobvalue['rscdir'];?>" class="large-text" /><br />
-    <?PHP _e('Max. backup files in container folder:','backwpup'); ?><input name="rscmaxbackups" type="text" size="3" value="<?PHP echo $jobvalue['rscmaxbackups'];?>" class="small-text" /><span class="description"><?PHP _e('(Oldest files will be deleted first.)','backwpup');?></span><br />  
+    <?PHP _e('Max. backup files in container folder:','backwpup'); ?><input name="rscmaxbackups" type="text" size="3" value="<?PHP echo $jobvalue['rscmaxbackups'];?>" class="small-text" /><span class="description"><?PHP _e('(Oldest files will be deleted first.)','backwpup');?></span><br />
   </div>
   <div class="destlinks">
     <a href="http://www.rackspacecloud.com/2073.html" target="_blank"><?PHP _e('Create Account','backwpup'); ?></a><br />
@@ -355,10 +355,10 @@ function backwpup_jobedit_metabox_destdropbox($jobvalue) {
     <b><?PHP _e('Root:','backwpup'); ?></b><br />
     <select name="droperoot" id="droperoot">
     <option <?PHP selected($jobvalue['droperoot'],'dropbox',true); ?> value="dropbox"><?php _e('dropbox', 'backwpup'); ?></option>
-    <option <?PHP selected($jobvalue['droperoot'],'sandbox',true); ?> value="sandbox" disabled="disabled"><?php _e('sandbox (disabled by DropBox)', 'backwpup'); ?></option> 
+    <option <?PHP selected($jobvalue['droperoot'],'sandbox',true); ?> value="sandbox" disabled="disabled"><?php _e('sandbox (disabled by DropBox)', 'backwpup'); ?></option>
     </select><br />
     <b><?PHP _e('Folder:','backwpup'); ?></b><br />
-    <input name="dropedir" type="text" value="<?PHP echo $jobvalue['dropedir'];?>" class="user large-text" /><br />      
+    <input name="dropedir" type="text" value="<?PHP echo $jobvalue['dropedir'];?>" class="user large-text" /><br />
     <?PHP _e('Max. backup files in Dropbox folder:','backwpup'); ?><input name="dropemaxbackups" type="text" size="3" value="<?PHP echo $jobvalue['dropemaxbackups'];?>" class="small-text" /><span class="description"><?PHP _e('(Oldest files will be deleted first.)','backwpup');?></span><br />
   </div>
   <div class="destlinks">
@@ -408,7 +408,7 @@ function backwpup_jobedit_metabox_destsugarsync( $jobvalue ) {
 			}
 			?>
 		<?php } ?>
-		
+
 		<br />
 		<b><?php _e( 'Folder:', 'backwpup' ); ?></b><br />
 		<input name="sugardir" type="text" value="<?php echo $jobvalue['sugardir'];?>" class="large-text" /><br />
@@ -429,15 +429,15 @@ function backwpup_jobedit_metabox_destmail($jobvalue) {
   <b><?PHP _e('E-mail address:','backwpup'); ?></b><br />
   <input name="mailaddress" id="mailaddress" type="text" value="<?PHP echo $jobvalue['mailaddress'];?>" class="large-text" /><br />
   <?PHP if (!is_numeric($jobvalue['mailefilesize'])) $jobvalue['mailefilesize']=0; ?>
-  <?PHP echo __('Max. File Size for sending Backups with mail:','backwpup').'<input name="mailefilesize" type="text" value="'.$jobvalue['mailefilesize'].'" class="small-text" />MB<br />';?>  
+  <?PHP echo __('Max. File Size for sending Backups with mail:','backwpup').'<input name="mailefilesize" type="text" value="'.$jobvalue['mailefilesize'].'" class="small-text" />MB<br />';?>
   <?PHP
 }
 
-//ever display needed boxes
+//ever display boxes
 function backwpup_jobedit_metabox_displayneeded($hidden) {
 	$newhidden=array();
 	foreach($hidden as $hiddenid) {
-		if ($hiddenid!='backwpup_jobedit_save' and $hiddenid!='backwpup_jobedit_schedule')
+		if (!strstr($hiddenid,'backwpup_jobedit_'))
 			$newhidden[]=$hiddenid;
 	}
 	return $newhidden;
@@ -485,9 +485,9 @@ function backwpup_get_cron_text($args='') {
     }
     $cronstamp=implode(",",$_POST['cronminutes']).' '.implode(",",$_POST['cronhours']).' '.implode(",",$_POST['cronmday']).' '.implode(",",$_POST['cronmon']).' '.implode(",",$_POST['cronwday']);
     $ajax=true;
-  }  
+  }
   echo '<div id="cron-text">';
-  _e('Working as <a href="http://wikipedia.org/wiki/Cron" target="_blank">Cron</a> job schedule:','backwpup'); echo ' <i><b><nobr>'.$cronstamp.'</nobr></b></i><br />'; 
+  _e('Working as <a href="http://wikipedia.org/wiki/Cron" target="_blank">Cron</a> job schedule:','backwpup'); echo ' <i><b><nobr>'.$cronstamp.'</nobr></b></i><br />';
   list($cronstr['minutes'],$cronstr['hours'],$cronstr['mday'],$cronstr['mon'],$cronstr['wday'])=explode(' ',$cronstamp,5);
   if (false !== strpos($cronstr['minutes'],'*/') or ($cronstr['minutes']=='*')) {
     $repeatmins=str_replace('*/','',$cronstr['minutes']);
@@ -499,7 +499,7 @@ function backwpup_get_cron_text($args='') {
     $repeathouer=str_replace('*/','',$cronstr['hours']);
     if ($repeathouer=='*' or empty($repeathouer))
       $repeathouer=1;
-    echo '<span style="color:red;">'.str_replace('%d',$repeathouer,__('ATTENTION: Job runs every %d houers.!!!','backwpup')).'</span><br />';
+    echo '<span style="color:red;">'.str_replace('%d',$repeathouer,__('ATTENTION: Job runs every %d hours.!!!','backwpup')).'</span><br />';
   }
   $nextrun=backwpup_cron_next($cronstamp);
   if (2147483647==$nextrun) {
@@ -507,7 +507,7 @@ function backwpup_get_cron_text($args='') {
   } else {
     _e('Next runtime:','backwpup'); echo ' <b>'.date_i18n('D, j M Y, H:i',backwpup_cron_next($cronstamp)).'</b>';
   }
-  echo "</div>";  
+  echo "</div>";
   if ($ajax)
     die();
   else
@@ -562,12 +562,12 @@ function backwpup_get_aws_buckets($args='') {
       return;
   }
   if (count($buckets->body->Buckets->Bucket)<1) {
-    echo '<span id="awsBucket" style="color:red;">'.__('No bucket fount!','backwpup').'</span>';
+    echo '<span id="awsBucket" style="color:red;">'.__('No bucket found!','backwpup').'</span>';
     if ($ajax)
       die();
     else
       return;
-  }   
+  }
   echo '<select name="awsBucket" id="awsBucket">';
   foreach ($buckets->body->Buckets->Bucket as $bucket) {
     echo "<option ".selected(strtolower($awsselected),strtolower($bucket->Name),false).">".$bucket->Name."</option>";
@@ -611,7 +611,7 @@ function backwpup_get_gstorage_buckets($args='') {
   }
   try {
     $gstorage = new AmazonS3(array('key'=>$GStorageAccessKey,'secret'=>$GStorageSecret,'certificate_authority'=>true));
-    $gstorage->set_hostname('commondatastorage.googleapis.com');
+    $gstorage->set_hostname('storage.googleapis.com');
     $gstorage->allow_hostname_override(false);
     $buckets=$gstorage->list_buckets();
   } catch (Exception $e) {
@@ -627,14 +627,14 @@ function backwpup_get_gstorage_buckets($args='') {
       die();
     else
       return;
-  } 
+  }
   if (count($buckets->body->Buckets->Bucket)<1) {
-    echo '<span id="GStorageBucket" style="color:red;">'.__('No bucket fount!','backwpup').'</span>';
+    echo '<span id="GStorageBucket" style="color:red;">'.__('No bucket found!','backwpup').'</span>';
     if ($ajax)
       die();
     else
       return;
-  }   
+  }
   echo '<select name="GStorageBucket" id="GStorageBucket">';
   foreach ($buckets->body->Buckets->Bucket as $bucket) {
     echo "<option ".selected(strtolower($GStorageselected),strtolower($bucket->Name),false).">".$bucket->Name."</option>";
@@ -724,7 +724,7 @@ function backwpup_get_msazure_container($args='') {
     $msazureselected=$_POST['msazureselected'];
     $ajax=true;
   }
-  if (!class_exists('Microsoft_WindowsAzure_Storage_Blob')) 
+  if (!class_exists('Microsoft_WindowsAzure_Storage_Blob'))
     require_once(dirname(__FILE__).'/../libs/Microsoft/WindowsAzure/Storage/Blob.php');
   if (empty($msazureHost)) {
     echo '<span id="msazureContainer" style="color:red;">'.__('Missing Hostname!','backwpup').'</span>';

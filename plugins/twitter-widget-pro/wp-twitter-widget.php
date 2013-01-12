@@ -3,9 +3,9 @@
  * Plugin Name: Twitter Widget Pro
  * Plugin URI: http://bluedogwebservices.com/wordpress-plugin/twitter-widget-pro/
  * Description: A widget that properly handles twitter feeds, including @username, #hashtag, and link parsing.  It can even display profile images for the users.  Requires PHP5.
- * Version: 2.3.9
+ * Version: 2.4.1
  * Author: Aaron D. Campbell
- * Author URI: http://bluedogwebservices.com/
+ * Author URI: http://ran.ge/
  * License: GPLv2 or later
  * Text Domain: twitter-widget-pro
  */
@@ -29,8 +29,8 @@
 */
 
 require_once( 'tlc-transients.php' );
-require_once( 'xavisys-plugin-framework.php' );
-define( 'TWP_VERSION', '2.3.9' );
+require_once( 'range-plugin-framework.php' );
+define( 'TWP_VERSION', '2.4.0' );
 
 /**
  * WP_Widget_Twitter_Pro is the class that handles the main widget.
@@ -91,6 +91,7 @@ class WP_Widget_Twitter_Pro extends WP_Widget {
 				</select>
 			</p>
 			<p>
+				<input type="hidden" value="false" name="<?php echo $this->get_field_name( 'showretweets' ); ?>" />
 				<input class="checkbox" type="checkbox" value="true" id="<?php echo $this->get_field_id( 'showretweets' ); ?>" name="<?php echo $this->get_field_name( 'showretweets' ); ?>"<?php checked( $instance['showretweets'], 'true' ); ?> />
 				<label for="<?php echo $this->get_field_id( 'showretweets' ); ?>"><?php _e( 'Include retweets', $this->_slug ); ?></label>
 			</p>
@@ -133,7 +134,7 @@ class WP_Widget_Twitter_Pro extends WP_Widget {
 				</select>
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'dateFormat' ); ?>"><?php echo sprintf( __( 'Format to dispaly the date in, uses <a href="%s">PHP date()</a> format:', $this->_slug ), 'http://php.net/date' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'dateFormat' ); ?>"><?php echo sprintf( __( 'Format to display the date in, uses <a href="%s">PHP date()</a> format:', $this->_slug ), 'http://php.net/date' ); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id( 'dateFormat' ); ?>" name="<?php echo $this->get_field_name( 'dateFormat' ); ?>" type="text" value="<?php esc_attr_e( $instance['dateFormat'] ); ?>" />
 			</p>
 			<p>
@@ -144,7 +145,7 @@ class WP_Widget_Twitter_Pro extends WP_Widget {
 				<input class="checkbox" type="checkbox" value="true" id="<?php echo $this->get_field_id( 'showXavisysLink' ); ?>" name="<?php echo $this->get_field_name( 'showXavisysLink' ); ?>"<?php checked( $instance['showXavisysLink'], 'true' ); ?> />
 				<label for="<?php echo $this->get_field_id( 'showXavisysLink' ); ?>"><?php _e( 'Show Link to Twitter Widget Pro', $this->_slug ); ?></label>
 			</p>
-			<p><?php echo $wpTwitterWidget->getSupportForumLink(); ?></p>
+			<p><?php echo $wpTwitterWidget->get_support_forum_link(); ?></p>
 <?php
 		return;
 	}
@@ -182,7 +183,7 @@ class WP_Widget_Twitter_Pro extends WP_Widget {
  * includes filters that modify tweet content for things like linked usernames.
  * It also helps us avoid name collisions.
  */
-class wpTwitterWidget extends XavisysPlugin {
+class wpTwitterWidget extends RangePlugin {
 	private $_api_url;
 
 	/**
@@ -220,7 +221,7 @@ class wpTwitterWidget extends XavisysPlugin {
 			update_option( 'twp_version', TWP_VERSION );
 	}
 
-	protected function _postSettingsInit() {
+	protected function _post_settings_init() {
 		if ( ! in_array( $this->_settings['twp']['http_vs_https'], array( 'http', 'https' ) ) )
 			$this->_settings['twp']['http_vs_https'] = 'https';
 		$this->_api_url = $this->_settings['twp']['http_vs_https'] . '://api.twitter.com/1/';
@@ -265,18 +266,18 @@ class wpTwitterWidget extends XavisysPlugin {
 		}
 	}
 
-	public function addOptionsMetaBoxes() {
-		add_meta_box( $this->_slug . '-general-settings', __( 'General Settings', $this->_slug ), array( $this, 'generalSettingsMetaBox' ), 'xavisys-' . $this->_slug, 'main' );
-		add_meta_box( $this->_slug . '-defaults', __( 'Defaults', $this->_slug ), array( $this, 'defaultSettingsMetaBox' ), 'xavisys-' . $this->_slug, 'main' );
+	public function add_options_meta_boxes() {
+		add_meta_box( $this->_slug . '-general-settings', __( 'General Settings', $this->_slug ), array( $this, 'general_settings_meta_box' ), 'range-' . $this->_slug, 'main' );
+		add_meta_box( $this->_slug . '-defaults', __( 'Default Settings for Shortcodes', $this->_slug ), array( $this, 'default_settings_meta_box' ), 'range-' . $this->_slug, 'main' );
 	}
 
-	public function generalSettingsMetaBox() {
+	public function general_settings_meta_box() {
 		$clear_locks_url = wp_nonce_url( add_query_arg( array( 'action' => 'clear-locks' ) ), 'clear-locks' );
 		?>
 				<table class="form-table">
 					<tr valign="top">
 						<th scope="row">
-							<?php _e( "HTTP vs HTTPS:", $this->_slug );?>
+							<?php _e( "HTTP vs HTTPS", $this->_slug );?>
 						</th>
 						<td>
 							<input class="checkbox" type="radio" value="https" id="twp_http_vs_https_https" name="twp[http_vs_https]"<?php checked( $this->_settings['twp']['http_vs_https'], 'https' ); ?> />
@@ -290,18 +291,49 @@ class wpTwitterWidget extends XavisysPlugin {
 					</tr>
 					<tr>
 						<th scope="row">
-							<?php _e( "Clear Update Locks:", $this->_slug );?>
+							<?php _e( "Clear Update Locks", $this->_slug );?>
 						</th>
 						<td>
 							<a href="<?php echo esc_url( $clear_locks_url ); ?>"><?php _e( 'Clear Update Locks', $this->_slug ); ?></a><br />
-							<small><?php _e( "A small perecntage of servers seem to have issues where an update lock isn't getting cleared.  If you're experiencing issues with your feed not updating, try clearing the update locks.", $this->_slug ); ?></small>
+							<small><?php _e( "A small percentage of servers seem to have issues where an update lock isn't getting cleared.  If you're experiencing issues with your feed not updating, try clearing the update locks.", $this->_slug ); ?></small>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">
+							<?php _e( 'Current API Usage', $this->_slug );?>
+						</th>
+						<td>
+							<?php
+							$limit_url = $this->_api_url . "account/rate_limit_status.json";
+							$resp = wp_remote_request( $limit_url );
+
+							if ( !is_wp_error( $resp ) && $resp['response']['code'] >= 200 && $resp['response']['code'] < 300 ) {
+								$decodedResponse = json_decode( $resp['body'] );
+								?>
+								<p>
+									<?php echo sprintf( __( 'Used: %d', $this->_slug ), $decodedResponse->hourly_limit - $decodedResponse->remaining_hits ); ?><br />
+									<?php echo sprintf( __( 'Remaining: %d', $this->_slug ), $decodedResponse->remaining_hits ); ?><br />
+									<?php
+									$minutes = ceil( ( $decodedResponse->reset_time_in_seconds - gmdate( 'U' ) ) / 60 );
+									echo sprintf( _n( 'Limits reset in: %d minutes', 'Limits reset in: %d minutes', $minutes, $this->_slug ), $minutes );
+									?><br />
+									<small><?php _e( 'This is overall usage, not just usage from Twitter Widget Pro', $this->_slug ); ?></small>
+								</p>
+								<?php
+							} else {
+								?>
+								<p><?php _e( 'There was an error checking your rate limit.', $this->_slug ); ?></p>
+								<?php
+							}
+							?>
 						</td>
 					</tr>
 				</table>
 		<?php
 	}
-	public function defaultSettingsMetaBox() {
+	public function default_settings_meta_box() {
 		?>
+				<p><?php _e( 'These settings are the default for the shortcodes and all of them can be overridden by specifying a different value in the shortcode itself.  All settings for widgets are locate in the individual widget.', $this->_slug ) ?></p>
 				<table class="form-table">
 					<tr valign="top">
 						<th scope="row">
@@ -381,7 +413,7 @@ class wpTwitterWidget extends XavisysPlugin {
 					</tr>
 					<tr valign="top">
 						<th scope="row">
-							<label for="twp_dateFormat"><?php echo sprintf( __( 'Format to dispaly the date in, uses <a href="%s">PHP date()</a> format:', $this->_slug ), 'http://php.net/date' ); ?></label>
+							<label for="twp_dateFormat"><?php echo sprintf( __( 'Format to display the date in, uses <a href="%s">PHP date()</a> format:', $this->_slug ), 'http://php.net/date' ); ?></label>
 						</th>
 						<td>
 							<input id="twp_dateFormat" name="twp[dateFormat]" type="text" class="regular-text code" value="<?php esc_attr_e( $this->_settings['twp']['dateFormat'] ); ?>" size="40" />
@@ -392,6 +424,7 @@ class wpTwitterWidget extends XavisysPlugin {
 							<?php _e( "Other Setting:", $this->_slug );?>
 						</th>
 						<td>
+							<input type="hidden" value="false" name="twp[showretweets]" />
 							<input class="checkbox" type="checkbox" value="true" id="twp_showretweets" name="twp[showretweets]"<?php checked( $this->_settings['twp']['showretweets'], 'true' ); ?> />
 							<label for="twp_showretweets"><?php _e( 'Include retweets', $this->_slug ); ?></label>
 							<br />
@@ -446,7 +479,7 @@ class wpTwitterWidget extends XavisysPlugin {
 	 * @return string - Tweet text with #hashtags linked
 	 */
 	public function linkHashtags( $text ) {
-		$text = preg_replace_callback('/(^|\s)(#\w*)/i', array($this, '_linkHashtagsCallback'), $text);
+		$text = preg_replace_callback('/(^|\s)(#[\w\x{00C0}-\x{00D6}\x{00D8}-\x{00F6}\x{00F8}-\x{00FF}]+)/iu', array($this, '_linkHashtagsCallback'), $text);
 		return $text;
 	}
 
@@ -471,30 +504,62 @@ class wpTwitterWidget extends XavisysPlugin {
 	 * @return string - Tweet text with URLs repalced with links
 	 */
 	public function linkUrls( $text ) {
-		/**
-		 * match protocol://address/path/file.extension?some=variable&another=asf%
-		 * $1 is a possible space, this keeps us from linking href="[link]" etc
-		 * $2 is the whole URL
-		 * $3 is protocol://
-		 * $4 is the URL without the protocol://
-		 * $5 is the URL parameters
-		 */
-		$text = preg_replace_callback("/(^|\s)(([a-zA-Z]+:\/\/)([a-z][a-z0-9_\..-]*[a-z]{2,6})([a-zA-Z0-9~\/*-?&%]*))/i", array($this, '_linkUrlsCallback'), $text);
+		$text = " {$text} "; // Pad with whitespace to simplify the regexes
 
-		/**
-		 * match www.something.domain/path/file.extension?some=variable&another=asf%
-		 * $1 is a possible space, this keeps us from linking href="[link]" etc
-		 * $2 is the whole URL that was matched.  The protocol is missing, so we assume http://
-		 * $3 is www.
-		 * $4 is the URL matched without the www.
-		 * $5 is the URL parameters
-		 */
-		$text = preg_replace_callback("/(^|\s)(www\.([a-z][a-z0-9_\..-]*[a-z]{2,6})([a-zA-Z0-9~\/*-?&%]*))/i", array($this, '_linkUrlsCallback'), $text);
+		$url_clickable = '~
+			([\\s(<.,;:!?])                                        # 1: Leading whitespace, or punctuation
+			(                                                      # 2: URL
+				[\\w]{1,20}+://                                # Scheme and hier-part prefix
+				(?=\S{1,2000}\s)                               # Limit to URLs less than about 2000 characters long
+				[\\w\\x80-\\xff#%\\~/@\\[\\]*(+=&$-]*+         # Non-punctuation URL character
+				(?:                                            # Unroll the Loop: Only allow puctuation URL character if followed by a non-punctuation URL character
+					[\'.,;:!?)]                            # Punctuation URL character
+					[\\w\\x80-\\xff#%\\~/@\\[\\]*(+=&$-]++ # Non-punctuation URL character
+				)*
+			)
+			(\)?)                                                  # 3: Trailing closing parenthesis (for parethesis balancing post processing)
+		~xS';
+		// The regex is a non-anchored pattern and does not have a single fixed starting character.
+		// Tell PCRE to spend more time optimizing since, when used on a page load, it will probably be used several times.
+
+		$text = preg_replace_callback( $url_clickable, array($this, '_make_url_clickable_cb'), $text );
+
+		$text = preg_replace_callback( '#([\s>])((www|ftp)\.[\w\\x80-\\xff\#$%&~/.\-;:=,?@\[\]+]+)#is', array($this, '_make_web_ftp_clickable_cb' ), $text );
+		$text = preg_replace_callback( '#([\s>])([.0-9a-z_+-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,})#i', array($this, '_make_email_clickable_cb' ), $text );
+
+		$text = substr( $text, 1, -1 ); // Remove our whitespace padding.
 
 		return $text;
 	}
 
-	private function _linkUrlsCallback ( $matches ) {
+	function _make_web_ftp_clickable_cb($matches) {
+		$ret = '';
+		$dest = $matches[2];
+		$dest = 'http://' . $dest;
+		$dest = esc_url($dest);
+		if ( empty($dest) )
+			return $matches[0];
+
+		// removed trailing [.,;:)] from URL
+		if ( in_array( substr($dest, -1), array('.', ',', ';', ':', ')') ) === true ) {
+			$ret = substr($dest, -1);
+			$dest = substr($dest, 0, strlen($dest)-1);
+		}
+		$linkAttrs = array(
+			'href'	=> $dest
+		);
+		return $matches[1] . $this->_buildLink( $dest, $linkAttrs ) . $ret;
+	}
+
+	private function _make_email_clickable_cb( $matches ) {
+		$email = $matches[2] . '@' . $matches[3];
+		$linkAttrs = array(
+			'href'	=> 'mailto:' . $email
+		);
+		return $matches[1] . $this->_buildLink( $email, $linkAttrs );
+	}
+
+	private function _make_url_clickable_cb ( $matches ) {
 		$linkAttrs = array(
 			'href'	=> $matches[2]
 		);
@@ -509,8 +574,6 @@ class wpTwitterWidget extends XavisysPlugin {
 		$attributes = array_filter( wp_parse_args( $attributes ), array( $this, '_notEmpty' ) );
 		$attributes = apply_filters( 'widget_twitter_link_attributes', $attributes );
 		$attributes = wp_parse_args( $attributes );
-		if ( strtolower( 'www' == substr( $attributes['href'], 0, 3 ) ) )
-			$attributes['href'] = 'http://' . $attributes['href'];
 
 		$text = apply_filters( 'widget_twitter_link_text', $text );
 		$link = '<a';
@@ -654,10 +717,10 @@ class wpTwitterWidget extends XavisysPlugin {
 		}
 
 		if ( 'true' == $args['showXavisysLink'] ) {
-			$widgetContent .= '<div class="xavisys-link"><span class="xavisys-link-text">';
+			$widgetContent .= '<div class="range-link"><span class="range-link-text">';
 			$linkAttrs = array(
 				'href'	=> 'http://bluedogwebservices.com/wordpress-plugin/twitter-widget-pro/',
-				'title'	=> __( 'Brought to you by BlueDog Web Services - A WordPress development company', $this->_slug )
+				'title'	=> __( 'Brought to you by Range - A WordPress design and development company', $this->_slug )
 			);
 			$widgetContent .= __( 'Powered by', $this->_slug );
 			$widgetContent .= $this->_buildLink( 'WordPress Twitter Widget Pro', $linkAttrs );

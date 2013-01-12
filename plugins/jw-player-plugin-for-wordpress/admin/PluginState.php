@@ -132,7 +132,7 @@ class PluginState extends WizardState {
                   <td>
                     <input name="<?php echo $name; ?>" type="checkbox" value="1" <?php checked(true , $value); ?> />
                     <input name="<?php echo $name . "_hidden"; ?>" type="hidden" value="0"/>
-                    <span class="description"><?php echo $plugin->getDescription() . "  <a href=" . $plugin->getPage() . JW_PLAYER_GA_VARS . " target=_blank>Learn more...</a>"; ?></span>
+                    <span class="description"><?php echo __($plugin->getDescription(), 'jw-player-plugin-for-wordpress') . "  <a href=" . $plugin->getPage() . JW_PLAYER_GA_VARS . " target=_blank>" . __("Learn more...", 'jw-player-plugin-for-wordpress') . "</a>"; ?></span>
                   </td>
                 </tr>
                 <tr>
@@ -201,7 +201,7 @@ class PluginState extends WizardState {
                     <?php unset($_POST[$name]); ?>
                     <textarea name="<?php echo $name; ?>" cols="80" rows="2"><?php echo $value; ?></textarea>
                     <br/>
-                    <span class="description"><?php echo "Enter a comma delimited list of additional plugins you would like to be used by this player.  <strong>Note:</strong> Flashvars for these plugins will need to be set in the Additional Flashvars section under the Advanced Settings tab."; ?></span>
+                    <span class="description"><?php _e("Enter a comma delimited list of additional plugins you would like to be used by this player.  <strong>Note:</strong> Flashvars for these plugins will need to be set in the Additional Flashvars section under the Advanced Settings tab.", 'jw-player-plugin-for-wordpress'); ?></span>
                   </td>
                 </tr>
               </table>

@@ -4,9 +4,9 @@ function file_list() {
 	//Make filelist
 	trigger_error(sprintf(__('%d. try for make list of files to backup....','backwpup'),$WORKING['FILE_LIST']['STEP_TRY']),E_USER_NOTICE);
 	$WORKING['STEPTODO']=2;
-	
+
 	//Check free memory for file list
-	need_free_memory('10MB'); //10MB free memory for filelist
+	need_free_memory('20MB'); //10MB free memory for filelist
 	//empty filelist
 	$tempfilelist=array();
 	//exlude of job
@@ -60,7 +60,7 @@ function file_list() {
 	$WORKING['STEPDONE']=2;
 	$WORKING['STEPSDONE'][]='FILE_LIST'; //set done
 	unset($tempfilelist);
-	
+
 	$filelist=get_filelist(); //get files from list
 	if (!is_array($filelist[0])) {
 		trigger_error(__('No files to backup','backwpup'),E_USER_ERROR);
@@ -100,7 +100,7 @@ function _file_list( $folder = '', $levels = 100, $excludedirs=array()) {
 			} else {
 				trigger_error(sprintf(__('"%s" is not a file or directory','backwpup'),$folder.$file),E_USER_WARNING);
 			}
-			
+
 		}
 		@closedir( $dir );
 	}

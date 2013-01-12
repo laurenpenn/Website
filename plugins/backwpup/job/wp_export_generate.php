@@ -8,7 +8,7 @@ define('W3TC_IN_MINIFY',false); //W3TC will not loaded
 
 $backwpupjobtemp=str_replace('\\','/',dirname(__FILE__).'/../tmp/');
 $backwpupjobtemp=rtrim(realpath($backwpupjobtemp),'/');	
-if (!empty($backwpupjobtemp) && is_dir($backwpupjobtemp) && is_file($backwpupjobtemp).'/.running') 
+if (!empty($backwpupjobtemp) && is_dir($backwpupjobtemp) && is_file($backwpupjobtemp.'/.running')) 
 	$runningfile=file_get_contents($backwpupjobtemp.'/.running');
 $infile=array();
 if (!empty($runningfile)) 

@@ -5,14 +5,14 @@ define( 'P2P_BOX_NONCE', 'p2p-box' );
 class P2P_Box_Factory extends P2P_Factory {
 
 	function __construct() {
-		add_filter( 'p2p_connection_type_args', array( $this, 'filter_ctypes' ) );
+		add_action( 'p2p_registered_connection_type', array( $this, 'filter_ctypes' ), 10, 2 );
 
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
 		add_action( 'wp_ajax_p2p_box', array( $this, 'wp_ajax_p2p_box' ) );
 	}
 
-	function filter_ctypes( $args ) {
+	function filter_ctypes( $ctype, $args ) {
 		if ( isset( $args['admin_box'] ) ) {
 			$box_args = _p2p_pluck( $args, 'admin_box' );
 			if ( !is_array( $box_args ) )
@@ -34,7 +34,7 @@ class P2P_Box_Factory extends P2P_Factory {
 			'can_create_post' => true
 		) );
 
-		$this->register( $args['name'], $box_args );
+		$this->register( $ctype->name, $box_args );
 
 		return $args;
 	}
@@ -63,7 +63,7 @@ class P2P_Box_Factory extends P2P_Factory {
 	}
 
 	private static function show_box( $directed, $post ) {
-		$show = $directed->get_opposite( 'side' )->can_edit_connections();
+		$show = $directed->get( 'opposite', 'side' )->can_edit_connections();
 
 		return apply_filters( 'p2p_admin_box_show', $show, $directed, $post );
 	}
@@ -71,11 +71,12 @@ class P2P_Box_Factory extends P2P_Factory {
 	private function create_box( $directed ) {
 		$box_args = $this->queue[ $directed->name ];
 
-		$title_class = 'P2P_Field_Title_' . ucfirst( $directed->get_opposite( 'object' ) );
+		$title_class = str_replace( 'P2P_Side_', 'P2P_Field_Title_',
+			get_class( $directed->get( 'opposite', 'side' ) ) );
 
 		$columns = array(
 			'delete' => new P2P_Field_Delete,
-			'title' => new $title_class( $directed->get_opposite( 'labels' )->singular_name ),
+			'title' => new $title_class( $directed->get( 'opposite', 'labels' )->singular_name ),
 		);
 
 		foreach ( $directed->fields as $key => $data ) {

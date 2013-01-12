@@ -78,15 +78,15 @@ function backup_create() {
 	} elseif (strtolower($STATIC['JOB']['fileformart'])==".tar.gz" or strtolower($STATIC['JOB']['fileformart'])==".tar.bz2" or strtolower($STATIC['JOB']['fileformart'])==".tar") { //tar files
 
 		if (strtolower($STATIC['JOB']['fileformart'])=='.tar.gz') {
-			$tarbackup=gzopen($STATIC['JOB']['backupdir'].$STATIC['backupfile'],'w9');
+			$tarbackup=fopen('compress.zlib://'.$STATIC['JOB']['backupdir'].$STATIC['backupfile'],'wb');
 		} elseif (strtolower($STATIC['JOB']['fileformart'])=='.tar.bz2') {
-			$tarbackup=bzopen($STATIC['JOB']['backupdir'].$STATIC['backupfile'],'w');
+			$tarbackup=fopen('compress.bzip2://'.$STATIC['JOB']['backupdir'].$STATIC['backupfile'],'wb');
 		} else {
-			$tarbackup=fopen($STATIC['JOB']['backupdir'].$STATIC['backupfile'],'w');
+			$tarbackup=fopen($STATIC['JOB']['backupdir'].$STATIC['backupfile'],'wb');
 		}
 
 		if (!$tarbackup) {
-			trigger_error(__('Can not create tar arcive file!','backwpup'),E_USER_ERROR);
+			trigger_error(__('Can not create tar archive file!','backwpup'),E_USER_ERROR);
 			return;
 		} else {
 			trigger_error(sprintf(__('%1$d. try to create %2$s archive file...','backwpup'),$WORKING['BACKUP_CREATE']['STEP_TRY'],substr($STATIC['JOB']['fileformart'],1)),E_USER_NOTICE);
@@ -154,44 +154,23 @@ function backup_create() {
 
 			$header = substr_replace($header, $checksum, 148, 8);
 
-			if (strtolower($STATIC['JOB']['fileformart'])=='.tar.gz') {
-				gzwrite($tarbackup, $header);
-			} elseif (strtolower($STATIC['JOB']['fileformart'])=='.tar.bz2') {
-				bzwrite($tarbackup, $header);
-			} else {
-				fwrite($tarbackup, $header);
-			}
+			fwrite($tarbackup, $header);
 
 			// read/write files in 512K Blocks
 			if ($fd=fopen($files['FILE'],'rb')) {
 				while(!feof($fd)) {
 					$filedata=fread($fd,512);
-					if (strlen($filedata)>0) {
-						if (strtolower($STATIC['JOB']['fileformart'])=='.tar.gz') {
-							gzwrite($tarbackup,pack("a512", $filedata));
-						} elseif (strtolower($STATIC['JOB']['fileformart'])=='.tar.bz2') {
-							bzwrite($tarbackup,pack("a512", $filedata));
-						} else {
-							fwrite($tarbackup,pack("a512", $filedata));
-						}
-					}
+					if (strlen($filedata)>0)
+						fwrite($tarbackup,pack("a512", $filedata));
 				}
 				fclose($fd);
 			}
 			$WORKING['STEPDONE']++;
 			update_working_file();
 		}
+        fwrite($tarbackup, pack("a1024", "")); // Add 1024 bytes of NULLs to designate EOF
+        fclose($tarbackup);
 
-		if (strtolower($STATIC['JOB']['fileformart'])=='.tar.gz') {
-			gzwrite($tarbackup, pack("a1024", "")); // Add 1024 bytes of NULLs to designate EOF
-			gzclose($tarbackup);
-		} elseif (strtolower($STATIC['JOB']['fileformart'])=='.tar.bz2') {
-			bzwrite($tarbackup, pack("a1024", "")); // Add 1024 bytes of NULLs to designate EOF
-			bzclose($tarbackup);
-		} else {
-			fwrite($tarbackup, pack("a1024", "")); // Add 1024 bytes of NULLs to designate EOF
-			fclose($tarbackup);
-		}
 		trigger_error(sprintf(__('%s archive creation done','backwpup'),substr($STATIC['JOB']['fileformart'],1)),E_USER_NOTICE);
 	}
 	$WORKING['STEPSDONE'][]='BACKUP_CREATE'; //set done

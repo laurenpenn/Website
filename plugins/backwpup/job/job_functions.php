@@ -431,6 +431,7 @@ function job_end() {
 		//Create PHP Mailer
 		require_once($STATIC['WP']['ABSPATH'].$STATIC['WP']['WPINC'].'/class-phpmailer.php');
 		$phpmailer = new PHPMailer();
+        $phpmailer->CharSet=$STATIC['WP']['CHARSET'];
 		//Setting den methode
 		if ($STATIC['CFG']['mailmethod']=="SMTP") {
 			require_once($STATIC['WP']['ABSPATH'].$STATIC['WP']['WPINC'].'/class-smtp.php');

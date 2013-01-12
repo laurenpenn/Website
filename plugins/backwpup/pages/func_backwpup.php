@@ -1,4 +1,7 @@
 <?PHP
+if (!defined('ABSPATH')) 
+  die();
+  
 include_once( trailingslashit(ABSPATH).'wp-admin/includes/class-wp-list-table.php');
 
 class BackWPup_Jobs_Table extends WP_List_Table {

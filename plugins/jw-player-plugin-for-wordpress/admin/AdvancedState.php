@@ -87,7 +87,7 @@ class AdvancedState extends FlashVarState {
    */
   protected function getFooter() { ?>
     <div class="stuffbox">
-      <h3 class="hndle"><span><?php echo "Additional Flashvars"; ?></span></h3>
+      <h3 class="hndle"><span><?php _e("Additional Flashvars", 'jw-player-plugin-for-wordpress'); ?></span></h3>
       <div class="inside" style="margin: 15px;">
         <table class="form-table">
           <tr valign="top">
@@ -98,7 +98,7 @@ class AdvancedState extends FlashVarState {
               <?php unset($_POST[$name]); ?>
               <textarea name="<?php echo $name; ?>" cols="80" rows="2"><?php echo $value; ?></textarea>
               <br/>
-              <span class="description"><?php echo "Enter one additional flashvar (name=value) per line that you would like to be used by this player.  <strong>Note:</strong> Overriding the standard flashvars could lead to unexpected behavior. "; ?></span>
+              <span class="description"><?php _e("Enter one additional flashvar (name=value) per line that you would like to be used by this player.  <strong>Note:</strong> Overriding the standard flashvars could lead to unexpected behavior. ", 'jw-player-plugin-for-wordpress'); ?></span>
             </td>
           </tr>
         </table>

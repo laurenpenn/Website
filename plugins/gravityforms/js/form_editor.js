@@ -18,8 +18,21 @@ jQuery(document).ready(function() {
     jQuery('#gform_fields').sortable({
         axis: 'y',
         cancel: '#field_settings',
+        handle: '.gfield_admin_icons',
         start: function(event, ui){gforms_dragging = ui.item[0].id;}
     });
+
+    jQuery('#field_choices').sortable({
+        axis: 'y',
+        handle: '.field-choice-handle',
+        update: function(event, ui){
+            var fromIndex = ui.item.data("index");
+            var toIndex = ui.item.index();
+            MoveFieldChoice(fromIndex, toIndex);
+        }
+    });
+
+
 
     if(jQuery(document).on){
     jQuery(document).on('change', '.gfield_rule_value_dropdown', function(){
@@ -283,9 +296,8 @@ function LoadFieldSettings(){
     ToggleCalculationOptions(field.enableCalculation, field);
 
     jQuery('#field_calculation_formula').val(field.calculationFormula);
-    jQuery('#field_calculation_rounding').val(field.calculationRounding);
-
-
+    var rounding = gformIsNumber(field.calculationRounding) ? field.calculationRounding : "norounding";
+    jQuery('#field_calculation_rounding').val(rounding);
 
 
 
@@ -873,12 +885,16 @@ function ToggleChoiceValue(isInit){
     //removing all classes
     container.removeClass("choice_with_price choice_with_value choice_with_value_and_price");
 
-    if(jQuery('#field_choice_values_enabled').is(":checked")){
+    var isShowValues = jQuery('#field_choice_values_enabled').is(":checked");
+    if(isShowValues){
         container.addClass("choice_with_value" + suffix);
     }
     else if(field.enablePrice){
         container.addClass("choice_with_price");
     }
+
+    /*var label = isShowValues ? gf_vars.hideValues : gf_vars.showValues;
+    jQuery('.gfield_value_label').html(label);*/
 }
 
 function GetConditionalObject(objectType){
@@ -1148,7 +1164,7 @@ function UpdateFormObject(){
     form.postContentTemplate = "";
 
     if(HasPostField()){
-        form.postAuthor = jQuery('#field_post_author').val();
+        form.postAuthor = jQuery('#field_post_author').val() ? jQuery('#field_post_author').val() : "";
         form.useCurrentUserAsAuthor = jQuery('#gfield_current_user_as_author').is(":checked");
         form.postCategory = jQuery('#field_post_category').val();
         form.postFormat = jQuery('#field_post_format').length != 0 ? jQuery('#field_post_format').val() : 0;
@@ -1375,6 +1391,8 @@ function EndDeleteField(fieldId){
         }
     }
     TogglePageBreakSettings();
+	
+	jQuery(document).trigger('gform_field_deleted', [form, fieldId]);
 }
 
 function StartDuplicateField(element) {
@@ -1505,6 +1523,8 @@ function EndAddField(field, fieldString){
     newFieldElement.removeClass("field_selected");
 
     UpdateDescriptionPlacement();
+	
+	jQuery(document).trigger('gform_field_added', [form, field]);
 }
 
 function StartChangeNameFormat(format){
@@ -1911,6 +1931,8 @@ function LoadFieldChoices(field){
 
     //loading bulk input
     LoadBulkChoices(field);
+
+	jQuery(document).trigger('gform_load_field_choices', [field]);
 }
 function LoadBulkChoices(field){
     LoadCustomChoices();
@@ -2172,7 +2194,12 @@ function InsertFieldChoice(index){
     field = GetSelectedField();
 
     var price = field["enablePrice"] ? "0.00" : "";
-    field.choices.splice(index, 0, new Choice("", "", price));
+    var new_choice = new Choice("", "", price);
+    if(window["gform_new_choice_" + field.type])
+        new_choice = window["gform_new_choice_" + field.type](field, new_choice);
+
+    field.choices.splice(index, 0, new_choice);
+
     LoadFieldChoices(field);
     UpdateFieldChoices(GetInputType(field));
 }
@@ -2180,6 +2207,20 @@ function InsertFieldChoice(index){
 function DeleteFieldChoice(index){
     field = GetSelectedField();
     field.choices.splice(index, 1);
+    LoadFieldChoices(field);
+    UpdateFieldChoices(GetInputType(field));
+}
+
+function MoveFieldChoice(fromIndex, toIndex){
+    field = GetSelectedField();
+    var choice = field.choices[fromIndex];
+
+    //deleting from old position
+    field.choices.splice(fromIndex, 1);
+
+    //inserting into new position
+    field.choices.splice(toIndex, 0, choice);
+
     LoadFieldChoices(field);
     UpdateFieldChoices(GetInputType(field));
 }
@@ -2421,7 +2462,7 @@ function SetSelectedCategories(){
             field["choices"].push(new Choice(this.name, this.value));
     });
 
-    field["choices"].sort(function(a, b){return (a["text"] > b["text"]);});
+    field["choices"].sort(function(a, b){return ( a["text"].toLowerCase() > b["text"].toLowerCase() );});
 }
 
 function SetFieldLabel(label){

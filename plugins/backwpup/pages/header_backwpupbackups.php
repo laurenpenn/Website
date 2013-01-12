@@ -42,7 +42,7 @@ if (!empty($doaction)) {
             try {
               $gstorage = new AmazonS3(array('key'=>$jobvalue['GStorageAccessKey'],'secret'=>$jobvalue['GStorageSecret'],'certificate_authority'=>true));
               $gstorage->ssl_verification=false;
-              $gstorage->set_hostname('commondatastorage.googleapis.com');
+              $gstorage->set_hostname('storage.googleapis.com');
               $gstorage->allow_hostname_override(false);
               $gstorage->delete_object($jobvalue['GStorageBucket'],$backupfile);
               unset($gstorage);

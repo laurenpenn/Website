@@ -8,8 +8,16 @@ abstract class P2P_Item {
 		$this->item = $item;
 	}
 
+	function __isset( $key ) {
+		return isset( $this->item->$key );
+	}
+
 	function __get( $key ) {
 		return $this->item->$key;
+	}
+
+	function __set( $key, $value ) {
+		$this->item->$key = $value;
 	}
 
 	function get_object() {
@@ -22,6 +30,24 @@ abstract class P2P_Item {
 
 	abstract function get_permalink();
 	abstract function get_title();
+}
+
+
+class P2P_Item_Any extends P2P_Item {
+
+	function __construct() {}
+
+	function get_permalink() {}
+
+	function get_title() {}
+
+	function get_object() {
+		return 'any';
+	}
+
+	function get_id() {
+		return false;
+	}
 }
 
 

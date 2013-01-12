@@ -86,7 +86,6 @@ class GFFormList{
                 mysack.setVar( "rg_update_form_active", "<?php echo wp_create_nonce("rg_update_form_active") ?>" );
                 mysack.setVar( "form_id", form_id);
                 mysack.setVar( "is_active", is_active ? 0 : 1);
-                mysack.encVar( "cookie", document.cookie, false );
                 mysack.onError = function() { alert('<?php echo esc_js(__("Ajax error while update form", "gravityforms")) ?>' )};
                 mysack.runAJAX();
 
@@ -116,7 +115,7 @@ class GFFormList{
 
             <div class="icon32" id="gravity-edit-icon"><br></div>
             <h2>
-                <?php _e("Edit Forms", "gravityforms"); ?>
+                <?php _e("Forms", "gravityforms"); ?>
                 <a class="button add-new-h2" href="admin.php?page=gf_new_form"><?php _e("Add New", "gravityforms") ?></a>
             </h2>
             <form id="forms_form" method="post">

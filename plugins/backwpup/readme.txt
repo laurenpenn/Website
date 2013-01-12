@@ -1,12 +1,11 @@
 === BackWPup ===
-Contributors: danielhuesken
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q3QSVRSFXBLSE
+Contributors: danielhuesken, inpsyde, Bueltge, nullbyte
 Tags: backup, database, file, ftp, xml, time, upload, multisite, cloud, dropbox, storage, amazon
 Requires at least: 3.1
-Tested up to: 3.4
-Stable tag: 2.1.15
-License: GPLv2
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tested up to: 3.5
+Stable tag: 2.1.17
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 WordPress Backup and more...
 
@@ -43,15 +42,7 @@ Do backups and more for your WordPress Blog.
 3. Activate the Plugin through the 'Plugins' menu in WordPress
 
 == Frequently Asked Questions ==
-= EN =
-* FAQ: http://backwpup.com/faq
-* Manual:  http://backwpup.com/manual
-* Support: http://backwpup.com/forums
 
-= DE =
-* FAQ: http://backwpup.de/faq
-* Manual:  http://backwpup.de/manual
-* Support: http://backwpup.de/forums
 
 == Screenshots ==
 1. Job Page
@@ -60,6 +51,22 @@ Do backups and more for your WordPress Blog.
 4. Backups Manage Page
 
 == Changelog ==
+= 2.1.17 =
+* Changed name of sav button to prevent false css.
+* added autocomplte off to some input fields.
+* cheange api domain for google storage
+* Updated AWS lib to 1.5.17.1
+
+= 2.1.16 =
+* Dropbox chunking will done in temp again.
+* uses stream for compression
+* Metaboxes can't disabled by the screen options
+* Set mail charset
+* Handling for Dropbox 503 errors
+* removed oauth bypass Google Analytics by Yoast
+* updatet AWS lib to 1.5.15
+* bug fixes
+
 = 2.1.15 =
 * Fixed FTP folder bug
 * Dropbox chunking will done in memory not in temp

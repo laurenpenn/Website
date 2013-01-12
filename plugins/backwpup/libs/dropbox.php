@@ -90,7 +90,7 @@ class backwpup_Dropbox {
         $offset=0;
         $ProgressFunction=null;
         while ($data=fread($file_handel,4194304)) {  //4194304 = 4MB
-            $chunkHandle = fopen('php://memory', 'rw');
+            $chunkHandle = fopen('php://temp', 'w+');
             fwrite($chunkHandle,$data);
             rewind($chunkHandle);
             //overwrite progress function
@@ -250,7 +250,6 @@ class backwpup_Dropbox {
 		if (is_file(dirname(__FILE__).'/aws/lib/requestcore/cacert.pem'))
 			curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__).'/aws/lib/requestcore/cacert.pem');
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		curl_setopt($ch, CURLINFO_HEADER_OUT, true);
 		if (!empty($this->ProgressFunction) and function_exists($this->ProgressFunction) and defined('CURLOPT_PROGRESSFUNCTION') and $method == 'PUT') {
 			curl_setopt($ch, CURLOPT_NOPROGRESS, false);
 			curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, $this->ProgressFunction);
@@ -260,12 +259,21 @@ class backwpup_Dropbox {
 			echo curl_exec($ch);
 			$output='';
 		} else {
-			$content = curl_exec($ch);
+            curl_setopt( $ch, CURLOPT_HEADER, true );
+            list($header,$content) = explode("\r\n\r\n", curl_exec( $ch ), 2);
 			$output = json_decode($content, true);
 		}
 		$status = curl_getinfo($ch);
 
-		if (isset($output['error']) or $status['http_code']>=300 or $status['http_code']<200 or curl_errno($ch)>0) {
+        if ( $status['http_code'] == 503 )  {
+            $wait=1;
+			if ( preg_match( '/Retry-After:(.*?)\r/i', $header, $matches ) )
+                $wait = trim($matches[1]);
+			//trigger_error($header,E_WARNING);
+            trigger_error(sprintf('(503) Your app is making too many requests and is being rate limited. 503s can trigger on a per-app or per-user basis. Wait for %d seconds.',$wait),E_USER_WARNING);
+            sleep($wait);
+            return $this->request( $url, $args, $method, $filehandel, $filesize, $echo );
+        } elseif (isset($output['error']) or $status['http_code']>=300 or $status['http_code']<200 or curl_errno($ch)>0) {
 			if(isset($output['error']) && is_string($output['error'])) $message = '('.$status['http_code'].') '.$output['error'];
 			elseif(isset($output['error']['hash']) && $output['error']['hash'] != '') $message = (string) '('.$status['http_code'].') '.$output['error']['hash'];
 			elseif (0!=curl_errno($ch)) $message = '('.curl_errno($ch).') '.curl_error($ch);

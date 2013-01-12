@@ -373,7 +373,7 @@ function backwpup_get_backup_files($jobid,$dest) {
     if (class_exists('AmazonS3')) {
       try {
         $gstorage = new AmazonS3(array('key'=>$jobvalue['GStorageAccessKey'],'secret'=>$jobvalue['GStorageSecret'],'certificate_authority'=> true ));
-        $gstorage->set_hostname('commondatastorage.googleapis.com');
+        $gstorage->set_hostname('storage.googleapis.com');
         $gstorage->allow_hostname_override(false);
         if (($contents = $gstorage->list_objects($jobvalue['GStorageBucket'],array('prefix'=>$jobvalue['GStoragedir']))) !== false) {
           foreach ($contents->body->Contents as $object) {

@@ -87,17 +87,17 @@ abstract class AdminState {
             }
             for (var config in configs) {
               if (newVal.value == configs[config]) {
-                return confirm("A player with this name already exists and will be overwritten.  Would you like to continue?");
+                return confirm("<?php _e("A player with this name already exists and will be overwritten.  Would you like to continue?", 'jw-player-plugin-for-wordpress'); ?>");
               }
             }
             return true;
           }
         </script>
-        <input align="left" class="button-primary" type="submit" name="Save" value="Save" onclick="return saveHandler(this);"/>
+        <input align="left" class="button-primary" type="submit" name="Save" value="<?php _e("Save", 'jw-player-plugin-for-wordpress'); ?>" onclick="return saveHandler(this);"/>
       <?php } ?>
-      <?php if ($show_previous) { ?><input type="submit" name="Previous" value="Previous" /><?php } ?>
-      <?php if ($show_cancel) { ?><input align="right" type="submit" name="Cancel" value="Cancel" /><?php } ?>
-      <?php if ($show_next) { ?><input align="right" type="submit" name="Next" value="Next" /><?php } ?>
+      <?php if ($show_previous) { ?><input type="submit" name="Previous" value="<?php _e("Previous", 'jw-player-plugin-for-wordpress'); ?>" /><?php } ?>
+      <?php if ($show_cancel) { ?><input align="right" type="submit" name="Cancel" value="<?php _e("Cancel", 'jw-player-plugin-for-wordpress'); ?>" /><?php } ?>
+      <?php if ($show_next) { ?><input align="right" type="submit" name="Next" value="<?php _e("Next", 'jw-player-plugin-for-wordpress'); ?>" /><?php } ?>
     </p><?php
   }
 

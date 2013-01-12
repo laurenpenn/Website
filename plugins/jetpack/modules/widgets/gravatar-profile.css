@@ -1,8 +1,7 @@
 .widget-grofile {
 }
 	.widget-grofile h4 {
-		margin: 1em 0 1.2em;
-		/*font-size: 1.2em;*/
+		margin: 1em 0 .5em;
 	}
 	.widget-grofile ul.grofile-urls {
 		margin-left: 0;
@@ -17,7 +16,7 @@
 			content: "" !important; /* Kubrick :( */
 		}
 		.widget-grofile .grofile-accounts-logo {
-			background-image: url('http://0.gravatar.com/images/grav-share-sprite.png');
+			background-image: url('//0.gravatar.com/images/grav-share-sprite.png');
 			background-repeat: no-repeat;
 			/*background-position: -16px -16px;*/
 			width: 16px; /* So we don't show the topmost logo */

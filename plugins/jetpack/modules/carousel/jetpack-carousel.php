@@ -76,7 +76,7 @@ class Jetpack_Carousel {
 	}
 
 	function enqueue_assets( $output ) {
-		if ( ! empty( $output ) ) {
+		if ( ! empty( $output ) && ! apply_filters( 'jp_carousel_force_enable', false ) ) {
 			// Bail because someone is overriding the [gallery] shortcode.
 			remove_filter( 'gallery_style', array( $this, 'add_data_to_container' ) );
 			remove_filter( 'wp_get_attachment_link', array( $this, 'add_data_to_images' ) );
@@ -86,14 +86,7 @@ class Jetpack_Carousel {
 		do_action( 'jp_carousel_thumbnails_shown' );
 
 		if ( $this->first_run ) {
-			if ( !wp_script_is( 'spin', 'registered' ) ) {
-				wp_register_script( 'spin', plugins_url( 'spin.js', __FILE__ ), false, '1.2.4' );
-			}
-			if ( !wp_script_is( 'jquery.spin', 'registered' ) ) {
-				wp_register_script( 'jquery.spin', plugins_url( 'jquery.spin.js', __FILE__ ) , array( 'jquery', 'spin' ) );
-			}
-
-			wp_enqueue_script( 'jetpack-carousel', plugins_url( 'jetpack-carousel.js', __FILE__ ), array( 'jquery.spin' ), $this->asset_version( '20120629' ), true );
+			wp_enqueue_script( 'jetpack-carousel', plugins_url( 'jetpack-carousel.js', __FILE__ ), array( 'jquery.spin' ), $this->asset_version( '20120926' ), true );
 
 			// Note: using  home_url() instead of admin_url() for ajaxurl to be sure  to get same domain on wpcom when using mapped domains (also works on self-hosted)
 			// Also: not hardcoding path since there is no guarantee site is running on site root in self-hosted context.
@@ -142,7 +135,14 @@ class Jetpack_Carousel {
 			$localize_strings = apply_filters( 'jp_carousel_localize_strings', $localize_strings );
 			wp_localize_script( 'jetpack-carousel', 'jetpackCarouselStrings', $localize_strings );
 			wp_enqueue_style( 'jetpack-carousel', plugins_url( 'jetpack-carousel.css', __FILE__ ), array(), $this->asset_version( '20120629' ) );
-
+			global $is_IE;
+			if( $is_IE )
+			{
+				$msie = strpos( $_SERVER['HTTP_USER_AGENT'], 'MSIE' ) + 4;
+				$version = (float) substr( $_SERVER['HTTP_USER_AGENT'], $msie, strpos( $_SERVER['HTTP_USER_AGENT'], ';', $msie ) - $msie );
+				if( $version < 9 )
+					wp_enqueue_style( 'jetpack-carousel-ie8fix', plugins_url( 'jetpack-carousel-ie8fix.css', __FILE__ ), array(), $this->asset_version( '20121024' ) );
+			}
 			do_action( 'jp_carousel_enqueue_assets', $this->first_run, $localize_strings );
 
 			$this->first_run = false;
@@ -159,7 +159,7 @@ class Jetpack_Carousel {
 		$orig_file       = wp_get_attachment_url( $attachment_id );
 		$meta            = wp_get_attachment_metadata( $attachment_id );
 		$size            = isset( $meta['width'] ) ? intval( $meta['width'] ) . ',' . intval( $meta['height'] ) : '';
-		$img_meta        = $meta['image_meta'];
+		$img_meta        = ( ! empty( $meta['image_meta'] ) ) ? (array) $meta['image_meta'] : array();
 		$comments_opened = intval( comments_open( $attachment_id ) );
 
 		/*
@@ -169,10 +169,10 @@ class Jetpack_Carousel {
 		 * $content_width has no filter we could temporarily de-register, run wp_get_attachment_image_src(), then
 		 * re-register. So using returned file URL instead, which we can define the sizes from through filename
 		 * parsing in the JS, as this is a failsafe file reference.
-		 * 
+		 *
 		 * EG with Twenty Eleven activated:
 		 * array(4) { [0]=> string(82) "http://vanillawpinstall.blah/wp-content/uploads/2012/06/IMG_3534-1024x764.jpg" [1]=> int(584) [2]=> int(435) [3]=> bool(true) }
-		 * 
+		 *
 		 * EG with Twenty Ten activated:
 		 * array(4) { [0]=> string(82) "http://vanillawpinstall.blah/wp-content/uploads/2012/06/IMG_3534-1024x764.jpg" [1]=> int(640) [2]=> int(477) [3]=> bool(true) }
 		 */
@@ -180,11 +180,12 @@ class Jetpack_Carousel {
 		$medium_file_info = wp_get_attachment_image_src( $attachment_id, 'medium' );
 		$medium_file      = isset( $medium_file_info[0] ) ? $medium_file_info[0] : '';
 
-		$large_file_info = wp_get_attachment_image_src( $attachment_id, 'large' );
-		$large_file      = isset( $large_file_info[0] ) ? $large_file_info[0] : '';
+		$large_file_info  = wp_get_attachment_image_src( $attachment_id, 'large' );
+		$large_file       = isset( $large_file_info[0] ) ? $large_file_info[0] : '';
 
-		$attachment      = get_post( $attachment_id );
-		$attachment_desc = wpautop( wptexturize( $attachment->post_content ) );
+		$attachment       = get_post( $attachment_id );
+		$attachment_title = wptexturize( $attachment->post_title );
+		$attachment_desc  = wpautop( wptexturize( $attachment->post_content ) );
 
 		// Not yet providing geo-data, need to "fuzzify" for privacy
 		if ( ! empty( $img_meta ) ) {
@@ -194,17 +195,18 @@ class Jetpack_Carousel {
 			}
 		}
 
-		$img_meta = json_encode( $img_meta );
+		$img_meta = json_encode( array_map( 'strval', $img_meta ) );
 
 		$html = str_replace(
 			'<img ',
 			sprintf(
-				'<img data-attachment-id="%1$d" data-orig-file="%2$s" data-orig-size="%3$s" data-comments-opened="%4$s" data-image-meta="%5$s" data-image-description="%6$s" data-medium-file="%7$s" data-large-file="%8$s" ',
+				'<img data-attachment-id="%1$d" data-orig-file="%2$s" data-orig-size="%3$s" data-comments-opened="%4$s" data-image-meta="%5$s" data-image-title="%6$s" data-image-description="%7$s" data-medium-file="%8$s" data-large-file="%9$s" ',
 				$attachment_id,
 				esc_attr( $orig_file ),
 				$size,
 				$comments_opened,
 				esc_attr( $img_meta ),
+				esc_attr( $attachment_title ),
 				esc_attr( $attachment_desc ),
 				esc_attr( $medium_file ),
 				esc_attr( $large_file )
@@ -232,24 +234,24 @@ class Jetpack_Carousel {
 
 		return $html;
 	}
-	
+
 	function get_attachment_comments() {
 		if ( ! headers_sent() )
 			header('Content-type: text/javascript');
-		
+
 		do_action('jp_carousel_check_blog_user_privileges');
-		
+
 		$attachment_id = ( isset( $_REQUEST['id'] ) ) ? (int) $_REQUEST['id'] : 0;
 		$offset        = ( isset( $_REQUEST['offset'] ) ) ? (int) $_REQUEST['offset'] : 0;
-		
+
 		if ( ! $attachment_id ) {
 			echo json_encode( __( 'Missing attachment ID.', 'jetpack' ) );
 			die();
 		}
-		
+
 		if ( $offset < 1 )
 			$offset = 0;
-		
+
 		$comments = get_comments( array(
 			'status'  => 'approve',
 			'order'   => ( 'asc' == get_option('comment_order') ) ? 'ASC' : 'DESC',
@@ -257,9 +259,9 @@ class Jetpack_Carousel {
 			'offset'  => $offset,
 			'post_id' => $attachment_id,
 		) );
-		
+
 		$out      = array();
-		
+
 		// Can't just send the results, they contain the commenter's email address.
 		foreach ( $comments as $comment ) {
 			$author_markup   = '<a href="' . esc_url( $comment->comment_author_url ) . '">' . esc_html( $comment->comment_author ) . '</a>';
@@ -272,42 +274,42 @@ class Jetpack_Carousel {
 				'content'         => wpautop($comment->comment_content),
 			);
 		}
-		
+
 		die( json_encode( $out ) );
 	}
 
 	function post_attachment_comment() {
 		if ( ! headers_sent() )
 			header('Content-type: text/javascript');
-		
+
 		if ( empty( $_POST['nonce'] ) || ! wp_verify_nonce($_POST['nonce'], 'carousel_nonce') )
 			die( json_encode( array( 'error' => __( 'Nonce verification failed.', 'jetpack' ) ) ) );
-		
+
 		$_blog_id = (int) $_POST['blog_id'];
 		$_post_id = (int) $_POST['id'];
 		$comment = $_POST['comment'];
-		
+
 		if ( empty( $_blog_id ) )
 			die( json_encode( array( 'error' => __( 'Missing target blog ID.', 'jetpack' ) ) ) );
-		
+
 		if ( empty( $_post_id ) )
 			die( json_encode( array( 'error' => __( 'Missing target post ID.', 'jetpack' ) ) ) );
-		
+
 		if ( empty( $comment ) )
 			die( json_encode( array( 'error' => __( 'No comment text was submitted.', 'jetpack' ) ) ) );
 
 		// Used in context like NewDash
 		$switched = false;
-		if ( $_blog_id != get_current_blog_id() ) {
+		if ( is_multisite() && $_blog_id != get_current_blog_id() ) {
 			switch_to_blog( $_blog_id );
 			$switched = true;
 		}
-		
+
 		do_action('jp_carousel_check_blog_user_privileges');
 
 		if ( ! comments_open( $_post_id ) )
 			die( json_encode( array( 'error' => __( 'Comments on this post are closed.', 'jetpack' ) ) ) );
-		
+
 		if ( is_user_logged_in() ) {
 			$user         = wp_get_current_user();
 			$user_id      = $user->ID;
@@ -355,10 +357,10 @@ class Jetpack_Carousel {
 
 		die( json_encode( array( 'comment_id' => $comment_id, 'comment_status' => $comment_status ) ) );
 	}
-	
+
 	function register_settings() {
 		add_settings_section('carousel_section', __( 'Image Gallery Carousel', 'jetpack' ), array( $this, 'carousel_section_callback' ), 'media');
-		
+
 		if ( ! $this->in_jetpack ) {
 			add_settings_field('carousel_enable_it', __( 'Enable carousel', 'jetpack' ), array( $this, 'carousel_enable_it_callback' ), 'media', 'carousel_section' );
 			register_setting( 'media', 'carousel_enable_it', array( $this, 'carousel_enable_it_sanitize' ) );
@@ -366,7 +368,7 @@ class Jetpack_Carousel {
 
 		add_settings_field('carousel_background_color', __( 'Background color', 'jetpack' ), array( $this, 'carousel_background_color_callback' ), 'media', 'carousel_section' );
 		register_setting( 'media', 'carousel_background_color', array( $this, 'carousel_background_color_sanitize' ) );
-		
+
 		add_settings_field('carousel_display_exif', __( 'Metadata', 'jetpack'), array( $this, 'carousel_display_exif_callback' ), 'media', 'carousel_section' );
 		register_setting( 'media', 'carousel_display_exif', array( $this, 'carousel_display_exif_sanitize' ) );
 
@@ -388,7 +390,7 @@ class Jetpack_Carousel {
 		}
 		return ( 1 == $value ) ? 1 : 0;
 	}
-	
+
 	function sanitize_1or0_option( $value ) {
 		return ( 1 == $value ) ? 1 : 0;
 	}
@@ -437,7 +439,7 @@ class Jetpack_Carousel {
 
 	function carousel_display_geo_sanitize( $value ) {
 		return $this->sanitize_1or0_option( $value );
-	} 
+	}
 
 	function carousel_background_color_callback() {
 		$this->settings_select( 'carousel_background_color', array( 'black' => __( 'Black', 'jetpack' ), 'white' => __( 'White', 'jetpack', 'jetpack' ) ) );

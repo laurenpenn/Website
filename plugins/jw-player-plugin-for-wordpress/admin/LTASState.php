@@ -1,10 +1,7 @@
 <?php
 
-define("JW_PLAYER_LTAS_DESC",
-  "The LongTail AdSolution (LTAS) is a service which allows you to monetize your content through pre-roll, post-roll and overlay ads from premium video advertisers.  " .
-  "To use this service you must have an account.  For more information visit <a href=http://www.longtailvideo.com/adsolution" . JW_PLAYER_GA_VARS . " target=_blank>http://www.longtailvideo.com/adsolution</a>." .
-  "<br/><br/><strong>To sign up for this service, <a href=https://dashboard.longtailvideo.com/signup.aspx" . JW_PLAYER_GA_VARS . " target=_blank>click here to create an account</a>.</strong>"
-);
+define("JW_PLAYER_LTAS_DESC", sprintf(__("The LongTail AdSolution (LTAS) is a service which allows you to monetize your content through pre-roll, post-roll and overlay ads from premium video advertisers.  To use this service you must have an account.  For more information visit <a href=http://www.longtailvideo.com/adsolution%s target=_blank>http://www.longtailvideo.com/adsolution</a>.<br/><br/><strong>To sign up for this service, <a href=https://dashboard.longtailvideo.com/signup.aspx%s target=_blank>click here to create an account</a>.</strong>", 'jw-player-plugin-for-wordpress'), JW_PLAYER_GA_VARS, JW_PLAYER_GA_VARS));
+define("JW_PLAYER_LTAS_LINK", sprintf(__("<a href=https://dashboard.longtailvideo.com/%s target=_blank>AdSolution Dashboard.</a>", 'jw-player-plugin-for-wordpress'), JW_PLAYER_GA_VARS));
 
 /**
  * Responsible for the display of LTAS configuration.
@@ -94,7 +91,7 @@ class LTASState extends WizardState {
                       <th>ltas.cc</th>
                       <td>
                         <input type="text" value="<?php echo $value; ?>" name="jwplayermodule_plugin_ltas_cc" />
-                        <span class="description"><?php echo "Your LTAS channel code.  Obtained from the <a href=https://dashboard.longtailvideo.com/" . JW_PLAYER_GA_VARS . " target=_blank>AdSolution Dashboard.</a>"; ?></span>
+                        <span class="description"><?php printf(__("Your LTAS channel code.  Obtained from the %s", 'jw-player-plugin-for-wordpress'), JW_PLAYER_LTAS_LINK); ?></span>
                       </td>
                     </tr>
                   </table>

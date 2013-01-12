@@ -63,14 +63,14 @@ function media_jwplayer_url_insert_form($errors) {
     <input type="hidden" name="post_id" id="post_id" value="<?php echo (int) $post_id; ?>" />
   <?php wp_nonce_field('media-form'); ?>
 
-    <h3 class="media-title"><?php _e('Add media file from URL'); ?></h3>
+    <h3 class="media-title"><?php _e('Add media file from URL', 'jw-player-plugin-for-wordpress'); ?></h3>
 
     <div id="url-upload-ui">
       <table class="describe">
         <tbody>
           <tr>
             <th valign="top" scope="row" class="label">
-              <span class="alignleft"><label for="insertonly[href]"><?php _e('URL') ?></label></span>
+              <span class="alignleft"><label for="insertonly[href]"><?php _e('URL', 'jw-player-plugin-for-wordpress') ?></label></span>
               <span class="alignright"><abbr title="required" class="required">*</abbr></span>
             </th>
             <td class="field"><input id="insertonly[href]" name="insertonly[href]" value="" type="text" aria-required="true"></td>
@@ -78,7 +78,7 @@ function media_jwplayer_url_insert_form($errors) {
           <tr>
             <td></td>
             <td>
-              <input type="submit" class="button" name="insertonlybutton" value="<?php echo esc_attr__('Add Media'); ?>" />
+              <input type="submit" class="button" name="insertonlybutton" value="<?php echo esc_attr__('Add Media', 'jw-player-plugin-for-wordpress'); ?>" />
             </td>
           </tr>
         </tbody>
@@ -110,7 +110,7 @@ function media_jwplayer_url_insert_form($errors) {
   ?>
     </div>
     <p class="savebutton ml-submit">
-      <input type="submit" class="button" name="save" value="<?php esc_attr_e('Save all changes'); ?>" />
+      <input type="submit" class="button" name="save" value="<?php esc_attr_e('Save all changes', 'jw-player-plugin-for-wordpress'); ?>" />
     </p>
   </form>
   <?php
@@ -118,6 +118,7 @@ function media_jwplayer_url_insert_form($errors) {
 
 /**
  * In the case of a YouTube URL this function retrieves the relevant metadata
+ * from the YouTube API.
  * from the YouTube API.
  * @param string $video_id The YouTube video id.
  * @return array The array of relevant YouTube metadata.

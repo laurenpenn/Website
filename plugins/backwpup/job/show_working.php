@@ -50,7 +50,8 @@ function backwpup_read_logheader($logfile) {
 	return $joddata;
 }
 
-$logfile=realpath($_POST['logfile']);
+if (isset($_POST['logfile']))
+	$logfile=realpath($_POST['logfile']);
 if (substr($logfile,-5)!='.html' && substr(basename($logfile),0,13)!='backwpup_log_')
 	die();
 

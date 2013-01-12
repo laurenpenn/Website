@@ -213,7 +213,7 @@ if ( ! function_exists( 'ot_create_media_post' ) ) {
     
     register_post_type( 'option-tree', array(
       'labels'              => array( 'name' => __( 'Option Tree', 'option-tree' ) ),
-      'public'              => true,
+      'public'              => false,
       'show_ui'             => false,
       'capability_type'     => 'post',
       'exclude_from_search' => true,
@@ -864,7 +864,8 @@ if ( ! function_exists( 'ot_export_php_settings_array' ) ) {
         ),";
       }
       $help = substr_replace( $help, '' , -1 );
-      $contextual_help = "'content'       => array( $help
+      $contextual_help = "
+      'content'       => array( $help
       ),";
     }
     
@@ -877,9 +878,8 @@ if ( ! function_exists( 'ot_export_php_settings_array' ) ) {
     /* check that $contexual_help has a value and add to $build_settings */
     if ( '' != $contextual_help ) {
       $build_settings.= "
-    'contextual_help' => array(
-      $contextual_help
-    )";
+    'contextual_help' => array( $contextual_help
+    ),";
     }
     
     /* build sections */
@@ -898,7 +898,7 @@ if ( ! function_exists( 'ot_export_php_settings_array' ) ) {
     
     /* check that $sections has a value and add to $build_settings */
     if ( '' != $sections ) {
-      $build_settings.= ",
+      $build_settings.= "
     'sections'        => array( $sections
     )";
     }
@@ -1032,7 +1032,10 @@ function custom_theme_options() {
    */
   \$custom_settings = array( $build_settings
   );
-   
+  
+  /* allow settings to be filtered before saving */
+  \$custom_settings = apply_filters( 'option_tree_settings_args', \$custom_settings );
+  
   /* settings are not the same update the DB */
   if ( \$saved_settings !== \$custom_settings ) {
     update_option( 'option_tree_settings', \$custom_settings ); 
@@ -1636,6 +1639,74 @@ if ( ! function_exists( 'ot_map_old_option_types' ) ) {
   }
 }
 
+/**
+ * Recognized font families
+ *
+ * Returns an array of all recognized font families.
+ * Keys are intended to be stored in the database
+ * while values are ready for display in html.
+ * Renamed in version 2.0 to avoid name collisions.
+ *
+ * @uses      apply_filters()
+ *
+ * @return    array
+ *
+ * @access    public
+ * @since     1.1.8
+ * @updated   2.0
+ */
+if ( ! function_exists( 'ot_recognized_font_families' ) ) {
+
+  function ot_recognized_font_families( $field_id = '' ) {
+  
+    return apply_filters( 'ot_recognized_font_families', array(
+      'arial'     => 'Arial',
+      'georgia'   => 'Georgia',
+      'helvetica' => 'Helvetica',
+      'palatino'  => 'Palatino',
+      'tahoma'    => 'Tahoma',
+      'times'     => '"Times New Roman", sans-serif',
+      'trebuchet' => 'Trebuchet',
+      'verdana'   => 'Verdana'
+    ), $field_id );
+    
+  }
+
+}
+
+/**
+ * Recognized font sizes
+ *
+ * Returns an array of all recognized font sizes.
+ *
+ * @uses      apply_filters()
+ *
+ * @param     string  $field_id ID that's passed to the filters.
+ * @return    array
+ *
+ * @access    public
+ * @since     2.0.12
+ */
+if ( ! function_exists( 'ot_recognized_font_sizes' ) ) {
+
+  function ot_recognized_font_sizes( $field_id ) {
+  
+    $range = ot_range( 
+      apply_filters( 'ot_font_size_low_range', 0, $field_id ), 
+      apply_filters( 'ot_font_size_high_range', 150, $field_id ), 
+      apply_filters( 'ot_font_size_range_interval', 1, $field_id )
+    );
+    
+    $unit = apply_filters( 'ot_font_size_unit_type', 'px', $field_id );
+    
+    foreach( $range as $k => $v ) {
+      $range[$k] = $v . $unit;
+    }
+    
+    return $range;
+  }
+
+}
 
 /**
  * Recognized font styles
@@ -1664,6 +1735,34 @@ if ( ! function_exists( 'ot_recognized_font_styles' ) ) {
     
   }
 
+}
+
+/**
+ * Recognized font variants
+ *
+ * Returns an array of all recognized font variants.
+ * Renamed in version 2.0 to avoid name collisions.
+ *
+ * @uses      apply_filters()
+ *
+ * @return    array
+ *
+ * @access    public
+ * @since     1.1.8
+ * @updated   2.0
+ */
+if ( ! function_exists( 'ot_recognized_font_variants' ) ) {
+
+  function ot_recognized_font_variants( $field_id = '' ) {
+  
+    return apply_filters( 'ot_recognized_font_variants', array(
+      'normal'      => 'Normal',
+      'small-caps'  => 'Small Caps',
+      'inherit'     => 'Inherit'
+    ), $field_id );
+  
+  }
+  
 }
 
 /**
@@ -1706,62 +1805,128 @@ if ( ! function_exists( 'ot_recognized_font_weights' ) ) {
 }
 
 /**
- * Recognized font variants
+ * Recognized letter spacing
  *
- * Returns an array of all recognized font variants.
- * Renamed in version 2.0 to avoid name collisions.
+ * Returns an array of all recognized line heights.
  *
  * @uses      apply_filters()
  *
+ * @param     string  $field_id ID that's passed to the filters.
  * @return    array
  *
  * @access    public
- * @since     1.1.8
- * @updated   2.0
+ * @since     2.0.12
  */
-if ( ! function_exists( 'ot_recognized_font_variants' ) ) {
+if ( ! function_exists( 'ot_recognized_letter_spacing' ) ) {
 
-  function ot_recognized_font_variants( $field_id = '' ) {
+  function ot_recognized_letter_spacing( $field_id ) {
   
-    return apply_filters( 'ot_recognized_font_variants', array(
-      'normal'      => 'Normal',
-      'small-caps'  => 'Small Caps',
-      'inherit'     => 'Inherit'
-    ), $field_id );
-  
+    $range = ot_range( 
+      apply_filters( 'ot_letter_spacing_low_range', -0.1, $field_id ), 
+      apply_filters( 'ot_letter_spacing_high_range', 0.1, $field_id ), 
+      apply_filters( 'ot_letter_spacing_range_interval', 0.01, $field_id )
+    );
+    
+    $unit = apply_filters( 'ot_letter_spacing_unit_type', 'em', $field_id );
+    
+    foreach( $range as $k => $v ) {
+      $range[$k] = $v . $unit;
+    }
+    
+    return $range;
   }
-  
+
 }
 
 /**
- * Recognized font families
+ * Recognized line heights
  *
- * Returns an array of all recognized font families.
+ * Returns an array of all recognized line heights.
+ *
+ * @uses      apply_filters()
+ *
+ * @param     string  $field_id ID that's passed to the filters.
+ * @return    array
+ *
+ * @access    public
+ * @since     2.0.12
+ */
+if ( ! function_exists( 'ot_recognized_line_heights' ) ) {
+
+  function ot_recognized_line_heights( $field_id ) {
+  
+    $range = ot_range( 
+      apply_filters( 'ot_line_height_low_range', 0, $field_id ), 
+      apply_filters( 'ot_line_height_high_range', 150, $field_id ), 
+      apply_filters( 'ot_line_height_unit_type', 1, $field_id )
+    );
+    
+    $unit = apply_filters( 'ot_line_height_unit_type', 'px', $field_id );
+    
+    foreach( $range as $k => $v ) {
+      $range[$k] = $v . $unit;
+    }
+    
+    return $range;
+  }
+
+}
+
+/**
+ * Recognized text decorations
+ *
+ * Returns an array of all recognized text decorations.
  * Keys are intended to be stored in the database
  * while values are ready for display in html.
- * Renamed in version 2.0 to avoid name collisions.
  *
  * @uses      apply_filters()
  *
  * @return    array
  *
  * @access    public
- * @since     1.1.8
- * @updated   2.0
+ * @since     2.0.10
  */
-if ( ! function_exists( 'ot_recognized_font_families' ) ) {
-
-  function ot_recognized_font_families( $field_id = '' ) {
+if ( ! function_exists( 'ot_recognized_text_decorations' ) ) {
   
-    return apply_filters( 'ot_recognized_font_families', array(
-      'arial'     => 'Arial',
-      'georgia'   => 'Georgia',
-      'helvetica' => 'Helvetica',
-      'palatino'  => 'Palatino',
-      'tahoma'    => 'Tahoma',
-      'times'     => '"Times New Roman", sans-serif',
-      'trebuchet' => 'Trebuchet',
-      'verdana'   => 'Verdana'
+  function ot_recognized_text_decorations( $field_id = '' ) {
+  
+    return apply_filters( 'ot_recognized_text_decorations', array(
+      'blink'         => 'Blink',
+      'inherit'       => 'Inherit',
+      'line-through'  => 'Line Through',
+      'none'          => 'None',
+      'overline'      => 'Overline',
+      'underline'     => 'Underline'
+    ), $field_id );
+    
+  }
+
+}
+
+/**
+ * Recognized text transformations
+ *
+ * Returns an array of all recognized text transformations.
+ * Keys are intended to be stored in the database
+ * while values are ready for display in html.
+ *
+ * @uses      apply_filters()
+ *
+ * @return    array
+ *
+ * @access    public
+ * @since     2.0.10
+ */
+if ( ! function_exists( 'ot_recognized_text_transformations' ) ) {
+  
+  function ot_recognized_text_transformations( $field_id = '' ) {
+  
+    return apply_filters( 'ot_recognized_text_transformations', array(
+      'capitalize'  => 'Capitalize',
+      'inherit'     => 'Inherit',
+      'lowercase'   => 'Lowercase',
+      'none'        => 'None',
+      'uppercase'   => 'Uppercase'
     ), $field_id );
     
   }
@@ -2094,7 +2259,7 @@ if ( ! function_exists( 'ot_slider_settings' ) ) {
  *
  * @access    public
  * @since     1.1.8
- * @updated   2.0
+ * @updated   2.0.12
  */
 if ( ! function_exists( 'ot_insert_css_with_markers' ) ) {
 
@@ -2165,14 +2330,14 @@ if ( ! function_exists( 'ot_insert_css_with_markers' ) ) {
               $value = $value[0].$value[1];
               
             /* typography */
-            } else if ( ot_array_keys_exists( $value, array( 'font-color', 'font-family', 'font-style', 'font-variant', 'font-weight', 'font-size' ) ) ) {
+            } else if ( ot_array_keys_exists( $value, array( 'font-color', 'font-family', 'font-size', 'font-style', 'font-variant', 'font-weight', 'letter-spacing', 'line-height', 'text-decoration', 'text-transform' ) ) ) {
               $font = array();
               
               if ( ! empty( $value['font-color'] ) )
                 $font[] = "color: " . $value['font-color'] . ";";
               
               if ( ! empty( $value['font-family'] ) ) {
-                foreach ( ot_recognized_font_families() as $key => $v ) {
+                foreach ( ot_recognized_font_families( $marker ) as $key => $v ) {
                   if ( $key == $value['font-family'] ) {
                     $font[] = "font-family: " . $v . ";";
                   }
@@ -2190,6 +2355,18 @@ if ( ! function_exists( 'ot_insert_css_with_markers' ) ) {
               
               if ( ! empty( $value['font-weight'] ) )
                 $font[] = "font-weight: " . $value['font-weight'] . ";";
+                
+              if ( ! empty( $value['letter-spacing'] ) )
+                $font[] = "letter-spacing: " . $value['letter-spacing'] . ";";
+              
+              if ( ! empty( $value['line-height'] ) )
+                $font[] = "line-height: " . $value['line-height'] . ";";
+              
+              if ( ! empty( $value['text-decoration'] ) )
+                $font[] = "text-decoration: " . $value['text-decoration'] . ";";
+              
+              if ( ! empty( $value['text-transform'] ) )
+                $font[] = "text-transform: " . $value['text-transform'] . ";";
               
               /* set $value with font properties or empty string */
               $value = ! empty( $font ) ? implode( "\n", $font ) : '';
@@ -2907,7 +3084,7 @@ if ( ! function_exists( 'ot_list_item_view' ) ) {
           'field_value'       => isset( $list_item[$field['id']] ) ? $list_item[$field['id']] : '',
           'field_desc'        => isset( $field['desc'] ) ? $field['desc'] : '',
           'field_std'         => isset( $field['std'] ) ? $field['std'] : '',
-          'field_rows'        => isset( $rows ) ? $rows : 10,
+          'field_rows'        => isset( $field['rows'] ) ? $field['rows'] : 10,
           'field_post_type'   => isset( $field['post_type'] ) && ! empty( $field['post_type'] ) ? $field['post_type'] : 'post',
           'field_taxonomy'    => isset( $field['taxonomy'] ) && ! empty( $field['taxonomy'] ) ? $field['taxonomy'] : 'category',
           'field_class'       => isset( $field['class'] ) ? $field['class'] : '',
@@ -2920,9 +3097,12 @@ if ( ! function_exists( 'ot_list_item_view' ) ) {
         /* option label */
         echo '<div class="format-settings">';
           
+        /* don't show title with textblocks */
+        if ( $_args['type'] != 'textblock' ) {
           echo '<div class="format-setting-label">';
             echo '<h3 class="label">' . esc_attr( $field['label'] ) . '</h3>';
           echo '</div>';
+        }
         
         /* only allow simple textarea inside a list-item due to known DOM issues with wp_editor() */
         if ( $_args['type'] == 'textarea' )
@@ -3250,6 +3430,39 @@ if ( ! function_exists( 'ot_reverse_wpautop' ) ) {
                 
   }
 
+}
+
+/**
+ * Returns an array of elements from start to limit, inclusive.
+ *
+ * Occasionally zero will be some impossibly large number to 
+ * the "E" power when creating a range from negative to positive.
+ * This function attempts to fix that by setting that number back to "0".
+ *
+ * @param     string    $start First value of the sequence.
+ * @param     string    $limit The sequence is ended upon reaching the limit value.
+ * @param     string    $step If a step value is given, it will be used as the increment 
+ *                      between elements in the sequence. step should be given as a 
+ *                      positive number. If not specified, step will default to 1.
+ * @return    array
+ *
+ * @access    public
+ * @since     2.0.12
+ */
+function ot_range( $start, $limit, $step = 1 ) {
+  
+  if ( $step < 0 )
+    $step = 1;
+    
+  $range = range( $start, $limit, $step );
+  
+  foreach( $range as $k => $v ) {
+    if ( strpos( $v, 'E' ) ) {
+      $range[$k] = 0;
+    }
+  }
+  
+  return $range;
 }
 
 /* End of file ot-functions-admin.php */

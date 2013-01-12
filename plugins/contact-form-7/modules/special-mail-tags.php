@@ -3,15 +3,22 @@
 ** Filters for Special Mail Tags
 **/
 
-add_filter( 'wpcf7_special_mail_tags', 'wpcf7_special_mail_tag', 10, 2 );
+add_filter( 'wpcf7_special_mail_tags', 'wpcf7_special_mail_tag', 10, 3 );
 
-function wpcf7_special_mail_tag( $output, $name ) {
+function wpcf7_special_mail_tag( $output, $name, $html ) {
 
 	// For backwards compat.
 	$name = preg_replace( '/^wpcf7\./', '_', $name );
 
 	if ( '_remote_ip' == $name )
 		$output = preg_replace( '/[^0-9a-f.:, ]/', '', $_SERVER['REMOTE_ADDR'] );
+
+	elseif ( '_user_agent' == $name ) {
+		$output = substr( $_SERVER['HTTP_USER_AGENT'], 0, 254 );
+
+		if ( $html )
+			$output = esc_html( $output );
+	}
 
 	elseif ( '_url' == $name ) {
 		$url = untrailingslashit( home_url() );
@@ -68,6 +75,34 @@ function wpcf7_special_mail_tag_for_post_data( $output, $name ) {
 		$output = $user->user_email;
 
 	return $output;
+}
+
+add_filter( 'wpcf7_special_mail_tags', 'wpcf7_special_mail_tag_for_raw_post', 10, 3 );
+
+function wpcf7_special_mail_tag_for_raw_post( $output, $name, $html ) {
+	if ( ! preg_match( '/^_raw_(.+)/', $name, $matches ) )
+		return $output;
+
+	$tag_name = trim( $matches[1] );
+
+	if ( empty( $_POST[$tag_name] ) )
+		return $output;
+
+	$submitted = $_POST[$tag_name];
+
+	if ( is_array( $submitted ) )
+		$replaced = implode( ', ', $submitted );
+	else
+		$replaced = $submitted;
+
+	if ( $html ) {
+		$replaced = strip_tags( $replaced );
+		$replaced = wptexturize( $replaced );
+	}
+
+	$replaced = apply_filters( 'wpcf7_mail_tag_replaced', $replaced, $submitted, $html );
+
+	return stripslashes( $replaced );
 }
 
 ?>

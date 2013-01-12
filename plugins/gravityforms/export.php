@@ -6,6 +6,11 @@ class GFExport{
     public static function maybe_export(){
         if(isset($_POST["export_lead"])){
             check_admin_referer("rg_start_export", "rg_start_export_nonce");
+            //see if any fields chosen
+            if (empty($_POST["export_field"])){
+				echo "<div class='error' style='padding:15px;'>" . __("Please select the fields to be exported", "gravityforms") . "</div>";
+                return;
+            }
             $form_id=$_POST["export_form"];
             $form = RGFormsModel::get_form_meta($form_id);
 
@@ -21,7 +26,7 @@ class GFExport{
         }
         else if(isset($_POST["export_forms"])){
             check_admin_referer("gf_export_forms", "gf_export_forms_nonce");
-            $selected_forms = $_POST["gf_form_id"];
+            $selected_forms = rgpost("gf_form_id");
             if(empty($selected_forms)){
                 echo "<div class='error' style='padding:15px;'>" . __("Please select the forms to be exported", "gravityforms") . "</div>";
                 return;
@@ -206,6 +211,7 @@ class GFExport{
                         "creditCard"=> array("unserialize_as_array" => true),
                         "routin"=> array("unserialize_as_array" => true) //routin is for backwards compatibility
                         );
+        $options = apply_filters('gform_import_form_xml_options', $options);
         $xml = new RGXML($options);
         $forms = $xml->unserialize($xmlstr);
 
@@ -355,7 +361,6 @@ class GFExport{
                 mysack.setVar( "action", "rg_select_export_form" );
                 mysack.setVar( "rg_select_export_form", "<?php echo wp_create_nonce("rg_select_export_form") ?>" );
                 mysack.setVar( "form_id", formId);
-                mysack.encVar( "cookie", document.cookie, false );
                 mysack.onError = function() { alert('<?php echo esc_js(__("Ajax error while selecting a form", "gravityforms")) ?>' )};
                 mysack.runAJAX();
 
@@ -510,18 +515,7 @@ class GFExport{
         $start_date = $_POST["export_date_start"];
         $end_date = $_POST["export_date_end"];
 
-        //adding default fields
-        array_push($form["fields"],array("id" => "created_by" , "label" => __("Created By (User Id)", "gravityforms")));
-        array_push($form["fields"],array("id" => "id" , "label" => __("Entry Id", "gravityforms")));
-        array_push($form["fields"],array("id" => "date_created" , "label" => __("Entry Date", "gravityforms")));
-        array_push($form["fields"],array("id" => "source_url" , "label" => __("Source Url", "gravityforms")));
-        array_push($form["fields"],array("id" => "transaction_id" , "label" => __("Transaction Id", "gravityforms")));
-        array_push($form["fields"],array("id" => "payment_amount" , "label" => __("Payment Amount", "gravityforms")));
-        array_push($form["fields"],array("id" => "payment_date" , "label" => __("Payment Date", "gravityforms")));
-        array_push($form["fields"],array("id" => "payment_status" , "label" => __("Payment Status", "gravityforms")));
-        array_push($form["fields"],array("id" => "post_id" , "label" => __("Post Id", "gravityforms")));
-        array_push($form["fields"],array("id" => "user_agent" , "label" => __("User Agent", "gravityforms")));
-        array_push($form["fields"],array("id" => "ip" , "label" => __("User IP", "gravityforms")));
+        $form = self::add_default_export_fields($form);
 
         $entry_count = RGFormsModel::get_lead_count($form_id, "", null, null, $start_date, $end_date);
 
@@ -556,7 +550,7 @@ class GFExport{
         //paging through results for memory issues
         while($entry_count > 0){
             $leads = RGFormsModel::get_leads($form_id,"date_created", "DESC", "", $offset, $page_size, null, null, false, $start_date, $end_date);
-
+            
             foreach($leads as $lead){
                 foreach($fields as $field_id){
                     switch($field_id){
@@ -565,7 +559,6 @@ class GFExport{
                             $lead_local_time = GFCommon::get_local_timestamp($lead_gmt_time);
                             $value = date_i18n("Y-m-d H:i:s", $lead_local_time);
                         break;
-
                         default :
                             $long_text = "";
                             if(strlen($lead[$field_id]) >= (GFORMS_MAX_FIELD_LENGTH-10)){
@@ -573,7 +566,7 @@ class GFExport{
                             }
 
                             $value = !empty($long_text) ? $long_text : $lead[$field_id];
-
+							$value = apply_filters("gform_export_field_value", $value, $form_id, $field_id, $lead);
                         break;
                     }
 
@@ -615,6 +608,25 @@ class GFExport{
         }
     }
 
+	public static function add_default_export_fields($form){
+        
+        //adding default fields
+        array_push($form["fields"],array("id" => "created_by" , "label" => __("Created By (User Id)", "gravityforms")));
+        array_push($form["fields"],array("id" => "id" , "label" => __("Entry Id", "gravityforms")));
+        array_push($form["fields"],array("id" => "date_created" , "label" => __("Entry Date", "gravityforms")));
+        array_push($form["fields"],array("id" => "source_url" , "label" => __("Source Url", "gravityforms")));
+        array_push($form["fields"],array("id" => "transaction_id" , "label" => __("Transaction Id", "gravityforms")));
+        array_push($form["fields"],array("id" => "payment_amount" , "label" => __("Payment Amount", "gravityforms")));
+        array_push($form["fields"],array("id" => "payment_date" , "label" => __("Payment Date", "gravityforms")));
+        array_push($form["fields"],array("id" => "payment_status" , "label" => __("Payment Status", "gravityforms")));
+        array_push($form["fields"],array("id" => "post_id" , "label" => __("Post Id", "gravityforms")));
+        array_push($form["fields"],array("id" => "user_agent" , "label" => __("User Agent", "gravityforms")));
+        array_push($form["fields"],array("id" => "ip" , "label" => __("User IP", "gravityforms")));
+        $form = self::get_entry_meta($form);
+        $form = apply_filters('gform_export_fields', $form);
+        return $form;
+    }
+	
     private function cleanup(&$forms){
         unset($forms["version"]);
 
@@ -644,6 +656,15 @@ class GFExport{
                 }
             }
         }
+    }
+    
+    private static function get_entry_meta($form){
+            $entry_meta = GFFormsModel::get_entry_meta($form["id"]);
+            $keys = array_keys($entry_meta);
+            foreach ($keys as $key){
+                array_push($form["fields"],array("id" => $key , "label" => $entry_meta[$key]['label']));
+            }
+            return $form;
     }
 }
 ?>

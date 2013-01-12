@@ -65,13 +65,13 @@ echo '</select>';
 <tr valign="top" class="mailsmtp" <?PHP if ($cfg['mailmethod']!='SMTP') echo 'style="display:none;"';?>> 
 <th scope="row"><label for="mailuser"><?PHP _e('SMTP username','backwpup'); ?></label></th> 
 <td> 
-<input name="mailuser" id="mailuser" type="text" value="<?PHP echo $cfg['mailuser'];?>" class="regular-text" />
+<input name="mailuser" id="mailuser" type="text" value="<?PHP echo $cfg['mailuser'];?>" class="regular-text" autocomplete="off" />
 </td> 
 </tr>
 <tr valign="top" class="mailsmtp" <?PHP if ($cfg['mailmethod']!='SMTP') echo 'style="display:none;"';?>> 
 <th scope="row"><label for="mailpass"><?PHP _e('SMTP password','backwpup'); ?></label></th> 
 <td> 
-<input name="mailpass" id="mailpass" type="password" value="<?PHP echo backwpup_base64($cfg['mailpass']);?>" class="regular-text" />
+<input name="mailpass" id="mailpass" type="password" value="<?PHP echo backwpup_base64($cfg['mailpass']);?>" class="regular-text" autocomplete="off" />
 </td> 
 </tr>
 </table> 
@@ -137,12 +137,12 @@ echo '</select>';
 <table class="form-table"> 
 </tr>
 <th scope="row"><label for="httpauthuser"><?PHP _e('Username:','backwpup'); ?></label></th> 
-<td><input name="httpauthuser" type="text" id="httpauthuser" value="<?PHP echo $cfg['httpauthuser'];?>" class="regular-text" />
+<td><input name="httpauthuser" type="text" id="httpauthuser" value="<?PHP echo $cfg['httpauthuser'];?>" class="regular-text" autocomplete="off" />
 </td> 
 </tr>
 <tr valign="top"> 
 <th scope="row"><label for="httpauthpassword"><?PHP _e('Password:','backwpup'); ?></label></th>
-<td><input name="httpauthpassword" type="password" id="httpauthpassword" value="<?PHP echo backwpup_base64($cfg['httpauthpassword']);?>" class="regular-text" />
+<td><input name="httpauthpassword" type="password" id="httpauthpassword" value="<?PHP echo backwpup_base64($cfg['httpauthpassword']);?>" class="regular-text" autocomplete="off" />
 </tr>
 </table>
 

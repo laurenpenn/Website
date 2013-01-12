@@ -1,12 +1,34 @@
 <?PHP
-if (!defined('ABSPATH')) 
+if (!defined('ABSPATH'))
 	die();
 
 global $wpdb,$screen_layout_columns;
 
+$dests=explode(',',strtoupper(BACKWPUP_DESTS));
+
 //may be needed to ensure that a special box is always available
 add_meta_box('backwpup_jobedit_save', __('Job Type','backwpup'), 'backwpup_jobedit_metabox_save', $current_screen->id, 'side', 'high');
 add_meta_box('backwpup_jobedit_schedule', __('Job Schedule','backwpup'), 'backwpup_jobedit_metabox_schedule', $current_screen->id, 'side', 'core');
+//all other
+add_meta_box('backwpup_jobedit_backupfile', __('Backup File','backwpup'), 'backwpup_jobedit_metabox_backupfile', $current_screen->id, 'side', 'default');
+add_meta_box('backwpup_jobedit_sendlog', __('Send log','backwpup'), 'backwpup_jobedit_metabox_sendlog', $current_screen->id, 'side', 'default');
+add_meta_box('backwpup_jobedit_destfolder', __('Backup to Folder','backwpup'), 'backwpup_jobedit_metabox_destfolder', $current_screen->id, 'advanced', 'core');
+add_meta_box('backwpup_jobedit_destmail', __('Backup to E-Mail','backwpup'), 'backwpup_jobedit_metabox_destmail', $current_screen->id, 'advanced', 'core');
+if (in_array('FTP',$dests))
+    add_meta_box('backwpup_jobedit_destftp', __('Backup to FTP Server','backwpup'), 'backwpup_jobedit_metabox_destftp', $current_screen->id, 'advanced', 'default');
+if (in_array('DROPBOX',$dests))
+    add_meta_box('backwpup_jobedit_destdropbox', __('Backup to Dropbox','backwpup'), 'backwpup_jobedit_metabox_destdropbox', $current_screen->id, 'advanced', 'default');
+if (in_array('SUGARSYNC',$dests))
+    add_meta_box('backwpup_jobedit_destsugarsync', __('Backup to SugarSync','backwpup'), 'backwpup_jobedit_metabox_destsugarsync', $current_screen->id, 'advanced', 'default');
+if (in_array('S3',$dests))
+    add_meta_box('backwpup_jobedit_dests3', __('Backup to Amazon S3','backwpup'), 'backwpup_jobedit_metabox_dests3', $current_screen->id, 'advanced', 'default');
+if (in_array('GSTORAGE',$dests))
+    add_meta_box('backwpup_jobedit_destgstorage', __('Backup to Google storage','backwpup'), 'backwpup_jobedit_metabox_destgstorage', $current_screen->id, 'advanced', 'default');
+if (in_array('MSAZURE',$dests))
+    add_meta_box('backwpup_jobedit_destazure', __('Backup to Micosoft Azure (Blob)','backwpup'), 'backwpup_jobedit_metabox_destazure', $current_screen->id, 'advanced', 'default');
+if (in_array('RSC',$dests))
+    add_meta_box('backwpup_jobedit_destrsc', __('Backup to Rackspace Cloud','backwpup'), 'backwpup_jobedit_metabox_destrsc', $current_screen->id, 'advanced', 'default');
+
 
 //get and check job id
 if (isset($_REQUEST['jobid']) and !empty($_REQUEST['jobid'])) {
@@ -17,11 +39,10 @@ if (isset($_REQUEST['jobid']) and !empty($_REQUEST['jobid'])) {
 }
 //set extra vars
 $todo=explode('+',$jobvalue['type']);
-$dests=explode(',',strtoupper(BACKWPUP_DESTS));
 ?>
 <div class="wrap columns-<?php echo (int) $screen_layout_columns ? (int) $screen_layout_columns : 'auto'; ?>">
-<?php 
-screen_icon(); 
+<?php
+screen_icon();
 echo "<h2>".esc_html( __('BackWPup Job Settings', 'backwpup'))."&nbsp;<a href=\"".wp_nonce_url(backwpup_admin_url('admin.php').'?page=backwpupeditjob', 'edit-job')."\" class=\"add-new-h2\">".esc_html__('Add New','backwpup')."</a></h2>";
 ?>
 
@@ -60,12 +81,12 @@ echo "<h2>".esc_html( __('BackWPup Job Settings', 'backwpup'))."&nbsp;<a href=\"
 		<?php } else { //for wp version older 3.4?>
 			<div id="poststuff" class="metabox-holder<?php echo 2 == $screen_layout_columns ? ' has-right-sidebar' : ''; ?>">
 				<div id="side-info-column" class="inner-sidebar">
-				<?php do_meta_boxes($current_screen->id, 'side', $jobvalue); ?>				
+				<?php do_meta_boxes($current_screen->id, 'side', $jobvalue); ?>
 				</div>
-				
+
 				<div id="post-body">
-					<div id="post-body-content">	
-					
+					<div id="post-body-content">
+
 						<div id="titlediv">
 							<div id="titlewrap">
 								<label class="hide-if-no-js" style="visibility:hidden" id="title-prompt-text" for="title"><?PHP _e('Enter Job name here','backwpup'); ?></label>
@@ -188,8 +209,8 @@ echo "<h2>".esc_html( __('BackWPup Job Settings', 'backwpup'))."&nbsp;<a href=\"
 							<input name="fileexclude" id="fileexclude" type="text" value="<?PHP echo $jobvalue['fileexclude'];?>" class="large-text" /><br />
 						</div>
 					</div>
-				
-					
+
+
 					<?php do_meta_boxes( $current_screen->id, 'normal', $jobvalue ); ?>
 
 					<?php do_meta_boxes( $current_screen->id, 'advanced', $jobvalue ); ?>

@@ -7,7 +7,7 @@ $STATIC['TEMPDIR']=realpath($STATIC['TEMPDIR']).'/';
 //check temp dir
 if (empty($STATIC['TEMPDIR']) || !is_dir($STATIC['TEMPDIR']) || !is_writable($STATIC['TEMPDIR']))
 	die($STATIC['TEMPDIR'].'Temp dir not writable!!! Job aborted!');
-//write PHP log	
+//write PHP log
 @ini_set( 'error_log', $STATIC['TEMPDIR'].'php_error.log' );
 @ini_set( 'display_errors', 'Off' );
 @ini_set( 'log_errors', 'On' );
@@ -69,14 +69,14 @@ set_error_handler('joberrorhandler',E_ALL | E_STRICT);
 $runningfile=get_working_file();
 $revtime=time()-$STATIC['CFG']['jobscriptruntimelong']-10;
 if ($WORKING['PID']!=getmypid() and $runningfile['timestamp']>$revtime and $_POST['type']=='restarttime') {
-	trigger_error(__('Job restart terminated, bcause old job runs again!','backwpup'),E_USER_ERROR);
+	trigger_error(__('Job restart terminated, because old job runs again!','backwpup'),E_USER_ERROR);
 	die();
 } elseif($_POST['type']=='restarttime') {
-	trigger_error(__('Job restarted, bcause inactivity!','backwpup'),E_USER_ERROR);
+	trigger_error(__('Job restarted, because inactivity!','backwpup'),E_USER_ERROR);
 } elseif ($WORKING['PID']!=getmypid() and $WORKING['PID']!=0 and $runningfile['timestamp']>$revtime) {
-	trigger_error(sprintf(__('Second Prozess is running, bcause old job runs! Start type is %s','backwpup'),$_POST['type']),E_USER_ERROR);
+	trigger_error(sprintf(__('Second Process is running, because old job runs! Start type is %s','backwpup'),$_POST['type']),E_USER_ERROR);
 	die();
-} 
+}
 unset($runningfile);
 //set Pid
 $WORKING['PID']=getmypid();
@@ -103,14 +103,14 @@ foreach($WORKING['STEPS'] as $step) {
 			require_once(BACKWPUP_JOBRUN_FOLDER.$stepfile);
 		} else {
 			trigger_error(sprintf(__('Can not find job step file: %s','backwpup'),$stepfile),E_USER_ERROR);
-		} 
+		}
 	}
 }
 // Working step by step
 foreach($WORKING['STEPS'] as $step) {
 	//display some info massages bevor fist step
 	if (count($WORKING['STEPSDONE'])==0) {
-		trigger_error(sprintf(__('[INFO]: BackWPup version %1$s, WordPress version %4$s Copyright &copy; %2$s %3$s','backwpup'),$STATIC['BACKWPUP']['VERSION'],date('Y',time()+$STATIC['WP']['TIMEDIFF']),'<a href="http://danielhuesken.de" target="_blank">Daniel H&uuml;sken</a>',$STATIC['WP']['VERSION']),E_USER_NOTICE);
+		trigger_error(sprintf(__('[INFO]: BackWPup version %1$s; WordPress version %4$s; Copyright &copy; %2$s %3$s','backwpup'),$STATIC['BACKWPUP']['VERSION'],date('Y',time()+$STATIC['WP']['TIMEDIFF']),'<a href="http://inpsyde.com" target="_blank">Inpsyde GmbH</a> ' . __('Author:','backwpup') .' <a href="http://danielhuesken.de" target="_blank">Daniel H&uuml;sken</a>',$STATIC['WP']['VERSION']),E_USER_NOTICE);
 		trigger_error(__('[INFO]: BackWPup comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions.','backwpup'),E_USER_NOTICE);
 		trigger_error(__('[INFO]: BackWPup job:','backwpup').' '.$STATIC['JOB']['jobid'].'. '.$STATIC['JOB']['name'].'; '.$STATIC['JOB']['type'],E_USER_NOTICE);
 		if ($STATIC['JOB']['activated'])
@@ -161,13 +161,13 @@ foreach($WORKING['STEPS'] as $step) {
 				update_working_file(true);
 				call_user_func(strtolower($step));
 			}
-			if ($WORKING[$step]['STEP_TRY']>=$STATIC['CFG']['jobstepretry'])
+			if ($WORKING[$step]['STEP_TRY']>$STATIC['CFG']['jobstepretry'])
 				trigger_error(__('Step arborted has too many trys!','backwpup'),E_USER_ERROR);
 		} else {
 			trigger_error(sprintf(__('Can not find job step function %s!','backwpup'),strtolower($step)),E_USER_ERROR);
 			$WORKING['STEPSDONE'][]=$step;
 		}
-	} 
+	}
 }
 //close mysql
 mysql_close($mysqlconlink);

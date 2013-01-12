@@ -1,15 +1,15 @@
 <?PHP
-if (!defined('ABSPATH')) 
+if (!defined('ABSPATH'))
   die();
 
 //Save Dropbox  settings
-if (isset($_GET['dropboxauth']) and $_GET['dropboxauth']=='AccessToken')  { 
+if (isset($_GET['dropboxauth']) and $_GET['dropboxauth']=='AccessToken')  {
   $jobid = (int) $_GET['jobid'];
   check_admin_referer('edit-job');
   $backwpup_message='';
-  if ((int)$_GET['uid']>0 and !empty($_GET['oauth_token_backwpup'])) {
+  if ((int)$_GET['uid']>0 and !empty($_GET['oauth_token'])) {
     $reqtoken=get_transient('backwpup_dropboxrequest');
-    if ($reqtoken['oAuthRequestToken']==$_GET['oauth_token_backwpup']) {
+    if ($reqtoken['oAuthRequestToken']==$_GET['oauth_token']) {
       //Get Access Tokens
       require_once (dirname(__FILE__).'/../libs/dropbox.php');
       $jobs=get_option('backwpup_jobs');
@@ -24,14 +24,14 @@ if (isset($_GET['dropboxauth']) and $_GET['dropboxauth']=='AccessToken')  {
       $backwpup_message.=__('Wrong Token for Dropbox authentication received!','backwpup').'<br />';
     }
   } else {
-    $backwpup_message.=__('No Dropbox authentication received!','backwpup').'<br />';  
+    $backwpup_message.=__('No Dropbox authentication received!','backwpup').'<br />';
   }
   delete_transient('backwpup_dropboxrequest');
   $_POST['jobid']=$jobid;
 }
 
 //Save Job settings
-if ((isset($_POST['save']) or isset($_POST['dropboxauth']) or isset($_POST['dropboxauthdel']) or isset($_POST['authbutton'])) and !empty($_POST['jobid'])) {
+if ((isset($_POST['savebackwpup']) or isset($_POST['dropboxauth']) or isset($_POST['dropboxauthdel']) or isset($_POST['authbutton'])) and !empty($_POST['jobid'])) {
   check_admin_referer('edit-job');
   $jobvalues['jobid']=(int) $_POST['jobid'];
   $jobvalues['type']= implode('+',(array)$_POST['type']);
@@ -99,7 +99,7 @@ if ((isset($_POST['save']) or isset($_POST['dropboxauth']) or isset($_POST['drop
   foreach ($tables as $dbtable) {
     if (!in_array($dbtable,$checedtables))
       $jobvalues['dbexclude'][]=$dbtable;
-  }  
+  }
   $jobvalues['dbshortinsert']= (isset($_POST['dbshortinsert']) && $_POST['dbshortinsert']==1) ? true : false;
   $jobvalues['maintenance']= (isset($_POST['maintenance']) && $_POST['maintenance']==1) ? true : false;
   $jobvalues['fileexclude']=isset($_POST['fileexclude']) ? stripslashes($_POST['fileexclude']) : '';
@@ -170,14 +170,14 @@ if ((isset($_POST['save']) or isset($_POST['dropboxauth']) or isset($_POST['drop
       $backwpup_message.=__($e->getMessage(),'backwpup').'<br />';
     }
   }
-  
+
   if (!empty($_POST['GStorageAccessKey']) and !empty($_POST['GStorageSecret']) and !empty($_POST['newGStorageBucket'])) { //create new google storage bucket if needed
     if (!class_exists('CFRuntime'))
       require_once(dirname(__FILE__).'/../libs/aws/sdk.class.php');
     try {
 	  CFCredentials::set(array('backwpup' => array('key'=>$_POST['GStorageAccessKey'],'secret'=>$_POST['GStorageSecret'],'default_cache_config'=>'','certificate_authority'=>true),'@default' => 'backwpup'));
       $gstorage = new AmazonS3();
-      $gstorage->set_hostname('commondatastorage.googleapis.com');
+      $gstorage->set_hostname('storage.googleapis.com');
       $gstorage->allow_hostname_override(false);
       $gstorage->create_bucket($_POST['newGStorageBucket'],'');
       $jobvalues['GStorageBucket']=$_POST['newGStorageBucket'];
@@ -186,7 +186,7 @@ if ((isset($_POST['save']) or isset($_POST['dropboxauth']) or isset($_POST['drop
       $backwpup_message.=__($e->getMessage(),'backwpup').'<br />';
     }
   }
-  
+
   if (!empty($_POST['newmsazureContainer'])  and !empty($_POST['msazureHost']) and !empty($_POST['msazureAccName']) and !empty($_POST['msazureKey'])) { //create new s3 bucket if needed
     if (!class_exists('Microsoft_WindowsAzure_Storage_Blob')) {
       require_once(dirname(__FILE__).'/../libs/Microsoft/WindowsAzure/Storage/Blob.php');
@@ -198,8 +198,8 @@ if ((isset($_POST['save']) or isset($_POST['dropboxauth']) or isset($_POST['drop
     } catch (Exception $e) {
       $backwpup_message.=__($e->getMessage(),'backwpup').'<br />';
     }
-  }  
-  
+  }
+
   if (!empty($_POST['rscUsername']) and !empty($_POST['rscAPIKey']) and !empty($_POST['newrscContainer'])) { //create new Rackspase Container if needed
     if (!class_exists('CF_Authentication'))
       require_once(dirname(__FILE__).'/../libs/rackspace/cloudfiles.php');
@@ -214,14 +214,14 @@ if ((isset($_POST['save']) or isset($_POST['dropboxauth']) or isset($_POST['drop
       $backwpup_message.=__($e->getMessage(),'backwpup').'<br />';
     }
   }
-  
-  
+
+
   if (isset($_POST['dropboxauthdel']) and !empty($_POST['dropboxauthdel'])) {
     $jobvalues['dropetoken']='';
     $jobvalues['dropesecret']='';
     $backwpup_message.=__('Dropbox authentication deleted!','backwpup').'<br />';
   }
-  
+
 	if (!empty($_POST['sugaremail']) && !empty($_POST['sugarpass']) && $_POST['authbutton']==__( 'Sugarsync authenticate!', 'backwpup' )) {
 		if (!class_exists('SugarSync'))
 			include_once(realpath(dirname(__FILE__).'/../libs/sugarsync.php'));
@@ -236,11 +236,11 @@ if ((isset($_POST['save']) or isset($_POST['dropboxauth']) or isset($_POST['drop
 			$backwpup_message.= 'SUGARSYNC: ' . $e->getMessage() . '<br />';
 		}
 	}
-	if ($_POST['authbutton']==__( 'Delete Sugarsync authentication!', 'backwpup' )) {
+	if (isset($_POST['authbutton']) && $_POST['authbutton']==__( 'Delete Sugarsync authentication!', 'backwpup' )) {
 		$jobvalues['sugarrefreshtoken']='';
 		$backwpup_message.=__('SugarSync authentication deleted!','backwpup').'<br />';
 	}
-	if ($_POST['authbutton']==__( 'Create Sugarsync Account', 'backwpup' )) {
+	if (isset($_POST['authbutton']) && $_POST['authbutton']==__( 'Create Sugarsync Account', 'backwpup' )) {
 		if (!class_exists('SugarSync'))
 			include_once(realpath(dirname(__FILE__).'/../libs/sugarsync.php'));
 		try {
@@ -256,11 +256,11 @@ if ((isset($_POST['save']) or isset($_POST['dropboxauth']) or isset($_POST['drop
   $jobs=get_option('backwpup_jobs'); //Load Settings
   $jobs[$jobvalues['jobid']]=backwpup_get_job_vars($jobvalues['jobid'],$jobvalues);
   update_option('backwpup_jobs',$jobs);
-  
+
   //activate/deactivate seduling if not needed
   $activejobs=false;
   foreach ($jobs as $jobid => $jobvalue) {
-    if (!empty($jobvalue['activated'])) 
+    if (!empty($jobvalue['activated']))
       $activejobs=true;
   }
   if ($activejobs and false === wp_next_scheduled('backwpup_cron')) {
@@ -270,51 +270,29 @@ if ((isset($_POST['save']) or isset($_POST['dropboxauth']) or isset($_POST['drop
     wp_clear_scheduled_hook('backwpup_cron');
   }
 
-  //get dropbox auth  
+  //get dropbox auth
   if (isset($_POST['dropboxauth']) and !empty($_POST['dropboxauth'])) {
     require_once (dirname(__FILE__).'/../libs/dropbox.php');
     $dropbox = new backwpup_Dropbox('dropbox');
     // let the user authorize (user will be redirected)
     $response = $dropbox->oAuthAuthorize(backwpup_admin_url('admin.php').'?page=backwpupeditjob&jobid='.$jobvalues['jobid'].'&dropboxauth=AccessToken&_wpnonce='.wp_create_nonce('edit-job'));
-    // save oauth_token_secret 
+    // save oauth_token_secret
     set_transient('backwpup_dropboxrequest',array('oAuthRequestToken'=>$response['oauth_token'],'oAuthRequestTokenSecret' => $response['oauth_token_secret']),600);
     //forward to auth page
     wp_redirect($response['authurl']);
-  }  
-  
+  }
+
   $_POST['jobid']=$jobvalues['jobid'];
   $backwpup_message.=str_replace('%1',$jobvalues['name'],__('Job \'%1\' changes saved.', 'backwpup')).' <a href="'.backwpup_admin_url('admin.php').'?page=backwpup">'.__('Jobs overview.', 'backwpup').'</a>';
 }
-
-
-$dests=explode(',',strtoupper(BACKWPUP_DESTS));
 
 //load java
 wp_enqueue_script('common');
 wp_enqueue_script('wp-lists');
 wp_enqueue_script('postbox');
 
-//add several metaboxes now, all metaboxes registered during load page can be switched off/on at "Screen Options" automatically, nothing special to do therefore
-add_meta_box('backwpup_jobedit_backupfile', __('Backup File','backwpup'), 'backwpup_jobedit_metabox_backupfile', $current_screen->id, 'side', 'default');
-add_meta_box('backwpup_jobedit_sendlog', __('Send log','backwpup'), 'backwpup_jobedit_metabox_sendlog', $current_screen->id, 'side', 'default');
-add_meta_box('backwpup_jobedit_destfolder', __('Backup to Folder','backwpup'), 'backwpup_jobedit_metabox_destfolder', $current_screen->id, 'advanced', 'core');
-add_meta_box('backwpup_jobedit_destmail', __('Backup to E-Mail','backwpup'), 'backwpup_jobedit_metabox_destmail', $current_screen->id, 'advanced', 'core');
-if (in_array('FTP',$dests))
-  add_meta_box('backwpup_jobedit_destftp', __('Backup to FTP Server','backwpup'), 'backwpup_jobedit_metabox_destftp', $current_screen->id, 'advanced', 'default');
-if (in_array('DROPBOX',$dests))
-  add_meta_box('backwpup_jobedit_destdropbox', __('Backup to Dropbox','backwpup'), 'backwpup_jobedit_metabox_destdropbox', $current_screen->id, 'advanced', 'default');
-if (in_array('SUGARSYNC',$dests))
-  add_meta_box('backwpup_jobedit_destsugarsync', __('Backup to SugarSync','backwpup'), 'backwpup_jobedit_metabox_destsugarsync', $current_screen->id, 'advanced', 'default');
-if (in_array('S3',$dests))
-  add_meta_box('backwpup_jobedit_dests3', __('Backup to Amazon S3','backwpup'), 'backwpup_jobedit_metabox_dests3', $current_screen->id, 'advanced', 'default');
-if (in_array('GSTORAGE',$dests))
-  add_meta_box('backwpup_jobedit_destgstorage', __('Backup to Google storage','backwpup'), 'backwpup_jobedit_metabox_destgstorage', $current_screen->id, 'advanced', 'default');
-if (in_array('MSAZURE',$dests))
-  add_meta_box('backwpup_jobedit_destazure', __('Backup to Micosoft Azure (Blob)','backwpup'), 'backwpup_jobedit_metabox_destazure', $current_screen->id, 'advanced', 'default');
-if (in_array('RSC',$dests))
-  add_meta_box('backwpup_jobedit_destrsc', __('Backup to Rackspace Cloud','backwpup'), 'backwpup_jobedit_metabox_destrsc', $current_screen->id, 'advanced', 'default');
-//add clumns
+//add columns
 add_screen_option('layout_columns', array('max' => 2, 'default' => 2));
 
 //add Help
-backwpup_contextual_help(__('','backwpup'));
+backwpup_contextual_help();

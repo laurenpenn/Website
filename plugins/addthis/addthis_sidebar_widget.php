@@ -19,7 +19,7 @@ class AddThisSidebarWidget extends WP_Widget {
         $control_ops = array( 'width' => 325);
 
         /* Create the widget. */
-        $this->WP_Widget( 'addthis-widget', 'AddThis Widget', $widget_ops, $control_ops );
+        $this->WP_Widget( 'addthis-widget', 'AddThis Share', $widget_ops, $control_ops );
     
     }
 
@@ -91,7 +91,7 @@ class AddThisSidebarWidget extends WP_Widget {
                     if ($k === $style)
                         $checked = 'checked="checked"';
                     
-                    echo '<input '.$checked.' style="margin:-15px 2px 0;"  type="radio" name="' . $this->get_field_name('style') . '" value="'.$k.'"><img src="'. plugins_url( '/addthis/img/' .  $v['img'], basename(dirname(__FILE__)) )  .'" /><br />';
+                    echo '<div style="height:auto;"><input '.$checked.' style="margin:5px 5px 0 0;" type="radio" name="' . $this->get_field_name('style') . '" value="'.$k.'"><img align="middle" style="padding:5px 0" src="'. plugins_url( '/addthis/img/' .  $v['img'], basename(dirname(__FILE__)) )  .'" /></div>';
                 }
                 ?>
         <?php

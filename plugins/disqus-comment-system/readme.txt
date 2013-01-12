@@ -2,8 +2,8 @@
 Contributors: disqus, alexkingorg, crowdfavorite, zeeg, tail, thetylerhayes
 Tags: comments, threaded, email, notification, spam, avatars, community, profile, widget, disqus
 Requires at least: 2.8
-Tested up to: 3.4.1
-Stable tag: 2.73
+Tested up to: 3.5
+Stable tag: 2.74
 
 The Disqus comment system replaces your WordPress comment system with your comments hosted and powered by Disqus.
 
@@ -37,7 +37,7 @@ The Disqus for WordPress plugin seamlessly integrates using the Disqus API and b
 
 == Installation ==
 
-**NOTE: It is recommended that you backup your database before installing the plugin.**
+**NOTE: It is recommended that you [backup your database](http://codex.wordpress.org/Backing_Up_Your_Database) before installing the plugin.**
 
 1. Unpack archive to this archive to the 'wp-content/plugins/' directory inside
    of WordPress
@@ -59,6 +59,18 @@ Go to [http://disqus.com/help/wordpress](http://disqus.com/help/wordpress)
 3. Inline Moderation Interface
 
 == Changes ==
+
+2.74
+
+* Updated settings UI
+* Add filter hook for setting custom Disqus language
+* For WP >= 3.5, use new media uploader
+* Disable internal Wordpress commenting if Disqus is enabled (thanks Artem Russakovskii)
+* Cleaned up installation and configuration flow
+* Added link to WP backup guide in README
+* Fix admin bar comments link
+* Added a check to avoid a missing key notice when WP_DEBUG=TRUE (thanks Jason Lengstorf)
+* Prevent 404 errors for embed.js from being reported by Google Webmaster Tools (missed in 2.73 README)
 
 2.73
 

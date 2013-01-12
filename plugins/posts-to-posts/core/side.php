@@ -2,6 +2,10 @@
 
 abstract class P2P_Side {
 
+	protected $item_type;
+
+	abstract function get_object_type();
+
 	abstract function get_title();
 	abstract function get_desc();
 	abstract function get_labels();
@@ -13,19 +17,27 @@ abstract class P2P_Side {
 	abstract function translate_qv( $qv );
 	abstract function do_query( $args );
 	abstract function capture_query( $args );
+	abstract function get_list( $query );
 
 	abstract function is_indeterminate( $side );
 
-	protected $item_type;
+	final function is_same_type( $side ) {
+		return $this->get_object_type() == $side->get_object_type();
+	}
 
+	/**
+	 * @param object Raw object or P2P_Item
+	 */
 	function item_recognize( $arg ) {
 		$class = $this->item_type;
 
-		if ( is_a( $arg, $class ) )
-			return $arg;
+		if ( is_a( $arg, 'P2P_Item' ) ) {
+			if ( !is_a( $arg, $class ) ) {
+				return false;
+			}
 
-		if ( is_a( $arg, 'P2P_Item' ) )
-			return false;
+			$arg = $arg->get_object();
+		}
 
 		$raw_item = $this->recognize( $arg );
 		if ( !$raw_item )
@@ -33,6 +45,11 @@ abstract class P2P_Side {
 
 		return new $class( $raw_item );
 	}
+
+	/**
+	 * @param object Raw object
+	 */
+	abstract protected function recognize( $arg );
 }
 
 
@@ -42,6 +59,10 @@ class P2P_Side_Post extends P2P_Side {
 
 	function __construct( $query_vars ) {
 		$this->query_vars = $query_vars;
+	}
+
+	public function get_object_type() {
+		return 'post';
 	}
 
 	public function first_post_type() {
@@ -80,7 +101,7 @@ class P2P_Side_Post extends P2P_Side {
 	}
 
 	function get_labels() {
-		return get_object_vars( $this->get_ptype()->labels );
+		return $this->get_ptype()->labels;
 	}
 
 	function can_edit_connections() {
@@ -95,19 +116,6 @@ class P2P_Side_Post extends P2P_Side {
 			return false;
 
 		return true;
-	}
-
-	function do_query( $args ) {
-		return new WP_Query( $args );
-	}
-
-	function capture_query( $args ) {
-		$q = new WP_Query;
-		$q->_p2p_capture = true;
-
-		$q->query( $args );
-
-		return $q->_p2p_sql;
 	}
 
 	function translate_qv( $qv ) {
@@ -126,6 +134,28 @@ class P2P_Side_Post extends P2P_Side {
 		return $qv;
 	}
 
+	function do_query( $args ) {
+		return new WP_Query( $args );
+	}
+
+	function capture_query( $args ) {
+		$q = new WP_Query;
+		$q->_p2p_capture = true;
+
+		$q->query( $args );
+
+		return $q->_p2p_sql;
+	}
+
+	function get_list( $wp_query ) {
+		$list = new P2P_List( $wp_query->posts, $this->item_type );
+
+		$list->current_page = max( 1, $wp_query->get('paged') );
+		$list->total_pages = $wp_query->max_num_pages;
+
+		return $list;
+	}
+
 	function is_indeterminate( $side ) {
 		$common = array_intersect(
 			$this->query_vars['post_type'],
@@ -135,27 +165,10 @@ class P2P_Side_Post extends P2P_Side {
 		return !empty( $common );
 	}
 
-	function item_recognize( $arg ) {
-		$class = $this->item_type;
-
-		if ( is_a( $arg, $class ) ) {
-			if ( !$this->recognize_post_type( $arg->post_type ) )
-				return false;
-
-			return $arg;
-		}
-
-		if ( is_a( $arg, 'P2P_Item' ) )
-			return false;
-
-		$raw_item = $this->recognize( $arg );
-		if ( !$raw_item )
-			return false;
-
-		return new $class( $raw_item );
-	}
-
 	protected function recognize( $arg ) {
+		if ( is_object( $arg ) && !isset( $arg->post_type ) )
+			return false;
+
 		$post = get_post( $arg );
 
 		if ( !is_object( $post ) )
@@ -206,6 +219,10 @@ class P2P_Side_User extends P2P_Side {
 		$this->query_vars = $query_vars;
 	}
 
+	function get_object_type() {
+		return 'user';
+	}
+
 	function get_desc() {
 		return __( 'Users', P2P_TEXTDOMAIN );
 	}
@@ -215,7 +232,7 @@ class P2P_Side_User extends P2P_Side {
 	}
 
 	function get_labels() {
-		return array(
+		return (object) array(
 			'singular_name' => __( 'User', P2P_TEXTDOMAIN ),
 			'search_items' => __( 'Search Users', P2P_TEXTDOMAIN ),
 			'not_found' => __( 'No users found.', P2P_TEXTDOMAIN ),
@@ -228,6 +245,24 @@ class P2P_Side_User extends P2P_Side {
 
 	function can_create_item() {
 		return false;
+	}
+
+	function translate_qv( $qv ) {
+		if ( isset( $qv['p2p:include'] ) )
+			$qv['include'] = _p2p_pluck( $qv, 'p2p:include' );
+
+		if ( isset( $qv['p2p:exclude'] ) )
+			$qv['exclude'] = _p2p_pluck( $qv, 'p2p:exclude' );
+
+		if ( isset( $qv['p2p:search'] ) && $qv['p2p:search'] )
+			$qv['search'] = '*' . _p2p_pluck( $qv, 'p2p:search' ) . '*';
+
+		if ( isset( $qv['p2p:page'] ) && $qv['p2p:page'] > 0 ) {
+			$qv['number'] = $qv['p2p:per_page'];
+			$qv['offset'] = $qv['p2p:per_page'] * ( $qv['p2p:page'] - 1 );
+		}
+
+		return $qv;
 	}
 
 	function do_query( $args ) {
@@ -265,22 +300,17 @@ class P2P_Side_User extends P2P_Side {
 		return "SELECT $uq->query_fields $uq->query_from $uq->query_where $uq->query_orderby $uq->query_limit";
 	}
 
-	function translate_qv( $qv ) {
-		if ( isset( $qv['p2p:include'] ) )
-			$qv['include'] = _p2p_pluck( $qv, 'p2p:include' );
+	function get_list( $query ) {
+		$list = new P2P_List( $query->get_results(), $this->item_type );
 
-		if ( isset( $qv['p2p:exclude'] ) )
-			$qv['exclude'] = _p2p_pluck( $qv, 'p2p:exclude' );
+		$qv = $query->query_vars;
 
-		if ( isset( $qv['p2p:search'] ) && $qv['p2p:search'] )
-			$qv['search'] = '*' . _p2p_pluck( $qv, 'p2p:search' ) . '*';
-
-		if ( isset( $qv['p2p:page'] ) && $qv['p2p:page'] > 0 ) {
-			$qv['number'] = $qv['p2p:per_page'];
-			$qv['offset'] = $qv['p2p:per_page'] * ( $qv['p2p:page'] - 1 );
+		if ( isset( $qv['p2p:page'] ) ) {
+			$list->current_page = $qv['p2p:page'];
+			$list->total_pages = ceil( $query->get_total() / $qv['p2p:per_page'] );
 		}
 
-		return $qv;
+		return $list;
 	}
 
 	function is_indeterminate( $side ) {

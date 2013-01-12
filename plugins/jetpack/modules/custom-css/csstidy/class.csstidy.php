@@ -577,7 +577,8 @@ class csstidy {
 							$this->at .= $this->_unicode($string, $i);
 						}
 						// fix for complicated media, i.e @media screen and (-webkit-min-device-pixel-ratio:1.5)
-						elseif (in_array($string{$i}, array('(', ')', ':', '.'))) {
+						// '/' is included for ratios in Opera: (-o-min-device-pixel-ratio: 3/2)
+						elseif (in_array($string{$i}, array('(', ')', ':', '.', '/'))) {
 							$this->at .= $string{$i};
 						}
 					} else {
@@ -656,6 +657,9 @@ class csstidy {
 						if ($lastpos == -1 || !( (ctype_space($this->selector{$lastpos}) || csstidy::is_token($this->selector, $lastpos) && $this->selector{$lastpos} === ',') && ctype_space($string{$i}))) {
 							$this->selector .= $string{$i};
 						}
+						else if (ctype_space($string{$i}) && $this->get_cfg('preserve_css') && !$this->get_cfg('merge_selectors')) {
+							$this->selector .= $string{$i};
+						}
 					}
 					break;
 
@@ -714,17 +718,33 @@ class csstidy {
 							$this->sub_value .= $this->_unicode($string, $i);
 						} elseif ($string{$i} === ';' || $pn) {
 							if ($this->selector{0} === '@' && isset($at_rules[substr($this->selector, 1)]) && $at_rules[substr($this->selector, 1)] === 'iv') {
-								/* Add quotes to charset, import, namespace */
-								$this->sub_value_arr[] = '"' . trim($this->sub_value) . '"';
-
 								$this->status = 'is';
 
 								switch ($this->selector) {
-									case '@charset': $this->charset = $this->sub_value_arr[0];
+									case '@charset':
+										/* Add quotes to charset */
+										$this->sub_value_arr[] = '"' . trim($this->sub_value) . '"';
+										$this->charset = $this->sub_value_arr[0];
 										break;
-									case '@namespace': $this->namespace = implode(' ', $this->sub_value_arr);
+									case '@namespace':
+										/* Add quotes to namespace */
+										$this->sub_value_arr[] = '"' . trim($this->sub_value) . '"';
+										$this->namespace = implode(' ', $this->sub_value_arr);
 										break;
-									case '@import': $this->import[] = implode(' ', $this->sub_value_arr);
+									case '@import':
+										$this->sub_value = trim($this->sub_value);
+
+										if (empty($this->sub_value_arr)) {
+											// Quote URLs in imports only if they're not already inside url() and not already quoted.
+											if (substr($this->sub_value, 0, 4) != 'url(') { 
+												if (!($this->sub_value{0} == substr($this->sub_value, -1) && in_array($this->sub_value{0}, array("'", '"')))) {
+													$this->sub_value = '"' . $this->sub_value . '"';
+												}
+											}
+										}
+
+										$this->sub_value_arr[] = $this->sub_value;
+										$this->import[] = implode(' ', $this->sub_value_arr);
 										break;
 								}
 

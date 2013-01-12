@@ -54,6 +54,7 @@ if (DISQUS_DEBUG) {
     <?php endif; ?>
     var disqus_config = function () {
         var config = this; // Access to the config object
+        config.language = '<?php echo esc_js(apply_filters('disqus_language_filter', '')) ?>';
 
         /*
            All currently supported events:
@@ -85,13 +86,10 @@ if (DISQUS_DEBUG) {
             foreach ($sso as $k=>$v) {
                 echo "this.page.{$k} = '{$v}';\n";
             }
-        }
-        if (get_option('disqus_sso_button')) {
             echo dsq_sso_login();
         }
         ?>
     };
-    var facebookXdReceiverPath = '<?php echo DSQ_PLUGIN_URL . '/xd_receiver.htm' ?>';
 /* ]]> */
 </script>
 
@@ -129,14 +127,7 @@ if (DISQUS_DEBUG) {
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript';
     dsq.async = true;
-    <?php
-    if (is_ssl()) {
-        $connection_type = "https";
-    } else {
-        $connection_type = "http";
-    }
-    ?>
-    dsq.src = '<?php echo $connection_type; ?>' + '://' + disqus_shortname + '.' + '<?php echo DISQUS_DOMAIN; ?>' + '/embed.js?pname=wordpress&pver=<?php echo DISQUS_VERSION; ?>';
+    dsq.src = '//' + disqus_shortname + '.' + '<?php echo DISQUS_DOMAIN; ?>' + '/embed.js?pname=wordpress&pver=<?php echo DISQUS_VERSION; ?>';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 })();
 /* ]]> */

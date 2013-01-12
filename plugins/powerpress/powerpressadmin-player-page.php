@@ -79,13 +79,13 @@ function powerpress_admin_players($type='audio')
 	$Audio['flashmp3-maxi'] = 'http://media.blubrry.com/blubrry/content.blubrry.com/blubrry/Flash_Maxi_Player.mp3';
 	$Audio['simple_flash'] = 'http://media.blubrry.com/blubrry/content.blubrry.com/blubrry/Simple_Flash_MP3_Player.mp3';
 	$Audio['audioplay'] = 'http://media.blubrry.com/blubrry/content.blubrry.com/blubrry/AudioPlay.mp3';
-	$Audio['html5audio'] = 'http://media.blubrry.com/blubrry/content.blubrry.com/blubrry/HTML5Audio.mp3';
+	$Audio['html5audio'] = 'http://media.blubrry.com/blubrry/content.blubrry.com/blubrry/html5.mp3';
 		
 	
 	$Video = array();
 	$Video['flare-player'] = 'http://media.blubrry.com/blubrry/content.blubrry.com/blubrry/FlarePlayer.mp4';
-	$Video['flow-player-classic'] = 'http://media.blubrry.com/blubrry/content.blubrry.com/blubrry/FlowPlayerClassic.flv';
-	$Video['html5video'] = 'http://media.blubrry.com/blubrry/content.blubrry.com/blubrry/HTML5Video.mp4';
+	$Video['flow-player-classic'] = 'http://media.blubrry.com/blubrry/content.blubrry.com/blubrry/flow.mp4';
+	$Video['html5video'] = 'http://media.blubrry.com/blubrry/content.blubrry.com/blubrry/html5.mp4';
 	$Video['videojs-html5-video-player-for-wordpress'] = 'http://media.blubrry.com/blubrry/content.blubrry.com/blubrry/videojs.mp4';
 		/*
 		<div><

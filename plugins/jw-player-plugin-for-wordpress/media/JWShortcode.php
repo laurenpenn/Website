@@ -164,7 +164,7 @@ function jwplayer_handler($atts) {
         $atts["file"] = urlencode(get_option('siteurl') . '/' . 'index.php?xspf=true&id=' . $id);
       }
     } else {
-      return __("[PLAYLIST not found]");
+      return __("[PLAYLIST not found]", 'jw-player-plugin-for-wordpress');
     }
     unset($atts["playlistid"]);
   }
@@ -228,6 +228,12 @@ function resolve_media_id(&$atts) {
   if (!array_key_exists("download_file", $atts)) {
     if ($download_file = retrieve_file("download", $id)) $atts["download_file"] = $download_file;
   }
+  $creator = get_post_meta($id, LONGTAIL_KEY . "creator", true);
+  $atts["title"] = $atts["title"] ? $atts["title"] : $post->post_title;
+  $atts["creator"] = $atts["creator"] ? $atts["creator"] : $creator;
+  $atts["author"] = $atts["creator"] ? $atts["creator"] : $creator;
+  $atts["date"] = $atts["date"] ? $atts["date"] : $post->post_date;
+  $atts["description"] = $atts["description"] ? $atts["description"] : $post->post_content;
 }
 
 function generate_embed_code($atts) {
@@ -275,7 +281,7 @@ function create_mode_block($atts) {
   $downloadMode->config = new stdClass();
   $downloadMode->config->streamer = "";
   $downloadMode->config->provider = "";
-  if (array_key_exists("download_file", $atts)) $html5Mode->config->file = $atts["download_file"];
+  if (array_key_exists("download_file", $atts)) $downloadMode->config->file = $atts["download_file"];
   if ($playerMode == "html5") {
     $modes[] = $html5Mode;
     $modes[] = $flashMode;

@@ -27,14 +27,18 @@ function sharing_add_meta_box() {
 }
 
 function sharing_meta_box_content( $post ) {
-	$sharing_checked = get_post_meta( $post->ID, 'sharing_disabled', false );
+	$disabled = get_post_meta( $post->ID, 'sharing_disabled', true ); ?>
 
-	if ( empty( $sharing_checked ) || $sharing_checked === false )
-		$sharing_checked = ' checked="checked"';
-	else
-		$sharing_checked = '';
+	<p>
+		<label for="enable_post_sharing">
+			<input type="checkbox" name="enable_post_sharing" id="enable_post_sharing" value="1" <?php checked( !$disabled ); ?>>
+			<?php _e( 'Show sharing buttons.' , 'jetpack'); ?>
+		</label>
+		<input type="hidden" name="sharing_status_hidden" value="1" />
+	</p>
 
-	echo '<p><label for="enable_post_sharing"><input name="enable_post_sharing" id="enable_post_sharing" value="1"' . $sharing_checked . ' type="checkbox"> ' . __( 'Show sharing buttons on this post.', 'jetpack' ) . '</label><input type="hidden" name="sharing_status_hidden" value="1" /></p>';
+	<?php
+
 }
 
 function sharing_meta_box_save( $post_id ) {

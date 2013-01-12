@@ -258,7 +258,7 @@ if ( ! class_exists( 'OT_Settings' ) ) {
                 echo '</ul>';
                 
                 /* layouts form */
-                if ( $page['id'] == 'ot_theme_options' )
+                if ( $page['id'] == 'ot_theme_options' && OT_SHOW_NEW_LAYOUT == true )
                   ot_theme_options_layouts_form();
               
               echo '</div>';
@@ -294,7 +294,7 @@ if ( ! class_exists( 'OT_Settings' ) ) {
                   
                   /* loop through page sections */
                   foreach( (array) $page['sections'] as $section ) {
-                    echo '<li><a href="#section_' . $section['id'] . '">' . $section['title'] . '</a></li>';
+                    echo '<li id="tab_' . $section['id'] . '"><a href="#section_' . $section['id'] . '">' . $section['title'] . '</a></li>';
                   }
                   
                   echo '</ul>';
@@ -763,19 +763,23 @@ if ( ! class_exists( 'OT_Settings' ) ) {
     
       foreach ( (array) $wp_settings_fields[$page][$section] as $field ) {
         
-        echo '<div class="format-settings">';
+        echo '<div id="setting_' . $field['id'] . '" class="format-settings">';
     		  
-    		  if ( $field['args']['type'] != 'textblock' ) {
+    		  echo '<div class="format-setting-wrap">';
     		  
-    		    echo '<div class="format-setting-label">';
-  		  
-      		    echo '<h3 class="label">' . $field['title'] . '</h3>';     
+      		  if ( $field['args']['type'] != 'textblock' ) {
+      		  
+      		    echo '<div class="format-setting-label">';
+    		  
+        		    echo '<h3 class="label">' . $field['title'] . '</h3>';     
+            
+              echo '</div>';
+            
+            }
+      
+            call_user_func( $field['callback'], $field['args'] );
           
-            echo '</div>';
-          
-          }
-    
-          call_user_func( $field['callback'], $field['args'] );
+          echo '</div>';
     
         echo '</div>';
         

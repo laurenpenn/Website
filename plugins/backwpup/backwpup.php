@@ -4,14 +4,14 @@ Plugin Name: BackWPup
 Plugin URI: http://backwpup.com
 Description: WordPress Backup and more...
 Author: Daniel H&uuml;sken
-Version: 2.1.15
+Version: 2.1.17
 Author URI: http://danielhuesken.de
 Text Domain: backwpup
 Domain Path: /lang/
 */
 
 /*
-	Copyright (C) 2011  Daniel Hüsken  (email: mail@backwpup.com)
+	Copyright (C) 2012 Inpsyde GmbH  (email: info@inpsyde.com)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -27,12 +27,14 @@ Domain Path: /lang/
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-
+if (!defined('ABSPATH')) 
+  die();
+  
 //Set plugin dirname
 define('BACKWPUP_PLUGIN_BASEDIR', dirname(plugin_basename(__FILE__)));
-define('BACKWPUP_PLUGIN_BASEURL',plugins_url('',__FILE__));
+define('BACKWPUP_PLUGIN_BASEURL', plugins_url(BACKWPUP_PLUGIN_BASEDIR));
 //Set Plugin Version
-define('BACKWPUP_VERSION', '2.1.15');
+define('BACKWPUP_VERSION', '2.1.17');
 //Set Min Wordpress Version
 define('BACKWPUP_MIN_WORDPRESS_VERSION', '3.1');
 //Set User Capability
@@ -41,7 +43,7 @@ define('BACKWPUP_USER_CAPABILITY', 'export');
 if (!defined('BACKWPUP_DESTS')) {
 	if (!function_exists('curl_init'))
 		define('BACKWPUP_DESTS', 'FTP,MSAZURE');
-	else 
+	else
 		define('BACKWPUP_DESTS', 'FTP,DROPBOX,SUGARSYNC,S3,GSTORAGE,RSC,MSAZURE');
 }
 //load Text Domain
@@ -51,14 +53,14 @@ require_once(dirname(__FILE__).'/backwpup-functions.php');
 //Plugin deactivate
 register_deactivation_hook(__FILE__, 'backwpup_plugin_deactivate');
 //Admin message
-if (is_multisite()) 
-	add_action('network_admin_notices', 'backwpup_admin_notice'); 
+if (is_multisite())
+	add_action('network_admin_notices', 'backwpup_admin_notice');
 else
 	add_action('admin_notices', 'backwpup_admin_notice');
 //add cron intervals
 add_filter('cron_schedules', 'backwpup_intervals',20);
 //call activation settings
-backwpup_plugin_activate(); 	
+backwpup_plugin_activate();
 //Check if plugin can activated
 if (backwpup_env_checks()) {
 	if (is_multisite()) {  //For multisite
@@ -66,13 +68,13 @@ if (backwpup_env_checks()) {
 		add_action('network_admin_menu','backwpup_admin_menu');
 		//add Dashboard widget
 		add_action('wp_network_dashboard_setup', 'backwpup_add_dashboard');
-		if (is_main_site()) 
+		if (is_main_site())
 			add_action('plugins_loaded','backwpup_plugin_activate');
 		//Additional links on the plugin page
 		add_filter('plugin_row_meta', 'backwpup_plugin_links',10,2);
 	} else {
 		//add Menu
-		add_action('admin_menu', 'backwpup_admin_menu',97);
+		add_action('admin_menu', 'backwpup_admin_menu');
 		//add Dashboard widget
 		add_action('wp_dashboard_setup', 'backwpup_add_dashboard');
 		//Additional links on the plugin page
@@ -85,10 +87,4 @@ if (backwpup_env_checks()) {
 	add_action('admin_bar_menu', 'backwpup_add_adminbar',100);
 	//load ajax functions
 	backwpup_load_ajax();
-	//bypass Google Analytics by Yoast oauth
-	if ( isset($_GET['oauth_token']) && isset($_GET['page']) && $_GET['page'] == 'backwpupeditjob' ) {
-		$_GET['oauth_token_backwpup'] = $_GET['oauth_token'];
-		unset($_GET['oauth_token']);
-		unset($_REQUEST['oauth_token']);
-	}
 }

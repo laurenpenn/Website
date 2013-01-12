@@ -1,7 +1,7 @@
 jQuery(document).ready( function($) {
 
 	$('.if-js-closed').removeClass('if-js-closed').addClass('closed');
-	
+
 	$('.jobtype-select').change(function() {
 		if ( true == $('#jobtype-select-FILE').prop('checked') || true ==  $('#jobtype-select-DB').prop('checked') || true == $('#jobtype-select-WPEXP').prop('checked')) {
 			$('#backwpup_jobedit_destfolder').show();
@@ -42,7 +42,7 @@ jQuery(document).ready( function($) {
 			$('#filebackup').hide();
 		}
 	});
-	
+
 	$('input[name="cronselect"]').change(function() {
 		if ( 'basic' == $('input[name="cronselect"]:checked').val()) {
 			$('#schedadvanced').hide();
@@ -54,15 +54,15 @@ jQuery(document).ready( function($) {
 			cronstampadvanced();
 		}
 	});
-	
+
 	$('input[name="fileprefix"]').keyup(function() {
 		$('#backupfileprefix').replaceWith('<span id="backupfileprefix">'+$(this).val()+'</span>');
 	});
-	
+
 	$('input[name="fileformart"]').change(function() {
 		$('#backupfileformart').replaceWith('<span id="backupfileformart">'+$(this).val()+'</span>');
 	});
-	
+
 	function cronstampadvanced() {
 		var cronminutes = [];
 		var cronhours = [];
@@ -83,7 +83,7 @@ jQuery(document).ready( function($) {
 		});
 		$('input[name="cronwday[]"]:checked').each(function() {
 			cronwday.push($(this).val());
-		});		
+		});
 		var data = {
 			action: 'backwpup_get_cron_text',
 			backwpupajaxpage: 'backwpupeditjob',
@@ -96,7 +96,7 @@ jQuery(document).ready( function($) {
 		};
 		$.post(ajaxurl, data, function(response) {
 			$('#cron-text').replaceWith(response);
-		});		
+		});
 	}
 	$('input[name="cronminutes[]"]').change(function() {cronstampadvanced();});
 	$('input[name="cronhours[]"]').change(function() {cronstampadvanced();});
@@ -115,21 +115,21 @@ jQuery(document).ready( function($) {
 			cronhours.push($('select[name="moncronhours"]').val());
 			cronmday.push($('select[name="moncronmday"]').val());
 			cronmon.push('*');
-			cronwday.push('*');		
+			cronwday.push('*');
 		}
 		if ( 'week' == $('input[name="cronbtype"]:checked').val()) {
 			cronminutes.push($('select[name="weekcronminutes"]').val());
 			cronhours.push($('select[name="weekcronhours"]').val());
 			cronmday.push('*');
 			cronmon.push('*');
-			cronwday.push($('select[name="weekcronwday"]').val());	
+			cronwday.push($('select[name="weekcronwday"]').val());
 		}
 		if ( 'day' == $('input[name="cronbtype"]:checked').val()) {
 			cronminutes.push($('select[name="daycronminutes"]').val());
 			cronhours.push($('select[name="daycronhours"]').val());
 			cronmday.push('*');
 			cronmon.push('*');
-			cronwday.push('*');	
+			cronwday.push('*');
 		}
 		if ( 'hour' == $('input[name="cronbtype"]:checked').val()) {
 			cronminutes.push($('select[name="hourcronminutes"]').val());
@@ -137,7 +137,7 @@ jQuery(document).ready( function($) {
 			cronmday.push('*');
 			cronmon.push('*');
 			cronwday.push('*');
-		}	
+		}
 		var data = {
 			action: 'backwpup_get_cron_text',
 			backwpupajaxpage: 'backwpupeditjob',
@@ -150,7 +150,7 @@ jQuery(document).ready( function($) {
 		};
 		$.post(ajaxurl, data, function(response) {
 			$('#cron-text').replaceWith(response);
-		});		
+		});
 	}
 	$('input[name="cronbtype"]').change(function() {cronstampbasic();});
 	$('select[name="moncronmday"]').change(function() {cronstampbasic();});
@@ -162,7 +162,7 @@ jQuery(document).ready( function($) {
 	$('select[name="daycronhours"]').change(function() {cronstampbasic();});
 	$('select[name="daycronminutes"]').change(function() {cronstampbasic();});
 	$('select[name="hourcronminutes"]').change(function() {cronstampbasic();});
-	
+
 
 	function awsgetbucket() {
 		var data = {
@@ -176,7 +176,7 @@ jQuery(document).ready( function($) {
 		$.post(ajaxurl, data, function(response) {
 			$('#awsBucket').remove();
 			$('#awsBucketselected').after(response);
-		});		
+		});
 	}
 	$('#awsAccessKey').change(function() {awsgetbucket();});
 	$('#awsSecretKey').change(function() {awsgetbucket();});
@@ -193,11 +193,11 @@ jQuery(document).ready( function($) {
 		$.post(ajaxurl, data, function(response) {
 			$('#GStorageBucket').remove();
 			$('#GStorageselected').after(response);
-		});		
+		});
 	}
 	$('#GStorageAccessKey').change(function() {gstoragegetbucket();});
-	$('#GStorageSecret').change(function() {gstoragegetbucket();});	
-	
+	$('#GStorageSecret').change(function() {gstoragegetbucket();});
+
 	function msazuregetcontainer() {
 		var data = {
 			action: 'backwpup_get_msazure_container',
@@ -211,12 +211,12 @@ jQuery(document).ready( function($) {
 		$.post(ajaxurl, data, function(response) {
 			$('#msazureContainer').remove();
 			$('#msazureContainerselected').after(response);
-		});		
+		});
 	}
 	$('#msazureHost').change(function() {msazuregetcontainer();});
 	$('#msazureAccName').change(function() {msazuregetcontainer();});
 	$('#msazureKey').change(function() {msazuregetcontainer();});
-	
+
 	function rscgetcontainer() {
 		var data = {
 			action: 'backwpup_get_rsc_container',
@@ -229,28 +229,12 @@ jQuery(document).ready( function($) {
 		$.post(ajaxurl, data, function(response) {
 			$('#rscContainer').remove();
 			$('#rscContainerselected').after(response);
-		});		
+		});
 	}
 	$('#rscUsername').change(function() {rscgetcontainer();});
 	$('#rscAPIKey').change(function() {rscgetcontainer();});
 
-	function sugarsyncgetroot() {
-		var data = {
-			action: 'backwpup_get_sugarsync_root',
-			backwpupajaxpage: 'backwpupeditjob',
-			sugaruser: jQuery('#sugaruser').val(),
-			sugarpass: jQuery('#sugarpass').val(),
-			sugarrootselected: jQuery('#sugarrootselected').val(),
-			_ajax_nonce: jQuery('#backwpupeditjobajaxnonce').val()
-		};
-		$.post(ajaxurl, data, function(response) {
-			$('#sugarroot').remove();
-			$('#sugarrootselected').after(response);
-		});		
-	}
-	$('#sugaruser').change(function() {sugarsyncgetroot();});
-	$('#sugarpass').change(function() {sugarsyncgetroot();});
-	
+
 	if ( $('#title').val() == '' )
 		$('#title').siblings('#title-prompt-text').css('visibility', '');
 	$('#title-prompt-text').click(function(){
