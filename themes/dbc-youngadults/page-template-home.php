@@ -24,11 +24,11 @@ get_header(); // Loads the header.php template. ?>
 			</div>
 			
 			<div class="four columns">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/MBF-logo-web.png" alt="Married Bible Fellowship" />
+				<a href="<?php echo site_url(); ?>/MBF/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/MBF-logo-web.png" alt="Married Bible Fellowship" /></a>
 			</div>
 			
 			<div class="four columns">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/YSBF-logo-web.png" alt="Young Singles Bible Fellowship" />
+				<a href="<?php echo site_url(); ?>/YSBF/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/YSBF-logo-web.png" alt="Young Singles Bible Fellowship" />
 			</div>
 			
 						
@@ -42,7 +42,7 @@ get_header(); // Loads the header.php template. ?>
 		<div class="row">
 		
 			<div class="eight columns">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/videoplayer.jpg" alt="video player" />
+				<iframe src="http://player.vimeo.com/video/58205616" width="800" height="449"frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 			</div>
 			
 			<div class="four columns">
