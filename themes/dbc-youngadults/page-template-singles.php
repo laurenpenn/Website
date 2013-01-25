@@ -57,7 +57,11 @@ get_header(); // Loads the header.php template. ?>
 			</div>
 			
 			<div class="four columns">
-				<h2>About Young Singles</h2>
+				<h2>About Young Singles Bible Fellowship</h2>
+				<h4>Grow -</h4> Find a small group, get in one-to-one discipleship, and become an equipped follower of Christ
+				<h4>Gather -</h4> Join our weekly Sunday gathering, join us in social activities, and see pictures of past events
+				<h4>Connect -</h4> Get plugged into DBC and the various ministries within its community
+				<h4>Serve -</h4> Whether locally, nationally, or overseas, join what God is doing through His Church
 			</div>
 			
 		</div>	
