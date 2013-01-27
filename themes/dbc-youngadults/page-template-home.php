@@ -24,11 +24,11 @@ get_header(); // Loads the header.php template. ?>
 			</div>
 			
 			<div class="four columns">
-				<a href="<?php echo site_url(); ?>/MBF/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/MBF-logo-web.png" alt="Married Bible Fellowship" /></a>
+				<a href="<?php echo site_url(); ?>/married-home/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/MBF-logo-web.png" alt="Married Bible Fellowship" /></a>
 			</div>
 			
 			<div class="four columns">
-				<a href="<?php echo site_url(); ?>/YSBF/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/YSBF-logo-web.png" alt="Young Singles Bible Fellowship" />
+				<a href="<?php echo site_url(); ?>/singles-home/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/YSBF-logo-web.png" alt="Young Singles Bible Fellowship" />
 			</div>
 			
 						
@@ -54,7 +54,7 @@ get_header(); // Loads the header.php template. ?>
 				
 				<p>We believe that we live this out through the grid of Psalm 1:1-3...that the blessed man is like a tree planted by a stream...bearing fruit in season and having leaves that do not wither.</p>
 
-				<p>That is our framework for this ministry...to be discerning fruit bearers and shade casters to those around us so that the gospel may be proclaimed through your life in all contexts and as a result lives transformed to the glory of God! </p> 
+				<p>That is our framework for this ministry...to be discerning fruit bearers and shade casters to those around us so that the gospel may be proclaimed through your life in all contexts and as a result lives transformed to the glory of God!</p> 
 
 				<p>Gospel transformation begins and continues with one heart and one soul set upon the purposes of God!</p>
 

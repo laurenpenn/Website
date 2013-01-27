@@ -33,19 +33,19 @@ get_header(); // Loads the header.php template. ?>
 		<div id="features" class="row">
 			
 			<div class="three columns">
-				<a href="<?php echo site_url(); ?>/gather/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/gather-button.jpg" alt="Gather" /></a>
+				<a href="<?php echo site_url(); ?>/grow/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/button-grow.png" alt="Grow" /></a>
 			</div>
 			
 			<div class="three columns">
-				<a href="<?php echo site_url(); ?>/grow/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/grow-button.jpg" alt="Grow" /></a>
+				<a href="<?php echo site_url(); ?>/gather-mbf/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/button-gather.png" alt="Gather" /></a>
 			</div>
 			
 			<div class="three columns">
-				<a href="<?php echo site_url(); ?>/connect/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/connect-button.jpg" alt="Connect" /></a>
+				<a href="<?php echo site_url(); ?>/connect/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/button-connect.png" alt="Connect" /></a>
 			</div>
 			
 			<div class="three columns">
-				<a href="<?php echo site_url(); ?>/serve/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/serve-button.jpg" alt="Serve" /></a>
+				<a href="<?php echo site_url(); ?>/serve/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/button-serve.png" alt="Serve" /></a>
 			</div>
 						
 		</div>
