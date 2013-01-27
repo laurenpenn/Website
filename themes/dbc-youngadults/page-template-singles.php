@@ -30,6 +30,10 @@ get_header(); // Loads the header.php template. ?>
 			
 		</div>
 		
+		<div class="row">
+			<hr>
+		</div>
+		
 		<div id="features" class="row">
 			
 			<div class="three columns">
@@ -48,6 +52,9 @@ get_header(); // Loads the header.php template. ?>
 				<a href="<?php echo site_url(); ?>/serve/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/button-serve.png" alt="Serve" /></a>
 			</div>
 						
+		</div>
+		<div class="row">
+			<hr>
 		</div>
 		
 		<div class="row">
