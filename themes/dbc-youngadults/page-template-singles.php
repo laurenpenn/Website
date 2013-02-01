@@ -34,7 +34,7 @@ get_header(); // Loads the header.php template. ?>
 			<hr>
 		</div>
 		
-		<div id="features" class="row">
+		<div id="row">
 			
 			<div class="three columns">
 				<a href="<?php echo site_url(); ?>/grow/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/button-grow.png" alt="Grow" /></a>
@@ -60,7 +60,7 @@ get_header(); // Loads the header.php template. ?>
 		<div class="row">
 		
 			<div class="eight columns">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/videoplayer.jpg" alt="video player" />
+				<iframe src="http://player.vimeo.com/video/58578982?title=0&amp;byline=0&amp;portrait=0" width="800" height="449" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
 			</div>
 			
 			<div class="four columns">
