@@ -104,7 +104,7 @@ get_header(); // Loads the header.php template. ?>
 	
 					<h2>DBC Ministry Articles</h2>
 					
-					<p>Common Ground is a monthly e-newsletter providing a variety of ministry events and opportunities during the month it is published. It also includes articles about ministries, people, or current events relevant to our lives today. A new edition of the e-newsletter is distributed the first day of each month.</p>
+					<p>DBC occasionally publishes articles in an e-newsletter about ministries, people, or current events relevant to our lives today. Please check out our stories in the following link.</p>
 									
 					<ul id="common-ground-publications-inner">
 						<li><em>Recent stories...</em></li>
@@ -136,7 +136,7 @@ get_header(); // Loads the header.php template. ?>
 						<?php wp_reset_query(); ?>
 					</ul>
 					
-					<p><a href="<?php echo site_url(); ?>/stories/" class="link-out">View all stories</a> or <a href="<?php echo site_url(); ?>/about-us/publications/sign-up-for-newsletters/" class="link-out">Sign up for the Newsletter</a></p>
+					<p><a href="<?php echo site_url(); ?>/stories/" class="link-out">View all stories</a></p>
 					
 				</div><!-- #commoun-ground -->
 
