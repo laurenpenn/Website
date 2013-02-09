@@ -1,10 +1,15 @@
-<?php
-
-/**
- * CSS and JS mime types
- */
-return array(
-    'css' => 'text/css', 
-    'js' => 'application/x-javascript',
-    'htc' => 'text/x-component'
-);
+<?php
+
+/**
+ * CSS and JS mime types
+ */
+return array(
+    'css' => 'text/css', 
+    'htc' => 'text/x-component',
+    
+    //JS - varieties
+    'js' => 'application/x-javascript',
+    'js2' => 'application/javascript',
+    'js3' => 'text/javascript',
+    'js4' => 'text/x-js',
+);

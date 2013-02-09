@@ -5,3 +5,4 @@
 /content/upgrade/
 .DS_Store
 .project
+*.log
