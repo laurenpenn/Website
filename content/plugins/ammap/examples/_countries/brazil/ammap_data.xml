@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/brazil.swf" tl_long="-74.003996" tl_lat="5.272333" br_long="-34.791917" br_lat="-33.74136" zoom="90%" zoom_x="36.68%" zoom_y="4.51%">
+  <areas>
+    <area mc_name="BR_AC" title="Acre"/>
+    <area mc_name="BR_AL" title="Alagoas"/>
+    <area mc_name="BR_AP" title="Amapá"/>
+    <area mc_name="BR_AM" title="Amazonas"/>
+    <area mc_name="BR_BA" title="Bahia"/>
+    <area mc_name="BR_CE" title="Ceará"/>
+    <area mc_name="BR_DF" title="Distrito Federal"/>
+    <area mc_name="BR_ES" title="Espírito Santo"/>
+    <area mc_name="BR_GO" title="Goiás"/>
+    <area mc_name="BR_MA" title="Maranhão"/>
+    <area mc_name="BR_MT" title="Mato Gross"/>
+    <area mc_name="BR_MS" title="Mato Grosso do Sul"/>
+    <area mc_name="BR_MG" title="Minas Gerais"/>
+    <area mc_name="BR_PA" title="Pará"/>
+    <area mc_name="BR_PB" title="Paraíba"/>
+    <area mc_name="BR_PR" title="Paraná"/>
+    <area mc_name="BR_PE" title="Pernambuco"/>
+    <area mc_name="BR_PI" title="Piauí"/>
+    <area mc_name="BR_RJ" title="Rio de Janeiro"/>
+    <area mc_name="BR_RN" title="Rio Grande do Norte"/>
+    <area mc_name="BR_RS" title="Rio Grande do Sul"/>
+    <area mc_name="BR_RO" title="Rondônia"/>
+    <area mc_name="BR_RR" title="Roraima"/>
+    <area mc_name="BR_SC" title="Santa Catarina"/>
+    <area mc_name="BR_SP" title="São Paulo"/>
+    <area mc_name="BR_SE" title="Sergipe"/>
+    <area mc_name="BR_TO" title="Tocantins"/>
+    <area title="borders" mc_name="borders" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Brasilia" file="target" color="#CC0000" height="10" width="10" lat="-15.77846" long="-47.928661" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="422" y="420" text_size="18" color="#FFFFFF" remain="false">
+      <text>Brazil</text>
+    </label>
+  </labels>
+</map>

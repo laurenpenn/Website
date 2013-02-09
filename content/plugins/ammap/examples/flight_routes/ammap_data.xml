@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- map file should be located in path (set in html) folder                                                                                             -->
+<!-- tl_long is longitute of top left corner, the default values is -180, tl_lat  is latitude  of top left corner, the default values is 90              -->
+<!-- br_long is longitute of top left corner, the default values is 180, br_lat  is latitude  of top left corner, the default values is -90              -->
+<!-- you should only set longitudes and latitudes if you want to calibrate your map and you know these values. Otherwise you can delete these attributes -->
+<!-- you can set default zoom level, zoom_x and zoom_y. To find out the numbers, you should turn developer mode on (in settings file), zoom map to required position, copy zoom info to clipboard (using right click menu) and paste it here -->
+
+<map map_file="maps/world3.swf" tl_long="-168.49" tl_lat="83.63" br_long="190.3" br_lat="-55.58" url="#movie_london">
+  <!--areas are movie clips inside map file. areas can have child objects:movies, labels & lines -->
+  <!-- check online help for all possible area's attributes -->
+  <areas> 
+      <area title="borders" mc_name="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+ <!-- movies are movie clips loaded on top of a map. Movies can have child objects:movies, labels & lines -->
+ <!-- movies can be bounded to a map or to a stage. To bound to a map you should indicate longitude (long) and latitude (lat). To bound to the stage you should indicate x and y (in pixels or percents) -->
+ <!-- there are several build in movies, which you don't need to load. To use them, use one of the following names for "file" attribute: rectangle, border, circle, target -->
+ <!-- check online help for all possible area's attributes -->
+  <movies>
+    <movie color="CC0000"  file="target" title="Brussels" lat="50.8371" long="4.3676" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="Prague" lat="50.0878" long="14.4205" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="Athens" lat="37.9792" long="23.7166" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="Reykjavik" lat="64.1353" long="-21.8952" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="Dublin" lat="53.3441" long="-6.2675" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="Oslo" lat="59.9138" long="10.7387" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="Lisbon" lat="38.7072" long="-9.1355" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="Moscow" lat="55.7558" long="37.6176" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="Belgrade" lat="44.8048" long="20.4781" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="Bratislava" lat="48.2116" long="17.1547" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="Ljubljana" lat="46.0514" long="14.5060" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="Madrid" lat="40.4167" long="-3.7033" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="Stockholm" lat="59.3328" long="18.0645" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="Bern" lat="46.9480" long="7.4481" width="10" height="10" fixed_size="true"></movie>    
+    <movie color="CC0000"  file="target" title="Kiev" lat="50.4422" long="30.5367" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="Paris" lat="48.8567" long="2.3510" width="10" height="10" fixed_size="true"></movie>
+    <movie color="CC0000"  file="target" title="New York" lat="40.43" long="-74" width="10" height="10" fixed_size="true"></movie>
+  
+    <movie file="icons/plane.swf" y="113" x="85" color="#CC0000"></movie>
+  
+    <movie oid="movie_london" file="target" title="London" lat="51.5002" long="-0.1262" width="16" height="16" fixed_size="true" zoom="274%" zoom_x="-58.11%" zoom_y="-78.22%">
+      <labels>
+        <label x="100" y="100" text_size="18" color="CC0000"> 
+          <text>Flights from London</text>
+        </label>
+        <label x="100" y="130" text_size="12" color="555555" url="#movie_vilnius">
+          <text><![CDATA[<b>Show flights from Vilnius</b>]]></text>
+        </label>            
+      </labels>    
+      <lines>
+        <line lat="51.5002,50.4422" long="-0.1262,30.5367" width="1" alpha="40"></line>
+        <line lat="51.5002,46.9480" long="-0.1262,7.4481" width="1" alpha="40"></line>   
+        <line lat="51.5002,59.3328" long="-0.1262,18.0645" width="1" alpha="40"></line>    
+        <line lat="51.5002,40.4167" long="-0.1262,-3.7033" width="1" alpha="40"></line>    
+        <line lat="51.5002,46.0514" long="-0.1262,14.5060" width="1" alpha="40"></line>    
+        <line lat="51.5002,48.2116" long="-0.1262,17.1547" width="1" alpha="40"></line>    
+        <line lat="51.5002,44.8048" long="-0.1262,20.4781" width="1" alpha="40"></line>    
+        <line lat="51.5002,55.7558" long="-0.1262,37.6176" width="1" alpha="40"></line>    
+        <line lat="51.5002,38.7072" long="-0.1262,-9.1355" width="1" alpha="40"></line>    
+        <line lat="51.5002,54.6896" long="-0.1262,25.2799" width="1" alpha="40"></line>
+        <line lat="51.5002,59.4749,64.1353" long="-0.1262,-6.4367,-21.8952" width="1" alpha="40" curved="true"></line>         
+        <line lat="51.5002,43.7365,40.43" long="-0.1262,-35.437,-74" width="1" alpha="40" curved="true"></line>
+      </lines>    
+    </movie>
+    
+    <movie oid="movie_vilnius" file="target" title="Vilnius" lat="54.6896" long="25.2799" width="16" height="16" fixed_size="true" zoom="492.2497%" zoom_x="-197.17%" zoom_y="-176.79%">
+      <labels>
+        <label x="100" y="100" text_size="18" color="CC0000"> 
+          <text>Flights from Vilnius</text>
+        </label>
+        <label x="100" y="130" text_size="12" color="555555" url="#movie_london">
+          <text><![CDATA[<b>Show flights from London</b>]]></text>
+        </label>        
+      </labels>
+      <lines>
+        <line lat="54.6896,50.8371" long="25.2799,4.3676" width="1" alpha="40"></line>
+        <line lat="54.6896,59.9138" long="25.2799,10.7387" width="1" alpha="40"></line>    
+        <line lat="54.6896,40.4167" long="25.2799,-3.7033" width="1" alpha="40"></line>          
+        <line lat="54.6896,50.0878" long="25.2799,14.4205" width="1" alpha="40"></line>    
+        <line lat="54.6896,48.2116" long="25.2799,17.1547" width="1" alpha="40"></line>    
+        <line lat="54.6896,44.8048" long="25.2799,20.4781" width="1" alpha="40"></line>    
+        <line lat="54.6896,55.7558" long="25.2799,37.6176" width="1" alpha="40"></line>    
+        <line lat="54.6896,37.9792" long="25.2799,23.7166" width="1" alpha="40"></line>    
+        <line lat="54.6896,54.6896" long="25.2799,25.2799" width="1" alpha="40"></line>
+        <line lat="54.6896,51.5002" long="25.2799,-0.1262" width="1" alpha="40"></line>
+        <line lat="54.6896,53.3441" long="25.2799,-6.2675" width="1" alpha="40"></line>             
+      </lines>    
+    </movie>  
+  </movies>
+
+</map>

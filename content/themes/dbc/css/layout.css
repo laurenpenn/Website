@@ -1,0 +1,199 @@
+/*
+ * As a responsive site this file is responsible for changing the layout of the
+ * page as the browser changes widths. The site is flexible up until it's wide
+ * enough to be 1232px. As the browser width increases more of the site is either
+ * revealed or made more readily accessible. For example, the sidebar is moved
+ * below the main content for mobile users.
+ */
+#sidebar-primary-switch {
+	display: none;
+}
+.wrap {
+	margin: 0 auto 10px;
+	padding: 0;
+	position: relative;
+	width: 93.75%;
+}
+
+.page-template-home .hfeed {
+	padding: 0;
+}
+
+/* Small (old) Mobile
+ * For smaller mobile resolutions
+ * e.g. iPod Touch, iPhone 3G
+ ================================================== */
+@media screen and (max-width: 479px) {
+
+}
+/* Mobile and up
+ * e.g. Many Android devices
+ ================================================== */
+@media screen and (min-width: 480px) {
+
+}
+/* Large mobile and tablet
+ * e.g. iPhone 4, iPhone 4S
+ ================================================== */
+@media screen and (min-width: 620px) {
+	.wrap {
+		margin: 0 auto 10px;
+		width: 93.75%;
+	}
+	#sidebar-home {
+		float: left;
+		padding: 5%;
+		width: 30.0625%;
+	}
+	#sidebar-primary,
+	#sidebar-sticky {
+		float: left;
+		padding: 5%;
+		width: 16.0625%;
+	}
+	#content {
+		float: right;
+		width: 73.9375%;
+	}
+	.page-template-home #content {
+		width: 65%;
+	}
+    .layout-1c #content,
+    .home.page-template-default #content {
+        width: 100%;
+    }
+    .page-template-home.layout-1c #content .hfeed {
+        padding: 2%;
+    }
+}
+/* Mobile
+ * Anything smaller than 620px
+ ================================================== */
+@media screen and (max-width: 620px) {
+	#menu-primary .menu-item {
+		float: none;
+		text-align: left;
+		text-indent: 1em;
+		width: 100%;
+	}
+	.page-template-home .feature {
+		width: 99%;
+	}
+	#facebook-invite {
+		display: none;
+	}
+	#sidebar-header.sidebar {
+	    float: none;
+	}
+	#sidebar-header.sidebar .widget_text {
+	    float: left;
+	    margin-top: 10px;
+	}
+	.page-template-home #home-features .feature {
+	    padding: 0 0 2%;
+	    width: 100%;
+	}
+}
+/* Tablet and smaller
+ * Anything smaller than 810px (iPad portrait)
+ * This is the threshold that we break the site out of a two column format
+ ================================================== */
+@media screen and (max-width: 810px) {
+	.page-template-home #mydbc a.big-button,
+	.page-template-home #mydbc a.big-button.green {
+		margin: 0 0 3px;
+		width: 100%;
+	}
+	.page-template-home #sidebar-home {
+		clear: both;
+		float: none;
+		padding: 5%;
+		width: 90%;
+	}
+	#sidebar-primary,
+	#sidebar-sticky {
+		background: #fff;
+		border: 1px solid #eee;
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		box-shadow: 0 0 10px #999;
+		display: none;
+		float: none;
+		left: 0;
+		top: 0;
+		padding: 5%;
+		position: absolute;
+		width: 33%;
+		z-index: 500;
+	}
+	#sidebar-primary-switch {
+		background: #000 url('../images/mobile_menu.png') no-repeat;
+		cursor: pointer;
+		display: block;
+		height: 34px;
+		left: -15px;
+		top: 32px;
+		position: absolute;
+		text-indent: -9999px;
+		width: 40px;
+		z-index: 600;
+	}
+	#sidebar-primary-switch:hover,
+	#sidebar-primary-switch:focus {
+		background: #333 url('../images/mobile_menu.png') no-repeat;
+	}
+	#content,
+	.page-template-home #content {
+		float: none;
+		width: 100%;
+	}
+	.layout-1c #content {
+		padding: 5%;
+		width: 100%;
+	}
+	.page-template-home .hfeed {
+		padding: 5%;
+	}
+	.page-template-home #welcome {
+		margin: 0 0 2%;
+	}
+	.page-template-home #sidebar-home {
+		padding: 0 5% 5%;
+	}
+	.page-template-home #mydbc .big-button,
+	.page-template-home #mydbc .big-button.green {
+		float: left;
+		margin: 0;
+		width: auto;
+	}
+}
+
+/* Largest format
+ * e.g. 1600x900, 1920x1080
+ ================================================== */
+@media screen and (min-width: 1400px) {
+	.wrap {
+		width: 1232px;
+	}
+	.row {
+	    max-width: 1232px;
+	}
+}
+/* Clearing
+ ================================================== */
+
+/* Self Clearing Goodness */
+.wrap:after {
+	content: "\0020";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}

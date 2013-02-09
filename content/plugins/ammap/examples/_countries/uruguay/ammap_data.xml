@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/uruguay.swf" tl_long="-58.437288" tl_lat="-30.09741" br_long="-53.096953" br_lat="-34.944347" zoom="90%" zoom_x="36.56%" zoom_y="7.14%">
+  <areas>
+    <area mc_name="UY_AR" title="Artigas"/>
+    <area mc_name="UY_CA" title="Canelones"/>
+    <area mc_name="UY_CL" title="Cerro Largo"/>
+    <area mc_name="UY_CO" title="Colonia"/>
+    <area mc_name="UY_DU" title="Durazno"/>
+    <area mc_name="UY_FS" title="Flores"/>
+    <area mc_name="UY_FD" title="Florida"/>
+    <area mc_name="UY_LA" title="Lavalleja"/>
+    <area mc_name="UY_MA" title="Maldonado"/>
+    <area mc_name="UY_MO" title="Montevideo"/>
+    <area mc_name="UY_PA" title="Paysandú"/>
+    <area mc_name="UY_RN" title="Río Negro"/>
+    <area mc_name="UY_RV" title="Rivera"/>
+    <area mc_name="UY_RO" title="Rocha"/>
+    <area mc_name="UY_SA" title="Salto"/>
+    <area mc_name="UY_SJ" title="San José"/>
+    <area mc_name="UY_SO" title="Soriano"/>
+    <area mc_name="UY_TA" title="Tacuarembó"/>
+    <area mc_name="UY_TT" title="Treinta y Tres"/>
+    <area title="borders" mc_name="borders" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Montevideo" file="target" color="#CC0000" height="10" width="10" lat="-34.882304" long="-56.166198" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="797" y="163" text_size="18" color="#FFFFFF" remain="false">
+      <text>Uruguay</text>
+    </label>
+  </labels>
+</map>

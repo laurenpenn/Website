@@ -1,0 +1,7 @@
+[15-Mar-2012 11:22:50] PHP Fatal error:  Call to a member function show_errors() on a non-object in /home/dbc/public_html/wp-content/plugins/leaguemanager/leaguemanager.php on line 76
+[02-May-2012 07:52:38] PHP Fatal error:  Call to a member function show_errors() on a non-object in /home/dbc/public_html/wp-content/plugins/leaguemanager/leaguemanager.php on line 76
+[03-Jun-2012 23:13:10] PHP Fatal error:  Call to a member function show_errors() on a non-object in /home/dbc/public_html/wp-content/plugins/leaguemanager/leaguemanager.php on line 76
+[20-Aug-2012 18:45:17] PHP Fatal error:  Call to a member function show_errors() on a non-object in /home/dbc/public_html/wp-content/plugins/leaguemanager/leaguemanager.php on line 76
+[29-Nov-2012 01:36:04] PHP Fatal error:  Call to a member function show_errors() on a non-object in /home/dbc/public_html/wp-content/plugins/leaguemanager/leaguemanager.php on line 76
+[13-Dec-2012 19:41:15] PHP Fatal error:  Call to a member function show_errors() on a non-object in /home/dbc/public_html/wp-content/plugins/leaguemanager/leaguemanager.php on line 76
+[29-Dec-2012 07:40:18] PHP Fatal error:  Call to a member function show_errors() on a non-object in /home/dbc/public_html/wp-content/plugins/leaguemanager/leaguemanager.php on line 76

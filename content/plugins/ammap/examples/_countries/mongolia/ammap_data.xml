@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/mongolia.swf" tl_long="87.749656" tl_lat="52.153906" br_long="119.924936" br_lat="41.567067" zoom="85%" zoom_x="10.93%" zoom_y="38.42%">
+  <areas>
+    <area mc_name="MN_AR" title="Arhangay"/>
+    <area mc_name="MN_BH" title="Bayanhongor"/>
+    <area mc_name="MN_BO" title="Bayan-Ölgiy"/>
+    <area mc_name="MN_BU" title="Bulgan"/>
+    <area mc_name="MN_DA" title="Darhan-Uul"/>
+    <area mc_name="MN_DD" title="Dornod"/>
+    <area mc_name="MN_DG" title="Dornogovi"/>
+    <area mc_name="MN_DU" title="Dundgovi"/>
+    <area mc_name="MN_DZ" title="Dzavhan"/>
+    <area mc_name="MN_GA" title="Govi-Altay"/>
+    <area mc_name="MN_GS" title="Govisumber"/>
+    <area mc_name="MN_HN" title="Hentiy"/>
+    <area mc_name="MN_HD" title="Hovd"/>
+    <area mc_name="MN_HG" title="Hövsgöl"/>
+    <area mc_name="MN_OG" title="Ömnögovi"/>
+    <area mc_name="MN_ER" title="Orhon"/>
+    <area mc_name="MN_OH" title="Övörhangay"/>
+    <area mc_name="MN_SL" title="Selenge"/>
+    <area mc_name="MN_SB" title="Sühbaatar"/>
+    <area mc_name="MN_TO" title="Töv"/>
+    <area mc_name="MN_UB" title="Ulaanbaatar"/>
+    <area mc_name="MN_UV" title="Uvs"/>
+    <area mc_name="borders_inside" title="borders" color="#FFFFFF" balloon="false"></area>
+    <area mc_name="borders_outside" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Ulaanbaatar" file="target" color="#666666" height="10" width="10" lat="47.926661" long="106.904412" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="133" y="362" text_size="18" color="#FFFFFF" remain="false">
+      <text>Mongolia</text>
+    </label>
+  </labels>
+</map>

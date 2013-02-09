@@ -1,0 +1,77 @@
+@font-face {
+	font-family: 'SansationRegular';
+    src: url('fonts/nobile-webfont.eot');
+    src: url('fonts/nobile-webfont.eot?iefix') format('eot'),
+         url('fonts/nobile-webfont.woff') format('woff'),
+         url('fonts/nobile-webfont.ttf') format('truetype'),
+         url('fonts/nobile-webfont.svg#webfonta5F1PhVl') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SansationLight';
+    src: url('fonts/nobile-webfont.eot');
+    src: url('fonts/nobile-webfont.eot?iefix') format('eot'),
+         url('fonts/nobile-webfont.woff') format('woff'),
+         url('fonts/nobile-webfont.ttf') format('truetype'),
+         url('fonts/nobile-webfont.svg#webfonta5F1PhVl') format('svg');
+	font-weight: 200;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SansationBold';
+    src: url('fonts/nobile_bold-webfont.eot');
+    src: url('fonts/nobile_bold-webfont.eot?iefix') format('eot'),
+         url('fonts/nobile_bold-webfont.woff') format('woff'),
+         url('fonts/nobile_bold-webfont.ttf') format('truetype'),
+         url('fonts/nobile_bold-webfont.svg#webfontUgFBHeB6') format('svg');
+	 font-weight: normal;
+	font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'LuxiSansRegular';
+    src: url('fonts/luxisr-webfont.eot#') format('eot'),
+         url('fonts/luxisr-webfont.woff') format('woff'),
+         url('fonts/luxisr-webfont.ttf') format('truetype'),
+         url('fonts/luxisr-webfont.svg#webfontSfKTcYuD') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LuxiSansOblique';
+    src: url('fonts/luxisri-webfont.eot#') format('eot'),
+         url('fonts/luxisri-webfont.woff') format('woff'),
+         url('fonts/luxisri-webfont.ttf') format('truetype'),
+         url('fonts/luxisri-webfont.svg#webfontioAEDAvb') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LuxiSansBold';
+    src: url('fonts/luxisb-webfont.eot#') format('eot'),
+         url('fonts/luxisb-webfont.woff') format('woff'),
+         url('fonts/luxisb-webfont.ttf') format('truetype'),
+         url('fonts/luxisb-webfont.svg#webfontIMeya9gv') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LuxiSansBoldOblique';
+    src: url('fonts/luxisbi-webfont.eot#') format('eot'),
+         url('fonts/luxisbi-webfont.woff') format('woff'),
+         url('fonts/luxisbi-webfont.ttf') format('truetype'),
+         url('fonts/luxisbi-webfont.svg#webfont3kP59XPi') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

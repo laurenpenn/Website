@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/continents.swf" zoom_x="0%" zoom_y="0%" zoom="100%" tl_long="-168.49" tl_lat="83.63" br_long="190.3" br_lat="-55.58" >
+  <areas>
+    <area mc_name="africa" title="Africa" color="#723C1A" zoom="250%" zoom_x="-84.94%" zoom_y="-118.95%" url="!ammap_data_africa.xml"/>
+    <area mc_name="australia" title="Australia and Oceania" color="#93644A" zoom="400%" zoom_x="-294.35%" zoom_y="-280.58%" url="!ammap_data_australia.xml"/>
+    <area mc_name="europe" title="Europe" color="#AA805A" zoom="310%" zoom_x="-116.92%" zoom_y="-80.99%" url="!ammap_data_europe.xml"/>
+    <area mc_name="asia" title="Asia" color="#C8AB67"  zoom="240%" zoom_x="-125.46%" zoom_y="-78.18%" url="!ammap_data_asia.xml"/>
+    <area mc_name="north_america" title="North America" color="#8D725F" zoom="270%" zoom_x="-9.51%" zoom_y="-74.75%" url="!ammap_data_namerica.xml"/>
+    <area mc_name="south_america" title="South America" color="#BE8045" zoom="250%" zoom_x="-32.36%" zoom_y="-151.95%" url="!ammap_data_samerica.xml"/>
+  </areas>
+</map>

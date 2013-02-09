@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/spain2.swf" tl_long="-18.161674" tl_lat="43.791884" br_long="4.329174" br_lat="27.636887" zoom="85%" zoom_x="22.02%" zoom_y="7%">
+  <areas>
+    <area mc_name="ES_AN" title="Andalusia"></area>
+    <area mc_name="ES_AR" title="Aragon"></area>
+    <area mc_name="ES_AS" title="Asturias"></area>
+    <area mc_name="ES_PM" title="Balearic Islands"></area>
+    <area mc_name="ES_PV" title="Basque Country"></area>
+    <area mc_name="ES_CN" title="Canary Islands"></area>
+    <area mc_name="ES_CB" title="Cantabria"></area>
+    <area mc_name="ES_CL" title="Castile and Leon"></area>
+    <area mc_name="ES_CM" title="Castile-La Mancha"></area>
+    <area mc_name="ES_CT" title="Catalonia"></area>
+    <area mc_name="ES_EX" title="Extremadura"></area>
+    <area mc_name="ES_GA" title="Galicia"></area>
+    <area mc_name="ES_LO" title="La Rioja"></area>
+    <area mc_name="ES_MD" title="Madrid"></area>
+    <area mc_name="ES_MU" title="Murcia"></area>
+    <area mc_name="ES_NA" title="Navarra"></area>
+    <area mc_name="ES_VC" title="Valencia"></area>
+    <area mc_name="borders" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Madrid" file="target" color="#666666" height="10" width="10" lat="40.4203" long="-3.705774" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="364" y="227" text_size="18" color="#FFFFFF" remain="false">
+      <text>Spain</text>
+    </label>
+  </labels>
+</map>

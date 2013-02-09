@@ -1,0 +1,1699 @@
+# Copyright (C) 2010 BackWPup
+# This file is distributed under the same license as the BackWPup package.
+msgid ""
+msgstr ""
+"Project-Id-Version: BackWPup 1.5.0 en español\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-07 09:19+0100\n"
+"PO-Revision-Date: 2011-03-07 09:20+0100\n"
+"Last-Translator: Eduardo Larequi <elarequi@educacion.navarra.es>\n"
+"Language-Team: Eduardo Larequi <elarequi@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: Spain\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_c;_x;esc_html__\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: app/backwpup_dojob.php:64
+#, php-format
+msgid "BackWPup Log for %1$s from %2$s at %3$s"
+msgstr "Registro de BackWPup para %1$s, de %2$s, a las %3$s"
+
+#: app/backwpup_dojob.php:74
+msgid "Working Job will closed!!! And a new started!!!"
+msgstr "La tarea en ejecución se terminará y comenzará una nueva."
+
+#: app/backwpup_dojob.php:77
+#: app/backwpup_dojob.php:241
+#: app/options-save.php:63
+msgid "[ERROR]"
+msgstr "[ERROR]"
+
+#: app/backwpup_dojob.php:77
+msgid "Backup Aborted working to long!!!"
+msgstr "La copia de seguridad ha sido abortada. Tiempo de ejecución demasiado largo."
+
+#: app/backwpup_dojob.php:94
+#, php-format
+msgid "Job %1$s already running!!!"
+msgstr "La tarea %1$s ya se está ejecutando."
+
+#: app/backwpup_dojob.php:131
+#, php-format
+msgid "PHP Safe Mode is on!!! Max exec time is %1$d sec."
+msgstr "EL modo seguro (Safe Mode) de PHP está activado. El tiempo máximo de ejecución es de %1$d seg."
+
+#: app/backwpup_dojob.php:135
+#, php-format
+msgid "Memory limit set to %1$s ,because can not use PHP: memory_get_usage() function to dynamically increase the Memory!"
+msgstr "El límite de memoria se ha establecido en %1$s, porque no se puede tuilizar la función memory_get_usage() de PHP para incrementar dinámicamente la memoria."
+
+#: app/backwpup_dojob.php:203
+msgid "old Log files deleted!!!"
+msgstr "los ficheros antiguos del registro han sido borrados."
+
+#: app/backwpup_dojob.php:208
+#, php-format
+msgid "Backup Archive File size is %1s"
+msgstr "El fichero de copia de seguridad tiene un tamaño de %1s"
+
+#: app/backwpup_dojob.php:210
+#, php-format
+msgid "Job done in %1s sec."
+msgstr "Tarea realizada en %1s seg."
+
+#: app/backwpup_dojob.php:235
+msgid "[WARNING]"
+msgstr "[ADVERTENCIA]"
+
+#: app/backwpup_dojob.php:245
+msgid "[DEPRECATED]"
+msgstr "[OBSOLETO]"
+
+#: app/backwpup_dojob.php:248
+msgid "[STRICT NOTICE]"
+msgstr "[AVISO DE SUMA IMPORTANCIA]"
+
+#: app/backwpup_dojob.php:251
+msgid "[RECOVERABLE ERROR]"
+msgstr "[ERROR RECUPERABLE]"
+
+#: app/backwpup_dojob.php:307
+#, php-format
+msgid "Can not create Folder: %1$s"
+msgstr "No se ha podido crear el directorio: %1$s"
+
+#: app/backwpup_dojob.php:312
+#, php-format
+msgid "Can not write to Folder: %1$s"
+msgstr "No se puede escribir en el directorio: %1$s"
+
+#: app/backwpup_dojob.php:346
+#, php-format
+msgid "PHP Safe Mode is on!!! Can not increase Memory Limit is %1$s"
+msgstr "El modo seguro (Safe Mode) de PHP está activado. No se puede incrementar el límite de memoria, de %1$s"
+
+#: app/backwpup_dojob.php:373
+#, php-format
+msgid "Memory increased from %1$s to %2$s"
+msgstr "Memoria incrementada de %1$s a %2$s"
+
+#: app/backwpup_dojob.php:375
+#, php-format
+msgid "Can not increase Memory Limit is %1$s"
+msgstr "No se ha podido incrementar el límite de memoria, de %1$s"
+
+#: app/backwpup_dojob.php:385
+msgid "Set Blog to Maintenance Mode"
+msgstr "MIentras se realiza la copia de seguridad de la base de datos, el blog se ha puesto en modo de mantenimiento"
+
+#: app/backwpup_dojob.php:401
+msgid "Set Blog to normal Mode"
+msgstr "Finalizada la copia de seguridad de la base de datos, el blog ha vuelto al modo normal"
+
+#: app/backwpup_dojob.php:417
+msgid "Run Database check..."
+msgstr "Ejecutar comprobación de la base de datos..."
+
+#: app/backwpup_dojob.php:432
+#: app/backwpup_dojob.php:434
+#: app/backwpup_dojob.php:436
+#, php-format
+msgid "Result of table check for %1$s is: %2$s"
+msgstr "El resultado de la verificación de la tabla %1$s es: %2$s"
+
+#: app/backwpup_dojob.php:439
+#: app/backwpup_dojob.php:451
+#: app/backwpup_dojob.php:475
+#: app/backwpup_dojob.php:485
+#: app/backwpup_dojob.php:530
+#: app/backwpup_dojob.php:542
+#: app/backwpup_dojob.php:669
+#, php-format
+msgid "BackWPup database error %1$s for query %2$s"
+msgstr "Error %1$s de la base de datos para la consulta %2$s"
+
+#: app/backwpup_dojob.php:444
+#: app/backwpup_dojob.php:446
+#: app/backwpup_dojob.php:448
+#, php-format
+msgid "Result of table repair for %1$s is: %2$s"
+msgstr "El resultado de la reparación de la tabla %1$s es: %2$s"
+
+#: app/backwpup_dojob.php:456
+msgid "Database check done!"
+msgstr "Verificación de la base de datos realizada."
+
+#: app/backwpup_dojob.php:458
+msgid "No Tables to check"
+msgstr "No hay tablas que verificar"
+
+#: app/backwpup_dojob.php:523
+msgid "Run Database Dump to file..."
+msgstr "Ejecutar el volcado de la base de datos al fichero..."
+
+#: app/backwpup_dojob.php:575
+msgid "Dump Database table: "
+msgstr "Volcar la tabla de la base de datos:"
+
+#: app/backwpup_dojob.php:590
+msgid "Database Dump done!"
+msgstr "Volcado de la base de datos realizado."
+
+#: app/backwpup_dojob.php:592
+msgid "Can not create Database Dump file"
+msgstr "No se puede crear un fichero de volcado de la base de datos"
+
+#: app/backwpup_dojob.php:595
+msgid "No Tables to Dump"
+msgstr "No hay tablas para realizar un volcado"
+
+#: app/backwpup_dojob.php:601
+msgid "Add Database Dump to Backup:"
+msgstr "Añadir volcado de la base de datos a la copia de seguridad:"
+
+#: app/backwpup_dojob.php:611
+#: app/backwpup_dojob.php:628
+msgid "Run Wordpress Export to XML file..."
+msgstr "Ejecutar la exportación de WordPress a un fichero XML..."
+
+#: app/backwpup_dojob.php:620
+msgid "cURL:"
+msgstr "cURL:"
+
+#: app/backwpup_dojob.php:630
+msgid "Export to XML done!"
+msgstr "Exportación a XML realizada."
+
+#: app/backwpup_dojob.php:632
+msgid "Can not Export to XML!"
+msgstr "No se puede exportar a XML."
+
+#: app/backwpup_dojob.php:635
+msgid "Can not Export to XML! no cURL or allow_url_fopen Support!"
+msgstr "No se puede exportar a XML: las funciones cURL o allow_url_fopen no se pueden utilizar."
+
+#: app/backwpup_dojob.php:639
+msgid "Add XML Export to Backup:"
+msgstr "Añadir fichero XML de exportación a la copia de seguridad:"
+
+#: app/backwpup_dojob.php:648
+msgid "Run Database optimize..."
+msgstr "Ejecutar optimización de la base de datos..."
+
+#: app/backwpup_dojob.php:662
+#: app/backwpup_dojob.php:664
+#: app/backwpup_dojob.php:666
+#, php-format
+msgid "Result of table optimize for %1$s is: %2$s"
+msgstr "El resultado de la optimización de la tabla %1$s es: %2$s"
+
+#: app/backwpup_dojob.php:672
+msgid "Database optimize done!"
+msgstr "Optimización de la base de datos realizada."
+
+#: app/backwpup_dojob.php:675
+msgid "No Tables to optimize"
+msgstr "No hay tablas que optimizar"
+
+#: app/backwpup_dojob.php:693
+msgid "File or Folder is not readable:"
+msgstr "El fichero o el directorio no se puede leer:"
+
+#: app/backwpup_dojob.php:695
+msgid "Link not followed:"
+msgstr "No se ha seguido el enlace:"
+
+#: app/backwpup_dojob.php:703
+msgid "Is not a file or directory:"
+msgstr "No es un fichero o un directorio:"
+
+#: app/backwpup_dojob.php:713
+msgid "Make a list of files to Backup ...."
+msgstr "Hacer una lista de ficheros para la copia de seguridad..."
+
+#: app/backwpup_dojob.php:762
+msgid "No files to Backup"
+msgstr "No hay ficheros para la copia de seguridadd"
+
+#: app/backwpup_dojob.php:764
+msgid "Files to Backup:"
+msgstr "Ficheros para la copia de seguridad:"
+
+#: app/backwpup_dojob.php:765
+msgid "Size of all Files:"
+msgstr "Tamaño de todos los ficheros:"
+
+#: app/backwpup_dojob.php:773
+msgid "Create Backup Zip file..."
+msgstr "Crear fichero ZIP con la copia de seguridad:"
+
+#: app/backwpup_dojob.php:781
+#: app/backwpup_dojob.php:805
+msgid "Add File to ZIP file:"
+msgstr "Añadir fichero al fichero ZIP:"
+
+#: app/backwpup_dojob.php:785
+msgid "Can not add File to ZIP file:"
+msgstr "No se puede añadir un fichero al fichero ZIP:"
+
+#: app/backwpup_dojob.php:789
+#: app/backwpup_dojob.php:812
+msgid "Backup Zip file create done!"
+msgstr "Fichero ZIP de copia de seguridad creado."
+
+#: app/backwpup_dojob.php:791
+msgid "Can not create Backup ZIP file:"
+msgstr "No se puede crear el fichero ZIP de copia de seguridad:"
+
+#: app/backwpup_dojob.php:802
+msgid "Create Backup Zip (PclZip) file..."
+msgstr "Crear fichero ZIP (PclZip) de copia de seguridad..."
+
+#: app/backwpup_dojob.php:810
+msgid "Zip file create:"
+msgstr "Crear fichero ZIP:"
+
+#: app/backwpup_dojob.php:829
+msgid "Can not create TAR Backup file"
+msgstr "No se ha podido crear el fichero TAR de copia de seguridad"
+
+#: app/backwpup_dojob.php:832
+msgid "Create Backup Archive file..."
+msgstr "Crear fichero de copia de seguridad..."
+
+#: app/backwpup_dojob.php:839
+msgid "Add File to Backup Archive:"
+msgstr "Añadir fichero al fichero de copia de seguridad:"
+
+#: app/backwpup_dojob.php:915
+msgid "Backup Archive file create done!"
+msgstr "Fichero de copia de seguridad creado."
+
+#: app/backwpup_dojob.php:933
+msgid "Connected by SSL-FTP to Server:"
+msgstr "Conectado por SSL-FTP al servidor:"
+
+#: app/backwpup_dojob.php:935
+msgid "Can not connect by SSL-FTP to Server:"
+msgstr "No se puede conectar por SSL-FTP al servidor:"
+
+#: app/backwpup_dojob.php:939
+msgid "PHP Function to connect with SSL-FTP to Server not exists!"
+msgstr "La función de PHP para conectarse con el servidor por SSL-FTP no existe."
+
+#: app/backwpup_dojob.php:945
+msgid "Connected to FTP Server:"
+msgstr "Conectado al servidor FTP:"
+
+#: app/backwpup_dojob.php:947
+msgid "Can not connect to FTP Server:"
+msgstr "No se puede conectar por FTP al servidor:"
+
+#: app/backwpup_dojob.php:954
+#: app/backwpup_dojob.php:961
+#: app/backwpup_dojob.php:973
+#: app/backwpup_dojob.php:986
+msgid "FTP Client command:"
+msgstr "Comando del cliente FTP:"
+
+#: app/backwpup_dojob.php:956
+#: app/backwpup_dojob.php:959
+#: app/backwpup_dojob.php:963
+#: app/backwpup_dojob.php:976
+#: app/backwpup_dojob.php:978
+#: app/backwpup_dojob.php:981
+#: app/backwpup_dojob.php:983
+#: app/backwpup_dojob.php:989
+#: app/backwpup_dojob.php:991
+msgid "FTP Server reply:"
+msgstr "Respuesta del servidor FTP:"
+
+#: app/backwpup_dojob.php:976
+msgid "Entering Passive Mode"
+msgstr "Entrando en modo pasivo"
+
+#: app/backwpup_dojob.php:978
+msgid "Can not Entering Passive Mode"
+msgstr "No se puede entrar en modo pasivo"
+
+#: app/backwpup_dojob.php:981
+msgid "Entering Normal Mode"
+msgstr "Entrando en modo normal"
+
+#: app/backwpup_dojob.php:983
+msgid "Can not Entering Normal Mode"
+msgstr "No se puede entrar en modo normal"
+
+#: app/backwpup_dojob.php:991
+msgid "Error getting SYSTYPE"
+msgstr "Error al obtener SYSTYPE"
+
+#: app/backwpup_dojob.php:999
+msgid "FTP Folder on Server not exists!"
+msgstr "El directorio FTP en el servidor no existe."
+
+#: app/backwpup_dojob.php:1001
+msgid "FTP Folder created!"
+msgstr "Directorio FTP creado."
+
+#: app/backwpup_dojob.php:1004
+msgid "FTP Folder on Server can not created!"
+msgstr "No se ha podido crear el directorio en el servidor FTP."
+
+#: app/backwpup_dojob.php:1010
+msgid "Backup File transferred to FTP Server:"
+msgstr "Fichero de copia de seguridad transferido al servidor FTP:"
+
+#: app/backwpup_dojob.php:1013
+msgid "Can not transfer backup to FTP server."
+msgstr "No se ha podido transferir el fichero de copia de seguridad al servidor FTP."
+
+#: app/backwpup_dojob.php:1029
+msgid "Can not delete file on FTP Server:"
+msgstr "No se ha podido borrar el fichero en el servidor FTP:"
+
+#: app/backwpup_dojob.php:1032
+msgid "files deleted on FTP Server:"
+msgstr "ficheros borrados en el servidor FTP:"
+
+#: app/backwpup_dojob.php:1044
+msgid "Prepare Sending backup file with mail..."
+msgstr "Preparando en envío de fichero de copia de seguridad por email..."
+
+#: app/backwpup_dojob.php:1064
+msgid "Send mail with SMTP"
+msgstr "Enviar email con SMTP"
+
+#: app/backwpup_dojob.php:1068
+msgid "Send mail with Sendmail"
+msgstr "Enviar email con Sendmail"
+
+#: app/backwpup_dojob.php:1071
+msgid "Send mail with PHP mail"
+msgstr "Enviar email con PHP mail"
+
+#: app/backwpup_dojob.php:1075
+msgid "Creating mail"
+msgstr "Creando email"
+
+#: app/backwpup_dojob.php:1079
+msgid "BackWPup File from"
+msgstr "Fichero BackWPup de"
+
+#: app/backwpup_dojob.php:1087
+msgid "Backup Archive too big for sending by mail"
+msgstr "Fichero de copia de seguridad demasiado grande para enviar por email"
+
+#: app/backwpup_dojob.php:1092
+msgid "Adding Attachment to mail"
+msgstr "Añadiendo un fichero adjunto al email"
+
+#: app/backwpup_dojob.php:1096
+msgid "Send mail...."
+msgstr "Enviar email..."
+
+#: app/backwpup_dojob.php:1098
+msgid "Can not send mail:"
+msgstr "No se puede enviar el email:"
+
+#: app/backwpup_dojob.php:1100
+msgid "Mail send!!!"
+msgstr "Email enviado."
+
+#: app/backwpup_dojob.php:1118
+msgid "Connected to S3 Bucket:"
+msgstr "Conectado al S3 Bucket:"
+
+#: app/backwpup_dojob.php:1127
+msgid "Backup File transferred to S3://"
+msgstr "Fichero de copia de seguridad transferido a S3://"
+
+#: app/backwpup_dojob.php:1130
+msgid "Can not transfer backup to S3."
+msgstr "No se puede transferir la copia de seguridad a S3."
+
+#: app/backwpup_dojob.php:1149
+msgid "Can not delete file on S3://"
+msgstr "No se puede borrar el fichero en S3://"
+
+#: app/backwpup_dojob.php:1152
+msgid "files deleted on S3 Bucket!"
+msgstr "ficheros borrados en S3 Bucket."
+
+#: app/backwpup_dojob.php:1159
+msgid "S3 Bucket not exists:"
+msgstr "S3 Bucket no existe."
+
+#: app/backwpup_dojob.php:1162
+msgid "Amazon S3 API:"
+msgstr "API de Amazon S3:"
+
+#: app/backwpup_dojob.php:1173
+msgid "Can not load curl extension is needed for Rackspase Cloud!"
+msgstr "No se puede cargar la extensión curl, necesaria para Rackspace Cloud."
+
+#: app/backwpup_dojob.php:1185
+msgid "Connected to Rackspase ..."
+msgstr "Conectado a Rackspace..."
+
+#: app/backwpup_dojob.php:1201
+#: app/backwpup_dojob.php:1251
+msgid "Rackspase Cloud API:"
+msgstr "API de Rackspace Cloud:"
+
+#: app/backwpup_dojob.php:1207
+msgid "Rackspase Cloud Container not exists:"
+msgstr "Rackspace Cloud Container no existe:"
+
+#: app/backwpup_dojob.php:1219
+msgid "Backup File transferred to RSC://"
+msgstr "Fichero de copia de seguridad transferido a RSC://"
+
+#: app/backwpup_dojob.php:1222
+msgid "Can not transfer backup to RSC."
+msgstr "No se puede transferir la copia de seguridad a RSC."
+
+#: app/backwpup_dojob.php:1244
+msgid "Can not delete file on RSC://"
+msgstr "No se puede borrar el fichero en RSC://"
+
+#: app/backwpup_dojob.php:1247
+msgid "files deleted on Racspase Cloud Container!"
+msgstr "ficheros borrados en Rackspace Cloud Container."
+
+#: app/backwpup_dojob.php:1261
+msgid "Can not load curl extension is needed for Microsoft Azure!"
+msgstr "No se puede cargar la extensión curl, necesaria para Microsoft Azure."
+
+#: app/backwpup_dojob.php:1274
+msgid "Microsoft Azure Container not exists:"
+msgstr "Microsoft Azure Container no existe:"
+
+#: app/backwpup_dojob.php:1277
+msgid "Connected to Microsoft Azure Container:"
+msgstr "Conectado a Microsoft Azure Container:"
+
+#: app/backwpup_dojob.php:1287
+msgid "Backup File transferred to azure://"
+msgstr "Fichero de copia de seguridad transferido a azure://"
+
+#: app/backwpup_dojob.php:1290
+msgid "Can not transfer backup to Microsoft Azure."
+msgstr "No se puede transferir la copia de seguridad a Microsoft Azure."
+
+#: app/backwpup_dojob.php:1311
+msgid "files deleted on Microsoft Azure Container!"
+msgstr "ficheros borrados en Microsoft Azure Container."
+
+#: app/backwpup_dojob.php:1316
+msgid "Microsoft Azure API:"
+msgstr "API de Microsoft Azure:"
+
+#: app/backwpup_dojob.php:1342
+msgid "old backup files deleted!!!"
+msgstr "los ficheros de copia de seguridad antiguos han sido borrados."
+
+#: app/backwpup_dojob.php:1352
+msgid "Can not load curl extension is needed for Dropbox!"
+msgstr "No se puede cargar la extensión curl, necesaria para DropBox."
+
+#: app/backwpup_dojob.php:1366
+msgid "Authed to DropBox API from "
+msgstr "Autentificado con el API de DropBox desde"
+
+#: app/backwpup_dojob.php:1368
+msgid "Can not Auth with DropBox API:"
+msgstr "No se puede autentificar con el API de DropBox:"
+
+#: app/backwpup_dojob.php:1376
+msgid "Backup File transferred to DropBox."
+msgstr "Fichero de copia de seguridad transferido a DropBox."
+
+#: app/backwpup_dojob.php:1378
+msgid "Can not transfere Backup file to DropBox:"
+msgstr "No se puede transferir la copia de seguridad a DropBox:"
+
+#: app/backwpup_dojob.php:1399
+msgid "files deleted on DropBox Folder!"
+msgstr "ficheros borrados en el directorio de DropBox."
+
+#: app/backwpup_dojob.php:1403
+msgid "DropBox API:"
+msgstr "API de DropBox:"
+
+#: app/backwpup_dojob.php:1505
+msgid "Jobname:"
+msgstr "Nombre de la tarea:"
+
+#: app/backwpup_dojob.php:1506
+msgid "Jobtype:"
+msgstr "Tipo de la tarea:"
+
+#: app/backwpup_dojob.php:1508
+msgid "Errors:"
+msgstr "Errores:"
+
+#: app/backwpup_dojob.php:1510
+msgid "Warnings:"
+msgstr "Avisos:"
+
+#: app/backwpup_dojob.php:1515
+msgid "BackWPup Log from"
+msgstr "Registro de BackWPup de"
+
+#: app/list-tables.php:22
+#: app/list-tables.php:198
+#: app/list-tables.php:375
+msgid "No rights"
+msgstr "No tienes permisos"
+
+#: app/list-tables.php:41
+msgid "No Jobs."
+msgstr "No hay tareas."
+
+#: app/list-tables.php:46
+#: app/list-tables.php:107
+msgid "Export"
+msgstr "Exportar"
+
+#: app/list-tables.php:47
+#: app/list-tables.php:108
+#: app/list-tables.php:254
+#: app/list-tables.php:317
+#: app/list-tables.php:417
+#: app/list-tables.php:483
+#: app/options-edit-job.php:45
+msgid "Delete"
+msgstr "Borrar"
+
+#: app/list-tables.php:55
+msgid "ID"
+msgstr "ID"
+
+#: app/list-tables.php:56
+msgid "Job Name"
+msgstr "Nombre de la tarea"
+
+#: app/list-tables.php:57
+#: app/list-tables.php:263
+msgid "Type"
+msgstr "Tipo"
+
+#: app/list-tables.php:58
+msgid "Information"
+msgstr "Información"
+
+#: app/list-tables.php:59
+msgid "Next Run"
+msgstr "Próxima ejecución"
+
+#: app/list-tables.php:60
+msgid "Last Run"
+msgstr "Última ejecución"
+
+#: app/list-tables.php:102
+msgid "Edit:"
+msgstr "Editar:"
+
+#: app/list-tables.php:105
+msgid "Edit"
+msgstr "Editar"
+
+#: app/list-tables.php:106
+msgid "Copy"
+msgstr "Copiar"
+
+#: app/list-tables.php:108
+#: app/options-edit-job.php:45
+msgid ""
+"You are about to delete this Job. \n"
+"  'Cancel' to stop, 'OK' to delete."
+msgstr ""
+"Estás a punto de borrar esta tarea.\n"
+"  'Cancelar' para parar, 'OK' para borrar."
+
+#: app/list-tables.php:109
+msgid "Run Now"
+msgstr "Ejecutar ahora"
+
+#: app/list-tables.php:111
+msgid "Clear"
+msgstr "Limpiar"
+
+#: app/list-tables.php:133
+msgid "Files Size:"
+msgstr "Tamaño de los ficheros:"
+
+#: app/list-tables.php:135
+msgid "Files count:"
+msgstr "Número de ficheros:"
+
+#: app/list-tables.php:140
+msgid "DB Size: "
+msgstr "Tamaño de la base de datos: "
+
+#: app/list-tables.php:142
+msgid "DB Tables:"
+msgstr "Tablas de la base de datos:"
+
+#: app/list-tables.php:143
+msgid "DB Rows:"
+msgstr "Registros de la base de datos:"
+
+#: app/list-tables.php:152
+#: app/php-functions.php:419
+msgid "Running since:"
+msgstr "Funcionando desde:"
+
+#: app/list-tables.php:152
+#: app/list-tables.php:168
+#: app/list-tables.php:353
+#: app/php-functions.php:419
+msgid "sec."
+msgstr "seg."
+
+#: app/list-tables.php:156
+msgid "Inactive"
+msgstr "Inactivo"
+
+#: app/list-tables.php:159
+msgid "<a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">Cron</a>:"
+msgstr "<a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">Cron</a>:"
+
+#: app/list-tables.php:168
+msgid "Runtime:"
+msgstr "Tiempo de ejecución:"
+
+#: app/list-tables.php:170
+msgid "None"
+msgstr "Nunca"
+
+#: app/list-tables.php:173
+msgid "Download last Backup"
+msgstr "Descargar la última copia de seguridad"
+
+#: app/list-tables.php:173
+#: app/list-tables.php:318
+#: app/list-tables.php:484
+msgid "Download"
+msgstr "Descargar"
+
+#: app/list-tables.php:175
+msgid "View last Log"
+msgstr "Ver el último registro"
+
+#: app/list-tables.php:175
+msgid "Log"
+msgstr "Registro"
+
+#: app/list-tables.php:249
+msgid "No Logs."
+msgstr "No hay registros."
+
+#: app/list-tables.php:262
+msgid "Job"
+msgstr "Tarea"
+
+#: app/list-tables.php:264
+msgid "Backup/Log Date/Time"
+msgstr "Fecha y hora del registro/Nombre de la copia de seguridad"
+
+#: app/list-tables.php:265
+msgid "Status"
+msgstr "Estado"
+
+#: app/list-tables.php:266
+#: app/list-tables.php:426
+msgid "Size"
+msgstr "Tamaño"
+
+#: app/list-tables.php:267
+msgid "Runtime"
+msgstr "Tiempo de ejecución"
+
+#: app/list-tables.php:314
+msgid "View log"
+msgstr "Ver registro"
+
+#: app/list-tables.php:316
+msgid "View"
+msgstr "Ver"
+
+#: app/list-tables.php:334
+#: app/php-functions.php:398
+msgid "ERROR(S)"
+msgstr "ERROR(ES)"
+
+#: app/list-tables.php:336
+#: app/php-functions.php:400
+msgid "WARNING(S)"
+msgstr "AVISO(S)"
+
+#: app/list-tables.php:338
+#: app/php-functions.php:402
+msgid "OK"
+msgstr "OK"
+
+#: app/list-tables.php:347
+msgid "only Log"
+msgstr "sólo registro"
+
+#: app/list-tables.php:411
+msgid "No Backups."
+msgstr "No hay copias de seguridad."
+
+#: app/list-tables.php:425
+msgid "Backupfile"
+msgstr "Fichero de copia de seguridad"
+
+#: app/list-tables.php:483
+msgid ""
+"You are about to delete this Backup Archive. \n"
+"  'Cancel' to stop, 'OK' to delete."
+msgstr ""
+"Estás a punto de borrar este fichero de copia de seguridad. \n"
+"  'Cancelar' para parar, 'OK' para borrar."
+
+#: app/list-tables.php:501
+msgid "?"
+msgstr "?"
+
+#: app/options-edit-job.php:12
+msgid "BackWPup Job Settings"
+msgstr "Configuración de tareas de BackWPup"
+
+#: app/options-edit-job.php:33
+msgid "Job Type"
+msgstr "Tipo de tarea"
+
+#: app/options-edit-job.php:48
+#: app/options-settings.php:22
+#: app/options-settings.php:84
+#: app/compatibility/class-wp-list-table.php:960
+msgid "Save Changes"
+msgstr "Guardar cambios"
+
+#: app/options-edit-job.php:55
+msgid "Job Schedule"
+msgstr "Programación de tareas"
+
+#: app/options-edit-job.php:57
+msgid "Activate scheduling"
+msgstr "Activar programación"
+
+#: app/options-edit-job.php:60
+msgid "Minutes: "
+msgstr "Minutos:"
+
+#: app/options-edit-job.php:68
+#: app/options-edit-job.php:85
+#: app/options-edit-job.php:102
+#: app/options-edit-job.php:120
+#: app/options-edit-job.php:144
+msgid "Any (*)"
+msgstr "Todos (*)"
+
+#: app/options-edit-job.php:77
+msgid "Hours:"
+msgstr "Horas:"
+
+#: app/options-edit-job.php:94
+msgid "Days:"
+msgstr "Días:"
+
+#: app/options-edit-job.php:112
+msgid "Months:"
+msgstr "Meses:"
+
+#: app/options-edit-job.php:121
+msgid "January"
+msgstr "Enero"
+
+#: app/options-edit-job.php:122
+msgid "February"
+msgstr "Febrero"
+
+#: app/options-edit-job.php:123
+msgid "March"
+msgstr "Marzo"
+
+#: app/options-edit-job.php:124
+msgid "April"
+msgstr "Abril"
+
+#: app/options-edit-job.php:125
+msgid "May"
+msgstr "Mayo"
+
+#: app/options-edit-job.php:126
+msgid "June"
+msgstr "Junio"
+
+#: app/options-edit-job.php:127
+msgid "July"
+msgstr "Julio"
+
+#: app/options-edit-job.php:128
+msgid "Augest"
+msgstr "Agosto"
+
+#: app/options-edit-job.php:129
+msgid "September"
+msgstr "Septiembre"
+
+#: app/options-edit-job.php:130
+msgid "October"
+msgstr "Octubre"
+
+#: app/options-edit-job.php:131
+msgid "November"
+msgstr "Noviembre"
+
+#: app/options-edit-job.php:132
+msgid "December"
+msgstr "Diciembre"
+
+#: app/options-edit-job.php:136
+msgid "Weekday:"
+msgstr "Día de la semana:"
+
+#: app/options-edit-job.php:145
+msgid "Sunday"
+msgstr "Domingo"
+
+#: app/options-edit-job.php:146
+msgid "Monday"
+msgstr "Lunes"
+
+#: app/options-edit-job.php:147
+msgid "Tuesday"
+msgstr "Martes"
+
+#: app/options-edit-job.php:148
+msgid "Wednesday"
+msgstr "Miércoles"
+
+#: app/options-edit-job.php:149
+msgid "Thursday"
+msgstr "Jueves"
+
+#: app/options-edit-job.php:150
+msgid "Friday"
+msgstr "Viernes"
+
+#: app/options-edit-job.php:151
+msgid "Saturday"
+msgstr "Sábado"
+
+#: app/options-edit-job.php:156
+msgid "Working as <a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">Cron</a> job schedule:"
+msgstr "Está funcionando como una tarea programada en el <a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">Cron</a>:"
+
+#: app/options-edit-job.php:157
+msgid "Next runtime:"
+msgstr "Próxima ejecución:"
+
+#: app/options-edit-job.php:163
+msgid "Backup File"
+msgstr "Fichero de copia de seguridad"
+
+#: app/options-edit-job.php:165
+msgid "File Prefix:"
+msgstr "Prefijo del fichero:"
+
+#: app/options-edit-job.php:167
+msgid "File Formart:"
+msgstr "Formato del fichero:"
+
+#: app/options-edit-job.php:170
+#: app/options-edit-job.php:172
+msgid "Zip"
+msgstr "Zip"
+
+#: app/options-edit-job.php:173
+msgid "Tar"
+msgstr "Tar"
+
+#: app/options-edit-job.php:175
+#: app/options-edit-job.php:177
+msgid "Tar GZip"
+msgstr "Tar GZip"
+
+#: app/options-edit-job.php:179
+#: app/options-edit-job.php:181
+msgid "Tar BZip2"
+msgstr "Tar BZip2"
+
+#: app/options-edit-job.php:182
+#: app/options-edit-job.php:318
+#: app/options-edit-job.php:322
+msgid "Example:"
+msgstr "Ejemplo:"
+
+#: app/options-edit-job.php:189
+msgid "Send log"
+msgstr "Enviar registro"
+
+#: app/options-edit-job.php:191
+#: app/options-edit-job.php:446
+msgid "E-Mail-Adress:"
+msgstr "Dirección de email:"
+
+#: app/options-edit-job.php:193
+msgid "Send only E-Mail on errors."
+msgstr "Solo enviar emails cuando se produzcan errores"
+
+#: app/options-edit-job.php:205
+msgid "Enter Job name here"
+msgstr "Escribe aquí el nombre de la tarea"
+
+#: app/options-edit-job.php:211
+msgid "Database Jobs"
+msgstr "Tareas de la base de datos"
+
+#: app/options-edit-job.php:214
+msgid "Database Tabels to Exclude:"
+msgstr "Tablas de la base de datos que se excluirán:"
+
+#: app/options-edit-job.php:225
+msgid "Use short INSERTs instat of full (with keys)"
+msgstr "Use short INSERTs instat of full (with keys)"
+
+#: app/options-edit-job.php:226
+msgid "Set Blog Maintenance Mode on Database Operations"
+msgstr "Poner el blog en modo de mantenimiento cuando se lleven a cabo operaciones en la base de datos"
+
+#: app/options-edit-job.php:231
+#: app/php-functions.php:316
+msgid "File Backup"
+msgstr "Hacer una copia de seguridad de los ficheros de la aplicación"
+
+#: app/options-edit-job.php:233
+msgid "Blog Folders to Backup:"
+msgstr "Directorios incluidos en la copia de seguridad:"
+
+#: app/options-edit-job.php:236
+msgid "root"
+msgstr "Directorio raíz"
+
+#: app/options-edit-job.php:239
+#: app/options-edit-job.php:255
+#: app/options-edit-job.php:271
+#: app/options-edit-job.php:287
+#: app/options-edit-job.php:303
+msgid "Exclude:"
+msgstr "Excluir:"
+
+#: app/options-edit-job.php:252
+msgid "Content"
+msgstr "Directorio wp-content"
+
+#: app/options-edit-job.php:268
+msgid "Plugins"
+msgstr "Directorio de plugins"
+
+#: app/options-edit-job.php:284
+msgid "Themes"
+msgstr "Directorio de temas"
+
+#: app/options-edit-job.php:300
+msgid "Blog Uploads"
+msgstr "Directorio de subida de archivos"
+
+#: app/options-edit-job.php:317
+msgid "Include Folders to Backup:"
+msgstr "Incluir directorios en la copia de seguridad:"
+
+#: app/options-edit-job.php:321
+msgid "Exclude Files/Folders from Backup:"
+msgstr "Excluir ficheros o directorios de la copia de seguridad"
+
+#: app/options-edit-job.php:328
+msgid "Backup to Directory"
+msgstr "Guardar la copia de seguridad en el directorio"
+
+#: app/options-edit-job.php:330
+msgid "Full Path to Folder for Backup Files:"
+msgstr "Ruta completa al directorio donde se guardarán los ficheros de la copia de seguridad:"
+
+#: app/options-edit-job.php:332
+msgid "Max. Backup Files in Folder:"
+msgstr "Número máximo de ficheros de copia de seguridad que se guardarán en el directorio:"
+
+#: app/options-edit-job.php:332
+#: app/options-edit-job.php:349
+#: app/options-edit-job.php:373
+#: app/options-edit-job.php:399
+#: app/options-edit-job.php:422
+#: app/options-edit-job.php:438
+#: app/options-settings.php:62
+msgid "(Oldest files will deleted first.)"
+msgstr "(los más antiguos se borrarán en primer lugar)"
+
+#: app/options-edit-job.php:338
+msgid "Backup to FTP Server"
+msgstr "Copia de seguridad por FTP"
+
+#: app/options-edit-job.php:340
+msgid "Hostname:"
+msgstr "Nombre del servidor:"
+
+#: app/options-edit-job.php:342
+#: app/options-edit-job.php:412
+msgid "Username:"
+msgstr "Nombre de usuario:"
+
+#: app/options-edit-job.php:344
+#: app/options-edit-job.php:434
+msgid "Password:"
+msgstr "Contraseña:"
+
+#: app/options-edit-job.php:346
+msgid "Directory on Server:"
+msgstr "Directorio en el servidor:"
+
+#: app/options-edit-job.php:349
+msgid "Max. Backup Files in FTP Folder:"
+msgstr "Máximo número de ficheros de copia de seguridad en el directorio FTP:"
+
+#: app/options-edit-job.php:350
+msgid "Use SSL-FTP Connection."
+msgstr "Utilizar conexión SSL-FTP."
+
+#: app/options-edit-job.php:351
+msgid "Use FTP Passiv mode."
+msgstr "Utilizar FTP pasivo."
+
+#: app/options-edit-job.php:358
+msgid "Backup to Amazon S3"
+msgstr "Copia de seguridad en Amazon S3"
+
+#: app/options-edit-job.php:358
+#: app/options-edit-job.php:382
+#: app/options-edit-job.php:407
+#: app/options-edit-job.php:430
+msgid "Create Account"
+msgstr "Crear cuenta"
+
+#: app/options-edit-job.php:361
+#: app/options-edit-job.php:385
+#: app/options-edit-job.php:410
+msgid "curl Support required"
+msgstr "se requiere soporte para curl"
+
+#: app/options-edit-job.php:363
+msgid "Access Key ID:"
+msgstr "ID de clave de acceso:"
+
+#: app/options-edit-job.php:363
+#: app/options-edit-job.php:391
+#: app/options-edit-job.php:414
+msgid "Find it"
+msgstr "Encontrarlo"
+
+#: app/options-edit-job.php:365
+msgid "Secret Access Key:"
+msgstr "Clave de acceso secreta:"
+
+#: app/options-edit-job.php:367
+msgid "Bucket:"
+msgstr "Bucket:"
+
+#: app/options-edit-job.php:370
+msgid "Create Bucket:"
+msgstr "Crear bucket:"
+
+#: app/options-edit-job.php:370
+msgid "Bucket Region"
+msgstr "Región del bucket:"
+
+#: app/options-edit-job.php:370
+msgid "US-East (Northern Virginia)"
+msgstr "Estados Unidos-Este (Northern Virginia)"
+
+#: app/options-edit-job.php:370
+msgid "US-West (Northern California)"
+msgstr "Estados Unidos-Oeste (Northern California)"
+
+#: app/options-edit-job.php:370
+msgid "EU (Ireland)"
+msgstr "Unión Europea (Irlanda)"
+
+#: app/options-edit-job.php:370
+msgid "Asia Pacific (Singapore)"
+msgstr "Asia Pacífico (Singapur)"
+
+#: app/options-edit-job.php:370
+msgid "Asia Pacific (Japan)"
+msgstr "Asia Pacífico (Japón)"
+
+#: app/options-edit-job.php:371
+msgid "Directory in Bucket:"
+msgstr "Directorio en el bucket:"
+
+#: app/options-edit-job.php:373
+msgid "Max. Backup Files in Bucket Folder:"
+msgstr "Máximo número de ficheros de copia de seguridad en el directorio del bucket:"
+
+#: app/options-edit-job.php:374
+msgid "Save Backups with reduced redundancy!"
+msgstr "Guardar copias de seguridad con redundancia reducida."
+
+#: app/options-edit-job.php:382
+msgid "Backup to Micosoft Azure (Blob)"
+msgstr "Copia de seguridad en Microsoft Azure (Blob)"
+
+#: app/options-edit-job.php:387
+msgid "Host:"
+msgstr "Servidor:"
+
+#: app/options-edit-job.php:388
+msgid "Normely: blob.core.windows.net"
+msgstr "Normalmente: blob.core.windows.net"
+
+#: app/options-edit-job.php:389
+msgid "Account Name:"
+msgstr "Nombre de cuenta:"
+
+#: app/options-edit-job.php:391
+msgid "Access Key:"
+msgstr "Clave de acceso:"
+
+#: app/options-edit-job.php:393
+#: app/options-edit-job.php:416
+msgid "Container:"
+msgstr "Contenedor:"
+
+#: app/options-edit-job.php:396
+#: app/options-edit-job.php:419
+msgid "Create Container:"
+msgstr "Crear contenedor:"
+
+#: app/options-edit-job.php:397
+#: app/options-edit-job.php:420
+msgid "Directory in Container:"
+msgstr "Directorio en el contenedor:"
+
+#: app/options-edit-job.php:399
+#: app/options-edit-job.php:422
+msgid "Max. Backup Files in Container Folder:"
+msgstr "Máximo número de ficheros de copia de seguridad en el directorio del contenedor:"
+
+#: app/options-edit-job.php:407
+msgid "Backup to Rackspace Cloud"
+msgstr "Backup en Rackspace Cloud"
+
+#: app/options-edit-job.php:414
+msgid "API Key:"
+msgstr "Clave API:"
+
+#: app/options-edit-job.php:430
+msgid "Backup to Dropbox"
+msgstr "Copia de seguridad con Dropbox"
+
+#: app/options-edit-job.php:432
+msgid "Email:"
+msgstr "Email:"
+
+#: app/options-edit-job.php:436
+msgid "Directory:"
+msgstr "Directorio:"
+
+#: app/options-edit-job.php:438
+msgid "Max. Backup Files in Dopbox Folder:"
+msgstr "Número máximo de ficheros de copia de seguridad en el directorio de DropBox:"
+
+#: app/options-edit-job.php:444
+msgid "Backup to E-Mail"
+msgstr "Enviar la copia de seguridad por email"
+
+#: app/options-edit-job.php:449
+msgid "Max. File Size for sending Backups with mail:"
+msgstr "Tamaño máximo del fichero para enviar copias de seguridad por email:"
+
+#: app/options-runnow-iframe.php:13
+msgid "Do Job"
+msgstr "Ejecutar la tarea"
+
+#: app/options-save.php:28
+msgid "Copy of"
+msgstr "Copia de"
+
+#: app/options-save.php:63
+msgid "Backup Cleand by User!!!"
+msgstr "Copia de seguridad borrada por el usuario."
+
+#: app/options-save.php:133
+#: app/options-save.php:261
+#: app/options-save.php:377
+msgid "File does not exist."
+msgstr "El fichero no exite"
+
+#: app/options-save.php:413
+msgid "Settings saved"
+msgstr "Configuración guardada"
+
+#: app/options-save.php:577
+msgid "Job '%1' changes saved."
+msgstr "Los cambios en la tarea '%1' se han guardado."
+
+#: app/options-save.php:577
+msgid "Jobs overview."
+msgstr "Vista general de las tareas programadas."
+
+#: app/options-settings.php:10
+msgid "BackWPup Settings"
+msgstr "Configuración de BackWPup"
+
+#: app/options-settings.php:29
+msgid "Send Mail"
+msgstr "Enviar email"
+
+#: app/options-settings.php:31
+msgid "Sender Email:"
+msgstr "Dirección del remitente del email:"
+
+#: app/options-settings.php:32
+msgid "Sender Name:"
+msgstr "Nombre del remitente:"
+
+#: app/options-settings.php:33
+msgid "Send mail method:"
+msgstr "Método de envío del email:"
+
+#: app/options-settings.php:36
+msgid "PHP: mail()"
+msgstr "PHP: mail()"
+
+#: app/options-settings.php:37
+msgid "Sendmail"
+msgstr "Sendmail"
+
+#: app/options-settings.php:38
+msgid "SMTP"
+msgstr "SMTP"
+
+#: app/options-settings.php:41
+msgid "Sendmail Path:"
+msgstr "Ruta del sendmail"
+
+#: app/options-settings.php:43
+msgid "SMTP Hostname:"
+msgstr "Servidor SMTP:"
+
+#: app/options-settings.php:44
+msgid "SMTP Secure Connection:"
+msgstr "Conexión segura SMTP:"
+
+#: app/options-settings.php:46
+#: app/php-functions.php:410
+#: app/php-functions.php:427
+msgid "none"
+msgstr "ninguno"
+
+#: app/options-settings.php:50
+msgid "SMTP Username:"
+msgstr "Nombre de usuario SMTP:"
+
+#: app/options-settings.php:51
+msgid "SMTP Password:"
+msgstr "Contraseña SMTP:"
+
+#: app/options-settings.php:57
+#: app/php-functions.php:191
+msgid "Logs"
+msgstr "Registros"
+
+#: app/options-settings.php:59
+msgid "Log file Folder:"
+msgstr "Directorio para los ficheros de registro:"
+
+#: app/options-settings.php:61
+msgid "Max. Log Files in Folder:"
+msgstr "Máximo número de ficheros en el directorio de registro:"
+
+#: app/options-settings.php:63
+msgid "Gzip Log files!"
+msgstr "Comprimir los ficheros de registro con Gzip."
+
+#: app/options-settings.php:64
+msgid "Log deteiled File list."
+msgstr "Lista detallada de los ficheros de registro."
+
+#: app/options-settings.php:69
+msgid "Disable WP-Cron"
+msgstr "Desactivar el cron de WordPress"
+
+#: app/options-settings.php:71
+msgid "Use Cron job of Hoster and disable WP_Cron"
+msgstr "Utilizar el programador de tareas del servidor y desactivar el WP_Cron"
+
+#: app/options-settings.php:72
+msgid "You must set up a cron job that calls:"
+msgstr "Debes establecer una tarea programada que llame a:"
+
+#: app/options-settings.php:74
+msgid "or URL:"
+msgstr "o bien una URL:"
+
+#: app/options-settings.php:79
+msgid "Temp Folder"
+msgstr "Directorio temporal"
+
+#: app/options-tools.php:8
+msgid "BackWPup Tools"
+msgstr "Herramientas de BackWPup"
+
+#: app/options-tools.php:29
+msgid "Database restore"
+msgstr "Restauración de la base de datos"
+
+#: app/options-tools.php:32
+#: app/options-tools.php:50
+msgid "Restore"
+msgstr "Restaurar"
+
+#: app/options-tools.php:47
+msgid "SQL File to restore:"
+msgstr "Fichero SQL para restaurar:"
+
+#: app/options-tools.php:53
+msgid "Copy SQL file to Blog root folder to use restore."
+msgstr "Para llevar a cabo la restauración, copia el fichero SQL al directorio raíz del blog."
+
+#: app/options-tools.php:61
+msgid "Import Jobs settings"
+msgstr "Importar tareas programadas"
+
+#: app/options-tools.php:63
+msgid "Select File to import:"
+msgstr "Selecciona el fichero para importar:"
+
+#: app/options-tools.php:64
+#: app/options-tools.php:66
+msgid "Upload"
+msgstr "Subir"
+
+#: app/options-tools.php:67
+msgid "Select Jobs to Import:"
+msgstr "Selecciona las tareas que se importarán:"
+
+#: app/options-tools.php:71
+msgid "Import Type"
+msgstr "Importar tipo"
+
+#: app/options-tools.php:71
+msgid "No Import"
+msgstr "No importar"
+
+#: app/options-tools.php:73
+msgid "Overwrite"
+msgstr "Sobrescribir"
+
+#: app/options-tools.php:73
+msgid "Append"
+msgstr "Añadir"
+
+#: app/options-tools.php:75
+#: app/options-tools.php:79
+#: app/options-tools.php:81
+msgid "Import"
+msgstr "Importar"
+
+#: app/options-tools.php:117
+msgid "Jobs imported!"
+msgstr "Las tareas han sido importadas"
+
+#: app/php-functions.php:8
+#: app/php-functions.php:82
+#: app/php-functions.php:264
+msgid "BackWPup"
+msgstr "BackWPup"
+
+#: app/php-functions.php:26
+msgid "BackWPup Logs"
+msgstr "Registros de BackWPup"
+
+#: app/php-functions.php:45
+msgid "BackWPup Manage Backups"
+msgstr "Gestionar copias de seguridad de BackWPup"
+
+#: app/php-functions.php:61
+msgid "BackWPup Job Running"
+msgstr "Tarea de BackWPup en ejecución"
+
+#: app/php-functions.php:64
+msgid "Running Job"
+msgstr "Tarea en ejecución"
+
+#: app/php-functions.php:72
+msgid "BackWPup View Logs"
+msgstr "Ver registros de BackWPup"
+
+#: app/php-functions.php:75
+#: app/php-functions.php:390
+msgid "View Log"
+msgstr "Ver registro"
+
+#: app/php-functions.php:82
+msgid "Add New"
+msgstr "Añadir nuevo"
+
+#: app/php-functions.php:105
+#: app/php-functions.php:256
+msgid "Support"
+msgstr "Suporte"
+
+#: app/php-functions.php:106
+#: app/php-functions.php:255
+msgid "FAQ"
+msgstr "Preguntas más frecuentes (FAQ)"
+
+#: app/php-functions.php:107
+msgid "Plugin Homepage"
+msgstr "Página del plugin"
+
+#: app/php-functions.php:108
+msgid "Plugin Home on WordPress.org"
+msgstr "Página del plugin en WordPress.org"
+
+#: app/php-functions.php:109
+#: app/php-functions.php:257
+msgid "Donate"
+msgstr "Hacer una donación"
+
+#: app/php-functions.php:116
+msgid "Version:"
+msgstr "Versión:"
+
+#: app/php-functions.php:117
+msgid "Author:"
+msgstr "Autor"
+
+#: app/php-functions.php:190
+msgid "Jobs"
+msgstr "Tareas"
+
+#: app/php-functions.php:192
+msgid "Backups"
+msgstr "Copias de seguridad"
+
+#: app/php-functions.php:193
+msgid "Tools"
+msgstr "Herramientas"
+
+#: app/php-functions.php:194
+#: app/php-functions.php:245
+msgid "Settings"
+msgstr "Configuración"
+
+#: app/php-functions.php:245
+msgid "Go to Settings Page"
+msgstr "Ir a la página de configuración"
+
+#: app/php-functions.php:310
+msgid "WP XML Export"
+msgstr "Generar un fichero WP XML de exportación"
+
+#: app/php-functions.php:313
+msgid "Database Backup"
+msgstr "Hacer una copia de seguridad de la base de datos"
+
+#: app/php-functions.php:319
+msgid "Optimize Database Tables"
+msgstr "Optimizar las tablas de la base de datos"
+
+#: app/php-functions.php:322
+msgid "Check Database Tables"
+msgstr "Verificar las tablas de la base de datos"
+
+#: app/php-functions.php:374
+msgid "Logs:"
+msgstr "Registros:"
+
+#: app/php-functions.php:413
+msgid "Scheduled Jobs:"
+msgstr "Tareas programadas:"
+
+#: app/php-functions.php:416
+msgid "Edit Job"
+msgstr "Editar tarea"
+
+#: app/php-functions.php:706
+msgid "- WordPress 2.8 or heiger needed!"
+msgstr "- Se necesita WordPress 2.8 o superior."
+
+#: app/php-functions.php:710
+msgid "- PHP 5.2.0 or higher needed!"
+msgstr "- Se necesita PHP 5.2.0 o superior."
+
+#: app/php-functions.php:714
+msgid "- Logs Folder not exists (Try too create it on first Job run):"
+msgstr "- El directorio de registro no existe (el plugin intentará crearlo la primera vez que se ejecute la tarea programada):"
+
+#: app/php-functions.php:717
+msgid "- Logs Folder not writeable:"
+msgstr "- El servidor no puede escribir en el directorio donde se guardan los registros:"
+
+#: app/php-functions.php:720
+msgid "- Temp Folder not exists (Try too create it on first Job run):"
+msgstr "- El directorio temporal no existe (el plugin intentará crearlo la primera vez que se ejecute la tarea programada):"
+
+#: app/php-functions.php:723
+msgid "- Temp Folder not writeable:"
+msgstr "- El servidor no puede escribir en el directorio temporal:"
+
+#: app/php-functions.php:728
+msgid "- Please Check Scheduling time for Job:"
+msgstr "- Por favor, verifica la programación de la tarea:"
+
+#: app/php-functions.php:731
+msgid "- WP-Cron don't working please check it!"
+msgstr "- El WP-Cron no funciona; por favor, compruébalo."
+
+#: app/php5-functions.php:22
+msgid "New"
+msgstr "Nuevo"
+
+#: app/php5-functions.php:500
+msgid "Missing Access Key ID!"
+msgstr "Falta la ID de la clave de acceso."
+
+#: app/php5-functions.php:507
+msgid "Missing Secret Access Key!"
+msgstr "Falta la clave secreta de acceso."
+
+#: app/php5-functions.php:524
+msgid "No Buckets found!"
+msgstr "No se ha encontrado ningún bucket."
+
+#: app/php5-functions.php:556
+msgid "Missing Username!"
+msgstr "Falta el nombre de usuario."
+
+#: app/php5-functions.php:563
+msgid "Missing API Key!"
+msgstr "Falta la clave API."
+
+#: app/php5-functions.php:584
+msgid "No Containerss found!"
+msgstr "No se ha encontrado ningún contenedor."
+
+#: app/php5-functions.php:618
+msgid "Missing Hostname!"
+msgstr "Falta el nombre del servidor."
+
+#: app/php5-functions.php:625
+msgid "Missing Account Name!"
+msgstr "Falta el nombre de usuario."
+
+#: app/php5-functions.php:632
+msgid "Missing Access Key!"
+msgstr "Falta la clave de acceso."
+
+#: app/php5-functions.php:649
+msgid "No Container found!"
+msgstr "No se ha encontrado el contenedor."
+
+#: app/compatibility/class-wp-list-table.php:181
+msgid "No items found."
+msgstr "No se ha encontrado ningún elemento."
+
+#: app/compatibility/class-wp-list-table.php:284
+msgid "Bulk Actions"
+msgstr "Acciones en masa"
+
+#: app/compatibility/class-wp-list-table.php:289
+msgid "Apply"
+msgstr "Aplicar"
+
+#: app/compatibility/class-wp-list-table.php:363
+msgid "Show all dates"
+msgstr "Mostrar todas las fechas"
+
+#: app/compatibility/class-wp-list-table.php:391
+msgid "List View"
+msgstr "Vista de lista"
+
+#: app/compatibility/class-wp-list-table.php:392
+msgid "Excerpt View"
+msgstr "Vista de resumen"
+
+#: app/compatibility/class-wp-list-table.php:418
+#, php-format
+msgid "%s pending"
+msgstr "%s pendiente"
+
+#: app/compatibility/class-wp-list-table.php:474
+#: app/compatibility/class-wp-list-table.php:870
+#, php-format
+msgid "1 item"
+msgid_plural "%s items"
+msgstr[0] "1 elemento"
+msgstr[1] "%s elementos"
+
+#: app/compatibility/class-wp-list-table.php:515
+#, php-format
+msgid "%1$s of %2$s"
+msgstr "%1$s de %2$s"
+
+#: app/tools/db_restore.php:34
+#: app/tools/db_restore.php:53
+#: app/tools/db_restore.php:68
+#: app/tools/db_restore.php:79
+#: app/tools/db_restore.php:82
+#: app/tools/db_restore.php:85
+#: app/tools/db_restore.php:90
+msgid "ERROR:"
+msgstr "ERROR:"
+
+#: app/tools/db_restore.php:34
+#, php-format
+msgid "Pleace set <i>$table_prefix  = '%1$s';</i> in wp-config.php"
+msgstr "Por favor, establece la variable <i>$table_prefix  = '%1$s';</i> en wp-config.php"
+
+#: app/tools/db_restore.php:53
+#, php-format
+msgid "Pleace set <i>define('DB_iso-8859-1', '%1$s');</i> in wp-config.php"
+msgstr "Por favor, establece la variable <i>define('DB_iso-8859-1', '%1$s');</i> en wp-config.php"
+
+#: app/tools/db_restore.php:74
+#, php-format
+msgid "%1$s Database Querys done."
+msgstr "Se han realizado %1$s consultas a la base de datos."
+
+#: app/tools/db_restore.php:75
+msgid "Make changes for Blogurl and ABSPATH if needed."
+msgstr "Realiza los cambios en Blogurl y ABSPATH si son necesarios."
+
+#: app/tools/db_restore.php:92
+msgid "Restore Done. Please delete the SQL file after Restore."
+msgstr "Restauración realizada. Por favor, borra el fichero SQL después de restaurar."
+
+#~ msgid "Connect to DropBox ..."
+#~ msgstr "Conectar a DropBox..."

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- map file should be located in path (set in html) folder                                                                                             -->
+<!-- tl_long is longitute of top left corner, the default values is -180, tl_lat  is latitude  of top left corner, the default values is 90              -->
+<!-- br_long is longitute of top left corner, the default values is 180, br_lat  is latitude  of top left corner, the default values is -90              -->
+<!-- you should only set longitudes and latitudes if you want to calibrate your map and you know these values. Otherwise you can delete these attributes -->
+<!-- you can set default zoom level, zoom_x and zoom_y. To find out the numbers, you should turn developer mode on (in settings file), zoom map to required position, copy zoom info to clipboard (using right click menu) and paste it here -->
+
+<map map_file="maps/world3.swf" tl_long="-168.49" tl_lat="83.63" br_long="190.3" br_lat="-55.58">
+  <areas> 
+      <area title="borders" mc_name="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+  <movies>
+    <movie file="icons/plane.swf" oid="plane" long="-92.025865" lat="4.75754648158964" width="100" height="100" color="#CC0000" color_hover="#EE0000" center="true" draggable="true"></movie>
+    <movie file="icons/bus.swf" oid="bus" long="24.57138" lat="-22.5508398103287" width="100" height="100" color="#00CC00" color_hover="#00EE00" center="true" draggable="true"></movie>
+    <movie file="icons/car.swf" oid="car" long="57.522775" lat="29.5814393440934" width="100" height="100" color="#0000CC" color_hover="#0000EE" center="true" draggable="true"></movie>
+    <movie file="icons/yacht.swf" oid="yacht" long="-128.35689" lat="-52.8606024379033" width="100" height="100" color="#CCCC00" color_hover="#EEEE00" center="true" draggable="true"></movie>
+    <movie file="icons/train.swf" oid="train" long="105.260053" lat="51.1735465403031" width="100" height="100" color="#CC00CC" color_hover="#EE00EE" center="true" draggable="true"></movie>
+  </movies>
+  <labels>
+    <label x="30" y="30" text_size="15" color="555555" balloon="false" active="false">
+      <text><![CDATA[<b>Drag objects around the map</b>]]></text>
+    </label>            
+  </labels>
+  <snap_points>
+    <point long="-100.720707" lat="37.9210025834403" oid="usa" /> <!-- USA -->
+    <point long="48.758991" lat="60.2396208895441" oid="Russia" /> <!-- Russia -->
+    <point long="134.341927" lat="-24.4901110663298" oid="Australia" /> <!-- Australia -->
+    <point long="-111.951047" lat="59.4606037066727" oid="Canada" /> <!-- Canada -->
+    <point long="-51.926816" lat="-10.8585929650071" oid="Brasil" /> <!-- Brasil -->
+    <point long="108.008716" lat="32.2127533491027" oid="China" /> <!-- China -->
+    <point long="78.964733" lat="21.872859407281" oid="India" /> <!-- India -->
+    <point long="-3.520178" lat="40.327211147558" oid="Spain" /> <!-- Spain -->
+    <point long="1.901365" lat="46.7812536549844" oid="France" /> <!-- France -->
+    
+    <point x="50" y="50" />
+    <point x="!50" y="50" />
+    <point x="!50" y="!50" />
+  </snap_points>
+</map>

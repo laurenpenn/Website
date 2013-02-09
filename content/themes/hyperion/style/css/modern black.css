@@ -1,0 +1,47 @@
+body { background: #1a1a1a url('../../style/images/modern-black.jpg') top center no-repeat; }
+
+#headerwrap {
+	background: url('../../style/images/menu-bg-modern.png') top left repeat-x;
+}
+
+#carousel-wrapper {
+	background: url('../../style/images/carousel-bg-black.png') no-repeat top center;
+}
+
+.hp-menu li {
+	background:	none;
+}
+
+.hp-menu a, .hp-menu a:visited {
+	color: #000;
+}
+
+.thumb {
+	background: url('../../style/images/carousel-nav-blackm.png') no-repeat;
+}
+
+a.thumb {
+	background: url('../../style/images/carousel-nav-blackm.png') no-repeat;
+}
+
+#intouch {
+	background: url('../../style/images/intouch-bg-black.png') bottom right no-repeat;
+	color: #ffffff;
+}
+
+#author-info-archive {
+	color: #fff;
+}
+
+#page-entry-top { color:#ffffff; }
+
+#entry-top { color:#ffffff; }
+
+#footer-wrap {
+	color: #ffffff;
+	background: url('../../style/images/modern-black.jpg') top center no-repeat;
+}
+
+#footer h3 {
+	color: #ffffff;
+}

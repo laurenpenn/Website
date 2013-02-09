@@ -1,0 +1,12 @@
+[01-Apr-2012 17:44:54] PHP Fatal error:  Call to undefined function  language_attributes() in /home/dbc/public_html/wp-content/themes/dbc-children/header.php on line 14
+[01-Apr-2012 17:50:00] PHP Fatal error:  Call to undefined function  add_action() in /home/dbc/public_html/wp-content/themes/dbc-children/functions.php on line 3
+[01-Apr-2012 17:53:14] PHP Fatal error:  Call to undefined function  hybrid_get_setting() in /home/dbc/public_html/wp-content/themes/dbc-children/slider-home.php on line 12
+[01-Apr-2012 17:56:21] PHP Fatal error:  Call to undefined function  is_active_sidebar() in /home/dbc/public_html/wp-content/themes/dbc-children/sidebar-primary.php on line 12
+[01-Apr-2012 17:59:32] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-children/page-template-age.php on line 11
+[01-Apr-2012 18:02:43] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-children/page-template-home.php on line 13
+[21-Oct-2012 13:10:50] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-children/page-template-home.php on line 13
+[21-Oct-2012 13:10:51] PHP Fatal error:  Call to undefined function  add_action() in /home/dbc/public_html/wp-content/themes/dbc-children/functions.php on line 3
+[21-Oct-2012 13:11:46] PHP Fatal error:  Call to undefined function  language_attributes() in /home/dbc/public_html/wp-content/themes/dbc-children/header.php on line 14
+[21-Oct-2012 13:13:43] PHP Fatal error:  Call to undefined function  hybrid_get_setting() in /home/dbc/public_html/wp-content/themes/dbc-children/slider-home.php on line 8
+[21-Oct-2012 13:15:22] PHP Fatal error:  Call to undefined function  is_active_sidebar() in /home/dbc/public_html/wp-content/themes/dbc-children/sidebar-primary.php on line 12
+[21-Oct-2012 13:22:45] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-children/page-template-age.php on line 11

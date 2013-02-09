@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/malawi.swf" tl_long="32.671211" tl_lat="-9.363485" br_long="35.915884" br_lat="-17.127813" zoom="90%" zoom_x="28.69%" zoom_y="5.16%">
+  <areas>
+      <area mc_name="MW_BA" title="Balaka"></area>
+      <area mc_name="MW_BL" title="Blantyre"></area>
+      <area mc_name="MW_CK" title="Chikwawa"></area>
+      <area mc_name="MW_CR" title="Chiradzulu"></area>
+      <area mc_name="MW_CT" title="Chitipa"></area>
+      <area mc_name="MW_DE" title="Dedza"></area>
+      <area mc_name="MW_DO" title="Dowa"></area>
+      <area mc_name="MW_KR" title="Karonga"></area>
+      <area mc_name="MW_KS" title="Kasungu"></area>
+      <area mc_name="MW_LK" title="Likoma"></area>
+      <area mc_name="MW_LI" title="Lilongwe"></area>
+      <area mc_name="MW_MA" title="Machinga"></area>
+      <area mc_name="MW_MG" title="Mangochi"></area>
+      <area mc_name="MW_MC" title="Mchinji"></area>
+      <area mc_name="MW_MJ" title="Mulanje"></area>
+      <area mc_name="MW_MN" title="Mwanza"></area>
+      <area mc_name="MW_MZ" title="Mzimba"></area>
+      <area mc_name="MW_NN" title="Neno"></area>
+      <area mc_name="MW_NA" title="Nkhata Bay"></area>
+      <area mc_name="MW_NK" title="Nkhotakota"></area>
+      <area mc_name="MW_NS" title="Nsanje"></area>
+      <area mc_name="MW_NU" title="Ntcheu"></area>
+      <area mc_name="MW_NI" title="Ntchisi"></area>
+      <area mc_name="MW_PH" title="Phalombe"></area>
+      <area mc_name="MW_RU" title="Rumphi"></area>
+      <area mc_name="MW_SA" title="Salima"></area>
+      <area mc_name="MW_TH" title="Thyolo"></area>
+      <area mc_name="MW_ZO" title="Zomba"></area>
+      <area mc_name="MW_LKM" title="Lake Malawi" oid="MW_LKM" color="#0098FF" balloon="false"></area>
+      <area mc_name="MZ_LKM" title="Lake Malawi" oid="MZ_LKM" color="#0098FF" balloon="false"></area>
+      <area  title="Lake Malawi border" mc_name="borders_LKM" color="#0066FF" balloon="false"></area>
+      <area title="borders" mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+      <area title="borders" mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area mc_name="borders_international" color="#666666" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Lilongwe City" file="target" color="#CC0000" height="10" width="10" lat="-13.9826" long="33.773762" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="477" y="448" text_size="18" color="#FFFFFF" remain="false">
+      <text>Malawi</text>
+    </label>
+  </labels>
+</map>

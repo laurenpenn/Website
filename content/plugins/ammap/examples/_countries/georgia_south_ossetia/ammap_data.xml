@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/georgia_south_ossetia.swf" tl_long="40.011411" tl_lat="43.584328" br_long="46.721590" br_lat="41.064650" zoom="90%" zoom_x="6.33%" zoom_y="33.29%">
+  <areas>
+    <area mc_name="GE_AB" title="Abkhazia"/>
+    <area mc_name="GE_AJ" title="Ajaria"/>
+    <area mc_name="GE_GU" title="Guria"/>
+    <area mc_name="GE_IM" title="Imereti"/>
+    <area mc_name="GE_KA" title="Kakheti"/>
+    <area mc_name="GE_KK" title="Kvemo Kartli"/>
+    <area mc_name="GE_MM" title="Mtskheta-Mtianeti"/>
+    <area mc_name="GE_RK" title="Racha-Lochkhumi-Kvemo Svaneti"/>
+    <area mc_name="GE_SZ" title="Samegrelo-Zemo Svateni"/>
+    <area mc_name="GE_SJ" title="Samtskhe-Javakheti"/>
+    <area mc_name="GE_SD" title="Shida Kartli"/>
+    <area mc_name="GE_TB" title="Tbilisi"/>
+    <area mc_name="GE_SO" title="South Ossetia"/>
+    <area title="borders" mc_name="borders_inside" color="#ffffff" balloon="false"></area>
+    <area title="borders" mc_name="borders_outside" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Tbilisi" file="target" color="#CC0000" height="10" width="10" lat="41.721802" long="44.783131" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="614" y="244" text_size="18" color="#FFFFFF" remain="false">
+      <text>Georgia</text>
+    </label>
+  </labels>
+</map>

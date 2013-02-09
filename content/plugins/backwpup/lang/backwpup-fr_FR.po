@@ -1,0 +1,2790 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: BackWPup v2.1.12\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-27 11:37+0100\n"
+"PO-Revision-Date: 2012-11-27 11:41+0100\n"
+"Last-Translator: Luc Capronnier <lcapronnier@yahoo.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ backwpup
+# @ textdomain
+#: backwpup-functions.php:4 backwpup-functions.php:233
+#: backwpup-functions.php:458
+msgid "BackWPup"
+msgstr "BackWPup"
+
+# @ backwpup
+#: backwpup-functions.php:5 backwpup-functions.php:461
+#: pages/page_backwpupsettings.php:101
+msgid "Jobs"
+msgstr "Opérations"
+
+# @ backwpup
+#: backwpup-functions.php:7
+msgid "Add New"
+msgstr "Ajouter"
+
+# @ backwpup
+#: backwpup-functions.php:9
+msgid "Working"
+msgstr "En cours"
+
+# @ backwpup
+#: backwpup-functions.php:11 backwpup-functions.php:462
+#: pages/header_backwpupbackups.php:327 pages/header_backwpuplogs.php:61
+#: pages/page_backwpupsettings.php:79
+msgid "Logs"
+msgstr "Fichiers journaux"
+
+# @ backwpup
+#: backwpup-functions.php:13 backwpup-functions.php:463
+msgid "Backups"
+msgstr "Sauvegardes"
+
+# @ backwpup
+#: backwpup-functions.php:15
+msgid "Tools"
+msgstr "Outils"
+
+# @ backwpup
+#: backwpup-functions.php:17 backwpup-functions.php:214
+msgid "Settings"
+msgstr "Paramètres"
+
+# @ backwpup
+#: backwpup-functions.php:89
+msgid "Plugin Info"
+msgstr "Info extension"
+
+#: backwpup-functions.php:91 job/job_run.php:113
+msgid "Author:"
+msgstr "Autheur:"
+
+# @ backwpup
+#: backwpup-functions.php:91 backwpup-functions.php:109
+msgid ""
+"BackWPup comes with ABSOLUTELY NO WARRANTY. This is free software, and you "
+"are welcome to redistribute it under certain conditions."
+msgstr ""
+"BackWPup est livré sans AUCUNE GARANTIE. C'est un logiciel libre, et vous "
+"êtes invités à le redistribuer sous certaines conditions."
+
+# @ backwpup
+#: backwpup-functions.php:95
+msgid "Overview"
+msgstr "Vue générale"
+
+# @ backwpup
+#: backwpup-functions.php:99 backwpup-functions.php:110
+msgid "For more information:"
+msgstr "Pour plus d'informations:"
+
+# @ backwpup
+#: backwpup-functions.php:102 backwpup-functions.php:113
+#: backwpup-functions.php:225
+msgid "FAQ"
+msgstr "FAQ"
+
+# @ backwpup
+#: backwpup-functions.php:103 backwpup-functions.php:114
+msgid "Support Forums"
+msgstr "Forums d'aide"
+
+# @ backwpup
+#: backwpup-functions.php:104 backwpup-functions.php:115
+msgid "Google+"
+msgstr "Google+"
+
+# @ backwpup
+#: backwpup-functions.php:214
+msgid "Go to Settings Page"
+msgstr "Aller aux paramètres"
+
+# @ backwpup
+#: backwpup-functions.php:226
+msgid "Support"
+msgstr "Aide"
+
+# @ backwpup
+#: backwpup-functions.php:290
+msgid "WP XML Export"
+msgstr "Export WP XML"
+
+# @ backwpup
+#: backwpup-functions.php:293 pages/page_backwpupeditjob.php:117
+msgid "File Backup"
+msgstr "Sauvegarde des fichiers"
+
+# @ backwpup
+#: backwpup-functions.php:296
+msgid "Database Backup"
+msgstr "Sauvegarde de la base de données"
+
+# @ backwpup
+#: backwpup-functions.php:299
+msgid "Optimize Database Tables"
+msgstr "Optimisation des tables"
+
+# @ backwpup
+#: backwpup-functions.php:302
+msgid "Check Database Tables"
+msgstr "Vérification des tables"
+
+# @ backwpup
+#: backwpup-functions.php:367
+msgid "View Log:"
+msgstr "Voir journal:"
+
+# @ backwpup
+#: backwpup-functions.php:369 pages/func_backwpuplogs.php:138
+#, php-format
+msgid "%d ERROR"
+msgid_plural "%d ERRORS"
+msgstr[0] "%d ERREUR"
+msgstr[1] "%d ERREURS"
+
+# @ backwpup
+#: backwpup-functions.php:371 pages/func_backwpuplogs.php:140
+#, php-format
+msgid "%d WARNING"
+msgid_plural "%d WARNINGS"
+msgstr[0] "%d AVERTISSEMENT"
+msgstr[1] "%d AVERTISSEMENTS"
+
+# @ backwpup
+#: backwpup-functions.php:373 pages/func_backwpuplogs.php:142
+msgid "O.K."
+msgstr "O.K."
+
+# @ backwpup
+#: backwpup-functions.php:381 backwpup-functions.php:411
+#: backwpup-functions.php:439 pages/page_backwpupsettings.php:59
+msgid "none"
+msgstr "aucune"
+
+# @ backwpup
+#: backwpup-functions.php:399
+msgid "How many of the lastes logs would you like to display?"
+msgstr "Combien des derniers fichiers journaux voulez-vous afficher?"
+
+# @ backwpup
+#: backwpup-functions.php:425
+#, php-format
+msgid "working since %d sec."
+msgstr "en cours depuis %d sec."
+
+# @ backwpup
+#: backwpup-functions.php:426 pages/func_backwpup.php:110
+msgid "View!"
+msgstr "Voir!"
+
+# @ backwpup
+#: backwpup-functions.php:427 pages/func_backwpup.php:111
+msgid "Abort!"
+msgstr "Abandonner!"
+
+# @ backwpup
+#: backwpup-functions.php:432
+msgid "Edit Job"
+msgstr "Modifier l'opération"
+
+# @ backwpup
+#: backwpup-functions.php:447 pages/page_backwpuplogs.php:8
+msgid "BackWPup Logs"
+msgstr "Fichiers journaux de BackWPup"
+
+# @ backwpup
+#: backwpup-functions.php:448
+msgid "BackWPup Active Jobs"
+msgstr "Opérations actives BackWPup"
+
+# @ backwpup
+#: backwpup-functions.php:460
+msgid "See Working!"
+msgstr "Observer l'opération!"
+
+# @ backwpup
+#: backwpup-functions.php:464
+msgid "BackWPup Job"
+msgstr "Opération BackWPup"
+
+# @ backwpup
+#: backwpup-functions.php:679
+#, php-format
+msgid "- WordPress %d or higher is needed!"
+msgstr "- WordPress %d ou supérieur est nécessaire!"
+
+# @ backwpup
+#: backwpup-functions.php:683
+msgid "- PHP 5.2.4 or higher is needed!"
+msgstr "- PHP 5.2.4 ou supérieur est nécessaire!"
+
+# @ backwpup
+#: backwpup-functions.php:690
+#, php-format
+msgid "- Temp folder '%s' does not exists!"
+msgstr "- Le répertoire temporaire '%s' n'existe pas!"
+
+# @ backwpup
+#: backwpup-functions.php:693
+#, php-format
+msgid "- Temp folder '%s' is not writeable!"
+msgstr "- Le répertoire temporaire '%s' n'est pas inscriptible!"
+
+# @ backwpup
+#: backwpup-functions.php:699
+#, php-format
+msgid "- Log folder '%s' does not exists!"
+msgstr "- Le répertoire des fichiers journaux '%s' n'existe pas!"
+
+# @ backwpup
+#: backwpup-functions.php:702
+#, php-format
+msgid "- Log folder '%s' is not writeable!"
+msgstr "- Le répertoire des fichiers journaux '%s' n'est pas inscriptible!"
+
+# @ backwpup
+#: backwpup-functions.php:705
+#, php-format
+msgid "- Log folder '%s' is not in open_basedir path!"
+msgstr ""
+"- Le répertoire des fichiers journaux '%s' n'est pas dans le chemin "
+"open_basedir!"
+
+# @ backwpup
+#: backwpup-functions.php:708
+#, php-format
+msgid "- WP_CONTENT_URL '%s' must set as a full URL!"
+msgstr "- WP_CONTENT_URL '%s' doit être une adresse valide!"
+
+# @ backwpup
+#: backwpup-functions.php:711
+#, php-format
+msgid "- WP_PLUGIN_URL '%s' must set as a full URL!"
+msgstr "- WP_PLUGIN_URL '%s' doit être une adresse valide!"
+
+# @ backwpup
+#: backwpup-functions.php:715
+msgid "- WP-Cron isn't working, please check it!"
+msgstr "- WP-Cron ne fonctionne pas, veuillez vérifier!"
+
+# @ backwpup
+#: backwpup-functions.php:771
+msgid "New"
+msgstr "Nouvelle"
+
+# @ backwpup
+#: job/backup_create.php:13
+#, php-format
+msgid "%d. try to create backup zip archive..."
+msgstr "%d. Tentative de création de l'archive zip..."
+
+# @ backwpup
+#: job/backup_create.php:18
+#, php-format
+msgid "Can not add \"%s\" to zip archive!"
+msgstr "Impossible d'ajouter \"%s\" à l'archive zip!"
+
+# @ backwpup
+#: job/backup_create.php:25
+msgid "(4) ER_SEEK"
+msgstr "(4) ER_SEEK"
+
+# @ backwpup
+#: job/backup_create.php:27
+msgid "(5) ER_READ"
+msgstr "(5) ER_READ"
+
+# @ backwpup
+#: job/backup_create.php:29
+msgid "(9) ER_NOENT"
+msgstr "(9) ER_NOENT"
+
+# @ backwpup
+#: job/backup_create.php:31
+msgid "(10) ER_EXISTS"
+msgstr "(10) ER_EXISTS"
+
+# @ backwpup
+#: job/backup_create.php:33
+msgid "(11) ER_OPEN"
+msgstr "(11) ER_OPEN"
+
+# @ backwpup
+#: job/backup_create.php:35
+msgid "(14) ER_MEMORY"
+msgstr "(14) ER_MEMORY"
+
+# @ backwpup
+#: job/backup_create.php:37
+msgid "(18) ER_INVAL"
+msgstr "(18) ER_INVAL"
+
+# @ backwpup
+#: job/backup_create.php:39
+msgid "(19) ER_NOZIP"
+msgstr "(19) ER_NOZIP"
+
+# @ backwpup
+#: job/backup_create.php:41
+msgid "(21) ER_INCONS"
+msgstr "(21) ER_INCONS"
+
+# @ backwpup
+#: job/backup_create.php:42
+#, php-format
+msgid "Zip returns status: %s"
+msgstr "Zip a renvoyé le statut: %s"
+
+# @ backwpup
+#: job/backup_create.php:45
+msgid "Backup zip archive create done!"
+msgstr "Archive zip de sauvegarde créée!"
+
+# @ backwpup
+#: job/backup_create.php:48
+msgid "Can not create backup zip archive $s!"
+msgstr "Création de l'archive zip $s impossible!"
+
+# @ backwpup
+#: job/backup_create.php:59
+#, php-format
+msgid "%d. try to create backup zip (PclZip) archive..."
+msgstr "%d. tentative de création de l'archive zip (PclZip)..."
+
+# @ backwpup
+#: job/backup_create.php:68
+#, php-format
+msgid "Zip archive create error: %s"
+msgstr "Erreur de création de l'archive zip: %s"
+
+# @ backwpup
+#: job/backup_create.php:72
+msgid "Backup zip archive create done"
+msgstr "Archive zip de sauvegarde créée"
+
+# @ backwpup
+#: job/backup_create.php:89
+msgid "Can not create tar archive file!"
+msgstr "Impossible de créer l'archive tar!"
+
+# @ backwpup
+#: job/backup_create.php:92
+#, php-format
+msgid "%1$d. try to create %2$s archive file..."
+msgstr "%1$d. tentative de création de l'archive %2$s ..."
+
+# @ backwpup
+#: job/backup_create.php:100
+#, php-format
+msgid "File \"%s\" not readable!"
+msgstr "\"%s\" non accessible!"
+
+# @ backwpup
+#: job/backup_create.php:115
+#, php-format
+msgid "File name \"%1$s\" to long to save corectly in %2$s archive!"
+msgstr ""
+"Le nom de fichier \"%1$s\\ est trop long pour s'enregistrer correctement "
+"dans l'archive %2$s!"
+
+# @ backwpup
+#: job/backup_create.php:117
+#, php-format
+msgid "File path \"%1$s\" to long to save corectly in %2$s archive!"
+msgstr ""
+"Le chemin vers \"%1$s\" est trop long pour s'enregistrer correctement dans "
+"l'archive %2$s!"
+
+# @ backwpup
+#: job/backup_create.php:174
+#, php-format
+msgid "%s archive creation done"
+msgstr "Création de l'archive %s réussie"
+
+# @ backwpup
+#: job/backup_create.php:178
+#, php-format
+msgid "Archive size is %s"
+msgstr "La taille de l'archive est de %s"
+
+# @ backwpup
+#: job/backup_create.php:185
+#, php-format
+msgid "PCL ZIP Error \"%1$s\" on file %2$s!"
+msgstr "Erreur PCL ZIP \"%1$s\" sur le fichier %2$s!"
+
+# @ backwpup
+#: job/db_check.php:4
+#, php-format
+msgid "%d. try for database check..."
+msgstr "%d. tentative de vérification de la base de données"
+
+# @ backwpup
+#: job/db_check.php:13 job/db_check.php:29 job/db_check.php:44
+#: job/db_dump.php:13 job/db_dump.php:25 job/db_dump.php:108
+#: job/db_dump.php:118 job/db_optimize.php:13 job/db_optimize.php:28
+#: job/job_functions.php:34 job/job_functions.php:47
+#, php-format
+msgid "Database error %1$s for query %2$s"
+msgstr "Erreur base de données %1$s pour la requête %2$s"
+
+# @ backwpup
+#: job/db_check.php:34 job/db_check.php:36 job/db_check.php:38
+#, php-format
+msgid "Result of table check for %1$s is: %2$s"
+msgstr "Le résultat de la vérification de la table %1$s est: %2$s"
+
+# @ backwpup
+#: job/db_check.php:49 job/db_check.php:51 job/db_check.php:53
+#, php-format
+msgid "Result of table repair for %1$s is: %2$s"
+msgstr "Le résultat de la réparation de la table %1$s est: %2$s"
+
+# @ backwpup
+#: job/db_check.php:59
+msgid "Database check done!"
+msgstr "Vérification de la base de donnée réussie!"
+
+# @ backwpup
+#: job/db_check.php:61
+msgid "No tables to check"
+msgstr "Aucune table à vérifier!"
+
+# @ backwpup
+#: job/db_dump.php:4
+#, php-format
+msgid "%d. try for database dump..."
+msgstr "%d. tentative de dump de la base de données..."
+
+# @ backwpup
+#: job/db_dump.php:72
+msgid "Database dump done!"
+msgstr "Dump de la base de donnée réussie!"
+
+# @ backwpup
+#: job/db_dump.php:74
+msgid "Can not create database dump!"
+msgstr "Impossible de créer le dump de la base de donnée!"
+
+# @ backwpup
+#: job/db_dump.php:77
+msgid "No tables to dump"
+msgstr "Aucune table pour le dump"
+
+# @ backwpup
+#: job/db_dump.php:83
+#, php-format
+msgid "Add database dump \"%1$s\" with %2$s to backup file list"
+msgstr "Ajout du dump \"%1$s\" avec %2$s a la liste des fichiers à sauvegarder"
+
+# @ backwpup
+#: job/db_dump.php:97
+#, php-format
+msgid "Dump database table \"%s\""
+msgstr "Dump de la table \"%s\""
+
+# @ backwpup
+#: job/db_optimize.php:4
+#, php-format
+msgid "%d. try for database optimize..."
+msgstr "%d. tentative d'optimisation de la base de données..."
+
+# @ backwpup
+#: job/db_optimize.php:35 job/db_optimize.php:37 job/db_optimize.php:39
+#, php-format
+msgid "Result of table optimize for %1$s is: %2$s"
+msgstr "Le résultat de l'optimisation de la table %1$s est: %2$s"
+
+# @ backwpup
+#: job/db_optimize.php:41
+msgid "Database optimize done!"
+msgstr "Optimisation de la base de données réussie!"
+
+# @ backwpup
+#: job/db_optimize.php:44
+msgid "No tables to optimize"
+msgstr "Aucune tables à optimiser"
+
+# @ backwpup
+#: job/dest_dropbox.php:6
+#, php-format
+msgid "%d. Try to sending backup file to DropBox..."
+msgstr "%d. tentative d'envoi de fichiers vers Dropbox..."
+
+# @ backwpup
+#: job/dest_dropbox.php:18
+#, php-format
+msgid "Authed with DropBox from %s"
+msgstr "Authentifié chez DropBox depuis %s"
+
+# @ backwpup
+#: job/dest_dropbox.php:23
+msgid "No free space left on DropBox!!!"
+msgstr "Plus de place sur DropBox!!!"
+
+# @ backwpup
+#: job/dest_dropbox.php:27
+#, php-format
+msgid "%s free on DropBox"
+msgstr "%s de libre sur DropBox"
+
+# @ backwpup
+#: job/dest_dropbox.php:32
+msgid "Upload to DropBox now started... "
+msgstr "Envoi vers DropBox commencé..."
+
+# @ backwpup
+#: job/dest_dropbox.php:38 job/dest_gstorage.php:27 job/dest_msazure.php:25
+#: job/dest_s3.php:30 job/dest_sugarsync.php:37
+#, php-format
+msgid "Backup transferred to %s"
+msgstr "Sauvegarde envoyée vers %s"
+
+# @ backwpup
+#: job/dest_dropbox.php:43 job/dest_dropbox.php:68
+#, php-format
+msgid "DropBox API: %s"
+msgstr "DropBox API: %s"
+
+# @ backwpup
+#: job/dest_dropbox.php:64
+#, php-format
+msgid "One file deleted on DropBox"
+msgid_plural "%d files deleted on DropBox"
+msgstr[0] "Un fichier supprimé sur DropBox"
+msgstr[1] "%d fichiers supprimés sur DropBox"
+
+# @ backwpup
+#: job/dest_folder.php:25
+#, php-format
+msgid "One backup file deleted"
+msgid_plural "%d backup files deleted"
+msgstr[0] "Un fichier de sauvegarde supprimé"
+msgstr[1] "%d fichiers de sauvegarde supprimés"
+
+# @ backwpup
+#: job/dest_ftp.php:9
+#, php-format
+msgid "%d. try to sending backup file to a FTP Server..."
+msgstr "%d. tentative d'envoi du fichier sauvegarde vers un serveur FTP..."
+
+# @ backwpup
+#: job/dest_ftp.php:15
+#, php-format
+msgid "Connected by SSL-FTP to Server: %s"
+msgstr "Connexion sécurisée par SSL-FTP au serveur: %s"
+
+# @ backwpup
+#: job/dest_ftp.php:17
+#, php-format
+msgid "Can not connect by SSL-FTP to Server: %s"
+msgstr "Impossible de se connecter par SSL-FTP au serveur: %s"
+
+# @ backwpup
+#: job/dest_ftp.php:21
+msgid "PHP function to connect with SSL-FTP to server not exists!"
+msgstr ""
+"La fonction PHP pour se connecter au serveur avec SSL-FTP n'existe pas!"
+
+# @ backwpup
+#: job/dest_ftp.php:27
+#, php-format
+msgid "Connected to FTP server: %s"
+msgstr "Connecté au serveur FTP: %s"
+
+# @ backwpup
+#: job/dest_ftp.php:29
+#, php-format
+msgid "Can not connect to FTP server: %s"
+msgstr "Impossible de se connecter au serveur FTP: %s"
+
+# @ backwpup
+#: job/dest_ftp.php:36 job/dest_ftp.php:43 job/dest_ftp.php:55
+#: job/dest_ftp.php:90
+#, php-format
+msgid "FTP Client command: %s"
+msgstr "Commande client FTP: %s "
+
+# @ backwpup
+#: job/dest_ftp.php:38 job/dest_ftp.php:41 job/dest_ftp.php:45
+#: job/dest_ftp.php:58 job/dest_ftp.php:60 job/dest_ftp.php:93
+#: job/dest_ftp.php:95 job/dest_ftp.php:98 job/dest_ftp.php:100
+#, php-format
+msgid "FTP Server reply: %s"
+msgstr "Réponse du serveur FTP: %s"
+
+# @ backwpup
+#: job/dest_ftp.php:60
+msgid "Error getting SYSTYPE"
+msgstr "Erreur en essayant d'avoir SYSTYPE"
+
+# @ backwpup
+#: job/dest_ftp.php:71
+#, php-format
+msgid "FTP folder \"%s\" created!"
+msgstr "Répertoire FTP \"%s\" créé!"
+
+# @ backwpup
+#: job/dest_ftp.php:74
+#, php-format
+msgid "FTP folder \"%s\" can not created!"
+msgstr "Le répertoire FTP \"%s\" ne peut pas être créé!"
+
+#: job/dest_ftp.php:83
+#, php-format
+msgid "FTP current folder is: %s"
+msgstr "Le dossier FTP actuel est : %s"
+
+# @ backwpup
+#: job/dest_ftp.php:93
+msgid "Entering Passive Mode"
+msgstr "Passage en mode passif"
+
+# @ backwpup
+#: job/dest_ftp.php:95
+msgid "Can not Entering Passive Mode"
+msgstr "Impossible de passer en mode passif"
+
+# @ backwpup
+#: job/dest_ftp.php:98
+msgid "Entering Normal Mode"
+msgstr "Passage en mode normal"
+
+# @ backwpup
+#: job/dest_ftp.php:100
+msgid "Can not Entering Normal Mode"
+msgstr "Impossible de passer en mode normal"
+
+# @ backwpup
+#: job/dest_ftp.php:104
+msgid "Upload to FTP now started ... "
+msgstr "Envoi vers FTP commencé..."
+
+# @ backwpup
+#: job/dest_ftp.php:113
+msgid "Can not transfer backup to FTP server!"
+msgstr "Impossible d'envoyer la sauvegarde vers le serveur FTP!"
+
+# @ backwpup
+#: job/dest_ftp.php:117
+#, php-format
+msgid "Backup transferred to FTP server: %s"
+msgstr "Sauvegarde envoyée vers le serveur FTP: %s"
+
+# @ backwpup
+#: job/dest_ftp.php:138
+#, php-format
+msgid "Can not delete \"%s\" on FTP server!"
+msgstr "Impossible d'effacer \"%s\" sur le serveur FTP!"
+
+# @ backwpup
+#: job/dest_ftp.php:141
+#, php-format
+msgid "One file deleted on FTP Server"
+msgid_plural "%d files deleted on FTP Server"
+msgstr[0] "Un fichier supprimé sur le serveur FTP"
+msgstr[1] "%d fichiers supprimés sur le serveur FTP"
+
+# @ backwpup
+#: job/dest_gstorage.php:4
+#, php-format
+msgid "%d. try sending backup to Google Storage..."
+msgstr "%d. tentative d'envoi de sauvegarde vers Google Storage..."
+
+# @ backwpup
+#: job/dest_gstorage.php:16
+#, php-format
+msgid "Connected to GStorage Bucket: %s"
+msgstr "Connecté au panier GStorage: %s"
+
+# @ backwpup
+#: job/dest_gstorage.php:21
+msgid "Upload to GStorage now started... "
+msgstr "Envoi vers GStorage commencé..."
+
+# @ backwpup
+#: job/dest_gstorage.php:31
+#, php-format
+msgid "Can not transfer backup to GStorage! (%1$d) %2$s"
+msgstr "Impossible d'envoyer la sauvegarde vers GStorage! (%1$d) %2$s"
+
+# @ backwpup
+#: job/dest_gstorage.php:34
+#, php-format
+msgid "GStorage Bucket \"%s\" not exists!"
+msgstr "Le panier GStorage \"%s\" n'existe pas!"
+
+# @ backwpup
+#: job/dest_gstorage.php:37 job/dest_gstorage.php:66
+#: pages/func_backwpupbackups.php:392 pages/header_backwpupbackups.php:50
+#, php-format
+msgid "GStorage API: %s"
+msgstr "GStorage API: %s"
+
+# @ backwpup
+#: job/dest_gstorage.php:58
+#, php-format
+msgid "Can not delete backup on GStorage://%s"
+msgstr "Impossible d'effacer la sauvegarde sur GStorage://%s"
+
+# @ backwpup
+#: job/dest_gstorage.php:61
+#, php-format
+msgid "One file deleted on GStorage Bucket"
+msgid_plural "%d files deleted on GStorage Bucket"
+msgstr[0] "Un fichier supprimé sur GStorage"
+msgstr[1] "%d fichiers supprimés sur GStorage"
+
+# @ backwpup
+#: job/dest_mail.php:6
+#, php-format
+msgid "%d. try to sending backup with mail..."
+msgstr "%d. tentative d'envoi de la sauvegarde par mail..."
+
+# @ backwpup
+#: job/dest_mail.php:23
+msgid "Send mail with SMTP"
+msgstr "Envoyer le mail avec SMTP"
+
+# @ backwpup
+#: job/dest_mail.php:27
+msgid "Send mail with Sendmail"
+msgstr "Envoyer le mail avec Sendmail"
+
+# @ backwpup
+#: job/dest_mail.php:30
+msgid "Send mail with PHP mail"
+msgstr "Envoyer le mail avec la fonction mail de PHP"
+
+# @ backwpup
+#: job/dest_mail.php:33
+msgid "Creating mail"
+msgstr "Création du mail"
+
+# @ backwpup
+#: job/dest_mail.php:37
+#, php-format
+msgid "BackWPup archive from %1$s: %2$s"
+msgstr "L'archive BackWPup de %1$s: %2$s"
+
+# @ backwpup
+#: job/dest_mail.php:39
+#, php-format
+msgid "Backup archive: %s"
+msgstr "Archivage de: %s"
+
+# @ backwpup
+#: job/dest_mail.php:44
+msgid "Backup archive too big for sending by mail!"
+msgstr "Fichier de sauvegarde trop volumineux pour être envoyé par mail!"
+
+# @ backwpup
+#: job/dest_mail.php:51
+msgid "Adding backup archive to mail"
+msgstr "Ajout du fichier sauvegarde au mail"
+
+# @ backwpup
+#: job/dest_mail.php:55
+msgid "Send mail...."
+msgstr "Envoi du mail..."
+
+# @ backwpup
+#: job/dest_mail.php:57
+#, php-format
+msgid "Error \"%s\" on sending mail!"
+msgstr "Erreur \"%s\" en envoyant le mail!"
+
+# @ backwpup
+#: job/dest_mail.php:60
+msgid "Mail send!!!"
+msgstr "Mail envoyé!!!"
+
+# @ backwpup
+#: job/dest_msazure.php:5
+#, php-format
+msgid "%d. try sending backup to a Microsoft Azure (Blob)..."
+msgstr "%d. tentative d'envoi de la sauvegarde vers Microsoft Azure (Blob)..."
+
+# @ backwpup
+#: job/dest_msazure.php:14
+#, php-format
+msgid "Microsoft Azure container \"%s\" not exists!"
+msgstr "Le contenant Microsoft Azure \"%s\" n'existe pas!"
+
+# @ backwpup
+#: job/dest_msazure.php:17
+#, php-format
+msgid "Connected to Microsoft Azure container \"%s\""
+msgstr "Connecté au contenant Microsoft Azure \"%s\""
+
+# @ backwpup
+#: job/dest_msazure.php:20
+msgid "Upload to MS Azure now started... "
+msgstr "Envoi vers MS Azure commencé..."
+
+# @ backwpup
+#: job/dest_msazure.php:29
+msgid "Can not transfer backup to Microsoft Azure!"
+msgstr "Impossible d'envoyer la sauvegarde vers Microsoft Azure!"
+
+# @ backwpup
+#: job/dest_msazure.php:50
+#, php-format
+msgid "One file deleted on Microsoft Azure container"
+msgid_plural "%d files deleted on Microsoft Azure container"
+msgstr[0] "Un fichier supprimé sur Microsoft Azure"
+msgstr[1] "%d fichiers supprimés sur Microsoft Azure"
+
+# @ backwpup
+#: job/dest_msazure.php:55
+#, php-format
+msgid "Microsoft Azure API: %s"
+msgstr "Microsoft Azure API: %s"
+
+# @ backwpup
+#: job/dest_rsc.php:4
+msgid "Try to sending backup file to Rackspace Cloud..."
+msgstr "Tentative d'envoi de la sauvegarde vers Rackspace Cloud..."
+
+# @ backwpup
+#: job/dest_rsc.php:13
+msgid "Connected to Rackspase ..."
+msgstr "Connecté à Rackspace..."
+
+# @ backwpup
+#: job/dest_rsc.php:29 job/dest_rsc.php:63 job/dest_rsc.php:92
+msgid "Rackspase Cloud API:"
+msgstr "Rackspase Cloud API:"
+
+# @ backwpup
+#: job/dest_rsc.php:34
+msgid "Rackspase Cloud Container not exists:"
+msgstr "Le contenant sur Rackspace Cloud n'existe pas!"
+
+# @ backwpup
+#: job/dest_rsc.php:53
+msgid "Upload to RSC now started ... "
+msgstr "Envoi vers RSC commencé..."
+
+# @ backwpup
+#: job/dest_rsc.php:56
+msgid "Backup File transferred to RSC://"
+msgstr "Fichier de sauvegarde transféré vers RSC://"
+
+# @ backwpup
+#: job/dest_rsc.php:60
+msgid "Can not transfer backup to RSC."
+msgstr "Impossible d'envoyer la sauvegarde vers RSC."
+
+# @ backwpup
+#: job/dest_rsc.php:85
+msgid "Can not delete file on RSC://"
+msgstr "Impossible d'effacé le fichier sur RSC://"
+
+# @ backwpup
+#: job/dest_rsc.php:88
+#, php-format
+msgid "One file deleted on RSC container"
+msgid_plural "%d files deleted on RSC container"
+msgstr[0] "Un fichier supprimé sur RSC"
+msgstr[1] "%d fichiers supprimés sur RSC"
+
+# @ backwpup
+#: job/dest_s3.php:4
+#, php-format
+msgid "%d. try sending backup file to Amazon S3..."
+msgstr "%d. tentative d'envoi du fichier sauvegarde vers Amazon S3..."
+
+# @ backwpup
+#: job/dest_s3.php:14
+#, php-format
+msgid "Connected to S3 Bucket: %s"
+msgstr "Connecté au panier S: %s"
+
+# @ backwpup
+#: job/dest_s3.php:24
+msgid "Upload to Amazon S3 now started... "
+msgstr "Envoi vers Amazon S3 commencé..."
+
+# @ backwpup
+#: job/dest_s3.php:34
+#, php-format
+msgid "Can not transfer backup to S3! (%1$d) %2$s"
+msgstr "Impossible d'envoyer la sauvegarde vers Amazon S3! (%1$d) %2$s"
+
+# @ backwpup
+#: job/dest_s3.php:37
+#, php-format
+msgid "S3 Bucket \"%s\" not exists!"
+msgstr "Panier S3 \"%s\" n'existe pas!"
+
+# @ backwpup
+#: job/dest_s3.php:40 job/dest_s3.php:69
+#, php-format
+msgid "Amazon API: %s"
+msgstr "Amazon API: %s"
+
+# @ backwpup
+#: job/dest_s3.php:61
+#, php-format
+msgid "Can not delete backup on S3://%s"
+msgstr "Impossible d'effacer la sauvegarde sur S3://%s"
+
+# @ backwpup
+#: job/dest_s3.php:64
+#, php-format
+msgid "One file deleted on S3 Bucket"
+msgid_plural "%d files deleted on S3 Bucket"
+msgstr[0] "Un fichier supprimé sur S3 Bucket"
+msgstr[1] "%d fichiers supprimés sur S3"
+
+# @ backwpup
+#: job/dest_sugarsync.php:6
+#, php-format
+msgid "%d. try sending backup to SugarSync..."
+msgstr "%d. tentatives d'envoi de la sauvegarde vers SugarSync..."
+
+# @ backwpup
+#: job/dest_sugarsync.php:15
+#, php-format
+msgid "Authed to SugarSync with Nick %s"
+msgstr "Authentifié chez SugarSync avec le pseudo %s"
+
+# @ backwpup
+#: job/dest_sugarsync.php:19
+msgid "No free space left on SugarSync!!!"
+msgstr "Plus de place chez SugarSync!!!"
+
+# @ backwpup
+#: job/dest_sugarsync.php:24
+#, php-format
+msgid "%s free on SugarSync"
+msgstr "%s de libre chez SugarSync"
+
+# @ backwpup
+#: job/dest_sugarsync.php:31
+msgid "Upload to SugarSync now started... "
+msgstr "Envoi vers SugarSync commencé..."
+
+# @ backwpup
+#: job/dest_sugarsync.php:39
+msgid "Can not transfer backup to SugarSync!"
+msgstr "Impossible de transférer la sauvegarde vers SugarSync!"
+
+# @ backwpup
+#: job/dest_sugarsync.php:62
+#, php-format
+msgid "One file deleted on SugarSync folder"
+msgid_plural "%d files deleted on SugarSync folder"
+msgstr[0] "Un fichier supprimé sur SugarSync"
+msgstr[1] "%d fichiers supprimés sur SugarSync"
+
+# @ backwpup
+#: job/dest_sugarsync.php:66
+#, php-format
+msgid "SugarSync API: %s"
+msgstr "SugarSync API: %s"
+
+# @ backwpup
+#: job/file_list.php:5
+#, php-format
+msgid "%d. try for make list of files to backup...."
+msgstr "%d. tentative de création de liste de fichiers à sauvegarder"
+
+# @ backwpup
+#: job/file_list.php:66
+msgid "No files to backup"
+msgstr "Aucun fichier à sauvegarder"
+
+# @ backwpup
+#: job/file_list.php:68
+#, php-format
+msgid "%1$d files with %2$s to backup"
+msgstr "%1$d fichiers et %2$s à sauvegarder"
+
+# @ backwpup
+#: job/file_list.php:93
+#, php-format
+msgid "File or folder \"%s\" is not readable!"
+msgstr "Le fichier ou le répertoire \"%s\" n'est pas accessible! "
+
+# @ backwpup
+#: job/file_list.php:95
+#, php-format
+msgid "Link \"%s\" not followed"
+msgstr "Le lien \"%s\" n'a pas été suivi"
+
+# @ backwpup
+#: job/file_list.php:101
+#, php-format
+msgid "\"%s\" is not a file or directory"
+msgstr "\"%s\" n'est ni un fichier ni un répertoire"
+
+# @ backwpup
+#: job/job_functions.php:113
+#, php-format
+msgid "Memory increased from %1$s to %2$s"
+msgstr "Mémoire augmentée de %1$s à %2$s"
+
+# @ backwpup
+#: job/job_functions.php:115
+#, php-format
+msgid "Can not increase memory limit is %1$s"
+msgstr "Impossible d'augmenter la mémoire la limite est de %1$s"
+
+# @ backwpup
+#: job/job_functions.php:124
+msgid "Set Blog to maintenance mode"
+msgstr "Mettre le blog en mode maintenance"
+
+# @ backwpup
+#: job/job_functions.php:138
+msgid "Cannot set Blog to maintenance mode! Root folder is not writeable!"
+msgstr ""
+"Impossible de mettre le blog en mode maintenance! Le répertoire racine n'est "
+"pas inscriptible!"
+
+# @ backwpup
+#: job/job_functions.php:141
+msgid "Set Blog to normal mode"
+msgstr "Mettre le blog en mode normal"
+
+# @ backwpup
+#: job/job_functions.php:222
+#, php-format
+msgid "No MySQL connection: %s"
+msgstr "Pas de connexion MySQL: %s"
+
+# @ backwpup
+#: job/job_functions.php:237
+#, php-format
+msgid "No MySQL connection to database: %s"
+msgstr "Pas de connexion MySQL à la base de données: %s"
+
+# @ backwpup
+#: job/job_functions.php:261
+msgid "[WARNING]"
+msgstr "[AVERTISSEMENT]"
+
+# @ backwpup
+#: job/job_functions.php:267
+msgid "[ERROR]"
+msgstr "[ERREUR]"
+
+# @ backwpup
+#: job/job_functions.php:271
+msgid "[DEPRECATED]"
+msgstr "[DÉPRÉCIÉE]"
+
+# @ backwpup
+#: job/job_functions.php:274
+msgid "[STRICT NOTICE]"
+msgstr "[SIMPLE NOTE]"
+
+# @ backwpup
+#: job/job_functions.php:277
+msgid "[RECOVERABLE ERROR]"
+msgstr "[ERREUR RÉCUPÉRABLE]"
+
+# @ backwpup
+#: job/job_functions.php:353
+#, php-format
+msgid "One old log deleted"
+msgid_plural "%d old logs deleted"
+msgstr[0] "Un ancien fichier de trace supprimé"
+msgstr[1] "%d anciens fichiers de traces supprimés"
+
+# @ backwpup
+#: job/job_functions.php:357
+#, php-format
+msgid "Job done in %s sec."
+msgstr "Opération effectuée en %s sec."
+
+# @ backwpup
+#: job/job_functions.php:471
+#, php-format
+msgid "BackWPup log from %1$s: %2$s"
+msgstr "Fichier journal BackWPup du %1$s: %2$s"
+
+# @ backwpup
+#: job/job_functions.php:498
+#, php-format
+msgid "Signal %d send to script!"
+msgstr "Signal %d envoyé au script!"
+
+# @ backwpup
+#: job/job_functions.php:518
+msgid "Can not restart on alternate cron...."
+msgstr "Ne peut redémarrer avec un cron alternatif..."
+
+# @ backwpup
+#: job/job_functions.php:520
+msgid "To many restarts...."
+msgstr "Trop de redémarrages..."
+
+# @ backwpup
+#: job/job_functions.php:541
+msgid "Script stop! Will started again now!"
+msgstr "Arrêt du script! Redémarrage maintenant !"
+
+# @ backwpup
+#: job/job_run.php:72
+msgid "Job restart terminated, because old job runs again!"
+msgstr ""
+"Redémarrage de l'opération interrompu, car d'autres opérations sont en cours!"
+
+# @ backwpup
+#: job/job_run.php:75
+msgid "Job restarted, because inactivity!"
+msgstr "Opération relancée car inactive!"
+
+# @ backwpup
+#: job/job_run.php:77
+#, php-format
+msgid "Second Process is running, because old job runs! Start type is %s"
+msgstr ""
+"Un deuxième processus est lancé parceque des anciens fonctionnent toujours! "
+"Le type de lancement est %s"
+
+# @ backwpup
+#: job/job_run.php:105
+#, php-format
+msgid "Can not find job step file: %s"
+msgstr "Impossible de trouver le fichier : %s"
+
+# @ default
+#: job/job_run.php:113
+#, php-format
+msgid ""
+"[INFO]: BackWPup version %1$s; WordPress version %4$s; Copyright &copy; %2$s "
+"%3$s"
+msgstr ""
+"[INFO]: BackWPup version %1$s, WordPress version %4$s Copyright &copy; %2$s "
+"%3$s"
+
+# @ backwpup
+#: job/job_run.php:114
+msgid ""
+"[INFO]: BackWPup comes with ABSOLUTELY NO WARRANTY. This is free software, "
+"and you are welcome to redistribute it under certain conditions."
+msgstr ""
+"[INFO]: BackWPup n'est accompagné d'AUCUNE GARANTIE. C'est un logiciel "
+"libre, et vous êtes libre de le redistribuer sous certaines conditions."
+
+# @ backwpup
+#: job/job_run.php:115
+msgid "[INFO]: BackWPup job:"
+msgstr "[INFO]: BackWPup opération:"
+
+# @ backwpup
+#: job/job_run.php:117
+msgid "[INFO]: BackWPup cron:"
+msgstr "[INFO]: BackWPup cron:"
+
+# @ backwpup
+#: job/job_run.php:119
+msgid "[INFO]: BackWPup job started by cron"
+msgstr "[INFO]: Opération BackWPup démarrée par cron"
+
+# @ backwpup
+#: job/job_run.php:121
+msgid "[INFO]: BackWPup job started manualy"
+msgstr "[INFO]: Opération BackWPup démarrée manuellement"
+
+# @ backwpup
+#: job/job_run.php:122
+msgid "[INFO]: PHP ver.:"
+msgstr "[INFO]: version PHP:"
+
+# @ backwpup
+#: job/job_run.php:124
+#, php-format
+msgid "[INFO]: PHP Safe mode is ON! Maximum script execution time is %1$d sec."
+msgstr ""
+"[INFO]: Le mode safe de PHP est activé! Temps d’exécution maximum d'un "
+"script: %1$d sec. "
+
+# @ backwpup
+#: job/job_run.php:125
+msgid "[INFO]: MySQL ver.:"
+msgstr "[INFO]: Version MySQL:"
+
+# @ backwpup
+#: job/job_run.php:128
+msgid "[INFO]: curl ver.:"
+msgstr "[INFO]: Version curl:"
+
+# @ backwpup
+#: job/job_run.php:130
+msgid "[INFO]: Temp folder is:"
+msgstr "[INFO]: Répertoire temporaire:"
+
+# @ backwpup
+#: job/job_run.php:132
+msgid "[INFO]: Backup file is:"
+msgstr "[INFO]: Fichier sauvegarde:"
+
+# @ backwpup
+#: job/job_run.php:143
+msgid "No destination defineid for backup!!! Please correct job settings"
+msgstr ""
+"Pas de cible définie pour la sauvegarde! Veuillez corriger les paramètres de "
+"l'opération."
+
+# @ backwpup
+#: job/job_run.php:165
+msgid "Step arborted has too many trys!"
+msgstr "Étape abandonnée, trop de tentatives!"
+
+# @ backwpup
+#: job/job_run.php:167
+#, php-format
+msgid "Can not find job step function %s!"
+msgstr "Impossible de trouver la fonction %s de l'opération!"
+
+# @ backwpup
+#: job/job_start.php:10
+msgid "A job already running!"
+msgstr "Une opération est déjà en cours!"
+
+# @ backwpup
+#: job/job_start.php:20
+msgid "Temp dir not writeable"
+msgstr "Répertoire temporaire inaccessible"
+
+# @ backwpup
+#: job/job_start.php:102
+#, php-format
+msgid "Can not create folder for log files: %s"
+msgstr "Impossible de créer le répertoire des fichiers journaux: %s!"
+
+# @ backwpup
+#: job/job_start.php:113
+msgid "Log folder not writeable!"
+msgstr "Répertoire des fichiers journaux inaccessible!"
+
+# @ backwpup
+#: job/job_start.php:138
+#, php-format
+msgid "BackWPup log for %1$s from %2$s at %3$s"
+msgstr "Fichier journal BackWPup pour %1$s de %2$s à %3$s"
+
+# @ backwpup
+#: job/job_start.php:166
+#, php-format
+msgid "Can not create folder for backups: %1$s"
+msgstr "Impossible de créer le répertoire des sauvegardes: %1$s"
+
+# @ backwpup
+#: job/job_start.php:178
+msgid "Backup folder not writeable!"
+msgstr "Répertoire des sauvegardes inaccessible!"
+
+# @ backwpup
+#: job/wp_export.php:11
+#, php-format
+msgid "%d. try for wordpress export to XML file..."
+msgstr "%d. tentative d'export au format XML WordPress..."
+
+# @ backwpup
+#: job/wp_export.php:38 job/wp_export.php:40
+msgid "cURL:"
+msgstr "cURL"
+
+# @ backwpup
+#: job/wp_export.php:81
+#, php-format
+msgid "Add XML export \"%1$s\" to backup list with %2$s"
+msgstr ""
+"Ajout du fichier XML \"%1$s\" à la liste des fichiers à sauvegarder avec %2$s"
+
+# @ backwpup
+#: pages/func_backwpup.php:44
+msgid "No Jobs."
+msgstr "Aucune opération."
+
+# @ default
+# @ backwpup
+#: pages/func_backwpup.php:49 pages/func_backwpup.php:105
+msgid "Export"
+msgstr "Exporter"
+
+# @ default
+# @ backwpup
+#: pages/func_backwpup.php:50 pages/func_backwpup.php:106
+#: pages/func_backwpupbackups.php:130 pages/func_backwpupbackups.php:227
+#: pages/func_backwpupeditjob.php:25 pages/func_backwpuplogs.php:76
+#: pages/func_backwpuplogs.php:130
+msgid "Delete"
+msgstr "Effacer"
+
+# @ backwpup
+#: pages/func_backwpup.php:58
+msgid "ID"
+msgstr "ID"
+
+# @ backwpup
+#: pages/func_backwpup.php:59
+msgid "Job Name"
+msgstr "Nom de l'opération"
+
+# @ backwpup
+#: pages/func_backwpup.php:60 pages/func_backwpupeditjob.php:171
+#: pages/func_backwpuplogs.php:84
+msgid "Type"
+msgstr "Type"
+
+# @ backwpup
+#: pages/func_backwpup.php:61
+msgid "Information"
+msgstr "Information"
+
+# @ backwpup
+#: pages/func_backwpup.php:62
+msgid "Next Run"
+msgstr "Prochain exécution"
+
+# @ backwpup
+#: pages/func_backwpup.php:63
+msgid "Last Run"
+msgstr "Dernière exécution"
+
+# @ backwpup
+#: pages/func_backwpup.php:100
+msgid "Edit:"
+msgstr "Modifier:"
+
+# @ default
+#: pages/func_backwpup.php:103
+msgid "Edit"
+msgstr "Modifier"
+
+# @ backwpup
+#: pages/func_backwpup.php:104
+msgid "Copy"
+msgstr "Copier"
+
+# @ backwpup
+#: pages/func_backwpup.php:107
+msgid "Run Now"
+msgstr "Lancer maintenant"
+
+# @ backwpup
+#: pages/func_backwpup.php:131
+msgid "Running since:"
+msgstr "En cours depuis:"
+
+# @ backwpup
+#: pages/func_backwpup.php:131 pages/func_backwpup.php:147
+#: pages/func_backwpuplogs.php:156
+msgid "sec."
+msgstr "sec."
+
+# @ backwpup
+#: pages/func_backwpup.php:135
+msgid "Inactive"
+msgstr "Inactive"
+
+# @ backwpup
+#: pages/func_backwpup.php:138
+msgid "<a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">Cron</a>:"
+msgstr "<a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">Cron</a>:"
+
+# @ backwpup
+#: pages/func_backwpup.php:147
+msgid "Runtime:"
+msgstr "Temps d'exécution:"
+
+# @ backwpup
+#: pages/func_backwpup.php:149
+msgid "None"
+msgstr "Aucune"
+
+# @ backwpup
+#: pages/func_backwpup.php:152
+msgid "Download last Backup"
+msgstr "Télécharger la dernière sauvegarde"
+
+# @ backwpup
+#: pages/func_backwpup.php:152 pages/func_backwpupbackups.php:228
+#: pages/func_backwpuplogs.php:131
+msgid "Download"
+msgstr "Télécharger"
+
+# @ backwpup
+#: pages/func_backwpup.php:154
+msgid "View last Log"
+msgstr "Voir le dernier fichier journal"
+
+# @ backwpup
+#: pages/func_backwpup.php:154
+msgid "Log"
+msgstr "Fichier journal"
+
+# @ backwpup
+#: pages/func_backwpup.php:243
+msgid "DB Size:"
+msgstr "Taille de la B.D:"
+
+# @ backwpup
+#: pages/func_backwpup.php:245
+msgid "DB Tables:"
+msgstr "Tables de la B.D:"
+
+# @ backwpup
+#: pages/func_backwpup.php:246
+msgid "DB Rows:"
+msgstr "Colonnes de la D.B:"
+
+# @ backwpup
+#: pages/func_backwpup.php:251
+msgid "Files Size:"
+msgstr "Taille des fichiers:"
+
+# @ backwpup
+#: pages/func_backwpup.php:253
+msgid "Files count:"
+msgstr "Nombre de fichiers:"
+
+# @ backwpup
+#: pages/func_backwpupbackups.php:125
+msgid "No Files found."
+msgstr "Aucun fichier trouvé."
+
+# @ backwpup
+#: pages/func_backwpupbackups.php:145
+msgid "Change Destination"
+msgstr "Modifier la destination"
+
+# @ backwpup
+#: pages/func_backwpupbackups.php:182
+msgid "File"
+msgstr "Fichier"
+
+# @ backwpup
+#: pages/func_backwpupbackups.php:183 pages/func_backwpupbackups.php:185
+msgid "Folder"
+msgstr "Répertoire"
+
+# @ backwpup
+#: pages/func_backwpupbackups.php:184 pages/func_backwpuplogs.php:87
+msgid "Size"
+msgstr "Taille"
+
+# @ backwpup
+#: pages/func_backwpupbackups.php:186
+msgid "Time"
+msgstr "Heure"
+
+# @ backwpup
+#: pages/func_backwpupbackups.php:227
+msgid ""
+"You are about to delete this Backup Archive. \n"
+"  'Cancel' to stop, 'OK' to delete."
+msgstr ""
+"Vous allez effacer cette archive sauvegarde. \n"
+" 'Annuler' pour arrêter, 'OK' pour effacer."
+
+# @ backwpup
+#: pages/func_backwpupbackups.php:242
+msgid "?"
+msgstr "?"
+
+# @ backwpup
+#: pages/func_backwpupbackups.php:492 pages/header_backwpupbackups.php:140
+msgid "Login failure!"
+msgstr "Échec d'authentification!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:18
+msgid "PHP curl functions not available! Most backup destinations deaktivated!"
+msgstr ""
+"La fonction PHP curl n'est pas disponible! La plupart des destinations de "
+"sauvegarde ont été désactivées!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:25
+msgid ""
+"You are about to delete this Job. \n"
+"  'Cancel' to stop, 'OK' to delete."
+msgstr ""
+"Vous allez effacer cette opération. \n"
+" 'Annuler' pour arrêter, 'OK' pour effacer."
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:28
+msgid "Save Changes"
+msgstr "Sauvegarder les changements"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:38
+msgid "File Prefix:"
+msgstr "Préfixe du fichier:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:40
+msgid "File Formart:"
+msgstr "Format du fichier:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:43 pages/func_backwpupeditjob.php:45
+msgid "Zip"
+msgstr "Zip"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:46
+msgid "Tar"
+msgstr "Tar"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:48 pages/func_backwpupeditjob.php:50
+msgid "Tar GZip"
+msgstr "Tar GZip"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:52 pages/func_backwpupeditjob.php:54
+msgid "Tar BZip2"
+msgstr "Tar BZip2"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:55
+msgid "Preview:"
+msgstr "Prévisualisation:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:60
+msgid "E-Mail-Adress:"
+msgstr "Adresse E-Mail:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:62
+msgid "Only send an e-mail if there are errors."
+msgstr "N'envoyer un e-mail qu'en cas d'erreurs."
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:91
+msgid "Activate scheduling"
+msgstr "Activer la programmation"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:92
+msgid "advanced"
+msgstr "avancés"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:93
+msgid "basic"
+msgstr "basique"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:97
+msgid "Minutes: "
+msgstr "Minutes:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:99 pages/func_backwpupeditjob.php:111
+#: pages/func_backwpupeditjob.php:122 pages/func_backwpupeditjob.php:133
+#: pages/func_backwpupeditjob.php:153
+msgid "Any (*)"
+msgstr "Toutes (*)"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:108
+msgid "Hours:"
+msgstr "Heures:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:120
+msgid "Day of Month:"
+msgstr "Jour dans le mois:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:131
+msgid "Month:"
+msgstr "Mois:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:135
+msgid "January"
+msgstr "Janvier"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:136
+msgid "February"
+msgstr "Février"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:137
+msgid "March"
+msgstr "Mars"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:138
+msgid "April"
+msgstr "Avril"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:139
+msgid "May"
+msgstr "Mai"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:140
+msgid "June"
+msgstr "Juin"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:141
+msgid "July"
+msgstr "Juillet"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:142
+msgid "Augest"
+msgstr "Août"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:143
+msgid "September"
+msgstr "Septembre"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:144
+msgid "October"
+msgstr "Octobre"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:145
+msgid "November"
+msgstr "Novembre"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:146
+msgid "December"
+msgstr "Décembre"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:151
+msgid "Day of Week:"
+msgstr "Jour de la semaine:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:155 pages/func_backwpupeditjob.php:191
+msgid "Sunday"
+msgstr "Dimanche"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:156 pages/func_backwpupeditjob.php:192
+msgid "Monday"
+msgstr "Lundi"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:157 pages/func_backwpupeditjob.php:193
+msgid "Tuesday"
+msgstr "Mardi"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:158 pages/func_backwpupeditjob.php:194
+msgid "Wednesday"
+msgstr "Mercredi"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:159 pages/func_backwpupeditjob.php:195
+msgid "Thursday"
+msgstr "Jeudi"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:160 pages/func_backwpupeditjob.php:196
+msgid "Friday"
+msgstr "Vendredi"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:161 pages/func_backwpupeditjob.php:197
+msgid "Saturday"
+msgstr "Samedi"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:176
+msgid "Hour"
+msgstr "Heure"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:179
+msgid "Minute"
+msgstr "Minute"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:183
+msgid "monthly"
+msgstr "Mensuelle"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:184
+msgid "on"
+msgstr "le"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:189
+msgid "weekly"
+msgstr "Hebdomadaire"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:203
+msgid "daily"
+msgstr "Quotidien"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:209
+msgid "hourly"
+msgstr "Toutes les heures"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:221
+msgid "Full Path to folder for Backup Files:"
+msgstr "Chemin complet vers le répertoire des sauvegardes:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:223
+msgid "Your WordPress dir is:"
+msgstr "Votre répertoire WordPress est:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:224 pages/func_backwpupeditjob.php:415
+msgid "Max. backup files in folder:"
+msgstr "Nombre de fichiers sauvegarde dans le répertoire:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:224 pages/page_backwpupsettings.php:90
+msgid "(Oldest files will deleted first.)"
+msgstr "(Les plus vieux seront effacés en premier.)"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:230
+msgid "Hostname:"
+msgstr "Hostname:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:232 pages/page_backwpupsettings.php:52
+msgid "Port:"
+msgstr "Port:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:234 pages/func_backwpupeditjob.php:325
+#: pages/page_backwpupsettings.php:139
+msgid "Username:"
+msgstr "Nom d'utilisateur:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:236 pages/func_backwpupeditjob.php:378
+#: pages/page_backwpupsettings.php:144
+msgid "Password:"
+msgstr "Mot de passe:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:238
+msgid "Folder on Server:"
+msgstr "Répertoire sur le serveur:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:241
+msgid "Max. backup files in FTP folder:"
+msgstr "Nombre de fichiers sauvegarde maximum dans le répertoire FTP:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:241 pages/func_backwpupeditjob.php:260
+#: pages/func_backwpupeditjob.php:285 pages/func_backwpupeditjob.php:312
+#: pages/func_backwpupeditjob.php:335 pages/func_backwpupeditjob.php:362
+#: pages/func_backwpupeditjob.php:416
+msgid "(Oldest files will be deleted first.)"
+msgstr "(Les plus vieux seront effacés en premier.)"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:242
+msgid "Use SSL-FTP Connection."
+msgstr "Utiliser une xonnexion SSL-FTP"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:243
+msgid "Use FTP Passive mode."
+msgstr "Utiliser une connexion FTP en mode passif."
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:250
+msgid "Access Key ID:"
+msgstr "ID clé d'accès:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:252
+msgid "Secret Access Key:"
+msgstr "Clé d'accès secrète:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:254 pages/func_backwpupeditjob.php:279
+msgid "Bucket:"
+msgstr "Panier:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:257 pages/func_backwpupeditjob.php:282
+msgid "Create bucket:"
+msgstr "Créer un panier:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:257
+msgid "Bucket Region"
+msgstr "Région du panier:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:257
+msgid "US-Standard (Northern Virginia & Washington State)"
+msgstr "US-Standard (Northern Virginia & Washington State)"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:257
+msgid "US-West 1 (Northern California)"
+msgstr "US-West 1 (Northern California)"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:257
+msgid "US-West 2 (Oregon)"
+msgstr "US-West 2 (Oregon)"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:257
+msgid "EU (Ireland)"
+msgstr "EU (Ireland)"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:257
+msgid "Asia Pacific (Singapore)"
+msgstr "Asia Pacific (Singapore)"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:257
+msgid "Asia Pacific (Japan)"
+msgstr "Asia Pacific (Japan)"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:257
+msgid "South America (Sao Paulo)"
+msgstr "South America (Sao Paulo)"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:257
+msgid "United States GovCloud"
+msgstr "United States GovCloud"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:257
+msgid "United States GovCloud FIPS 140-2"
+msgstr "United States GovCloud FIPS 140-2"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:258 pages/func_backwpupeditjob.php:283
+msgid "Folder in bucket:"
+msgstr "Répertoire dans le panier:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:260 pages/func_backwpupeditjob.php:285
+msgid "Max. backup files in bucket folder:"
+msgstr "Nombre maximum de fichiers de sauvegarde dans le répertoire du panier:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:261
+msgid "Save Backups with reduced redundancy!"
+msgstr "Sauvegarder en réduisant la redondance!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:264 pages/func_backwpupeditjob.php:288
+#: pages/func_backwpupeditjob.php:315 pages/func_backwpupeditjob.php:338
+#: pages/func_backwpupeditjob.php:365 pages/func_backwpupeditjob.php:420
+msgid "Create Account"
+msgstr "Créer un compte"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:265 pages/func_backwpupeditjob.php:289
+msgid "Find Keys"
+msgstr "Trouver vos clés"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:266 pages/func_backwpupeditjob.php:290
+#: pages/func_backwpupeditjob.php:340 pages/func_backwpupeditjob.php:366
+#: pages/func_backwpupeditjob.php:421
+msgid "Webinterface"
+msgstr "Interface Web"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:275 pages/func_backwpupeditjob.php:304
+msgid "Access Key:"
+msgstr "Clé d'accès:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:277
+msgid "Secret:"
+msgstr "Scret:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:300
+msgid "Host:"
+msgstr "Hôte:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:301
+msgid "Normely: blob.core.windows.net"
+msgstr "Normalement: blob.core.windows.net"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:302
+msgid "Account Name:"
+msgstr "Nom du compte:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:306 pages/func_backwpupeditjob.php:329
+msgid "Container:"
+msgstr "Récipient:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:309 pages/func_backwpupeditjob.php:332
+msgid "Create Container:"
+msgstr "Créer récipient:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:310
+msgid "Folder in Container:"
+msgstr "Répertoire dans le récipient:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:312 pages/func_backwpupeditjob.php:335
+msgid "Max. backup files in container folder:"
+msgstr "Nombre max de fichiers sauvegarde dans le répertoire récipient:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:316 pages/func_backwpupeditjob.php:339
+msgid "Find Key"
+msgstr "Trouver vos clés"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:327
+msgid "API Key:"
+msgstr "Clé API:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:333
+msgid "Folder in container:"
+msgstr "Répertoire dans le récipient:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:349 pages/func_backwpupeditjob.php:385
+msgid "Login:"
+msgstr "Login:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:351
+msgid "Not authenticated!"
+msgstr "Non authentifié!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:351
+msgid "Authenticate!"
+msgstr "Enregistrez-vous!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:353 pages/func_backwpupeditjob.php:386
+msgid "Authenticated!"
+msgstr "Enregistré!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:353
+msgid "Delete!"
+msgstr "Effacer!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:355 pages/func_backwpupeditjob.php:389
+msgid "Root:"
+msgstr "Racine:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:357
+msgid "dropbox"
+msgstr "DropBox"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:358
+msgid "sandbox (disabled by DropBox)"
+msgstr "Bac à sable (désactivé par DropBox)"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:360 pages/func_backwpupeditjob.php:413
+msgid "Folder:"
+msgstr "Répertoire"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:362
+msgid "Max. backup files in Dropbox folder:"
+msgstr "Nombre max. de fichiers dans le répertoire DropBox:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:376 pages/func_backwpupeditjob.php:429
+msgid "E-mail address:"
+msgstr "Adress E-mail:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:381 pages/header_backwpupeditjob.php:225
+msgid "Sugarsync authenticate!"
+msgstr "Authentification SugarSync !"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:382 pages/header_backwpupeditjob.php:243
+msgid "Create Sugarsync Account"
+msgstr "Créer un compte SygarSync"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:387 pages/header_backwpupeditjob.php:239
+msgid "Delete Sugarsync authentication!"
+msgstr "Suppression de l'authentification SugarSync!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:398 pages/func_backwpupeditjob.php:823
+msgid "No Syncfolders found!"
+msgstr "Aucun répertoire de synchronisation trouvé!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:432
+msgid "Max. File Size for sending Backups with mail:"
+msgstr "Taille max. des sauvegardes à envoyer par mail:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:490
+msgid ""
+"Working as <a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank"
+"\">Cron</a> job schedule:"
+msgstr ""
+"Lancé en tant qu'opération programmée <a href=\"http://wikipedia.org/wiki/"
+"Cron\" target=\"_blank\">Cron</a>"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:496
+#, php-format
+msgid "ATTENTION: Job runs every %d mins.!!!"
+msgstr "ATTENTION: Opération exécutée toutes les %d mins.!!!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:502
+#, php-format
+msgid "ATTENTION: Job runs every %d hours.!!!"
+msgstr "ATTENTION: Opération exécutée toutes les %d heures!!!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:506
+msgid "ATTENTION: Can't calculate cron!!!"
+msgstr "ATTENTION: Impossible de calculer cron!!!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:508
+msgid "Next runtime:"
+msgstr "Prochaine exécution:"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:534 pages/func_backwpupeditjob.php:599
+msgid "Missing access key!"
+msgstr "Clé d'accès manquante!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:541 pages/func_backwpupeditjob.php:606
+msgid "Missing secret access key!"
+msgstr "Clé secrète manquante!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:565 pages/func_backwpupeditjob.php:632
+msgid "No bucket found!"
+msgstr "Aucun panier trouvé!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:667 pages/func_backwpupeditjob.php:796
+msgid "Missing Username!"
+msgstr "Nom d'utilisateur manquant!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:674
+msgid "Missing API Key!"
+msgstr "Clé API manquante!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:695
+msgid "No Containerss found!"
+msgstr "Aucun récipient trouvé!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:730
+msgid "Missing Hostname!"
+msgstr "Nom d'hôte manquant!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:737
+msgid "Missing Account Name!"
+msgstr "Nom du compte non fourni!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:744
+msgid "Missing Access Key!"
+msgstr "Clé d'accès manquante!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:761
+msgid "No Container found!"
+msgstr "Aucun récipient trouvé!"
+
+# @ backwpup
+#: pages/func_backwpupeditjob.php:803
+msgid "Missing Password!"
+msgstr "Mot de passe non fourni!"
+
+# @ backwpup
+#: pages/func_backwpuplogs.php:71
+msgid "No Logs."
+msgstr "Aucun fichier journal!"
+
+# @ backwpup
+#: pages/func_backwpuplogs.php:83
+msgid "Job"
+msgstr "Opération"
+
+# @ backwpup
+#: pages/func_backwpuplogs.php:85
+msgid "Backup/Log Date/Time"
+msgstr "Sauvegarde/Date des journaux/heure"
+
+# @ backwpup
+#: pages/func_backwpuplogs.php:86
+msgid "Status"
+msgstr "Statut"
+
+# @ backwpup
+#: pages/func_backwpuplogs.php:88
+msgid "Runtime"
+msgstr "Temps d'exécution"
+
+# @ backwpup
+#: pages/func_backwpuplogs.php:127
+msgid "View log"
+msgstr "Voir fichier journal"
+
+# @ backwpup
+#: pages/func_backwpuplogs.php:129
+msgid "View"
+msgstr "Voir"
+
+# @ backwpup
+#: pages/func_backwpuplogs.php:150
+msgid "only Log"
+msgstr "fichier journal uniquement"
+
+# @ backwpup
+#: pages/header_backwpup.php:44
+msgid "Copy of"
+msgstr "Copie de"
+
+# @ backwpup
+#: pages/header_backwpup.php:100
+msgid "Aborted by user!!!"
+msgstr "Arrêté par l'utilisateur!!!"
+
+# @ backwpup
+#: pages/header_backwpup.php:115
+msgid "Job will be terminated."
+msgstr "L'opération va être interrompue."
+
+# @ backwpup
+#: pages/header_backwpup.php:118
+msgid "Process killed with PID:"
+msgstr "Processus tué PID:"
+
+# @ backwpup
+#: pages/header_backwpup.php:120
+msgid "Can't kill process with PID:"
+msgstr "Impossible de tuer le processus PID:"
+
+# @ backwpup
+#: pages/header_backwpup.php:136
+msgid ""
+"Here is the job overview with some information. You can see some further "
+"information of the jobs, how many can be switched with the view button. Also "
+"you can manage the jobs or abbort working jobs. Some links are added to have "
+"direct access to the last log or download."
+msgstr ""
+"Voici la vue d'ensemble des opérations accompagnée de quelques informations. "
+"Vous pouvez en apprendre plus dur une opération grâce au bouton voir. Vous "
+"pouvez également gérer les opérations ou les arrêter. Un accès direct aux "
+"fichier journaux ainsi qu'aux téléchargements des sauvegardes est disponible."
+
+# @ backwpup
+#: pages/header_backwpupbackups.php:325
+msgid ""
+"Here you see a list of backup files. Change the destionation to jobname:"
+"destination to become a list of backups from other destinations and jobs. "
+"Then you kann delete or download backup files."
+msgstr ""
+"Voici la liste des fichiers sauvegarde. Modifiez la destination en nom "
+"d'opération: la destination devient une liste de sauvegardes d'autres "
+"opérations. Alors vous pourrez effacer ou télécharger les fichiers "
+"sauvegarde."
+
+# @ backwpup
+#: pages/header_backwpupeditjob.php:22
+msgid "Dropbox authentication complete!"
+msgstr "Authentification DropBox réussie!"
+
+# @ backwpup
+#: pages/header_backwpupeditjob.php:24
+msgid "Wrong Token for Dropbox authentication received!"
+msgstr "Le jeton d'enregistrement reçu invalide!"
+
+# @ backwpup
+#: pages/header_backwpupeditjob.php:27
+msgid "No Dropbox authentication received!"
+msgstr "Aucune authentification DropBox reçue!"
+
+# @ backwpup
+#: pages/header_backwpupeditjob.php:222
+msgid "Dropbox authentication deleted!"
+msgstr "Autorisation DropBox effacée!"
+
+# @ backwpup
+#: pages/header_backwpupeditjob.php:233
+msgid "SugarSync authentication complete!"
+msgstr "Authentification SugarSync réussie!"
+
+# @ backwpup
+#: pages/header_backwpupeditjob.php:241
+msgid "SugarSync authentication deleted!"
+msgstr "Autorisation SugarSync effacée!"
+
+#: pages/header_backwpupeditjob.php:249
+msgid "SugarSync account created!"
+msgstr "Le compte SugarSync a été créé!"
+
+# @ backwpup
+#: pages/header_backwpupeditjob.php:286
+msgid "Job '%1' changes saved."
+msgstr "Modifications enregistrées pour l'opération '%1'."
+
+# @ backwpup
+#: pages/header_backwpupeditjob.php:286
+msgid "Jobs overview."
+msgstr "Vue générale des opérations."
+
+# @ backwpup
+#: pages/header_backwpuplogs.php:59
+msgid ""
+"Here you can manage the log files of the jobs. You can download, view, or "
+"delete them."
+msgstr ""
+"Ici vous pouvez gérer les fichiers journaux des opérations. Vous pouvez, les "
+"voir, les télécharger ou les effacer."
+
+# @ backwpup
+#: pages/header_backwpupsettings.php:44
+msgid "Settings saved"
+msgstr "Paramètres sauvegardés"
+
+# @ backwpup
+#: pages/header_backwpupworking.php:11
+msgid "A job alredy running!!! Pleace try again if its done."
+msgstr ""
+"Une opération est en cours!!! Veuillez réessayer une fois celle-ci terminée."
+
+# @ backwpup
+#: pages/header_backwpupworking.php:23
+msgid "A job is running!!!"
+msgstr "Une opération est en cours!!!"
+
+# @ backwpup
+#: pages/header_backwpupworking.php:27
+msgid "Nothing..."
+msgstr "Rien..."
+
+# @ backwpup
+#: pages/header_backwpupworking.php:32
+msgid "Here you see working jobs or logfiles"
+msgstr "Ici vous pouvez voir les opérations en cours ou les fichiers journaux"
+
+# @ backwpup
+#: pages/page_backwpup.php:8
+msgid "BackWPup Jobs"
+msgstr "Opérations BackWPup"
+
+# @ backwpup
+#: pages/page_backwpupbackups.php:8
+msgid "BackWPup Manage Backups"
+msgstr "Gérer les sauvegardes BackWPup"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:10
+msgid "Job Type"
+msgstr "Type d'opération"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:11
+msgid "Job Schedule"
+msgstr "Programmation opération"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:13
+msgid "Backup File"
+msgstr "Fichier sauvegarde"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:14
+msgid "Send log"
+msgstr "Envoyer le fichier journal"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:15
+msgid "Backup to Folder"
+msgstr "Sauvegarder dans le répertoire"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:16
+msgid "Backup to E-Mail"
+msgstr "Sauvegarder vers E-mail"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:18
+msgid "Backup to FTP Server"
+msgstr "Sauvegarder vers serveur FTP"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:20
+msgid "Backup to Dropbox"
+msgstr "Sauvegarder vers DropBox"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:22
+msgid "Backup to SugarSync"
+msgstr "Sauvegarder vers SugarSync"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:24
+msgid "Backup to Amazon S3"
+msgstr "Sauvegarder vers Amazon S3"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:26
+msgid "Backup to Google storage"
+msgstr "Sauvegarder vers Google STorage"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:28
+msgid "Backup to Micosoft Azure (Blob)"
+msgstr "Sauvegarder vers Microsoft Azure (blob)"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:30
+msgid "Backup to Rackspace Cloud"
+msgstr "Sauvegarder vers RackSpace Cloud"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:46
+msgid "BackWPup Job Settings"
+msgstr "Paramètres des opérations BackWPup"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:66 pages/page_backwpupeditjob.php:92
+msgid "Enter Job name here"
+msgstr "Entrez le nom de l'opération ici"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:98
+msgid "Database Jobs"
+msgstr "Opérations base de données"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:101
+msgid "Database tables to use:"
+msgstr "Tables de la base de données concernées:"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:111
+msgid "Use short INSERTs instead of full (with keys)"
+msgstr "Utilisez des petits INSERTs au lieux des complets (avec clés)"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:112
+msgid "Set Blog Maintenance Mode on Database Operations"
+msgstr ""
+"Mettre le site en mode maintenance pendant les opérations sur la base "
+"données."
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:119
+msgid "Blog Folders to Backup:"
+msgstr "Répertoires du site à enregistrer:"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:122
+msgid "root"
+msgstr "Racine"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:125 pages/page_backwpupeditjob.php:141
+#: pages/page_backwpupeditjob.php:157 pages/page_backwpupeditjob.php:173
+#: pages/page_backwpupeditjob.php:189
+msgid "Exclude:"
+msgstr "Exclure:"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:138
+msgid "Content"
+msgstr "Contenu"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:154
+msgid "Plugins"
+msgstr "Extensions"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:170
+msgid "Themes"
+msgstr "Thèmes"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:186
+msgid "Blog Uploads"
+msgstr "Fichiers envoyés sur le site"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:203
+msgid "Include Folders to Backup:"
+msgstr "Répertoires à sauvegarder:"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:204 pages/page_backwpupeditjob.php:208
+msgid "Example:"
+msgstr "Exemple:"
+
+# @ backwpup
+#: pages/page_backwpupeditjob.php:207
+msgid "Exclude Files/Folders from Backup:"
+msgstr "Exclure des fichiers/répertoires de la sauvegarde:"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:10
+msgid "BackWPup Settings"
+msgstr "Paramètres BackWPup"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:17
+msgid "Send Mail"
+msgstr "Envoyer le mail"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:18
+msgid ""
+"Here you can set the options for email sending. The settings will be used in "
+"jobs for sending backups via email or for sending log files."
+msgstr ""
+"Ici vous pouvez régler les options pour l'envoi d'e-mails. Ces paramètres "
+"seront utilisés pour envoyer les fichiers journaux ou les sauvegardes via E-"
+"mail."
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:21
+msgid "Sender email"
+msgstr "E-mail de l'envoyeur"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:26
+msgid "Sender name"
+msgstr "Nom de l'envoyeur"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:30
+msgid "Send mail method"
+msgstr "Méthode d'envoi mail"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:34
+msgid "PHP: mail()"
+msgstr "PHP:mail()"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:35
+msgid "Sendmail"
+msgstr "Sendmail"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:36
+msgid "SMTP"
+msgstr "SMTP"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:42
+msgid "Sendmail path"
+msgstr "Chemin de Senmail"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:49
+msgid "SMTP hostname"
+msgstr "Nom d'hôte SMTP"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:56
+msgid "SMTP secure connection"
+msgstr "Connexion sécurisée SMTP"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:66
+msgid "SMTP username"
+msgstr "Nom d'utilisateur SMTP"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:72
+msgid "SMTP password"
+msgstr "Mot de passe SMTP"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:80
+msgid "Here you can set Logfile related options."
+msgstr "Ici vous pouvez régler les options des fichiers journaux."
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:83
+msgid "Log file Folder"
+msgstr "Répertoire des fichiers journaux"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:88
+msgid "Max. Log Files in Folder"
+msgstr "Nombre max. de fichiers journaux dans le répertoire"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:94 pages/page_backwpupsettings.php:95
+msgid "Compression"
+msgstr "Compression"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:97
+msgid "Gzip Log files!"
+msgstr "Gzipper les fichiers journaux!"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:102
+msgid "Here you can set Job related options."
+msgstr "Ici vous pouvez régler les options de opérations"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:105
+msgid "Max. retrys for job steps"
+msgstr "Nombre d'essais max pas étape d'opération"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:110
+msgid "Max. retrys for job script retries"
+msgstr "Nombre max de tentatives d'une opération"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:115
+msgid "PHP zip class"
+msgstr "Classe PHP zip"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:116
+msgid "PHP zip"
+msgstr "PHP zip"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:118
+msgid "Use PHP zip class if available! Normaly PCL Zip class will used."
+msgstr "Utiliser PHP zip si disponible! Sinon la classe PCL Zip sera utilisée."
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:123
+msgid "WP Admin Bar"
+msgstr "Barre d'administration WP"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:124
+msgid "Will you see BackWPup in the WordPress Admin Bar?"
+msgstr "Voir BackWPup dans la barre d'administration WordPress?"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:127 pages/page_backwpupsettings.php:128
+msgid "Admin Bar"
+msgstr "Barre d'administration"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:130
+msgid "Show BackWPup Links in Admin Bar."
+msgstr "Voir les liens BackWPup dans la barre d'administration."
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:135
+msgid "Http basic authentication"
+msgstr "Authentification http basique"
+
+# @ backwpup
+#: pages/page_backwpupsettings.php:136
+msgid ""
+"Is your blog behind a http basic authentication (.htaccess)? Then you must "
+"set the username and password four authentication."
+msgstr ""
+"Votre site se trouve-t'il derrière une authentification http basique (."
+"htaccess)? Si oui entrez le nom d'utilisateur et le mot de passe pour celle-"
+"ci."
+
+# @ backwpup
+#: pages/page_backwpuptools.php:8
+msgid "BackWPup Tools"
+msgstr "Outils BackWPup"
+
+# @ backwpup
+#: pages/page_backwpuptools.php:15
+msgid "Database restore"
+msgstr "Restauration base de données"
+
+# @ backwpup
+#: pages/page_backwpuptools.php:18
+msgid "DB Restore"
+msgstr "Restaurer la B.D."
+
+# @ backwpup
+#: pages/page_backwpuptools.php:21 pages/page_backwpuptools.php:40
+msgid "Restore"
+msgstr "Restauration"
+
+# @ backwpup
+#: pages/page_backwpuptools.php:37
+msgid "SQL File to restore:"
+msgstr "Fichier SQL à restaurer"
+
+# @ backwpup
+#: pages/page_backwpuptools.php:43
+msgid "Copy SQL file to blog root folder to use for a restoring."
+msgstr ""
+"Copier le fichier SQL à la racine du site afin de l'utiliser pour une "
+"restauration."
+
+# @ backwpup
+#: pages/page_backwpuptools.php:51
+msgid "Import Jobs settings"
+msgstr "Importer les paramètres des opérations"
+
+# @ backwpup
+#: pages/page_backwpuptools.php:54
+msgid "Select file to import:"
+msgstr "Sélectionnez les fichiers à importer:"
+
+# @ backwpup
+#: pages/page_backwpuptools.php:56 pages/page_backwpuptools.php:61
+msgid "Upload"
+msgstr "Envois"
+
+# @ backwpup
+#: pages/page_backwpuptools.php:62
+msgid "Select jobs to import"
+msgstr "Sélectionner le opérations à importer"
+
+# @ backwpup
+#: pages/page_backwpuptools.php:66
+msgid "Import Type"
+msgstr "Type d'importation"
+
+# @ backwpup
+#: pages/page_backwpuptools.php:66
+msgid "No Import"
+msgstr "Pas d'importation"
+
+# @ backwpup
+#: pages/page_backwpuptools.php:68
+msgid "Overwrite"
+msgstr "Écraser"
+
+# @ backwpup
+#: pages/page_backwpuptools.php:68
+msgid "Append"
+msgstr "Ajouter"
+
+# @ backwpup
+#: pages/page_backwpuptools.php:70 pages/page_backwpuptools.php:75
+#: pages/page_backwpuptools.php:77 pages/page_backwpuptools.php:78
+msgid "Import"
+msgstr "Importer"
+
+# @ backwpup
+#: pages/page_backwpuptools.php:114
+msgid "Jobs imported!"
+msgstr "Opérations importées!"
+
+# @ backwpup
+#: pages/page_backwpupworking.php:9
+msgid "BackWPup Working"
+msgstr "BackWPup en cours"
+
+# @ backwpup
+#: pages/page_backwpupworking.php:33
+msgid "Warnings:"
+msgstr "Avertissements:"
+
+# @ backwpup
+#: pages/page_backwpupworking.php:37
+msgid "Errors:"
+msgstr "Erreurs:"
+
+# @ backwpup
+#: pages/tools/db_restore.php:34 pages/tools/db_restore.php:53
+#: pages/tools/db_restore.php:68 pages/tools/db_restore.php:79
+#: pages/tools/db_restore.php:82 pages/tools/db_restore.php:85
+#: pages/tools/db_restore.php:90
+msgid "ERROR:"
+msgstr "ERREUR:"
+
+# @ backwpup
+#: pages/tools/db_restore.php:34
+#, php-format
+msgid "Pleace set <i>$table_prefix  = '%1$s';</i> in wp-config.php"
+msgstr "Veuillez définir <i>$table_prefix  = '%1$s';</i> dans wp-config.php"
+
+# @ backwpup
+#: pages/tools/db_restore.php:53
+#, php-format
+msgid "Pleace set <i>define('DB_CHARSET', '%1$s');</i> in wp-config.php"
+msgstr ""
+"Veuillez définir <i>define('DB_CHARSET', '%1$s');</i> dans wp-config.php"
+
+# @ backwpup
+#: pages/tools/db_restore.php:68 pages/tools/db_restore.php:79
+#: pages/tools/db_restore.php:82 pages/tools/db_restore.php:85
+#: pages/tools/db_restore.php:90
+#, php-format
+msgid "BackWPup database error %1$s for query %2$s"
+msgstr "Erreur de base de données BackWPup %1$s pour la requête %2$s"
+
+# @ backwpup
+#: pages/tools/db_restore.php:74
+#, php-format
+msgid "%1$s Database Querys done."
+msgstr "%1$s requêtes SQL réalisées."
+
+# @ backwpup
+#: pages/tools/db_restore.php:75
+msgid "Make changes for Blogurl and ABSPATH if needed."
+msgstr "Changez  Blogurl et ABSPATH si nécessaire."
+
+# @ backwpup
+#: pages/tools/db_restore.php:92
+msgid "Restore Done. Please delete the SQL file after restoring."
+msgstr ""
+"Restauration terminée. Veuillez effacer le fichier SQL après la restauration."

@@ -1,0 +1,31 @@
+<map map_file="maps/new_zealand.swf" tl_long="165.882843" tl_lat="-34.1394966" br_long="184.161346" br_lat="-52.599593" zoom="135%" zoom_x="14.04%" zoom_y="1.71%">
+  <areas>
+    <area mc_name="NZ_NTL" title="Northland"></area>
+    <area mc_name="NZ_AUK" title="Auckland"></area>
+    <area mc_name="NZ_WKO" title="Waikato"></area>
+    <area mc_name="NZ_BOP" title="Bay of Plenty"></area>
+    <area mc_name="NZ_GIS" title="East Cape"></area>
+    <area mc_name="NZ_HKB" title="Hawke's Bay"></area>
+    <area mc_name="NZ_TKI" title="Taranaki"></area>
+    <area mc_name="NZ_MWT" title="Manawatu-Wanganui"></area>
+    <area mc_name="NZ_WGN" title="Wellington"></area>
+    <area mc_name="NZ_TAS" title="Tasman"></area>
+    <area mc_name="NZ_NSN" title="Nelson"></area>
+    <area mc_name="NZ_MBH" title="Marlborough"></area>
+    <area mc_name="NZ_WTC" title="West Coast"></area>
+    <area mc_name="NZ_CAN" title="Canterbury"></area>
+    <area mc_name="NZ_OTA" title="Otago"></area>
+    <area mc_name="NZ_STL" title="Southland"></area>
+    <area mc_name="NZ_CI" title="Chatham Islands"></area>
+  </areas>
+
+  <movies>
+    <movie long="174.773529" lat="-41.279209" title="Wellington. Click to zoom" file="target" color="#CC0000" width="15" height="15" zoom="719.9999%" zoom_x="-248.43%" zoom_y="-198.93%" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="20%" y="30%" text_size="18" color="#FFFFFF" remain="false">
+      <text>Regions of New Zealand</text>
+    </label>
+  </labels>
+</map>

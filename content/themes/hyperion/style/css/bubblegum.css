@@ -1,0 +1,76 @@
+body { background: #ff3399 url('../../style/images/modern-bubblegum.jpg') top center no-repeat; }
+
+#headerwrap {
+	background: url('../../style/images/menu-bg-modern.png') top left repeat-x;
+}
+
+#carousel-wrapper {
+	background: url('../../style/images/carousel-bg-bubblegum.png') no-repeat top center;
+}
+
+.hp-menu li {
+	background:	none;
+	border-left: 1px solid #ff3399;
+}
+
+.sf-sub-indicator {
+	background:		url('../../style/images/arrows-bubblegum.png') no-repeat -10px -100px;
+}
+
+.thumb {
+	background: url('../../style/images/carousel-nav-bubblegum.png') no-repeat;
+}
+
+a.thumb {
+	background: url('../../style/images/carousel-nav-bubblegum.png') no-repeat;
+}
+
+#intouch {
+	background: url('../../style/images/intouch-bg-bubblegum.png') bottom right no-repeat;
+	color: #ffffff;
+}
+
+#page-entry-top { color:#ffffff; }
+
+#entry-top { color:#ffffff; }
+
+#entry-top .post-meta p a {
+	color:#000;
+}
+
+#author-info-archive {
+	color: #fff;
+}
+
+#author-info-archive a {
+	color: #000;
+}
+
+#author-info-archive a:hover {
+	color: #fff;
+}
+
+#entry-top .post-meta p a:hover {
+	color:#fff;
+}
+
+#footer-wrap {
+	color: #ffffff;
+	background: url('../../style/images/modern-bubblegum.jpg') top center no-repeat;
+}
+
+#footer h3 {
+	color: #ffffff;
+	border-bottom: 1px solid #b20059;
+}
+
+#footer .footer-widget ul li a {
+	color: #000;
+	border-bottom: 1px solid #b20059;
+}
+
+
+#footer .footer-widget ul li a:hover {
+	color: #fff;
+	background: #b20059;
+}

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/world3.swf" tl_long="-168.49" tl_lat="83.63" br_long="190.3" br_lat="-55.58" zoom_x="0%" zoom_y="0%" zoom="100%">
+  <areas>
+      <area title="borders" mc_name="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+  
+  <movies>
+    <movie file="target" title="Andorra la Vella" lat="42.5075" long="1.5218" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Vienna" lat="48.2092" long="16.3728" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Minsk" lat="53.9678" long="27.5766" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Brussels" lat="50.8371" long="4.3676" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Sarajevo" lat="43.8608" long="18.4214" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Sofia" lat="42.7105" long="23.3238" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Zagreb" lat="45.8150" long="15.9785" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Pristina" lat="42.666667" long="21.166667" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Prague" lat="50.0878" long="14.4205" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Copenhagen" lat="55.6763" long="12.5681" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Tallinn" lat="59.4389" long="24.7545" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Helsinki" lat="60.1699" long="24.9384" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Paris" lat="48.8567" long="2.3510" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Berlin" lat="52.5235" long="13.4115" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Athens" lat="37.9792" long="23.7166" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Budapest" lat="47.4984" long="19.0408" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Reykjavik" lat="64.1353" long="-21.8952" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Dublin" lat="53.3441" long="-6.2675" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Rome" lat="41.8955" long="12.4823" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Riga" lat="56.9465" long="24.1049" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Vaduz" lat="47.1411" long="9.5215" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Vilnius" lat="54.6896" long="25.2799" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Luxembourg" lat="49.6100" long="6.1296" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Skopje" lat="42.0024" long="21.4361" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Valletta" lat="35.9042" long="14.5189" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Chisinau" lat="47.0167" long="28.8497" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Monaco" lat="43.7325" long="7.4189" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Podgorica" lat="42.4602" long="19.2595" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Amsterdam" lat="52.3738" long="4.8910" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Oslo" lat="59.9138" long="10.7387" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Warsaw" lat="52.2297" long="21.0122" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Lisbon" lat="38.7072" long="-9.1355" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Bucharest" lat="44.4479" long="26.0979" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Moscow" lat="55.7558" long="37.6176" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="San Marino" lat="43.9424" long="12.4578" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Belgrade" lat="44.8048" long="20.4781" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Bratislava" lat="48.2116" long="17.1547" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Ljubljana" lat="46.0514" long="14.5060" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Madrid" lat="40.4167" long="-3.7033" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Stockholm" lat="59.3328" long="18.0645" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Bern" lat="46.9480" long="7.4481" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Kiev" lat="50.4422" long="30.5367" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="London" lat="51.5002" long="-0.1262" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Torshavn (on Streymoy)" lat="62.0177" long="-6.7719" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Gibraltar" lat="36.1377" long="-5.3453" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Saint Peter Port" lat="49.4660" long="-2.5522" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Douglas" lat="54.1670" long="-4.4821" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Saint Helier" lat="49.1919" long="-2.1071" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Longyearbyen" lat="78.2186" long="15.6488" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Kabul" lat="34.5155" long="69.1952" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Yerevan" lat="40.1596" long="44.5090" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Baku" lat="40.3834" long="49.8932" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Manama" lat="26.1921" long="50.5354" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Dhaka" lat="23.7106" long="90.3978" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Thimphu" lat="27.4405" long="89.6730" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Bandar Seri Begawan" lat="4.9431" long="114.9425" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Phnom Penh" lat="11.5434" long="104.8984" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Peking" lat="39.9056" long="116.3958" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Nicosia" lat="35.1676" long="33.3736" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="T'bilisi / Tiflis" lat="41.7010" long="44.7930" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="New Delhi" lat="28.6353" long="77.2250" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Jakarta (on Java)" lat="-6.1862" long="106.8063" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Tehran / Teheran" lat="35.7061" long="51.4358" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Baghdad" lat="33.3157" long="44.3922" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Yerushalayim / Jerusalem" lat="31.7857" long="35.2007" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Tokyo" lat="35.6785" long="139.6823" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Amman" lat="31.9394" long="35.9349" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Astana" lat="51.1796" long="71.4475" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Al Kuwayt / Kuwait" lat="29.3721" long="47.9824" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Bishkek" lat="42.8679" long="74.5984" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Viangchan / Vientiane" lat="17.9689" long="102.6137" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Beyrouth / Beirut" lat="33.8872" long="35.5134" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Kuala Lumpur" lat="3.1502" long="101.7077" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Maale / Male (on Male)" lat="4.1742" long="73.5109" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Ulaanbaatar / Ulan Bator" lat="47.9138" long="106.9220" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Pyinmana" lat="19.7378" long="96.2083" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Kathmandu" lat="27.7058" long="85.3157" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="P'yongyang" lat="39.0187" long="125.7468" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Masqat / Muscat" lat="23.6086" long="58.5922" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Islamabad" lat="33.6751" long="73.0946" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Manila" lat="14.5790" long="120.9726" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Ad Dawhah / Doha" lat="25.2948" long="51.5082" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Ar Riyad / Riyadh" lat="24.6748" long="46.6977" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Singapore" lat="1.2894" long="103.8500" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Seoul" lat="37.5139" long="126.9828" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Colombo" lat="6.9155" long="79.8572" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Dimashq / Damascus" lat="33.5158" long="36.2939" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="T'ai-pei / Taipei" lat="25.0338" long="121.5645" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Dushanbe" lat="38.5737" long="68.7738" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Krung Thep / Bangkok" lat="13.7573" long="100.5020" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Dili" lat="-8.5662" long="125.5880" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Ankara" lat="39.9439" long="32.8560" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Asgabat / Ashgabat" lat="37.9509" long="58.3794" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Abu Zaby / Abu Dhabi" lat="24.4764" long="54.3705" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Toshkent / Tashkent" lat="41.3193" long="69.2481" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Ha Noi / Hanoi" lat="21.0341" long="105.8372" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="San'a' / Sanaa" lat="15.3556" long="44.2081" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Saint John's (on Antigua)" lat="17.1175" long="-61.8456" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Buenos Aires" lat="-34.6118" long="-58.4173" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Nassau (on New Providence)" lat="25.0661" long="-77.3390" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Bridgetown" lat="13.0935" long="-59.6105" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Belmopan" lat="17.2534" long="-88.7713" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Sucre" lat="-19.0421" long="-65.2559" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Brasilia" lat="-15.7801" long="-47.9292" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Ottawa" lat="45.4235" long="-75.6979" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Santiago" lat="-33.4691" long="-70.6420" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Bogota" lat="4.6473" long="-74.0962" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="San Jose" lat="9.9402" long="-84.1002" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="La Habana / Havana" lat="23.1333" long="-82.3667" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Roseau" lat="15.2976" long="-61.3900" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Santo Domingo" lat="18.4790" long="-69.8908" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Quito" lat="-0.2295" long="-78.5243" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="San Salvador" lat="13.7034" long="-89.2073" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Saint George's" lat="12.0540" long="-61.7486" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Guatemala" lat="14.6248" long="-90.5328" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Georgetown" lat="6.8046" long="-58.1548" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Port-au-Prince" lat="18.5392" long="-72.3288" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Tegucigalpa" lat="14.0821" long="-87.2063" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Kingston" lat="17.9927" long="-76.7920" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Ciudad de Mexico" lat="19.4271" long="-99.1276" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Managua" lat="12.1475" long="-86.2734" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Panama" lat="8.9943" long="-79.5188" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Asuncion" lat="-25.3005" long="-57.6362" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Lima" lat="-12.0931" long="-77.0465" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Basseterre (on St. Kitts)" lat="17.2968" long="-62.7138" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Castries" lat="13.9972" long="-60.0018" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Kingstown (on St. Vincent)" lat="13.2035" long="-61.2653" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Paramaribo" lat="5.8232" long="-55.1679" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Port of Spain (on Trinidad)" lat="10.6596" long="-61.4789" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Washington" lat="38.8921" long="-77.0241" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Montevideo" lat="-34.8941" long="-56.0675" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Caracas" lat="10.4961" long="-66.8983" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="The Valley" lat="18.2249" long="-63.0669" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Oranjestad" lat="12.5246" long="-70.0265" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Hamilton (on Main Island)" lat="32.2930" long="-64.7820" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Road Town (on Tortola)" lat="18.4328" long="-64.6235" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="George Town (on Grand Cayman)" lat="19.3022" long="-81.3857" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Stanley (on East Falkland)" lat="-51.7010" long="-57.8492" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Cayenne" lat="4.9346" long="-52.3303" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Nuuk" lat="64.1836" long="-51.7214" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Basse-Terre" lat="15.9985" long="-61.7220" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Fort-de-France" lat="14.5997" long="-61.0760" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Plymouth" lat="16.6802" long="-62.2014" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Willemstad (on Curacao)" lat="12.1034" long="-68.9335" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="San Juan" lat="18.4500" long="-66.0667" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Saint-Pierre (on St. Pierre)" lat="46.7878" long="-56.1968" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Cockburn Town (on Grand Turk)" lat="21.4608" long="-71.1363" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Charlotte Amalie (on St. Thomas)" lat="18.3405" long="-64.9326" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Alger /Algiers" lat="36.7755" long="3.0597" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Luanda" lat="-8.8159" long="13.2306" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Porto-Novo" lat="6.4779" long="2.6323" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Gaborone" lat="-24.6570" long="25.9089" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Ouagadougou" lat="12.3569" long="-1.5352" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Bujumbura" lat="-3.3818" long="29.3622" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Yaounde" lat="3.8612" long="11.5217" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Praia (on Sao Tiago)" lat="14.9195" long="-23.5153" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Bangui" lat="4.3621" long="18.5873" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="N'djamena" lat="12.1121" long="15.0355" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Moroni (on Njazidja)" lat="-11.7004" long="43.2412" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Brazzaville" lat="-4.2767" long="15.2662" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Kinshasa" lat="-4.3369" long="15.3271" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Yamoussoukro" lat="6.8067" long="-5.2728" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Djibouti" lat="11.5806" long="43.1425" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Al Qahirah / Cairo" lat="30.0571" long="31.2272" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Malabo (on Bioko)" lat="3.7523" long="8.7741" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Asmara" lat="15.3315" long="38.9183" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Addis Ababa / Addis Abeba" lat="9.0084" long="38.7575" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Libreville" lat="0.3858" long="9.4496" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Banjul" lat="13.4399" long="-16.6775" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Accra" lat="5.5401" long="-0.2074" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Conakry" lat="9.5370" long="-13.6785" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Bissau" lat="11.8598" long="-15.5875" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Nairobi" lat="-1.2762" long="36.7965" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Maseru" lat="-29.2976" long="27.4854" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Monrovia" lat="6.3106" long="-10.8047" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Tarabulus / Tripoli" lat="32.8830" long="13.1897" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Antananarivo" lat="-18.9201" long="47.5237" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Lilongwe" lat="-13.9899" long="33.7703" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Bamako" lat="12.6530" long="-7.9864" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Nouakchott" lat="18.0669" long="-15.9900" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Port Louis" lat="-20.1654" long="57.4896" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Rabat" lat="33.9905" long="-6.8704" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Maputo" lat="-25.9686" long="32.5804" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Windhoek" lat="-22.5749" long="17.0805" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Niamey" lat="13.5164" long="2.1157" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Abuja" lat="9.0580" long="7.4891" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Kigali" lat="-1.9441" long="30.0619" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Sao Tome (on Sao Tome)" lat="0.3360" long="6.7311" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Dakar" lat="14.6953" long="-17.4439" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Victoria (on Mahe)" lat="-4.6167" long="55.4500" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Freetown" lat="8.4697" long="-13.2659" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Muqdisho / Mogadishu" lat="2.0411" long="45.3426" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Pretoria" lat="-25.7463" long="28.1876" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Al Khartum / Khartoum" lat="15.6331" long="32.5330" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Mbabane" lat="-26.3186" long="31.1410" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Dodoma" lat="-6.1670" long="35.7497" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Lome" lat="6.1228" long="1.2255" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Tunis" lat="36.8117" long="10.1761" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Kampala" lat="0.3133" long="32.5714" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Lusaka" lat="-15.4145" long="28.2809" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Harare" lat="-17.8227" long="31.0496" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Mamoudzou" lat="-12.7806" long="45.2278" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Saint Denis" lat="-20.8732" long="55.4603" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Jamestown" lat="-15.9244" long="-5.7181" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Laayoune / El Aaiun" lat="27.1536" long="-13.2033" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Canberra" lat="-35.2820" long="149.1286" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Suva (on Viti Levu)" lat="-18.1416" long="178.4419" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Bairiki (on Tarawa)" lat="1.3282" long="172.9784" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Dalap-Uliga-Darrit (on Majuro)" lat="7.1167" long="171.3667" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Palikir (on Pohnpei)" lat="6.9177" long="158.1854" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Yaren" lat="-0.5434" long="166.9196" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Wellington" lat="-41.2865" long="174.7762" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Melekeok (on Babelthuap)" lat="7.5007" long="134.6241" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Port Moresby" lat="-9.4656" long="147.1969" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Apia (on Upolu)" lat="-13.8314" long="-171.7518" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Honiara (on Guadalcanal)" lat="-9.4333" long="159.9500" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Nuku'alofa (on Tongatapu)" lat="-21.1360" long="-175.2164" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Vaiaku (on Funafuti)" lat="-8.5210" long="179.1983" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Port Vila (on Efate)" lat="-17.7404" long="168.3210" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Pago Pago (on Tutuila)" lat="-14.2793" long="-170.7009" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="The Settlement / Flying Fish Cove" lat="-10.4286" long="105.6807" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Pulu Panjang / West Island" lat="-12.1869" long="96.8283" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Avarua (on Rarotonga)" lat="-21.2039" long="-159.7658" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Papeete (on Tahiti)" lat="-17.5350" long="-149.5696" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Hagatna" lat="13.4667" long="144.7470" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Noumea (on Grande Terre)" lat="-22.2758" long="166.4581" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Alofi" lat="-19.0565" long="-169.9237" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Kingston" lat="-29.0545" long="167.9666" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Garapan (on Saipan)" lat="15.2069" long="145.7197" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Adamstown (on Pitcairn)" lat="-25.0662" long="-130.1027" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Mata-Utu (on Wallis)" lat="-13.2784" long="-176.1430" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Montgomery" lat="32.3754" long="-86.2996" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Juneau" lat="58.3637" long="-134.5721" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Phoenix" lat="33.4483" long="-112.0738" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Little Rock" lat="34.7244" long="-92.2789" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Sacramento" lat="38.5737" long="-121.4871" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Denver" lat="39.7551" long="-104.9881" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Hartford" lat="41.7665" long="-72.6732" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Dover" lat="39.1615" long="-75.5136" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Tallahassee" lat="30.4382" long="-84.2806" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Atlanta" lat="33.7545" long="-84.3897" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Honolulu (on Oahu)" lat="21.2920" long="-157.8219" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Boise" lat="43.6021" long="-116.2125" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Springfield" lat="39.8018" long="-89.6533" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Indianapolis" lat="39.7670" long="-86.1563" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Des Moines" lat="41.5888" long="-93.6203" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Topeka" lat="39.0474" long="-95.6815" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Frankfort" lat="38.1894" long="-84.8715" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Baton Rouge" lat="30.4493" long="-91.1882" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Augusta" lat="44.3294" long="-69.7323" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Annapolis" lat="38.9693" long="-76.5197" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Boston" lat="42.3589" long="-71.0568" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Lansing" lat="42.7336" long="-84.5466" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Saint Paul" lat="44.9446" long="-93.1027" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Jackson" lat="32.3122" long="-90.1780" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Jefferson City" lat="38.5698" long="-92.1941" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Helena" lat="46.5911" long="-112.0205" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Lincoln" lat="40.8136" long="-96.7026" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Carson City" lat="39.1501" long="-119.7519" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Concord" lat="43.2314" long="-71.5597" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Trenton" lat="40.2202" long="-74.7642" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Santa Fe" lat="35.6816" long="-105.9381" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Albany" lat="42.6517" long="-73.7551" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Raleigh" lat="35.7797" long="-78.6434" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Bismarck" lat="46.8084" long="-100.7694" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Columbus" lat="39.9622" long="-83.0007" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Oklahoma City" lat="35.4931" long="-97.4591" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Salem" lat="44.9370" long="-123.0272" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Harrisburg" lat="40.2740" long="-76.8849" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Providence" lat="41.8270" long="-71.4087" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Columbia" lat="34.0007" long="-81.0353" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Pierre" lat="44.3776" long="-100.3177" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Nashville" lat="36.1589" long="-86.7821" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Austin" lat="30.2687" long="-97.7452" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Salt Lake City" lat="40.7716" long="-111.8882" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Montpelier" lat="44.2627" long="-72.5716" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Richmond" lat="37.5408" long="-77.4339" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Olympia" lat="47.0449" long="-122.9016" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Charleston" lat="38.3533" long="-81.6354" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Madison" lat="43.0632" long="-89.4007" width="10" height="10" fixed_size="true" zoom="500%"></movie>
+    <movie file="target" title="Cheyenne" lat="41.1389" long="-104.8165" width="10" height="10" fixed_size="true" zoom="500%"></movie> 
+ </movies>
+</map>

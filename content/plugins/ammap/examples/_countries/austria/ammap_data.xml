@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/austria.swf" tl_long="9.502489" tl_lat="49.020171" br_long="17.162596" br_lat="46.371865" zoom="85%" zoom_x="6.06%" zoom_y="6.27%">
+  <areas>
+    <area mc_name="AT_BU" title="Burgenland"></area>
+    <area mc_name="AT_KA" title="Carinthia (Karnten)"></area>
+    <area mc_name="AT_NO" title="Lower Austria (Niederosterreich)"></area>
+    <area mc_name="AT_OO" title="Upper Austria (Oberosterreich)"></area>
+    <area mc_name="AT_SZ" title="Salzburg"></area>
+    <area mc_name="AT_ST" title="Styria (Steiermark)"></area>
+    <area mc_name="AT_TR" title="Tyrol (Tirol)"></area>
+    <area mc_name="AT_VO" title="Vorarlberg"></area>
+    <area mc_name="AT_WI" title="Vienna (Wien)"></area>
+    <area mc_name="borders" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Vienna (Wien)" file="target" color="#666666" height="10" width="10" lat="48.202548" long="16.368805" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="273" y="240" text_size="18" color="#FFFFFF" remain="false">
+      <text>Austria</text>
+    </label>
+  </labels>
+</map>

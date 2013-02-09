@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/nicaragua2.swf" tl_long="-87.69018" tl_lat="15.025784" br_long="-82.738113" br_lat="10.707461" zoom="90%" zoom_x="10.63%" zoom_y="4.48%">
+
+  <areas>
+    <area mc_name="NI_BO" title="Boaco"></area>
+    <area mc_name="NI_CA" title="Carazo"></area>
+    <area mc_name="NI_CI" title="Chinandega"></area>
+    <area mc_name="NI_CO" title="Chontales"></area>
+    <area mc_name="NI_ES" title="Estelí"></area>
+    <area mc_name="NI_GR" title="Granada"></area>
+    <area mc_name="NI_JI" title="Jinotega"></area>
+    <area mc_name="NI_LE" title="León"></area>
+    <area mc_name="NI_MD" title="Madriz"></area>
+    <area mc_name="NI_MN" title="Managua"></area>
+    <area mc_name="NI_MS" title="Masaya"></area>
+    <area mc_name="NI_MT" title="Matagalpa"></area>
+    <area mc_name="NI_NS" title="Nueva Segovia"></area>
+    <area mc_name="NI_AN" title="Región Autónoma del Atlántico Norte"></area>
+    <area mc_name="NI_AS" title="Región Autónoma del Atlántico Sur"></area>
+    <area mc_name="NI_SJ" title="Río San Juan"></area>
+    <area mc_name="NI_RI" title="Rivas"></area>
+    <area mc_name="NI_LMN" title="Lago de Managua" color="#0098FF" balloon="false"></area>
+    <area mc_name="NI_LNI" title="Lago de Nicaragua" color="#0098FF" balloon="false"></area>
+    <area mc_name="borders_lake" title="lake borders" color="#0066FF" balloon="false"></area>
+    <area mc_name="borders" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Managua" file="target" color="#666666" height="10" width="10" lat="12.146294" long="-86.27037" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="181" y="101" text_size="18" color="#FFFFFF" remain="false">
+      <text>Nicaragua</text>
+    </label>
+  </labels>
+</map>

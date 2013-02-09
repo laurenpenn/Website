@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/palestine.swf" tl_long="34.229026" tl_lat="33.43979" br_long="35.935202" br_lat="29.497004" zoom="266.6667%" zoom_x="46.71%" zoom_y="-55.83%">
+  <areas>
+<!-- Israel -->    
+    <area mc_name="IL" title="Israel" color="#DEDEDE"></area>
+    <area mc_name="borders_israel" title="borders" color="#999999" balloon="false"></area>
+<!-- Palestinian Territories --> 
+    <area mc_name="PS_WE_JC" title="Jericho"></area>
+    <area mc_name="PS_WE_JN" title="Jenin"></area>
+    <area mc_name="PS_WE_TL" title="Tulkarm"></area>
+    <area mc_name="PS_WE_TB" title="Tubas"></area>
+    <area mc_name="PS_WE_NA" title="Nablus"></area>
+    <area mc_name="PS_WE_QA" title="Qalqilya"></area>
+    <area mc_name="PS_WE_SA" title="Salfit"></area>
+    <area mc_name="PS_WE_RB" title="Ramallah and Al-Bireh"></area>
+    <area mc_name="PS_WE_JS" title="Jerusalem"></area>
+    <area mc_name="PS_WE_BL" title="Bethlehem"></area>
+    <area mc_name="PS_WE_HE" title="Hebron"></area>
+    <area mc_name="PS_GZ_GS" title="Gaza ash Shamaliyah"></area>
+    <area mc_name="PS_GZ_GZ" title="Gaza"></area>
+    <area mc_name="PS_GZ_DB" title="Deir Al-Balah"></area>
+    <area mc_name="PS_GZ_KY" title="Khan Yunis"></area>
+    <area mc_name="PS_GZ_RA" title="Rafah"></area>
+    <area mc_name="borders_palestine" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Jerusalem" file="target" color="#666666" height="10" width="10" lat="31.783333" long="35.216667" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="133" y="153" text_size="18" color="#FFFFFF" remain="false">
+      <text>Palestinian Territories</text>
+    </label>
+  </labels>
+</map>

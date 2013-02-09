@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/romania.swf" tl_long="20.2627" tl_lat="48.262504" br_long="29.7128" br_lat="43.617425" zoom="74.4048%" zoom_x="13.17%" zoom_y="7.94%">
+  <areas>
+    <area mc_name="RO_AB" title="Alba"></area>
+    <area mc_name="RO_AR" title="Arad"></area>
+    <area mc_name="RO_AG" title="Argeş"></area>
+    <area mc_name="RO_BC" title="Bacău"></area>
+    <area mc_name="RO_BH" title="Bihor"></area>
+    <area mc_name="RO_BN" title="Bistriţa-Năsăud"></area>
+    <area mc_name="RO_BT" title="Botoşani"></area>
+    <area mc_name="RO_BV" title="Braşov"></area>
+    <area mc_name="RO_BR" title="Brăila"></area>
+    <area mc_name="RO_BZ" title="Buzău"></area>
+    <area mc_name="RO_CS" title="Caraş-Severin"></area>
+    <area mc_name="RO_CL" title="Călăraşi"></area>
+    <area mc_name="RO_CJ" title="Cluj"></area>
+    <area mc_name="RO_CT" title="Constanţa"></area>
+    <area mc_name="RO_CV" title="Covasna"></area>
+    <area mc_name="RO_DB" title="Dâmboviţa"></area>
+    <area mc_name="RO_DJ" title="Dolj"></area>
+    <area mc_name="RO_GL" title="Galaţi"></area>
+    <area mc_name="RO_GR" title="Giurgiu"></area>
+    <area mc_name="RO_GJ" title="Gorj"></area>
+    <area mc_name="RO_HR" title="Harghita"></area>
+    <area mc_name="RO_HD" title="Hunedoara"></area>
+    <area mc_name="RO_IL" title="Ialomiţa"></area>
+    <area mc_name="RO_IS" title="Iaşi"></area>
+    <area mc_name="RO_IF" title="Ilfov"></area>
+    <area mc_name="RO_MM" title="Maramureş"></area>
+    <area mc_name="RO_MH" title="Mehedinţi"></area>
+    <area mc_name="RO_MS" title="Mureş"></area>
+    <area mc_name="RO_NT" title="Neamţ"></area>
+    <area mc_name="RO_OT" title="Olt"></area>
+    <area mc_name="RO_PH" title="Prahova"></area>
+    <area mc_name="RO_SM" title="Satu Mare"></area>
+    <area mc_name="RO_SJ" title="Sălaj"></area>
+    <area mc_name="RO_SB" title="Sibiu"></area>
+    <area mc_name="RO_SV" title="Suceava"></area>
+    <area mc_name="RO_TR" title="Teleorman"></area>
+    <area mc_name="RO_TM" title="Timiş"></area>
+    <area mc_name="RO_TL" title="Tulcea"></area>
+    <area mc_name="RO_VS" title="Vaslui"></area>
+    <area mc_name="RO_VL" title="Vâlcea"></area>
+    <area mc_name="RO_VN" title="Vrancea"></area>
+    <area mc_name="RO_B" title="Bucureşti"></area>
+    <area mc_name="borders" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Bucharest" file="target" color="#666666" height="10" width="10" lat="44.4342" long="26.102975" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="133" y="153" text_size="18" color="#FFFFFF" remain="false">
+      <text>Romania</text>
+    </label>
+  </labels>
+</map>

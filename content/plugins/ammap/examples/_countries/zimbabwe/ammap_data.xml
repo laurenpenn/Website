@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/zimbabwe.swf" tl_long="25.237216" tl_lat="-15.609016" br_long="33.056383" br_lat="-22.417901" zoom="90%" zoom_x="17.32%" zoom_y="3.85%">
+  <areas>
+    <area mc_name="ZW_BU" title="Bulawayo"/>
+    <area mc_name="ZW_HA" title="Harare"/>
+    <area mc_name="ZW_MA" title="Manicaland"/>
+    <area mc_name="ZW_MC" title="Mashonaland Central"/>
+    <area mc_name="ZW_ME" title="Mashonaland East"/>
+    <area mc_name="ZW_MW" title="Mashonaland West"/>
+    <area mc_name="ZW_MV" title="Masvingo"/>
+    <area mc_name="ZW_MN" title="Matabeleland North"/>
+    <area mc_name="ZW_MS" title="Matabeleland South"/>
+    <area mc_name="ZW_MI" title="Midlands"/>
+    <area title="borders" mc_name="borders_outside" color="#ffffff" balloon="false" alpha="0"></area>
+    <area title="borders" mc_name="borders_inside" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Harare" file="target" color="#666666" height="10" width="10" lat="-17.823351" long="31.05023" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="999" y="423" text_size="18" color="#FFFFFF" remain="false">
+      <text>Zimbabwe</text>
+    </label>
+  </labels>
+</map>

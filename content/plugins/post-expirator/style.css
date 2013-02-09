@@ -1,0 +1,23 @@
+.post-expirator-adminnotice {
+	background-color: red;
+}
+.post-expirator-addcolumn {
+	font-size: 0.8em; 
+	font-weight: normal;
+}
+#post-expirator-cat-list {
+	max-width: 250px;
+}
+#post-expirator-cat-list ul {
+	margin: 0;
+}
+#post-expirator-cat-list ul ul {
+	margin-left: 18px;
+}
+.post-expirator-debug th {
+	font-weight: bold;
+	border-bottom: 1px solid black;
+}
+.post-expirator-timestamp {
+	width: 150px;
+}

@@ -1,0 +1,10 @@
+[01-Apr-2012 17:23:16] PHP Fatal error:  Call to undefined function  language_attributes() in /home/dbc/public_html/wp-content/themes/dbc-admin/header.php on line 14
+[01-Apr-2012 17:28:55] PHP Fatal error:  Call to undefined function  is_admin() in /home/dbc/public_html/wp-content/themes/dbc-admin/functions.php on line 3
+[01-Apr-2012 17:31:49] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-admin/documentation.php on line 11
+[01-Apr-2012 17:34:53] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-admin/page-template-home.php on line 13
+[01-Apr-2012 17:37:58] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-admin/archive-documentation.php on line 11
+[05-Nov-2012 18:17:08] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-admin/page-template-home.php on line 13
+[05-Nov-2012 18:18:31] PHP Fatal error:  Call to undefined function  language_attributes() in /home/dbc/public_html/wp-content/themes/dbc-admin/header.php on line 14
+[05-Nov-2012 18:20:26] PHP Fatal error:  Call to undefined function  is_admin() in /home/dbc/public_html/wp-content/themes/dbc-admin/functions.php on line 3
+[05-Nov-2012 18:22:14] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-admin/documentation.php on line 11
+[05-Nov-2012 18:31:10] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-admin/archive-documentation.php on line 11

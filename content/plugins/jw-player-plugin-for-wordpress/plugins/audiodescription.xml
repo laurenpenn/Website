@@ -1,0 +1,33 @@
+<plugin>
+    <title>Audiodescription</title>
+    <filename>audiodescription.swf</filename>
+    <repository>audiodescription-1</repository>
+    <version>1.0</version>
+    <compatibility>Compatible with 4.4 or higher.</compatibility>
+    <author>Jeroen Wijering</author>
+    <description>This plugin plays a closed audiodescription with a video.</description>
+    <href></href>
+    <page>http://www.longtailvideo.com/addons/plugins/85/Audiodescription</page>
+    
+    <flashvars>
+        <flashvar type="field">
+            <name>file</name>
+            <default></default>
+            <description>Location of the audiodescription MP3 to play.</description>
+        </flashvar>
+        <flashvar type="select">
+            <name>state</name>
+            <default>true</default>
+            <description>Set this to false to turn off the audiodescription by default.</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+        <flashvar type="field">
+            <name>volume</name>
+            <default></default>
+            <description>Volume of the audiodescription. Crank this even more up to have the AD overrule the default sound.</description>
+        </flashvar>
+    </flashvars>
+</plugin>

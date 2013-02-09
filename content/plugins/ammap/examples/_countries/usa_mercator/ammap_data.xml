@@ -1,0 +1,110 @@
+<map map_file="maps/usa_mercator.swf" tl_long="-178.244751" tl_lat="71.455555" br_long="-66.936676" br_lat="18.96519"  zoom="214%" zoom_x="-89.58%" zoom_y="-107.59%">
+<areas>
+     <!-- USA - States - Mercator Projection - Set projection in settings file -->
+    <area mc_name="US_AL" title="Alabama"></area>
+    <area mc_name="US_AK" title="Alaska"></area>
+    <area mc_name="US_AZ" title="Arizona"></area>
+    <area mc_name="US_AR" title="Arkansas"></area>
+    <area mc_name="US_CA" title="California"></area>
+    <area mc_name="US_CO" title="Colorado"></area>
+    <area mc_name="US_CT" title="Connecticut"></area>
+    <area mc_name="US_DE" title="Delaware"></area>
+    <area mc_name="US_DC" title="District of Columbia"></area>
+    <area mc_name="US_FL" title="Florida"></area>
+    <area mc_name="US_GA" title="Georgia"></area>
+    <area mc_name="US_HI" title="Hawaii"></area>
+    <area mc_name="US_ID" title="Idaho"></area>
+    <area mc_name="US_IL" title="Illinois"></area>
+    <area mc_name="US_IN" title="Indiana"></area>
+    <area mc_name="US_IA" title="Iowa"></area>
+    <area mc_name="US_KS" title="Kansas"></area>
+    <area mc_name="US_KY" title="Kentucky"></area>
+    <area mc_name="US_LA" title="Louisiana"></area>
+    <area mc_name="US_ME" title="Maine"></area>
+    <area mc_name="US_MD" title="Maryland"></area>
+    <area mc_name="US_MA" title="Massachusetts"></area>
+    <area mc_name="US_MI" title="Michigan"></area>
+    <area mc_name="US_MN" title="Minnesota"></area>
+    <area mc_name="US_MS" title="Mississippi"></area>
+    <area mc_name="US_MO" title="Missouri"></area>
+    <area mc_name="US_MT" title="Montana"></area>
+    <area mc_name="US_NE" title="Nebraska"></area>
+    <area mc_name="US_NV" title="Nevada"></area>
+    <area mc_name="US_NH" title="New Hampshire"></area>
+    <area mc_name="US_NJ" title="New Jersey"></area>
+    <area mc_name="US_NM" title="New Mexico"></area>
+    <area mc_name="US_NY" title="New York"></area>
+    <area mc_name="US_NC" title="North Carolina"></area>
+    <area mc_name="US_ND" title="North Dakota"></area>
+    <area mc_name="US_OH" title="Ohio"></area>
+    <area mc_name="US_OK" title="Oklahoma"></area>
+    <area mc_name="US_OR" title="Oregon"></area>
+    <area mc_name="US_PA" title="Pennsylvania"></area>
+    <area mc_name="US_RI" title="Rhode Island"></area>
+    <area mc_name="US_SC" title="South Carolina"></area>
+    <area mc_name="US_SD" title="South Dakota"></area>
+    <area mc_name="US_TN" title="Tennessee"></area>
+    <area mc_name="US_TX" title="Texas"></area>
+    <area mc_name="US_UT" title="Utah"></area>
+    <area mc_name="US_VT" title="Vermont"></area>
+    <area mc_name="US_VA" title="Virginia"></area>
+    <area mc_name="US_WA" title="Washington"></area>
+    <area mc_name="US_WV" title="West Virginia"></area>
+    <area mc_name="US_WI" title="Wisconsin"></area>
+    <area mc_name="US_WY" title="Wyoming"></area>
+    <area mc_name="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie color="999999" color_hover="990000"  file="target" title="Montgomery" lat="32.3754" long="-86.2996" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Juneau" lat="58.3637" long="-134.5721" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Phoenix" lat="33.4483" long="-112.0738" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Little Rock" lat="34.7244" long="-92.2789" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Sacramento" lat="38.5737" long="-121.4871" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Denver" lat="39.7551" long="-104.9881" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Hartford" lat="41.7665" long="-72.6732" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Dover" lat="39.1615" long="-75.5136" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Tallahassee" lat="30.4382" long="-84.2806" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Atlanta" lat="33.7545" long="-84.3897" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Honolulu (on Oahu)" lat="21.2920" long="-157.8219" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Boise" lat="43.6021" long="-116.2125" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Springfield" lat="39.8018" long="-89.6533" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Indianapolis" lat="39.7670" long="-86.1563" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Des Moines" lat="41.5888" long="-93.6203" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Topeka" lat="39.0474" long="-95.6815" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Frankfort" lat="38.1894" long="-84.8715" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Baton Rouge" lat="30.4493" long="-91.1882" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Augusta" lat="44.3294" long="-69.7323" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Annapolis" lat="38.9693" long="-76.5197" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Boston" lat="42.3589" long="-71.0568" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Lansing" lat="42.7336" long="-84.5466" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Saint Paul" lat="44.9446" long="-93.1027" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Jackson" lat="32.3122" long="-90.1780" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Jefferson City" lat="38.5698" long="-92.1941" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Helena" lat="46.5911" long="-112.0205" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Lincoln" lat="40.8136" long="-96.7026" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Carson City" lat="39.1501" long="-119.7519" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Concord" lat="43.2314" long="-71.5597" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Trenton" lat="40.2202" long="-74.7642" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Santa Fe" lat="35.6816" long="-105.9381" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Albany" lat="42.6517" long="-73.7551" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Raleigh" lat="35.7797" long="-78.6434" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Bismarck" lat="46.8084" long="-100.7694" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Columbus" lat="39.9622" long="-83.0007" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Oklahoma City" lat="35.4931" long="-97.4591" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Salem" lat="44.9370" long="-123.0272" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Harrisburg" lat="40.2740" long="-76.8849" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Providence" lat="41.8270" long="-71.4087" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Columbia" lat="34.0007" long="-81.0353" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Pierre" lat="44.3776" long="-100.3177" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Nashville" lat="36.1589" long="-86.7821" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Austin" lat="30.2687" long="-97.7452" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Salt Lake City" lat="40.7716" long="-111.8882" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Montpelier" lat="44.2627" long="-72.5716" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Richmond" lat="37.5408" long="-77.4339" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Olympia" lat="47.0449" long="-122.9016" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Charleston" lat="38.3533" long="-81.6354" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Madison" lat="43.0632" long="-89.4007" width="10" height="10" fixed_size="true"></movie>
+    <movie color="999999" color_hover="990000"  file="target" title="Cheyenne" lat="41.1389" long="-104.8165" width="10" height="10" fixed_size="true"></movie> 
+  </movies>
+</map>

@@ -1,0 +1,42 @@
+<plugin>
+    <title>Captions</title>
+    <filename>captions.swf</filename>
+    <repository>captions-1</repository>
+    <version>1.0</version>
+    <compatibility>Compatible with 4.4 and higher.</compatibility>
+    <author>Jeroen Wijering</author>
+    <description>This plugin plays closed captions with a video. For the 4.4 player or higher, the plugin will place a button in the controlbar.</description>
+    <href></href>
+    <page>http://www.longtailvideo.com/addons/plugins/84/Captions</page>
+    
+    <flashvars>
+        <flashvar type="select">
+            <name>back</name>
+            <default>true</default>
+            <description>Set this to "true" to show a semitransparent backdrop that makes the captions more readable.</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+        <flashvar type="field">
+            <name>file</name>
+            <default></default>
+            <description>Location of the captions in (TimedText or SRT format) to display.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>fontsize</name>
+            <default>14</default>
+            <description>Size of the captions font. Default is 14. The captions scale automatically, but this flashvar can be used to enlarge/shrink the baseline.</description>
+        </flashvar>
+        <flashvar type="select">
+            <name>state</name>
+            <default>false</default>
+            <description>Set this to false to turn off the captions by default.</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+    </flashvars>
+</plugin>

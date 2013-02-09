@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/saudi_arabia.swf" tl_long="34.494760" tl_lat="32.270012" br_long="55.667236" br_lat="16.388773" zoom="90%" zoom_x="20.19%" zoom_y="2.45%">
+  <areas>
+    <area mc_name="SA_BA" title="Al Bāhah"/>
+    <area mc_name="SA_HS" title="Al Hudūd ash Shamāliyah"/>
+    <area mc_name="SA_JF" title="Al Jawf"/>
+    <area mc_name="SA_MD" title="Al Madīnah"/>
+    <area mc_name="SA_QS" title="Al Qasīm"/>
+    <area mc_name="SA_RI" title="Ar Riyād"/>
+    <area mc_name="SA_SH" title="Ash Sharqīyah"/>
+    <area mc_name="SA_AS" title="`Asīr"/>
+    <area mc_name="SA_HA" title="Hā'il"/>
+    <area mc_name="SA_JZ" title="Jīzan"/>
+    <area mc_name="SA_MK" title="Makkah"/>
+    <area mc_name="SA_NJ" title="Najrān"/>
+    <area mc_name="SA_TB" title="Tabūk"/>
+    <area title="borders" mc_name="borders_outside" color="#ffffff" balloon="false" alpha="0"></area>
+    <area title="borders" mc_name="borders_inside" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Riyadh" file="target" color="#666666" height="10" width="10" lat="24.647325" long="46.714585" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="999" y="423" text_size="18" color="#FFFFFF" remain="false">
+      <text>Saudi Arabia</text>
+    </label>
+  </labels>
+</map>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/lesotho.swf" tl_long="27.028883" tl_lat="-28.571959" br_long="29.465947" br_lat="-30.669175" zoom="90%" zoom_x="28.69%" zoom_y="5.16%">
+  <areas>
+      <area mc_name="LS_BE" title="Berea"></area>
+      <area mc_name="LS_BB" title="Butha-Buthe"></area>
+      <area mc_name="LS_LE" title="Leribe"></area>
+      <area mc_name="LS_MF" title="Mafeteng"></area>
+      <area mc_name="LS_MS" title="Maseru"></area>
+      <area mc_name="LS_MH" title="Mohale's Hoek"></area>
+      <area mc_name="LS_MK" title="Mokhotlong"></area>
+      <area mc_name="LS_QN" title="Qacha's Nek"></area>
+      <area mc_name="LS_QT" title="Quthing"></area>
+      <area mc_name="LS_TT" title="Thaba-Tseka"></area>
+      <area title="borders" mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area title="borders" mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Maseru" file="target" color="#CC0000" height="10" width="10" lat="-29.312595" long="27.487364" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="859" y="423" text_size="18" color="#FFFFFF" remain="false">
+      <text>Lesotho</text>
+    </label>
+  </labels>
+</map>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/kuwait.swf" tl_long="46.568243" tl_lat="30.084322" br_long="48.654008" br_lat="28.524575" zoom="90%" zoom_x="19.98%" zoom_y="5.33%">
+  <areas>
+    <area mc_name="KW_JA" title="Al Jahrah"/>
+    <area mc_name="KW_KU" title="Al Kuwayt"/>
+    <area mc_name="KW_HW" title="Hawalli"/>
+    <area mc_name="KW_FA" title="Al Farwaniyah"/>
+    <area mc_name="KW_AH" title="Al Ahmadi"/>
+    <area mc_name="KW_MU" title="Mubarak Al-Kabeer"/>
+    <area title="borders_inside" mc_name="borders_inside" color="#ffffff" balloon="false"></area>
+    <area title="borders_outside" mc_name="borders_outside" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Kuwait City" file="target" color="#CC0000" height="10" width="10" lat="29.37429" long="47.97481" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="391" y="641" text_size="18" color="#FFFFFF" remain="false">
+      <text>Kuwait</text>
+    </label>
+  </labels>
+</map>
+

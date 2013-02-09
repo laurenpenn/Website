@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/taiwan.swf" tl_long="116.710138" tl_lat="26.383907" br_long="122.108614" br_lat="20.697425" zoom="90%" zoom_x="28.69%" zoom_y="5.16%">
+  <areas>
+    <area mc_name="TW_FK" title="Fukien"/>
+    <area mc_name="TW_KH" title="Kaohsiung"/>
+    <area mc_name="TW_TP" title="Taipei"/>
+    <area mc_name="TW_TW" title="Taiwan"/>
+    <area title="borders" mc_name="borders_outside" color="#ffffff" balloon="false" alpha="0"></area>
+    <area title="borders" mc_name="borders_inside" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Taipei" file="target" color="#CC0000" height="10" width="10" lat="25.085503" long="121.564194" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="999" y="423" text_size="18" color="#FFFFFF" remain="false">
+      <text>Taiwan</text>
+    </label>
+  </labels>
+</map>

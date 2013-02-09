@@ -1,0 +1,13 @@
+<plugin>
+    <title>Facebook It</title>
+    <filename>fbit.swf</filename>
+    <repository>fbit-1</repository>
+    <version>1.0</version>
+    <compatibility>Compatible with 4.5 and later.</compatibility>
+    <author>mpoint</author>
+    <description>The Facebook It plugin allows your users to post your videos on the Facebook social network. It's a great way to have users share your videos online and broaden their distribution. The user just clicks on the Facebook icon in the dock, clicks Post, and then logs into their Facebook account. If the user doesn't have an account, then they can easily create one.</description>
+    <href></href>
+    <page>http://www.longtailvideo.com/addons/plugins/124/Facebook-It</page>
+    
+    <flashvars/>
+</plugin>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/suriname.swf" tl_long="-58.0705" tl_lat="6.001212" br_long="-53.985688" br_lat="1.835515" zoom="90%" zoom_x="14.47%" zoom_y="5.87%">
+  <areas>
+    <area mc_name="SR_BR" title="Brokopondo"/>
+    <area mc_name="SR_CM" title="Commewijne"/>
+    <area mc_name="SR_CR" title="Coronie"/>
+    <area mc_name="SR_MA" title="Marowijne"/>
+    <area mc_name="SR_NI" title="Nickerie"/>
+    <area mc_name="SR_PR" title="Para"/>
+    <area mc_name="SR_PM" title="Paramaribo"/>
+    <area mc_name="SR_SA" title="Saramacca"/>
+    <area mc_name="SR_SI" title="Sipaliwini"/>
+    <area mc_name="SR_WA" title="Wanica"/>
+    <area title="borders" mc_name="borders" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Paramaribo" file="target" color="#CC0000" height="10" width="10" lat="5.82403" long="-55.173851" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="867" y="250" text_size="18" color="#FFFFFF" remain="false">
+      <text>Suriname</text>
+    </label>
+  </labels>
+</map>

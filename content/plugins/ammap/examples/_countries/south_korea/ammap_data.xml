@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/south_korea.swf" tl_long="125.385140" tl_lat="38.612049" br_long="129.584609" br_lat="33.194451" zoom="95%" zoom_x="42.36%" zoom_y="1.8%">
+  <areas>
+    <area mc_name="KR_PU" title="Busan"></area>
+    <area mc_name="KR_GB" title="Chungcheongbuk-do"></area>
+    <area mc_name="KR_GN" title="Chungcheongnam-do"></area>
+    <area mc_name="KR_TG" title="Daegu"></area>
+    <area mc_name="KR_TJ" title="Daejeon"></area>
+    <area mc_name="KR_KW" title="Gangwon-do"></area>
+    <area mc_name="KR_KJ" title="Gwangju"></area>
+    <area mc_name="KR_KG" title="Gyeonggi-do"></area>
+    <area mc_name="KR_KB" title="Gyeongsangbuk-do"></area>
+    <area mc_name="KR_KN" title="Gyeongsangnam-do"></area>
+    <area mc_name="KR_IN" title="Incheon"></area>
+    <area mc_name="KR_CJ" title="Jeju-do"></area>
+    <area mc_name="KR_CB" title="Jeollabuk-do"></area>
+    <area mc_name="KR_CN" title="Jeollanam-do"></area>
+    <area mc_name="KR_SO" title="Seoul"></area>
+    <area mc_name="KR_UL" title="Ulsan"></area>
+    <area mc_name="borders_in" title="Internal borders" balloon="false" color="#FFFFFF"></area>
+    <area mc_name="borders_out" title="Outside borders" balloon="false" color="#FFFFFF"></area>
+  </areas>
+  
+  <movies>
+    <movie title="Seoul" file="target" color="#CC0000" long="126.977379" lat="37.557121" width="10" height="10" fixed_size="true"></movie>
+  </movies>
+   
+  <labels>
+    <label x="20%" y="30%" text_size="18" color="#FFFFFF" remain="false">
+      <text>Korea</text>
+    </label>
+  </labels>
+</map>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/azerbaijan.swf" tl_long="44.761011" tl_lat="41.907395" br_long="50.614212" br_lat="38.353577" zoom="85%" zoom_x="24.84%" zoom_y="8.83%">
+  <areas>
+    <area mc_name="AZ_AR" title="Absheron"/>
+    <area mc_name="AZ_AM" title="Aghdam"/>
+    <area mc_name="AZ_AS" title="Aghdash"/>
+    <area mc_name="AZ_AC" title="Aghjabedi"/>
+    <area mc_name="AZ_AF" title="Aghstafa"/>
+    <area mc_name="AZ_AU" title="Aghsu"/>
+    <area mc_name="AZ_AB" title="Shirvan"/>
+    <area mc_name="AZ_AA" title="Astara"/>
+    <area mc_name="AZ_BB" title="Babek"/>
+    <area mc_name="AZ_BA" title="Baku"/>
+    <area mc_name="AZ_BL" title="Balaken"/>
+    <area mc_name="AZ_BR" title="Barda"/>
+    <area mc_name="AZ_BQ" title="Beylagan"/>
+    <area mc_name="AZ_BS" title="Bilasuvar"/>
+    <area mc_name="AZ_DS" title="Dashkasan"/>
+    <area mc_name="AZ_DV" title="Davachi"/>
+    <area mc_name="AZ_FU" title="Fizuli"/>
+    <area mc_name="AZ_QA" title="Gabala"/>
+    <area mc_name="AZ_GD" title="Gadabey"/>
+    <area mc_name="AZ_QX" title="Gakh"/>
+    <area mc_name="AZ_GA" title="Ganja"/>
+    <area mc_name="AZ_QZ" title="Gazakh"/>
+    <area mc_name="AZ_GR" title="Geranboy"/>
+    <area mc_name="AZ_QO" title="Gobustan"/>
+    <area mc_name="AZ_GY" title="Goychay"/>
+    <area mc_name="AZ_QB" title="Guba"/>
+    <area mc_name="AZ_QD" title="Gubadly"/>
+    <area mc_name="AZ_QR" title="Gusar"/>
+    <area mc_name="AZ_HA" title="Hacuqabul"/>
+    <area mc_name="AZ_IM" title="Imishli"/>
+    <area mc_name="AZ_IS" title="Ismailly"/>
+    <area mc_name="AZ_CL" title="Jalilabad"/>
+    <area mc_name="AZ_CB" title="Jebrail"/>
+    <area mc_name="AZ_CF" title="Julfa"/>
+    <area mc_name="AZ_KG" title="Kangarli"/>
+    <area mc_name="AZ_KA" title="Kelbajar"/>
+    <area mc_name="AZ_XZ" title="Khachmaz"/>
+    <area mc_name="AZ_XA" title="Khankendy"/>
+    <area mc_name="AZ_XR" title="Khanlar"/>
+    <area mc_name="AZ_XC" title="Khojaly"/>
+    <area mc_name="AZ_XD" title="Khojavend"/>
+    <area mc_name="AZ_XI" title="Khyzy"/>
+    <area mc_name="AZ_KU" title="Kyurdamir"/>
+    <area mc_name="AZ_LC" title="Lachin"/>
+    <area mc_name="AZ_LN" title="Lenkaran"/>
+    <area mc_name="AZ_LA" title="Lenkaran City"/>
+    <area mc_name="AZ_LE" title="Lerik"/>
+    <area mc_name="AZ_MA" title="Masally"/>
+    <area mc_name="AZ_MI" title="Mingechevir"/>
+    <area mc_name="AZ_NA" title="Naftalan"/>
+    <area mc_name="AZ_NX" title="Nakhchivan"/>
+    <area mc_name="AZ_NE" title="Neftchala"/>
+    <area mc_name="AZ_OG" title="Oghuz"/>
+    <area mc_name="AZ_OR" title="Ordubad"/>
+    <area mc_name="AZ_ST" title="Saatly"/>
+    <area mc_name="AZ_SB" title="Sabirabad"/>
+    <area mc_name="AZ_SL" title="Salyan"/>
+    <area mc_name="AZ_SX" title="Samuh"/>
+    <area mc_name="AZ_SD" title="Sedarak"/>
+    <area mc_name="AZ_SH" title="Shahbuz"/>
+    <area mc_name="AZ_SI" title="Shamakhy"/>
+    <area mc_name="AZ_SM" title="Shamkir"/>
+    <area mc_name="AZ_SK" title="Sheki"/>
+    <area mc_name="AZ_SA" title="Sheki City"/>
+    <area mc_name="AZ_SR" title="Sherur"/>
+    <area mc_name="AZ_SU" title="Shusha"/>
+    <area mc_name="AZ_SY" title="Siazan"/>
+    <area mc_name="AZ_SQ" title="Sumgayit"/>
+    <area mc_name="AZ_TA" title="Terter"/>
+    <area mc_name="AZ_TO" title="Tovuz"/>
+    <area mc_name="AZ_UC" title="Ujar"/>
+    <area mc_name="AZ_YR" title="Yardymly"/>
+    <area mc_name="AZ_YV" title="Yevlakh"/>
+    <area mc_name="AZ_YE" title="Yevlakh City"/>
+    <area mc_name="AZ_ZQ" title="Zagatala"/>
+    <area mc_name="AZ_ZG" title="Zangilan"/>
+    <area mc_name="AZ_ZR" title="Zerdab"/>
+    <area mc_name="borders_inside" title="borders" color="#FFFFFF" balloon="false"></area>
+    <area mc_name="borders_outside" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Baku" file="target" color="#666666" height="10" width="10" lat="40.400086" long="49.866012" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="133" y="362" text_size="18" color="#FFFFFF" remain="false">
+      <text>Azerbaijan</text>
+    </label>
+  </labels>
+</map>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/world3.swf" zoom="330%" zoom_x="-124.85%" zoom_y="-87.05%" tl_long="-168.49" tl_lat="83.63" br_long="190.3" br_lat="-55.58">
+  <areas>
+      <area title="AUSTRIA" oid="AT" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="AT" value="1995"></area>
+      <area title="BELGIUM" oid="BE" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="BE" value="1957"></area>
+      <area title="BULGARIA" link_with="RO" oid="BG" color_hover="#CC0000" color="#66CC99" mc_name="BG" value="2007"></area>
+      <area title="CYPRUS" oid="CY" link_with="LT,LV,CZ,SK,SI,EE,HU,CY,MT,PL" color_hover="#CC0000" color="#FFCC33" mc_name="CY" value="2004"></area>
+      <area title="CZECH REPUBLIC" oid="CZ" link_with="LT,LV,CZ,SK,SI,EE,HU,CY,MT,PL" color_hover="#CC0000" color="#FFCC33" mc_name="CZ" value="2004"></area>
+      <area title="DENMARK" oid="DK" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="DK" value="1973"></area>
+      <area title="ESTONIA" oid="EE" link_with="LT,LV,CZ,SK,SI,EE,HU,CY,MT,PL" color_hover="#CC0000" color="#FFCC33" mc_name="EE" value="2004"></area>
+      <area title="FINLAND" oid="FI" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="FI" value="1995"></area>
+      <area title="FRANCE" oid="FR" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="FR" value="1957"></area>
+      <area title="GERMANY" oid="DE" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="DE" value="1957"></area>
+      <area title="GREECE" oid="GR" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="GR" value="1981"></area>
+      <area title="HUNGARY" oid="HU" link_with="LT,LV,CZ,SK,SI,EE,HU,CY,MT,PL" color_hover="#CC0000" color="#FFCC33" mc_name="HU" value="2004"></area>
+      <area title="IRELAND" oid="IE" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="IE" value="1973"></area>
+      <area title="ITALY" oid="IT" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="IT" value="1957"></area>
+      <area title="LATVIA" oid="LV" link_with="LT,LV,CZ,SK,SI,EE,HU,CY,MT,PL" color_hover="#CC0000" color="#FFCC33" mc_name="LV" value="2004"></area>
+      <area title="LITHUANIA" oid="LT" link_with="LT,LV,CZ,SK,SI,EE,HU,CY,MT,PL" color_hover="#CC0000" color="#FFCC33" mc_name="LT" value="2004"></area>
+      <area title="LUXEMBOURG" oid="LU" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="LU" value="1957"></area>
+      <area title="MALTA" oid="MT" link_with="LT,LV,CZ,SK,SI,EE,HU,CY,MT,PL" color_hover="#CC0000" color="#FFCC33" mc_name="MT" value="2004"></area>
+      <area title="NETHERLANDS" oid="NL" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="NL" value="1957"></area>
+      <area title="POLAND" oid="PL" link_with="LT,LV,CZ,SK,SI,EE,HU,CY,MT,PL" color_hover="#CC0000" color="#FFCC33" mc_name="PL" value="2004"></area>
+      <area title="PORTUGAL" oid="PT" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="PT" value="1986"></area>
+      <area title="ROMANIA" link_with="BG" oid="RO" color_hover="#CC0000" color="#66CC99" mc_name="RO" value="2007"></area>
+      <area title="SLOVAKIA" oid="SK" link_with="LT,LV,CZ,SK,SI,EE,HU,CY,MT,PL" color_hover="#CC0000" color="#FFCC33" mc_name="SK" value="2004"></area>
+      <area title="SLOVENIA" oid="SI" link_with="LT,LV,CZ,SK,SI,EE,HU,CY,MT,PL" color_hover="#CC0000" color="#FFCC33" mc_name="SI" value="2004"></area>
+      <area title="SPAIN" oid="ES" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="ES" value="1986"></area>
+      <area title="SWEDEN" oid="SE" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="SE" value="1995"></area>
+      <area title="UNITED KINGDOM" oid="GB" link_with="AT,IE,DK,FI,SE,GB,IT,FR,ES,GR,DE,BE,LU,NL,PT" color_hover="#CC0000" color="#3366CC" mc_name="GB" value="1973"></area>
+      <area title="borders" mc_name="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+</map>

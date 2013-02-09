@@ -1,5 +1,0 @@
-[01-Apr-2012 02:09:09] PHP Fatal error:  Call to undefined function  remove_action() in /home/dbc/public_html/wp-content/themes/dbc-collegelife/functions.php on line 4
-[01-Apr-2012 02:13:13] PHP Fatal error:  Call to undefined function  hybrid_get_setting() in /home/dbc/public_html/wp-content/themes/dbc-collegelife/slider-home.php on line 12
-[01-Apr-2012 02:17:49] PHP Fatal error:  Call to undefined function  is_active_sidebar() in /home/dbc/public_html/wp-content/themes/dbc-collegelife/sidebar-primary.php on line 12
-[01-Apr-2012 02:24:09] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-collegelife/page-template-home.php on line 13
-[01-Apr-2012 02:27:57] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-collegelife/page-template-front-page.php on line 13

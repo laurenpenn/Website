@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/ukraine.swf" tl_long="22.139644" tl_lat="52.379141" br_long="40.220623" br_lat="44.387681" zoom="85%" zoom_x="7.69%" zoom_y="9.73%">
+  <areas>
+    <area mc_name="UA_CK" title="Cherkasy"></area>
+    <area mc_name="UA_CH" title="Chernihiv"></area>
+    <area mc_name="UA_CV" title="Chernivts"></area>
+    <area mc_name="UA_KR" title="Crimea"></area>
+    <area mc_name="UA_DP" title="Dnipropetrovs'k"></area>
+    <area mc_name="UA_DT" title="Donets'k"></area>
+    <area mc_name="UA_IF" title="Ivano-Frankivs'k"></area>
+    <area mc_name="UA_KK" title="Kharkiv"></area>
+    <area mc_name="UA_KS" title="Kherson"></area>
+    <area mc_name="UA_KM" title="Khmel'nyts'kyy"></area>
+    <area mc_name="UA_KV" title="Kiev"></area>
+    <area mc_name="UA_KH" title="Kirovohrad"></area>
+    <area mc_name="UA_LH" title="Luhans'k"></area>
+    <area mc_name="UA_LV" title="L'viv"></area>
+    <area mc_name="UA_MY" title="Mykolayiv"></area>
+    <area mc_name="UA_OD" title="Odessa"></area>
+    <area mc_name="UA_PL" title="Poltava"></area>
+    <area mc_name="UA_RV" title="Rivne"></area>
+    <area mc_name="UA_SM" title="Sumy"></area>
+    <area mc_name="UA_TP" title="Ternopil'"></area>
+    <area mc_name="UA_ZK" title="Transcarpathia (Zakarpattia)"></area>
+    <area mc_name="UA_VI" title="Vinnytsya"></area>
+    <area mc_name="UA_VO" title="Volyn"></area>
+    <area mc_name="UA_ZP" title="Zaporizhzhya"></area>
+    <area mc_name="UA_ZT" title="Zhytomyr"></area>
+    <area mc_name="borders" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Kiev (Kyiv)" file="target" color="#666666" height="10" width="10" lat="50.44138" long="30.522495" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="133" y="153" text_size="18" color="#FFFFFF" remain="false">
+      <text>Ukraine</text>
+    </label>
+  </labels>
+</map>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/libya.swf" tl_long="9.390114" tl_lat="33.166667" br_long="25.149744" br_lat="19.506294" zoom="90%" zoom_x="28.69%" zoom_y="5.16%">
+
+  <areas>
+      <area mc_name="LY_BN" title="Al Butnan"></area>
+      <area mc_name="LY_JK" title="Al Jabal al Akhdar"></area>
+      <area mc_name="LY_JG" title="Al Jabal al Gharbi"></area>
+      <area mc_name="LY_JR" title="Al Jifarah"></area>
+      <area mc_name="LY_JF" title="Al Jufrah"></area>
+      <area mc_name="LY_KU" title="Al Kufrah"></area>
+      <area mc_name="LY_MA" title="Al Marj"></area>
+      <area mc_name="LY_MR" title="Al Marqab"></area>
+      <area mc_name="LY_AW" title="Al Wahat"></area>
+      <area mc_name="LY_NK" title="An Nuqat al Khams"></area>
+      <area mc_name="LY_ZW" title="Az Zawiyah"></area>
+      <area mc_name="LY_BG" title="Benghazi"></area>
+      <area mc_name="LY_DA" title="Darnah"></area>
+      <area mc_name="LY_GH" title="Ghat"></area>
+      <area mc_name="LY_MS" title="Misratah"></area>
+      <area mc_name="LY_MU" title="Murzuq"></area>
+      <area mc_name="LY_NT" title="Nalut"></area>
+      <area mc_name="LY_SA" title="Sabha"></area>
+      <area mc_name="LY_ST" title="Surt"></area>
+      <area mc_name="LY_TR" title="Tripoli"></area>
+      <area mc_name="LY_WH" title="Wadi al Hayat"></area>
+      <area mc_name="LY_WS" title="Wadi ash Shati'"></area>
+      <area title="borders" mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area title="borders" mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Tripoli" file="target" color="#CC0000" height="10" width="10" lat="32.877708" long="13.18732" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="999" y="423" text_size="18" color="#FFFFFF" remain="false">
+      <text>Libya</text>
+    </label>
+  </labels>
+</map>

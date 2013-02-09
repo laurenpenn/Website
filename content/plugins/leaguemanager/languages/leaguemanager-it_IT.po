@@ -1,0 +1,1437 @@
+# LeagueManager POT file.
+# Copyright (C) 2008 Kolja Schleich
+# This file is distributed under the same license as the WordPress package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/leaguemanager\n"
+"POT-Creation-Date: 2009-05-24 23:12+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Paolo Firenze <paolo_firenze@fastwebnet.it>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/admin.php:24
+msgid "Match-Report"
+msgstr "Match-Report"
+
+#: admin/admin.php:52
+#: admin/admin.php:54
+#: admin/export.php:16
+#: admin/import.php:29
+#: admin/index.php:32
+#: admin/index.php:63
+#: admin/tinymce/window.php:53
+#: admin/tinymce/window.php:88
+#: admin/tinymce/window.php:147
+#: lib/widget.php:58
+#: lib/widget.php:378
+#: view/archive.php:19
+msgid "League"
+msgstr "Campionato"
+
+#: admin/admin.php:56
+#: admin/championchip.php:20
+#: admin/index.php:13
+#: admin/match.php:108
+#: admin/matchstats.php:25
+#: admin/settings.php:53
+#: admin/show-league.php:92
+#: admin/team.php:24
+#: admin/tinymce/window.php:29
+msgid "Leaguemanager"
+msgstr "Leaguemanager"
+
+#: admin/admin.php:56
+msgid "Overview"
+msgstr "Pagina principale"
+
+#: admin/admin.php:57
+#: admin/admin.php:148
+msgid "Settings"
+msgstr "Opzioni"
+
+#: admin/admin.php:58
+msgid "Import"
+msgstr "Importa"
+
+#: admin/admin.php:59
+msgid "Export"
+msgstr "Esporta"
+
+#: admin/admin.php:60
+msgid "Documentation"
+msgstr "Documentazione"
+
+#: admin/admin.php:79
+msgid "Preferences"
+msgstr "Preferenze"
+
+#: admin/admin.php:80
+#: admin/team.php:12
+msgid "Add Team"
+msgstr "agg. squadra"
+
+#: admin/admin.php:81
+#: admin/match.php:96
+msgid "Add Matches"
+msgstr "Agg. incontri"
+
+#: admin/admin.php:172
+#: admin/settings.php:89
+msgid "Order: Forwin, Fordraw, Forloss"
+msgstr "Ordina per: Vittorie, Pareggi, Sconfitte"
+
+#: admin/admin.php:172
+#: leaguemanager.php:305
+msgid "Edit"
+msgstr "Modifica"
+
+#: admin/admin.php:172
+#: leaguemanager.php:305
+msgid "Post"
+msgstr "Post"
+
+#: admin/admin.php:172
+#: leaguemanager.php:305
+msgid "Save"
+msgstr "Salva"
+
+#: admin/admin.php:172
+#: admin/matchstats.php:55
+#: admin/matchstats.php:93
+#: admin/matchstats.php:138
+#: admin/matchstats.php:151
+#: admin/tinymce/window.php:177
+#: leaguemanager.php:305
+msgid "Cancel"
+msgstr "Annulla"
+
+#: admin/admin.php:172
+#: leaguemanager.php:305
+msgid "Please wait..."
+msgstr "Attendere..."
+
+#: admin/admin.php:172
+#: admin/index.php:22
+#: admin/matchstats.php:63
+#: admin/matchstats.php:108
+#: admin/matchstats.php:158
+#: admin/settings.php:160
+#: admin/show-league.php:128
+#: admin/show-league.php:234
+#: leaguemanager.php:305
+msgid "Delete"
+msgstr "Elimina"
+
+#: admin/admin.php:172
+#: lib/core.php:742
+msgid "Yellow"
+msgstr "Giallo"
+
+#: admin/admin.php:172
+#: lib/core.php:742
+msgid "Red"
+msgstr "Rosso"
+
+#: admin/admin.php:172
+#: lib/core.php:742
+msgid "Yellow/Red"
+msgstr "Giallo/Rosso"
+
+#: admin/admin.php:172
+#: admin/matchstats.php:55
+#: admin/matchstats.php:93
+#: admin/matchstats.php:138
+#: admin/matchstats.php:151
+#: admin/tinymce/window.php:181
+msgid "Insert"
+msgstr "inserisci"
+
+#: admin/admin.php:172
+#: admin/matchstats.php:58
+#: admin/matchstats.php:96
+#: admin/matchstats.php:141
+#: admin/matchstats.php:154
+msgid "Insert Player"
+msgstr "Inserisci giocatore"
+
+#: admin/admin.php:172
+#: admin/matchstats.php:58
+#: admin/matchstats.php:96
+#: admin/matchstats.php:141
+#: admin/matchstats.php:154
+msgid "Add Player from Team Roster"
+msgstr "Aggiungi Giocatore da Team Roster"
+
+#: admin/admin.php:225
+msgid "Default"
+msgstr "Standard"
+
+#: admin/admin.php:270
+msgid "Update Standings Manually"
+msgstr "Aggiorna Classifica manualmente"
+
+#: admin/admin.php:270
+#: admin/documentation.php:19
+msgid "One-Point-Rule"
+msgstr "Regola Un punto"
+
+#: admin/admin.php:270
+msgid "Two-Point-Rule"
+msgstr "Regola dei due Punti"
+
+#: admin/admin.php:270
+msgid "Three-Point-Rule"
+msgstr "Regola dei tre punti"
+
+#: admin/admin.php:270
+msgid "User defined"
+msgstr "Definito da utente"
+
+#: admin/admin.php:449
+msgid "League added"
+msgstr "Campionato inserito"
+
+#: admin/admin.php:473
+#: admin/admin.php:953
+msgid "Settings saved"
+msgstr "Configarione salvata"
+
+#: admin/admin.php:524
+#, php-format
+msgid "Season <strong>%s</strong> added"
+msgstr "Stagione <strong>%s</strong> aggiunta correttamente"
+
+#: admin/admin.php:592
+msgid "Team added"
+msgstr "Squadra inserita"
+
+#: admin/admin.php:647
+msgid "Team updated"
+msgstr "Squadra aggiornata"
+
+#: admin/admin.php:728
+msgid "Logo exists and is not uploaded. Set the overwrite option if you want to replace it."
+msgstr "Il logo esiste gi&agrave; e non &egrave; stato caricato.Scegli l&acute;opzione sovrascrivi immagine per sostituirla."
+
+#: admin/admin.php:738
+#: admin/admin.php:1150
+#, php-format
+msgid "The uploaded file could not be moved to %s."
+msgstr "Il file caricato non pu&ograve; essere caricato in %s ."
+
+#: admin/admin.php:743
+msgid "The file type is not supported."
+msgstr "Il tipo di file selezionato non &egrave; supportato"
+
+#: admin/admin.php:870
+msgid "Updated League Results"
+msgstr "Risultati campionato aggiornati correttamente"
+
+#: admin/admin.php:989
+msgid "Choose League"
+msgstr "Scegli il campionato"
+
+#: admin/admin.php:1033
+msgid "Choose Season"
+msgstr "Scegli la stagione"
+
+#: admin/admin.php:1077
+msgid "Choose Match"
+msgstr "Scegli un incontro"
+
+#: admin/admin.php:1154
+msgid "The uploaded file seems to be empty"
+msgstr "Il file caricato sembra essere vuoto"
+
+#: admin/admin.php:1208
+#, php-format
+msgid "%d Teams imported"
+msgstr "%d Squadre importate"
+
+#: admin/admin.php:1265
+#, php-format
+msgid "%d Matches imported"
+msgstr "%d Incontri importati"
+
+#: admin/admin.php:1328
+#: admin/admin.php:1358
+#: admin/settings.php:168
+#: admin/settings.php:190
+#: admin/show-league.php:101
+#: lib/widget.php:385
+#: view/archive.php:25
+msgid "Season"
+msgstr "Stagione"
+
+#: admin/admin.php:1328
+#: admin/team.php:32
+#: view/standings-baseball.php:23
+#: view/standings-compact.php:23
+#: view/standings-extend.php:23
+#: view/standings-pool.php:23
+#: view/standings-slim.php:19
+#: view/teams.php:23
+msgid "Team"
+msgstr "Squadra"
+
+#: admin/admin.php:1328
+#: admin/team.php:59
+#: view/team.php:29
+#: view/teams.php:28
+msgid "Website"
+msgstr "Sito web"
+
+#: admin/admin.php:1328
+#: admin/team.php:62
+#: view/team.php:28
+#: view/teams.php:24
+msgid "Coach"
+msgstr "Allenatore"
+
+#: admin/admin.php:1328
+#: admin/team.php:65
+msgid "Home Team"
+msgstr "La tua squadra"
+
+#: admin/admin.php:1328
+#: admin/show-league.php:141
+#: view/standings-baseball.php:24
+#: view/standings-compact.php:24
+#: view/standings-extend.php:24
+#: view/standings-pool.php:24
+#: view/standings-slim.php:20
+msgid "Pld"
+msgstr "G."
+
+#: admin/admin.php:1328
+#: view/standings-baseball.php:25
+#: view/standings-extend.php:25
+#: view/standings-pool.php:25
+#: view/teams.php:25
+msgid "W|Won"
+msgstr "V."
+
+#: admin/admin.php:1328
+#: view/standings-baseball.php:25
+#: view/standings-extend.php:25
+#: view/standings-pool.php:25
+#: view/teams.php:26
+msgid "T|Tie"
+msgstr "P."
+
+#: admin/admin.php:1328
+#: view/standings-baseball.php:25
+#: view/standings-extend.php:25
+#: view/standings-pool.php:25
+#: view/teams.php:27
+msgid "L|Lost"
+msgstr "S."
+
+#: admin/admin.php:1328
+msgid "Points2"
+msgstr "Punti2"
+
+#: admin/admin.php:1328
+#: sports/basketball.php:138
+#: sports/gymnastics.php:86
+#: sports/handball.php:88
+#: sports/hockey.php:257
+#: sports/soccer.php:88
+#: view/standings-compact.php:25
+#: view/standings-extend.php:27
+msgid "Diff"
+msgstr "Diff"
+
+#: admin/admin.php:1328
+#: admin/show-league.php:146
+#: view/standings-compact.php:26
+#: view/standings-extend.php:28
+#: view/standings-pool.php:28
+#: view/standings-slim.php:21
+msgid "Pts"
+msgstr "Pti"
+
+#: admin/admin.php:1358
+#: admin/match.php:118
+#: admin/match.php:145
+#: admin/show-league.php:254
+msgid "Date"
+msgstr "Data"
+
+#: admin/admin.php:1358
+#: admin/match.php:124
+msgid "Match Day"
+msgstr "Giornata"
+
+#: admin/admin.php:1358
+#: admin/match.php:147
+msgid "Home"
+msgstr "Casa"
+
+#: admin/admin.php:1358
+#: admin/match.php:148
+msgid "Guest"
+msgstr "Ospiti"
+
+#: admin/admin.php:1358
+#: admin/match.php:149
+#: admin/show-league.php:256
+msgid "Location"
+msgstr "Luogo"
+
+#: admin/admin.php:1358
+#: admin/match.php:150
+#: admin/show-league.php:257
+msgid "Begin"
+msgstr "Inizio"
+
+#: admin/admin.php:1358
+#: admin/show-league.php:258
+#: view/matches-gymnastics.php:45
+#: view/matches-irish-gaelic-football.php:45
+#: view/matches.php:45
+msgid "Score"
+msgstr "Punteggio"
+
+#: admin/championchip.php:20
+#: admin/championchip.php:21
+msgid "Championchip Finals"
+msgstr "Finale di Champions League"
+
+#: admin/championchip.php:29
+msgid "Round"
+msgstr "Incontro"
+
+#: admin/championchip.php:30
+#: admin/export.php:32
+#: admin/import.php:45
+#: admin/index.php:35
+#: admin/tinymce/window.php:43
+#: lib/widget.php:387
+#: view/archive.php:39
+#: view/team.php:24
+msgid "Matches"
+msgstr "Incontri"
+
+#: admin/championchip.php:68
+msgid "Save Finals Results"
+msgstr "Salva risultati finali"
+
+#: admin/championchip.php:71
+msgid "Add Final Matches"
+msgstr "Agg. incontri finali"
+
+#: admin/documentation.php:3
+#: admin/export.php:3
+#: admin/import.php:3
+#: admin/match.php:3
+#: admin/matchstats.php:3
+#: admin/settings.php:3
+#: admin/team.php:3
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Non hai i permessi sufficienti per poter accedere a questa pagina."
+
+#: admin/documentation.php:9
+msgid "LeagueManager Documentation"
+msgstr "Documentazione LeagueManager"
+
+#: admin/documentation.php:11
+#: admin/settings.php:64
+msgid "Sport"
+msgstr "Sport"
+
+#: admin/documentation.php:12
+msgid "The sport type is important to enable certain rules. Gymnastics leagues have apparatus points which other leagues don't, Soccer has Halftime results, while Hocky is played in Thirds and Basketball in Quarters."
+msgstr "Il tipo di sport &egrave; importante per attivare determinate regole. I campionati di Ginnastica hanno un sistema di punti che altri campionati non hanno, Il calcio ha due tempi, mentre l&acute;Hocky &egrave; giocato in tre tempi e la Pallacanestro in Quarti."
+
+#: admin/documentation.php:16
+msgid "Point Rules"
+msgstr "Regole punteggio"
+
+#: admin/documentation.php:17
+msgid "The second important option is the point rule, which automatically sets the number of points teams get for won matches, draw matches or lost matches. Some league types have specific rules. See the sections below for details."
+msgstr "La seconda importante opzione &egrave; la regola del punteggio,la quale setta in modo automatico il numero di punti per le partite vinte,pareggiate o perse.Qualche campionato ha una regola specifica per i punteggi.Guarda la sezione sotto per i dettagli."
+
+#: admin/documentation.php:20
+msgid "The One-Point-Rule simply counts the number of won matches. This point system is used, e.g. in the MLB, NBA and NFL."
+msgstr "La regola per un punto,conteggia solo il numero di vittorie-Questo sistema di punti &egrave; utilizzato es. in MLB,NBA e NFL."
+
+#: admin/documentation.php:22
+msgid "Two-Point-Rule and Three-Point-Rule"
+msgstr "Regola dei due punti e regola dei tre punti"
+
+#: admin/documentation.php:23
+msgid "The Two- and Three-Point-Rules are the most common ones. Teams get two or three points for won matches respectively and one point for draw."
+msgstr "Le regole dei due e tre punti sono tra le pi&ugrave; comuni.Le squadre avranno rispettivamente due o tre punti per la vittoria ed un punto per il pareggio."
+
+#: admin/export.php:8
+msgid "LeagueManager Export"
+msgstr "Esportazione dati LeagueManager"
+
+#: admin/export.php:9
+msgid "Here you can export teams and matches for a specific league."
+msgstr "Con questa funzione puoi esportare squadre e incontri per un campionato specifico."
+
+#: admin/export.php:10
+msgid "Once you&#8217;ve saved the download file, you can use the Import function on another WordPress blog to import this blog."
+msgstr "Una volta scaricato il file, &egrave; possibile importare i dati in un altro blog tramite la funzione Importa."
+
+#: admin/export.php:13
+#: leaguemanager.php:305
+msgid "Options"
+msgstr "Opzioni"
+
+#: admin/export.php:28
+#: admin/import.php:41
+msgid "Data"
+msgstr "Data"
+
+#: admin/export.php:31
+#: admin/import.php:44
+#: admin/index.php:34
+#: view/teams.php:20
+msgid "Teams"
+msgstr "Squadre"
+
+#: admin/export.php:37
+msgid "Download File"
+msgstr "Scarica file"
+
+#: admin/import.php:14
+msgid "LeagueManager Import"
+msgstr "Importazione dati LeagueManager"
+
+#: admin/import.php:16
+msgid "Choose a CSV file to upload and import data from"
+msgstr "Scegli un file CSV da caricare ed importare"
+
+#: admin/import.php:23
+msgid "File"
+msgstr "File"
+
+#: admin/import.php:26
+msgid "Delimiter"
+msgstr "Delimitatore"
+
+#: admin/import.php:26
+msgid "For tab delimited files use TAB as delimiter"
+msgstr "Per scheda file delimitati che usano TAB come delimitatore"
+
+#: admin/import.php:51
+msgid "Upload file and import"
+msgstr "Carica file ed importa"
+
+#: admin/index.php:21
+#: admin/settings.php:159
+#: admin/show-league.php:127
+#: admin/show-league.php:233
+msgid "Bulk Actions"
+msgstr "Azioni di massa"
+
+#: admin/index.php:24
+#: admin/settings.php:162
+#: admin/show-league.php:130
+#: admin/show-league.php:236
+msgid "Apply"
+msgstr "Applica"
+
+#: admin/index.php:33
+#: admin/settings.php:152
+msgid "Seasons"
+msgstr "Stagioni"
+
+#: admin/index.php:36
+msgid "Status"
+msgstr "Status"
+
+#: admin/index.php:37
+msgid "Action"
+msgstr "Azione"
+
+#: admin/index.php:60
+#: admin/index.php:66
+msgid "Add League"
+msgstr "Agg. campionato"
+
+#: admin/match.php:13
+msgid "Edit Match"
+msgstr "Modifica incontro"
+
+#: admin/match.php:44
+#, php-format
+msgid "Edit Matches &#8211; %d. Match Day"
+msgstr "Modifica incontri &#8211; %d. Giornata"
+
+#: admin/match.php:45
+#: admin/match.php:55
+#: admin/show-league.php:224
+msgid "Edit Matches"
+msgstr "Modifica incontri"
+
+#: admin/match.php:54
+#, php-format
+msgid "Edit Matches &#8211; %s"
+msgstr "Modifica incontri &#8211; %s"
+
+#: admin/match.php:85
+#, php-format
+msgid "Add Matches &#8211; %s"
+msgstr "Aggiungi incontri &#8211; %s"
+
+#: admin/match.php:137
+msgid "Note: Matches with different Home and Guest Teams will be added to the database."
+msgstr "Nota bene:Solo gli incontri con squadre in casa e squadre ospiti differenti saranno aggiunte al database."
+
+#: admin/match.php:203
+msgid "No Matches found"
+msgstr "Nessun risultato trovato"
+
+#: admin/matchstats.php:25
+#: lib/stats.php:134
+msgid "Match Statistics"
+msgstr "Statistiche incontro"
+
+#: admin/matchstats.php:27
+#, php-format
+msgid "Match Statistics &#8211; %s v.s. %s"
+msgstr "Statistiche incontro &#8211; %s v.s. %s"
+
+#: admin/matchstats.php:33
+#: lib/bridge.php:74
+#: sports/handball.php:88
+#: sports/hockey.php:257
+#: sports/irish-gaelic-football.php:66
+#: sports/irish-gaelic-football.php:91
+#: sports/soccer.php:88
+#: view/match.php:32
+#: view/standings-extend.php:26
+msgid "Goals"
+msgstr "Goals"
+
+#: admin/matchstats.php:38
+#: admin/matchstats.php:76
+#: admin/matchstats.php:121
+msgid "Time"
+msgstr "Orario"
+
+#: admin/matchstats.php:39
+msgid "Scorer"
+msgstr "Marcatore"
+
+#: admin/matchstats.php:40
+msgid "Standing"
+msgstr "Classifica"
+
+#: admin/matchstats.php:69
+#: admin/matchstats.php:114
+#: admin/matchstats.php:164
+msgid "Insert more"
+msgstr "Inserisci un altro"
+
+#: admin/matchstats.php:72
+#: view/match.php:58
+msgid "Cards"
+msgstr "Cartellini"
+
+#: admin/matchstats.php:77
+msgid "Player"
+msgstr "Giocatori"
+
+#: admin/matchstats.php:78
+msgid "Card"
+msgstr "Cartellino"
+
+#: admin/matchstats.php:117
+#: view/match.php:45
+msgid "Exchanges"
+msgstr "Scambia"
+
+#: admin/matchstats.php:122
+msgid "Player in"
+msgstr "Giocatore dentro"
+
+#: admin/matchstats.php:123
+msgid "Player out"
+msgstr "Giocatore fuori"
+
+#: admin/matchstats.php:169
+msgid "Save Statistics"
+msgstr "Salva statistiche"
+
+#: admin/settings-global.php:5
+msgid "Leaguemanager Global Settings"
+msgstr "Configurazione globale Leaguemanager"
+
+#: admin/settings-global.php:6
+msgid "Color Scheme"
+msgstr "Schema colori"
+
+#: admin/settings-global.php:9
+msgid "Table Headers"
+msgstr "Intestazione tabella"
+
+#: admin/settings-global.php:12
+msgid "Table Rows"
+msgstr "Righe tabella"
+
+#: admin/settings-global.php:21
+#: admin/settings.php:147
+msgid "Save Preferences"
+msgstr "Salva preferenze"
+
+#: admin/settings.php:23
+msgid "Season was empty"
+msgstr "Nessuna stagione disponibile"
+
+#: admin/settings.php:47
+msgid "You need to add at least one season"
+msgstr "Devi aggiungere almeno una stagione"
+
+#: admin/settings.php:53
+#: admin/settings.php:55
+msgid "League Preferences"
+msgstr "Preferenze campionato"
+
+#: admin/settings.php:61
+msgid "Title"
+msgstr "Titolo"
+
+#: admin/settings.php:71
+#, php-format
+msgid "Check the <a href='%s'>Documentation</a> for details"
+msgstr "Consulta la <a href='%s'>Documentazione</a> per maggiori dettagli"
+
+#: admin/settings.php:75
+msgid "Point Rule"
+msgstr "Regola punteggio"
+
+#: admin/settings.php:82
+#, php-format
+msgid "For details on point rules see the <a href='%s'>Documentation</a>"
+msgstr "Per i dettagli sulle regole dei punteggi consulta la <a href='%s'>Documentazione</a>"
+
+#: admin/settings.php:96
+msgid "Point Format"
+msgstr "Formato punteggio"
+
+#: admin/settings.php:106
+msgid "Team Ranking"
+msgstr "Classifica Squadre"
+
+#: admin/settings.php:109
+msgid "Automatic"
+msgstr "Automatica"
+
+#: admin/settings.php:110
+msgid "Manual"
+msgstr "Manuale"
+
+#: admin/settings.php:112
+msgid "Team Ranking via Drag & Drop probably will only work in Firefox"
+msgstr "La classifica delle squadre tramite Drag & Drop probabilmente funziona solo con Firefox"
+
+#: admin/settings.php:118
+msgid "ProjectManager Bridge"
+msgstr "Integrazione con ProjectManager"
+
+#: admin/settings.php:121
+msgid "None"
+msgstr "Nessuno"
+
+#: admin/settings.php:131
+msgid "Mode"
+msgstr "Modalit&agrave;"
+
+#: admin/settings.php:169
+msgid "Match Days"
+msgstr "Giornate"
+
+#: admin/settings.php:186
+msgid "Add new Season"
+msgstr "Agg. nuova stagione"
+
+#: admin/settings.php:192
+msgid "Usually 4-digit year, e.g. 2008. Can also be any kind of string, e.g. 0809"
+msgstr "Solitamente vengono utilizzate 4 cifre per l&acute;anno es. 2008.Puoi anche utilizzare la stringa 0809"
+
+#: admin/settings.php:196
+msgid "Number of Match Days"
+msgstr "Numero di giornate"
+
+#: admin/settings.php:202
+msgid "No Teams"
+msgstr "Non ci sono squadre inserite"
+
+#: admin/settings.php:204
+msgid "Check this to not automatically get teams from database and add them to the season"
+msgstr "Spunta questa casellina per non ottenere automaticamente squadre provenienti da database e aggiungerli alla stagione"
+
+#: admin/settings.php:208
+msgid "Add Season"
+msgstr "Agg. stagione"
+
+#: admin/show-league.php:30
+#, php-format
+msgid "%d Match added"
+msgid_plural "%d Matches added"
+msgstr[0] "%d incontro inserito"
+msgstr[1] "%d incontri inseriti"
+
+#: admin/show-league.php:39
+#, php-format
+msgid "%d Match updated"
+msgid_plural "%d Matches updated"
+msgstr[0] "%d incontro aggiornato"
+msgstr[1] "%d incontri aggiornati"
+
+#: admin/show-league.php:48
+msgid "Standings Table updated"
+msgstr "Classifica aggiornata"
+
+#: admin/show-league.php:87
+msgid "You have to complete the League Settings."
+msgstr "Devi completare le impostazioni del campionato."
+
+#: admin/show-league.php:107
+#: view/archive.php:30
+#: view/matches-gymnastics.php:34
+#: view/matches-irish-gaelic-football.php:34
+#: view/matches.php:34
+msgid "Show"
+msgstr "Visualizza"
+
+#: admin/show-league.php:119
+#: admin/show-league.php:133
+#: admin/tinymce/window.php:42
+#: lib/widget.php:166
+#: lib/widget.php:400
+msgid "Table"
+msgstr "Classifica"
+
+#: admin/show-league.php:140
+#: view/crosstable.php:22
+msgid "Club"
+msgstr "Squadra"
+
+#: admin/show-league.php:142
+#: view/team.php:25
+msgid "Win"
+msgstr "V"
+
+#: admin/show-league.php:143
+#: view/team.php:26
+msgid "Tie"
+msgstr "P"
+
+#: admin/show-league.php:144
+#: view/team.php:27
+msgid "Defeat"
+msgstr "S"
+
+#: admin/show-league.php:147
+msgid "+/- Points"
+msgstr "+/- Punti"
+
+#: admin/show-league.php:161
+#: admin/team.php:45
+#: view/standings-baseball.php:42
+#: view/standings-compact.php:38
+#: view/standings-extend.php:39
+#: view/standings-pool.php:39
+#: view/team.php:20
+msgid "Logo"
+msgstr "Logo"
+
+#: admin/show-league.php:206
+msgid "Save Standings"
+msgstr "Salva classifica"
+
+#: admin/show-league.php:210
+#: admin/show-league.php:250
+#: view/matches-gymnastics.php:42
+#: view/matches-irish-gaelic-football.php:42
+#: view/matches.php:42
+msgid "Match Plan"
+msgstr "Pianifica incontro"
+
+#: admin/show-league.php:221
+#: admin/show-league.php:243
+#: view/matches-gymnastics.php:24
+#: view/matches-irish-gaelic-football.php:24
+#: view/matches.php:24
+#, php-format
+msgid "%d. Match Day"
+msgstr "%d. Giornata"
+
+#: admin/show-league.php:241
+msgid "Show all Matches"
+msgstr "Visualizza tutti gli incontri"
+
+#: admin/show-league.php:246
+msgid "Filter"
+msgstr "Filtra"
+
+#: admin/show-league.php:255
+#: admin/tinymce/window.php:44
+#: admin/tinymce/window.php:119
+#: view/matches-gymnastics.php:44
+#: view/matches-irish-gaelic-football.php:44
+#: view/matches.php:44
+msgid "Match"
+msgstr "Incontro"
+
+#: admin/show-league.php:292
+msgid "Update Results"
+msgstr "Aggiorna i risultati"
+
+#: admin/team.php:10
+msgid "Edit Team"
+msgstr "Modifica squadra"
+
+#: admin/team.php:20
+#, php-format
+msgid "Unable to create directory %s. Is its parent directory writable by the server?"
+msgstr "Impossibile creare la directory %s.La directory principale ha i permessi di scrittura corretti?"
+
+#: admin/team.php:36
+msgid "OR"
+msgstr "OPPURE"
+
+#: admin/team.php:38
+msgid "Choose Team from Database"
+msgstr "Scegli una squadra dal database"
+
+#: admin/team.php:50
+msgid "Supported file types"
+msgstr "Tipi di files supportati"
+
+#: admin/team.php:52
+msgid "Overwrite existing image"
+msgstr "Sovrascrivi immagine esistente"
+
+#: admin/team.php:54
+msgid "Delete Logo"
+msgstr "Elimina logo"
+
+#: admin/tinymce/window.php:45
+#: view/archive.php:43
+#: view/crosstable.php:20
+#: view/crosstable.php:47
+msgid "Crosstable"
+msgstr "Tabella incontri incrociati"
+
+#: admin/tinymce/window.php:56
+#: admin/tinymce/window.php:91
+#: admin/tinymce/window.php:150
+msgid "No League"
+msgstr "Nessun campionato"
+
+#: admin/tinymce/window.php:68
+#: admin/tinymce/window.php:103
+#: admin/tinymce/window.php:162
+msgid "Display"
+msgstr "Visualizza"
+
+#: admin/tinymce/window.php:71
+msgid "Extend"
+msgstr "Avanzata"
+
+#: admin/tinymce/window.php:72
+msgid "Compact"
+msgstr "Compatta"
+
+#: admin/tinymce/window.php:73
+msgid "Slim"
+msgstr "Semplice"
+
+#: admin/tinymce/window.php:78
+#: lib/widget.php:408
+msgid "Show Logos"
+msgstr "Mostra Loghi"
+
+#: admin/tinymce/window.php:106
+msgid "Match day based"
+msgstr "Basato su Giornate"
+
+#: admin/tinymce/window.php:107
+msgid "All"
+msgstr "Tutti"
+
+#: admin/tinymce/window.php:108
+msgid "Only Home Team"
+msgstr "Solo la tua squadra"
+
+#: admin/tinymce/window.php:122
+msgid "No Match"
+msgstr "Nessun incontro"
+
+#: admin/tinymce/window.php:164
+msgid "Embed"
+msgstr "Condividi"
+
+#: admin/tinymce/window.php:165
+#: view/crosstable.php:47
+msgid "Popup"
+msgstr "Popup"
+
+#: admin/upgrade.php:13
+msgid "Upgrade database structure..."
+msgstr "Aggiorna la struttura del database..."
+
+#: admin/upgrade.php:293
+msgid "finished"
+msgstr "completato"
+
+#: admin/upgrade.php:313
+#: admin/upgrade.php:332
+msgid "Upgrade LeagueManager"
+msgstr "Aggiorna LeagueManager"
+
+#: admin/upgrade.php:314
+msgid "Your database for LeagueManager is out-of-date, and must be upgraded before you can continue."
+msgstr "Il database per LeagueManager &egrave; un po vecchiotto e deve essere aggiornato prima di poter proseguire."
+
+#: admin/upgrade.php:315
+msgid "The upgrade process may take a while, so please be patient."
+msgstr "Il processo di aggiornamento pu&ograve; impiegarci qualche minuto,sii paziente."
+
+#: admin/upgrade.php:316
+msgid "Start upgrade now"
+msgstr "inizia aggiornamento"
+
+#: admin/upgrade.php:334
+msgid "Upgrade successful"
+msgstr "Aggiornamento eseguito correttamente"
+
+#: admin/upgrade.php:335
+msgid "Continue"
+msgstr "Continua"
+
+#: leaguemanager.php:305
+msgid "Page Revisions"
+msgstr "Revisioni pagine"
+
+#: leaguemanager.php:305
+msgid "Insert time"
+msgstr "Inserisci orario"
+
+#: lib/championchip.php:51
+#: lib/championchip.php:65
+msgid "Championchip"
+msgstr "Champions League"
+
+#: lib/championchip.php:79
+msgid "Teams Advance"
+msgstr "Squadre che avanzano"
+
+#: lib/championchip.php:94
+msgid "Final"
+msgstr "Finale"
+
+#: lib/championchip.php:96
+msgid "Semi Final"
+msgstr "Semi finale"
+
+#: lib/championchip.php:98
+msgid "Quarter Final"
+msgstr "Quarti di finale"
+
+#: lib/championchip.php:101
+#, php-format
+msgid "Last-%d"
+msgstr "Ultime-%d"
+
+#: lib/core.php:196
+msgid "Other"
+msgstr "Altro"
+
+#: lib/shortcodes.php:195
+#: lib/shortcodes.php:263
+#: lib/widget.php:326
+msgid "Report"
+msgstr "Report"
+
+#: lib/shortcodes.php:198
+#: lib/shortcodes.php:266
+#: lib/shortcodes.php:365
+#: lib/widget.php:318
+msgid "o.P.|on penalty"
+msgstr "C.R.|ai rigori"
+
+#: lib/shortcodes.php:200
+#: lib/shortcodes.php:268
+#: lib/shortcodes.php:367
+#: lib/widget.php:320
+msgid "AET|after extra time"
+msgstr "T.S.|tempi supplementari"
+
+#: lib/shortcodes.php:544
+#, php-format
+msgid "Could not load template %s.php"
+msgstr "Impossibile caricare il template %s.php"
+
+#: lib/stats.php:95
+msgid "Activate Match Statistics"
+msgstr "Attiva le statistiche per gli incontri"
+
+#: lib/stats.php:110
+#: lib/stats.php:122
+msgid "Stats"
+msgstr "Statistiche"
+
+#: lib/stats.php:160
+msgid "Saved Statstics"
+msgstr "Salva statistiche"
+
+#: lib/widget.php:59
+msgid "League results and upcoming matches at a glance"
+msgstr "Risultati di campionato e prossime partite a colpo d'occhio"
+
+#: lib/widget.php:214
+#: view/team.php:35
+msgid "Next Match"
+msgstr "Prossimo incontro"
+
+#: lib/widget.php:235
+#: lib/widget.php:315
+#: view/team.php:37
+#: view/team.php:48
+#, php-format
+msgid "<strong>%d.</strong> Match Day"
+msgstr "<strong>%d.</strong> Giornata"
+
+#: lib/widget.php:290
+#: view/team.php:46
+msgid "Last Match"
+msgstr "Ultimo incontro"
+
+#: lib/widget.php:388
+#: lib/widget.php:399
+msgid "Do not show"
+msgstr "Non visualizzare"
+
+#: lib/widget.php:388
+msgid "Last Matches"
+msgstr "Ultimi incontri"
+
+#: lib/widget.php:388
+msgid "Next Matches"
+msgstr "Prossimi incontri"
+
+#: lib/widget.php:388
+msgid "Next & Last Matches"
+msgstr "Prossimi e ultimi incontri"
+
+#: lib/widget.php:396
+msgid "Only own matches"
+msgstr "Solo gli incontri della tua squadra"
+
+#: lib/widget.php:397
+msgid "Limit"
+msgstr "Limita"
+
+#: lib/widget.php:399
+msgid "Compact Version"
+msgstr "Versione compatta"
+
+#: lib/widget.php:399
+msgid "Extend Version"
+msgstr "Versione avanzata"
+
+#: lib/widget.php:399
+msgid "Slim Version"
+msgstr "Versione semplice"
+
+#: lib/widget.php:410
+msgid "Link to report"
+msgstr "Link al report"
+
+#: lib/widget.php:411
+msgid "Date Format"
+msgstr "Formato data"
+
+#: sports/baseball.php:60
+msgid "Baseball"
+msgstr "Baseball"
+
+#: sports/baseball.php:179
+msgid "RF|Runs For"
+msgstr "RF|Runs For"
+
+#: sports/baseball.php:179
+msgid "RA|Runs Against"
+msgstr "RA|Runs Against"
+
+#: sports/baseball.php:179
+msgid "PCT|Percent Win"
+msgstr "% Vittorie"
+
+#: sports/baseball.php:179
+msgid "GB|Games Behind"
+msgstr "Spiele hinter"
+
+#: sports/baseball.php:179
+#: sports/baseball.php:209
+#: sports/baseball.php:234
+#: view/standings-baseball.php:30
+msgid "SO|Shutouts"
+msgstr "Shutouts"
+
+#: sports/baseball.php:209
+#: sports/baseball.php:234
+#: sports/baseball.php:284
+#: view/standings-baseball.php:26
+msgid "RF|Runs for"
+msgstr "Läufe Heim"
+
+#: sports/baseball.php:209
+msgid "RA|runs against"
+msgstr "Läufe Gast"
+
+#: sports/baseball.php:234
+#: sports/baseball.php:284
+#: view/standings-baseball.php:27
+msgid "RA|Runs against"
+msgstr "Läufe Gast"
+
+#: sports/baseball.php:284
+#: view/standings-baseball.php:28
+msgid "PCT|Percentage win"
+msgstr "Sieg %"
+
+#: sports/baseball.php:284
+msgid "GB|games behind"
+msgstr "Spiele hinter"
+
+#: sports/basketball.php:54
+msgid "Basketball"
+msgstr "Basketball"
+
+#: sports/basketball.php:138
+msgid "Baskets"
+msgstr "Canestri"
+
+#: sports/basketball.php:170
+#: sports/basketball.php:199
+msgid "Quarters"
+msgstr "Quarti"
+
+#: sports/basketball.php:170
+#: sports/basketball.php:199
+#: sports/handball.php:120
+#: sports/handball.php:146
+#: sports/hockey.php:289
+#: sports/hockey.php:319
+#: sports/soccer.php:120
+#: sports/soccer.php:146
+msgid "Overtime"
+msgstr "Tempo supplementare"
+
+#: sports/cornhole.php:44
+msgid "Cornhole"
+msgstr "Cornhole"
+
+#: sports/electronic.php:27
+msgid "PC &#8211; Shooter"
+msgstr "PC &#8211; Shooter"
+
+#: sports/electronic.php:27
+msgid "PC &#8211; Strategy"
+msgstr "PC &#8211; Strategie"
+
+#: sports/electronic.php:27
+msgid "PC &#8211; Role-Playing Game"
+msgstr "PC &#8211; Rollenspiel"
+
+#: sports/gymnastics.php:54
+msgid "Gymnastics"
+msgstr "Ginnastica"
+
+#: sports/gymnastics.php:86
+#: view/matches-gymnastics.php:46
+msgid "AP|apparatus points"
+msgstr "GP"
+
+#: sports/gymnastics.php:118
+msgid "Apparatus Points"
+msgstr "Sistema punti"
+
+#: sports/gymnastics.php:142
+msgid "AP"
+msgstr "GP"
+
+#: sports/handball.php:56
+msgid "Handball"
+msgstr "Handball"
+
+#: sports/handball.php:120
+#: sports/handball.php:146
+#: sports/soccer.php:120
+#: sports/soccer.php:146
+msgid "Halftime"
+msgstr "Intervallo"
+
+#: sports/handball.php:120
+#: sports/handball.php:146
+#: sports/hockey.php:289
+#: sports/hockey.php:319
+#: sports/soccer.php:120
+#: sports/soccer.php:146
+msgid "Penalty"
+msgstr "Calci di rigore"
+
+#: sports/hockey.php:27
+#: sports/hockey.php:179
+msgid "German Icehockey League (DEL)"
+msgstr "German Icehockey League (DEL)"
+
+#: sports/hockey.php:27
+msgid "Nation Hockey League (NHL)"
+msgstr "Nation Hockey League (NHL)"
+
+#: sports/hockey.php:180
+msgid "The DEL uses a more complicated form of the Three-Point-Rule. The winner after regular time gets three points, the loser none. The winner after overtime gets two points and the loser one. This rule was also applied at the Icehockey Worldchampionchip in 2008."
+msgstr "Nel DEL viene utilizzat una forma più complessa della regola dei tre punti. Il vincitore, dopo il tempo regolare ottiene tre punti, la perdente nessuno. Il vincitore, dopo un tempo supplementare ottiene due punti e uno il perdente. Questa regola &egrave; stata applicata anche al campionato del mondo di Hockey su ghiaccio nel 2008."
+
+#: sports/hockey.php:182
+msgid "National Hockey League (NHL)"
+msgstr "National Hockey League (NHL)"
+
+#: sports/hockey.php:183
+msgid "The NHL uses a derivative of the Two-Point-Rule. The winner after regular time and overtime gains two points whereas the loser after overtime and penalty gets one."
+msgstr "Nel NHL viene usato un derivato della regola dei due punti.Il vincitore dopo il tempo regolamentrare e tempo supplementare guadagna due punti,mentre il perdente dopo il tempo supplementare e rigore ne ottiene uno."
+
+#: sports/hockey.php:289
+#: sports/hockey.php:319
+msgid "Thirds"
+msgstr "Terzi"
+
+#: sports/irish-gaelic-football.php:53
+msgid "Irish Gaelic Football"
+msgstr "Irisch Gaelic Football"
+
+#: sports/irish-gaelic-football.php:66
+#: sports/irish-gaelic-football.php:91
+msgid "Points"
+msgstr "Punti"
+
+#: sports/pool.php:59
+msgid "Pool Billiard"
+msgstr "Billiardo"
+
+#: sports/pool.php:140
+#: sports/pool.php:169
+#: sports/pool.php:193
+#: sports/pool.php:240
+#: view/standings-pool.php:26
+msgid "For"
+msgstr "per"
+
+#: sports/pool.php:140
+#: sports/pool.php:169
+#: sports/pool.php:193
+#: sports/pool.php:240
+#: view/standings-pool.php:27
+msgid "Against"
+msgstr "Contro"
+
+#: sports/soccer.php:56
+msgid "Soccer"
+msgstr "Calcio"
+
+#: view/archive.php:35
+#: view/standings-baseball.php:15
+#: view/standings-compact.php:15
+#: view/standings-extend.php:15
+#: view/standings-pool.php:15
+#: view/standings-slim.php:15
+msgid "Standings"
+msgstr "Classifiche"
+
+#: view/match.php:51
+msgid "In"
+msgstr "In"
+
+#: view/match.php:52
+msgid "Out"
+msgstr "Fuori"
+
+#: view/matches-gymnastics.php:28
+#: view/matches-irish-gaelic-football.php:28
+#: view/matches.php:28
+msgid "Choose Team"
+msgstr "Scegli una squadra"
+
+#: view/standings-baseball.php:17
+#: view/standings-compact.php:17
+#: view/standings-extend.php:17
+#: view/standings-pool.php:17
+#: view/standings-slim.php:17
+msgid "Pos|Position"
+msgstr "Pos"
+
+#: view/standings-baseball.php:29
+msgid "GB|Games behind"
+msgstr "GB|Games behind"
+
+#: view/team.php:23
+msgid "Rank"
+msgstr "Posizione"
+
+msgid "Add Team from Database"
+msgstr "Aggiungi squadra dal database"
+
+msgid "Sets"
+msgstr "Set"
+
+msgid "Number of Sets"
+msgstr "Numero di set"
+
+msgid "Ballpoints"
+msgstr ""
+
+msgid "Groups"
+msgstr "Gruppi"
+
+msgid "Group"
+msgstr "Gruppo"
+
+msgid "Standings Table Display"
+msgstr "Visualizza classifiche"
+
+msgid "Upload Directory"
+msgstr "Directory per il caricamento"
+
+msgid "Separate Groups by semicolon ;"
+msgstr "Separa i gruppi con punto e virgola ;"
+
+msgid "Played Games"
+msgstr "Giocate"
+
+msgid "Won Games"
+msgstr "Vittorie"
+
+msgid "Tie Games"
+msgstr "Pareggi"
+
+msgid "Lost Games"
+msgstr "Sconfitte"
+
+msgid "Default Match Start Time"
+msgstr "Orario di inizio predefinito"
+
+msgid "Point formats for primary and secondary points (e.g. Goals)"
+msgstr "Formato punti per punteggi primari e secondari (es. Goals)"
+
+msgid "Racing"
+msgstr "Corse"
+
+msgid "Sports with two Scores"
+msgstr "Sport con due punteggi"
+

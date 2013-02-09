@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/united_kingdom_regions.swf" tl_long="-10.58809" tl_lat="60.852823" br_long="1.724578" br_lat="49.1749" zoom="100%" zoom_x="94.7%" zoom_y="-1.02%">
+  <areas>
+    <area mc_name="GB_UKC" title="North East"/>
+    <area mc_name="GB_UKD" title="North West"/>
+    <area mc_name="GB_UKE" title="Yorkshire and the Humber"/>
+    <area mc_name="GB_UKF" title="East Midlands"/>
+    <area mc_name="GB_UKG" title="West Midlands"/>
+    <area mc_name="GB_UKH" title="East of England"/>
+    <area mc_name="GB_UKI" title="London"/>
+    <area mc_name="GB_UKJ" title="South East"/>
+    <area mc_name="GB_UKK" title="South West"/>
+    <area mc_name="GB_UKL" title="Wales"/>
+    <area mc_name="GB_UKM" title="Scotland"/>
+    <area mc_name="GB_UKN" title="Northern Ireland"/>
+    <area mc_name="IE" title="Ireland"/>
+    <area mc_name="IM" title="Isle of Man"/>
+    <area mc_name="JE" title="Jersey"/>
+    <area mc_name="GG" title="Guernsey"/>
+    <area title="borders" mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+    <area title="borders" mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="London" file="target" color="#000000" long="-0.144836" lat="51.51593" width="5" height="5"  fixed_size="true"/>
+    <movie title="Dublin" file="target" color="#000000" long="-6.265594" lat="53.353757" width="5" height="5"  fixed_size="true"/>
+  </movies>
+
+  <labels>
+    <label x="739" y="88" text_size="18" color="#FFFFFF" remain="false">
+      <text>British Isles - Government Office Regions</text>
+    </label>
+  </labels>
+</map>

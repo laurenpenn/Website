@@ -1,0 +1,24 @@
+<plugin>
+    <title>Sharing</title>
+    <filename>sharing.swf</filename>
+    <repository>sharing-3</repository>
+    <version>3.0</version>
+    <compatibility>Compatible with 4.3 or higher.</compatibility>
+    <author>LongTail Video</author>
+    <description>This plugin adds sharing functionalities to the player. Either through the dock or through the controlbar, the plugin offers links to two screens: In the embed screen, an embed code for the specific video can be copy-pasted.  In the share screen, a link to thesite for this specific video can be copy-pasted. This screen also offers shortcuts for posting this link to: Twitter, Facebook, Myspace, An email message.</description>
+    <href></href>
+    <page>http://www.longtailvideo.com/addons/plugins/110/Sharing</page>
+    
+    <flashvars>
+        <flashvar type="field">
+            <name>code</name>
+            <default></default>
+            <description>Set this flashvar to an embed code for this video. When set, the embed button is shown. Be warned that this embed code must be URI escaped or the code will break the other flashvars of the player.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>link</name>
+            <default></default>
+            <description>Set this flashvar to the url of a webpage where the video is shown. When set, the share button will appear.</description>
+        </flashvar>
+    </flashvars>
+</plugin>

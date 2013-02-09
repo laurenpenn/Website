@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/chile.swf" tl_long="-109.446108" tl_lat="-17.508666" br_long="-66.417331" br_lat="-55.903036" zoom="90%" zoom_x="22.62%" zoom_y="7.46%">
+  <areas>
+    <area mc_name="CL_AI" title="Aisén del General Carlos Ibáñez del Campo"/>
+    <area mc_name="CL_AN" title="Antofagasta"/>
+    <area mc_name="CL_AR" title="Araucanía"/>
+    <area mc_name="CL_AP" title="Arica and Parinacota"/>
+    <area mc_name="CL_AT" title="Atacama"/>
+    <area mc_name="CL_BI" title="Bíobío"/>
+    <area mc_name="CL_CO" title="Coquimbo"/>
+    <area mc_name="CL_LI" title="Libertador General Bernardo O'Higgins"/>
+    <area mc_name="CL_LG" title="Los Lagos"/>
+    <area mc_name="CL_LR" title="Los Ríos"/>
+    <area mc_name="CL_MA" title="Magallanes y Antártica Chilena"/>
+    <area mc_name="CL_ML" title="Maule"/>
+    <area mc_name="CL_RM" title="Región Metropolitana de Santiago"/>
+    <area mc_name="CL_TP" title="Tarapacá"/>
+    <area mc_name="CL_VS" title="Valparaíso"/>
+    <area title="borders" mc_name="borders" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Santiago" file="target" color="#CC0000" height="10" width="10" lat="-33.463039" long="-70.647942" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="422" y="420" text_size="18" color="#FFFFFF" remain="false">
+      <text>Chile</text>
+    </label>
+  </labels>
+</map>

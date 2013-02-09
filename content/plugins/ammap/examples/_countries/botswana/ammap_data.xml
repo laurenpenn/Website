@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/botswana.swf" tl_long="19.998817" tl_lat="-17.780458" br_long="29.361498" br_lat="-26.908535" zoom="90%" zoom_x="28.69%" zoom_y="5.16%">
+  <areas>
+      <area mc_name="BW_CE" title="Central"></area>
+      <area mc_name="BW_GH" title="Ghanzi"></area>
+      <area mc_name="BW_KG" title="Kgalagadi"></area>
+      <area mc_name="BW_KL" title="Kgatleng"></area>
+      <area mc_name="BW_KW" title="Kweneng"></area>
+      <area mc_name="BW_NE" title="North-East"></area>
+      <area mc_name="BW_NW" title="North-West"></area>
+      <area mc_name="BW_SE" title="South-East"></area>
+      <area mc_name="BW_SO" title="Southern"></area>
+      <area title="borders" mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area title="borders" mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Gaborone" file="target" color="#CC0000" height="10" width="10" lat="-24.655284" long="25.919065" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="813" y="440" text_size="18" color="#FFFFFF" remain="false">
+      <text>Botswana</text>
+    </label>
+  </labels>
+</map>

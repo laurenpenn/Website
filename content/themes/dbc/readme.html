@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>A guide to the Denton Bible Website</title>
+
+<link rel="stylesheet" href="hybrid-core/css/25px.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="hybrid-core/css/readme.css" type="text/css" media="screen" />
+
+<style type="text/css">
+	h2 {
+		border-bottom: 1px solid #aaa;
+		padding-bottom: 0.17em;
+	}
+	h3 {
+		font-size: 1.25em;
+	}
+</style>
+
+</head>
+<body>
+
+<h1>A guide to the Denton Bible Website</h1>
+
+<p class="first"><em>Denton Bible's</em> website uses the <a href="http://wordpress.org/">WordPress</a> <acronym title="Content Management System">CMS</acronym> and the <a href="http://themehybrid.com/">Hybrid</a> parent theme.</p>
+
+<h2>Table of Contents</h2>
+
+	<ol>
+		<li><a href="#overview">Overview</a></li>
+		<li><a href="#home-page">Home page</a>
+			<ol>
+				<li><a href="#visitor-information">Visitor Information</a></li>
+				<li><a href="#facebook-activity">Facebook Activity</a></li>
+				<li><a href="#web-splashes">Web Splashes</a></li>
+				<li><a href="#latest-message">Latest Message</a></li>
+			</ol>
+		</li>
+		<li><a href="#publications">Publications</a></li>
+		<li><a href="#version-history">Version History</a></li>
+		<li><a href="#child-thmes">Child Themes</a></li>
+		<li><a href="#wish-list">Wish List</a></li>
+		<li><a href="#credit">Credit</a></li>
+		<li><a href="#copyright-license">Copyright &amp; License</a></li>
+	</ol>
+	
+<h2 id="overview">Overview</h2>
+	
+<p>The frontend of the website is accessed via <a href="http://dentonbible.org/">dentonbible.org</a>. The backend is available at <a href="http://dentonbible.org/wp-admin/">dentonbible.org/wp-admin</a>. The backend is where all changes to the site are made.</p>
+
+<p>Registered users can be given access to various parts of the website to add/edit content, change the appearance, upload files, and more.</p>
+
+<p>The parent or root site, <em>dentonbible.org</em>, is where the main pages are. These pages are used to give detail about general church information as well as high-level descriptions of individual ministries.</p>
+
+<p>Ministries that need much more than a single page can offer are given access to a sub-site. Ministries like these include CollegeLife, Men's, Women's, Marriage & Family, and so on. A sub-site is an entirely new website located within a subdomain (i.e. men.dentonbible.org). However, it can be managed by a handfull of Super Admins that have access to the root site as well as all sub-sites. All content resides within a single database.</p>
+
+<p>Each sub-site can use the same theme as the root site. They also have the ability of using entirely different themes.</p>
+
+<h2 id="home-page">Home Page</h2>
+	
+<h3 id="visitor-information">Visitor Information</h3>
+
+<p>Within the backend, navigate to <em>Appearance</em> > <em><a href="http://dentonbible.org/wp-admin/themes.php?page=dbc.php">DBC</a></em>.</p>
+
+<p>From here, you can customize all of the data displayed in the Visitor's Information box.</p>
+
+	<ul>
+		<li>Choose whether to display it or not</li>
+		<li>Change the title text</li>
+		<li>Change the "Service Times" text</li>
+		<li>Change the "Service Times"</li>
+		<li>Change the link to the location (i.e. Google Maps)</li>
+		<li>Change the link to find out more information</li>
+	</ul>
+	
+<h3 id="facebook-activity">Facebook Activity</h3>
+
+<p>This is a widget provided by Facebook.com that displays the latest posts to the <a href="http://www.facebook.com/pages/Denton-TX/Denton-Bible-Church/206268862487">Denton Bible Church Facebook page</a>.</p>
+
+<h3 id="web-splashes">Web Splashes</h3>
+
+<p>A "Web Splash" is used to highlight an upcoming event, major news, or anything needing a spotlight on the home page. Each splash is required to have an image.</p>
+
+<p><strong>How to add a web splash</strong></p>
+
+	<ol>
+		<li>From the main menu, click <em>Posts</em> and then <em>Add New</em>.</li>
+		<li>In the Title field, enter a relevant title.</li>
+		<li>Add any descriptive text into the editor.</li>
+		<li>To add an image (<em><a href="http://wordpress.tv/2009/01/05/embedding-photos-video-audio-into-your-posts/">more info</a></em>):
+			<ol>
+				<li>Click the media button.</li>
+				<li>Select an image to upload. Images must be <code>636px x 187px</code> or will otherwise be automatically cropped.</li>
+				<li>After the image is finished uploading, edit the title if necessary and click <em>Save all changes</em>.</li>
+			</ol>
+		</li>
+		<li>Select the "Featured" category.</li>
+		<li>Optionally choose an expiration date/time from the "Post Expirator" box.</li>
+		<li>Optionally turn off the ability for visitorst to comment from the "Discussion" box.</li>
+		<li>Click <em>Publish</em> or edit the publish date/time to schedule the post to publish at a later time.</li>
+	</ol>
+
+<p><strong>How to remove a web splash</strong></p>
+
+<p>Web splashes can be assigned an expiration date. However, in the case that a date is not assigned or the splash needs to be removed early, simply change the Post Status from "Published" to "Draft". You can also delete the splash.</p>
+
+<h3 id="latest-message">Latest Message</h3>
+
+<p>The latest message is automatically pulled from the XML feed at <code>http://dbcmedia.org/sermons/feed/</code>.</p>
+	
+<h3 id="mydbc-life">Links to myDBC Life</h3>
+
+<p>Each of these links go directly to the ACS platform used to handle events and registrations. "What is it?", however, links to a page on dentonbible.org that gives a description of myDBC Life.</p>
+
+<h2 id="publications">Publications</h2>
+
+<p>A new content type in version 0.2 is a "publication". At its onset, publications are "First Cup", "Common Ground", and "Starting Point". Any number of other publications can be added.</p>
+
+<p><strong>How to add a new publication <em>type</em></strong></p>
+
+	<ol>
+		<li>From the main menu, click <em>Publications</em> and then <em>Publication Type</em>.</li>
+		<li>Give the new publication type a <em>Name</em>
+			<ol>
+				<li>(Optional) Give the publication a unique slug. It will automatically be generated from the Name.</li>
+				<li>(Optional) You can assign publciation in a hierarchy.</li>
+				<li>(Optional) You can give a description of the publication type.</li>
+			</ol>
+		</li>
+		<li>Click <em>Add New Publication Type</em>.</li>
+	</ol>
+
+<p><strong>How to add a new publication</strong></p>
+
+	<ol>
+		<li>From the main menu, click <em>Publications</em> and then <em>Add New</em>.</li>
+		<li>Click <em>Select Files</em> and choose the publication <strong>and</strong> thumbnail you'd like to upload.
+			<ol>
+				<li>After the image and publciation are finished uploading click <em>Save all changes</em>.</li>
+			</ol>
+		</li>
+		<li>Title the post anything. But for simplicty's sake, you may want to use: {publication name} {publication date} (i.e. First Cup January 1, 2010).</li>
+		<li>Check the <em>Publication Type</em> that is associated with the publication you uploaded.</li>
+		<li>Change the date of the post to that of the publication. For example, publishing associates the post with the current day and time. Instead, change that to the date the publication was released (or <em>will</em> be released).</li>
+		<li>Click <em>Publish</em>.</li>
+	</ol>
+	
+<h2 id="version-history">Version History</h2>
+
+<p>Not all changes will be reflected in this list as many site changes will be made live. This chronicles most changes for each major release.</p>
+
+	<ul>
+		<li>Version 0.1 - September 27, 2010</li>
+		<li>Version 0.2 - December 8, 2010
+			<ul>
+				<li><strong>Converted theme to a parent theme</strong> using the Hybrid Core framework. It previously was a Hybrid child theme.</li>
+				<li><strong>Added a child theme to be used be all sub-sites.</strong></li>
+				<li><strong>Added <code>publication</code> post type.</strong></li>
+				<li>Home page redesign.</li>
+				<li>PDFs open in a modal.</li>
+				<li>Latest Message now uses <code>fetch_feed()</code> instead of the deprecated function <code>fetch_rss</code>.
+				<li>Dropped rounded corner support for IE by removing jQuery Corners and replacing rounded corners with only CSS.</li>
+				<li>Using <code>style.dev.css</code> for development and <code>style.css</code> is compressed.</li>
+				<li>HTML5 compatible.</li>
+			</ul>
+		</li>
+		<li>Version 0.2.1 - February 12, 2011
+			<ul>
+				<li><strong>Added <code>note</code> post type.</strong></li>
+				<li><strong>Upgraded WordPress to version 3.1.</strong></li>
+				<li>Added link to notes in the home page template.</li>
+				<li>Changed style of the sidebars and added sidebar content to template.</li>
+			</ul>
+		</li>
+		<li>Version 0.2.1+
+			<ul>
+				<li><a href="https://dbc.beanstalkapp.com/web">SVN Commit History on Beanstalk</a></li>
+				<li><a href="https://dentonbiblechurch.basecamphq.com/projects/6738370-website/cat/68246231/posts">SVN Commit History on Basecamp</a></li>
+			</ul>
+		</li>
+	</ul>
+
+<h2 id="child-themes">Child Themes</h2>
+
+<p>A WordPress child theme is a theme that inherits the functionality of another theme, called the parent theme, and allows you to modify, or add to, the functionality of that parent theme.</p>
+
+<p>The main theme, <code>dbc</code>, is the parent.</p>
+
+<h2 id="credit">Credit</h2>
+
+	<ul>
+		<li>Brad Davis (bdavis@dentonbible.org) - in charge of it all!</li>
+		<li><a href="http://developdaly.com/" title="Develop Daly">Patrick Daly</a> (patrick@developdaly.com) - website development</li>
+		<li>Jono Brooks (jbrooks@dentonbible.org) - server &amp; domain administration</li>
+		<li>Shannon Peevey (speeves@dentonbible.org) - server &amp; domain administration</li>
+		<li><a href="http://www.pixelightcreative.com/" title="Pixelight Creative">Chris Merritt</a> (chriscmerritt@gmail.com) - website design</li>
+		
+	</ul>
+
+<h2 id="copyright-license">Copyright &amp; License</h2>
+
+<p><em>Hybrid</em> and <em>WordPress</em> are licensed under the <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html" title="GNU GPL">GNU General Public License</a>, version 2 (<acronym title="GNU General Public License">GPL</acronym>).</p>
+
+<p>2010 - 2012 &copy; <a href="http://dentonbible.org">Denton Bible Church</a>.  All rights reserved.</p>
+
+</body>
+</html>

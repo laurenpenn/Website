@@ -1,0 +1,13 @@
+<plugin>
+    <title>Tweet It</title>
+    <filename>tweetit.swf</filename>
+    <repository>tweetit-1</repository>
+    <version>1.0</version>
+    <compatibility>Compatible with 5.0 and later.</compatibility>
+    <author>mpoint</author>
+    <description>The Tweet It plugin allows your users to post your videos on the Twitter social network. It's a great way to have users share your videos online and broaden their distribution. The user just clicks on the Twitter icon in the dock, clicks Post, and then logs into their Twitter account. If the user doesn't have an account, then they can easily create one.</description>
+    <href></href>
+    <page>http://www.longtailvideo.com/addons/plugins/134/Tweet-It</page>
+    
+    <flashvars/>
+</plugin>

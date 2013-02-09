@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/lithuania.swf" tl_long="20.9543" tl_lat="56.447406" br_long="26.835618" br_lat="53.898758" zoom="80%" zoom_x="13.39%" zoom_y="17.3%">
+
+  <areas>
+    <area mc_name="LT_AL" title="Alytus"></area>
+    <area mc_name="LT_KU" title="Kaunas"></area>
+    <area mc_name="LT_KL" title="Klaipėda"></area>
+    <area mc_name="LT_MR" title="Marijampolė"></area>
+    <area mc_name="LT_PN" title="Panevėžys"></area>
+    <area mc_name="LT_SA" title="Šiauliai"></area>
+    <area mc_name="LT_TA" title="Tauragė"></area>
+    <area mc_name="LT_TE" title="Telšiai"></area>
+    <area mc_name="LT_UT" title="Utena"></area>
+    <area mc_name="LT_VL" title="Vilnius"></area>
+    <area mc_name="borders" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Vilnius" file="target" color="#666666" height="10" width="10" lat="54.689855" long="25.269265" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="181" y="101" text_size="18" color="#FFFFFF" remain="false">
+      <text>Lithuania</text>
+    </label>
+  </labels>
+</map>

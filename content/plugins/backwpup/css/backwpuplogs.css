@@ -1,0 +1,12 @@
+#icon-backwpup {
+	background: url('BackWPup32.png') no-repeat;
+}
+.column-id {
+	width:5%;text-align:center;
+}
+.column-runtime, .column-status ,  .column-size {
+	width:8%;
+}
+.column-type {
+	width:15%;
+}

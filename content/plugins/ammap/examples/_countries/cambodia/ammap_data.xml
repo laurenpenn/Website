@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/cambodia.swf" tl_long="102.339092" tl_lat="14.690639" br_long="107.63371" br_lat="9.915457" zoom="100%" zoom_x="43.52%" zoom_y="6.94%">
+
+  <areas>
+      <area mc_name="KH_OM" title="Bântéay Méanchey"></area>
+      <area mc_name="KH_BA" title="Bătdâmbâng"></area>
+      <area mc_name="KH_KM" title="Kâmpóng Cham"></area>
+      <area mc_name="KH_KG" title="Kâmpóng Chhnăng"></area>
+      <area mc_name="KH_KS" title="Kâmpóng Spœ"></area>
+      <area mc_name="KH_KT" title="Kâmpóng Thum"></area>
+      <area mc_name="KH_KP" title="Kâmpôt"></area>
+      <area mc_name="KH_KN" title="Kândal"></area>
+      <area mc_name="KH_KK" title="Kaôh Kŏng"></area>
+      <area mc_name="KH_KH" title="Krâchéh"></area>
+      <area mc_name="KH_KB" title="Krong Keb"></area>
+      <area mc_name="KH_PL" title="Krong Pailin"></area>
+      <area mc_name="KH_KA" title="Krŏng Preăh Sihanouk"></area>
+      <area mc_name="KH_MK" title="Môndól Kiri"></area>
+      <area mc_name="KH_OC" title="Ŏtdâr Méanchey"></area>
+      <area mc_name="KH_PP" title="Phnom Penh"></area>
+      <area mc_name="KH_PO" title="Poŭthĭsăt"></area>
+      <area mc_name="KH_PH" title="Preăh Vihéar"></area>
+      <area mc_name="KH_PY" title="Prey Vêng"></area>
+      <area mc_name="KH_RO" title="Rôtânôkiri"></area>
+      <area mc_name="KH_SI" title="Siĕmréab"></area>
+      <area mc_name="KH_ST" title="Stœng Trêng"></area>
+      <area mc_name="KH_SR" title="Svay Riĕng"></area>
+      <area mc_name="KH_TA" title="Takêv"></area>
+      <area title="borders" mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area title="borders" mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Phnom Penh" file="target" color="#CC0000" height="10" width="10" lat="11.56474" long="104.913208" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="730" y="75" text_size="18" color="#FFFFFF" remain="false">
+      <text>Cambodia</text>
+    </label>
+  </labels>
+</map>

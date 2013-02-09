@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/iraq.swf" tl_long="38.796072" tl_lat="37.378651" br_long="48.569930" br_lat="28.986053" zoom="90%" zoom_x="36.88%" zoom_y="4.52%">
+
+  <areas>
+      <area mc_name="IQ_AN" title="Al-Anbar"></area>
+      <area mc_name="IQ_BA" title="Al-Basrah"></area>
+      <area mc_name="IQ_MU" title="Al-Muthanna"></area>
+      <area mc_name="IQ_QA" title="Al-Qadisiyah"></area>
+      <area mc_name="IQ_NA" title="An-Najaf"></area>
+      <area mc_name="IQ_AR" title="Arbil"></area>
+      <area mc_name="IQ_SU" title="As-Sulaymaniyah"></area>
+      <area mc_name="IQ_TS" title="At-Ta'mim"></area>
+      <area mc_name="IQ_BB" title="Babil"></area>
+      <area mc_name="IQ_BG" title="Baghdad"></area>
+      <area mc_name="IQ_DA" title="Dahuk"></area>
+      <area mc_name="IQ_DQ" title="Dhi Qar"></area>
+      <area mc_name="IQ_DI" title="Diyala"></area>
+      <area mc_name="IQ_KA" title="Karbala'"></area>
+      <area mc_name="IQ_MA" title="Maysan"></area>
+      <area mc_name="IQ_NI" title="Ninawa"></area>
+      <area mc_name="IQ_SD" title="Salah ad-Din"></area>
+      <area mc_name="IQ_WA" title="Wasit"></area>
+      <area mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Baghdad" file="target" color="#CC0000" height="10" width="10" lat="33.338612" long="44.39389" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="730" y="75" text_size="18" color="#FFFFFF" remain="false">
+      <text>Iraq</text>
+    </label>
+  </labels>
+</map>

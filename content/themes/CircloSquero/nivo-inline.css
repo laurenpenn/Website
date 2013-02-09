@@ -1,0 +1,137 @@
+.slider-inline {
+	background:url("<?php echo WP_PLUGIN_URL . "/wp-nivo-slider/"; ?>images/loading.gif") no-repeat scroll 50% 50% #202834;
+}
+.slider-inline img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+.slider-inline a {
+	border:0 none;
+	display:block;
+}
+/* The Nivo Slider styles */
+.slider-inline .nivoSlider {
+	position:relative;
+}
+.slider-inline .nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+/* If an image is wrapped in a link */
+.slider-inline .nivoSlider a.nivo-imageLink {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	border:0;
+	padding:0;
+	margin:0;
+	z-index:60;
+	display:none;
+}
+/* The slices in the Slider */
+.slider-inline .nivo-slice {
+	display:block;
+	position:absolute;
+	z-index:50;
+	height:100%;
+}
+/* Caption styles */
+
+.slider-inline .nivo-caption {
+	background: url("images/nivo-inline-bg.png") repeat scroll transparent;
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	color:#fff; /* Overridden by captionOpacity setting */
+	z-index:89;
+	width: 100%;
+	text-align: right;
+
+}
+
+.slider-inline .nivo-description {
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+
+
+.slider-inline .nivo-caption p {
+	padding:10px 30px;
+	margin:0;
+	font: 14px Lucida Sans Unicode, Lucida Grande, sans-serif;
+	color: #a4a4a4;
+}
+
+.slider-inline .nivo-description p {
+	padding:0px;
+	margin:0;
+	font-size: 0px;
+}
+.slider-inline .nivo-caption a {
+	display:inline !important;
+}
+.slider-inline .nivo-html-caption {
+    display:none;
+}
+/* Direction nav styles (e.g. Next and Prev) */
+.slider-inline .nivo-directionNav a {
+	position:absolute;
+	top:45%;
+	z-index:99;
+	cursor:pointer;
+}
+.slider-inline .nivo-prevNav {
+	left:0px;
+}
+.slider-inline .nivo-nextNav {
+	right:0px;
+}
+.slider-inline .nivo-controlNav {
+	bottom:10px;
+	left: 10px;
+	float: right;
+	position: absolute;
+	z-index:99;
+}
+.slider-inline .nivo-controlNav a {
+	background:url("images/nivo-inline-bullets.png") no-repeat scroll 0px -16px transparent;
+	border:0 none;
+	display:block;
+	float:left;
+	height:16px;
+	margin-right:3px;
+	text-indent:-9999px;
+	width:16px;
+}
+.slider-inline .nivo-controlNav a.active {
+	background-position:0px 0;
+}
+.slider-inline .nivo-controlNav a {
+	cursor:pointer;
+	position:relative;
+	z-index:99;
+}
+.slider-inline .nivo-controlNav a.active {
+	font-weight:bold;
+}
+.slider-inline .nivo-directionNav a {
+	background:url("<?php echo WP_PLUGIN_URL . "/wp-nivo-slider/"; ?>images/arrows.png") no-repeat scroll 0 0 transparent;
+	border:0 none;
+	display:block;
+	height:34px;
+	text-indent:-9999px;
+	width:32px;
+}
+.slider-inline a.nivo-nextNav {
+	background-position:-32px 0;
+	right:10px;
+}
+.slider-inline a.nivo-prevNav {
+	left:10px;
+}

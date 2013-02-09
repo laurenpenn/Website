@@ -1,0 +1,18 @@
+/**
+ * Stylesheet Name: Example
+ * Add "example.css" to the "Stylesheet" field while on the post editor to use this stylesheet.
+ */
+
+/* Import the main theme style. */
+@import url( '../style.css' );
+
+/* Some basic style changes to use an example. */
+body { background: #efefef; }
+#header { background: #fcfcfc; }
+#menu-primary div.menu { background: #f6f6f6; }
+#menu-primary li a, #menu-secondary li a, #menu-subsidiary li a { background: #f6f6f6; }
+#menu-secondary div.menu, #menu-secondary div.wrap { background: #f6f6f6; }
+#menu-subsidiary div.menu { background: #f6f6f6; }
+#sidebar-subsidiary { background: #fcfcfc; }
+#footer { background: #fcfcfc; }
+#main { background: #fcfcfc; }

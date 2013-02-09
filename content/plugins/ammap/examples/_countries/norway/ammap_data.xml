@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/norway.swf" tl_long="4.64329" tl_lat="71.181128" br_long="31.14007" br_lat="57.980542" zoom="90%" zoom_x="29.14%" zoom_y="5.06%">
+
+  <areas>
+    <area mc_name="NO_AK" title="Akershus"></area>
+    <area mc_name="NO_AA" title="Aust-Agder"></area>
+    <area mc_name="NO_BU" title="Buskerud"></area>
+    <area mc_name="NO_FI" title="Finnmark"></area>
+    <area mc_name="NO_HE" title="Hedmark"></area>
+    <area mc_name="NO_HO" title="Hordaland"></area>
+    <area mc_name="NO_MR" title="Møre og Romsdal"></area>
+    <area mc_name="NO_NO" title="Nordland"></area>
+    <area mc_name="NO_NT" title="Nord-Trøndelag"></area>
+    <area mc_name="NO_OP" title="Oppland"></area>
+    <area mc_name="NO_OS" title="Oslo"></area>
+    <area mc_name="NO_OF" title="Østfold"></area>
+    <area mc_name="NO_RO" title="Rogaland"></area>
+    <area mc_name="NO_SF" title="Sogn og Fjordane"></area>
+    <area mc_name="NO_ST" title="Sør-Trøndelag"></area>
+    <area mc_name="NO_TE" title="Telemark"></area>
+    <area mc_name="NO_TR" title="Troms"></area>
+    <area mc_name="NO_VA" title="Vest-Agder"></area>
+    <area mc_name="NO_VF" title="Vestfold"></area>
+  </areas>
+
+  <movies>
+    <movie title="Oslo" file="target" color="#666666" height="10" width="10" lat="59.91228" long="10.74998" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="181" y="101" text_size="18" color="#FFFFFF" remain="false">
+      <text>Norway</text>
+    </label>
+  </labels>
+</map>

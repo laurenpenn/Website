@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/laos.swf" tl_long="100.086965" tl_lat="22.50022" br_long="107.634547" br_lat="13.907324" zoom="85%" zoom_x="46.69%" zoom_y="10.84%">
+  <areas>
+    <area mc_name="LA_AT" title="Attapu"></area>
+    <area mc_name="LA_BK" title="Bokeo"></area>
+    <area mc_name="LA_BL" title="Bolikhamxai"></area>
+    <area mc_name="LA_CH" title="Champasak"></area>
+    <area mc_name="LA_HO" title="Houaphan"></area>
+    <area mc_name="LA_KH" title="Khammouan"></area>
+    <area mc_name="LA_LM" title="Louang Namtha"></area>
+    <area mc_name="LA_LP" title="Louangphrabang"></area>
+    <area mc_name="LA_OU" title="Oudômxai"></area>
+    <area mc_name="LA_PH" title="Phôngsali"></area>
+    <area mc_name="LA_SL" title="Saravan"></area>
+    <area mc_name="LA_SV" title="Savannakhét"></area>
+    <area mc_name="LA_VI" title="Vientiane"></area>
+    <area mc_name="LA_VT" title="Vientiane prefecture"></area>
+    <area mc_name="LA_XA" title="Xaignabouri"></area>
+    <area mc_name="LA_XE" title="Xékong"></area>
+    <area mc_name="LA_XI" title="Xiangkhoang"></area>
+    <area mc_name="borders_inside" title="borders" color="#FFFFFF" balloon="false"></area>
+    <area mc_name="borders_outside" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Vientiane" file="target" color="#666666" height="10" width="10" lat="17.965309" long="102.611519" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="155" y="201" text_size="18" color="#FFFFFF" remain="false">
+      <text>Laos</text>
+    </label>
+  </labels>
+</map>

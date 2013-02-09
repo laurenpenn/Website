@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/guatemala.swf" tl_long="-92.222682" tl_lat="17.818921" br_long="-88.225002" br_lat="13.737966" zoom="90%" zoom_x="6.01%" zoom_y="7.17%">
+
+  <areas>
+      <area mc_name="GT_AV" title="Alta Verapaz"></area>
+      <area mc_name="GT_BV" title="Baja Verapaz"></area>
+      <area mc_name="GT_CM" title="Chimaltenango"></area>
+      <area mc_name="GT_CQ" title="Chiquimula"></area>
+      <area mc_name="GT_PR" title="El Progreso"></area>
+      <area mc_name="GT_ES" title="Escuintla"></area>
+      <area mc_name="GT_GU" title="Guatemala"></area>
+      <area mc_name="GT_HU" title="Huehuetenango"></area>
+      <area mc_name="GT_IZ" title="Izabal"></area>
+      <area mc_name="GT_JA" title="Jalapa"></area>
+      <area mc_name="GT_JU" title="Jutiapa"></area>
+      <area mc_name="GT_PE" title="Petén"></area>
+      <area mc_name="GT_QZ" title="Quetzaltenango"></area>
+      <area mc_name="GT_QC" title="Quiché"></area>
+      <area mc_name="GT_RE" title="Retalhuleu"></area>
+      <area mc_name="GT_SA" title="Sacatepéquez"></area>
+      <area mc_name="GT_SM" title="San Marcos"></area>
+      <area mc_name="GT_SR" title="Santa Rosa"></area>
+      <area mc_name="GT_SO" title="Sololá"></area>
+      <area mc_name="GT_SU" title="Suchitepéquez"></area>
+      <area mc_name="GT_TO" title="Totonicapán"></area>
+      <area mc_name="GT_ZA" title="Zacapa"></area>
+      <area mc_name="borders_outside" color="#FFFFFF" balloon="false" alpha="0"></area>
+      <area mc_name="borders_inside" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Guatemala City" file="target" color="#CC0000" height="10" width="10" lat="14.618" long="-90.52491" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="730" y="75" text_size="18" color="#FFFFFF" remain="false">
+      <text>Guatemala</text>
+    </label>
+  </labels>
+</map>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/kenya.swf" tl_long="33.909338" tl_lat="4.633576" br_long="41.887578" br_lat="-4.690523" zoom="90%" zoom_x="51.65%" zoom_y="8.12%">
+  <areas>
+    <area mc_name="KE_CE" title="Central"/>
+    <area mc_name="KE_CO" title="Coast"/>
+    <area mc_name="KE_EA" title="Eastern"/>
+    <area mc_name="KE_NA" title="Nairobi Area"/>
+    <area mc_name="KE_NE" title="North-Eastern"/>
+    <area mc_name="KE_NY" title="Nyanza"/>
+    <area mc_name="KE_RV" title="Rift Valley"/>
+    <area mc_name="KE_WE" title="Western"/>
+    <area title="borders" mc_name="borders_outside" color="#ffffff" balloon="false" alpha="0"></area>
+    <area title="borders" mc_name="borders_inside" color="#ffffff" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Nairobi" file="target" color="#666666" height="10" width="10" lat="-1.2702" long="36.804138" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="999" y="423" text_size="18" color="#FFFFFF" remain="false">
+      <text>Kenya</text>
+    </label>
+  </labels>
+</map>

@@ -1,0 +1,48 @@
+<plugin>
+    <title>Google Analytics Pro</title>
+    <filename>gapro.swf</filename>
+    <repository>gapro-2</repository>
+    <version>2.0</version>
+    <compatibility>Compatible with 4.5 and later.</compatibility>
+    <author>mpoint</author>
+    <description>The Google Analytics plugin for the JW Player is designed to help you understand how well your video content is performing online. It takes advantage of Google's new Flash API for Analytics so you can track events within the JW Player itself.
+
+The tracking of events (which includes allowing you to access information about not only what videos are watched, but how long users watch each video), aggregates it, and passes along the relevant information for easy and concise tracking within Google Analytics.</description>
+    <href></href>
+    <page>http://www.longtailvideo.com/addons/plugins/107/Google-Analytics-Pro</page>
+    
+    <flashvars>
+        <flashvar type="field">
+            <name>accountid</name>
+            <default></default>
+            <description>Your Google Analytics account ID. Generally of the form "UA-XXXXXXX-X". This must be set for the plugin to function.</description>
+        </flashvar>
+        <flashvar type="select">
+            <name>trackstarts</name>
+            <default>true</default>
+            <description>Controls whether data about video starts are sent to Google Analytics. One start event is sent each time a viewer begins playback from the first frame of the video. Note - This include starts that occur after the viewer pressed stop, or completed the video and pressed play again.</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+        <flashvar type="select">
+            <name>trackpercentage</name>
+            <default>true</default>
+            <description>Controls whether data about the percentage of the total video content played by the viewer is sent to Google Analytics.</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+        <flashvar type="select">
+            <name>tracktime</name>
+            <default>true</default>
+            <description>Controls whether data about the total time the viewer spent watching the video is sent to Google Analytics.</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+    </flashvars>
+</plugin>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/japan2.swf" tl_long="123.661020" tl_lat="45.5222231" br_long="145.818365" br_lat="24.219790" zoom="95%" zoom_x="42.36%" zoom_y="1.8%">
+  <areas>
+    <area mc_name="JP_AI" title="Aichi"></area>
+    <area mc_name="JP_AK" title="Akita"></area>
+    <area mc_name="JP_AO" title="Aomori"></area>
+    <area mc_name="JP_CH" title="Chiba"></area>
+    <area mc_name="JP_EH" title="Ehime"></area>
+    <area mc_name="JP_FI" title="Fukui"></area>
+    <area mc_name="JP_FO" title="Fukuoka"></area>
+    <area mc_name="JP_FS" title="Fukushima"></area>
+    <area mc_name="JP_GF" title="Gifu"></area>
+    <area mc_name="JP_GM" title="Gunma"></area>
+    <area mc_name="JP_HS" title="Hiroshima"></area>
+    <area mc_name="JP_HK" title="Hokkaidō"></area>
+    <area mc_name="JP_HG" title="Hyōgo"></area>
+    <area mc_name="JP_IB" title="Ibaraki"></area>
+    <area mc_name="JP_IS" title="Ishikawa"></area>
+    <area mc_name="JP_IW" title="Iwate"></area>
+    <area mc_name="JP_KG" title="Kagawa"></area>
+    <area mc_name="JP_KS" title="Kagoshima"></area>
+    <area mc_name="JP_KN" title="Kanagawa"></area>
+    <area mc_name="JP_KC" title="Kochi"></area>
+    <area mc_name="JP_KM" title="Kumamoto"></area>
+    <area mc_name="JP_KY" title="Kyoto"></area>
+    <area mc_name="JP_ME" title="Mie"></area>
+    <area mc_name="JP_MG" title="Miyagi"></area>
+    <area mc_name="JP_MZ" title="Miyazaki"></area>
+    <area mc_name="JP_NN" title="Nagano"></area>
+    <area mc_name="JP_NS" title="Nagasaki"></area>
+    <area mc_name="JP_NR" title="Nara"></area>
+    <area mc_name="JP_NI" title="Niigata"></area>
+    <area mc_name="JP_OT" title="Oita"></area>
+    <area mc_name="JP_OY" title="Okayama"></area>
+    <area mc_name="JP_ON" title="Okinawa"></area>
+    <area mc_name="JP_OS" title="Osaka"></area>
+    <area mc_name="JP_SG" title="Saga"></area>
+    <area mc_name="JP_ST" title="Saitama"></area>
+    <area mc_name="JP_SH" title="Shiga"></area>
+    <area mc_name="JP_SM" title="Shimane"></area>
+    <area mc_name="JP_SZ" title="Shizuoka"></area>
+    <area mc_name="JP_TC" title="Tochigi"></area>
+    <area mc_name="JP_TS" title="Tokushima"></area>
+    <area mc_name="JP_TK" title="Tokyo"></area>
+    <area mc_name="JP_TT" title="Tottori"></area>
+    <area mc_name="JP_TY" title="Toyama"></area>
+    <area mc_name="JP_WK" title="Wakayama"></area>
+    <area mc_name="JP_YT" title="Yamagata"></area>
+    <area mc_name="JP_YC" title="Yamaguchi"></area>
+    <area mc_name="JP_YN" title="Yamanashi"></area>
+    <area mc_name="borders_outside" title="borders" color="#FFFFFF" balloon="false" alpha="0"></area>
+    <area mc_name="borders_inside" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+  
+<movies>
+    <movie title="Tokyo" file="target" color="#CC0000" long="139.740921" lat="35.670479" width="5" height="5" fixed_size="true"></movie>
+  </movies>
+ 
+  <labels>
+    <label x="20%" y="30%" text_size="18" color="#FFFFFF" remain="false">
+      <text>Japan</text>
+    </label>
+  </labels>
+</map>

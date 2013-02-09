@@ -1,0 +1,95 @@
+<plugin>
+    <title>Viral</title>
+    <filename>viral.swf</filename>
+    <repository>viral-2</repository>
+    <version>2.0</version>
+    <compatibility>Compatible with 4.3 or later.</compatibility>
+    <author>LongTail Video</author>
+    <description>Viral, a video distribution plugin, supports three main functions: embed, link, and recommendations. It unobtrusively allows the user to share the video they are watching and see recommended videos from the publisher.</description>
+    <href></href>
+    <page>http://www.longtailvideo.com/addons/plugins/47/Viral</page>
+    
+    <flashvars>
+        <flashvar type="select">
+            <name>onpause</name>
+            <default>true</default>
+            <description>This flashvar is used to specify whether or not if the Viral options appear on pause.</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+        <flashvar type="select">
+            <name>oncomplete</name>
+            <default>true</default>
+            <description>This flashvar is used to specify whether or not if the Viral options appear when the playback completes.</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+        <flashvar type="select">
+            <name>allowmenu</name>
+            <default>true</default>
+            <description>Variable to control the menu button in the control bar.</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+        <flashvar type="select">
+            <name>functions</name>
+            <default>embed</default>
+            <description>This flashvar is used to specify which of the Viral options to include in the options panel. One or more individual options can be specified in a comma-delimited list.</description>
+            <select>
+                <option>embed</option>
+                <option>link</option>
+                <option>recommendations</option>
+            </select>
+        </flashvar>
+        <flashvar type="field">
+            <name>recommendations</name>
+            <default></default>
+            <description>This flashvar is used to specify a URL to an XML file with mRSS-formatted recommendations.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>link</name>
+            <default></default>
+            <description>This flashvar is used to specify the URL to be displayed to the user in the link field. This URL should reference the current page being viewed.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>email_subject</name>
+            <default></default>
+            <description>This flashvar is used to specify the text to show in the subject line of the email sent from this plugin - the default is "Check out this video!"</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>email_footer</name>
+            <default></default>
+            <description>This flashvar is used to specify the text to show in the footer of the email sent from this plugin - the default is a link to www.longtailvideo.com</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>embed</name>
+            <default></default>
+            <description>This flashvar is used to specify the embed code to be displayed to the user in the embed field. This code should reference the current page being viewed. Note: The embed code needs to be escaped and, due to technical limitations, cannot be re-embedded.</description>
+        </flashvar>
+        <flashvar type="select">
+            <name>matchplayercolors</name>
+            <default>true</default>
+            <description>This flashvar is used to specify if the plugin should match the colors used by the regular player. This will override the fgcolor and bgcolor flashvars if set to true.</description>
+            <select>
+                <option>false</option>
+                <option>true</option>
+            </select>
+        </flashvar>
+        <flashvar type="field">
+            <name>fgcolor</name>
+            <default>0xFFFFFF</default>
+            <description>Foreground color of the plugin.</description>
+        </flashvar>
+        <flashvar type="field">
+            <name>bgcolor</name>
+            <default>0x333333</default>
+            <description>Background color of the plugin.</description>
+        </flashvar>
+    </flashvars>
+</plugin>

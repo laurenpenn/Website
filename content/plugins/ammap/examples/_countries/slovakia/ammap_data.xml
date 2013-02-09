@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/slovakia.swf" tl_long="16.834758" tl_lat="49.613835" br_long="22.567545" br_lat="47.7315" zoom="62.2024%" zoom_x="18.35%" zoom_y="23.92%">
+  <areas>
+    <area mc_name="SK_BC" title="Banska Bystrica"></area>
+    <area mc_name="SK_BL" title="Bratislava"></area>
+    <area mc_name="SK_KI" title="Kosice"></area>
+    <area mc_name="SK_NI" title="Nitra"></area>
+    <area mc_name="SK_PV" title="Presov"></area>
+    <area mc_name="SK_TC" title="Trencin"></area>
+    <area mc_name="SK_TA" title="Trnava"></area>
+    <area mc_name="SK_ZI" title="Zilina"></area>
+    <area mc_name="borders" title="borders" color="#FFFFFF" balloon="false"></area>
+  </areas>
+
+  <movies>
+    <movie title="Bratislava" file="target" color="#666666" height="10" width="10" lat="48.149135" long="17.106995" fixed_size="true"></movie>
+  </movies>
+
+  <labels>
+    <label x="120" y="240" text_size="18" color="#FFFFFF" remain="false">
+      <text>Slovakia</text>
+    </label>
+  </labels>
+</map>

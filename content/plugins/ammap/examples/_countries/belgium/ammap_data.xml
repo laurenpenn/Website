@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/belgium.swf" tl_long="2.545923" tl_lat="51.505334" br_long="6.408304" br_lat="49.496909" zoom="85%" zoom_x="11.73%" zoom_y="9.57%">
+  <areas>
+    <area mc_name="BE_VAN" title="Antwerp"></area>
+    <area mc_name="BE_WBR" title="Walloon Brabant"></area>
+    <area mc_name="BE_BRU" title="Brussels-Capital Region"></area>
+    <area mc_name="BE_WHT" title="Hainaut"></area>
+    <area mc_name="BE_WLG" title="Liege"></area>
+    <area mc_name="BE_VLI" title="Limburg"></area>
+    <area mc_name="BE_WLX" title="Luxembourg"></area>
+    <area mc_name="BE_WNA" title="Namur"></area>
+    <area mc_name="BE_VOV" title="East Flanders"></area>
+    <area mc_name="BE_VBR" title="Flemish Brabant"></area>
+    <area mc_name="BE_VWV" title="West Flanders"></area>
+  </areas>
+
+  <movies>
+    <movie title="Brussels" file="target" color="#666666" height="10" width="10" lat="50.848385" long="4.349685" fixed_size="true" zoom="278.5714%" zoom_x="-62.88%" zoom_y="-41.56%"></movie>
+  </movies>
+
+  <labels>
+    <label x="237" y="601" text_size="18" color="#FFFFFF" remain="false">
+      <text>Belgium and its Provinces</text>
+    </label>
+  </labels>
+</map>
