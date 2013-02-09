@@ -90,7 +90,7 @@ class Jetpack_Photon {
 	public static function parse_images_from_html( $content ) {
 		$images = array();
 
-		if ( preg_match_all( '#(?:<a.+?href=["|\'](?P<link_url>.+?)["|\'].*?>\s*)?(?P<img_tag><img.+?src=["|\'](?P<img_url>.+?)["|\'].*?>){1}(?:\s*</a>)?#is', $content, $images ) ) {
+		if ( preg_match_all( '#(?:<a[^>]+?href=["|\'](?P<link_url>.+?)["|\'][^>]*?>\s*)?(?P<img_tag><img[^>]+?src=["|\'](?P<img_url>.+?)["|\'].*?>){1}(?:\s*</a>)?#is', $content, $images ) ) {
 			foreach ( $images as $key => $unused ) {
 				// Simplify the output as much as possible, mostly for confirming test results.
 				if ( is_numeric( $key ) && $key > 0 )
@@ -101,6 +101,26 @@ class Jetpack_Photon {
 		}
 
 		return array();
+	}
+
+	/**
+	 * Try to determine height and width from strings WP appends to resized image filenames.
+	 *
+	 * @param string $src The image URL.
+	 * @return array An array consisting of width and height.
+	 */
+	public static function parse_dimensions_from_filename( $src ) {
+		$width_height_string = array();
+
+		if ( preg_match( '#-(\d+)x(\d+)\.(?:' . implode('|', self::$extensions ) . '){1}$#i', $src, $width_height_string ) ) {
+			$width = (int) $width_height_string[1];
+			$height = (int) $width_height_string[2];
+
+			if ( $width && $height )
+				return array( $width, $height );
+		}
+
+		return array( false, false );
 	}
 
 	/**
@@ -212,9 +232,8 @@ class Jetpack_Photon {
 					}
 
 					// If image tag lacks width and height arguments, try to determine from strings WP appends to resized image filenames.
-					if ( false === $width && false === $height && preg_match( '#(-\d+x\d+)\.(' . implode('|', self::$extensions ) . '){1}$#i', $src, $width_height_string ) ) {
-						$width = (int) $width_height_string[1];
-						$height = (int) $width_height_string[2];
+					if ( false === $width && false === $height ) {
+						list( $width, $height ) = Jetpack_Photon::parse_dimensions_from_filename( $src );
 					}
 
 					// If width is available, constrain to $content_width
@@ -336,15 +355,27 @@ class Jetpack_Photon {
 				$image_args = self::image_sizes();
 				$image_args = $image_args[ $size ];
 
-				// Expose arguments to a filter before passing to Photon
 				$photon_args = array();
 
-				if ( $image_args['crop'] )
-					$photon_args['resize'] = $image_args['width'] . ',' . $image_args['height'];
-				else
-					$photon_args['fit'] = $image_args['width'] . ',' . $image_args['height'];
+				// `full` is a special case in WP
+				// To ensure filter receives consistent data regardless of requested size, `$image_args` is overridden with dimensions of original image.
+				if ( 'full' == $size ) {
+					$image_meta = wp_get_attachment_metadata( $attachment_id );
 
-				$photon_args = apply_filters( 'jetpack_photon_image_downsize_string', $photon_args, compact( 'image_args', 'image_url', 'attachment_id', 'size' ) );
+					// 'crop' is true so Photon's `resize` method is used
+					$image_args = array(
+						'width'  => $image_meta['width'],
+						'height' => $image_meta['height'],
+						'crop'   => true
+					);
+				}
+
+				// Expose determined arguments to a filter before passing to Photon
+				$transform = $image_args['crop'] ? 'resize' : 'fit';
+
+				$photon_args[ $transform ] = $image_args['width'] . ',' . $image_args['height'];
+
+				$photon_args = apply_filters( 'jetpack_photon_image_downsize_string', $photon_args, compact( 'image_args', 'image_url', 'attachment_id', 'size', 'transform' ) );
 
 				// Generate Photon URL
 				$image = array(
@@ -393,8 +424,13 @@ class Jetpack_Photon {
 	 * @return bool
 	 */
 	protected static function validate_image_url( $url ) {
+		$parsed_url = @parse_url( $url );
+
+		if ( ! $parsed_url )
+			return false;
+
 		// Parse URL and ensure needed keys exist, since the array returned by `parse_url` only includes the URL components it finds.
-		$url_info = wp_parse_args( parse_url( $url ), array(
+		$url_info = wp_parse_args( $parsed_url, array(
 			'scheme' => null,
 			'host'   => null,
 			'port'   => null,
@@ -453,6 +489,11 @@ class Jetpack_Photon {
 					'width'  => intval( get_option( 'large_size_w' ) ),
 					'height' => intval( get_option( 'large_size_h' ) ),
 					'crop'   => false
+				),
+				'full'   => array(
+					'width'  => null,
+					'height' => null,
+					'crop'   => false
 				)
 			);
 
@@ -507,6 +548,6 @@ class Jetpack_Photon {
 	 * @return null
 	 */
 	public function action_wp_enqueue_scripts() {
-		wp_enqueue_script( 'jetpack-photon', plugins_url( 'modules/photon/photon.js', __FILE__ ), array( 'jquery' ), 20121206, true );
+		wp_enqueue_script( 'jetpack-photon', plugins_url( 'modules/photon/photon.js', __FILE__ ), array( 'jquery' ), 20130122, true );
 	}
 }

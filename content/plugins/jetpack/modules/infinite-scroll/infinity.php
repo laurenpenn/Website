@@ -1,4 +1,5 @@
 <?php
+
 /*
 Plugin Name: The Neverending Home Page.
 Plugin URI: http://automattic.com/
@@ -294,7 +295,7 @@ class The_Neverending_Home_Page {
 
 		add_action( 'wp_footer', array( $this, 'action_wp_footer' ), 99999999 );
 
-		add_filter( 'infinite_scroll_results', array( $this, 'filter_infinite_scroll_results' ) );
+		add_filter( 'infinite_scroll_results', array( $this, 'filter_infinite_scroll_results' ), 10, 3 );
 	}
 
 	/**
@@ -396,11 +397,21 @@ class The_Neverending_Home_Page {
 
 	/**
 	 * Returns the Ajax url
+	 *
+	 * @global $wp
+	 * @uses home_url, is_ssl, add_query_arg, trailingslashit, apply_filters
+	 * @return string
 	 */
 	function ajax_url() {
 		global $wp;
 
-		$base_url = home_url( trailingslashit( $wp->request ), is_ssl() ? 'https' : 'http' );
+		// When using default permalinks, $wp->request will be null, so we reconstruct the request from the query arguments WP parsed.
+		if ( is_null( $wp->request ) ) {
+			$base_url = home_url( '/', is_ssl() ? 'https' : 'http' );
+			$base_url = add_query_arg( $wp->query_vars, $base_url );
+		} else {
+			$base_url = home_url( trailingslashit( $wp->request ), is_ssl() ? 'https' : 'http' );
+		}
 
 		$ajaxurl = add_query_arg( array( 'infinity' => 'scrolling' ), $base_url );
 
@@ -437,7 +448,7 @@ class The_Neverending_Home_Page {
 		// Base JS settings
 		$js_settings = array(
 			'id'               => self::get_settings()->container,
-			'ajaxurl'          => esc_js( esc_url_raw( self::ajax_url() ) ),
+			'ajaxurl'          => esc_url_raw( self::ajax_url() ),
 			'type'             => esc_js( self::get_settings()->type ),
 			'wrapper'          => self::has_wrapper(),
 			'wrapper_class'    => is_string( self::get_settings()->wrapper ) ? esc_js( self::get_settings()->wrapper ) : 'infinite-wrap',
@@ -533,7 +544,10 @@ class The_Neverending_Home_Page {
 		global $wp_scripts, $wp_styles;
 
 		$scripts = is_a( $wp_scripts, 'WP_Scripts' ) ? $wp_scripts->done : array();
+		$scripts = apply_filters( 'infinite_scroll_existing_scripts', $scripts );
+
 		$styles = is_a( $wp_styles, 'WP_Styles' ) ? $wp_styles->done : array();
+		$styles = apply_filters( 'infinite_scroll_existing_stylesheets', $styles );
 
 		?><script type="text/javascript">
 			jQuery.extend( infiniteScroll.settings.scripts, <?php echo json_encode( $scripts ); ?> );
@@ -549,7 +563,7 @@ class The_Neverending_Home_Page {
 	 * @filter infinite_scroll_results
 	 * @return array
 	 */
-	function filter_infinite_scroll_results( $results ) {
+	function filter_infinite_scroll_results( $results, $query_args, $wp_query ) {
 		// Don't bother unless there are posts to display
 		if ( 'success' != $results['type'] )
 			return $results;
@@ -603,6 +617,15 @@ class The_Neverending_Home_Page {
 				}
 			}
 		}
+
+		// Expose additional script data to filters, but only include in final `$results` array if needed.
+		if ( ! isset( $results['scripts'] ) )
+			$results['scripts'] = array();
+
+		$results['scripts'] = apply_filters( 'infinite_scroll_additional_scripts', $results['scripts'], $initial_scripts, $results, $query_args, $wp_query );
+
+		if ( empty( $results['scripts'] ) )
+			unset( $results['scripts' ] );
 
 		// Parse and sanitize the style handles already output
 		$initial_styles = isset( $_GET['styles'] ) && is_array( $_GET['styles'] ) ? array_map( 'sanitize_text_field', $_GET['styles'] ) : false;
@@ -678,6 +701,15 @@ class The_Neverending_Home_Page {
 				}
 			}
 		}
+
+		// Expose additional stylesheet data to filters, but only include in final `$results` array if needed.
+		if ( ! isset( $results['styles'] ) )
+			$results['styles'] = array();
+
+		$results['styles'] = apply_filters( 'infinite_scroll_additional_stylesheets', $results['styles'], $initial_styles, $results, $query_args, $wp_query );
+
+		if ( empty( $results['styles'] ) )
+			unset( $results['styles' ] );
 
 		// Lastly, return the IS results array
 		return $results;
@@ -793,7 +825,7 @@ class The_Neverending_Home_Page {
 			$results['type'] = 'empty';
 		}
 
-		echo json_encode( apply_filters( 'infinite_scroll_results', $results ) );
+		echo json_encode( apply_filters( 'infinite_scroll_results', $results, $query_args, $wp_query ) );
 		die;
 	}
 

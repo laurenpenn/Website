@@ -32,7 +32,7 @@ class Jetpack_Top_Posts_Widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'top-posts',
-			__( 'Top Posts &amp; Pages', 'jetpack' ),
+			apply_filters( 'jetpack_widget_name', __( 'Top Posts &amp; Pages', 'jetpack' ) ),
 			array(
 				'description' => __( 'Shows your most viewed posts and pages.', 'jetpack' ),
 			)
@@ -264,6 +264,9 @@ class Jetpack_Top_Posts_Widget extends WP_Widget {
 		$posts = array();
 		foreach ( (array) $post_ids as $post_id ) {
 			$post = get_post( $post_id );
+
+			if ( !$post )
+				continue;
 		
 			// hide private and password protected posts
 			if ( 'publish' != $post->post_status || !empty( $post->post_password ) || empty( $post->ID ) )

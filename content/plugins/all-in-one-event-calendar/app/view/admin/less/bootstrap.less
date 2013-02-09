@@ -1,0 +1,355 @@
+/*!
+ * Bootstrap v2.0.2
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+
+// Fonts
+@import url("http://fonts.googleapis.com/css?family=Signika:300");
+@import url("http://fonts.googleapis.com/css?family=Signika:600");
+
+/* Timely Icons font - loading */
+
+@font-face {
+	font-family: 'Timely Icons';
+	src:url('../font/timely-icons.eot');
+	src:url('../font/timely-icons.eot?#iefix') format('embedded-opentype'),
+		url('../font/timely-icons.svg#Timely-Icons') format('svg'),
+		url('../font/timely-icons.woff') format('woff'),
+		url('../font/timely-icons.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="timely-icon-"]:before, [class*=" timely-icon-"]:before {
+	display: inline-block;
+	font-family: 'Timely Icons';
+	font-style: normal;
+	font-weight: normal;
+	speak: none;
+	vertical-align: top;
+}
+.timely-icon-large:before {
+  font-size: 1.25em;
+}
+
+/* Timely Icons font - Bootstrap-related accommodations */
+
+.timely .btn .timely-icon-large[class^="timely-icon-"],
+.timely .btn .timely-icon-large[class*=" timely-icon-"] {
+  line-height: 1.1em;
+}
+.timely li [class^="timely-icon-"],
+.timely li [class*=" timely-icon-"] {
+  display: inline-block;
+  text-align: center;
+  width: 1.25em;
+}
+.timely li .timely-icon-large[class^="timely-icon-"],
+.timely li .timely-icon-large[class*=" timely-icon-"] {
+  width: 1.875em;
+}
+.timely li[class^="timely-icon-"],
+.timely li[class*=" timely-icon-"] {
+  list-style-type: none;
+  margin-left: 0;
+}
+.timely li[class^="timely-icon-"]:before,
+.timely li[class*=" timely-icon-"]:before {
+  text-align: center;
+  text-indent: -2em;
+}
+.timely li[class^="timely-icon-"].timely-icon-large:before,
+.timely li[class*=" timely-icon-"].icon-large:before {
+  text-indent: -1.3333333333333333em;
+}
+
+/* Timely Icons font - shortcut classes */
+
+.timely-icon-timely-logomark:before {
+	content: "\21";
+}
+.timely-icon-import-events:before {
+	content: "\22";
+}
+.timely-icon-export-events:before {
+	content: "\23";
+}
+.timely-icon-facebook-sync:before {
+	content: "\24";
+}
+.timely-icon-filter-tag-category:before {
+	content: "\25";
+}
+.timely-icon-subscribe-events:before {
+	content: "\26";
+}
+.timely-icon-recurring-events:before {
+	content: "\27";
+}
+.timely-icon-multiple-views:before {
+	content: "\28";
+}
+.timely-icon-customizable-views:before {
+	content: "\29";
+}
+.timely-icon-upcoming-events-widget:before {
+	content: "\2a";
+}
+.timely-icon-locations-maps:before {
+	content: "\2b";
+}
+.timely-icon-seo-optimized:before {
+	content: "\2c";
+}
+.timely-icon-dedicated-support:before {
+	content: "\2d";
+	font-size: 1.2em;
+}
+.timely-icon-plus-sign:before {
+	content: "\2e";
+}
+.timely-icon-minus-sign:before {
+	content: "\2f";
+}
+.timely-icon-pencil:before {
+	content: "\3c";
+}
+.timely-icon-gear:before {
+	content: "\3e";
+}
+.timely-icon-tag:before {
+	content: "\3f";
+}
+.timely-icon-forward:before {
+	content: "\3b";
+}
+.timely-icon-close:before {
+	content: "\3a";
+}
+.timely-icon-heart:before {
+	content: "\3d";
+}
+.timely-icon-folder:before {
+	content: "\40";
+}
+.timely-icon-grid:before {
+	content: "\41";
+}
+.timely-icon-print:before {
+	content: "\38";
+}
+.timely-icon-share:before {
+	content: "\39";
+}
+.timely-icon-event:before {
+	content: "\44";
+}
+.timely-icon-location:before {
+	content: "\45";
+}
+.timely-icon-arrow-right:before {
+	content: "\46";
+}
+.timely-icon-arrow-up:before {
+	content: "\47";
+}
+.timely-icon-arrow-down:before {
+	content: "\48";
+}
+.timely-icon-chevron-down:before {
+	content: "\4a";
+}
+.timely-icon-chevron-up:before {
+	content: "\4b";
+}
+.timely-icon-arrow-left:before {
+	content: "\4c";
+}
+.timely-icon-chevron-left:before {
+	content: "\4d";
+	position: relative;
+	top: 0.1em;
+}
+.timely-icon-chevron-right:before {
+	content: "\4e";
+	position: relative;
+	top: 0.1em;
+}
+.timely-icon-time:before {
+	content: "\4f";
+}
+.timely-icon-plus:before {
+	content: "\30";
+}
+.timely-icon-minus:before {
+	content: "\31";
+}
+.timely-icon-shopping-cart:before {
+	content: "\32";
+}
+.timely-icon-gift:before {
+	content: "\33";
+}
+.timely-icon-checkmark:before {
+	content: "\34";
+}
+
+// Core variables and mixins
+@import "variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "mixins.less";
+
+// Modals & popovers must stay outside of .timely as they are root-level
+// elements.
+@import "modals.less";
+@import "popovers.less";
+@import "component-animations.less";
+
+// ==========================
+// = Unnamespaced overrides =
+// ==========================
+// Popovers
+.popover-title {
+	.border-radius( 4px 4px 0 0 );
+	font-family: @headingsFontFamily;
+	font-size: @baseFontSize * 1.25 !important;
+	margin: 0 !important;
+}
+.popover-content p {
+	margin: 0;
+}
+.popover-inner {
+	background-color: @dropdownBorder;
+	padding: 1px;
+}
+.popover-content {
+	.border-radius( 0 0 4px 4px );
+}
+.popover {
+  padding: 8px;
+  &.top    { margin-top:  -8px; }
+  &.right  { margin-left:  8px; }
+  &.bottom { margin-top:   8px; }
+  &.left   { margin-left: -8px; }
+  &.top .arrow    { #popoverArrow > .top( 8px, @dropdownBorder ); }
+  &.right .arrow  { #popoverArrow > .right( 8px, @dropdownBorder ); }
+  &.bottom .arrow { #popoverArrow > .bottom( 8px, @dropdownBorder ); }
+  &.left .arrow   { #popoverArrow > .left( 8px, @dropdownBorder );  }
+  ul.icons {
+  	text-indent: -0.25em;
+  }
+}
+ul.icons {
+	margin-left: 2em;
+}
+
+.timely {
+  // CSS Reset
+  @import "reset.less";
+
+  // Grid system and page structure
+  @import "scaffolding.less";
+  @import "grid.less";
+  //@import "layouts.less";
+
+  // Base CSS
+  @import "type.less";
+  //@import "code.less";
+  //@import "forms.less";
+  //@import "tables.less";
+
+  // Components: common
+  //@import "sprites.less";
+  //@import "dropdowns.less";
+  //@import "wells.less";
+  @import "close.less";
+
+  // Components: Buttons & Alerts
+  @import "buttons.less";
+  //@import "button-groups.less";
+  //@import "alerts.less"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
+
+  // Components: Nav
+  //@import "navs.less";
+  //@import "navbar.less";
+  //@import "breadcrumbs.less";
+  //@import "pagination.less";
+  //@import "pager.less";
+
+  // Components: Popovers
+  //@import "tooltip.less";
+
+  // Components: Misc
+  //@import "thumbnails.less";
+  //@import "labels.less";
+  //@import "badges.less";
+  //@import "progress-bars.less";
+  //@import "accordion.less";
+  //@import "carousel.less";
+  @import "hero-unit.less";
+
+  // Utility classes
+  @import "utilities.less"; // Has to be last to override when necessary
+
+  // Adjustments.
+  font-family: @baseFontFamily;
+  font-size: @baseFontSize;
+  font-weight: 300;
+  line-height: @baseLineHeight;
+  color: @textColor;
+
+  .hero-unit {
+    padding: 30px;
+    margin-bottom: 15px;
+  }
+  .hero-unit h1 {
+    color: @headingsColor;
+  }
+  h4 {
+  	font-size: 16px;
+  }
+  hr {
+    margin: 14px 0;
+  }
+  h2.ai1ec-premium-features {
+  	font-size: 1.4em !important;
+  }
+  h4.ai1ec-premium-features {
+  	.span4 {
+  		min-width: 145px;
+  	}
+  	li {
+  		color: @linkColor;
+  		font-size: 1.2em;
+	  	strong {
+	  		font-size: 0.83em;
+	  		color: @textColor;
+	  	}
+	  }
+  }
+  a.btn {
+  	text-decoration: none;
+  }
+
+	// Icons
+	ul.icons {
+		list-style-type: none;
+	}
+
+	// Restore WP styles.
+	a.button-primary {
+		color: #fff;
+		&:hover {
+			color: #EAF2FA;
+			text-decoration: none;
+		}
+	}
+	input[type="text"] {
+		height: 28px;
+		line-height: 28px;
+	}
+}

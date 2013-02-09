@@ -86,7 +86,7 @@ class Jetpack_Carousel {
 		do_action( 'jp_carousel_thumbnails_shown' );
 
 		if ( $this->first_run ) {
-			wp_enqueue_script( 'jetpack-carousel', plugins_url( 'jetpack-carousel.js', __FILE__ ), array( 'jquery.spin' ), $this->asset_version( '20120926' ), true );
+			wp_enqueue_script( 'jetpack-carousel', plugins_url( 'jetpack-carousel.js', __FILE__ ), array( 'jquery.spin' ), $this->asset_version( '20130109' ), true );
 
 			// Note: using  home_url() instead of admin_url() for ajaxurl to be sure  to get same domain on wpcom when using mapped domains (also works on self-hosted)
 			// Also: not hardcoding path since there is no guarantee site is running on site root in self-hosted context.
@@ -156,7 +156,8 @@ class Jetpack_Carousel {
 			return $html;
 
 		$attachment_id   = intval( $attachment_id );
-		$orig_file       = wp_get_attachment_url( $attachment_id );
+		$orig_file       = wp_get_attachment_image_src( $attachment_id, 'full' );
+		$orig_file       = isset( $orig_file[0] ) ? $orig_file[0] : wp_get_attachment_url( $attachment_id );
 		$meta            = wp_get_attachment_metadata( $attachment_id );
 		$size            = isset( $meta['width'] ) ? intval( $meta['width'] ) . ',' . intval( $meta['height'] ) : '';
 		$img_meta        = ( ! empty( $meta['image_meta'] ) ) ? (array) $meta['image_meta'] : array();

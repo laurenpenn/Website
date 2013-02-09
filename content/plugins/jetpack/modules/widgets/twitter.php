@@ -19,7 +19,28 @@ function jetpack_twitter_widget_init() {
 class Jetpack_Widget_Twitter extends WP_Widget {
 
 	function __construct() {
-		parent::__construct( 'twitter', __( 'Twitter', 'jetpack' ), array( 'classname' => 'widget_twitter', 'description' => __( 'Display your Tweets from Twitter', 'jetpack' ) ) );
+		parent::__construct(
+			'twitter',
+			apply_filters( 'jetpack_widget_name', __( 'Twitter', 'jetpack' ) ),
+			array(
+				'classname' => 'widget_twitter',
+				'description' => __( 'Display your Tweets from Twitter', 'jetpack' )
+			)
+		);
+
+		if ( is_active_widget( false, false, $this->id_base ) || is_active_widget( false, false, 'monster' ) ) {
+			add_action( 'wp_head', array( $this, 'style' ) );
+		}
+	}
+
+	function style() {
+?>
+<style type="text/css">
+.widget_twitter li {
+	word-wrap: break-word;
+}
+</style>
+<?php
 	}
 
 	function widget( $args, $instance ) {
