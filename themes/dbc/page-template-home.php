@@ -42,10 +42,10 @@ get_header(); ?>
 						</div>
 					</a>
 					
-					<a href="<?php echo site_url(); ?>/dbcmc2013/" class="feature" id="feature-notes">
+					<a href="<?php echo site_url(); ?>/womens-mens-conferences//" class="feature" id="feature-notes">
 						<div class="feature-inner">
 							<h4 class="widget-title">Upcoming Conferences</h4>
-							<p><img src="<?php echo get_template_directory_uri(); ?>/images/feature-conferences.png" alt="Marriage and Missions conferences." /></p>
+							<p><img src="<?php echo get_template_directory_uri(); ?>/images/feature-conferences2.png" alt="Women's and Men's conferences." /></p>
 						</div>
 					</a>
 								

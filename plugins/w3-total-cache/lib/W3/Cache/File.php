@@ -44,7 +44,7 @@ class W3_Cache_File extends W3_Cache_Base {
      */
     var $_locking = false;
 
-  var $use_wp_hash = false;
+    var $use_wp_hash = false;
     /**
      * PHP5-style constructor
      *
@@ -55,7 +55,7 @@ class W3_Cache_File extends W3_Cache_Base {
         $this->_exclude = isset($config['exclude']) ? (array) $config['exclude'] : array();
         $this->_flush_timelimit = isset($config['flush_timelimit']) ? (int) $config['flush_timelimit'] : 180;
         $this->_locking = isset($config['locking']) ? (boolean) $config['locking'] : false;
-        if (isset($config['module']) && $config['module'] == 'dbcache')
+        if (isset($config['module']) && $config['module'] == 'dbcache'&& function_exists('wp_hash'))
             $this->use_wp_hash = true;
     }
 
@@ -106,8 +106,8 @@ class W3_Cache_File extends W3_Cache_Base {
                 if ($this->_locking) {
                     @flock($fp, LOCK_EX);
                 }
-                @fputs($fp, '<?php /* ');
                 @fputs($fp, pack('L', $expire));
+                @fputs($fp, '<?php exit; ?>');
                 @fputs($fp, @serialize($var));
                 @fclose($fp);
 
@@ -156,7 +156,7 @@ class W3_Cache_File extends W3_Cache_Base {
                                 $data .= @fread($fp, 4096);
                             }
                             
-                            $var = substr($data, 9);
+                            $data = substr($data, 14);
                             $var = @unserialize($data);
                         }
                     }
@@ -238,7 +238,7 @@ class W3_Cache_File extends W3_Cache_Base {
      * @return string
      */
     function _get_path($key) {
-        if (function_exists('wp_hash') && $this->use_wp_hash)
+        if ($this->use_wp_hash)
             $hash = wp_hash($key);
         else
             $hash = md5($key);

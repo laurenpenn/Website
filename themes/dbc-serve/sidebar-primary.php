@@ -53,7 +53,12 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 			
 			<?php } ?>
 
-			<?php if ( !empty( $missionary_blog_url ) ) { ?><p><a href="<?php echo $missionary_blog_url; ?>" class="button" rel="external">View blog</a></p><?php } ?>
+			<p>
+			<?php
+			$email = get_post_meta( $post->ID, 'missionary-email', true );
+			if( $email ) { ?><a href="#" class="button nice radius green small" data-reveal-id="modal-email-missionary">Email</a><?php } ?>
+			<?php if ( !empty( $missionary_blog_url ) ) { ?><a href="<?php echo $missionary_blog_url; ?>" class="button nice radius green small" rel="external">View blog</a><?php } ?>
+			</p>
 			
 			<?php
 
@@ -79,7 +84,7 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 					
 					<p><?php get_the_image( array( 'default_size' => 'medium' )); ?></p>
 					
-					<p><a href="<?php the_permalink(); ?>" class="button"><?php the_title_attribute(); ?> team</a></p>
+					<p><a href="<?php the_permalink(); ?>" class="button nice radius small green"><?php the_title_attribute(); ?> team</a></p>
 				
 				</div>
 						
@@ -101,7 +106,7 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 			$map_data = get_post_meta($post->ID, 'map-data', true);
 			?>
 			
-			<p class="text-center"><a href="http://dbcm.org/international/locations/">All locations</a> | <a href="http://dbcm.org/international/missionaries/">All missionaries</a></p>
+			<p class="text-center"><a href="<?php echo home_url(); ?>/locations/">All locations</a> | <a href="<?php echo home_url(); ?>/missionaries/">All missionaries</a></p>
 			
 			<p><?php get_the_image( array( 'default_size' => 'medium', 'link_to_post' => false )); ?></p>
 
@@ -110,10 +115,16 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 				'connected_type' => 'missionary_to_location',
 				'connected_items' => get_queried_object_id(),
 				'tax_query' => array(
+					'relation' => 'OR',
 					array(
 						'taxonomy' => 'type',
 						'field' => 'slug',
 						'terms' => 'affiliate'
+					),
+					array(
+						'taxonomy' => 'type',
+						'field' => 'slug',
+						'terms' => 'endorsed'						
 					)
 				)
 			) );
@@ -122,7 +133,7 @@ if ( is_active_sidebar( 'primary' ) ) : ?>
 			
 				<div class="team">
 					
-					<h3>Affiliate Missionaries</h3>
+					<h3 >Affiliate &amp; Endorsed Missionaries</h3>
 					
 				<?php
 				

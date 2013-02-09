@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PowerPress 4.0.4\n"
+"Project-Id-Version: PowerPress 4.0.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-23 09:16+0100\n"
+"POT-Creation-Date: 2012-12-14 09:33+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Team Blogos <wordpress@blogos.dk>\n"
 "Language-Team: Team Blogos <wordpress@blogos.dk>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "_nc:4c,1,2;_nx:4c,1,2;_n_noop:1,2;_nx_noop:4c,1,2;_x:1,2c;_c;esc_html__;"
 "esc_html_e;esc_html_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c\n"
 "X-Poedit-Basepath: d:\\wordpress\\plugins\\powerpress\n"
-"X-Generator: Poedit 1.5.3\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: d:\\wordpress\\plugins\\powerpress\n"
 
 #: d:\wordpress\plugins\powerpress/mp3info.class.php:114
@@ -158,38 +158,38 @@ msgstr "Adgangstilladelse mislykkedes"
 msgid "Unauthorized"
 msgstr "Ingen adgangstilladelse"
 
-#: d:\wordpress\plugins\powerpress/powerpress-player.php:304
-#: d:\wordpress\plugins\powerpress/powerpress-player.php:882
+#: d:\wordpress\plugins\powerpress/powerpress-player.php:307
+#: d:\wordpress\plugins\powerpress/powerpress-player.php:885
 msgid "Best viewed with"
 msgstr "Vises bedst med"
 
-#: d:\wordpress\plugins\powerpress/powerpress-player.php:306
-#: d:\wordpress\plugins\powerpress/powerpress-player.php:884
+#: d:\wordpress\plugins\powerpress/powerpress-player.php:309
+#: d:\wordpress\plugins\powerpress/powerpress-player.php:887
 msgid "Windows Media Player plugin for Firefox"
 msgstr "Windows Media Player-plugin for Firefox"
 
-#: d:\wordpress\plugins\powerpress/powerpress-player.php:502
-#: d:\wordpress\plugins\powerpress/powerpress-player.php:1124
+#: d:\wordpress\plugins\powerpress/powerpress-player.php:505
+#: d:\wordpress\plugins\powerpress/powerpress-player.php:1129
 msgid "Blubrry PowerPress Player"
 msgstr "Blubrry PowerPress-afspiller"
 
-#: d:\wordpress\plugins\powerpress/powerpress-player.php:572
+#: d:\wordpress\plugins\powerpress/powerpress-player.php:575
 msgid "Player Not Available"
 msgstr "Afspiller ikke tilgængelig"
 
-#: d:\wordpress\plugins\powerpress/powerpress-player.php:992
+#: d:\wordpress\plugins\powerpress/powerpress-player.php:995
 msgid "Open in New Window"
 msgstr "Åbn i nyt vindue"
 
-#: d:\wordpress\plugins\powerpress/powerpress-player.php:1074
+#: d:\wordpress\plugins\powerpress/powerpress-player.php:1079
 msgid "E-Book PDF"
 msgstr "E-bog som PDF"
 
-#: d:\wordpress\plugins\powerpress/powerpress-player.php:1143
+#: d:\wordpress\plugins\powerpress/powerpress-player.php:1148
 msgid "Unable to retrieve media information."
 msgstr "Kan ikke hente information om medie."
 
-#: d:\wordpress\plugins\powerpress/powerpress-player.php:1581
+#: d:\wordpress\plugins\powerpress/powerpress-player.php:1586
 #: d:\wordpress\plugins\powerpress/powerpressadmin-player-page.php:789
 msgid "TRACK"
 msgstr "SPOR"
@@ -197,8 +197,8 @@ msgstr "SPOR"
 #: d:\wordpress\plugins\powerpress/powerpress.php:55
 #: d:\wordpress\plugins\powerpress/powerpressadmin-customfeeds.php:70
 #: d:\wordpress\plugins\powerpress/powerpressadmin-customfeeds.php:85
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1159
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3379
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1170
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3383
 msgid "Podcast"
 msgstr "Podcast"
 
@@ -267,7 +267,7 @@ msgid "Feeds"
 msgstr "Feeds"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:116
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3381
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3385
 msgid "iTunes"
 msgstr "iTunes"
 
@@ -331,7 +331,7 @@ msgstr "konfigurér podcastkanaler"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:205
 #: d:\wordpress\plugins\powerpress/powerpressadmin-categoryfeeds.php:21
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1148
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1152
 msgid "Category Podcasting"
 msgstr "Kategori-podcasting"
 
@@ -636,17 +636,17 @@ msgid "All other episodes will be listed following the featured episode."
 msgstr "Alle andre episoder vil blive vist efter de fremhævede episoder."
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:360
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1192
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1203
 msgid "Features Not Supported by PowerPress"
 msgstr "Funktionerne ikke understøttet af PowerPress"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:362
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1196
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1207
 msgid "USE THE FOLLOWING SETTINGS AT YOUR OWN RISK."
 msgstr "BRUG DE FØLGENDE INDSTILLINGER PÅ EGEN RISIKO."
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:364
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1250
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1261
 #: d:\wordpress\plugins\powerpress/powerpressadmin-metabox.php:456
 msgid "iTunes Block"
 msgstr "iTunes-blokering"
@@ -930,7 +930,7 @@ msgid "This option is no longer available."
 msgstr "Denne indstilling findes ikke længere."
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:647
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1135
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1146
 msgid "Learn more:"
 msgstr "Få mere at vide: "
 
@@ -948,8 +948,8 @@ msgstr "Integrér Blubrry-tjenester"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:673
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:761
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:627
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:634
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:638
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:645
 msgid "optional"
 msgstr "valgfri"
 
@@ -970,8 +970,8 @@ msgid "Have an account on Blubrry.com?"
 msgstr "Har du en konto på Blubrry.com?"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:686
-msgid "Click here to configure your Blubrry settings"
-msgstr "Klik her for at konfigurere dine BluBrry-indstillinger"
+msgid "Click here to configure Blubrry Statistics and Hosting services"
+msgstr "Klik her for at konfigurere BluBrrys Statistik og Hosting-tjenester"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:690
 msgid "Display Blubrry Media Statistics in your dashboard"
@@ -1013,17 +1013,17 @@ msgid "Blubrry Media Hosting"
 msgstr "Blubrrys mediehosting"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:703
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3262
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3266
 msgid "Learn More"
 msgstr "Få mere at vide"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:761
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:654
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:665
 msgid "Media Statistics"
 msgstr "Mediestatistik"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:764
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:656
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:667
 msgid ""
 "Enter your Redirect URL issued by your media statistics service provider "
 "below."
@@ -1269,14 +1269,16 @@ msgid "Include embed in feeds"
 msgstr "Medtag indsat medie i feeds"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1002
-msgid "Embed option only works for Flow Player Classic and HTML5 Video player."
+msgid ""
+"Embed option uses Flow Player Classic for audio and HTML5 Video player for "
+"video."
 msgstr ""
-"Indsætningsfunktionen virker kun i Flow Player Classic og HTML5-"
-"videoafspiller."
+"Indsætningsfunktionen bruger Flow Player Classic til audio og en HTML5-"
+"videoafspiller til video."
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1014
-msgid "Having Theme Issues?"
-msgstr "Har du problemer med temaet?"
+msgid "Having Issues?"
+msgstr "Problemer?"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1018
 msgid "No, everything is working"
@@ -1288,45 +1290,62 @@ msgstr "Ja, prøv venligst at løse problemet"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1026
 msgid ""
-"Use this option if you are having problems with the players not appearing in "
-"your pages."
+"Use this option if you are having problems with the players not appearing on "
+"some or all of your pages."
 msgstr ""
 "Brug denne indstilling, hvis du har problemer med, at afspillerne ikke vises "
-"på dine sider."
+"på nogle af eller på alle dine sider."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1035
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1029
+msgid ""
+"If the above option fixes the player issues, then you most likely have a "
+"conflicting theme or plugin activated. You can verify your theme is not "
+"causing the problem by testing your site using the default WordPress "
+"twentyelevent or twentytwelve theme. For plugins, disable them one by one "
+"until the player re-appears, which indicates the last plugin deactivated "
+"caused the conflict."
+msgstr ""
+"Hvis indstillingen ovenfor løser problemet med afspilleren, er der "
+"formentlig en konflikt med et af de temaer eller plugins, du har "
+"installeret. Du kan undersøge, om dit tema skaber problemet, ved at teste "
+"dit site med et af WordPress&#39; standardtemaer: Twenty Eleven eller Twenty "
+"Twelve. Plugins kan du teste ved at deaktivere dem ét for ét, indtil "
+"afspilleren vises igen. Det er formentlig det sidst deaktiverede plugin, der "
+"skaber konflikten."
+
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1038
 msgid "Play in New Window Settings"
 msgstr "Indstillinger for afspilning i nyt vindue"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1040
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1043
 msgid "New Window Width"
 msgstr "Brede på nyt vindue"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1044
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1047
 msgid "Width of new window (leave blank for 420 default)"
 msgstr "Bredde på nyt vindue (udfyldes feltet ikke, bruges 420 som standard)"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1050
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1053
 msgid "New Window Height"
 msgstr "Højde på nyt vindue"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1054
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1057
 msgid "Height of new window (leave blank for 240 default)"
 msgstr "Højde på nyt vindue (udfyldes feltet ikke, bruges 240 som standard)"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1061
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1064
 msgid "Media Format Settings"
 msgstr "Medieformatindstillinger"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1066
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1069
 msgid "AAC Audio (.m4a)"
 msgstr "AAC-audio (.M4A)"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1071
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1074
 msgid "Use Flow Player Classic / HTML5 Audio player"
 msgstr "Brug Flow Player Classic / HTML5-audioafspiller"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1073
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1076
 msgid ""
 "Leave this option unchecked if you want m4a chapter markers, images and "
 "information displayed."
@@ -1334,7 +1353,7 @@ msgstr ""
 "Sæt ikke noget kryds, hvis du ønsker kapitelmarkører, billeder og "
 "information i M4A vist."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1074
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1077
 msgid ""
 "When unchecked, m4a will be played with the quicktime video embed. Video "
 "player width/height settings apply."
@@ -1342,27 +1361,27 @@ msgstr ""
 "Når uafkrydset, afspilles M4A som indsat QuickTime-video. Indstillingerne "
 "for videoafspillers bredde/højde anvendes."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1092
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1095
 msgid "Blubrry PowerPress and Community Podcast"
 msgstr "Blubrry PowerPress- og Community-podcasts"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1095
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1098
 msgid "Remove from dashboard"
 msgstr "Fjern fra kontrolpanel"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1100
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1103
 msgid "Highlighted Topics"
 msgstr "Fremhævede emner"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1115
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1118
 msgid "T.V. Settings"
 msgstr "TV-indstillinger"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1119
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1122
 msgid "Parental Rating"
 msgstr "Aldersgrænser"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1121
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1124
 #, php-format
 msgid ""
 "A parental rating is used to display your content on %s applications "
@@ -1373,39 +1392,39 @@ msgstr ""
 "tv&#39;er, der er sluttet til internettet. Aldersgrænserne anvendes for både "
 "audio- og videomedier."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1123
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1126
 msgid "No rating specified"
 msgstr "Aldersgrænse ikke angivet"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1124
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1127
 msgid "Children of all ages"
 msgstr "Børn i alle aldre"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1125
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1128
 msgid "Children 7 years and older"
 msgstr "Børn på syv år og derover"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1126
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1129
 msgid "Children 7 years and older [fantasy violence]"
 msgstr "Børn på 7 år og derover (fiktionsvold)"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1127
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1130
 msgid "General audience"
 msgstr "For alle"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1128
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1131
 msgid "Parental guidance suggested"
 msgstr "Forældrevejledning foreslås"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1129
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1132
 msgid "May be unsuitable for children under 14 years of age"
 msgstr "Kan være uegnet for børn under 14 år"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1130
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1133
 msgid "Mature audience - may be unsuitable for children under 17"
 msgstr "Modent publikum &ndash; kan være uegnet for børn under 17"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1133
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1136
 msgid ""
 "Whether animated or live-action, the themes and elements in this program are "
 "specifically designed for a very young audience, including children from "
@@ -1419,7 +1438,7 @@ msgstr ""
 "børn. Eksempler på programmer med denne aldersgrænse er Sesamgade, Barney & "
 "Venner, Dora Udforskeren m.fl."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1134
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1137
 msgid ""
 "These shows may or may not be appropriate for some children under the age of "
 "7. This rating may include crude, suggestive humor, mild fantasy violence, "
@@ -1433,7 +1452,7 @@ msgstr ""
 "eller kontroversiel til at blive vist for børn under 7. Eksempler er Fosters "
 "hjem for fantasivenner, Johnny Test og SpongeBob SquarePants."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1135
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1138
 msgid ""
 "When a show has noticeably more fantasy violence, it is assigned the TV-Y7-"
 "FV rating. Action-adventure shows such Pokemon series and the Power Rangers "
@@ -1443,7 +1462,7 @@ msgstr ""
 "bedømmelse. Aktioneventyrfilm som Pokemon og Power Rangers hører til denne "
 "kategori."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1136
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1139
 msgid ""
 "Although this rating does not signify a program designed specifically for "
 "children, most parents may let younger children watch this program "
@@ -1458,7 +1477,7 @@ msgstr ""
 "faktaprogrammer, konkret vejledninger eller udsendelser, der generelt ikke "
 "er anstødelige."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1137
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1140
 msgid ""
 "This rating signifies that the program may be unsuitable for younger "
 "children without the guidance of a parent. Many parents may want to watch it "
@@ -1475,7 +1494,7 @@ msgstr ""
 "(sitcoms) som fx Alle elsker Raymond, Rap Fyr i L.A., The Simpsons, Futurama "
 "og Seinfeld har normalt denne aldersgrænse."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1138
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1141
 msgid ""
 "Parents are strongly urged to exercise greater care in monitoring this "
 "program and are cautioned against letting children of any age watch "
@@ -1486,7 +1505,7 @@ msgstr ""
 "øje med dette program og advares mod at lade børn se det uanset deres alder. "
 "Denne aldersgrænse kan suppleres af en af de følgende underkategorier:"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1139
+#: d:\wordpress\plugins\powerpress/powerpressadmin-basic.php:1142
 msgid ""
 "A TV-MA rating means the program may be unsuitable for those below 17. The "
 "program may contain extreme graphic violence, strong profanity, overtly "
@@ -1580,9 +1599,9 @@ msgid "Category"
 msgstr "Kategori"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-categoryfeeds.php:181
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:981
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1010
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1030
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:992
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1021
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1041
 msgid "Select Category"
 msgstr "Vælg kategori"
 
@@ -1779,7 +1798,7 @@ msgid "Blubrry Media statistics"
 msgstr "Blubrrys mediestatistik"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-dashboard.php:157
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:991
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1002
 msgid "more"
 msgstr "mere"
 
@@ -2934,11 +2953,31 @@ msgstr "URL til kategoriside"
 msgid "FeedBurner Feed URL"
 msgstr "URL for Feedburner-feed"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:499
-msgid "leave blank to use current feed"
-msgstr "Udfyldes ikke, hvis du vil bruge aktuelle feed"
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:497
+msgid "Recommendation: leave blank"
+msgstr "Anbefaling: lad stå tomt"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:500
+msgid "leave blank to use built-in feed"
+msgstr "udfyldes ikke, hvis du vil bruge det indbyggede feed"
+
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:502
+msgid "NOTE: FeedBurner is not required for podcasting."
+msgstr "NOTE: FeedBurner kræves ikke til podcasting."
+
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:503
+msgid ""
+"No support is available from blubrry if you are using Feedburner or other "
+"feed hosted services."
+msgstr ""
+"Du kan ikke få support hos Blubrry, hvis du bruger FeedBurner eller får dit "
+"feed hostet hos andre udbydere."
+
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:504
+msgid "Learn more about FeedBurner and Podcasitng"
+msgstr "Læs mere om FeedBurner og Podcasting"
+
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:507
 msgid ""
 "Use this option to redirect this feed to a hosted feed service such as "
 "FeedBurner."
@@ -2946,23 +2985,23 @@ msgstr ""
 "Brug denne indstilling til at videresende dette feed til en hostet "
 "feedservice så som FeedBurner."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:512
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:519
 msgid "Bypass Redirect URL"
 msgstr "<span title=\"bypass redirect url\">Omgå redirect-URL</span>"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:520
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:527
 msgid "Show the most recent"
 msgstr "Vis de seneste"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:523
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:530
 msgid "episodes / posts per feed (leave blank to use blog default"
 msgstr "episoder/indlæg per feed (hvis det ikke udfyldes, bruges blogstandard"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:525
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:532
 msgid "Note: Setting above applies only to podcast channel feeds"
 msgstr "Bemærk: Indstillingen overfor anvendes kun på podcastede kanalfeeds"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:527
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:534
 msgid ""
 "WARNING: Setting this value larger than 10 may cause feed timeout errors and "
 "delay podcast directory listings from updating."
@@ -2970,11 +3009,11 @@ msgstr ""
 "ADVARSEL: Sætter du denne værdi til højere end 10, kan det forårsage feed-"
 "timeoutfejl og forsinke opdatering af listerne i podcastkataloger."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:537
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:544
 msgid "Feed Episode Maximizer"
 msgstr "Feed-episodepresser"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:541
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:548
 msgid ""
 "The latest 10 episodes in feed will remain as normal. The remaining 11+ "
 "older episodes in feed will have only the bare essential tags in order to "
@@ -2984,11 +3023,11 @@ msgstr ""
 "ældre episoder i feedet vil kun blive tagget med de mest nødvendige tags, så "
 "der kan vises flest mulige episoder i feedet."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:543
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:550
 msgid "This feature is experimental, use at your own risk."
 msgstr "Denne funktion er under udvikling, så du bruger den på eget ansvar."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:546
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:553
 msgid ""
 "NOTE: This feature may allow you to enter a larger value for the \"Show the "
 "most recent\" setting above. You must make sure that your feed does not "
@@ -2998,12 +3037,16 @@ msgstr ""
 "de seneste\"-indstillingen ovenfor. Du skal sikre dig, at dit feed ikke "
 "overstiger 512KB (1/2 MB) i størrelse."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:554
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:561
 msgid "RSS2 Image"
 msgstr "RSS2-billede"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:558
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1069
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:562
+msgid "Recommendation: Use iTunes image"
+msgstr "Anbefaling: Brug iTunes-billede"
+
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:566
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1080
 #: d:\wordpress\plugins\powerpress/powerpressadmin-player-page.php:1658
 #: d:\wordpress\plugins\powerpress/powerpressadmin-player-page.php:1876
 #: d:\wordpress\plugins\powerpress/powerpressadmin-player-page.php:1908
@@ -3011,12 +3054,12 @@ msgstr "RSS2-billede"
 msgid "preview"
 msgstr "preview"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:560
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:568
 msgid "Place the URL to the RSS image above."
 msgstr "Indtast URL&#39;en til RSS-billedet ovenfor."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:560
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1072
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:568
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1083
 #: d:\wordpress\plugins\powerpress/powerpressadmin-find-replace.php:226
 #: d:\wordpress\plugins\powerpress/powerpressadmin-find-replace.php:234
 #: d:\wordpress\plugins\powerpress/powerpressadmin-player-page.php:1660
@@ -3025,7 +3068,7 @@ msgstr "Indtast URL&#39;en til RSS-billedet ovenfor."
 msgid "Example"
 msgstr "Eksempel"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:562
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:570
 msgid ""
 "RSS image should be at least 88 pixels wide and at least 31 pixels high in "
 "either .gif, .jpg and .png format."
@@ -3033,7 +3076,7 @@ msgstr ""
 "RSS-billedet bør mindst være 88 pixels bred og mindst 31 pixels høj i enten "
 "GIF-, JPG- eller PNG-format."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:563
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:571
 msgid ""
 "A square image that is 300 x 300 pixel or larger in .jpg format is "
 "recommended."
@@ -3041,8 +3084,8 @@ msgstr ""
 "Et kvadratisk billede, som er 300 x 300 pixel eller større, i JPG-format, "
 "anbefales."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:566
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1085
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:574
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1096
 #: d:\wordpress\plugins\powerpress/powerpressadmin-player-page.php:1664
 #: d:\wordpress\plugins\powerpress/powerpressadmin-player-page.php:1882
 #: d:\wordpress\plugins\powerpress/powerpressadmin-player-page.php:1914
@@ -3050,8 +3093,8 @@ msgstr ""
 msgid "Upload new image"
 msgstr "Upload nyt billede"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:568
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1089
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:576
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1100
 #: d:\wordpress\plugins\powerpress/powerpressadmin-player-page.php:1666
 #: d:\wordpress\plugins\powerpress/powerpressadmin-player-page.php:1884
 #: d:\wordpress\plugins\powerpress/powerpressadmin-player-page.php:1916
@@ -3059,48 +3102,56 @@ msgstr "Upload nyt billede"
 msgid "Choose file"
 msgstr "Vælg fil"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:578
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:580
+msgid ""
+"Note: Do not forget to configure your iTunes image in the next tab, which "
+"may be used as your RSS image as well."
+msgstr ""
+"Bemærk: Husk at konfigurere dit iTunes-billede i den næste fane; det kan "
+"også bruges som dit RSS-billede."
+
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:589
 msgid "Feed Language"
 msgstr "Feedsprog"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:584
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:595
 msgid "Blog Default Language"
 msgstr "Bloggens standardsprog"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:595
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:597
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:606
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:608
 msgid "Blog Default"
 msgstr "Blogstandard"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:604
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:615
 msgid "Copyright"
 msgstr "Copyright"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:621
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:632
 msgid "Basic Show Information"
 msgstr "Grundlæggende informationer om udsendelserne"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:625
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:636
 msgid "Location"
 msgstr "Sted"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:628
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:639
 msgid "e.g. Cleveland, Ohio"
 msgstr "fx Cleveland, Ohio"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:632
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:643
 msgid "Episode Frequency"
 msgstr "Udgivelsesfrekvens for episoderne"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:635
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:646
 msgid "e.g. Weekly"
 msgstr "fx ugentligt"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:662
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:673
 msgid "Redirect URL"
 msgstr "Redirect-URL"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:666
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:677
 msgid ""
 "Note: Category Media Redirect URL is applied to category feeds and pages "
 "only. The redirect will also apply to single pages if this is the only "
@@ -3112,32 +3163,32 @@ msgstr ""
 "enkelt-sider, hvis det er den eneste kategori, der er knyttet til "
 "blogindlægget."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:676
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:687
 msgid "Episode Entry Box"
 msgstr "Episodepanel"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:680
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:691
 #: d:\wordpress\plugins\powerpress/powerpressadmin-player-page.php:1219
 #: d:\wordpress\plugins\powerpress/powerpressadmin-player-page.php:1563
 msgid "Background Color"
 msgstr "Baggrundsfarve"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:692
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:703
 msgid "leave blank for default"
 msgstr "Udfyldes ikke, hvis du vil bruge standard"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:694
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:705
 msgid ""
 "Use a distinctive background color for this podcast channel's episode box."
 msgstr ""
 "Brug en særlig baggrundsfarve for episodepanelet til denne podcastede kanal."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:705
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:793
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:716
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:804
 msgid "Password Protect Podcast Channel"
 msgstr "Kodeordsbeskyt podcastkanal"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:707
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:718
 msgid ""
 "Require visitors to have membership to your blog in order to gain access to "
 "this channel's Premium Content."
@@ -3145,54 +3196,54 @@ msgstr ""
 "Kræv, at besøgende skal være medlemmer på din blog, hvis de skal have adgang "
 "til denne kanals betalingsindhold."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:713
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:724
 msgid "Protect Content"
 msgstr "Beskyt indhold"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:715
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:726
 msgid "Require user to be signed-in to access feed."
 msgstr "Kræv, at bruger er logget ind for at få adgang til feedet."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:717
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:728
 msgid "User must have the following capability"
 msgstr "Bruger skal have den følgende rettighed"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:725
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:736
 msgid "None"
 msgstr "Ingen"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:742
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:753
 msgid "Sign In"
 msgstr "Log på"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:746
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:757
 msgid "Use default label, are you sure?"
 msgstr "Brug standardetiket, er du sikker?"
 
 # USIKKER OVERSÆTTELSE - UNCERTAIN TRANSLATION
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:762
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:773
 msgid "Unauthorized Label"
 msgstr ""
 "<span title=\"Unauthorized Label - Oversættelse usikker\">Etiket for "
 "manglende adgangstilladelse</span>"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:766
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:777
 msgid "Use default label"
 msgstr "Brug standardetiket"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:769
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:780
 msgid "Protected Content"
 msgstr "Beskyttet indhold"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:772
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:783
 msgid "Use a custom label"
 msgstr "Brug standardetiket"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:778
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:789
 msgid "Add sign in link to message"
 msgstr "Tilføj log på-link til indholdet"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:781
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:792
 msgid ""
 "Label above appears in place of the in-page player and links when the "
 "current signed-in user does not have access to the protected content."
@@ -3200,15 +3251,15 @@ msgstr ""
 "Etiketten ovenfor vises i stedet for en afspiller og links på siden, når den "
 "aktuelle indloggede bruger ikke har adgang til det beskyttede indhold."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:795
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:806
 msgid "This feature is not available for the default podcast channel."
 msgstr "Denne funktion er ikke tilgængelig for standardpodcastkanalen."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:802
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:813
 msgid "Custom Post Types"
 msgstr "Brugerdefinerede indlægstyper"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:804
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:815
 msgid ""
 "Set whether all post types or a specific custom post type may use this "
 "podcast channel. Custom post type must be of type 'Posts'. Other post types "
@@ -3219,68 +3270,68 @@ msgstr ""
 "'Indlæg'. Andre indlægstyper som 'Sider' eller 'Kategorier' kan ikke "
 "anvendes."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:810
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:821
 msgid "Custom Post Type"
 msgstr "Brugerdefinerede indlægstype"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:820
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:831
 msgid "All Post Types (default)"
 msgstr "Alle indlægstyper (standard)"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:833
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:844
 msgid "Use the default setting if you do not understand custom post types."
 msgstr ""
 "Brug standardindstillingen, hvis du ikke forstår brugerdefinerede "
 "indlægstyper."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:847
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:858
 msgid "Appearance Settings"
 msgstr "Indstillinger for udseende"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:851
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:862
 msgid "Disable Player"
 msgstr "Deaktivér afspiller"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:854
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:865
 msgid "Do not display web player or links for this podcast channel."
 msgstr "Vis ikke webafspiller eller links for denne podcastede kanal."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:890
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:901
 msgid "iTunes Feed Settings"
 msgstr "Indstillinger for iTunes-feed"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:899
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:910
 msgid "Show Advanced iTunes Settings"
 msgstr "Vis Avancerede iTunes-indstillinger"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:906
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:917
 msgid "iTunes Program Subtitle"
 msgstr "iTunes-programundertitel"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:916
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:927
 msgid "iTunes Program Summary"
 msgstr "iTunes-programresumé"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:918
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:929
 msgid ""
 "Your summary may not contain HTML and cannot exceed 4,000 characters in "
 "length."
 msgstr "Dit resumé må ikke indeholde HTML og må højst fylde 4000 tegn."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:927
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:938
 msgid "iTunes Episode Summary"
 msgstr "iTunes-episoderesumé"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:931
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:942
 msgid "Optimize iTunes Summary from Blog Posts"
 msgstr "Optimér iTunes-resumé fra blogindlæg"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:931
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:942
 msgid "We no longer recommend using this setting, see note below"
 msgstr ""
 "Vi anbefaler ikke længere at bruge denne indstilling, jf. noten nedenfor"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:934
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:945
 msgid ""
 "Creates a friendlier view of your post/episode content by converting web "
 "links and images to clickable links in the iTunes application."
@@ -3289,7 +3340,7 @@ msgstr ""
 "ved at konvertere weblinks og -billeder til klikbare links i iTunes-"
 "programmet."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:937
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:948
 msgid ""
 "Note: With the recent launch of iTunes web site during the summer of 2010, "
 "Optimize iTunes Summary's clickable links do not appear online in the same "
@@ -3301,69 +3352,69 @@ msgstr ""
 "som de gør i iTunes-programmet. Derfor anbefaler vi ikke længere, at man "
 "bruger denne funktion."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:941
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:952
 msgid "Option Not Available"
 msgstr "Indstilling ikke tilgængelig"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:944
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:955
 msgid "This feature requires PHP version 5 or newer."
 msgstr "Denne funktion kræver PHP version 5 eller nyere."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:945
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:956
 #, php-format
 msgid "Your server's version of PHP is %s"
 msgstr "Din servers version af PHP er %s"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:957
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:968
 msgid "iTunes Program Keywords"
 msgstr "<span title=\"iTunes Program Keywords\">iTunes-programnøgleord</span>"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:961
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:972
 msgid "Enter up to 12 keywords separated by commas."
 msgstr "Indtast op til 12 nøgleord adskilt af kommaer."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:967
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:978
 msgid "iTunes Category"
 msgstr "<span title=\"iTunes Category\">iTunes-kategori</span>"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1003
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1014
 msgid "iTunes Category 2"
 msgstr "<span title=\"iTunes Category 2\">iTunes-kategori 2</span>"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1024
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1035
 msgid "iTunes Category 3"
 msgstr "<span title=\"iTunes Category 3\">iTunes-kategori 3</span>"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1048
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1059
 #: d:\wordpress\plugins\powerpress/powerpressadmin-metabox.php:387
 msgid "iTunes Explicit"
 msgstr "iTunes-<span title=\"eksplicit - upassende indhold\">Eksplicit</span>"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1053
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1064
 msgid "No - display nothing"
 msgstr "Nej &ndash; vis intet"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1053
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1064
 msgid "Yes - explicit content"
 msgstr ""
 "Ja &ndash; <span title=\"explicit content - upassende indhold\">eksplicit "
 "indhold</span>"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1053
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1064
 msgid "Clean - no explicit content"
 msgstr ""
 "Ikke-upassende &ndash; <span title=\"no explicit content - upassende indhold"
 "\">intet eksplicit indhold</span>"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1065
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1076
 msgid "iTunes Image"
 msgstr "iTunes-billede"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1071
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1082
 msgid "iTunes image specifications changed in May, 2012"
 msgstr "iTunes' billedspecifikationer ændredes i maj 2012"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1072
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1083
 msgid ""
 "iTunes image should be at least 1400 x 1400 pixels in .jpg or .png format "
 "using RGB color space."
@@ -3371,28 +3422,29 @@ msgstr ""
 "iTunes-billeder bør være mindst 1400 x 1400 pixels i JPG- eller PNG-format "
 "og bruge RGB-farveformatet."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1075
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1086
 msgid ""
-"A square image that is 1400 x 1400 pixels in .jpg format is recommended."
+"A square image that is 1400 x 1400 pixels in .jpg format for the web (72ppi) "
+"is recommended."
 msgstr ""
-"Et kvadratisk billede, som er 1400 x 1400 pixel eller større, i JPG-format, "
-"anbefales."
+"Et kvadratisk billede, som er 1400 x 1400 pixel eller større, i JPG-format "
+"til web (72ppi), anbefales."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1078
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1089
 msgid ""
 "This image is for your listing on the iTunes podcast directory and may also "
-"be used by other directories such as Zune and Blubrry. It is not the artwork "
-"that is displayed during episode playback. That artwork needs to be saved "
-"into the media file in the form of tags (ID3 tags for mp3) following the "
-"production of the media file."
+"be used by other directories like Blubrry. It is not the artwork that is "
+"displayed during episode playback. That artwork needs to be saved into the "
+"media file in the form of tags (ID3 tags for mp3) following the production "
+"of the media file."
 msgstr ""
 "Dette billede anvendes i dine lister i iTunes-podcastkataloget og anvendes "
-"måske af andre kataloger som fx Zune og Blubrry. Det er ikke det billede, "
-"der vises under afspilning af episoden; for et sådant billede skal gemmes i "
-"mediefilen i form af tags (ID3-tags, hvis det drejer sig om MP3), når "
-"mediefilen er genereret."
+"måske af andre kataloger som fx Blubrry. Det er ikke det billede, der vises "
+"under afspilning af episoden. Et sådant billede skal gemmes i mediefilen i "
+"form af tags (ID3-tags, hvis det drejer sig om MP3), når mediefilen er "
+"genereret."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1081
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1092
 msgid ""
 "Note: If you change the iTunes image without changing the file name it may "
 "take some time (days or even months) for iTunes to update the image in the "
@@ -3402,7 +3454,7 @@ msgstr ""
 "nogen tid (dage eller endog måneder), før iTunes opdaterer billedet i dets "
 "podcastkatalog."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1082
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1093
 #, php-format
 msgid ""
 "Please contact %s if you are having issues with your image changes not "
@@ -3411,33 +3463,33 @@ msgstr ""
 "Kontakt venligst %s, hvis du har problemer med, at dine billedændringer ikke "
 "vises på iTunes."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1082
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1093
 msgid "iTunes Support"
 msgstr "iTunes-support"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1086
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1097
 msgid "Using this option should update your image on iTunes within 24 hours"
 msgstr ""
 "Bruger du denne indstilling, skulle dit billede på iTunes blive opdateret "
 "inden for 24 timer"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1090
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1101
 msgid "Also use as RSS image"
 msgstr "Brug også som RSS-billede"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1100
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1111
 msgid "iTunes Talent Name"
 msgstr "iTunes-talentnavn"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1104
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1115
 msgid "Use blog post author's name for individual episodes."
 msgstr "Brug indlægsforfatters navn som forfatter til individuelle episoder."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1113
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1124
 msgid "iTunes Email"
 msgstr "iTunes-e-mail"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1117
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1128
 msgid ""
 "iTunes will email this address when your podcast is accepted into the iTunes "
 "Directory."
@@ -3445,15 +3497,15 @@ msgstr ""
 "iTunes vil e-maile til denne adresse, når dit podcast er optaget i <span "
 "title=\"iTunes Podcast Directory\">iTunes' podcastoversigt</span>."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1125
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1136
 msgid "iTunes New Feed URL"
 msgstr "<span title=\"iTunes New Feed URL\">URL til nyt iTunes-feed</span>"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1128
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1139
 msgid "Set iTunes New Feed URL"
 msgstr "Sæt ny feed-URL for iTunes"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1130
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1141
 msgid ""
 "The iTunes New Feed URL option works primarily for Apple's iTunes "
 "application only, and should only be used if you are unable to implement a "
@@ -3463,7 +3515,7 @@ msgstr ""
 "iTunes-program og bør kun bruges, hvis du ikke kan sætte en HTTP 301-"
 "redirect op."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1131
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1142
 msgid ""
 "A 301 redirect will route <u>all podcast clients including iTunes</u> to "
 "your new feed address."
@@ -3471,11 +3523,11 @@ msgstr ""
 "En 301-redirect viderestiller <u>alle podcastprogrammer inkl. iTunes</u> til "
 "din nye feedadresse."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1135
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1146
 msgid "Changing Your Podcast RSS Feed Address (URL)"
 msgstr "Ændring af RSS-feedadresse (URL) for dine podcasts"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1139
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1150
 msgid ""
 "WARNING: Changes made here are permanent. If the New Feed URL entered is "
 "incorrect, you will lose subscribers and will no longer be able to update "
@@ -3486,14 +3538,14 @@ msgstr ""
 "stand til at opdatere <span title=\"your listing in the iTunes store"
 "\">iTunes-katalogiseringen af dine podcasts</span> i iTunes-butikken."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1140
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1151
 msgid ""
 "DO NOT MODIFY THIS SETTING UNLESS YOU ABSOLUTELY KNOW WHAT YOU ARE DOING."
 msgstr ""
 "ÆNDR IKKE PÅ DENNE INDSTILLING, MED MINDRE DU ER 100 % SIKKER PÅ, HVAD DU ER "
 "VED AT GØRE."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1142
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1153
 #, php-format
 msgid ""
 "Apple recommends you maintain the %s tag in your feed for at least two weeks "
@@ -3502,37 +3554,37 @@ msgstr ""
 "Apple anbefaler, at du beholder %s-tagget i dit feed i mindst to uger, så du "
 "sikrer dig, at så mange abonnenter som muligt får den nye feed-URL."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1146
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1157
 msgid "Main RSS2 feed"
 msgstr "Hovedfeed i RSS2-format"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1151
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1162
 #, php-format
 msgid "%s category feed"
 msgstr "Kategorifeed for %s"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1160
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1171
 msgid "feed"
 msgstr "feed"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1164
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1175
 #, php-format
 msgid "The New Feed URL value below will be applied to the %s (%s)."
 msgstr "Værdien for den nye feed-URL nedenfor vil blive anvendt på %s (%s)."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1168
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1179
 msgid "New Feed URL"
 msgstr "URL til nyt feed"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1171
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1182
 msgid "Leave blank for no New Feed URL"
 msgstr "Udfyldes kun, hvis du ikke vil angive en ny feed-URL"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1173
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1184
 msgid "More information regarding the iTunes New Feed URL is available here."
 msgstr "Flere informationer om iTunes' ny feed-URL findes her."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1179
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1190
 #, php-format
 msgid ""
 "Please activate the 'Custom Podcast Channels' Advanced Option to set the new-"
@@ -3542,7 +3594,7 @@ msgstr ""
 "kanaler' for at angive ny-feed-url&#39;en for feedet udelukkende med "
 "podcasts (%s)"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1181
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1192
 #, php-format
 msgid ""
 "Please navigate to the 'Custom Podcast Channels' section to set the new-feed-"
@@ -3551,21 +3603,21 @@ msgstr ""
 "Gå venligst til sektionen med 'Brugerdefinerede podcastede kanaler' for at "
 "angive ny-feed-url&#39;en for feedet udelukkende med podcasts (%s)"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1199
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1210
 msgid "Feeds affected"
 msgstr "Feeds omfattet"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1253
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1264
 msgid ""
 "Prevent the entire podcast from appearing in the iTunes Podcast directory."
 msgstr "Forhindr hele episoden i at blive vist i iTunes-podcastkataloget."
 
 # "færdiggørelse" også okay, men ikke så letforståelig i sammenhængen
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1260
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1271
 msgid "iTunes Complete"
 msgstr "iTunes-ophør"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1263
+#: d:\wordpress\plugins\powerpress/powerpressadmin-editfeed.php:1274
 msgid ""
 "Indicate the completion of a podcast. iTunes will no longer update your "
 "listing in the iTunes Podcast directory."
@@ -3679,7 +3731,7 @@ msgstr ""
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-find-replace.php:301
 #: d:\wordpress\plugins\powerpress/powerpressadmin-tools.php:8
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1153
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1157
 msgid "PowerPress Tools"
 msgstr "PowerPress-værktøjer"
 
@@ -4200,21 +4252,21 @@ msgid "An error occurred."
 msgstr "Der skete en fejl."
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-metamarks.php:157
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1815
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1819
 msgid "Operation timed out."
 msgstr "Processen fik timeout."
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-metamarks.php:159
 #: d:\wordpress\plugins\powerpress/powerpressadmin-metamarks.php:161
 #: d:\wordpress\plugins\powerpress/powerpressadmin-metamarks.php:163
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1817
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1819
 #: d:\wordpress\plugins\powerpress/powerpressadmin.php:1821
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1823
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1825
 msgid "AJAX Error"
 msgstr "AJAX-fejl"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-metamarks.php:163
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1821
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1825
 msgid "Unknown"
 msgstr "Ukendt"
 
@@ -5201,7 +5253,7 @@ msgid "Configure Flow Player Classic"
 msgstr "Konfigurér Flow Player Classic"
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-player-page.php:1702
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1871
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1875
 msgid "Width"
 msgstr "Bredde"
 
@@ -5549,7 +5601,7 @@ msgid ""
 msgstr "angiv filtyperne, der skal medtages, adskilt af kommaer (fx MP3, M4V)."
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-tags.php:17
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1152
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1156
 msgid "MP3 Tags"
 msgstr "MP3-tags"
 
@@ -5728,7 +5780,7 @@ msgid "learn more about PowerPress."
 msgstr "få mere at vide om PowerPress."
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-tools.php:23
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2147
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2151
 msgid "Blubrry Forum"
 msgstr "Blubrry-forum"
 
@@ -5906,7 +5958,7 @@ msgstr ""
 "ændringer'."
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin-tools.php:120
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1146
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1150
 msgid "Podcast Channels"
 msgstr "Podcastkanaler"
 
@@ -6054,7 +6106,7 @@ msgid "Blubrry PowerPress requires Wordpress version 3.0 or greater."
 msgstr "Blubrry PowerPress kræver WordPress version 3.0 eller nyere."
 
 #: d:\wordpress\plugins\powerpress/powerpressadmin.php:84
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3057
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3061
 msgid "The WP OS FLV plugin is not compatible with Blubrry PowerPress."
 msgstr "WP OS FLV-pluginnet er ikke kompatibelt med Blubrry PowerPress."
 
@@ -6082,43 +6134,43 @@ msgstr "Ugyldigt iTunes-billede"
 msgid "Image must be in RGB color space (CMYK is not supported)."
 msgstr "Billede skal være i RGB-farveformat (CMYK understøttes ikke)."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:189
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:192
 msgid "Invalid RSS image"
 msgstr "Ugyldigt RSS-billede"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:216
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:219
 msgid "Invalid Coverat image"
 msgstr "Ugyldigt coverbillede"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:242
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:245
 msgid "Invalid poster image"
 msgstr "Ugyldigt plakatbillede"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:269
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:300
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:272
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:303
 msgid "Invalid play icon image"
 msgstr "Ugyldigt afspil-ikon-billede"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:296
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:299
 msgid "Invalid play icon image size"
 msgstr "Ugyldig afspil-ikon-billedstørrelse"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:473
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:476
 msgid "Coverart image updated successfully."
 msgstr "Coverbillede opdateret med succes."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:477
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:480
 msgid "Blubrry Hosting Error (updating coverart)"
 msgstr "Blubrry Hosting-fejl (under opdatering af coverbillede)"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:482
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:485
 msgid ""
 "An error occurred updating the coverart with your Blubrry Services Account."
 msgstr ""
 "Det skete en fejl, da coverbilledet skulle opdateres med din Blubrry "
 "Services-konto."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:488
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:491
 msgid ""
 "Coverart Image was not uploaded to your Blubrry Services Account. It will "
 "NOT be added to your mp3s."
@@ -6126,20 +6178,20 @@ msgstr ""
 "Coverbilledet blev ikke uploadet til din Blubrry Services-konto. Det vil "
 "IKKE blive tilføjet til dine MP3-filer."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:550
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:553
 msgid "Blubrry PowerPress settings saved successfully."
 msgstr "Blubrry PowerPress-indstillinger blev gemt med succes."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:553
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:556
 msgid "Blubrry PowerPress Custom Feed settings saved."
 msgstr ""
 "Indstillingerne for Blubrry PowerPress&#39; brugerdefinerede feeds blev gemt."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:556
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:559
 msgid "Blubrry PowerPress Category Feed settings saved."
 msgstr "Indstillingerne for Blubrry PowerPress&#39; kategorifeeds blev gemt."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:561
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:564
 msgid ""
 "ATTENTION: You must configure your Blubrry Services in the Blubrry "
 "PowerPress &gt; Basic Settings page in order to utilize this feature."
@@ -6147,92 +6199,92 @@ msgstr ""
 "BEMÆRK: Du skal konfigurere dine Blubrry Services i Blubrry PowerPress under "
 "Grundindstillinger for at kunne bruge denne funktion."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:563
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:566
 msgid "Blubrry PowerPress MP3 Tag settings saved."
 msgstr "Blubrry PowerPress&#39; MP3-tags-indstillinger blev gemt."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:569
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:572
 msgid "Blubrry PowerPress settings saved."
 msgstr "Blubrry PowerPress-indstillinger gemt."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:595
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:598
 #, php-format
 msgid "Feed slug \"%s\" is not valid."
 msgstr "Feed-<span title=\"feed slug\">korttitel</span> \"%s\" er ikke gyldig."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:599
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:602
 #, php-format
 msgid "Feed slug \"%s\" is not available."
 msgstr ""
 "<span title=\"feed slug\">Feed-URL&#39;en</span> \"%s\" er ikke tilgængelig."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:609
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:612
 #, php-format
 msgid "Podcast Feed \"%s\" added, please configure your new feed now."
 msgstr ""
 "Podcastfeedet \"%s\" blev tilføjet. Konfigurér venligst dit nye feed nu."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:633
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:636
 msgid "You must select a category to continue."
 msgstr "Du skal vælge en kategori for at kunne fortsætte."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:637
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:731
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:640
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:734
 msgid "Error obtaining category information."
 msgstr "Fejl i forsøget på at hente kategoriinformation."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:650
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:744
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:653
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:747
 msgid "Please configure your category podcast feed now."
 msgstr "Konfigurér venligst dit kategoripodcastfeed nu."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:759
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:762
 msgid "Cannot delete default podcast feed."
 msgstr "Kan ikke slette standardpodcastfeed."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:763
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:766
 #, php-format
 msgid "Cannot delete feed. Feed contains %d episode(s)."
 msgstr "Kan ikke slette feed. Feedet indeholder %d episode(r)."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:785
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:788
 msgid "Feed deleted successfully."
 msgstr "Feed slettet med succes."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:801
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:804
 msgid "Removed podcast settings for category feed successfully."
 msgstr "Fjernede podcastindstillinger for kategorifeeds med succes."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:808
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:811
 msgid "Podpress settings imported successfully."
 msgstr "Podpress-indstillinger blev importeret med succes."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:810
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:813
 msgid "No Podpress settings found."
 msgstr "Ingen Podpress-indstillinger fundet."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:818
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:821
 msgid "Settings imported from the plugin \"Podcasting\" successfully."
 msgstr ""
 "Indstillingerne fra pluginnet \"Podcasting\" blev importeret med succes."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:820
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:823
 msgid "No settings found for the plugin \"Podcasting\"."
 msgstr "Der blev ikke fundet nogen indstillinger for pluginnet \"Podcasting\"."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:838
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:841
 msgid "PowerPress Roles and Capabilities added to WordPress Blog."
 msgstr "PowerPress-roller og rettigheder blev tilføjet til din WordPress-blog."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:855
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:858
 msgid "PowerPress Roles and Capabilities removed from WordPress Blog"
 msgstr "PowerPress-roller og rettigheder blev fjernet fra din WordPress-blog"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:864
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:867
 msgid "Premium Subscriber"
 msgstr "<span title=\"premium subscriber\">Betalingsabonnent</span>"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:880
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:883
 msgid ""
 "Podcast Password Protection Capabilities for Custom Channel Feeds added "
 "successfully."
@@ -6240,7 +6292,7 @@ msgstr ""
 "Podcastkodeordsbeskyttelsesrettigheder for brugerdefinerede kanalfeeds blev "
 "tilføjet med succes."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:901
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:904
 msgid ""
 "Podcast Password Protection Capabilities for Custom Channel Feeds removed "
 "successfully."
@@ -6248,7 +6300,7 @@ msgstr ""
 "Podcastkodeordsbeskyttelsesrettigheder for brugerdefinerede kanalfeeds blev "
 "fjernet med succes."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:908
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:912
 #, php-format
 msgid ""
 "Plugins Update Cache cleared successfully. You may now to go the %s page to "
@@ -6257,85 +6309,85 @@ msgstr ""
 "Cachen over pluginopdateringer blev tømt med succes. Du kan nu gå til %s-"
 "siden for at se de seneste pluginversioner."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:908
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:912
 msgid "Manage Plugins"
 msgstr "Plugins"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1091
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1129
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1095
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1133
 msgid "Podcast Episode"
 msgstr "Podcastepisode"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1104
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1108
 msgid "Podcast Episode (default)"
 msgstr "Podcastepisode (standard)"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1121
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1125
 msgid "Podcast Episode for Custom Channel"
 msgstr "Podcastepisode for brugerdefineret kanal"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1137
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1140
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1141
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1144
 msgid "PowerPress"
 msgstr "PowerPress"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1138
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1142
 msgid "PowerPress Settings"
 msgstr "PowerPress-indstillinger"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1138
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1142
 msgid "Settings"
 msgstr "Indstillinger"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1142
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1146
 msgid "PowerPress Audio Player Options"
 msgstr "Indstillinger for PowerPress-audioafspiller"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1142
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1146
 msgid "Audio Player"
 msgstr "Audioafspiller"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1143
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1147
 msgid "PowerPress Video Player Options"
 msgstr "Indstillinger for PowerPress-videoafspiller"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1143
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1147
 msgid "Video Player"
 msgstr "Videoafspiller"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1146
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1150
 msgid "PowerPress Custom Podcast Channels"
 msgstr "PowerPress&#39; brugerdefinerede podcastkanaler"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1148
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2098
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2105
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1152
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2102
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2109
 msgid "PowerPress Category Podcasting"
 msgstr "PowerPress-kategoripodcasting"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1150
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1154
 msgid "PodPress Stats"
 msgstr "PodPress-statistik"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1152
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1156
 msgid "PowerPress MP3 Tags"
 msgstr "PowerPress-MP3-tags"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1153
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1157
 msgid "Tools"
 msgstr "Værktøj"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1231
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1264
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1279
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1285
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1374
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1379
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1235
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1268
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1283
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1289
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1378
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1383
 msgid "Error"
 msgstr "Fejl"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1231
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1971
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1235
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1975
 msgid ""
 "Unable to determine content type of media (e.g. audio/mpeg). Verify file "
 "extension is correct and try again."
@@ -6343,12 +6395,12 @@ msgstr ""
 "Kunne ikke bestemme mediefilens indholdstype (fx audio/MPEG). Tjek, at "
 "filtypen er korrekt og prøv igen."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1285
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1379
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1289
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1383
 msgid "Unable to obtain size of media."
 msgstr "Kunne ikke hente størrelse på mediefil."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1526
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1530
 msgid ""
 "WARNING: Changes made here are permanent. If the New Feed URL entered is "
 "incorrect, you will lose subscribers and will no longer be able to update "
@@ -6363,7 +6415,7 @@ msgstr ""
 "SIKKERHED, HVAD DU ER VED AT GØRE.\\n\\nEr du sikker på, at du ønsker at "
 "fortsætte?"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1672
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1676
 msgid ""
 "Media URL contains characters that may cause problems for some clients. For "
 "maximum compatibility, only use letters, numbers, dash - and underscore _ "
@@ -6373,7 +6425,7 @@ msgstr ""
 "programmer. Hvis flest muligt skal kunne bruge mediefilerne, skal du nøjes "
 "med bogstaver, tal, bindestregen - og understregningstegnet _."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1687
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1691
 msgid ""
 "PowerPress will not accept media URLs starting with https://.<br />Not all "
 "podcatching (podcast downloading) applications support secure http.<br /"
@@ -6384,7 +6436,7 @@ msgstr ""
 "understøtter sikker http.<br />Indtast venligst en anden URL, der begynder "
 "med http://."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1696
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1700
 msgid ""
 "Media URL should not start with https://.<br />Not all podcatching (podcast "
 "downloading) applications support secure http.<br />By using https://, you "
@@ -6394,63 +6446,63 @@ msgstr ""
 "der henter podcasts (podcast-downloadere) understøtter sikker http.<br />Ved "
 "at bruge https:// begrænser du størrelsen af dit publikum."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1786
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1790
 msgid "Media verified successfully."
 msgstr "Mediefil bekræftet med succes."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1802
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1806
 msgid "Unknown error occurred while checking Media URL."
 msgstr "Der skete en ukendt fejl under forsøget på at tjekke medie-URL."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1857
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1861
 msgid "Are you sure you want to remove this media file?"
 msgstr "Er du sikker på, at du vil fjerne denne mediefil?"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1872
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1876
 msgid "Height"
 msgstr "Højde"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1887
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1891
 msgid "Add Poster Image"
 msgstr "Tilføj plakatbillede"
 
 # TJEK
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1899
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:1903
 msgid "You must enter a Media URL in order to save Media Embed."
 msgstr "Du skal indtaste en medie-URL for at kunne gemme Medieindlejring."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2002
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2006
 msgid "Unknown error occurred looking up media information."
 msgstr "Der skete en ukendt fejl i forsøget på at hente information om mediet."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2051
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2055
 msgid "Edit Blubrry PowerPress Podcast Settings"
 msgstr "Redigér Blubrry PowerPress&#39; podcastindstillinger"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2051
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2055
 msgid "Podcast Settings"
 msgstr "Podcast-indstillinger"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2056
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2060
 msgid "Add Blubrry PowerPress Podcasting Settings"
 msgstr "Tilføj Blubrry PowerPress&#39; podcastindstillinger"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2056
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2060
 msgid "Add Podcasting"
 msgstr "Tilføj podcasting"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2099
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2103
 msgid "Enable Category Podcasting"
 msgstr "Aktivér kategoripodcasting"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2099
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2103
 msgid ""
 "if you would like to add specific podcasting settings to your blog "
 "categories."
 msgstr ""
 "Hvis du vil tilføje specifikke podcastindstilling til dine blogkategorier."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2106
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2110
 msgid ""
 "PowerPress Category Podcasting is enabled. Select 'Add Podcasting' to add "
 "podcasting settings. Select <u>Podcast Settings</u> to edit existing podcast "
@@ -6460,51 +6512,51 @@ msgstr ""
 "for at tilføje indstillinger for podcasting. Vælg <u>Podcast-indstillinger</"
 "u> for at redigere eksisterende podcast-indstillinger."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2140
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2144
 msgid "Save Changes"
 msgstr "Gem ændringer"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2144
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2148
 msgid "Blubrry PowerPress"
 msgstr "Blubrry PowerPress"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2145
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2149
 msgid "PodcastFAQ.com"
 msgstr "PodcastFAQ.com"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2146
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2150
 msgid "Blubrry PowerPress Documentation"
 msgstr "Blubrry PowerPress-dokumentation"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2146
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2150
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2147
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2151
 msgid "Forum"
 msgstr "Forum"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2148
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2152
 msgid "Follow Blubrry on Twitter"
 msgstr "Følg Blubrry på Twitter"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2484
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2545
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2551
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2488
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2549
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2555
 msgid "Blubrry Hosting Error (publish)"
 msgstr "Blubrry Hosting-fejl (udgivelse)"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2484
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2488
 msgid "Error occurred obtaining enclosure content type."
 msgstr ""
 "Det skete en fejl i forsøget på at hente indholdstype for <span title="
 "\"enclosure\">indsat fil</span>."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2515
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2519
 msgid "Blubrry Hosting Error (media info)"
 msgstr "Blubrry Hosting-fejl (mediefilsinfo)"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2520
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2524
 #, php-format
 msgid ""
 "Blubrry Hosting Error (media info): An error occurred publishing media %s."
@@ -6512,82 +6564,81 @@ msgstr ""
 "Blubrry Hosting-fejl (mediefilsinfo): Der skete en fejl i forsøget på at "
 "udgive mediefilen %s."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2522
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2552
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2526
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2556
 msgid "Display Error"
 msgstr "Visningsfejl"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2551
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2555
 #, php-format
 msgid "An error occurred publishing media '%s'."
 msgstr "Der skete en fejl i forsøget på at udgive mediefilen '%s'."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2970
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2974
 msgid "Error occurred writing MP3 ID3 Tags."
 msgstr "Der skete en fejl under forsøget på at skrive MP3-ID3-tags."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2987
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3120
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3167
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:2991
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3124
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3171
 msgid "Error occurred obtaining media information."
 msgstr "Det skete en fejl i forsøget på at hente medieinformation."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3084
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3144
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3088
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3148
 #, php-format
 msgid "Warning, the Media URL %s contains %d redirects."
 msgstr ""
 "Advarsel, mediefilens URL %s indeholder %d redirects (viderestillinger)."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3085
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3107
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3145
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3159
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3089
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3111
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3149
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3163
 msgid "Help"
 msgstr "Hjælp"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3107
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3159
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3111
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3163
 #, php-format
 msgid "Warning, Media URL %s"
 msgstr "Advarsel, medie-URL %s"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3124
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3218
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3128
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3222
 msgid "Error occurred obtaining media file size."
 msgstr "Fejl under aflæsning af mediefilens størrelse."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3206
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3210
 msgid "Error, HTTP"
 msgstr "Fejl, HTTP"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3214
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3218
 msgid "Unable to obtain file size of media file."
 msgstr "Kunne ikke aflæse filstørrelsen på mediefilen."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3290
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3294
 msgid "new!"
 msgstr "ny!"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3307
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3311
 msgid "Error occurred retrieving news."
 msgstr "Der skete en fejl under forsøget på at hente nyheder."
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3375
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3379
 msgid "Subscribe:"
 msgstr "Tilmeld:"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3377
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3381
 msgid "Blog"
 msgstr "Blog"
 
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3383
-msgid "Zune"
-msgstr "Zune"
-
-#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3399
+#: d:\wordpress\plugins\powerpress/powerpressadmin.php:3401
 msgid "Error occurred retrieving highlighted items."
 msgstr "Fejl under hentning af det fremhævede."
+
+#~ msgid "Zune"
+#~ msgstr "Zune"
 
 #~ msgid "Video Poster Image"
 #~ msgstr "Videoplakatbillede"

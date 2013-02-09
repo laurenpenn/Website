@@ -1,0 +1,2 @@
+[23-Jun-2012 19:19:18] PHP Fatal error:  Call to undefined function  get_option() in /home/dbc/public_html/wp-content/plugins/flash-video-player/flash-video-player.php on line 38
+[07-Jul-2012 01:41:47] PHP Fatal error:  Call to undefined function  get_option() in /home/dbc/public_html/wp-content/plugins/flash-video-player/flash-video-player.php on line 38

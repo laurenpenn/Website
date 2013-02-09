@@ -1,0 +1,10 @@
+[02-Apr-2012 08:02:09] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-child/post.php on line 12
+[02-Apr-2012 08:05:29] PHP Fatal error:  Call to undefined function  language_attributes() in /home/dbc/public_html/wp-content/themes/dbc-child/header.php on line 14
+[02-Apr-2012 08:13:21] PHP Fatal error:  Call to undefined function  add_action() in /home/dbc/public_html/wp-content/themes/dbc-child/functions.php on line 3
+[02-Apr-2012 08:18:45] PHP Fatal error:  Call to undefined function  hybrid_get_setting() in /home/dbc/public_html/wp-content/themes/dbc-child/slider-home.php on line 11
+[02-Apr-2012 08:22:10] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-child/page-template-home.php on line 13
+[23-Jun-2012 16:45:14] PHP Fatal error:  Call to undefined function  language_attributes() in /home/dbc/public_html/wp-content/themes/dbc-child/header.php on line 14
+[23-Jun-2012 16:45:15] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-child/post.php on line 12
+[23-Jun-2012 16:45:15] PHP Fatal error:  Call to undefined function  hybrid_get_setting() in /home/dbc/public_html/wp-content/themes/dbc-child/slider-home.php on line 11
+[23-Jun-2012 16:45:15] PHP Fatal error:  Call to undefined function  add_action() in /home/dbc/public_html/wp-content/themes/dbc-child/functions.php on line 3
+[23-Jun-2012 16:45:15] PHP Fatal error:  Call to undefined function  get_header() in /home/dbc/public_html/wp-content/themes/dbc-child/page-template-home.php on line 13

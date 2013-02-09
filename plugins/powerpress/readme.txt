@@ -3,7 +3,7 @@ Contributors: Angelo Mandato, Blubrry.com
 Tags: podcasting, podcast, podcaster, itunes, enclosure, zune, iphone, youtube, viddler, blip.tv, ustream, podcasting, audio, video, rss2, feed, player, media, rss, mp3, music, embed, feedburner, statistics, stats, flv, flash, id3, episodes, blubrry, webm, mp4, m4v, wordpressmu, mu, wordpress mu, mediacaster, post, plugin, posts, simple, social, dashboard, TSG, Buzzsprout, MTR, WP-boxCast, CastMyBlog
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 4.0.5
+Stable tag: 4.0.6
 
 Blubrry PowerPress brings the essential features for podcasting to WordPress including full iTunes support, web audio/video media players and more.
 
@@ -156,6 +156,17 @@ To install Blubrry PowerPress manually, follow these steps:
 = Announcement =
 * PowerPress 3.0 is not compatible with WordPress 2.8.x and 2.9.x. Please upgrade to WordPress 3.0 or newer to install PowerPress.
 * Translation support is now complete. Please visit the following link if you would like to have a version in your language: [http://www.blubrry.com/powerpress_translate/](http://www.blubrry.com/powerpress_translate/)
+
+
+= 4.0.6 =
+* Released on 1/23/2013
+* Everyone is **strongly encouraged to update their copy of PowerPress immediately!**
+* Due to concerns of possible security exploits, the 1 Pixel Out Audio Player has been removed from PowerPress. [Learn More](http://blog.blubrry.com/?p=1163)
+* Notices added in both the WP dashboard and in the Audio player settings page that the 1 Pixel Out player has been removed.
+* If you've configured your web site with the 1 Pixel Out Audio Player, Flow Player Classic will be used. Go to the PowerPress > Audio Player settings page to change this player if you like.
+* Updated Danish translation. Thanks GeorgWP and Team Blogos for translating!
+* Added Russian translation. Thanks Igor Mercury for translating!
+
 
 = 4.0.5 =
 * Released on 11/28/2012
@@ -834,6 +845,7 @@ Nicolas Bouliane, [Perosnal Blog](http://nicolasbouliane.com/) - contributed cod
 * Simplified Chinese for v1.0.12+ by [webmote](http://codeex.cn) - From webmote: Welcome to use the plugin. Very good! and then hope you to access my site.
 * Italian translation for v2.0.4+ by [Umberto Sartori](http://veneziadoc.net/)
 * Romanian translation for v2.0.4+ by Alexander Ovsov (Web Geek Sciense: http://webhostinggeeks.com/science/)
+* Russian translation for v4.0.5+ by  [Igor Mercury](http://www.nightdiary.ru/)
 
 
 == Tips and Tutorials ==

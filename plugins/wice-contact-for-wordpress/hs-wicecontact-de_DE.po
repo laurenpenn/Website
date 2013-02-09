@@ -1,222 +1,222 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-30 14:58+0200\n"
-"PO-Revision-Date: 2010-06-30 15:00+0100\n"
-"Last-Translator: Hansjörg Schmidt <post@hansjoerg-schmidt.de>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-
-#: hs_wice_contact_plugin.php:92
-msgid "Unwanted Input: "
-msgstr "Unerw&uuml;nschte Eingabe"
-
-#: hs_wice_contact_plugin.php:99
-msgid "Not a valid email address: "
-msgstr "ung&uuml;ltige E-Mail-Adresse"
-
-#: hs_wice_contact_plugin.php:106
-msgid "Required field:"
-msgstr "Pflichtfeld:"
-
-#: hs_wice_contact_plugin.php:132
-msgid "CURL library not detected on system.  Need to compile php with cURL in order to use this plug-in"
-msgstr "CURL-Library nicht gefunden. PHP muss mit cURL kompiliert sein, damit dieses Plugin arbeitet."
-
-#: hs_wice_contact_plugin.php:182
-msgid "Fields in red are required"
-msgstr "Felder in Rot sind Pflichtfelder"
-
-#: hs_wice_contact_plugin.php:234
-#: hs_wice_contact_plugin.php:235
-#: hs_wice_contact_plugin.php:249
-#: hs_wice_contact_plugin.php:242
-#: hs_wice_contact_plugin.php:243
-#: hs_wice_contact_plugin.php:257
-msgid "WICE Contact"
-msgstr "WICE Contact"
-
-#: hs_wice_contact_plugin.php:243
-#: hs_wice_contact_plugin.php:251
-msgid "You do not have sufficient permissions to access this page."
-msgstr "Sie haben nicht gen&uuml;gend Rechte, um auf diese Seite zugreifen zu d&uuml;rfen."
-
-#: hs_wice_contact_plugin.php:258
-#: hs_wice_contact_plugin.php:266
-msgid "Field"
-msgstr "Feld"
-
-#: hs_wice_contact_plugin.php:261
-#: hs_wice_contact_plugin.php:269
-msgid "Name on Website"
-msgstr "Name auf der Website"
-
-#: hs_wice_contact_plugin.php:264
-#: hs_wice_contact_plugin.php:272
-msgid "Visible"
-msgstr "Sichtbar"
-
-#: hs_wice_contact_plugin.php:267
-#: hs_wice_contact_plugin.php:275
-msgid "Required?"
-msgstr "Pflichtfeld?"
-
-#: hs_wice_contact_plugin.php:270
-#: hs_wice_contact_plugin.php:278
-msgid "Position"
-msgstr "Position"
-
-#: hs_wice_contact_plugin.php:274
-#: hs_wice_contact_plugin.php:283
-msgid "Companyfields"
-msgstr "Firmenfelder"
-
-#: hs_wice_contact_plugin.php:278
-#: hs_wice_contact_plugin.php:287
-msgid "Company"
-msgstr "Firma"
-
-#: hs_wice_contact_plugin.php:292
-#: hs_wice_contact_plugin.php:304
-msgid "Street"
-msgstr "Stra&szlig;e"
-
-#: hs_wice_contact_plugin.php:306
-#: hs_wice_contact_plugin.php:321
-msgid "Streetnumber"
-msgstr "Hausnummer"
-
-#: hs_wice_contact_plugin.php:320
-#: hs_wice_contact_plugin.php:355
-msgid "Town"
-msgstr "Ort"
-
-#: hs_wice_contact_plugin.php:334
-#: hs_wice_contact_plugin.php:338
-msgid "Zipcode"
-msgstr "Postleitzahl"
-
-#: hs_wice_contact_plugin.php:348
-#: hs_wice_contact_plugin.php:373
-msgid "Country"
-msgstr "Land"
-
-#: hs_wice_contact_plugin.php:361
-#: hs_wice_contact_plugin.php:389
-msgid "Contactpersonfields"
-msgstr "Ansprechpartnerfelder"
-
-#: hs_wice_contact_plugin.php:365
-#: hs_wice_contact_plugin.php:393
-msgid "Salutation"
-msgstr "Anrede"
-
-#: hs_wice_contact_plugin.php:379
-#: hs_wice_contact_plugin.php:410
-msgid "Salutation Male"
-msgstr "Anrede m&auml;nnlich"
-
-#: hs_wice_contact_plugin.php:393
-#: hs_wice_contact_plugin.php:424
-msgid "Salutation Female"
-msgstr "Anrede weiblich"
-
-#: hs_wice_contact_plugin.php:407
-#: hs_wice_contact_plugin.php:438
-msgid "Serial Salutation Male"
-msgstr "Serienbriefanrede m&auml;nnlich"
-
-#: hs_wice_contact_plugin.php:422
-#: hs_wice_contact_plugin.php:453
-msgid "Serial Salutation Female"
-msgstr "Serienbriefanrede weiblich"
-
-#: hs_wice_contact_plugin.php:437
-#: hs_wice_contact_plugin.php:468
-msgid "Title"
-msgstr "Titel"
-
-#: hs_wice_contact_plugin.php:451
-#: hs_wice_contact_plugin.php:485
-msgid "Firstname"
-msgstr "Vorname"
-
-#: hs_wice_contact_plugin.php:465
-#: hs_wice_contact_plugin.php:502
-msgid "Lastname"
-msgstr "Nachname"
-
-#: hs_wice_contact_plugin.php:479
-#: hs_wice_contact_plugin.php:519
-msgid "Phone"
-msgstr "Telefon"
-
-#: hs_wice_contact_plugin.php:493
-#: hs_wice_contact_plugin.php:536
-msgid "Fax"
-msgstr "Fax"
-
-#: hs_wice_contact_plugin.php:507
-#: hs_wice_contact_plugin.php:553
-msgid "Email"
-msgstr "E-Mail"
-
-#: hs_wice_contact_plugin.php:520
-#: hs_wice_contact_plugin.php:569
-msgid "Textbox for a Message"
-msgstr "Eingabefeld f&uuml;r Nachricht"
-
-#: hs_wice_contact_plugin.php:524
-#: hs_wice_contact_plugin.php:573
-msgid "Message"
-msgstr "Nachricht"
-
-#: hs_wice_contact_plugin.php:538
-#: hs_wice_contact_plugin.php:633
-msgid "Additional Settings"
-msgstr "Weitere Einstellungen"
-
-#: hs_wice_contact_plugin.php:541
-#: hs_wice_contact_plugin.php:636
-msgid "Address of your Server"
-msgstr "Adresse des Servers"
-
-#: hs_wice_contact_plugin.php:546
-#: hs_wice_contact_plugin.php:641
-msgid "Text for Submitbutton"
-msgstr "Text f&uuml;r Eingabebutton"
-
-#: hs_wice_contact_plugin.php:551
-#: hs_wice_contact_plugin.php:646
-msgid "Value of FormID"
-msgstr "Wert f&uuml;r FormID"
-
-#: hs_wice_contact_plugin.php:559
-#: hs_wice_contact_plugin.php:654
-msgid "Save Changes"
-msgstr "Speichern"
-
-#: hs_wice_contact_plugin.php:589
-msgid "Define additional Fields"
-msgstr "Definition zus&auml;tzlicher Felder"
-
-#: hs_wice_contact_plugin.php:592
-msgid "Number of additional Fields"
-msgstr "Anzahl der Zusatzfelder"
-
-#: hs_wice_contact_plugin.php:599
-msgid "No additional Fields set. Please input first the amount of additional fields"
-msgstr "Keine Zusatzfelder definiert. Bitte erst die Anzahl der zus&auml;tzlichen Felder eingeben."
-
-#: hs_wice_contact_plugin.php:610
-msgid "Name of Field "
-msgstr "Name des Feldes"
-
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-06-30 14:58+0200\n"
+"PO-Revision-Date: 2010-06-30 15:00+0100\n"
+"Last-Translator: Hansjörg Schmidt <post@hansjoerg-schmidt.de>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: hs_wice_contact_plugin.php:92
+msgid "Unwanted Input: "
+msgstr "Unerw&uuml;nschte Eingabe"
+
+#: hs_wice_contact_plugin.php:99
+msgid "Not a valid email address: "
+msgstr "ung&uuml;ltige E-Mail-Adresse"
+
+#: hs_wice_contact_plugin.php:106
+msgid "Required field:"
+msgstr "Pflichtfeld:"
+
+#: hs_wice_contact_plugin.php:132
+msgid "CURL library not detected on system.  Need to compile php with cURL in order to use this plug-in"
+msgstr "CURL-Library nicht gefunden. PHP muss mit cURL kompiliert sein, damit dieses Plugin arbeitet."
+
+#: hs_wice_contact_plugin.php:182
+msgid "Fields in red are required"
+msgstr "Felder in Rot sind Pflichtfelder"
+
+#: hs_wice_contact_plugin.php:234
+#: hs_wice_contact_plugin.php:235
+#: hs_wice_contact_plugin.php:249
+#: hs_wice_contact_plugin.php:242
+#: hs_wice_contact_plugin.php:243
+#: hs_wice_contact_plugin.php:257
+msgid "WICE Contact"
+msgstr "WICE Contact"
+
+#: hs_wice_contact_plugin.php:243
+#: hs_wice_contact_plugin.php:251
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Sie haben nicht gen&uuml;gend Rechte, um auf diese Seite zugreifen zu d&uuml;rfen."
+
+#: hs_wice_contact_plugin.php:258
+#: hs_wice_contact_plugin.php:266
+msgid "Field"
+msgstr "Feld"
+
+#: hs_wice_contact_plugin.php:261
+#: hs_wice_contact_plugin.php:269
+msgid "Name on Website"
+msgstr "Name auf der Website"
+
+#: hs_wice_contact_plugin.php:264
+#: hs_wice_contact_plugin.php:272
+msgid "Visible"
+msgstr "Sichtbar"
+
+#: hs_wice_contact_plugin.php:267
+#: hs_wice_contact_plugin.php:275
+msgid "Required?"
+msgstr "Pflichtfeld?"
+
+#: hs_wice_contact_plugin.php:270
+#: hs_wice_contact_plugin.php:278
+msgid "Position"
+msgstr "Position"
+
+#: hs_wice_contact_plugin.php:274
+#: hs_wice_contact_plugin.php:283
+msgid "Companyfields"
+msgstr "Firmenfelder"
+
+#: hs_wice_contact_plugin.php:278
+#: hs_wice_contact_plugin.php:287
+msgid "Company"
+msgstr "Firma"
+
+#: hs_wice_contact_plugin.php:292
+#: hs_wice_contact_plugin.php:304
+msgid "Street"
+msgstr "Stra&szlig;e"
+
+#: hs_wice_contact_plugin.php:306
+#: hs_wice_contact_plugin.php:321
+msgid "Streetnumber"
+msgstr "Hausnummer"
+
+#: hs_wice_contact_plugin.php:320
+#: hs_wice_contact_plugin.php:355
+msgid "Town"
+msgstr "Ort"
+
+#: hs_wice_contact_plugin.php:334
+#: hs_wice_contact_plugin.php:338
+msgid "Zipcode"
+msgstr "Postleitzahl"
+
+#: hs_wice_contact_plugin.php:348
+#: hs_wice_contact_plugin.php:373
+msgid "Country"
+msgstr "Land"
+
+#: hs_wice_contact_plugin.php:361
+#: hs_wice_contact_plugin.php:389
+msgid "Contactpersonfields"
+msgstr "Ansprechpartnerfelder"
+
+#: hs_wice_contact_plugin.php:365
+#: hs_wice_contact_plugin.php:393
+msgid "Salutation"
+msgstr "Anrede"
+
+#: hs_wice_contact_plugin.php:379
+#: hs_wice_contact_plugin.php:410
+msgid "Salutation Male"
+msgstr "Anrede m&auml;nnlich"
+
+#: hs_wice_contact_plugin.php:393
+#: hs_wice_contact_plugin.php:424
+msgid "Salutation Female"
+msgstr "Anrede weiblich"
+
+#: hs_wice_contact_plugin.php:407
+#: hs_wice_contact_plugin.php:438
+msgid "Serial Salutation Male"
+msgstr "Serienbriefanrede m&auml;nnlich"
+
+#: hs_wice_contact_plugin.php:422
+#: hs_wice_contact_plugin.php:453
+msgid "Serial Salutation Female"
+msgstr "Serienbriefanrede weiblich"
+
+#: hs_wice_contact_plugin.php:437
+#: hs_wice_contact_plugin.php:468
+msgid "Title"
+msgstr "Titel"
+
+#: hs_wice_contact_plugin.php:451
+#: hs_wice_contact_plugin.php:485
+msgid "Firstname"
+msgstr "Vorname"
+
+#: hs_wice_contact_plugin.php:465
+#: hs_wice_contact_plugin.php:502
+msgid "Lastname"
+msgstr "Nachname"
+
+#: hs_wice_contact_plugin.php:479
+#: hs_wice_contact_plugin.php:519
+msgid "Phone"
+msgstr "Telefon"
+
+#: hs_wice_contact_plugin.php:493
+#: hs_wice_contact_plugin.php:536
+msgid "Fax"
+msgstr "Fax"
+
+#: hs_wice_contact_plugin.php:507
+#: hs_wice_contact_plugin.php:553
+msgid "Email"
+msgstr "E-Mail"
+
+#: hs_wice_contact_plugin.php:520
+#: hs_wice_contact_plugin.php:569
+msgid "Textbox for a Message"
+msgstr "Eingabefeld f&uuml;r Nachricht"
+
+#: hs_wice_contact_plugin.php:524
+#: hs_wice_contact_plugin.php:573
+msgid "Message"
+msgstr "Nachricht"
+
+#: hs_wice_contact_plugin.php:538
+#: hs_wice_contact_plugin.php:633
+msgid "Additional Settings"
+msgstr "Weitere Einstellungen"
+
+#: hs_wice_contact_plugin.php:541
+#: hs_wice_contact_plugin.php:636
+msgid "Address of your Server"
+msgstr "Adresse des Servers"
+
+#: hs_wice_contact_plugin.php:546
+#: hs_wice_contact_plugin.php:641
+msgid "Text for Submitbutton"
+msgstr "Text f&uuml;r Eingabebutton"
+
+#: hs_wice_contact_plugin.php:551
+#: hs_wice_contact_plugin.php:646
+msgid "Value of FormID"
+msgstr "Wert f&uuml;r FormID"
+
+#: hs_wice_contact_plugin.php:559
+#: hs_wice_contact_plugin.php:654
+msgid "Save Changes"
+msgstr "Speichern"
+
+#: hs_wice_contact_plugin.php:589
+msgid "Define additional Fields"
+msgstr "Definition zus&auml;tzlicher Felder"
+
+#: hs_wice_contact_plugin.php:592
+msgid "Number of additional Fields"
+msgstr "Anzahl der Zusatzfelder"
+
+#: hs_wice_contact_plugin.php:599
+msgid "No additional Fields set. Please input first the amount of additional fields"
+msgstr "Keine Zusatzfelder definiert. Bitte erst die Anzahl der zus&auml;tzlichen Felder eingeben."
+
+#: hs_wice_contact_plugin.php:610
+msgid "Name of Field "
+msgstr "Name des Feldes"
+

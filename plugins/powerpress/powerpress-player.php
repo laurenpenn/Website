@@ -1550,6 +1550,9 @@ function powerpressplayer_build_playimageaudio($media_url, $include_div = false)
 */
 function powerpressplayer_build_1pxoutplayer($media_url, $EpisodeData = array())
 {
+	return powerpressplayer_build_flowplayerclassic($media_url, $EpisodeData); // Replaces 1 pixel out player for now
+	/*
+	
 	$content = '';
 	$autoplay = false;
 	if( isset($EpisodeData['autoplay']) && $EpisodeData['autoplay'] )
@@ -1628,6 +1631,7 @@ function powerpressplayer_build_1pxoutplayer($media_url, $EpisodeData = array())
 		$content .= '</div>'.PHP_EOL;
 	
 	return $content;
+	*/
 }
 
 /*

@@ -185,6 +185,18 @@ function powerpress_dashboard_notice_1_content()
 	powerpress_dashboard_notice_message(1, $message );
 }
 
+function powerpress_dashboard_notice_2_content()
+{
+	$DismissedNotices = get_option('powerpress_dismissed_notices');
+	
+	if( !empty($DismissedNotices[2]) )
+		return; // Lets not do anything to the dashboard for PowerPress Notice
+	
+	$message = '<p>'. __('Due to concerns of possible security exploits, the 1 Pixel Out Audio Player has been removed from PowerPress.', 'powerpress') .'<br />';
+	$message .= '<a href="http://blog.blubrry.com/?p=1163" target="_blank">'. __("Learn More", "powerpress") .'</a></p>';
+	
+	powerpress_dashboard_notice_message(2, $message );
+}
 
 function powerpress_dashboard_notice_message($notice_id, $message)
 {
@@ -231,6 +243,13 @@ function powerpress_dashboard_setup()
 		if( !empty($DismissedNotices[1]) )
 			$Notice1Dashboard = false;
 	}
+	
+	$Notice2Dashboard = true;
+	$DismissedNotices = get_option('powerpress_dismissed_notices');
+	if( !empty($DismissedNotices[2]) )
+	{
+		$Notice2Dashboard = false;
+	}
 	//$Notice1Dashboard = false;// Temporary till release
 
 	if( $Notice1Dashboard )
@@ -238,6 +257,13 @@ function powerpress_dashboard_setup()
 		$user = wp_get_current_user();
 		powerpressadmin_add_dashboard_notice_widget($user->ID, 1);
 		wp_add_dashboard_widget( 'powerpress_dashboard_notice_1', __( 'Blubrry PowerPress Notice - May 2012', 'powerpress'), 'powerpress_dashboard_notice_1_content' );
+	}
+	
+	if( $Notice2Dashboard )
+	{
+		$user = wp_get_current_user();
+		powerpressadmin_add_dashboard_notice_widget($user->ID, 2);
+		wp_add_dashboard_widget( 'powerpress_dashboard_notice_2', __( 'Blubrry PowerPress Notice - January 2013', 'powerpress'), 'powerpress_dashboard_notice_2_content' );
 	}
 	
 	if( $NewsDashboard )

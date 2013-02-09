@@ -129,4 +129,127 @@ function dbc_admin_entry_title() {
 
 }
 
+// Filter only applied to Form id = 8
+add_filter('gform_pre_render_8', 'prepopulate_firstcup_dates');
+/**
+ * Pre-populates radios based on previous name field
+ * Searches post type 'person'
+ *
+ * @param array @form Current Form Object
+ * @return array @form Modified Form Object
+ */
+function prepopulate_firstcup_dates($form){
+	$dates = array();
+	$values = array();
+	$date = new DateTime('next sunday');
+	$now = new DateTime(current_time('mysql'));
+	$cutoff = clone $date;
+	$cutoff->sub(new DateInterval('P5DT11H'));
+	
+	if($now>=$cutoff){
+		$date->add(new DateInterval('P7D'));
+		$dates[] = array('text' => $date->format('F jS, Y'), 'value' => $date->format('Ymd'));
+		$inputs[] = array('label' => $date->format('F jS, Y'), 'id' => '23.1');
+	}else{
+		$dates[] = array('text' => $date->format('F jS, Y'), 'value' => $date->format('Ymd'));
+		$inputs[] = array('label' => $date->format('F jS, Y'), 'id' => '23.1');
+	}
+	
+	for($i=0; $i<21; $i++) {
+		$date->add(new DateInterval('P7D'));
+		$dates[] = array('text' => $date->format('F jS, Y'), 'value' => $date->format('Ymd'));
+		$inputs[] = array('label' => $date->format('F jS, Y'), 'id' => '23.'.$i+2);
+	}
+
+	foreach($form['fields'] as &$field ) {
+		if ($field['id'] == 23) {
+			$field['choices'] = $dates;
+            $field['inputs'] = $values;
+		}
+	}
+
+	return $form;	
+}
+add_action('gform_post_submission_8', 'firstcup_entry', 10, 2);
+function firstcup_entry($entry, $form){
+	$link = mysql_connect('localhost', 'dbc_fcmanager', '&0P%!PFV;p1K');
+	if (!$link) {
+		die('Could not connect: ' . mysql_error());
+	}
+	$db_selected = mysql_select_db('dbc_firstcup');
+	if (!$db_selected) {
+		die ('Can\'t use dbc_firstcup : ' . mysql_error());
+	}
+	for($i=1;$i<=22;$i++){
+		if($entry["23.".$i]!= ""){
+			$year = substr($entry["23.".$i],0,4);
+			$month = substr($entry["23.".$i],4,2);
+			$day = substr($entry["23.".$i],6,2);
+			
+			//Build Query
+			$sql = "INSERT INTO `submissions` (`id`, `gf_id`, `name`, `email`, `phone`, `ministry`, `ministry_email`, `year`, `month`, `day`, `title`, `subtitle`, `content`, `additional_info`, `file`, `submitted`) VALUES (NULL, '".$entry["id"]."', '".mysql_real_escape_string($entry["1.3"].' '.$entry["1.6"])."', '".mysql_real_escape_string($entry["2"])."', '".mysql_real_escape_string($entry["3"])."', '".mysql_real_escape_string($entry["5"])."', '".$entry["6"]."', '".$year."', '".$month."', '".$day."', '".mysql_real_escape_string($entry["10"])."', '".mysql_real_escape_string($entry["11"])."', '".mysql_real_escape_string($entry["12"])."', '".mysql_real_escape_string($entry["21"])."', '".mysql_real_escape_string($entry["22"])."', CURRENT_TIMESTAMP);";
+			
+			//Execute Query, log any errors
+			if(!mysql_query($sql, $link)) { error_log("Invalid Query: ".mysql_error($link)); }
+	
+		}
+	}
+	mysql_close($link);
+}
+
+//Create custom 'Announcement Date' Merge Tag
+add_filter('gform_custom_merge_tags', 'custom_merge_tags', 10, 4);
+function custom_merge_tags($merge_tags, $form_id, $fields, $element_id) {
+    
+    // Add custom announcement dates tag
+    if($form_id==8)
+        $merge_tags[] = array('label' => 'Announcement Dates', 'tag' => '{announcement_dates}');
+    
+    return $merge_tags;
+}
+
+//Replace 'Announcement Dates' with better format
+add_filter('gform_replace_merge_tags', 'replace_announcement_dates', 10, 7);
+function replace_announcement_dates($text, $form, $entry, $url_encode, $esc_html, $nl2br, $format) {
+	$custom_merge_tag = '{announcement_dates}';
+	$replacement_text = '';
+	
+	//Make sure we are doing this in the right place
+	if(strpos($text, $custom_merge_tag) === false)
+		return $text;
+		
+	//Find selections and build output text
+	for($i=1;$i<=22;$i++){
+		if($entry["23.".$i]!= ""){
+			$buffer = $entry["23.".$i];
+			$date = new DateTime(substr($buffer,0,4).'-'.substr($buffer,4,2).'-'.substr($buffer,6,2));
+			$replacement_text .= $date->format('F jS, Y').'<br>';
+		}
+	}
+	//Replace text
+	$text = str_replace($custom_merge_tag, $replacement_text, $text);
+	
+	return $text;
+}
+
+//Add attachments from form 8
+add_filter("gform_user_notification_attachments_8", "add_attachment", 10, 3);
+function add_attachment($attachments, $lead, $form){
+    $fileupload_fields = GFCommon::get_fields_by_type($form, array("fileupload"));
+
+    if(!is_array($fileupload_fields))
+        return $attachments;
+
+    $attachments = array();
+    $upload_root = RGFormsModel::get_upload_root();
+    foreach($fileupload_fields as $field){
+        $url = $lead[$field["id"]];		
+		$attachment = preg_replace('|^(.*?)/gravity_forms/|', $upload_root, $url);
+		if($attachment){
+			$attachments[] = $attachment;
+		}            
+	}
+
+    return $attachments;
+}
 ?>

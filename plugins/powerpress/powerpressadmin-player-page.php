@@ -60,6 +60,9 @@ function powerpress_admin_players($type='audio')
 	$select_player = false;
 	if( isset($_GET['sp']) )
 		$select_player = true;
+		
+	if( $General['player'] == 'audio-player' )
+		unset($General['player']); // Force the user to select a different player
 
 	if( $type == 'video' )
 	{
@@ -351,15 +354,21 @@ table.html5formats tr > td:first-child {
 			<?php powerpressplayer_flowplayer_info(); ?>
 		</li>
 		
-		<li><label><input type="radio" name="Player[player]" id="player_audio_player" value="audio-player" <?php if( $General['player'] == 'audio-player' ) echo 'checked'; ?> /> <?php echo __('1 Pixel Out Audio Player', 'powerpress'); ?></label>
-			<strong style="padding-top: 8px; margin-left: 20px;"><a href="#" id="activate_audio_player" class="activate-player"><?php echo __('Activate and Configure Now', 'powerpress'); ?></a></strong>
+		<li><label><input type="radio" name="Player[player]" id="player_audio_player" value="audio-player" <?php if( $General['player'] == 'audio-player' ) echo 'checked'; ?> disabled="disabled" /> <del><?php echo __('1 Pixel Out Audio Player', 'powerpress'); ?></del></label>
+			<strong style="padding-top: 8px; margin-left: 20px;">(<?php echo __("Currently Not Available", 'powerpress'); ?>)</strong>
 		</li>
 		<li style="margin-left: 30px; margin-bottom:16px;">
 			<p>
-				<?php  echo powerpressplayer_build_1pxoutplayer( $Audio['audio-player'] ); ?>
+				<?php  // echo powerpressplayer_build_1pxoutplayer( $Audio['audio-player'] ); ?>
 			</p>
-			<p>
+			<p><del>
 				<?php echo __('1 Pixel Out Audio Player is a popular customizable audio (mp3 only) flash player. Features include an animated play/pause button, scrollable position bar, ellapsed/remaining time, volume control and color styling options.', 'powerpress'); ?>
+			</del></p>
+			<p>
+			<strong>
+			<?php echo __("Due to concerns of possible security exploits, the 1 Pixel Out Audio Player has been removed from PowerPress.", "powerpress"); ?> <br />
+			<a href="http://blog.blubrry.com/?p=1163" target="_blank"><?php echo __("Learn More", "powerpress"); ?></a>
+			</strong>
 			</p>
 		</li>
 		
@@ -490,6 +499,7 @@ table.html5formats tr > td:first-child {
 	 {
 		switch( $General['player'] )
 		{
+			/*
 			case 'audio-player': {
 			
 				$PlayerSettings = powerpress_get_settings('powerpress_audio-player');
@@ -1000,6 +1010,7 @@ function audio_player_defaults()
 
 <?php
 			}; break;
+			*/
                         case 'simple_flash': { ?>
 <table class="form-table">
 	<tr valign="top">

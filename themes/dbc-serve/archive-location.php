@@ -24,11 +24,13 @@ get_header(); // Loads the header.php template. ?>
 				'post_type' => 'location',
 				'posts_per_page' => -1,
 				'order' => 'ASC',
-				'orderby' => 'title'
+				'orderby' => 'name'
 			));
 			?>
 									
 			<?php if ( have_posts() ) : ?>
+
+				<div class="grid">
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
@@ -49,6 +51,22 @@ get_header(); // Loads the header.php template. ?>
 					<?php do_atomic( 'after_entry' ); // prototype_after_entry ?>
 
 				<?php endwhile; ?>
+				
+				</div><!-- .grid -->
+				
+				<script type="text/javascript">
+					jQuery(document).ready(function($) {
+					
+						var $container = $('.grid');
+						$container.imagesLoaded(function() {
+							$container.masonry({
+								itemSelector : '.hentry',
+								columnWidth : 275
+							});
+						});
+					
+					});
+				</script>
 
 			<?php else : ?>
 

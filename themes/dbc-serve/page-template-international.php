@@ -37,24 +37,40 @@ get_header(); // Loads the header.php template. ?>
 								<li><span style="background: #109618; display: inline-block; height: 13px; margin: 0 6px 0 0; width: 13px;"></span>Green indicates at least other ministry presence</li>
 							</ul>
 							
-							<p><a href="http://dbcm.org/?post_type=missionary" class="button blue radius nice">View all missionaries</a> <a href="http://dbcm.org/?post_type=location" class="button blue radius nice">View all locations</a></p>
+							<p><a href="<?php echo home_url(); ?>/missionaries/" class="button blue radius nice">View all missionaries</a> <a href="<?php echo home_url(); ?>/locations/" class="button blue radius nice">View all locations</a></p>
 					
-							<!-- ammap script-->
-							<script type="text/javascript" src="http://dbcm.org/wp-content/plugins/ammap/swfobject.js"></script>
-							<div id="flashcontent" class="flex-video" style="clear: both">
-								<strong>You need to upgrade your Flash Player</strong>
-							</div>
+							<div id="mapdiv" style="width: 100%; height: 600px"></div>
+							
 							<script type="text/javascript">
-								// <![CDATA[
-								var so = new SWFObject("http://dbcm.org/wp-content/plugins/ammap/ammap.swf", "ammap", "940", "600", "8", "#ffffff");
-								//so.addVariable("path", "ammap/");
-								so.addVariable("settings_file", escape("<?php bloginfo( 'stylesheet_directory' ); ?>/ammap_settings.xml"));
-								so.addVariable("data_file", escape("<?php bloginfo( 'stylesheet_directory' ); ?>/test.xml"));
-								so.write("flashcontent");
-								// ]]>
+								jQuery(document).ready(function($) {
+							
+									AmCharts.ready(function() {
+										var map = new AmCharts.AmMap();
+										map.pathToImages = "wp-content/themes/dbc-serve/ammap/images/";
+			
+										var dataProvider = {
+											mapVar : AmCharts.maps.worldLow,
+											areas:[<?php print_r( dbcm_get_map_data() ); ?>]
+										};
+										map.dataProvider = dataProvider;
+									
+										map.areasSettings = {
+											autoZoom : true,
+											selectedColor : "#CC0000",
+											descriptionWindowWidth: 250,
+											zoomControlEnabled: false
+										};
+										
+										map.showDescriptionOnHover = true;
+										map.zoomControlEnabled = false;
+																	
+										map.write("mapdiv");
+									
+									});
+									
+								});
 							</script>
-							<!-- end of ammap script -->
-
+							
 							<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'dbc' ) ); ?>
 
 							<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'dbc' ), 'after' => '</p>' ) ); ?>
