@@ -12,11 +12,24 @@ if ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
 	define( 'DB_PASSWORD',			'local_db_password' );
 	define( 'DB_HOST',				'localhost' ); // Probably 'localhost'
 	
-	define( 'ENV_DOMAIN',			'example.com' );
-	define( 'PRODUCTION_DOMAIN',	'example.com' );
+	define( 'ENV_DOMAIN',			'dentonbible.org' );
+	define( 'PRODUCTION_DOMAIN',	'dentonbible.org' );
 	define( 'DOMAIN_CURRENT_SITE',	ENV_DOMAIN );
 	define( 'WP_HOME',				'http://'. ENV_DOMAIN );
 	define( 'WP_SITEURL',			'http://'. ENV_DOMAIN .'/wp' );
+
+	// ==============================================================
+	// Salts, for security
+	// Grab these from: https://api.wordpress.org/secret-key/1.1/salt
+	// ==============================================================
+	define( 'AUTH_KEY',         'put your unique phrase here' );
+	define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
+	define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
+	define( 'NONCE_KEY',        'put your unique phrase here' );
+	define( 'AUTH_SALT',        'put your unique phrase here' );
+	define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
+	define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
+	define( 'NONCE_SALT',       'put your unique phrase here' );
 	
 }
 
@@ -42,19 +55,6 @@ define( 'SUNRISE', 'on' );
 // ================================================
 define( 'DB_CHARSET', 'utf8' );
 define( 'DB_COLLATE', '' );
-
-// ==============================================================
-// Salts, for security
-// Grab these from: https://api.wordpress.org/secret-key/1.1/salt
-// ==============================================================
-define( 'AUTH_KEY',         'put your unique phrase here' );
-define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
-define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
-define( 'NONCE_KEY',        'put your unique phrase here' );
-define( 'AUTH_SALT',        'put your unique phrase here' );
-define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
-define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
-define( 'NONCE_SALT',       'put your unique phrase here' );
 
 // ==============================================================
 // Table prefix
