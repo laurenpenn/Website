@@ -31,35 +31,8 @@ get_header(); ?>
 			
 			<div class="clear"></div>
 			
-			<div id="home-features">
-				
-				<div class="features">
-	
-					<a href="<?php echo site_url(); ?>/care/dbc-cares/" class="feature" id="feature-dbccares">
-						<div class="feature-inner">
-							<h4 class="widget-title">DBC Cares</h4>
-							<p><img src="<?php echo get_template_directory_uri(); ?>/images/feature-dbc-cares.png" alt="Are you, or someone you know in our church family, in need?" /></p>
-						</div>
-					</a>
-					
-					<a href="<?php echo site_url(); ?>/womens-mens-conferences//" class="feature" id="feature-notes">
-						<div class="feature-inner">
-							<h4 class="widget-title">Upcoming Conferences</h4>
-							<p><img src="<?php echo get_template_directory_uri(); ?>/images/feature-conferences2.png" alt="Women's and Men's conferences." /></p>
-						</div>
-					</a>
-								
-					<a href="<?php echo site_url(); ?>/about-us/calendar/" class="feature" id="feature-calendar">
-						<div class="feature-inner">
-							<h4 class="widget-title">Calendar of Events</h4>
-							<p><img src="<?php echo get_template_directory_uri(); ?>/images/feature-calendar.png" alt="Find out what's going on this weekend or other ways you can get involved." /></p>
-						</div>
-					</a>
-					
-				</div>
-				
-			</div><!-- #home-features -->
-			
+			<?php get_sidebar( 'home-features' ); // Loads sidebar-home-features.php ?>
+						
 		</div><!-- .hfeed -->
 			
 		<?php do_atomic( 'close_content' ); // dbc_close_content ?>

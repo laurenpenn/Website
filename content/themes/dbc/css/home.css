@@ -242,18 +242,18 @@
 	margin-right: 10px;
 }
 
-.page-template-home .feature {
+.page-template-home .widget {
 	color: #000;
 	float: left;
 	padding: 0 1% 2%;
 	text-decoration: none !important;
 	width: 32%;
 }
-.page-template-home .feature:first-child, .feature:nth-child(4n) {
+.page-template-home .widget:first-child, .widget:nth-child(4n) {
 	clear: both;
 	padding-left: 0;
 }
-.page-template-home .feature:nth-child(3n) {
+.page-template-home .widget:nth-child(3n) {
 	padding-right: 0;
 }
 .page-template-home .feature-inner {
@@ -261,7 +261,7 @@
 	overflow: hidden;
 	padding: 5% 6% 0;
 }
-.page-template-home .feature:hover .feature-inner {
+.page-template-home .widget:hover .feature-inner {
 	box-shadow: inset 0 0 5px rgba(0,0,0,.35), 0 0 5px rgba(0,0,0,.25);
 }
 .page-template-home .feature-inner .widget-title {
