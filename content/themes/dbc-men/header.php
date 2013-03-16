@@ -70,7 +70,7 @@
 			
 			<div class="wrap">
 		
-			<?php breadcrumb_trail( array( 'before' => __( 'You are here:', hybrid_get_textdomain() ) ) ); ?>
+			<?php breadcrumb_trail( array( 'before' => __( 'You are here:', 'dbc-men' ) ) ); ?>
 			
 			</div>
 		

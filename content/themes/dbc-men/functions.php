@@ -67,7 +67,6 @@ function dbcu_theme_setup() {
 
 	/* Add theme support for WordPress features. */
 	add_theme_support( 'automatic-feed-links' );
-	add_custom_background();
 	
 	/* Add custom editor stylesheet. */
 	add_editor_style('style-editor.css');

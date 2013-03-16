@@ -91,8 +91,8 @@ get_header(); // Loads the header.php template. ?>
 						<li id="simple<?php echo $i; ?>Tab"<?php if ( $i == 1 ) echo ' class="active"'; ?>>
 
 							<div class="entry-content">
-								<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', hybrid_get_textdomain() ) ); ?>
-								<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_textdomain() ), 'after' => '</p>' ) ); ?>
+								<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'dbc-men' ) ); ?>
+								<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', 'dbc-men' ), 'after' => '</p>' ) ); ?>
 							</div><!-- .entry-content -->
 				
 						</li><!-- .hentry -->

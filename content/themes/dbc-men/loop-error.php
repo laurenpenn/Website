@@ -12,7 +12,7 @@
 
 		<div class="entry-content">
 
-			<p><?php _e( 'Apologies, but no entries were found.', hybrid_get_textdomain() ); ?></p>
+			<p><?php _e( 'Apologies, but no entries were found.', 'dbc-men' ); ?></p>
 
 		</div><!-- .entry-content -->
 
