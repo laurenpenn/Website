@@ -1,14 +1,10 @@
 <?php
 
-if(!is_admin()) {
-    wp_enqueue_script("gforms_ui_datepicker", WP_PLUGIN_URL . "/gravityforms/js/jquery-ui/ui.datepicker.js", array("jquery"), "1.4", true);
-    wp_enqueue_script("gforms_datepicker", WP_PLUGIN_URL . "/gravityforms/js/datepicker.js", array("gforms_ui_datepicker"), "1.4", true);
-    wp_enqueue_script("gforms_conditional_logic_lib", WP_PLUGIN_URL . "/gravityforms/js/conditional_logic.js", array("gforms_ui_datepicker"), "1.4", true);
-    wp_enqueue_style("gforms_css", WP_PLUGIN_URL . "/gravityforms/css/forms.css");
-}
-
 /* Register post types. */
 add_action('init', 'dbc_admin_register_post_types');
+
+/* Enqueue scripts and styles. */
+add_action( 'wp_enqueue_scripts', 'dbc_admin_enqueue_scripts' );
 
 /* Disables sidebars. */
 add_filter( 'sidebars_widgets', 'dbc_child_disable_sidebars' );
@@ -27,6 +23,16 @@ add_filter('gform_field_value_user_lastname', create_function("", '$value = popu
 
 /* populate the field with "user_email" as the population parameter with the "user_email" of the current user. */
 add_filter('gform_field_value_user_email', create_function("", '$value = populate_usermeta(\'user_email\'); return $value;' ));
+
+/**
+* Enqueue scripts and styles.
+*/
+function dbc_admin_enqueue_scripts() {
+	wp_enqueue_script("gforms_ui_datepicker", WP_PLUGIN_URL . "/gravityforms/js/jquery-ui/ui.datepicker.js", array("jquery"), "1.4", true);
+    wp_enqueue_script("gforms_datepicker", WP_PLUGIN_URL . "/gravityforms/js/datepicker.js", array("gforms_ui_datepicker"), "1.4", true);
+    wp_enqueue_script("gforms_conditional_logic_lib", WP_PLUGIN_URL . "/gravityforms/js/conditional_logic.js", array("gforms_ui_datepicker"), "1.4", true);
+    wp_enqueue_style("gforms_css", WP_PLUGIN_URL . "/gravityforms/css/forms.css");
+}
 
 /**
 * Disable sidebars on the home page
