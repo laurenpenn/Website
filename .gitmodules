@@ -1,3 +1,6 @@
 [submodule "wp"]
 	path = wp
 	url = https://github.com/WordPress/WordPress.git
+[submodule "content/themes/dbc/library"]
+	path = content/themes/dbc/library
+	url = https://github.com/justintadlock/hybrid-core.git
