@@ -98,9 +98,6 @@ function dbc_remove_header_info() {
  */
 function dbc_load_scripts() {
 	
-	// Taking advantage of Hybrid's dev stylesheet conditional
-	$style = hybrid_debug_stylesheet( get_stylesheet_uri() , get_stylesheet_directory_uri() );
-
 	wp_enqueue_script( 'respond', trailingslashit( THEME_URI ) . 'js/respond.min.js' );
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'modernizr', trailingslashit( THEME_URI ) . 'js/modernizr.foundation.js', array( 'jquery' ), '3.0', false );
@@ -111,7 +108,7 @@ function dbc_load_scripts() {
 	
 	wp_enqueue_style( 'foundation', trailingslashit( THEME_URI ) . 'css/foundation.css', false, '3.0', 'screen' );
 	wp_enqueue_style( 'layout', trailingslashit( THEME_URI ) . 'css/layout.css', false, '3.0', 'screen' );
-	wp_enqueue_style( 'style', $style, false, '3.0', 'screen' );
+	wp_enqueue_style( 'style', get_stylesheet_uri(), false, '3.0', 'screen' );
 	wp_enqueue_style( 'home', trailingslashit( THEME_URI ) . 'css/home.css', false, '3.0', 'screen' );
 	wp_enqueue_style( 'fanybox', trailingslashit( THEME_URI ) . 'css/jquery.fanybox.css', false, '3.0', 'screen' );
 
