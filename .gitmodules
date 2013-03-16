@@ -4,3 +4,6 @@
 [submodule "content/themes/dbc/library"]
 	path = content/themes/dbc/library
 	url = https://github.com/justintadlock/hybrid-core.git
+[submodule "content/themes/dbc-men/library"]
+	path = content/themes/dbc-men/library
+	url = https://github.com/justintadlock/hybrid-core.git
