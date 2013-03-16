@@ -1,6 +1,6 @@
 # Denton Bible Church Website
 
-**[Read the Documentation](https://github.com/Denton-Bible-Church/Website/wiki)**
+**[Read the Documentation](https://github.com/Denton-Bible-Church/Website/wiki)** | **[How to Contribute](CONTRIBUTING.md).**
 
 This repository contains nearly the entire http://dentonbible.org website with the exception of configuration files and media uploads. See below for more.
 
