@@ -54,3 +54,30 @@ project:
 
 10. [Open a Pull Request](http://help.github.com/send-pull-requests/) with a
     clear title and description.
+
+## Environments
+
+### Local
+
+Your local environment should work very similarly to the staging site. For ease, use
+the `local.dentonbible.org` domain in your `local-config.php` and virtual hosts
+configurations. Local development can utilize the remote, staging database.
+
+Subdomains will work like `admin.local.dentonbible.org` and will need to be explicity
+set -- I'm not sure how to get wildcard subdomains working locally on Windows or OSX.
+
+This screenshot shows what I use...
+
+![MAMP Pro settings for Denton Bible Church local development](http://i.imgur.com/FSa1fB6.png "MAMP Pro settings for Denton Bible Church local development")
+
+### Staging
+
+This environments is in flux and will soon represent a look into all current
+development in the master branch. The database here is unique and cannot be merged
+to production.
+
+### Production
+
+The end of the code life-cycle and it never gets touched directly here. This is a
+unqique database from all environments. Code will be merged to the production branch
+and deployed from there.
