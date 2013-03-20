@@ -17,7 +17,7 @@ if ( hybrid_get_setting( 'slider' ) == 'true' ) { ?>
 
 	<?php
 		if ( hybrid_get_setting( 'feature_category' ) )
-			$feature_query = new WP_Query( array( 'posts_per_page' => hybrid_get_setting( 'feature_num_posts' ), 'order' => 'ASC' ) );
+			$feature_query = new WP_Query( array( 'posts_per_page' => hybrid_get_setting( 'feature_num_posts' ), 'order' => 'ASC', 'cat' => hybrid_get_setting( 'feature_category' ) ) );
 
 		while ( $feature_query->have_posts() ) : $feature_query->the_post(); ?>
 
