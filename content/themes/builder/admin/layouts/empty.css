@@ -1,0 +1,27 @@
+.caption.commander_heading{	color:#;}
+.caption.commander_small_heading{ color:#;}
+.page_head .menu .current-menu-parent {background: #}
+a { color: #;}
+.colored {color: # !important;}
+.top_line {background-color: # !important;}
+.menu .current-menu-item {background: # !important ;}
+.menu ul li:hover a { background:# }
+.menu ul li:hover:first-child > a:after { border-bottom-color:# ;}
+.menu ul ul li:hover:first-child > a:after { border-right-color: # ;}
+.menu ul ul a:hover { background:# !important }
+.bottom_line { background-color: #;}
+.blog_item .view a.info:hover {background-color:#;}
+.blog_item .view a.link:hover {background-color:#;}
+.pride_pg .current {background-color: #;}
+.pride_pg a:hover  {background-color: #;}
+.blog_sidebar a{ color:#;}
+.filter_button:hover {background-color:#;border-color:# }
+.filter_current { background-color:#; border-color:#;}
+.portfolio_item .view a.info:hover {background-color:#;}
+.portfolio_item .view a.link:hover {background-color:#;}
+.descr a { color: #;}
+.portfolio_sidebar a{ color:#;}
+.blog_item .meta a:hover { color:#;}
+.blog_post_item_description .meta a:hover { color:#;}
+.portfolio_post_item_description .meta a:hover { color:#;}
+.page_sidebar a{ color:#;}

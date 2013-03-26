@@ -1,0 +1,272 @@
+.css3_grid_widefat
+{
+	margin-top: 10px;
+}
+.css3_grid_widefat td
+{
+	overflow: visible;
+}
+.css3_grid_widefat input
+{
+	width: 90%;
+}
+.css3_grid_widefat th label
+{
+	font-size: 11px;
+}
+.css3_grid_widefat th input[type='text']
+{
+	width: 100px;
+	padding: 1px;
+}
+.css3_grid_widefat th .css3_grid_sort_column
+{
+	min-width: 245px;
+	margin-bottom: 5px;
+}
+.css3_grid_arrows
+{	
+	width: 35px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.css3_grid_arrows_row
+{
+	float: left;
+	padding-top: 20px;
+	width: 15px;
+	margin-right: 5px;
+}
+.css3_grid_row_config
+{
+	float: left;
+	width: 205px;
+}
+.css3_grid_sort_left
+{
+	float: left;
+	background: url("../img/sort_arrow_left.png") no-repeat;
+	margin-right: 5px;
+}
+.css3_grid_sort_right
+{
+	float: left;
+	background: url("../img/sort_arrow_right.png") no-repeat;
+}
+.css3_grid_sort_up
+{
+	background: url("../img/sort_arrow_up.png") no-repeat;
+	margin-bottom: 5px;
+}
+.css3_grid_sort_down
+{
+	background: url("../img/sort_arrow_down.png") no-repeat;
+}
+.css3_grid_sort_left, .css3_grid_sort_right, .css3_grid_sort_up, .css3_grid_sort_down
+{
+	display: block;
+	width: 15px;
+	height: 15px;
+	text-decoration: none;
+}
+.css3_grid_sort_left:hover, .css3_grid_sort_right:hover, .css3_grid_sort_up:hover, .css3_grid_sort_down:hover
+{
+	background-position: 0 -15px;
+}
+.css3_grid_admin_column1, .css3_grid_admin_column1 .css3_grid_column1_text
+{
+	width: 225px;
+}
+input.css3_grid_short
+{
+	width: 30px;
+	margin-right: 4px;
+}
+.css3_grid_input_error
+{
+	background-color: #F7E5E6 !important;
+    border: 1px solid #F0ACB0 !important;
+}
+input.css3_grid_tooltip_input
+{
+	width: 77%;
+}
+.css3_grid_more, .css3_grid_less
+{
+	display: block;
+	float: left;
+	width: 16px;
+	height: 16px;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-top: 2px;
+}
+.css3_grid_more:hover, .css3_grid_less:hover
+{
+	background-position: 0 -16px;
+}
+.css3_grid_more
+{
+	background-image: url("../img/more.png");
+}
+.css3_grid_less
+{
+	background-image: url("../img/less.png");
+}
+.css3_clearfix:after
+{
+    font-size: 0px;
+    content: ".";
+    display: block;
+    height: 0px;
+    visibility: hidden;
+    clear: both;
+}
+/* ==================== TOOLTIP  ==================== */
+/* --- base --- */
+.css3_grid_widefat span.css3_grid_tooltip
+{
+	position: relative !important;
+	display: inline-block !important;
+	cursor: pointer;
+}
+
+.css3_grid_widefat span.css3_grid_tooltip>span:first-child
+{
+	min-width: 400px; /* Tooltip Width */
+	font-family: arial, sans-serif !important; /* Tooltip Base Font Family */
+	font-size: 13px !important; /* Tooltip Base Font Size */
+	line-height: normal !important;
+	text-align: left !important;
+	padding: 10px 10px 12px 10px !important;
+	visibility: hidden;
+    opacity: 0;
+	position: absolute;
+	z-index: 1000;
+
+	/* CSS3 Transitions */
+	-webkit-transition-duration: 0.25s;
+	-moz-transition-duration: 0.25s;
+	-o-transition-duration: 0.25s;
+	-ms-transition-duration: 0.25s;
+	transition-duration: 0.25s;
+	-webkit-transition-timing-function: cubic-bezier(0.35,0,0.35,1);
+	-moz-transition-timing-function: cubic-bezier(0.35,0,0.35,1);
+	-o-transition-timing-function: cubic-bezier(0.35,0,0.35,1);
+	-ms-transition-timing-function: cubic-bezier(0.35,0,0.35,1);
+	transition-timing-function: cubic-bezier(0.35,0,0.35,1);
+	
+	color: #555555 !important;
+	
+	background: #ffffff;
+	border: 5px solid #d9d9d9; /* IE */
+	border: 5px solid rgba(0,0,0,0.15);
+	
+	/* Transparent border fix */
+    -moz-background-clip: padding; /* Firefox 3.6 */
+    -webkit-background-clip: padding; /* Safari 4, Chrome 6 */
+    background-clip: padding-box; /* Firefox 4, Safari 5, Opera 10, IE 9 */
+
+	/* CSS3 Borders */
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	
+	left: -209px;
+	bottom: 100%;
+	margin-bottom: 30px; /* Start Position */
+	
+	/* CSS3 Transitions */
+	-webkit-transition-property: opacity, margin-bottom, visibility;
+	-moz-transition-property: opacity, margin-bottom, visibility;
+	-o-transition-property: opacity, margin-bottom, visibility;
+	-ms-transition-property: opacity, margin-bottom, visibility;
+	transition-property: opacity, margin-bottom, visibility;
+}
+
+.css3_grid_widefat span.css3_grid_tooltip>span:first-child:before
+{	
+	content: "";
+	display: block;
+	width: 0px;
+	height: 0px;
+	position: absolute;
+	border-left: 8px solid transparent !important;
+    border-right: 8px solid transparent !important;
+	border-top: 8px solid #000;
+	border-bottom: 0 !important;
+	bottom: -13px;
+	left: 203px;
+	border-color: #d9d9d9; /* IE */
+	border-color: rgba(0,0,0,0.15);
+}
+
+/* --- On Hover --- */
+.css3_grid_widefat span.css3_grid_tooltip:hover>span:first-child
+	{	
+	margin-bottom: 10px; /* End Position */
+	visibility: visible;
+	opacity: 1;
+	}
+
+/* --- Header --- */
+span.css3_grid_tooltip>span:first-child strong
+	{
+	color: #000000;
+	
+	/* CSS3 Text-shadow */
+	text-shadow: 0px 1px 0px rgba(255,255,255,0.8);
+	
+	/* CSS3 Gradients */
+	background: #efefef; /* Old browsers */
+	background: -moz-linear-gradient(top,  #efefef 0%, #e9e9e9 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#efefef), color-stop(100%,#e9e9e9)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #efefef 0%,#e9e9e9 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #efefef 0%,#e9e9e9 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #efefef 0%,#e9e9e9 100%); /* IE10+ */
+	background: linear-gradient(top,  #efefef 0%,#e9e9e9 100%); /* W3C */
+	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#e9e9e9',GradientType=0 ); IE6-9 - disabled due to lack of compatibility with pseudo-elements */
+
+	border-bottom: 1px solid #cdcdcd;
+	
+	/* CSS3 Borders */
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	border-radius: 0px !important;
+	
+    display: block;
+    left: -10px;
+    padding: 8px 10px;
+    position: relative;
+    top: -10px;
+    width: 100%;
+	}
+	
+.css3_grid_admin_info
+{
+	position: absolute;
+	top: 3px;
+	width: 15px;
+	height: 15px;
+	background: url("../img/info.png");
+}
+.css3_grid_admin_info:hover
+{
+	background-position: 0 -15px;
+}
+.css3_grid_tooltip_column
+{
+	float: left;
+	width: 100px;
+	line-height: 150%;
+}
+.css3_grid_tooltip_column img
+{
+	float: left;
+}
+.css3_grid_tooltip_column label
+{
+	float: left;
+}

@@ -1,0 +1,29 @@
+.page_head .menu .current-menu-parent {background: #e44884;}
+a { color: #e44884;}
+.colored {color: #e44884 !important;}
+.top_line {background-color: #e44884 !important;}
+.page_head .menu .current-menu-item {background: #e44884 !important ;}
+.page_head .menu ul li:hover a { background:#e44884 }
+.page_head .menu ul li:hover:first-child > a:after { border-bottom-color:#e44884 ;}
+.page_head .menu ul ul li:hover:first-child > a:after { border-right-color: #e44884 ;}
+.page_head .menu ul ul a:hover { background:#e44884 !important }
+.blog_item .view a.info:hover {background-color:#e44884;}
+.blog_item .view a.link:hover {background-color:#e44884;}
+.pride_pg .current {background-color: #e44884;}
+.pride_pg a:hover  {background-color: #e44884;}
+.blog_sidebar a{ color:#e44884;}
+.filter_button:hover {background-color:#e44884;border-color:#e44884 }
+.filter_current { background-color:#e44884; border-color:#e44884;}
+.portfolio_item .view a.info:hover {background-color:#e44884;}
+.portfolio_item .view a.link:hover {background-color:#e44884;}
+.descr a { color: #e44884;}
+.portfolio_sidebar a{ color:#e44884;}
+.blog_item .meta a:hover { color:#e44884;}
+.blog_post_item_description .meta a:hover { color:#e44884;}
+.portfolio_post_item_description .meta a:hover { color:#e44884;}
+.page_sidebar a{ color:#e44884;}
+
+.blog_head h3 a:hover {color:#e44884;}
+.well a { color:#333;}
+.well a:hover { color:#e44884;}
+.twitter-block .well a { color:#fff;}

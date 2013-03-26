@@ -1,0 +1,68 @@
+// ALERT STYLES
+// ------------
+
+// Base alert styles
+.wpb_alert {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: @baseLineHeight;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  background-color: @warningBackground;
+  border: 1px solid @warningBorder;
+  .border-radius(4px);
+  color: @warningText;
+  clear: both;
+}
+
+// Alternate styles
+// ----------------
+
+.wpb_alert-success,
+div.wpb_alert-success {
+  background-color: @successBackground;
+  border-color: @successBorder;  
+  color: @successText;
+}
+.wpb_alert-danger,
+.wpb_alert-error,
+div.wpb_alert-danger,
+div.wpb_alert-error {
+  background-color: @errorBackground;
+  border-color: @errorBorder;
+  color: @errorText;
+}
+.wpb_alert-info,
+div.wpb_alert-info {
+  background-color: @infoBackground;
+  border-color: @infoBorder;
+  color: @infoText;
+}
+
+// Block alerts
+// ------------------------
+.wpb_alert-block {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.wpb_alert-block > p,
+.wpb_alert-block > ul {
+  margin-bottom: 0;
+}
+.wpb_alert-block p + p {
+  margin-top: 5px;
+}
+
+
+
+.wpb_alert .messagebox_text {
+	padding-left: 28px;
+	background: url(../vc/alert.png) no-repeat left center;
+}
+.wpb_alert-info .messagebox_text {
+	background: url(../vc/info.png) no-repeat left center;
+}
+.wpb_alert-success .messagebox_text {
+	background: url(../vc/tick.png) no-repeat left center;
+}
+.wpb_alert-error .messagebox_text {
+	background: url(../vc/exclamation.png) no-repeat left center;
+}

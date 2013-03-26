@@ -1,0 +1,16 @@
+/*
+Theme Name: BUILDER THEME
+Theme URI: http://themeforest.net/user/OrangeIdea/portfolio
+Description: BUILDER - Responsive Theme For WordPress
+Author: OrangeIdea
+Author URI: http://themeforest.net/user/OrangeIdea
+Version: 1.1.0
+License: 
+License URI: 
+*/
+@import url('assets/css/bootstrap.css');
+@import url('assets/css/bootstrap-responsive.css');
+@import url('assets/css/docs.css');
+@import url('assets/js/google-code-prettify/prettify.css');
+@import url('assets/nivo/nivo-slider.css');
+@import url('assets/css/prettyPhoto.css');

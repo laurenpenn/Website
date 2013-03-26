@@ -1,0 +1,241 @@
+25.01.2013 - ver 3.5.1
+   - WP native image selector added (for single image and galleries)
+   - delete icon in tabs
+   - add section for accordion fixed
+   - row extra class output on front end fixed
+   - IE images stretching removed
+   - "convert to new version" added support for 3rd party shortcodes
+
+22.01.2013 - ver 3.5
+   - Major update, read more about update: http://bit.ly/vc_34_to_35
+   - Fully rewriten backend UI, with better row->column logic
+   - Overall speed improvements
+   - Highly customizable for third party developers
+   - Due to large amount of css conflicts, original bootstrap was removed and forked "prefixed" one is used now
+   - Improved element's responsiveness
+   - .po & .mo files updated
+   - And many, many more... 
+
+18.12.2012 - ver 3.4.12
+   - Edit tab titles fixed
+
+13.12.2012 - ver 3.4.11
+   - var_dump() removed from shortcodes.php file
+   - pressing cancel button works correctly now
+   - depreceted function image_resize replaced with wp_get_image_editor()
+   - .po and .mo files updated
+
+12.12.2012 - ver 3.4.10
+   - Accordion "freezing" fixed
+   - WP 3.5 compatibility fixes added
+
+29.12.2012 - ver 3.4.9
+   - Introduced developers methods more info http://kb.wpbakery.com/index.php?title=Category:Visual_Composer
+   - Exceprts now are working for posts/pages created with Visual Composer
+   - Nivo slider updated (ver. 3.1)
+   - Responsive css can be turned off from Visual Composer settings page
+   - 
+
+15.11.2012 - ver 3.4.8
+   - fix for qTranslate (after recent update qTranslate was hiding Visual Composer button)
+   - new colorpicker param type added
+   - Template system updated
+
+09.11.2012 - ver 3.4.7
+   - Updates notifier added (beta)
+   - Toggling between Visual Composer/Classic view now works as it should be (content is updating correctly)
+   
+05.11.2012 - ver 3.4.6
+   - Raw HTML and Raw js content blocks updated
+
+*** 31.10.2012 - ver 3.4.5
+
+   - Fixed shortcodes initialization ([vc_column_text width="1/1" el_position="first last"] ...)
+   
+*** 23.10.2012 - ver 3.4.4
+
+   - wamp environment fix
+   
+*** 16.10.2012 - ver 3.4.3
+
+   - fixed "Empty visual editor"
+
+*** 11.10.2012 - ver 3.4.2
+
+   - fixed "Call to undefined function get_currentuserinfo()"
+   
+*** 09.10.2012 - ver 3.4.1
+
+   - Activation error fix
+   - Few small addons
+   
+*** 05.10.2012 - ver 3.4
+
+   - New facelifted backend interface
+   - New content block selection menu
+   - Call to action block in IE fixed
+   - Single image block: now image can be removed after upload
+   - VC initializing fixed (for users who changed default wp-content/plugins/ path)
+   - Raq html/Raw js content blocks non latin characters fixed
+   - New method for developers. Now you can completely override outputted html on frontend
+   - Google maps positioning in 2nd, 3rd, ..., tab fixed
+   - .po & .mo files updated
+
+*** 21.09.2012 - ver 3.3.3
+   
+   - image max-width set to 100%;
+   - Fixed image uploading layout (now it uses full width)
+   - locale string added in few __() and _e() functions
+   - .wpb_flickr_widget & .wpb_twitter_widget bottom margin added in LESS
+   - css background, changed to background-color where possible
+  
+*** 21.08.2012 - ver 3.3.2
+   
+   - second attempt to fix "Featured image"
+   
+*** 21.08.20012 - ver 3.3.1
+   
+   - add_them_support('post-thumbnails'); extends post thumbnails defined by theme
+
+*** 16.08.2012 - ver 3.3
+   
+   - This version main focus is on CSS files, they are improved. Content elements now share similar "default grey" style across all elements
+   - Bootstrap now comes with LESS files
+   - Bootstrap css rules stripped to prevent css conflicts with 3rd party themes/plugins
+   - js_composer_front.css: re-done. Now compiles from LESS files.
+   
+*** 14.08.2012 - ver 3.2.4
+   
+   - Video in tabs fixed
+   - Container extra class name applied to inner text blocks bug fixed
+   
+*** 09.08.2012 - ver 3.2.3
+   
+   - Settings page enhancments
+   
+*** 27.07.2012 - ver 3.2.2
+
+   - jQuery UI CSS facelifted, now should look great in every design.
+   - LESS files for jQuery UI now available in assets/ui-custom-theme/less
+   
+*** 24.07.2012 - ver 3.2.1
+
+   - jQuery Tabs switching fixed
+
+*** 23.07.2012 - ver 3.2.0
+
+   - Teaser grid: link target added
+   - Image grid placed in tabs bug fixed
+   - FlexSlider updated
+   - Masonry Layout for Teaser grid added
+   - Sorting in Teaser grid added
+   - Extra class name for containers added
+   - .js files outputs in footer
+   - If user switch Visual Composer mode when there's text already, then this text is wrapped in text block.
+   - Administrator now can set user roles related settings in Visual Compsoer->Settings
+   - Administrator now can set Visual Composer as default editor (per user role)
+   - Image gallery: link target added
+   - Single image element: link option added
+   - Posts slider: removed string "No featured image set" if no image is set
+   - Fixed problem with advanced custom fields
+   - .po file updated
+   
+*** 04.06.2012 - ver 3.1.0
+
+   - Major release
+   - Rewritten core. Now OOP driven
+   - Updated documentation and Advanced documentation
+   - Updated locale files
+   - 1/5 and 5/6 columns sizes added
+   - UI enhanced
+   - Single image element added
+   - Raw HTML element added
+   - Raw JS element added
+   - Drag & Drop works better now
+   - Adding images in galleries is easier now (WP native way)
+   - Bootstrap updated to 2.0.4
+  
+   
+10.05.2012 - ver 3.0.4
+
+   - HTML Comments removed from generated html code. Some themes wrapped them in <p></p> tag :(
+
+
+27.04.2012 - ver 3.0.3
+
+   - Alert box icons on front end added
+   - Image gallery. Now images can be shuffled/randomized
+   - Tested with Advanced TinyMCE plugin. Works OK
+   - Bootstrap updated to 2.0.3
+
+
+15.04.2012 - ver 3.0.2
+
+   - bootstrap.css cleaned, unused classes removed.
+
+
+14.04.2012 - ver 3.0.1
+
+   - Attached images field, now checks for deleted images and if ID doesn't exist - ID is removed.
+   - Cloning tabs, accordion and tour fixed.
+   - google+ added
+   - pinterest added
+   - German translation added. Contributed by aleccs
+   - Polish translation added. Contributed by Bartosz Arendt, Digital Factory
+   - apostrophe \' fixed
+   - Accordion droppable fixed, now it doesn't accept tabs, tour and accordion in it.
+   - .po file updated
+   - .container class name comment out from bootstrap.css file. Because it isn't used withing the plugin, but conflicts with 3rd part themes
+
+
+11.04.2012 - ver 3.0 - *Major release* - Fully rewritten
+
+   - New content blocks added (Accordion, Posts slider, Google maps, Video widget);
+   - Old content blocks extended (FAQ Toggle: default state option added, Image gallery: ability to link each slide individually added, new layout (simple grid) added, now you can enter size for your image WP native way. thumbnail, media, large;
+   - Tabs, Tours and Accordion content block are fully revamped: now they can accept other content elements inside them, as a result you can columns or image gallery right in tabs;
+   - Teaser (posts) grid: new filtering and sorting options added;
+
+
+
+09.02.2012 - ver 2.3.3 - prettyPhoto updated and few js improvements.
+
+07.02.2012 - ver 2.3.2 - js and css files now included with version number.
+
+27.01.2012 - ver 2.3.1 - Added additional "if" check to prevent error message when image can't be found or resized
+
+20.12.2011 - "no link" in VC teaser grid - "Read more" button removed & image wrapped in span; Visual composer now switching default WP content area to Visual mode automatically
+
+12.12.2011
+   - WP 3.3 compatibility;
+   - .clear class renamed to .vc_clear;
+   - Now tabs and tour slides have classname, as a result they can be targeted with css;
+   - If Visual Composer settings are empty, then columns are percent based.
+
+22.09.2011
+   - New content block added - "Text separator".
+
+15.09.2011
+   - .wrapper class renamed to .wpb_wrapper; 
+   - CSS file cleaned and tweaked;
+   - Posts grid -> Categories (narrowing by custom taxonomies) now works with custom post types and regular posts;
+   - New content element added - "Tour section";
+   - Fixed bug with image inserting into tabs;
+   - Checked that js_composer works great with YOAST SEO, some user reported that they don't work together.
+
+01.08.2011 - CSS improvements.
+
+21.06.2011 - Nested tabs bug fixed. Thanks to Justin.
+
+15.06.2011 - Scheduled update. Overall improvements.
+
+13.06.2011 - Now you can generate grid for multiple templates. Eg: For full width page, page with sidebar and so on.
+
+08.06.2011 - New content block *"Call to action box"*
+
+07.06.2011 - Few tweaks to the backend design, posts grid now can show posts in *Carousel*
+
+04.06.2011 - Redesigned backend, new content module *"Button"*
+
+31.05.2011 - Fully rewritten engine, as a result you can add your own shortcodes. Note: ver 2.0 isn't compatible with 1.2 plugin version, please delete old plugin first.
+
+24.05.2011 - New content block *"Widgetised Sidebar"*, few bugfixes.

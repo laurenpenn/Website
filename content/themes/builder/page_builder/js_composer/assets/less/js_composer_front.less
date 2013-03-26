@@ -1,0 +1,142 @@
+// Core variables and mixins
+@import "variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "mixins.less";
+@import "vc_mixins.less";
+
+
+/* Grid systems
+---------------------------------------------------------- */
+/* Containers */
+// Fixed layouts
+.vc_container {
+  .container-fixed();
+}
+
+// Fluid layouts
+.vc_container-fluid {
+  padding-right: @gridGutterWidth;
+  padding-left: @gridGutterWidth;
+  .clearfix();
+}
+/* end Containers ---------------------------------------- */
+
+/* Grid with fixed width columns */
+.wpb_row {
+  .wpb_box_sizing();
+}
+#grid > .core(@gridColumnWidth, @gridGutterWidth); 
+
+/* Grid with fluid columns */
+#grid > .fluid(@fluidGridColumnWidth, @fluidGridGutterWidth);
+
+/* end Grid systems -------------------------------------- */
+
+
+
+/* Responsive classes
+---------------------------------------------------------- */
+@import "responsive-utilities.less";
+/* end Responsive classes -------------------------------- */
+
+
+/* Visual Composer content elements styling
+---------------------------------------------------------- */
+@import "vc_separator.less";
+@import "vc_social_btns.less";
+@import "vc_toggle_faq.less"; // p:last-child margin bottom 0, toggle_content margin bottom vc_element_margin_botom
+@import "vc_widgetised_column.less";
+@import "vc_button.less";
+@import "vc_call_to_action.less";
+@import "vc_google_maps.less";
+@import "vc_tabs_tour_accordion.less";
+@import "vc_twitter.less";
+@import "vc_teaser_grid.less"; // refactor-refactor-refactor...
+@import "vc_image_gallery.less";
+@import "vc_alert.less";
+@import "vc_flickr.less";
+@import "vc_video_widget.less";
+@import "vc_post_slider.less";
+@import "vc_responsive.less";
+
+
+
+/* Content elements margins
+---------------------------------------------------------- */
+.wpb_alert p:last-child,
+#content .wpb_alert p:last-child, /* for twenty ten theme */
+.wpb_text_column p:last-child,
+.wpb_text_column *:last-child,
+
+#content .wpb_text_column p:last-child, /* for twenty ten theme */
+#content .wpb_text_column *:last-child, /* for twenty ten theme */
+
+.wpb_toggle_content p:last-child,
+
+.wpb_tab > div > .wpb_wrapper > .wpb_content_element:last-child,
+.wpb_accordion_section > .ui-accordion-content > div > .wpb_wrapper > .wpb_content_element:last-child { 
+	margin-bottom: 0;
+}
+
+//.wpb_text_column,
+//.wpb_tabs,
+//.wpb_tour,
+//.wpb_call_to_action,
+//.wpb_gmaps_widget,
+//.wpb_accordion,
+//.wpb_gallery,
+//.wpb_separator,
+//.wpb_twitter_widget,
+//.wpb_flickr_widget,
+//.wpb_video_widget,
+//ul.wpb_thumbnails-fluid > li,
+//.wpb_single_image*/
+.wpb_content_element,
+ul.wpb_thumbnails-fluid > li,
+.last_toggle_el_margin,
+.wpb_button {
+	margin-bottom: @vc_element_margin_bottom;
+}
+
+.wpb_alert,
+.fb_like,
+.twitter-share-button, .entry-content .twitter-share-button,
+.wpb_googleplus,
+.wpb_pinterest,
+.wpb_tab .wpb_content_element,
+.wpb_accordion .wpb_content_element,
+.wpb_toggle_content {
+	margin-bottom: @vc_element_margin_bottom/1.61; //1.61 - is golden ratio
+}
+
+.vc_text_separator {
+	margin-bottom: @vc_element_margin_bottom/3;
+}
+
+/* Remove unwanted margins in tabs, accordions, tours
+---------------------------------------------------------- */
+.vc_row-fluid.ui-accordion-content > .wpb_content_element:last-child,
+.wpb_tab.vc_row-fluid > .wpb_content_element:last-child {
+  margin-bottom: 0;
+}
+
+.wpb_tab.vc_row-fluid > .wpb_row:last-child > [class*="vc_span"] {
+  margin-bottom: -@vc_element_margin_bottom/1.61;
+}
+.vc_row-fluid.ui-accordion-content > .wpb_row:last-child > [class*="vc_span"] {
+  margin-bottom: -1em;
+}
+/* end Content elements margins -------------------------- */
+
+
+/* Useful css
+---------------------------------------------------------- */
+.wpb_content_element.wpb_single_image img {
+	height: auto;
+	max-width: 100%;
+}
+
+.wpb_heading,
+.entry-content .wpb_heading {
+  margin-top: 0;
+}
+/* end Useful css ---------------------------------------- */

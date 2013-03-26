@@ -1,0 +1,623 @@
+/* ==================== FONT FACE  ==================== */	
+/*@font-face 
+	{
+	font-family: 'YanoneKaffeesatzRegular';
+	src: url('../font/YanoneKaffeesatz-Regular-webfont.eot');
+	src: local('-'), url('../font/YanoneKaffeesatz-Regular-webfont.woff') format('woff'), url('../font/YanoneKaffeesatz-Regular-webfont.ttf') format('truetype'), url('../font/YanoneKaffeesatz-Regular-webfont.svg#webfontlKPF1zIT') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	}	*/
+
+/* ==================== PRICING TABLE  ==================== */
+/* --- base --- */
+div.p_table_1
+	{
+	width: 100%;
+	/*height: 100%;*/
+	font-size: 13px;
+	font-family: arial, sans-serif;
+	font-weight: normal;
+	color: #444444;
+	line-height: normal !important;
+	visibility: visible;
+	}
+
+/* --- hyperlinks --- */
+div.p_table_1 a
+	{
+	color: #444444;
+	text-decoration: none;
+	}
+	
+/* --- lists --- */
+div.p_table_1 ul
+	{
+	margin: 0px !important;
+	padding: 0px !important;
+	list-style-type: none;
+	overflow: visible;
+	}
+	
+div.p_table_1 li
+	{
+	margin: 0px !important;
+	padding: 0px !important;
+	list-style-type: none !important;
+	list-style-image: none !important;
+	font-size: 13px !important;
+	line-height: normal !important;
+	text-shadow: none !important;
+	}
+	
+div.p_table_1 li img
+	{
+	display: inline !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	background: none !important;
+	border: none !important;
+	visibility: visible !important;
+	}
+
+/* --- div aligns --- */
+div.p_table_1 .align_center
+	{
+	text-align: center;
+	}
+	
+/* --- div rounded corners --- */
+/* --- border radius 3px --- */	
+div.p_table_1 .radius3
+	{
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	}
+	
+/* --- border radius 5px top left --- */	
+div.p_table_1 .radius5_topleft
+	{
+	border-top-left-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	}
+	
+/* --- border radius 5px top right --- */	
+div.p_table_1 .radius5_topright
+	{
+	border-top-right-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topright: 5px;
+	}
+	
+/* ==================== HEADINGS  ==================== */
+/* ------ common styles ------  */
+div.p_table_1 h1,
+div.p_table_1 h2,
+div.p_table_1 h3
+	{
+	margin: 0px !important;
+	padding: 0px !important;
+	font-weight: normal !important;
+	border: 0;
+	line-height: normal !important;
+	letter-spacing: 0;
+	text-transform: none;
+	background: none;
+	text-shadow: none !important;
+	text-align: inherit !important;
+	font-style: normal !important;
+	}
+	
+div.p_table_1 h1
+	{
+	font-family: 'Yanone Kaffeesatz', arial, sans-serif !important;
+	font-size: 48px !important;
+	}
+	
+div.p_table_1 h1 span
+	{
+	font-family: 'Yanone Kaffeesatz', arial, sans-serif !important;
+	font-size: 59px !important;
+	text-shadow: none !important;
+	font-weight: normal !important;
+	padding: 0 !important;
+	background: none !important;
+	}
+
+div.p_table_1 h2
+	{
+	font-family: 'Yanone Kaffeesatz', arial, sans-serif !important;
+	font-size: 30px !important;
+	}
+
+div.p_table_1 h2 span
+	{
+	font-family: 'Yanone Kaffeesatz', arial, sans-serif !important;
+	font-size: 30px !important;
+	border: none !important;
+	font-weight: normal !important;
+    padding: 0 !important;
+	}
+	
+div.p_table_1 h3
+	{
+	font-family: arial, sans-serif !important;
+	font-size: 13px !important;
+	}	
+	
+/* ==================== COLUMNS  ==================== */
+/* ------ common styles ------  */
+div.p_table_1 div.column_1,
+div.p_table_1 div.column_2,
+div.p_table_1 div.column_3,
+div.p_table_1 div.column_4
+{
+/* transitions */
+-webkit-transition: box-shadow 0.25s ease;
+-moz-transition: box-shadow 0.25s ease;
+-o-transition: box-shadow 0.25s ease;
+-ms-transition: box-shadow 0.25s ease;
+transition: box-shadow 0.25s ease; 
+}
+/* --- header row 1 ---  */
+div.p_table_1 div.caption_column li.header_row_1 ,
+div.p_table_1 div.column_1 li.header_row_1,
+div.p_table_1 div.column_2 li.header_row_1,
+div.p_table_1 div.column_3 li.header_row_1,
+div.p_table_1 div.column_4 li.header_row_1
+	{
+	height: 46px;
+	width: 100%;
+	padding: 4px 0px 0px 0px !important;
+	}
+
+div.p_table_1 div.caption_column li.header_row_1 a,
+div.p_table_1 div.column_1 li.header_row_1 a,
+div.p_table_1 div.column_2 li.header_row_1 a,
+div.p_table_1 div.column_3 li.header_row_1 a,
+div.p_table_1 div.column_4 li.header_row_1 a
+	{
+	text-decoration: none !important;
+	}
+/* --- header row 2 ---  */
+div.p_table_1 div.caption_column li.header_row_2,
+div.p_table_1 div.column_1 li.header_row_2,
+div.p_table_1 div.column_2 li.header_row_2,
+div.p_table_1 div.column_3 li.header_row_2,
+div.p_table_1 div.column_4 li.header_row_2
+	{
+	height: 100px;
+	width: 100%;
+	padding: 3px 0px 7px 0px !important;
+	}
+	
+div.p_table_1 div.caption_column li.header_row_2 a,
+div.p_table_1 div.column_1 li.header_row_2 a,
+div.p_table_1 div.column_2 li.header_row_2 a,
+div.p_table_1 div.column_3 li.header_row_2 a,
+div.p_table_1 div.column_4 li.header_row_2 a
+	{
+	text-decoration: none !important;
+	}
+/* --- caption correction --- */
+div.p_table_1 div.caption_column li.header_row_2
+	{	
+	height: 72px;
+	width: 100%;
+	padding: 32px 0px 6px 10px !important;
+	}
+	
+/* ==================== CAPTION COLUMN  ==================== */
+div.p_table_1 div.caption_column
+	{
+	position: relative;
+	width: 180px;
+	/*height: 100%;*/
+	float: left;
+	}
+
+/* =================== COLUMN STYLE 1  ==================== */
+div.p_table_1 div.column_1
+	{
+	position: relative;
+	width: 160px;
+	/*height: 100%;*/
+	float: left;
+	}
+	
+/* ==================== COLUMN STYLE 2  ==================== */
+div.p_table_1 div.column_2
+	{
+	position: relative;
+	width: 160px;
+	/*height: 100%;*/
+	float: left;
+	}	
+	
+/* ==================== COLUMN STYLE 3  ==================== */
+div.p_table_1 div.column_3
+	{
+	position: relative;
+	width: 160px;
+	/*height: 100%;*/
+	float: left;
+	}
+	
+/* ==================== COLUMN STYLE 4  ==================== */
+div.p_table_1 div.column_4
+	{
+	position: relative;
+	width: 160px;
+	/*height: 100%;*/
+	float: left;
+	}
+	
+/* ========== COLUMN HOVERS ========== */
+div.p_table_1 div.column_1:hover,
+div.p_table_1 div.column_2:hover,
+div.p_table_1 div.column_3:hover,
+div.p_table_1 div.column_4:hover,
+div.p_table_1 div.active_column
+	{
+	z-index: 100;
+	left: -5px;
+	top: -15px;
+	/* shadow */
+	box-shadow: 5px 0px 30px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 5px 0px 30px rgba(0,0,0,0.5);
+	-moz-box-shadow: 5px 0px 30px rgba(0,0,0,0.5);
+	}
+	
+div.p_table_1 div.column_1:hover li.row_style_1,
+div.p_table_1 div.column_2:hover li.row_style_1,
+div.p_table_1 div.column_3:hover li.row_style_1,
+div.p_table_1 div.column_4:hover li.row_style_1,
+div.p_table_1 div.column_1:hover li.row_style_2,
+div.p_table_1 div.column_2:hover li.row_style_2,
+div.p_table_1 div.column_3:hover li.row_style_2,
+div.p_table_1 div.column_4:hover li.row_style_2,
+div.p_table_1 div.column_1:hover li.row_style_3,
+div.p_table_1 div.column_2:hover li.row_style_3,
+div.p_table_1 div.column_3:hover li.row_style_3,
+div.p_table_1 div.column_4:hover li.row_style_3,
+div.p_table_1 div.column_1:hover li.row_style_4,
+div.p_table_1 div.column_2:hover li.row_style_4,
+div.p_table_1 div.column_3:hover li.row_style_4,
+div.p_table_1 div.column_4:hover li.row_style_4,
+div.p_table_1 div.active_column li.row_style_1,
+div.p_table_1 div.active_column li.row_style_2,
+div.p_table_1 div.active_column li.row_style_3,
+div.p_table_1 div.active_column li.row_style_4
+	{
+	min-height: 28px;
+	padding: 12px 5px 0 5px !important;
+	}
+	
+div.p_table_1 div.column_1:hover li.header_row_1,
+div.p_table_1 div.column_2:hover li.header_row_1,
+div.p_table_1 div.column_3:hover li.header_row_1,
+div.p_table_1 div.column_4:hover li.header_row_1,
+div.p_table_1 div.active_column li.header_row_1
+	{
+	padding: 4px 5px 0 5px !important;
+	border-radius: 5px 5px 0px 0px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	}	
+
+div.p_table_1 div.column_1:hover li.header_row_2,
+div.p_table_1 div.column_2:hover li.header_row_2,
+div.p_table_1 div.column_3:hover li.header_row_2,
+div.p_table_1 div.column_4:hover li.header_row_2,
+div.p_table_1 div.active_column li.header_row_2
+	{
+	padding: 3px 5px 7px 5px !important;
+	}
+	
+div.p_table_1 div.column_1:hover li.footer_row,
+div.p_table_1 div.column_2:hover li.footer_row,
+div.p_table_1 div.column_3:hover li.footer_row,
+div.p_table_1 div.column_4:hover li.footer_row,
+div.p_table_1 div.active_column li.footer_row
+	{
+    padding: 14px 5px 6px 5px !important;
+	}	
+	
+/*==================== DATA ROWS  ====================*/
+/* ------ common styles ------  */
+div.p_table_1 li.row_style_1,
+div.p_table_1 li.row_style_2,
+div.p_table_1 li.row_style_3,
+div.p_table_1 li.row_style_4
+	{
+	width: 100%;
+	/*height: 100%;*/
+	min-height: 26px;
+	padding: 9px 0 0 !important;
+	float: left;
+	}
+
+div.p_table_1 li.row_style_1 span,
+div.p_table_1 li.row_style_2 span,
+div.p_table_1 li.row_style_3 span,
+div.p_table_1 li.row_style_4 span
+	{
+	padding: 0 10px !important;
+	font-size: 13px !important;
+	}
+	
+/* --- white ---  */
+div.p_table_1 li.row_style_1
+	{
+	background: #ffffff !important;
+	}
+	
+/* --- light gray ---  */
+div.p_table_1 li.row_style_2
+	{
+	background: #f6f6f6 !important;
+	}
+	
+/* --- mid gray ---  */
+div.p_table_1 li.row_style_3
+	{
+	background: #ebebeb !important;
+	}
+	
+/* --- dark gray ---  */
+div.p_table_1 li.row_style_4
+	{
+	background: #e3e3e3 !important;
+	}
+	
+/*========== FOOTER  ==========*/
+/* ------ common styles ------  */
+div.p_table_1 li.footer_row
+	{
+	width: 100%;
+	height: 40px;
+	padding: 14px 0 6px 0 !important;
+	float: left;
+	text-align: center;
+	border-top: 1px solid #d3d3d3;
+	border-bottom: 2px solid #404040;
+	background-color: #e2e2e2 !important; /* background color for non-css3 browsers */
+	/* gradient */
+	background-image: linear-gradient(top, #f6f6f6, #d0d0d0) !important; /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#d0d0d0') !important; /* IE5.5 - 7 */
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#d0d0d0') !important; /* IE8 */
+	background: -ms-linear-gradient(top, #f6f6f6, #d0d0d0) !important; /* IE9 */
+	background: -moz-linear-gradient(top, #f6f6f6, #d0d0d0) !important; /* Firefox */ 
+	background: -o-linear-gradient(top, #f6f6f6, #d0d0d0) !important; /* Opera 11  */
+	background: -webkit-linear-gradient(top, #f6f6f6, #d0d0d0) !important; /* Chrome 11  */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f6f6f6), color-stop(1, #d0d0d0)) !important; /* Chrome 10, Safari */	
+	}
+	
+/* --- button --- */
+div.p_table_1 a.sign_up
+	{
+	width: 120px;
+	height: 24px;
+	padding: 6px 0px 0px 0px !important;
+	display: block;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	text-shadow: 0px 1px 0px #ffffff; /* text shadow for firefox 3.6+ */ 
+	border: 1px solid #b5b5b5;
+	background-color: #d8d8d8; /* background color for non-css3 browsers */
+	outline: none;
+	/* gradient */
+	background-image: linear-gradient(top, #ffffff, #efefef 1px, #d8d8d8); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#efefef', endColorstr='#d8d8d8'); /* IE5.5 - 7 */
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#efefef', endColorstr='#d8d8d8'); /* IE8 */
+	background: -ms-linear-gradient(top, #ffffff, #efefef 1px, #d8d8d8); /* IE9 */
+	background: -moz-linear-gradient(top, #ffffff, #efefef 1px, #d8d8d8); /* Firefox */ 
+	background: -o-linear-gradient(top, #ffffff, #efefef 1px, #d8d8d8); /* Opera 11  */
+	background: -webkit-linear-gradient(top, #ffffff, #efefef 1px, #d8d8d8); /* Chrome 11  */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(0.05, #efefef), color-stop(1, #d8d8d8)); /* Chrome 10, Safari */
+	/* shadow */
+	box-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+	-webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+	-moz-box-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+	/* font */
+	font-weight: bold;
+	}
+
+/* --- button hover --- */
+div.p_table_1 a.sign_up:hover
+	{
+	height: 24px;
+	padding: 6px 0px 0px 0px !important;
+	text-shadow: 0px 1px 0px #ffffff; /* text shadow for firefox 3.6+ */ 
+	border: 1px solid #b5b5b5;
+	background-color: #c9c9c9; /* background color for non-css3 browsers */
+	outline: none;
+	/* gradient */
+	background-image: linear-gradient(top, #d2d2d2, #dedede 1px, #c9c9c9); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dedede', endColorstr='#c9c9c9'); /* IE5.5 - 7 */
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dedede', endColorstr='#c9c9c9'); /* IE8 */
+	background: -ms-linear-gradient(top, #d2d2d2, #dedede 1px, #c9c9c9); /* IE9 */
+	background: -moz-linear-gradient(top, #d2d2d2, #dedede 1px, #c9c9c9); /* Firefox */ 
+	background: -o-linear-gradient(top, #d2d2d2, #dedede 1px, #c9c9c9); /* Opera 11  */
+	background: -webkit-linear-gradient(top, #d2d2d2, #dedede 1px, #c9c9c9); /* Chrome 11  */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #d2d2d2), color-stop(0.05, #dedede), color-stop(1, #c9c9c9)); /* Chrome 10, Safari */
+	/* shadow */
+	box-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+	-webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+	-moz-box-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+	}
+	
+/* ==================== COLUMN RIBBONS  ==================== */
+/* --- base --- */
+div.p_table_1 div.column_ribbon
+	{
+	width: 42px;
+	height: 42px;
+	position: absolute;
+	right: 0;
+	}
+	
+/* --- hover--- */	
+div.p_table_1 div.column_1:hover div.column_ribbon,
+div.p_table_1 div.column_2:hover div.column_ribbon,
+div.p_table_1 div.column_3:hover div.column_ribbon,
+div.p_table_1 div.column_4:hover div.column_ribbon,
+div.p_table_1 div.active_column div.column_ribbon
+	{
+	right: -10px;
+	}
+	
+/* ------ ribbon styles ------  */
+/* --- style1--- */	
+div.ribbon_style1_best { background: url(../img/ribbon_style1_best.png); }
+div.ribbon_style1_buy { background: url(../img/ribbon_style1_buy.png); }
+div.ribbon_style1_free { background: url(../img/ribbon_style1_free.png); }
+div.ribbon_style1_free_caps { background: url(../img/ribbon_style1_free_caps.png); }
+div.ribbon_style1_fresh { background: url(../img/ribbon_style1_fresh.png); }
+div.ribbon_style1_gift_caps { background: url(../img/ribbon_style1_gift_caps.png); }
+div.ribbon_style1_heart { background: url(../img/ribbon_style1_heart.png); }
+div.ribbon_style1_hot { background: url(../img/ribbon_style1_hot.png); }
+div.ribbon_style1_hot_caps { background: url(../img/ribbon_style1_hot_caps.png); }
+div.ribbon_style1_new { background: url(../img/ribbon_style1_new.png); }
+div.ribbon_style1_new_caps { background: url(../img/ribbon_style1_new_caps.png); }
+div.ribbon_style1_no1 { background: url(../img/ribbon_style1_no1.png); }
+div.ribbon_style1_off5 { background: url(../img/ribbon_style1_off5.png); }
+div.ribbon_style1_off10 { background: url(../img/ribbon_style1_off10.png); }
+div.ribbon_style1_off15 { background: url(../img/ribbon_style1_off15.png); }
+div.ribbon_style1_off20 { background: url(../img/ribbon_style1_off20.png); }
+div.ribbon_style1_off25 { background: url(../img/ribbon_style1_off25.png); }
+div.ribbon_style1_off30 { background: url(../img/ribbon_style1_off30.png); }
+div.ribbon_style1_off35 { background: url(../img/ribbon_style1_off35.png); }
+div.ribbon_style1_off40 { background: url(../img/ribbon_style1_off40.png); }
+div.ribbon_style1_off50 { background: url(../img/ribbon_style1_off50.png); }
+div.ribbon_style1_off75 { background: url(../img/ribbon_style1_off75.png); }
+div.ribbon_style1_pack { background: url(../img/ribbon_style1_pack.png); }
+div.ribbon_style1_pro { background: url(../img/ribbon_style1_pro.png); }
+div.ribbon_style1_sale { background: url(../img/ribbon_style1_sale.png); }
+div.ribbon_style1_save { background: url(../img/ribbon_style1_save.png); }
+div.ribbon_style1_save_caps { background: url(../img/ribbon_style1_save_caps.png); }
+div.ribbon_style1_top { background: url(../img/ribbon_style1_top.png); }
+div.ribbon_style1_top_caps { background: url(../img/ribbon_style1_top_caps.png); }
+div.ribbon_style1_trial { background: url(../img/ribbon_style1_trial.png); }
+
+/* --- style2--- */
+div.ribbon_style2_best { background: url(../img/ribbon_style2_best.png); }
+div.ribbon_style2_buy { background: url(../img/ribbon_style2_buy.png); }
+div.ribbon_style2_free { background: url(../img/ribbon_style2_free.png); }
+div.ribbon_style2_free_caps { background: url(../img/ribbon_style2_free_caps.png); }
+div.ribbon_style2_fresh { background: url(../img/ribbon_style2_fresh.png); }
+div.ribbon_style2_gift_caps { background: url(../img/ribbon_style2_gift_caps.png); }
+div.ribbon_style2_heart { background: url(../img/ribbon_style2_heart.png); }
+div.ribbon_style2_hot { background: url(../img/ribbon_style2_hot.png); }
+div.ribbon_style2_hot_caps { background: url(../img/ribbon_style2_hot_caps.png); }
+div.ribbon_style2_new { background: url(../img/ribbon_style2_new.png); }
+div.ribbon_style2_new_caps { background: url(../img/ribbon_style2_new_caps.png); }
+div.ribbon_style2_no1 { background: url(../img/ribbon_style2_no1.png); }
+div.ribbon_style2_off5 { background: url(../img/ribbon_style2_off5.png); }
+div.ribbon_style2_off10 { background: url(../img/ribbon_style2_off10.png); }
+div.ribbon_style2_off15 { background: url(../img/ribbon_style2_off15.png); }
+div.ribbon_style2_off20 { background: url(../img/ribbon_style2_off20.png); }
+div.ribbon_style2_off25 { background: url(../img/ribbon_style2_off25.png); }
+div.ribbon_style2_off30 { background: url(../img/ribbon_style2_off30.png); }
+div.ribbon_style2_off35 { background: url(../img/ribbon_style2_off35.png); }
+div.ribbon_style2_off40 { background: url(../img/ribbon_style2_off40.png); }
+div.ribbon_style2_off50 { background: url(../img/ribbon_style2_off50.png); }
+div.ribbon_style2_off75 { background: url(../img/ribbon_style2_off75.png); }
+div.ribbon_style2_pack { background: url(../img/ribbon_style2_pack.png); }
+div.ribbon_style2_pro { background: url(../img/ribbon_style2_pro.png); }
+div.ribbon_style2_sale { background: url(../img/ribbon_style2_sale.png); }
+div.ribbon_style2_save { background: url(../img/ribbon_style2_save.png); }
+div.ribbon_style2_save_caps { background: url(../img/ribbon_style2_save_caps.png); }
+div.ribbon_style2_top { background: url(../img/ribbon_style2_top.png); }
+div.ribbon_style2_top_caps { background: url(../img/ribbon_style2_top_caps.png); }
+div.ribbon_style2_trial { background: url(../img/ribbon_style2_trial.png); }
+
+/* ==================== TOOLTIP  ==================== */
+/* --- base --- */
+div.p_table_1 a.css3_grid_tooltip
+	{
+	position: relative;
+	text-decoration: underline;	
+	}
+	
+div.p_table_1 a.css3_grid_tooltip:hover
+	{
+	color: #999999;
+	text-decoration: none !important;
+	}
+	
+div.p_table_1 a.css3_grid_tooltip:hover:after, div.p_table_1 a.css3_grid_tooltip:hover:before
+	{
+    display: block;
+	}
+
+/* --- tooltip container --- */
+div.p_table_1 a.css3_grid_tooltip:before
+	{
+	content: attr(title);
+	display: block;
+	width: 140px;
+    position: absolute;
+	z-index: 1000;
+    bottom: 150%;
+    left: -10px;
+    padding: 5px 10px 8px 10px;
+	text-align: left;
+    color: #ffffff;
+    display: none;
+	/* background */
+	background: #404040; /* CSS2 */
+	background: -moz-linear-gradient(top, #4e4e4e 0%, #404040 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4e4e4e), color-stop(100%,#404040)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #4e4e4e 0%,#404040 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #4e4e4e 0%,#404040 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #4e4e4e 0%,#404040 100%); /* IE10+ */
+	background: linear-gradient(top, #4e4e4e 0%,#404040 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4e4e4e', endColorstr='#404040',GradientType=0 ); /* IE6-9 */
+	/* border-radius */
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	/* box-shadow */
+	-webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+	/* text-shadow */
+	text-shadow: 0px 1px 0px #292929;
+	}
+	
+/* --- tooltip arrow --- */
+div.p_table_1 a.css3_grid_tooltip:after
+	{
+	content: "";
+	display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+	z-index: 1000;
+	bottom: 18px;
+	left: -2px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+	border-top: 6px solid #404040;
+    display: none;
+	background: transparent;	
+	}
+	
+/* --- misc --- */
+.clearfix:after
+{
+    font-size: 0px;
+    content: ".";
+    display: block;
+    height: 0px;
+    visibility: hidden;
+    clear: both;
+}

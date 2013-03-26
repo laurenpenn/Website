@@ -1,0 +1,1270 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: COMMANDER THEME v1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-09-14 18:46:13+0000\n"
+"Last-Translator: orangeidea <orangeidea@mail.ru>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: admin/classes/class.options_machine.php:485
+#@ default
+msgid "Last Backup : "
+msgstr ""
+
+#: admin/front-end/options.php:42
+#: admin/front-end/options.php:66
+#@ default
+msgid "Save All Changes"
+msgstr ""
+
+#: admin/front-end/options.php:67
+#@ default
+msgid "Options Reset"
+msgstr ""
+
+#: admin/functions/functions.mediauploader.php:20
+#@ default
+msgid "Options"
+msgstr ""
+
+#: admin/functions/functions.mediauploader.php:210
+#@ optionsframework
+msgid "Gallery"
+msgstr ""
+
+#: admin/functions/functions.mediauploader.php:210
+#@ optionsframework
+msgid "Previously Uploaded"
+msgstr ""
+
+#: functions/commander-recent-posts-thumbs-widget.php:40
+#@ crumble
+msgid "Display Recent Posts Thumbs by Categories for Magazine/Single Post/Reviews Widgets"
+msgstr ""
+
+#: functions/commander-recent-posts-thumbs-widget.php:46
+#@ crumble
+msgid "CrumbleMagazine : Recent Posts Thumbs"
+msgstr ""
+
+#: functions/commander-recent-posts-thumbs-widget.php:117
+#@ crumble
+msgid "Recent Posts Thumbs"
+msgstr ""
+
+#: functions/commander-recent-posts-thumbs-widget.php:121
+#: functions/commander-recent-posts-widget.php:113
+#: functions/commander-widget-twitter.php:261
+#@ crumble
+#@ commander
+msgid "Title:"
+msgstr ""
+
+#: functions/commander-recent-posts-thumbs-widget.php:126
+#: functions/commander-recent-posts-widget.php:118
+#@ crumble
+#@ commander
+msgid "Filter by Category:"
+msgstr ""
+
+#: functions/commander-recent-posts-thumbs-widget.php:137
+#: functions/commander-recent-posts-widget.php:129
+#@ crumble
+#@ commander
+msgid "Number of posts:"
+msgstr ""
+
+#: functions/commander-recent-posts-widget.php:41
+#@ commander
+msgid "Display Recent Posts by Categories"
+msgstr ""
+
+#: functions/commander-recent-posts-widget.php:47
+#@ commander
+msgid "commandertheme : Recent Posts"
+msgstr ""
+
+#: functions/commander-recent-posts-widget.php:109
+#@ commander
+msgid "Recent Posts"
+msgstr ""
+
+#: functions/commander-widget-twitter.php:35
+#@ commander
+msgid "Twitter Widget"
+msgstr ""
+
+#: functions/commander-widget-twitter.php:41
+#@ commander
+msgid "Commander : Twitter Widget"
+msgstr ""
+
+#: functions/commander-widget-twitter.php:255
+#@ commander
+msgid "Twetter Feed"
+msgstr ""
+
+#: functions/commander-widget-twitter.php:268
+#@ commander
+msgid "User Name:"
+msgstr ""
+
+#: functions/commander-widget-twitter.php:274
+#@ commander
+msgid "The Number of Displayed Messages:"
+msgstr ""
+
+#: header.php:106
+#: header.php:123
+#@ commander
+msgid "Bloc Archive:"
+msgstr ""
+
+#: header.php:106
+#: header.php:123
+#@ commander
+msgid "Search Results:"
+msgstr ""
+
+#: header.php:106
+#: header.php:123
+#@ commander
+msgid "404 Error"
+msgstr ""
+
+#: admin/functions/functions.options.php:114
+#@ commander
+msgid "General Settings"
+msgstr ""
+
+#: admin/functions/functions.options.php:118
+#@ commander
+msgid "GENERAL SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:119
+#@ commander
+msgid "Select your themes alternative color scheme"
+msgstr ""
+
+#: admin/functions/functions.options.php:127
+#@ commander
+msgid "Choose WebSite Layout"
+msgstr ""
+
+#: admin/functions/functions.options.php:134
+#@ commander
+msgid "Upload your favicon.ico"
+msgstr ""
+
+#: admin/functions/functions.options.php:141
+#@ commander
+msgid "Pick a color for the Container Background"
+msgstr ""
+
+#: admin/functions/functions.options.php:146
+#@ commander
+msgid "BOXED LAYOUT SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:147
+#@ commander
+msgid "Pick a color for the Background"
+msgstr ""
+
+#: admin/functions/functions.options.php:153
+#@ commander
+msgid "Past the value for top and bottom margin for main container"
+msgstr ""
+
+#: admin/functions/functions.options.php:159
+#@ commander
+msgid "Pick a image for the Background ( Choose first image to show only background color )"
+msgstr ""
+
+#: admin/functions/functions.options.php:168
+#@ commander
+msgid "HEADERS TYPOGRAPHY"
+msgstr ""
+
+#: admin/functions/functions.options.php:169
+#@ commander
+msgid "Specify the h1 header font properties"
+msgstr ""
+
+#: admin/functions/functions.options.php:175
+#@ commander
+msgid "Specify the h2 header font properties"
+msgstr ""
+
+#: admin/functions/functions.options.php:182
+#@ commander
+msgid "Specify the h3 header font properties"
+msgstr ""
+
+#: admin/functions/functions.options.php:188
+#@ commander
+msgid "Specify the h4 header font properties"
+msgstr ""
+
+#: admin/functions/functions.options.php:194
+#@ commander
+msgid "Specify the h5 header font properties"
+msgstr ""
+
+#: admin/functions/functions.options.php:200
+#@ commander
+msgid "Specify the h6 header font properties"
+msgstr ""
+
+#: admin/functions/functions.options.php:206
+#@ commander
+msgid "BODY TYPOGRAPHY"
+msgstr ""
+
+#: admin/functions/functions.options.php:207
+#@ commander
+msgid "Specify body font properties"
+msgstr ""
+
+#: admin/functions/functions.options.php:213
+#: admin/functions/functions.options.php:843
+#@ commander
+msgid "Pick a color for the links"
+msgstr ""
+
+#: admin/functions/functions.options.php:220
+#@ commander
+msgid "Pick a color for the links, when hover"
+msgstr ""
+
+#: admin/functions/functions.options.php:228
+#@ commander
+msgid "Top Line"
+msgstr ""
+
+#: admin/functions/functions.options.php:231
+#@ commander
+msgid "Show/Hide Top Line"
+msgstr ""
+
+#: admin/functions/functions.options.php:232
+#@ commander
+msgid "Show Top Line"
+msgstr ""
+
+#: admin/functions/functions.options.php:239
+#@ commander
+msgid "TOP LINE BACKGROND"
+msgstr ""
+
+#: admin/functions/functions.options.php:240
+#@ commander
+msgid "Pick a color for the 'Top Line' area background"
+msgstr ""
+
+#: admin/functions/functions.options.php:246
+#@ commander
+msgid "Pick a image for the 'Top Line' area background ( Choose first image to show only background color )"
+msgstr ""
+
+#: admin/functions/functions.options.php:254
+#@ commander
+msgid "TOP LINE TEXT"
+msgstr ""
+
+#: admin/functions/functions.options.php:255
+#: admin/functions/functions.options.php:1777
+#@ commander
+msgid "Past your text or HTML"
+msgstr ""
+
+#: admin/functions/functions.options.php:261
+#@ commander
+msgid "Pick a color for the Top Line text"
+msgstr ""
+
+#: admin/functions/functions.options.php:267
+#@ commander
+msgid "Pick a color for the Top Line links"
+msgstr ""
+
+#: admin/functions/functions.options.php:273
+#: admin/functions/functions.options.php:1795
+#@ commander
+msgid "Pick a color for the Top Line mouse over links"
+msgstr ""
+
+#: admin/functions/functions.options.php:279
+#@ commander
+msgid "SOCIAL ICONS"
+msgstr ""
+
+#: admin/functions/functions.options.php:280
+#@ commander
+msgid "Twitter"
+msgstr ""
+
+#: admin/functions/functions.options.php:286
+#@ commander
+msgid "Facebook"
+msgstr ""
+
+#: admin/functions/functions.options.php:292
+#@ commander
+msgid "Google +"
+msgstr ""
+
+#: admin/functions/functions.options.php:298
+#@ commander
+msgid "Dribbble"
+msgstr ""
+
+#: admin/functions/functions.options.php:304
+#@ commander
+msgid "Flickr"
+msgstr ""
+
+#: admin/functions/functions.options.php:310
+#@ commander
+msgid "YouTube"
+msgstr ""
+
+#: admin/functions/functions.options.php:318
+#@ commander
+msgid "Logo And Menu"
+msgstr ""
+
+#: admin/functions/functions.options.php:322
+#@ commander
+msgid "LOGO AND MENU AREA"
+msgstr ""
+
+#: admin/functions/functions.options.php:323
+#@ commander
+msgid "Top padding"
+msgstr ""
+
+#: admin/functions/functions.options.php:329
+#@ commander
+msgid "Bottom padding"
+msgstr ""
+
+#: admin/functions/functions.options.php:335
+#@ commander
+msgid "Pick a color for the 'Logo and Menu' area background"
+msgstr ""
+
+#: admin/functions/functions.options.php:341
+#@ commander
+msgid "Pick a image for the 'Logo and Menu' area background ( Choose first image to show only background color )"
+msgstr ""
+
+#: admin/functions/functions.options.php:350
+#@ commander
+msgid "LOGO OPTIONS"
+msgstr ""
+
+#: admin/functions/functions.options.php:351
+#@ commander
+msgid "Upload your logo"
+msgstr ""
+
+#: admin/functions/functions.options.php:357
+#@ default
+msgid "Top margin for logo"
+msgstr ""
+
+#: admin/functions/functions.options.php:363
+#@ commander
+msgid "MENU OPTIONS"
+msgstr ""
+
+#: admin/functions/functions.options.php:364
+#@ commander
+msgid "Top margin for menu"
+msgstr ""
+
+#: admin/functions/functions.options.php:370
+#@ commander
+msgid "Space between menu items"
+msgstr ""
+
+#: admin/functions/functions.options.php:376
+#@ commander
+msgid "Menu items Border Radius"
+msgstr ""
+
+#: admin/functions/functions.options.php:382
+#@ commander
+msgid "Menu items Font Size"
+msgstr ""
+
+#: admin/functions/functions.options.php:388
+#@ commander
+msgid "Menu items Horizontal Padding"
+msgstr ""
+
+#: admin/functions/functions.options.php:394
+#@ commander
+msgid "Menu items Vertical Padding"
+msgstr ""
+
+#: admin/functions/functions.options.php:400
+#@ commander
+msgid "Show Menu Items shadow"
+msgstr ""
+
+#: admin/functions/functions.options.php:407
+#@ commander
+msgid "Pick a color for the Menu items shadow"
+msgstr ""
+
+#: admin/functions/functions.options.php:415
+#@ commander
+msgid "Pick a color for the Menu item background"
+msgstr ""
+
+#: admin/functions/functions.options.php:421
+#@ commander
+msgid "Pick a color for the Menu item text"
+msgstr ""
+
+#: admin/functions/functions.options.php:428
+#@ commander
+msgid "Pick a color for the Menu item background when mouse over"
+msgstr ""
+
+#: admin/functions/functions.options.php:434
+#@ commander
+msgid "Pick a color for the Menu item text when mouse over"
+msgstr ""
+
+#: admin/functions/functions.options.php:442
+#@ commander
+msgid "Pick a color for the SubLevel Menu background"
+msgstr ""
+
+#: admin/functions/functions.options.php:448
+#@ commander
+msgid "Pick a color for the SubLevel Menu text"
+msgstr ""
+
+#: admin/functions/functions.options.php:457
+#@ commander
+msgid "Pick a color for the SubLevel Menu background when mouse over"
+msgstr ""
+
+#: admin/functions/functions.options.php:463
+#@ commander
+msgid "Pick a color for the SubLevel Menu text when mouse over"
+msgstr ""
+
+#: admin/functions/functions.options.php:473
+#@ commander
+msgid "Pick a color for the Current Menu item background"
+msgstr ""
+
+#: admin/functions/functions.options.php:479
+#@ commander
+msgid "Pick a color for the Current Menu item text"
+msgstr ""
+
+#: admin/functions/functions.options.php:502
+#@ commander
+msgid "Tag Line"
+msgstr ""
+
+#: admin/functions/functions.options.php:505
+#@ commander
+msgid "Show/Hide Tag Line"
+msgstr ""
+
+#: admin/functions/functions.options.php:506
+#@ commander
+msgid "Show Tag Line?"
+msgstr ""
+
+#: admin/functions/functions.options.php:513
+#@ commander
+msgid "Choose Tag Line Position on Home Page"
+msgstr ""
+
+#: admin/functions/functions.options.php:519
+#@ commander
+msgid "TAG LINE SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:520
+#@ commander
+msgid "Homepage Tag Line content"
+msgstr ""
+
+#: admin/functions/functions.options.php:526
+#@ commander
+msgid "Pick a color for the tag line background"
+msgstr ""
+
+#: admin/functions/functions.options.php:532
+#@ commander
+msgid "Pick a color for the tag line top border"
+msgstr ""
+
+#: admin/functions/functions.options.php:538
+#@ commander
+msgid "Pick a color for the tag line bottom border"
+msgstr ""
+
+#: admin/functions/functions.options.php:544
+#@ commander
+msgid "Tag Line top padding"
+msgstr ""
+
+#: admin/functions/functions.options.php:550
+#@ commander
+msgid "Tag Line bottom padding"
+msgstr ""
+
+#: admin/functions/functions.options.php:556
+#@ commander
+msgid "Tag Line bottom margin"
+msgstr ""
+
+#: admin/functions/functions.options.php:561
+#@ commander
+msgid "BACKGROUND PATTERNS"
+msgstr ""
+
+#: admin/functions/functions.options.php:562
+#: admin/functions/functions.options.php:594
+#: admin/functions/functions.options.php:622
+#: admin/functions/functions.options.php:835
+#: admin/functions/functions.options.php:939
+#: admin/functions/functions.options.php:976
+#: admin/functions/functions.options.php:1006
+#: admin/functions/functions.options.php:1223
+#: admin/functions/functions.options.php:1310
+#: admin/functions/functions.options.php:1351
+#: admin/functions/functions.options.php:1399
+#: admin/functions/functions.options.php:1455
+#: admin/functions/functions.options.php:1509
+#: admin/functions/functions.options.php:1539
+#: admin/functions/functions.options.php:1641
+#@ commander
+msgid "Select a background pattern ( Choose first image to show only background color )"
+msgstr ""
+
+#: admin/functions/functions.options.php:574
+#@ commander
+msgid "Page Sidebar"
+msgstr ""
+
+#: admin/functions/functions.options.php:579
+#: admin/functions/functions.options.php:961
+#: admin/functions/functions.options.php:1494
+#@ commander
+msgid "SIDEBAR AREA SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:580
+#: admin/functions/functions.options.php:603
+#: admin/functions/functions.options.php:987
+#: admin/functions/functions.options.php:1495
+#: admin/functions/functions.options.php:1520
+#@ commander
+msgid "Pick a color for the widget background"
+msgstr ""
+
+#: admin/functions/functions.options.php:586
+#: admin/functions/functions.options.php:616
+#: admin/functions/functions.options.php:968
+#: admin/functions/functions.options.php:1000
+#: admin/functions/functions.options.php:1501
+#: admin/functions/functions.options.php:1533
+#@ commander
+msgid "Border radius value"
+msgstr ""
+
+#: admin/functions/functions.options.php:602
+#: admin/functions/functions.options.php:986
+#: admin/functions/functions.options.php:1519
+#@ commander
+msgid "WIDGET SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:610
+#: admin/functions/functions.options.php:994
+#: admin/functions/functions.options.php:1527
+#@ commander
+msgid "Pick a color for the widget border"
+msgstr ""
+
+#: admin/functions/functions.options.php:631
+#: admin/functions/functions.options.php:1015
+#: admin/functions/functions.options.php:1548
+#@ commander
+msgid "Pick a color for the widget header"
+msgstr ""
+
+#: admin/functions/functions.options.php:637
+#: admin/functions/functions.options.php:1021
+#: admin/functions/functions.options.php:1554
+#@ commander
+msgid "Pick a color for 'separator' after widget header"
+msgstr ""
+
+#: admin/functions/functions.options.php:644
+#: admin/functions/functions.options.php:1028
+#: admin/functions/functions.options.php:1561
+#@ commander
+msgid "Pick a color for the widget text"
+msgstr ""
+
+#: admin/functions/functions.options.php:650
+#: admin/functions/functions.options.php:657
+#: admin/functions/functions.options.php:1034
+#: admin/functions/functions.options.php:1041
+#: admin/functions/functions.options.php:1567
+#: admin/functions/functions.options.php:1574
+#@ commander
+msgid "Pick a color for the widget links"
+msgstr ""
+
+#: admin/functions/functions.options.php:666
+#@ commander
+msgid "Portfolio"
+msgstr ""
+
+#: admin/functions/functions.options.php:671
+#@ commander
+msgid "CHOOSE PORTFOLIO STYLE"
+msgstr ""
+
+#: admin/functions/functions.options.php:679
+#@ commander
+msgid "Amount of projects on one page"
+msgstr ""
+
+#: admin/functions/functions.options.php:685
+#@ commander
+msgid "FILTER BUTTONS SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:686
+#@ commander
+msgid "Vertical padding amount"
+msgstr ""
+
+#: admin/functions/functions.options.php:692
+#@ commander
+msgid "Horizontal padding amount"
+msgstr ""
+
+#: admin/functions/functions.options.php:698
+#@ commander
+msgid "Right margin amount"
+msgstr ""
+
+#: admin/functions/functions.options.php:704
+#@ commander
+msgid "Pick a color for buttons background"
+msgstr ""
+
+#: admin/functions/functions.options.php:710
+#@ commander
+msgid "Pick a color for buttons border"
+msgstr ""
+
+#: admin/functions/functions.options.php:716
+#@ commander
+msgid "Pick a color for buttons text"
+msgstr ""
+
+#: admin/functions/functions.options.php:722
+#@ commander
+msgid "Pick a color for text shadow"
+msgstr ""
+
+#: admin/functions/functions.options.php:729
+#@ commander
+msgid "Font size"
+msgstr ""
+
+#: admin/functions/functions.options.php:735
+#@ commander
+msgid "Border radius amount"
+msgstr ""
+
+#: admin/functions/functions.options.php:741
+#@ commander
+msgid "Pick a color for buttons background when hover"
+msgstr ""
+
+#: admin/functions/functions.options.php:747
+#@ commander
+msgid "Pick a color for buttons text when hover"
+msgstr ""
+
+#: admin/functions/functions.options.php:754
+#: admin/functions/functions.options.php:1136
+#@ commander
+msgid "IMAGE HOVER EFFECTS (RGBA)"
+msgstr ""
+
+#: admin/functions/functions.options.php:755
+#: admin/functions/functions.options.php:1137
+#@ commander
+msgid "First rgba value (red color)"
+msgstr ""
+
+#: admin/functions/functions.options.php:761
+#: admin/functions/functions.options.php:1143
+#@ commander
+msgid "Second rgba value (green color)"
+msgstr ""
+
+#: admin/functions/functions.options.php:767
+#: admin/functions/functions.options.php:1149
+#@ commander
+msgid "Third rgba value (blue color)"
+msgstr ""
+
+#: admin/functions/functions.options.php:774
+#: admin/functions/functions.options.php:1156
+#@ commander
+msgid "Fourth rgba value (opacity)"
+msgstr ""
+
+#: admin/functions/functions.options.php:781
+#: admin/functions/functions.options.php:1163
+#@ commander
+msgid "ZOOM AND LINK ICONS SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:782
+#: admin/functions/functions.options.php:1164
+#@ commander
+msgid "Choose Icons for image hover"
+msgstr ""
+
+#: admin/functions/functions.options.php:789
+#: admin/functions/functions.options.php:1171
+#@ commander
+msgid "Upload Link icon"
+msgstr ""
+
+#: admin/functions/functions.options.php:795
+#: admin/functions/functions.options.php:1177
+#@ commander
+msgid "Upload Zoom icon"
+msgstr ""
+
+#: admin/functions/functions.options.php:802
+#: admin/functions/functions.options.php:1184
+#@ commander
+msgid "Pick a color for the icons background"
+msgstr ""
+
+#: admin/functions/functions.options.php:808
+#: admin/functions/functions.options.php:1190
+#@ commander
+msgid "Pick a color for the icons background when hover"
+msgstr ""
+
+#: admin/functions/functions.options.php:814
+#@ commander
+msgid "SMALL DESCRIPTIOS SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:823
+#@ commander
+msgid "Pick a color for the background"
+msgstr ""
+
+#: admin/functions/functions.options.php:829
+#@ commander
+msgid "Pick a color for the border"
+msgstr ""
+
+#: admin/functions/functions.options.php:849
+#: admin/functions/functions.options.php:856
+#@ commander
+msgid "Pick a color for the links when hover"
+msgstr ""
+
+#: admin/functions/functions.options.php:863
+#@ commander
+msgid "Pick a color small description"
+msgstr ""
+
+#: admin/functions/functions.options.php:870
+#@ commander
+msgid "Small description font size"
+msgstr ""
+
+#: admin/functions/functions.options.php:879
+#@ commander
+msgid "Portfolio Post"
+msgstr ""
+
+#: admin/functions/functions.options.php:883
+#@ commander
+msgid "CHOOSE DETAILS PAGE STYLE"
+msgstr ""
+
+#: admin/functions/functions.options.php:891
+#@ commander
+msgid "DESCRIPTION SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:892
+#@ commander
+msgid "Show 'Next post and Previous post' pagination?"
+msgstr ""
+
+#: admin/functions/functions.options.php:899
+#@ commander
+msgid "Pick a color for the 'Next post and Previous post"
+msgstr ""
+
+#: admin/functions/functions.options.php:905
+#@ commander
+msgid "Pick a color for the 'Next post and Previous post color when hover"
+msgstr ""
+
+#: admin/functions/functions.options.php:914
+#: admin/functions/functions.options.php:1205
+#: admin/functions/functions.options.php:1333
+#: admin/functions/functions.options.php:1373
+#@ commander
+msgid "Padding value"
+msgstr ""
+
+#: admin/functions/functions.options.php:921
+#: admin/functions/functions.options.php:1211
+#: admin/functions/functions.options.php:1292
+#: admin/functions/functions.options.php:1387
+#@ commander
+msgid "Pick a color for background"
+msgstr ""
+
+#: admin/functions/functions.options.php:927
+#: admin/functions/functions.options.php:1197
+#: admin/functions/functions.options.php:1298
+#: admin/functions/functions.options.php:1345
+#: admin/functions/functions.options.php:1381
+#: admin/functions/functions.options.php:1448
+#@ commander
+msgid "Pick a color for text"
+msgstr ""
+
+#: admin/functions/functions.options.php:933
+#: admin/functions/functions.options.php:1217
+#: admin/functions/functions.options.php:1304
+#: admin/functions/functions.options.php:1393
+#@ commander
+msgid "Pick a color for border"
+msgstr ""
+
+#: admin/functions/functions.options.php:949
+#@ commander
+msgid "Portfolio Sidebar"
+msgstr ""
+
+#: admin/functions/functions.options.php:953
+#: admin/functions/functions.options.php:1486
+#@ commander
+msgid "CHOOSE SIDEBAR POSITION"
+msgstr ""
+
+#: admin/functions/functions.options.php:1048
+#@ commander
+msgid "Blog"
+msgstr ""
+
+#: admin/functions/functions.options.php:1052
+#@ commander
+msgid "CHOOSE BLOG STYLE"
+msgstr ""
+
+#: admin/functions/functions.options.php:1060
+#@ commander
+msgid "DATE SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:1061
+#@ commander
+msgid "Show Posts Date?"
+msgstr ""
+
+#: admin/functions/functions.options.php:1068
+#@ commander
+msgid "Show Date Icon?"
+msgstr ""
+
+#: admin/functions/functions.options.php:1075
+#@ commander
+msgid "Pick a color for the Blog date background"
+msgstr ""
+
+#: admin/functions/functions.options.php:1081
+#@ commander
+msgid "Pick a color for the Blog date text"
+msgstr ""
+
+#: admin/functions/functions.options.php:1087
+#@ commander
+msgid "Pick a color for the Blog date text shadow"
+msgstr ""
+
+#: admin/functions/functions.options.php:1093
+#@ commander
+msgid "Past the value for border radius"
+msgstr ""
+
+#: admin/functions/functions.options.php:1099
+#: admin/functions/functions.options.php:1247
+#@ commander
+msgid "META TAGS SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:1100
+#: admin/functions/functions.options.php:1248
+#@ commander
+msgid "Show Post Author?"
+msgstr ""
+
+#: admin/functions/functions.options.php:1108
+#: admin/functions/functions.options.php:1256
+#@ commander
+msgid "Show Post Category?"
+msgstr ""
+
+#: admin/functions/functions.options.php:1115
+#: admin/functions/functions.options.php:1263
+#@ commander
+msgid "Show Post Comments?"
+msgstr ""
+
+#: admin/functions/functions.options.php:1123
+#: admin/functions/functions.options.php:1272
+#@ commander
+msgid "Pick a color for the Blog meta color"
+msgstr ""
+
+#: admin/functions/functions.options.php:1129
+#: admin/functions/functions.options.php:1278
+#@ commander
+msgid "Pick a color for the Blog meta color when hover"
+msgstr ""
+
+#: admin/functions/functions.options.php:1196
+#@ commander
+msgid "POST PREVIEW SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:1242
+#@ commander
+msgid "Blog Post"
+msgstr ""
+
+#: admin/functions/functions.options.php:1284
+#@ commander
+msgid "POST SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:1318
+#@ commander
+msgid "SHARE OPTIONS"
+msgstr ""
+
+#: admin/functions/functions.options.php:1327
+#@ commander
+msgid "'Share' text"
+msgstr ""
+
+#: admin/functions/functions.options.php:1339
+#@ commander
+msgid "Pick a color for Background"
+msgstr ""
+
+#: admin/functions/functions.options.php:1358
+#@ commander
+msgid "ABOUT AUTHOR OPTIONS"
+msgstr ""
+
+#: admin/functions/functions.options.php:1359
+#@ commander
+msgid "Show 'About Author'?"
+msgstr ""
+
+#: admin/functions/functions.options.php:1366
+#@ commander
+msgid "Header text"
+msgstr ""
+
+#: admin/functions/functions.options.php:1408
+#@ commander
+msgid "COMMENTS OPTIONS"
+msgstr ""
+
+#: admin/functions/functions.options.php:1409
+#@ commander
+msgid "Show 'comments'?"
+msgstr ""
+
+#: admin/functions/functions.options.php:1417
+#: admin/functions/functions.options.php:1430
+#@ commander
+msgid "Left padding value"
+msgstr ""
+
+#: admin/functions/functions.options.php:1424
+#@ commander
+msgid "Pick a color for MAIN LEFT border"
+msgstr ""
+
+#: admin/functions/functions.options.php:1436
+#@ commander
+msgid "Pick a color for comments border"
+msgstr ""
+
+#: admin/functions/functions.options.php:1442
+#@ commander
+msgid "Pick a color for comments background"
+msgstr ""
+
+#: admin/functions/functions.options.php:1482
+#@ commander
+msgid "Blog Sidebar"
+msgstr ""
+
+#: admin/functions/functions.options.php:1586
+#@ commander
+msgid "Pagination"
+msgstr ""
+
+#: admin/functions/functions.options.php:1589
+#@ commander
+msgid "PAGINATION SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:1590
+#@ commander
+msgid "Pick a color for the element background"
+msgstr ""
+
+#: admin/functions/functions.options.php:1596
+#@ commander
+msgid "Pick a color for the element text"
+msgstr ""
+
+#: admin/functions/functions.options.php:1602
+#@ commander
+msgid "Pick a color for the element text shadow"
+msgstr ""
+
+#: admin/functions/functions.options.php:1609
+#@ commander
+msgid "Vertical padding value"
+msgstr ""
+
+#: admin/functions/functions.options.php:1615
+#: admin/functions/functions.options.php:1621
+#@ commander
+msgid "Horizontal padding value"
+msgstr ""
+
+#: admin/functions/functions.options.php:1628
+#@ commander
+msgid "Pick a color for the current and hover elements background"
+msgstr ""
+
+#: admin/functions/functions.options.php:1634
+#@ commander
+msgid "Pick a color for the current and hover elements text"
+msgstr ""
+
+#: admin/functions/functions.options.php:1652
+#@ commander
+msgid "Footer"
+msgstr ""
+
+#: admin/functions/functions.options.php:1656
+#@ commander
+msgid "FOOTER SETTINGS"
+msgstr ""
+
+#: admin/functions/functions.options.php:1657
+#@ commander
+msgid "Pick a color for the footer background"
+msgstr ""
+
+#: admin/functions/functions.options.php:1664
+#@ commander
+msgid "Select a footer background pattern ( Choose first image to show only background color )"
+msgstr ""
+
+#: admin/functions/functions.options.php:1672
+#@ commander
+msgid "Footer top margin"
+msgstr ""
+
+#: admin/functions/functions.options.php:1678
+#@ commander
+msgid "Footer top padding"
+msgstr ""
+
+#: admin/functions/functions.options.php:1684
+#@ commander
+msgid "Footer bottom padding"
+msgstr ""
+
+#: admin/functions/functions.options.php:1690
+#@ commander
+msgid "Footer top bodrer value"
+msgstr ""
+
+#: admin/functions/functions.options.php:1696
+#@ commander
+msgid "Pick a color for the footer top border"
+msgstr ""
+
+#: admin/functions/functions.options.php:1702
+#@ commander
+msgid "Pick a color for the footer headers"
+msgstr ""
+
+#: admin/functions/functions.options.php:1708
+#@ commander
+msgid "Pick a color for the lines after headers"
+msgstr ""
+
+#: admin/functions/functions.options.php:1714
+#@ commander
+msgid "Pick a color for the footer text"
+msgstr ""
+
+#: admin/functions/functions.options.php:1720
+#@ commander
+msgid "Pick a color for the footer strong text elements"
+msgstr ""
+
+#: admin/functions/functions.options.php:1727
+#@ commander
+msgid "Pick a color for the footer small text elements"
+msgstr ""
+
+#: admin/functions/functions.options.php:1734
+#@ commander
+msgid "Pick a color for the footer links"
+msgstr ""
+
+#: admin/functions/functions.options.php:1740
+#@ commander
+msgid "Pick a color for the footer hovered links"
+msgstr ""
+
+#: admin/functions/functions.options.php:1750
+#@ commander
+msgid "Bottom Line"
+msgstr ""
+
+#: admin/functions/functions.options.php:1753
+#@ commander
+msgid "Show/Hide Bottom Line"
+msgstr ""
+
+#: admin/functions/functions.options.php:1754
+#@ commander
+msgid "Show Bottom Line?"
+msgstr ""
+
+#: admin/functions/functions.options.php:1761
+#@ commander
+msgid "BOTTOM LINE BACKGROND"
+msgstr ""
+
+#: admin/functions/functions.options.php:1762
+#@ commander
+msgid "Pick a color for the 'Bottom Line' area background"
+msgstr ""
+
+#: admin/functions/functions.options.php:1768
+#@ commander
+msgid "Pick a image for the 'Bottom Line' area background ( Choose first image to show only background color )"
+msgstr ""
+
+#: admin/functions/functions.options.php:1776
+#@ commander
+msgid "BOTTOM LINE TEXT"
+msgstr ""
+
+#: admin/functions/functions.options.php:1783
+#@ commander
+msgid "Pick a color for the Bottom Line text"
+msgstr ""
+
+#: admin/functions/functions.options.php:1789
+#@ commander
+msgid "Pick a color for the Bottom Line links"
+msgstr ""
+
+#: admin/functions/functions.options.php:1808
+#@ commander
+msgid "Backup Options"
+msgstr ""
+
+#: admin/functions/functions.options.php:1811
+#@ commander
+msgid "Backup and Restore Options"
+msgstr ""
+
+#: admin/functions/functions.options.php:1815
+#@ commander
+msgid "You can use the two buttons below to backup your current options, and then restore it back at a later time. This is useful if you want to experiment on the options but would like to keep the old settings in case you need it back."
+msgstr ""
+
+#: admin/functions/functions.options.php:1818
+#@ commander
+msgid "Transfer Theme Options Data"
+msgstr ""
+
+#: admin/functions/functions.options.php:1822
+#@ commander
+msgid "You can tranfer the saved options data between different installs by copying the text inside the text box. To import data from another install, replace the data in the text box with the one from another install and click 'Import Options'"
+msgstr ""
+
+#: admin/functions/functions.options.php:1827
+#@ commander
+msgid "Theme Update"
+msgstr ""
+
+#: admin/functions/functions.options.php:1830
+#@ commander
+msgid "THEME UPDATE OPTIONS"
+msgstr ""
+
+#: admin/functions/functions.options.php:1831
+#@ commander
+msgid "Please set your ENVATO Username"
+msgstr ""
+
+#: admin/functions/functions.options.php:1837
+#@ commander
+msgid "Please set your API code (can be found on your 'Settings' page)"
+msgstr ""
+

@@ -1,0 +1,134 @@
+
+	body
+	{
+		margin:0px;
+		padding:0px;
+		color:#444444;
+		font-size:14px;
+		line-height:150%;
+		background-color:#31373d;
+		font-family:Segoe UI,Tahoma;
+	}
+	
+	a.menu:link,a.menu:active,a.menu:visited
+	{
+		width:100%;
+		color:#ffffff;
+		display:block;
+		font-size:14px;
+		text-decoration:none;
+		padding:3px 0px 3px 25px;
+		font-family:Segoe UI,Tahoma;
+		background-repeat:no-repeat;
+		background-position:10px center;
+		border-bottom:solid 1px #414850;
+		background-image:url('../images/bullet.png');	
+	}
+	
+	a
+	{
+		color:#59a0e3;
+	}
+	
+	a.menu:hover,
+	a.submenu:hover
+	{
+		text-decoration:underline;
+	}
+	
+	a.submenu:link,a.submenu:active,a.submenu:visited
+	{
+		padding-left:40px;
+		background-position:25px center;
+	}
+	
+	.floatContent
+	{
+		height:100%;
+		overflow:hidden;
+	}
+	
+	div.mainSection
+	{
+		width:920px;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	
+	div.header
+	{
+		width:920px;
+		height:115px;
+		background-repeat:no-repeat;
+		background-image:url('../images/quantica_header.png');
+	}
+	
+	div.center
+	{
+		clear:both;
+	}
+	
+	div.content
+	{
+		float:left;
+		width:680px;
+		padding:15px;
+		min-height:400px;
+		background-color:#fff;
+	}
+	
+	div.contentHeader
+	{
+		color:#59a0e3;
+		display:block;
+		font-size:18px;
+		margin:25px 0px 15px 0px;
+	}
+	
+	div.projectTitle
+	{
+		color:#59a0e3;
+		display:block;
+		font-size:25px;	
+	}
+	
+	div.contentHeaderSmall
+	{
+		color:#59a0e3;
+		display:block;
+		font-size:14px;
+		margin:15px 0px 5px 0px;	
+	}
+	
+	div.menu
+	{
+		float:right;
+		width:200px;
+		padding-left:10px;
+		background-repeat:repeat-x;
+		background-image:url('../images/menu_background.png');		
+	}
+	
+	div.footer
+	{
+		width:920px;
+		height:90px;
+		background-repeat:no-repeat;
+		background-image:url('../images/quantica_footer.png');		
+	}
+	
+	pre.code
+	{
+		color:#444444;
+		overflow-y:auto;
+		line-height:19px !important;
+		font:13px "Courier New";
+		border:solid 1px #e1e5e9;
+		background-image:url('../images/pre_background.png');	
+	}
+
+	span.file
+	{
+		color:#414549;
+		border-bottom:dotted 1px #c1c5c9;
+	}	

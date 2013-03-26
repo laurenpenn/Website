@@ -1,0 +1,126 @@
+/* ============ Style 5 ============= */
+/* ========== HEADINGS  ========== */
+div.p_table_1_5 h1.col1,
+div.p_table_1_5 h1.col2,
+div.p_table_1_5 h1.col3,
+div.p_table_1_5 h1.col4
+	{
+	color: #ffffff !important;
+	}
+	
+div.p_table_1_5 h1 span
+	{
+	color: #ffffff !important;
+	}
+
+div.p_table_1_5 h2.col1,
+div.p_table_1_5 h2.col2,
+div.p_table_1_5 h2.col3,
+div.p_table_1_5 h2.col4
+	{
+	color: #ffffff !important;
+	}
+	
+div.p_table_1_5 h2.caption
+	{
+	color: #ef9a36 !important;
+	}
+	
+div.p_table_1_5 h2.caption span
+	{
+	color: #f6ba18 !important;
+	text-shadow: none !important;
+	}	
+	
+div.p_table_1_5 h3.col1,
+div.p_table_1_5 h3.col2,
+div.p_table_1_5 h3.col3,
+div.p_table_1_5 h3.col4
+	{
+	color: #ffffff !important;
+	}
+	
+/* ========== CAPTION COLUMN  ========== */
+/* --- header row 1 ---  */
+div.p_table_1_5 div.caption_column li.header_row_1 
+	{
+	border-top: 0;
+	border-bottom: 1px solid #ffffff;
+	background: #ffffff !important;
+	}
+	
+/* --- header row 2 ---  */
+div.p_table_1_5 div.caption_column li.header_row_2
+	{
+	border-top: 1px solid #ffffff;
+	border-bottom: 1px solid #ffffff;
+	background: #ffffff !important;
+	}
+
+/* ========== COLUMN STYLE 1  ========== */
+/* --- header row 1 ---  */
+div.p_table_1_5 div.column_1 li.header_row_1
+	{
+	border-top: 0;
+	border-bottom: 1px solid #e18416;
+	background: #e18416 !important;
+	}
+	
+/* --- header row 2 ---  */
+div.p_table_1_5 div.column_1 li.header_row_2
+	{
+	border-top: 1px solid #ef9a36;
+	border-bottom: 1px solid #ef9a36;
+	background: #ef9a36 !important;
+	}
+	
+/* ========== COLUMN STYLE 2  ========== */
+/* --- header row 1 ---  */
+div.p_table_1_5 div.column_2 li.header_row_1
+	{
+	border-top: 0;
+	border-bottom: 1px solid #e9aa00;
+	background: #e9aa00 !important;
+	}
+	
+/* --- header row 2 ---  */
+div.p_table_1_5 div.column_2 li.header_row_2
+	{
+	border-top: 1px solid #f6ba18;
+	border-bottom: 1px solid #f6ba18;
+	background: #f6ba18 !important;
+	}
+	
+/* ========== COLUMN STYLE 3  ========== */
+/* --- header row 1 ---  */
+div.p_table_1_5 div.column_3 li.header_row_1
+	{
+	border-top: 0;
+	border-bottom: 1px solid #839c0e;
+	background: #839c0e !important;
+	}
+	
+/* --- header row 2 ---  */
+div.p_table_1_5 div.column_3 li.header_row_2
+	{
+	border-top: 1px solid #94ac26;
+	border-bottom: 1px solid #94ac26;
+	background: #94ac26 !important;
+	}
+	
+/* ========== COLUMN STYLE 4  ========== */
+/* --- header row 1 ---  */
+div.p_table_1_5 div.column_4 li.header_row_1
+	{
+	border-top: 0;
+	border-bottom: 1px solid #418520;
+	background: #418520 !important;
+	}
+	
+/* --- header row 2 ---  */
+div.p_table_1_5 div.column_4 li.header_row_2
+	{
+	border-top: 1px solid #579e34;
+	border-bottom: 1px solid #579e34;
+	background: #579e34 !important;
+	}

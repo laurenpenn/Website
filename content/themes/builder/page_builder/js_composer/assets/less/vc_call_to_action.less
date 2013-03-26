@@ -1,0 +1,84 @@
+/* Call to action
+---------------------------------------------------------- */
+.wpb_call_to_action {
+	position: relative;
+	background-color: @vc_grey;
+	padding: 20px;
+	padding: @fluidGridGutterWidth;
+	border: 1px solid @vc_grey_hover;
+	
+	.wpb_box_sizing();
+	
+	.wpb_button {
+		margin: 0;
+		.wpb_box_sizing();
+	}
+}
+			
+	.cta_align_left .wpb_button {
+		float: left;
+		//margin-right: 2.5641%;
+	}
+	.cta_align_right .wpb_button {
+		float: right;
+		//margin-left: 2.5641%;
+	}
+	.cta_align_left .wpb_button,
+	.cta_align_right .wpb_button {
+		//max-width: 31.6239%;
+		max-width: 100% - 70% - @fluidGridGutterWidth;
+	}
+		
+	.cta_align_left .wpb_call_text,
+	.cta_align_right .wpb_call_text {
+		width: 70%;//59.812%;/*65.812%;*/
+		float: left;
+		clear: none;
+	}
+	.cta_align_left .wpb_call_text {
+		float: right;
+	}
+	
+	.wpb_call_to_action .wpb_call_text,
+	#content .wpb_call_to_action .wpb_call_text {
+		margin: 0;
+		padding-top: 0;
+	}
+
+.cta_align_bottom {
+	text-align: center;
+	
+	.wpb_button {
+		position: static;
+		margin-top: @fluidGridGutterWidth;
+		display: inline-block;
+	}
+}
+
+.cta_no_button {
+  .wpb_call_text {
+    width: auto;
+    float: none;
+  }
+}
+
+/* Call to action responsive rules
+---------------------------------------------------------- */
+@media (max-width: 600px) {
+  .vc_responsive {
+  	.cta_align_left .wpb_button,
+  	.cta_align_right .wpb_button {
+  		max-width: 70%;
+  		width: 70%;
+  		float: none;
+  		display: block;
+  		margin: 3% auto;
+  	}
+  	.cta_align_left .wpb_call_text,
+  	.cta_align_right .wpb_call_text {
+  		width: auto;
+  		max-width: none;
+  		text-align: center;
+  	}
+  }
+}
