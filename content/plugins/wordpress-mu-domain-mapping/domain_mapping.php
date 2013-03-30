@@ -440,9 +440,7 @@ function dm_manage_page() {
 		return false;
 	}
 
-	if ( false == isset( $_SERVER[ 'HTTPS' ] ) )
-		$_SERVER[ 'HTTPS' ] = 'Off';
-	$protocol = ( 'on' == strtolower( $_SERVER[ 'HTTPS' ] ) ) ? 'https://' : 'http://';
+	$protocol = is_ssl() ? 'https://' : 'http://';
 	$domains = $wpdb->get_results( "SELECT * FROM {$wpdb->dmtable} WHERE blog_id = '{$wpdb->blogid}'", ARRAY_A );
 	if ( is_array( $domains ) && !empty( $domains ) ) {
 		$orig_url = parse_url( get_original_url( 'siteurl' ) );
@@ -533,9 +531,7 @@ function domain_mapping_siteurl( $setting ) {
 		}
 
 		$wpdb->suppress_errors( $s );
-		if ( false == isset( $_SERVER[ 'HTTPS' ] ) )
-			$_SERVER[ 'HTTPS' ] = 'Off';
-		$protocol = ( 'on' == strtolower( $_SERVER[ 'HTTPS' ] ) ) ? 'https://' : 'http://';
+		$protocol = is_ssl() ? 'https://' : 'http://';
 		if ( $domain ) {
 			$return_url[ $wpdb->blogid ] = untrailingslashit( $protocol . $domain  );
 			$setting = $return_url[ $wpdb->blogid ];
@@ -568,7 +564,7 @@ function get_original_url( $url, $blog_id = 0 ) {
 		} else {
 			$orig_url = get_blog_option( $blog_id, $url );
 		}
-		if ( isset( $_SERVER[ 'HTTPS' ] ) && 'on' == strtolower( $_SERVER[ 'HTTPS' ] ) ) {
+		if ( is_ssl() ) {
 			$orig_url = str_replace( "http://", "https://", $orig_url );
 		} else {
 			$orig_url = str_replace( "https://", "http://", $orig_url );
@@ -678,9 +674,7 @@ if ( isset( $_GET[ 'dm' ] ) )
 function remote_logout_loader() {
 	global $current_site, $current_blog, $wpdb;
 	$wpdb->dmtablelogins = $wpdb->base_prefix . 'domain_mapping_logins';
-	if ( false == isset( $_SERVER[ 'HTTPS' ] ) )
-		$_SERVER[ 'HTTPS' ] = 'Off';
-	$protocol = ( 'on' == strtolower( $_SERVER[ 'HTTPS' ] ) ) ? 'https://' : 'http://';
+	$protocol = is_ssl() ? 'https://' : 'http://';
 	$hash = get_dm_hash();
 	$key = md5( time() );
 	$wpdb->query( $wpdb->prepare( "INSERT INTO {$wpdb->dmtablelogins} ( `id`, `user_id`, `blog_id`, `t` ) VALUES( %s, 0, %d, NOW() )", $key, $current_blog->blog_id ) );
@@ -704,9 +698,7 @@ function redirect_to_mapped_domain() {
 	if ( isset( $_POST['customize'] ) && isset( $_POST['theme'] ) && $_POST['customize'] == 'on' )
 		return;
 
-	if ( !isset( $_SERVER[ 'HTTPS' ] ) )
-		$_SERVER[ 'HTTPS' ] = 'off';
-	$protocol = ( 'on' == strtolower( $_SERVER['HTTPS'] ) ) ? 'https://' : 'http://';
+	$protocol = is_ssl() ? 'https://' : 'http://';
 	$url = domain_mapping_siteurl( false );
 	if ( $url && $url != untrailingslashit( $protocol . $current_blog->domain . $current_blog->path ) ) {
 		$redirect = get_site_option( 'dm_301_redirect' ) ? '301' : '302';
@@ -736,9 +728,7 @@ function remote_login_js() {
 
 	$wpdb->dmtablelogins = $wpdb->base_prefix . 'domain_mapping_logins';
 	$hash = get_dm_hash();
-	if ( false == isset( $_SERVER[ 'HTTPS' ] ) )
-		$_SERVER[ 'HTTPS' ] = 'Off';
-	$protocol = ( 'on' == strtolower( $_SERVER[ 'HTTPS' ] ) ) ? 'https://' : 'http://';
+	$protocol = is_ssl() ? 'https://' : 'http://';
 	if ( $_GET[ 'dm' ] == $hash ) {
 		if ( $_GET[ 'action' ] == 'load' ) {
 			if ( !is_user_logged_in() )
@@ -782,11 +772,9 @@ function remote_login_js_loader() {
 	if ( 0 == get_site_option( 'dm_remote_login' ) || is_user_logged_in() )
 		return false;
 
-	if ( false == isset( $_SERVER[ 'HTTPS' ] ) )
-		$_SERVER[ 'HTTPS' ] = 'Off';
-	$protocol = ( 'on' == strtolower( $_SERVER[ 'HTTPS' ] ) ) ? 'https://' : 'http://';
+	$protocol = is_ssl() ? 'https://' : 'http://';
 	$hash = get_dm_hash();
-	echo "<script src='//{$current_site->domain}{$current_site->path}?dm={$hash}&amp;action=load&amp;blogid={$current_blog->blog_id}&amp;siteid={$current_blog->site_id}&amp;t=" . mt_rand() . "&amp;back=" . urlencode( $protocol . $current_blog->domain . $_SERVER[ 'REQUEST_URI' ] ) . "' type='text/javascript'></script>";
+	echo "<script src='{$protocol}{$current_site->domain}{$current_site->path}?dm={$hash}&amp;action=load&amp;blogid={$current_blog->blog_id}&amp;siteid={$current_blog->site_id}&amp;t=" . mt_rand() . "&amp;back=" . urlencode( $protocol . $current_blog->domain . $_SERVER[ 'REQUEST_URI' ] ) . "' type='text/javascript'></script>";
 }
 
 // delete mapping if blog is deleted
