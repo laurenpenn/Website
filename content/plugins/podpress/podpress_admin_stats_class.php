@@ -26,7 +26,7 @@ class podPressAdmin_class extends podPress_class {
 	function podPressAdmin_class() {
 		GLOBAL $wpdb;
 		
-		$this->path = get_option('siteurl').'/wp-admin/admin.php?page=podpress/podpress_stats.php';
+		$this->path = site_url().'/wp-admin/admin.php?page=podpress/podpress_stats.php';
 		if (isset($_GET['display']) && is_string($_GET['display'])) {
 			$this->path .= '&amp;display='.$_GET['display'];
 		}
@@ -242,7 +242,7 @@ class podPressAdmin_class extends podPress_class {
 	function settings_stats_edit() {
 		GLOBAL $wpdb, $wp_version;
 		podPress_isAuthorized();
-		$baseurl = get_option('siteurl') . '/wp-admin/admin.php?page=podpress/podpress_stats.php&display=';
+		$baseurl = site_url() . '/wp-admin/admin.php?page=podpress/podpress_stats.php&display=';
 		echo '<div class="wrap">'."\n";
 		
 		if ( TRUE == version_compare($wp_version, '2.7', '>=') ) {
@@ -1250,7 +1250,7 @@ class podPressAdmin_class extends podPress_class {
 								echo '                  	<td>'.($start +$i).'.</td>'."\n";
 								echo '                  	<td>'.podPress_strlimiter2(urldecode($stat->media), 30, TRUE).'</td>'."\n";
 								if ( TRUE == version_compare($wp_version, '2.3', '<') ) {
-									echo '                  	<td><a href="'.get_option('siteurl').'/wp-admin/post.php?action=edit&amp;post='.$stat->postID.'" title="'.__('Edit this post','podpress').'">'.podPress_strlimiter2($stat->post_title, 30, TRUE).'</a></td>'."\n";
+									echo '                  	<td><a href="'.site_url().'/wp-admin/post.php?action=edit&amp;post='.$stat->postID.'" title="'.__('Edit this post','podpress').'">'.podPress_strlimiter2($stat->post_title, 30, TRUE).'</a></td>'."\n";
 								} else {
 									echo '                  	<td><a href="'.get_edit_post_link($stat->postID).'" title="'.__('Edit this post','podpress').'">'.podPress_strlimiter2($stat->post_title, 30, TRUE).'</a></td>'."\n";
 								}
@@ -1315,7 +1315,7 @@ class podPressAdmin_class extends podPress_class {
 								echo '		<tr'.$style.'>'."\n";
 								echo '                  	<td>'.($start +$i).'.</td>'."\n";
 								//~ if ( TRUE == version_compare($wp_version, '2.3', '<') ) {
-									//~ echo '                  	<td><a href="'.get_option('siteurl').'/wp-admin/post.php?action=edit&amp;post='.$stat->postID.'" title="'.__('Edit this post','podpress').'">'.podPress_strlimiter2($stat->post_title, 30, TRUE).'</a></td>'."\n";
+									//~ echo '                  	<td><a href="'.site_url().'/wp-admin/post.php?action=edit&amp;post='.$stat->postID.'" title="'.__('Edit this post','podpress').'">'.podPress_strlimiter2($stat->post_title, 30, TRUE).'</a></td>'."\n";
 								//~ } else {
 									//~ echo '                  	<td><a href="'.get_edit_post_link($stat->postID).'" title="'.__('Edit this post','podpress').'">'.podPress_strlimiter2($stat->post_title, 30, TRUE).'</a></td>'."\n";
 								//~ }
@@ -1692,7 +1692,7 @@ class podPressAdmin_class extends podPress_class {
 						$memory_used = podPress_bytes($end_memory-$start_memory);
 				/* Output */
 				echo '<div id="podPress_graph" style="width: '.$image_width.'px;">'."\n";
-				echo '    <p><img src="'.$this->tempfileurlpath.'/'.$filename.'" width="'.$image_width.'" height="'.$image_height.'" alt="podPress-Statistics" /></p>'."\n";
+				echo '    <p><img src="'.podpress_siteurl_is_ssl($this->tempfileurlpath).'/'.$filename.'" width="'.$image_width.'" height="'.$image_height.'" alt="podPress-Statistics" /></p>'."\n";
 				echo "</div>\n";
 				echo '<p>'.__('Time to generate the graph', 'podpress').': '.number_format($chronometry1, 3, $this->local_settings['numbers'][0], $this->local_settings['numbers'][1]).' '.__('seconds', 'podpress').' ('.__('image', 'podpress').': '.number_format($chronometry2, 3, $this->local_settings['numbers'][0], $this->local_settings['numbers'][1]).' '.__('seconds', 'podpress').").\n";
 				echo '<br/>'.__('Memory to generate the graph', 'podpress').': '.$memory_used.".</p>\n";
@@ -1916,7 +1916,7 @@ class podPressAdmin_class extends podPress_class {
 				$end_memory = memory_get_usage();
 				$memory_used = podPress_bytes($end_memory-$start_memory);
 				echo '<div id="podPress_graph" style="width: '.$image_width.'px;">'."\n";
-				echo '    <p style="padding-top: 0;"><img src="'.$this->tempfileurlpath.'/'.$filename.'" width="'.$image_width.'" height="'.$image_height.'" alt="podPress-Statistics" /></p>'."\n";
+				echo '    <p style="padding-top: 0;"><img src="'.podpress_siteurl_is_ssl($this->tempfileurlpath).'/'.$filename.'" width="'.$image_width.'" height="'.$image_height.'" alt="podPress-Statistics" /></p>'."\n";
 				echo $this->paging($start, $limit, $total, 'Posts');
 				echo '    <div class="clear"></div>'."\n";
 				echo "</div>\n";

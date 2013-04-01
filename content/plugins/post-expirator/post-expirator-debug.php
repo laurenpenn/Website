@@ -28,7 +28,7 @@ class postExpiratorDebug {
 
 	public function removeDBTable() {
 		global $wpdb;
-		$wpdb->query($wpdb->prepare("DROP TABLE IF EXISTS ".$this->debug_table));
+		$wpdb->query('DROP TABLE IF EXISTS '.$this->debug_table);
 	}	
 
 	public function save($data) {
@@ -37,13 +37,12 @@ class postExpiratorDebug {
 			global $current_blog;
 			$blog = $current_blog->blog_id;
 		} else $blog = 0;
-		$sql = "INSERT INTO `{$this->debug_table}` (`timestamp`,`message`,`blog`) VALUES (FROM_UNIXTIME({$data['timestamp']}),'{$data['message']}','$blog')";
-		$wpdb->query($wpdb->prepare($sql));
+		$wpdb->query($wpdb->prepare('INSERT INTO '.$this->debug_table.' (`timestamp`,`message`,`blog`) VALUES (FROM_UNIXTIME(%d),%s,%s)',time(),$data['message'],$blog));
 	}
 
 	public function getTable() {
 		global $wpdb;
-		$results = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$this->debug_table} ORDER BY `id` DESC"));
+		$results = $wpdb->get_results("SELECT * FROM {$this->debug_table} ORDER BY `id` DESC");
 		if (empty($results)) {
 			print '<p>'.__('Debugging table is currently empty.','post-expirator').'</p>';
 			return;
@@ -60,6 +59,6 @@ class postExpiratorDebug {
 
 	public function purge() {
 		global $wpdb;
-		$wpdb->query($wpdb->prepare("TRUNCATE TABLE {$this->debug_table}"));		
+		$wpdb->query("TRUNCATE TABLE {$this->debug_table}");		
 	}
 }

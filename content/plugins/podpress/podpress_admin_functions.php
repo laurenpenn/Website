@@ -42,15 +42,21 @@ License:
 	}
 
 	function podPress_DirectoriesPreview($context) {
+		GLOBAL $wp_version;
+		if ( TRUE == version_compare($wp_version, '2.7', '>=') AND TRUE == version_compare($wp_version, '2.8', '<')) {// for WP 2.7.x (because the plugins_url() worked differently in WP 2.7.x)
+			$plugins_url = plugins_url('podpress', __FILE__);
+		} else { 
+			$plugins_url = plugins_url('', __FILE__);
+		}
 		echo '	<fieldset class="options">'."\n";
 		echo '		<legend class="podpress_directorypreview_legend">'.__('Directory Preview', 'podpress').'</legend> <a href="javascript:void(null);" id="podpress_showhide_directory_preview" class="podpress_showhide_element" onclick="podpress_showhide_adv(\'podpress_DirectoryPreviewDisplay\', true, this.id);">[ '.__('Show', 'podpress').' ]</a>';
 		echo '		<div id="podpress_DirectoryPreviewDisplay" style="display:none;">'."\n";
-		echo '		<a href="javascript:void(null);" onclick="javascript: podPressShowDirectoryPreview(\'iTunes\');"><img src="'.podPress_url().'images/directoryPreview_iTunes_logo.png" border="0" alt="iTunes preview" /></a> &nbsp;';
+		echo '		<a href="javascript:void(null);" onclick="javascript: podPressShowDirectoryPreview(\'iTunes\');"><img src="'.$plugins_url.'/images/directoryPreview_iTunes_logo.png" border="0" alt="iTunes preview" /></a> &nbsp;';
 		/// YAHOO! Podcast is shutdown since 2007 - see, http://en.wikipedia.org/wiki/Yahoo!_Podcasts
-		//echo '		<a href="javascript:void(null);" onclick="javascript: podPressShowDirectoryPreview(\'Yahoo\');"><img src="'.podPress_url().'images/directoryPreview_yahoo_logo.png" border="0" alt="Yahoo preview" /></a> &nbsp;';
-		echo '		<a href="javascript:void(null);" onclick="javascript: podPressShowDirectoryPreview(\'PodcastAlley\');"><img src="'.podPress_url().'images/directoryPreview_PCA_logo.png" border="0" alt="PodcastAlley preview" /></a>';
-		echo '		<a href="javascript:void(null);" onclick="javascript: podPressShowDirectoryPreview(\'PodcastReady\');"><img src="'.podPress_url().'images/directoryPreview_PodcastReady_logo.png" border="0" alt="PodcastAlley preview" /></a>';
-		echo '		<a href="javascript:void(null);" onclick="javascript: podPressShowDirectoryPreview(\'Blubrry\');"><img src="'.podPress_url().'images/directoryPreview_Blubrry_logo.jpg" border="0" alt="Blubrry preview" /></a>';
+		//echo '		<a href="javascript:void(null);" onclick="javascript: podPressShowDirectoryPreview(\'Yahoo\');"><img src="'.$plugins_url.'/images/directoryPreview_yahoo_logo.png" border="0" alt="Yahoo preview" /></a> &nbsp;';
+		echo '		<a href="javascript:void(null);" onclick="javascript: podPressShowDirectoryPreview(\'PodcastAlley\');"><img src="'.$plugins_url.'/images/directoryPreview_PCA_logo.png" border="0" alt="PodcastAlley preview" /></a>';
+		echo '		<a href="javascript:void(null);" onclick="javascript: podPressShowDirectoryPreview(\'PodcastReady\');"><img src="'.$plugins_url.'/images/directoryPreview_PodcastReady_logo.png" border="0" alt="PodcastAlley preview" /></a>';
+		echo '		<a href="javascript:void(null);" onclick="javascript: podPressShowDirectoryPreview(\'Blubrry\');"><img src="'.$plugins_url.'/images/directoryPreview_Blubrry_logo.jpg" border="0" alt="Blubrry preview" /></a>';
 		echo '		'."\n";
 		echo '		<div id="iTunesPreviewDisplay" style="border: 0;">'."\n";
 		echo '			<div style="width: 100%; text-align: center;"><a href="http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewGenre?id=26" target="_new">Visit this directory</a> / <a href="https://phobos.apple.com/WebObjects/MZFinance.woa/wa/publishPodcast" target="_new">Submit to this directory</a></div>'."\n";
@@ -70,13 +76,13 @@ License:
 		echo '							Category: <span id="itunesCategoryPreview"></span><br/>'."\n";
 		echo '							Language: <span id="iTunesRssLanguagePreview">English</span><br/>'."\n";
 		echo '							Total: n episodes<br/><br/>'."\n";
-		echo '							<img src="'.podPress_url().'images/directoryPreview_iTunes_subscribebutton.png" border="0" alt="iTunesSubscriptions" /> '."\n";
+		echo '							<img src="'.$plugins_url.'/images/directoryPreview_iTunes_subscribebutton.png" border="0" alt="iTunesSubscriptions" /> '."\n";
 		echo '						</span>'."\n";
 		echo '					</td>'."\n";
 		echo '					<td rowspan="3" width="1%">'."\n";
-		echo '						<img src="'.podPress_url().'images/directoryPreview_iTunes_seeallpodcasts.png" border="0" alt="iTunesSeeAllPodcasts" /> '."\n";
+		echo '						<img src="'.$plugins_url.'/images/directoryPreview_iTunes_seeallpodcasts.png" border="0" alt="iTunesSeeAllPodcasts" /> '."\n";
 		echo '						<br/><br/>'."\n";
-		echo '						<img src="'.podPress_url().'images/directoryPreview_iTunes_alsosubcribedto.png" border="0" alt="iTunesAlsoSubscribeTo" /> '."\n";
+		echo '						<img src="'.$plugins_url.'/images/directoryPreview_iTunes_alsosubcribedto.png" border="0" alt="iTunesAlsoSubscribeTo" /> '."\n";
 		echo '					</td>'."\n";
 		echo '				</tr>'."\n";
 		echo '				<tr valign="top">'."\n";
@@ -90,10 +96,10 @@ License:
 		echo '						<table width="100%" bgcolor="#8DAACC">'."\n";
 		echo '							<tr>'."\n";
 		echo '								<td align="left">'."\n";
-		echo '									<img src="'.podPress_url().'images/directoryPreview_iTunes_l_reviews.png" border="0" alt="iTunesReviews" /> '."\n";
+		echo '									<img src="'.$plugins_url.'/images/directoryPreview_iTunes_l_reviews.png" border="0" alt="iTunesReviews" /> '."\n";
 		echo '								</td>'."\n";
 		echo '								<td align="right">'."\n";
-		echo '									<img src="'.podPress_url().'images/directoryPreview_iTunes_r_reviews.png" border="0" alt="iTunesReviews" /> '."\n";
+		echo '									<img src="'.$plugins_url.'/images/directoryPreview_iTunes_r_reviews.png" border="0" alt="iTunesReviews" /> '."\n";
 		echo '								</td>'."\n";
 		echo '							</tr>'."\n";
 		echo '						</table>'."\n";
@@ -114,7 +120,7 @@ License:
 		echo '					<tr valign="top">'."\n";
 		echo '						<td width="1%" rowspan="2">'."\n";
 		echo '							<img id="YahooPreviewImage" width="175" height="175" alt="Podcast Image" src=""/><br/><br/>'."\n";
-		echo '							<img src="'.podPress_url().'images/directoryPreview_yahoo_buttons.png" border="0" alt="YahooButtons" /> '."\n";
+		echo '							<img src="'.$plugins_url.'/images/directoryPreview_yahoo_buttons.png" border="0" alt="YahooButtons" /> '."\n";
 		echo '						</td>'."\n";
 		echo '						<td colspan="2">'."\n";
 		echo '							<span id="YahooDescriptionPreview" style="font-size: small;"></span>'."\n";
@@ -124,7 +130,7 @@ License:
 		echo '						<td align="left">'."\n";
 		echo '							<font size="+1" color="#669900">Details</font><br/>'."\n";
 		echo '							Episodes: N<br/>'."\n";
-		echo '							Web Site: <font color="#2597D6">'.get_option('siteurl').'</font><br/>'."\n";
+		echo '							Web Site: <font color="#2597D6">'.site_url().'</font><br/>'."\n";
 		echo '							RSS: <span id="YahooFeedURLPreview" style="color: #2597D6;"></span><br/>'."\n";
 		echo '							Author: <span id="YahooAuthorPreview"></span><br/>'."\n";
 		echo '							Language: <span id="YahooRssLanguagePreview">English</span><br/>'."\n";
@@ -135,7 +141,7 @@ License:
 		echo '							<font size="+1" color="#669900">Ratings</font><br/>'."\n";
 		echo '							Be the first to rate!<br/><br/>'."\n";
 		echo '						<b>Rate it:</b><br/>'."\n";
-		echo '						<img src="'.podPress_url().'images/directoryPreview_yahoo_stars.png" border="0" alt="YahooStars" /> '."\n";
+		echo '						<img src="'.$plugins_url.'/images/directoryPreview_yahoo_stars.png" border="0" alt="YahooStars" /> '."\n";
 		echo '						<br/><font color="#2597D6">Write a Review</font><br/>'."\n";
 		echo '						</td>'."\n";
 		echo '					</tr>'."\n";
@@ -148,7 +154,7 @@ License:
 		echo '			<table width="100%" border="0" cellspacing="0" cellpadding="0"  style="background-color:#FFFFFF;">'."\n";
 		echo '				<tr valign="top">'."\n";
 		echo '					<td width="5%">'."\n";
-		echo '						<img src="'.podPress_url().'images/directoryPreview_PCA_left.png" border="0" alt="PCA Left" /> '."\n";
+		echo '						<img src="'.$plugins_url.'/images/directoryPreview_PCA_left.png" border="0" alt="PCA Left" /> '."\n";
 		echo '					</td>'."\n";
 		echo '					<td width="90%">'."\n";
 		echo '						<table width="100%" border="0" cellspacing="0" cellpadding="0"  style="background-color:#F2F2F2;">'."\n";
@@ -166,7 +172,7 @@ License:
 		echo '												<span class="podPress_captionstats">OVERALL VOTES:</span> 0<br/>'."\n";
 		echo '												<span class="podPress_captionstats">MEMBER: </span>1/2000<br/>'."\n";
 		echo '												<span class="podPress_captionstats">MONTHLY RANK:</span><br/>Not Yet Ranked<br/>'."\n";
-		echo '												<br/><img src="'.podPress_url().'images/directoryPreview_PCA_buttons.png" border="0" alt="PCAButtons" /> '."\n";
+		echo '												<br/><img src="'.$plugins_url.'/images/directoryPreview_PCA_buttons.png" border="0" alt="PCAButtons" /> '."\n";
 		echo '											</td>'."\n";
 		echo '										</tr>'."\n";
 		echo '									</table>'."\n";
@@ -179,7 +185,7 @@ License:
 		echo '						</table>'."\n";
 		echo '					</td>'."\n";
 		echo '					<td width="5%">'."\n";
-		echo '						<img src="'.podPress_url().'images/directoryPreview_PCA_right.png" border="0" alt="PCA Right" /> '."\n";
+		echo '						<img src="'.$plugins_url.'/images/directoryPreview_PCA_right.png" border="0" alt="PCA Right" /> '."\n";
 		echo '					</td>'."\n";
 		echo '				</tr>'."\n";
 		echo '			</table>'."\n";
@@ -191,14 +197,14 @@ License:
 		echo '				<tr valign="top">'."\n";
 		echo '					<td width="200" align="center">'."\n";
 		echo '						<br/><img id="PodcastReadyPreviewImage" width="175" height="175" alt="Podcast Image" src=""/><br/>'."\n";
-		echo '						<img src="'.podPress_url().'images/directoryPreview_PodcastReady_buttons.png" border="0" alt="PodcastReadyButtons" /><br/>'."\n";
+		echo '						<img src="'.$plugins_url.'/images/directoryPreview_PodcastReady_buttons.png" border="0" alt="PodcastReadyButtons" /><br/>'."\n";
 		echo '					</td>'."\n";
 		echo '					<td>'."\n";
 		echo '						<br/><b><font size="+1" color="#466B90">Detail for	<span id="PodcastReadyBlognamePreview"></span></font></b><br/><br/>'."\n";
 		echo '						<span id="PodcastReadyDescriptionPreview" style="font-size: small;"></span><br/>'."\n";
 		echo '						<b>Filed Under:</b> <span id="PodcastReadyCategoryPreview" style="color: #466B90;"></span><br/>'."\n";
 		echo '						<b>Media Type:</b> MP3<br/><br/>'."\n";
-		echo '						<img src="'.podPress_url().'images/directoryPreview_PodcastReady_listeners.png" border="0" alt="PodcastReadyOtherPeople" /> '."\n";
+		echo '						<img src="'.$plugins_url.'/images/directoryPreview_PodcastReady_listeners.png" border="0" alt="PodcastReadyOtherPeople" /> '."\n";
 		echo '					</td>'."\n";
 		echo '				</tr>'."\n";
 		echo '			</table>'."\n";
@@ -219,7 +225,7 @@ License:
 		echo '						<tr>'."\n";
 		echo '							<td width="100" height="100" align="left" valign="top"><img id="BlubrryPreviewImage" width="90" height="90" alt="Podcast Image" src=""/></td>'."\n";
 		echo '							<td width="120" valign="top"><div id="BlubrryAuthorPreview" style="font-weight: bold;">AUTHOR NAME</div>'."\n";
-		echo '								<img src="'.podPress_url().'images/directoryPreview_Blubrry_buttons.png" width="64" height="52" /></td>'."\n";
+		echo '								<img src="'.$plugins_url.'/images/directoryPreview_Blubrry_buttons.png" width="64" height="52" /></td>'."\n";
 		echo '						</tr>'."\n";
 		echo '						<tr>'."\n";
 		echo '							<td height="28" colspan="2" valign="top" style="font-size: 14px; font-weight: bold; text-decoration:underline;">Visit Podcast Home Page</td>'."\n";
@@ -230,7 +236,7 @@ License:
 		echo '						<tr>'."\n";
 		echo '							<td colspan="2"><div style="color:#9933D5; font-weight: bold; font-size: 14px;">Latest Podcast Post Title</div>'."\n";
 		echo '							<div style="font-size: 12px;">The content of your post appears here.  Wow your stuff looks good.  Hey what if someone wants to listen, they can click on the button below.</div>'."\n";
-		echo '							<img src="'.podPress_url().'images/directoryPreview_Blubrry_buttons_episode.png" />'."\n";
+		echo '							<img src="'.$plugins_url.'/images/directoryPreview_Blubrry_buttons_episode.png" />'."\n";
 		echo '							</td>'."\n";
 		echo '						</tr>'."\n";
 		echo '					</table>'."\n";
@@ -238,11 +244,11 @@ License:
 		echo '				<td valign="top" style="padding-left: 10px; padding-top: 10px;">'."\n";
 		echo '					<div style="font-size: 18px; font-weight: bold; padding-bottom: 10px;">Description</div>'."\n";
 		echo '					<div style="font-size: 12px; padding-bottom: 5px;" id="BlubrryDescriptionPreview">DESCRIPTION OF PODCAST</div>'."\n";
-		echo '					<div style="text-align:right; padding-bottom: 10px;"><img src="'.podPress_url().'images/directoryPreview_Blubrry_syndication.png" /></div>'."\n";
+		echo '					<div style="text-align:right; padding-bottom: 10px;"><img src="'.$plugins_url.'/images/directoryPreview_Blubrry_syndication.png" /></div>'."\n";
 		echo '					<div style="font-size: 18px; font-weight: bold; padding-bottom: 10px;">Tags</div>'."\n";
 		echo '					<div style="padding-bottom: 10px;">mightyseek podpress awesome wordpress plugin</div>'."\n";
 		echo '					<div style="font-size: 18px; font-weight: bold; padding-bottom: 10px;">Friends</div>'."\n";
-		echo '					<div style="background-image:url('.podPress_url().'images/directoryPreview_Blubrry_friends.jpg); background-repeat:no-repeat; background-position: top left; height:113px;">&nbsp;</div>'."\n";
+		echo '					<div style="background-image:url('.$plugins_url.'/images/directoryPreview_Blubrry_friends.jpg); background-repeat:no-repeat; background-position: top left; height:113px;">&nbsp;</div>'."\n";
 		echo '				</td>'."\n";
 		echo '			</tr>'."\n";
 		echo '		</table>'."\n";
@@ -335,6 +341,7 @@ License:
 		$options['video_mp4'] = __('MP4 - Video (iPod Compliant)', 'podpress');
 		$options['audio_ogg'] = __('OGG - Ogg Vorbis Audio', 'podpress');
 		$options['video_ogv'] = __('OGV - Ogg Theora video', 'podpress');
+		$options['audio_opus'] = __('OPUS - Audio', 'podpress');
 		$options['audio_aa'] = __('AA - Audible Encoded (iPod Compliant)', 'podpress');
 		$options['audio_m3u'] = __('M3U - Streaming Audio', 'podpress');
 		$options['video_mov'] = __('MOV - Video (iPod Compliant)', 'podpress');
@@ -432,7 +439,7 @@ License:
 		$langs['bn'] = 'Bengali';
 		$langs['bh'] = 'Bihari languages';
 		$langs['bi'] = 'Bislama';
-		$langs['nb'] = htmlentities('Bokmål, Norwegian; Norwegian Bokmål');
+		$langs['nb'] = htmlentities('Bokm\E5l, Norwegian; Norwegian Bokm\E5l');
 		$langs['bs'] = 'Bosnian';
 		$langs['br'] = 'Breton';
 		$langs['bg'] = 'Bulgarian';
@@ -641,7 +648,7 @@ License:
 		$langs['uz'] = 'Uzbek';
 		$langs['ve'] = 'Venda';
 		$langs['vi'] = 'Vietnamese';
-		$langs['vo'] = htmlentities('Volapük');
+		$langs['vo'] = htmlentities('Volap\FCk');
 		$langs['wa'] = 'Walloon';
 		$langs['cy'] = 'Welsh';
 		$langs['fy'] = 'Western Frisian';
@@ -1001,54 +1008,102 @@ License:
 	/* Functions for supporting the backend processor */
 	/**************************************************************/
 
-	function podPress_ResolveReDirects($uriFileName)
-	{
-		GLOBAL $podPress;
-
+	/**
+	* podPress_ResolveReDirects - function to retrieve the direct URL to the media file (follows up to 5 redirects) / It uses cURL by default since 8.8.10.14.
+	*
+	* @package podPress
+	* @since (unknown)
+	*
+	* @param string $uriFileName - the URL of the media file
+	*
+	* return string $uriFileName - the direct URL of the media file or nothing
+	*/	
+	function podPress_ResolveReDirects($uriFileName) {
 		$tries = 0;
-		while($tries < 5) {
-			$tries++;
-			$aURL = parse_url($uriFileName);
-			if($aURL['scheme'] != 'http') {
-				return;
-			}
-			$sHost = $aURL['host'];
-			$sFilepath = (isset($aURL['path']) ? $aURL['path'] : '/') . (isset($aURL['query']) ? '?' . $aURL['query'] : '');
-			$nPort = isset($aURL['port']) ? $aURL['port'] : 80;
-			$fpRemote = @fsockopen($sHost, $nPort, $errno, $errstr, 30);
-			// Make sure the socket is open
-			if(!$fpRemote) {
-				return;
-			}
-			// Request headers
-			$sHeaders = "HEAD " . $sFilepath . " HTTP/1.1\r\n";
-			$sHeaders .= "Host: ". $sHost . "\r\n";
-			$sHeaders .= "Connection: Close\r\n\r\n";
-			// Sending headers
-			fwrite($fpRemote, $sHeaders);
-			// Getting back the content
-			$sRemoteHeaders = '';
-			while(!feof($fpRemote)) {
-				$sRemoteHeaders .= fgets($fpRemote, 128);
-			}
-			// Closing the socket
-			fclose($fpRemote);
-			// parse headers
-			$crlf = "\r\n";
-			$headers = array();
-			$lines = explode($crlf, $sRemoteHeaders);
-			foreach($lines as $line) {
-				if(($pos = strpos($line, ':')) !== false) {
-					$headers[strtolower(trim(substr($line, 0, $pos)))] = trim(substr($line, $pos+1));
+		if ( TRUE == function_exists('curl_init') ) {
+			$safety = 2; // seconds
+			while($tries < 5) {
+				$tries++;
+				$aURL = parse_url($uriFileName);
+				if ( $aURL['scheme'] != 'http' ) {
+					return '';
+				}
+				
+				$max_time = podPress_get_max_execution_time();
+
+				$sRemoteHeaders = podPress_get_HTTP_header_via_cURL($uriFileName, $max_time, $safety);
+				
+				// parse headers
+				$crlf = "\r\n";
+				$headers = array();
+				$lines = explode($crlf, $sRemoteHeaders);
+				foreach($lines as $line) {
+					if(($pos = strpos($line, ':')) !== false) {
+						$headers[strtolower(trim(substr($line, 0, $pos)))] = trim(substr($line, $pos+1));
+					}
+				}
+	     
+				// redirection?
+				if(isset($headers['location'])) {
+					$uriFileName = $headers['location'];
+				} else {
+					return $uriFileName;
 				}
 			}
-     
-			// redirection?
-			if(isset($headers['location'])) {
-				$uriFileName = $headers['location'];
-			} else {
-				return $uriFileName;
+			
+		} else {
+		
+			while($tries < 5) {
+				$tries++;
+				$aURL = parse_url($uriFileName);
+				if($aURL['scheme'] != 'http') {
+					return;
+				}
+				$sHost = $aURL['host'];
+				$sFilepath = (isset($aURL['path']) ? $aURL['path'] : '/') . (isset($aURL['query']) ? '?' . $aURL['query'] : '');
+				$nPort = isset($aURL['port']) ? $aURL['port'] : 80;
+				$fpRemote = @fsockopen($sHost, $nPort, $errno, $errstr, 30);
+				
+				// Make sure the socket is open
+				if(!$fpRemote) {
+					return;
+				}
+				
+				// Request headers
+				$sHeaders = "HEAD " . $sFilepath . " HTTP/1.1\r\n";
+				$sHeaders .= "Host: ". $sHost . "\r\n";
+				$sHeaders .= "Connection: Close\r\n\r\n";
+				
+				// Sending headers
+				fwrite($fpRemote, $sHeaders);
+				
+				// Getting back the content
+				$sRemoteHeaders = '';
+				while(!feof($fpRemote)) {
+					$sRemoteHeaders .= fgets($fpRemote, 128);
+				}
+				
+				// Closing the socket
+				fclose($fpRemote);
+				
+				// parse headers
+				$crlf = "\r\n";
+				$headers = array();
+				$lines = explode($crlf, $sRemoteHeaders);
+				foreach($lines as $line) {
+					if(($pos = strpos($line, ':')) !== false) {
+						$headers[strtolower(trim(substr($line, 0, $pos)))] = trim(substr($line, $pos+1));
+					}
+				}
+	     
+				// redirection?
+				if(isset($headers['location'])) {
+					$uriFileName = $headers['location'];
+				} else {
+					return $uriFileName;
+				}
 			}
+		
 		}
 		return $uriFileName;
 	}
@@ -1089,23 +1144,22 @@ License:
 		podPress_var_dump('podPress_getID3tags - after inclusion of the getID3 library');
 		
 		if(!$resolved) {
-			$systemFileName = $podPress->convertPodcastFileNameToSystemPath($mediafile);
+			$systemFileName = $podPress->TryToFindAbsFileName($mediafile);
+			if (FALSE === $systemFileName) {
+				$systemFileName = $podPress->convertPodcastFileNameToValidWebPath($mediafile);
+			}
 		} else {
 			$systemFileName = $mediafile;
 		}
 		
 		podPress_var_dump('podPress_getID3tags - before a possible download of the media file');
-		podPress_var_dump('podPress_getID3tags - ' . $systemFileName);
+		podPress_var_dump('podPress_getID3tags - systemFileName' . $systemFileName);
 
-		if(file_exists($systemFileName)) {
-			$uriFileName = $systemFileName;
-			podPress_var_dump('podPress_getID3tags - local file exists: '.$uriFileName);
+		$uriFileName = $systemFileName;
+		
+		if(TRUE === is_readable($systemFileName)) {
+			podPress_var_dump('podPress_getID3tags - local file exists (uriFileName): '.$uriFileName);
 		} else {
-			if(!$resolved) {
-				$uriFileName = $podPress->convertPodcastFileNameToValidWebPath($mediafile);
-			} else {
-				$uriFileName = $mediafile;
-			}
 			$local_uploadURL = $podPress->uploadurl;
 			podPress_var_dump('podPress_getID3tags - local_uploadURL: '.$local_uploadURL);
 			podPress_var_dump('podPress_getID3tags - local_uploadpath: '.$podPress->uploadpath);
@@ -1116,7 +1170,6 @@ License:
 				// get the absolute folder of the file from the URL
 				podPress_var_dump('podPress_getID3tags - it is a local file');
 				$uriFileName = $podPress->uploadpath.str_replace($local_uploadURL,'',$uriFileName);
-				//$uriFileName = str_replace('\\', '/',$uriFileName);
 				podPress_var_dump('podPress_getID3tags - new uriFileName: '.$uriFileName);
 			} else {
 				podPress_var_dump('podPress_getID3tags - go to podPress_downloadFile');
@@ -1196,15 +1249,21 @@ License:
 	}
 	
 	function podPress_showID3tags($mediafile) {
-		if (FALSE !== strpos($mediafile, 'http://www.youtube')) {
+		GLOBAL $wp_version;
+		if (FALSE !== strpos($mediafile, 'http://www.youtube') OR FALSE !== strpos($mediafile, 'https://www.youtube')) {
 			return '';
 		}
-		
+		if ( TRUE == version_compare($wp_version, '2.7', '>=') AND TRUE == version_compare($wp_version, '2.8', '<')) {// for WP 2.7.x (because the plugins_url() worked differently in WP 2.7.x)
+			$plugins_url = plugins_url('podpress', __FILE__);
+		} else { 
+			$plugins_url = plugins_url('', __FILE__);
+		}
 		//~ $allowed_ext = array('mp3', 'ogg', 'ogv', 'asf', 'avi', 'mov', 'qt', 'mp4', 'm4v', 'm4a', 'wma', 'wmv', 'mpg', 'mpeg', 'flv', 'swf');
 		//~ $ext = strtolower(end(explode('.', $mediafile)));
 		//~ if (TRUE == in_array($ext, $allowed_ext)) {
 			podPress_var_dump('start of the ID3 tag retrieval - '.$mediafile);
 			$fileinfo = podPress_getID3tags($mediafile, FALSE, FALSE, FALSE);
+			
 			podPress_var_dump('end of the ID3 tag retrieval');
 			
 			if(!is_array($fileinfo) OR FALSE == isset($fileinfo['comments']) ) {
@@ -1247,10 +1306,10 @@ License:
 			
 			// The # + time() in the URL of the covert art should make the server show always the current image and not a cached version.
 			if ( isset($fileinfo['podpress_tmp_download_exists']) AND TRUE === $fileinfo['podpress_tmp_download_exists'] ) {
-				$result .= '		<th>'.__('Cover Art', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagCoverArt"><img src="'.PODPRESS_URL.'/podpress_backend.php?action=id3image&filename='.rawurlencode($fileinfo['filenamepath']).'&tmpdownloadexists=yes&_ajax_nonce=' . $nonce . '#'.time().'" alt="" /></span></td>'."\n";
+				$result .= '		<th>'.__('Cover Art', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagCoverArt"><img src="'.$plugins_url.'/podpress_backend.php?action=id3image&filename='.rawurlencode($fileinfo['filenamepath']).'&tmpdownloadexists=yes&_ajax_nonce=' . $nonce . '#'.time().'" alt="" /></span></td>'."\n";
 				podPress_var_dump('podPress_showID3tags - podpress_tmp_download_exists = TRUE');
 			} else {
-				$result .= '		<th>'.__('Cover Art', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagCoverArt"><img src="'.PODPRESS_URL.'/podpress_backend.php?action=id3image&filename='.rawurlencode($fileinfo['filenamepath']).'&tmpdownloadexists=no&_ajax_nonce=' . $nonce . '#'.time().'" alt="" /></span></td>'."\n";
+				$result .= '		<th>'.__('Cover Art', 'podpress').'</th><td><span id="podPressMedia_'.$randID.'_tagCoverArt"><img src="'.$plugins_url.'/podpress_backend.php?action=id3image&filename='.rawurlencode($fileinfo['filenamepath']).'&tmpdownloadexists=no&_ajax_nonce=' . $nonce . '#'.time().'" alt="" /></span></td>'."\n";
 				podPress_var_dump('podPress_showID3tags - podpress_tmp_download_exists = FALSE');
 			}
 			
@@ -1322,12 +1381,14 @@ License:
 				$mediafile = 'http://download.podango.com/mediatracker/555/'.$fileNameParts[3].'/'.$fileNameParts[4];
 			}
 		}
-		$allowed_ext = array('mp3', 'ogg', 'ogv', 'avi', 'mov', 'qt', 'mp4', 'm4v', 'm4a', 'wma', 'wmv', 'mpg', 'mpeg', 'flv', 'swf');
+		$allowed_ext = array('mp3', 'ogg', 'opus', 'ogv', 'avi', 'mov', 'qt', 'mp4', 'm4v', 'm4a', 'wma', 'wmv', 'mpg', 'mpeg', 'flv', 'swf');
 		$ext = strtolower(end(explode('.', $mediafile)));
 		if (TRUE == in_array($ext, $allowed_ext)) {
 			podPress_var_dump('start of the duration retrieval');
 			$systemFileName = $podPress->convertPodcastFileNameToSystemPath($mediafile);
+			
 			if(file_exists($systemFileName)) {
+				podPress_var_dump('podPress_getDuration - is local file: '.$systemFileName);
 				$uriFileName = $systemFileName;
 			} else {
 				$systemFileName = $podPress->TryToFindAbsFileName($mediafile);
@@ -1338,7 +1399,7 @@ License:
 				}
 			}
 			podPress_var_dump('podPress_getDuration - file: '.$uriFileName);
-			$fileinfo = podPress_getID3tags($uriFileName, true);
+			$fileinfo = podPress_getID3tags($uriFileName, TRUE);
 			podPress_var_dump('podPress_getDuration - playtime_string: '.$fileinfo['playtime_string']);
 			podPress_var_dump('end of the duration retrieval');
 
@@ -1363,29 +1424,9 @@ License:
 	function podPress_downloadFile($uriFileName, $getHeaders = false, $limitDownload = false) {
 		GLOBAL $podPress;
 		
-		// some downloads may hit time limits -> lets find out these limits, stop the process a moment before and return an error message
-		// search for PHP time limits
-		$max_execution_time = intval(ini_get('max_execution_time'));
-		podPress_var_dump('podPress_downloadFile - max_execution_time: '.$max_execution_time);
-		$safety = 2; // seconds
-		
-		// get the OS type on the server
-		$hairstick = php_uname();
-		$is_windows = stristr( $hairstick, 'win' );
-		// search for CPU time limits
-		if (FALSE === $is_windows) { 
-			@exec('ulimit -t', $output) or $output[0] = 10;
-			$int_output = intval($output[0]);
-			podPress_var_dump('podPress_downloadFile - ulimit -t: '. $output[0].' - (int): '.$int_output);
-			if (is_string($output[0]) AND 10 > $int_output) {
-				$max_time = max(($safety+2), $max_execution_time); // if max_execution_time is somehow weird small
-			} else {
-				$max_time = min(intval($output[0]), $max_execution_time); // if the CPU limit is bigger than 10 then take the max. of the CPU limit and the max_execution_time
-			}
-		} else {
-			$max_time = $max_execution_time; // on Windows systems
-		}
+		$max_time = podPress_get_max_execution_time();
 		podPress_var_dump('podPress_downloadFile - time limit: '.$max_time);
+		$safety = 2; // seconds
 
 		$aborttimelimit = FALSE;
 		$aborthttperror = FALSE;
@@ -1394,25 +1435,28 @@ License:
 		podPress_var_dump('podPress_downloadFile - given URL: '.$uriFileName);
 		
 		$uriFileName = podPress_ResolveReDirects($uriFileName);
-		$aURL = @parse_url($uriFileName);
-		if ( $aURL['scheme'] != 'http' ) {
-			podPress_var_dump('podPress_downloadFile - returning - not a http:// URL : '.var_export($aURL, TRUE));
-			return;
-		}
-		$sHost = $aURL['host'];
-		$sFilepath = (isset($aURL['path']) ? $aURL['path'] : '/') . (isset($aURL['query']) ? '?' . $aURL['query'] : '');
 		
-		// mask white spaces in the file name
-		$sFilepath = str_replace(' ', '%20', $sFilepath);
+		if ( FALSE === function_exists('curl_init') ) {
 		
-		$nPort = isset($aURL['port']) ? $aURL['port'] : 80;
-		
-		if ( function_exists('fsockopen') ) {
-			$fpRemote = @fsockopen($sHost, $nPort, $errno, $errstr, 30);
-		} else {
-			$fpRemote = FALSE;
-		}
-		if ( FALSE !== $fpRemote ) {
+			$aURL = parse_url($uriFileName);
+			if ( $aURL['scheme'] != 'http' ) {
+				podPress_var_dump('podPress_downloadFile - returning - not a http:// URL : '.var_export($aURL, TRUE));
+				return;
+			}
+			$sHost = $aURL['host'];
+			$sFilepath = (isset($aURL['path']) ? $aURL['path'] : '/') . (isset($aURL['query']) ? '?' . $aURL['query'] : '');
+			
+			// mask white spaces in the file name
+			$sFilepath = str_replace(' ', '%20', $sFilepath);
+			
+			$nPort = isset($aURL['port']) ? $aURL['port'] : 80;
+			
+			if ( function_exists('fsockopen') ) {
+				$fpRemote = @fsockopen($sHost, $nPort, $errno, $errstr, 30);
+			} else {
+				$fpRemote = FALSE;
+				return FALSE;
+			}
 			if ( TRUE === $getHeaders ) {
 				podPress_var_dump('podPress_downloadFile - get only the header');
 				podPress_var_dump('podPress_downloadFile - ' . $sHost . $sFilepath);
@@ -1537,125 +1581,86 @@ License:
 				// return the name of the temp file
 				return $localtempfilename;
 			}
+			
 		} else {
+			
 			if ( TRUE === $getHeaders ) {
-				podPress_var_dump('podPress_downloadFile - fpRemote = false | getHeaders = true');
-
-				if ( TRUE == function_exists('curl_init') ) {
-					$ch = curl_init($uriFileName);
-					
-					// make sure we get the header
-					curl_setopt($ch, CURLOPT_HEADER, TRUE);
-					// make it a http HEAD request
-					curl_setopt($ch, CURLOPT_NOBODY, TRUE);
-					// add useragent
-					curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13');
-					//Tell curl to write the response to a variable					
-					curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-					// The maximum number of seconds to allow cURL to wait for a connection.
-					curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, min(10, $max_time-$safety));
-					// The maximum number of seconds to allow cURL functions to execute.
-					curl_setopt($ch, CURLOPT_TIMEOUT, ($max_time-$safety));
-					// Tell curl to stop when it encounters an error
-					curl_setopt($ch, CURLOPT_FAILONERROR, TRUE);
-					
-					$content = curl_exec($ch);
-					
-					podPress_var_dump('podPress_downloadFile - cURL HTTP code: ' . var_export(curl_getinfo($ch, CURLINFO_HTTP_CODE), TRUE));
-
-					// Check if any error occured
-					if ( !curl_errno($ch) ) {
-						$bytes = curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
-						$total_time = curl_getinfo($ch, CURLINFO_TOTAL_TIME);
-						podPress_var_dump('File size: ' . $bytes . ' bytes');
-						podPress_var_dump('Took ' . $total_time . ' seconds to send a request to ' . $url);
-						//clearstatcache();
-					}
-					@curl_close($ch);
-					podPress_var_dump($content);
-					return $content;
-				} else {
-					podPress_var_dump('podPress_downloadFile - cUrl is not available');
-					return '';
-				}
+				podPress_var_dump('podPress_downloadFile - curl_init is available | getHeaders = true');
+				return podPress_get_HTTP_header_via_cURL($uriFileName, $max_time, $safety);
 			} else {
-				podPress_var_dump('podPress_downloadFile - fpRemote = false | getHeaders = false');
-				if ( TRUE == function_exists('curl_init') ) {
-					// determine a temp folder and temp file name
-					$ext = podPress_getFileExt($uriFileName);
-					$pos = strpos($ext, '?');
-					if($pos) {
-						$ext = substr($ext, 0, $pos);
-					}
-					// Trying to write into the servers temp folder. The temp file has to have the media files extension. Because getID3 does not work without it.
-					$localtempfilename = @tempnam('/tmp', 'getID3').'.'.$ext;
-					if (FALSE == $localtempfilename OR '.'.$ext == $localtempfilename) {
-						// If it is not possible to get the temp folder via tempnam() then try to write into the temp folder of podPress
-						$podPress->checkWritableTempFileDir();
-						$localtempfilename = $podPress->tempfilesystempath.'/podpress_tmp.'.$ext;
-					}
-					if (!$fp_local = @fopen($localtempfilename, 'wb')) {
-						// if it is not possible to open a temp file then return
-						podPress_var_dump('podPress_downloadFile - (file) it is not possible to open a temp file');
-						return '';
-					}
-					podPress_var_dump('podPress_downloadFile - (file) localtempfilename: '.$localtempfilename);
-					
-					// starting cURL
-					$ch = curl_init($uriFileName);
-					
-					podPress_var_dump('podPress_downloadFile - cURL HTTP code:');
-					podPress_var_dump( curl_getinfo($ch, CURLINFO_HTTP_CODE) );
-					// make sure we get the header
-					curl_setopt($ch, CURLOPT_HEADER, TRUE);
-					
-					// make it a http GET request
-					curl_setopt($ch, CURLOPT_NOBODY, FALSE);
-					curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
-					// add useragent
-					curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13');
-					if ( FALSE !== $limitDownload ) {
-						podPress_var_dump('podPress_downloadFile - download only that part: 0-'.$limitDownload);
-						curl_setopt($ch, CURLOPT_RANGE, '0-'.$limitDownload);
-					}
-					// Do not put the response into a variable. (Put it into a file.)
-					curl_setopt($ch, CURLOPT_RETURNTRANSFER, FALSE);
-					// the target file (handle) for the download
-					curl_setopt($ch, CURLOPT_FILE, $fp_local);
-					// The maximum number of seconds to allow cURL to wait for a connection.
-					curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, min(10, $max_time-$safety));
-					// The maximum number of seconds to allow cURL functions to execute.
-					curl_setopt($ch, CURLOPT_TIMEOUT, ($max_time-$safety));
-					// Tell curl to stop when it encounters an error
-					curl_setopt($ch, CURLOPT_FAILONERROR, TRUE);
-
-					@curl_exec($ch);
-					
-					// If the HTTP status is not 200 then something with the filename (or URL) was not ok  or something on the server was wrong. 
-					$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-					if ( '200' != $http_code ) {
-						podPress_var_dump('podPress_downloadFile - aborting - HTTP status: ' . $http_code);
-					}
-					
-					// Check if any error occured
-					if ( !curl_errno($ch) ) {
-						$bytes = curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
-						$total_time = curl_getinfo($ch, CURLINFO_TOTAL_TIME);
-						podPress_var_dump('File size: ' . $bytes . ' bytes');
-						podPress_var_dump('Took ' . $total_time . ' seconds to send a request to ' . $url);
-						//clearstatcache();
-					}
-					@curl_close($ch);
-					
-					// Closing the temp file
-					fclose($fp_local);
-
-					return $localtempfilename;
-				} else {
-					podPress_var_dump('podPress_downloadFile - cUrl is not available');
+				podPress_var_dump('podPress_downloadFile - curl_init is available | getHeaders = false');
+				// determine a temp folder and temp file name
+				$ext = podPress_getFileExt($uriFileName);
+				$pos = strpos($ext, '?');
+				if($pos) {
+					$ext = substr($ext, 0, $pos);
+				}
+				// Trying to write into the servers temp folder. The temp file has to have the media files extension. Because getID3 does not work without it.
+				$localtempfilename = @tempnam('/tmp', 'getID3').'.'.$ext;
+				if (FALSE == $localtempfilename OR '.'.$ext == $localtempfilename) {
+					// If it is not possible to get the temp folder via tempnam() then try to write into the temp folder of podPress
+					$podPress->checkWritableTempFileDir();
+					$localtempfilename = $podPress->tempfilesystempath.'/podpress_tmp.'.$ext;
+				}
+				if (!$fp_local = @fopen($localtempfilename, 'wb')) {
+					// if it is not possible to open a temp file then return
+					podPress_var_dump('podPress_downloadFile - (file) it is not possible to open a temp file');
 					return '';
 				}
+				podPress_var_dump('podPress_downloadFile - (file) localtempfilename: '.$localtempfilename);
+				
+				// starting cURL
+				$ch = curl_init($uriFileName);
+				
+				podPress_var_dump('podPress_downloadFile - cURL HTTP code:');
+				podPress_var_dump( curl_getinfo($ch, CURLINFO_HTTP_CODE) );
+				// make sure we get the header
+				curl_setopt($ch, CURLOPT_HEADER, TRUE);
+				
+				// make it a http GET request
+				curl_setopt($ch, CURLOPT_NOBODY, FALSE);
+				curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+				// add useragent
+				curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13');
+				if ( FALSE !== $limitDownload ) {
+					podPress_var_dump('podPress_downloadFile - download only that part: 0-'.$limitDownload);
+					curl_setopt($ch, CURLOPT_RANGE, '0-'.$limitDownload);
+				}
+				// Do not put the response into a variable. (Put it into a file.)
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, FALSE);
+				// the target file (handle) for the download
+				curl_setopt($ch, CURLOPT_FILE, $fp_local);
+				// The maximum number of seconds to allow cURL to wait for a connection.
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, min(10, $max_time-$safety));
+				// The maximum number of seconds to allow cURL functions to execute.
+				curl_setopt($ch, CURLOPT_TIMEOUT, ($max_time-$safety));
+				// Tell curl to stop when it encounters an error
+				curl_setopt($ch, CURLOPT_FAILONERROR, TRUE);
+
+				@curl_exec($ch);
+				
+				// If the HTTP status is not 200 then something with the filename (or URL) was not ok  or something on the server was wrong. 
+				$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+				if ( '200' != $http_code ) {
+					podPress_var_dump('podPress_downloadFile - aborting - HTTP status: ' . $http_code);
+				}
+				
+				// Check if any error occured
+				if ( !curl_errno($ch) ) {
+					$bytes = curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
+					$total_time = curl_getinfo($ch, CURLINFO_TOTAL_TIME);
+					podPress_var_dump('File size: ' . $bytes . ' bytes');
+					podPress_var_dump('Took ' . $total_time . ' seconds to send a request to ' . $url);
+					//clearstatcache();
+				}
+				@curl_close($ch);
+				
+				// Closing the temp file
+				fclose($fp_local);
+
+				return $localtempfilename;
 			}
+			
 		}
 	}
 
@@ -1703,6 +1708,94 @@ License:
 		}
 	}
 	
+	
+	/**
+	*  podPress_get_HTTP_header_via_cURL - returns HTTP header of a file or an empty string
+	*
+	* @package podPress
+	* @since 8.8.10.14
+	*
+	* @param str $uriFileName - the URL of the media file
+	* @param int $max_time - max. execution time ins seconds
+	* @param int $safety - number of seconds which should be subtracted from the $max_time value
+	*
+	* @return str $header - the response from the server (the HTTP header)
+	*/
+	function podPress_get_HTTP_header_via_cURL($uriFileName='', $max_time=10, $safety=0) {
+		if ( FALSE === empty($uriFileName) ) {
+			$header='';		
+			$ch = curl_init($uriFileName);
+			
+			// make sure we get the header
+			curl_setopt($ch, CURLOPT_HEADER, TRUE);
+			// make it a http HEAD request
+			curl_setopt($ch, CURLOPT_NOBODY, TRUE);
+			// add useragent
+			curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13');
+			//Tell curl to write the response to a variable					
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+			// The maximum number of seconds to allow cURL to wait for a connection.
+			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, min(10, $max_time-$safety));
+			// The maximum number of seconds to allow cURL functions to execute.
+			curl_setopt($ch, CURLOPT_TIMEOUT, ($max_time-$safety));
+			// Tell curl to stop when it encounters an error
+			curl_setopt($ch, CURLOPT_FAILONERROR, TRUE);
+			
+			$header = curl_exec($ch);
+			
+			podPress_var_dump('podPress_downloadFile - cURL HTTP code: ' . var_export(curl_getinfo($ch, CURLINFO_HTTP_CODE), TRUE));
+			
+			// Check if any error occured
+			if ( !curl_errno($ch) ) {
+				$bytes = curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
+				$total_time = curl_getinfo($ch, CURLINFO_TOTAL_TIME);
+				podPress_var_dump('File size: ' . $bytes . ' bytes');
+				podPress_var_dump('Took ' . $total_time . ' seconds to send a request to ' . $url);
+				//clearstatcache();
+			}
+			@curl_close($ch);
+			podPress_var_dump($header);
+			return $header;
+		} else {
+			return '';
+		}
+	}
+	
+	
+	/**
+	*  podPress_get_max_execution_time - returns the maximal execution time of a PHP script (takes server process limits into account / only the PHP limit)
+	*
+	* @package podPress
+	* @since 8.8.10.14
+	*
+	* @return str $max_time
+	*/
+	function podPress_get_max_execution_time() {
+		// some downloads may hit time limits -> lets find out these limits, stop the process a moment before and return an error message
+		// search for PHP time limits
+		$max_execution_time = intval(ini_get('max_execution_time'));
+		podPress_var_dump('podPress_get_max_execution_time - max_execution_time: '.$max_execution_time);
+		
+		// get the OS type on the server
+		$hairstick = php_uname();
+		$is_windows = stristr( $hairstick, 'win' );
+		// search for CPU time limits
+		if (FALSE === $is_windows) {
+			@exec('ulimit -t', $output) or $output[0] = 10;
+			$int_output = intval($output[0]);
+			podPress_var_dump('podPress_get_max_execution_time - ulimit -t: '. $output[0].' - (int): '.$int_output);
+			if (is_string($output[0]) AND 10 > $int_output) {
+				$max_time = max(($safety+2), $max_execution_time); // if max_execution_time is somehow weird small
+			} else {
+				$max_time = min(intval($output[0]), $max_execution_time); // if the CPU limit is bigger than 10 then take the max. of the CPU limit and the max_execution_time
+			}
+		} else {
+			$max_time = $max_execution_time; // on Windows systems
+		}
+		return $max_time;
+	}
+	
+	
 	/**
 	* podPress_var_dump - writes a variable into a log file in the podPress folder (helper function - only for development purposes)
 	*
@@ -1711,14 +1804,16 @@ License:
 	*
 	* @param mixed $var
 	*/
+	if ( !function_exists('podPress_var_dump') ) {
 	function podPress_var_dump($var) {
-		if ( defined( 'PODPRESS_DEBUG_LOG' ) AND TRUE === constant( 'PODPRESS_DEBUG_LOG' ) ) { 
+		if ( defined( 'PODPRESS_DEBUG_LOG' ) AND TRUE === constant( 'PODPRESS_DEBUG_LOG' ) ) {
+			$returnmsg = '';
 			// write the out put to the log file
 			$filename = PODPRESS_DIR.'/podpress_log.dat';
 			if ( is_file($filename) ) {
 				$result = @chmod($filename, 0777);
 				if (FALSE === $result) {		
-					return sprintf(__('This PHP script has not the permission to use chmod for the %1$s file.', 'podpress'), $filename);
+					return sprintf(__('This PHP script has not the permission to use chmod (or chown) for the %1$s file.', 'podpress'), $filename);
 				}
 				if ( (filesize($filename)/1024) > 100 ) { // delete the Logfile if it is bigger than 100 kByte
 					$result = @unlink($filename); 
@@ -1739,11 +1834,12 @@ License:
 			if ( is_file($filename) ) { 
 				$result = @chmod($filename, 0644); 
 				if (FALSE === $result) {
-					$returnmsg = sprintf(' '.__('This PHP script has not the permission to use chmod for the %1$s file.', 'podpress'), $filename);
+					$returnmsg = sprintf(' '.__('This PHP script has not the permission to use chmod (or chown) for the %1$s file.', 'podpress'), $filename);
 				}
 			}
 			return $returnmsg;
 		}
+	}
 	}
 	
 	/** podPress_get_real_url - demasks an URL which is masked with the podPress stats scheme
@@ -1822,6 +1918,213 @@ License:
 			echo $realURL;
 		} else {
 			return $realURL;
+		}
+	}
+	
+	/**
+	* podpress_showadminmessage - prints the upgrade message 
+	*
+	* @package podPress
+	* @since 8.8.10.14
+	*
+	* @param str $message - the text of the message
+	* @param bool $errormsg (optional) - if true then use the error message scheme
+	*/
+	function podpress_showmessage($message, $errormsg = FALSE) {
+		if ($errormsg) {
+			echo '<div id="message" class="error">';
+		} else {
+			echo '<div id="message" class="updated fade">';
+		}
+		echo '<p>'.$message.'</p></div>';
+	} 
+	
+	/**
+	* podpress_showadminmessages_onupgrade - shows messages in the admin area after anplugin upgrade has happened
+	*
+	* @package podPress
+	* @since 8.8.10.14
+	*/
+	function podpress_showadminmessages_onupgrade() {
+		Global $podPress;
+
+		// show to the message only to those who can administer the podPress settings
+		if (current_user_can($podPress->requiredadminrights)) {
+			$upgrade_status = get_option('_podPress_upgrade');
+			if ( is_array($upgrade_status) ) {
+				$i = 0;
+				$visible_messages = Array();
+				foreach ($upgrade_status AS $message) {
+					$i++;
+					if ( isset($message['msg']) AND FALSE === empty($message['msg']) AND (FALSE === is_array($message['condition']) OR (TRUE === is_array($message['condition']) AND isset($podPress->settings[$message['condition']['key']]) AND $message['condition']['value'] === $podPress->settings[$message['condition']['key']])) ) {
+						if ( empty($visible_messages) OR FALSE === in_array($message['msg'], $visible_messages) ) {
+							$visible_messages[] = $message['msg'];
+							if ( isset($message['msgtype']) AND 'error' === $message['msgtype'] ) {
+								// use the error frame for the message (red)
+								podpress_showmessage($message['msg'], TRUE);
+							} else {
+								// use the default frame for the message (yellow)
+								podpress_showmessage($message['msg']);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	* podpress_delete_upgrade_status - deletes a certain upgrade status (message and action). All status actions and message are in an array in the option '_podPress_upgrade'
+	*
+	* @package podPress
+	* @since 8.8.10.14
+	*
+	* @param str $status_key  - each value of the '_podPress_upgrade' array is an array with an 'action' and a 'msg'. The $status_key is the value (the name)  of 'action'.
+	*
+	* @return bool
+	*/
+	function podpress_delete_upgrade_status($status_key = '') {
+		if ( FALSE === empty($status_key) ) {
+			$upgrade_status = get_option('_podPress_upgrade');
+			// $upgrade_status has this structure: array(0 => array('action' => '...', 'msg' => '...'), 1 => array('action' => '...', 'msg' => '...'), ...);
+			if ( is_array($upgrade_status) ) {
+				$new_upgrade_status = Array();
+				foreach ($upgrade_status as $status) {
+					if ( isset($status['action']) AND $status_key != $status['action'] ) {
+						$new_upgrade_status[] = $status; 
+					}
+				}
+				// if there is no further upgrade_status then delete the whole option
+				if ( FALSE === empty($new_upgrade_status) ) {
+					return update_option('_podPress_upgrade', $new_upgrade_status);
+				} else {
+					return delete_option('_podPress_upgrade');
+				}
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
+	}
+	
+	/**
+	* podpress_isset_upgrade_status - check whether there is a certain action in the option '_podPress_upgrade'
+	*
+	* @package podPress
+	* @since 8.8.10.14
+	*
+	* @param str $status_key  - each value of the '_podPress_upgrade' array is an array with an 'action' and a 'msg'. The $status_key is the value (the name)  of 'action'.
+	*
+	* @return bool
+	*/
+	function podpress_isset_upgrade_status($status_key = '') {
+		if ( FALSE === empty($status_key) ) {
+			$upgrade_status = get_option('_podPress_upgrade');
+			// $upgrade_status has this structure: array(0 => array('action' => '...', 'msg' => '...', 'condition' => Array() ), 1 => array('action' => '...', 'msg' => '...', 'condition' => Array() ), ...);
+			if ( is_array($upgrade_status) ) {
+				GLOBAL $podPress;
+				$action_exists = FALSE;
+				foreach ($upgrade_status as $status) {
+					if ( isset($status['action']) AND $status_key == $status['action'] AND (FALSE === is_array($status['condition']) OR (TRUE === is_array($status['condition']) AND isset($podPress->settings[$status['condition']['key']]) AND $status['condition']['value'] === $podPress->settings[$status['condition']['key']])) ) {
+						$action_exists = TRUE;
+						break;
+					}
+				}
+				return $action_exists;
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
+	}
+	
+	/**
+	* podpress_add_upgrade_status - adds a certain action in the option '_podPress_upgrade'
+	*
+	* @package podPress
+	* @since 8.8.10.14
+	*
+	* @param str $status_key  - each value of the '_podPress_upgrade' array is an array with an 'action' and a 'msg'. The $status_key is the value (the name)  of 'action'.
+	* @param str $msg  - the message which should be displayed on the admin pages
+	* @param str $msgtype  - type of the message; is used to determine the style of the frame and the text of message
+	* @param array $condition  - condition under which the message should be displayed (e.g. only while the statistic feature is enabled). It has to be an array with structure Array('key' => '...', 'value' => '...',)  or maybe FALSE. The condition is only to check against podPress_config values. key should be a key in podPress_config ($podPress) and value the value you want to check.
+	*
+	* @return bool
+	*/
+	function podpress_add_upgrade_status($status_key = '', $msg = '', $msgtype = '', $condition = FALSE) {
+		if ( FALSE === empty($status_key) AND FALSE === empty($msg) ) {
+			if ( empty($msgtype) ) {
+				$msgtype = 'warning';
+			}
+			$upgrade_status = get_option('_podPress_upgrade');
+			// $upgrade_status has this structure: array(0 => array('action' => '...', 'msg' => '...', 'condition' => Array() ), 1 => array('action' => '...', 'msg' => '...', 'condition' => Array() ), ...);
+			if ( is_array($upgrade_status) ) {
+				$action_exists = FALSE;
+				$i = 0;
+				foreach ($upgrade_status as $status) {
+					if ( isset($status['action']) AND $status_key == $status['action'] ) {
+						$action_exists = TRUE;
+						break;
+					}
+					$i++;
+				}
+				if ( FALSE === $action_exists ) {
+					if ( isset($condition['key']) AND isset($condition['value']) AND FALSE === empty($condition['key']) ) {
+						$upgrade_status[] = Array('action' => $status_key, 'msg' => $msg, 'msgtype' => $msgtype, 'condition' => Array('key' => $condition['key'], 'value' => $condition['value']));
+					} else {
+						$upgrade_status[] = Array('action' => $status_key, 'msg' => $msg, 'msgtype' => $msgtype);
+					}
+					$result = update_option( '_podPress_upgrade', $upgrade_status );
+					return $result;
+				} else {
+					return FALSE;
+				}
+			} else {
+				if ( isset($condition['key']) AND isset($condition['value']) AND FALSE === empty($condition['key']) ) {
+					$upgrade_status[] = Array('action' => $status_key, 'msg' => $msg, 'msgtype' => $msgtype, 'condition' => Array('key' => $condition['key'], 'value' => $condition['value']));
+				} else {
+					$upgrade_status[] = Array('action' => $status_key, 'msg' => $msg, 'msgtype' => $msgtype);
+				}
+				$result = update_option( '_podPress_upgrade', $upgrade_status );
+				return $result;
+			}
+		} else {
+			return FALSE;
+		}
+	}
+
+	/**
+	* podpress_get_upgrade_status - returns the data of a certain upgrade status
+	*
+	* @package podPress
+	* @since 8.8.10.14
+	*
+	* @param str $status_key  - each value of the '_podPress_upgrade' array is an array with an 'action' and a 'msg'. The $status_key is the value (the name)  of 'action'.
+	*
+	* @return misc - bool or array
+	*/
+	function podpress_get_upgrade_status($status_key = '') {
+		if ( FALSE === empty($status_key) ) {
+			$upgrade_status = get_option('_podPress_upgrade');
+			// $upgrade_status has this structure: array(0 => array('action' => '...', 'msg' => '...', 'condition' => Array() ), 1 => array('action' => '...', 'msg' => '...', 'condition' => Array() ), ...);
+			if ( is_array($upgrade_status) ) {
+				$action_exists = FALSE;
+				$i = 0;
+				foreach ($upgrade_status as $status) {
+					if ( isset($status['action']) AND $status_key == $status['action'] ) {
+						$action_exists = TRUE;
+						break;
+					}
+					$i++;
+				}
+				return $upgrade_status[($i)];
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
 		}
 	}
 ?>

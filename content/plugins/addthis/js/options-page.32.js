@@ -1,4 +1,6 @@
-jQuery(document).ready(function($) {   
+jQuery(document).ready(function($) { 
+	$( "#config-error" ).hide();
+	$( "#share-error" ).hide();
     $( "#tabs" ).tabs();
     var thickDims, tbWidth, tbHeight; 
     thickDims = function() {
@@ -289,4 +291,74 @@ jQuery(document).ready(function($) {
             addthis_validation_message.next().hide();
        }
     });
+    
+    $('#addthis-config-json').focusout(function() {
+    	var error = 0;
+		if ($('#addthis-config-json').val() != " ") {
+		    try {
+		    	var addthis_config_json = jQuery.parseJSON($('#addthis-config-json').val());
+		    }
+		    catch (e) {
+				error = 1;
+		    }
+		}
+		if (error == 0) {
+			$('#config-error').hide();
+		    return true;
+		}
+		else {
+			$('#config-error').show();
+		    return false;
+		}
+    });
+    
+    $('#addthis-share-json').focusout(function() {
+    	var error = 0;
+    	if ($('#addthis-share-json').val() != " ") {
+		    try {
+		    	var addthis_share_json = jQuery.parseJSON($('#addthis-share-json').val());
+		    }
+	        catch (e) {
+	        	error = 1;
+		    }
+		}
+    	if (error == 0) {
+    		$('#share-error').hide();
+		    return true;
+		}
+		else {
+			$('#share-error').show();
+		    return false;
+		}
+    });
+    
+    $('#submit-button').click(function() {
+    	$('#config-error').hide();
+		$('#share-error').hide();
+		var error = 0;
+		if ($('#addthis-config-json').val() != " ") {
+		    try {
+		    	var addthis_config_json = jQuery.parseJSON($('#addthis-config-json').val());
+		    }
+	      	    catch (e) {
+				$('#config-error').show();
+				error = 1;
+		    }
+		}
+		if ($('#addthis-share-json').val() != " ") {
+		    try {
+		    	var addthis_share_json = jQuery.parseJSON($('#addthis-share-json').val());
+		    }
+	        catch (e) {
+				$('#share-error').show();
+				error = 1;
+		    }
+		}
+	    if (error == 0) {
+		    return true;
+		}
+		else {
+		    return false;
+		}
+     });
 });

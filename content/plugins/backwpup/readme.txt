@@ -1,514 +1,277 @@
 === BackWPup ===
-Contributors: danielhuesken, inpsyde, Bueltge, nullbyte
-Tags: backup, database, file, ftp, xml, time, upload, multisite, cloud, dropbox, storage, amazon
-Requires at least: 3.1
-Tested up to: 3.5
-Stable tag: 2.1.17
+Contributors: inpsyde, danielhuesken, Bueltge, nullbyte
+Tags: backup, dump, database, file, ftp, xml, time, upload, multisite, cloud, dropbox, storage, S3
+Requires at least: 3.2
+Tested up to: 3.5.1
+Stable tag: 3.0.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-WordPress Backup and more...
+Flexible, scheduled WordPress backups to any location
 
 == Description ==
 
-Do backups and more for your WordPress Blog.
+The backup files can be used to save your whole installation including `/wp-content/`
+and push them to an external Backup Service, if you don’t want to save the backups on
+the same server. With the single backup .zip file you are able to restore an installation.
 
-* Database Backup
+* Database Backup  *(needs mysqli)*
 * WordPress XML Export
+* Generate a file with installed plugins
 * Optimize Database
-* Check\Repair Database
-* File Backup
-* Backups in zip, tar, tar.gz, tar.bz2 format
-* Store backup to Folder
-* Store backup to FTP Server
-* Store backup to Amazon S3
-* Store backup to Google Storage
-* Store backup to Microsoft Azure (Blob)
-* Store backup to RackSpaceCloud
-* Store backup to Dropbox
-* Store backup to SugarSync
-* Send Log/Backup by Email
-* Multisite Support only as Network Admin
+* Check and repair Database
+* File backup
+* Backups in zip, tar, tar.gz, tar.bz2 format *(needs gz, bz2, ZipArchive)*
+* Store backup to directory
+* Store backup to FTP server *(needs ftp)*
+* Store backup to S3 services *(needs curl)*
+* Store backup to Microsoft Azure (Blob) *(needs PHP 5.3.2, curl)*
+* Store backup to RackSpaceCloud *(needs PHP 5.3.2, curl)*
+* Store backup to Dropbox *(needs curl)*
+* Store backup to SugarSync *(needs curl)*
+* Send logs and backups by email
+* Multi-site support only as network admin
 
-** WP 3.1 and PHP 5.2.5 Required!! **
+Get the Pro Version: http://marketpress.com/product/backwpup-pro/
 
-** NO WARRANTY SUPPLIED! **
-** Test your Backups! **
+**WordPress 3.2 and PHP 5.2.6 required!**
 
-== Installation ==
+**To use the Plugin with full functionality PHP 5.3.3 with mysqli, FTP,gz, bz2,  ZipArchive and curl is needed.**
 
-1. Download BackWPup Plugin.
-2. Decompress and upload the contents of the archive into /wp-content/plugins/.
-3. Activate the Plugin through the 'Plugins' menu in WordPress
+**Plugin functions that don't work will be not displayed.**
+
+**Test your Backups!**
+
+**Made by [Inpsyde](http://inpsyde.com) &middot; We love WordPress**
+
+Have a look at the premium plugins in our [market](http://marketpress.com).
 
 == Frequently Asked Questions ==
 
+= My backup jobs don’t seem to run as scheduled. =
+  
+BackWPup uses WordPress’ own cron job system (**WP Cron**) to execute scheduled backup jobs. In order for WordPress to “know” when to execute a job, its “inner clock” needs to be set regularly. That happens whenever someone (including yourself) visits your site. 
+If your site happens to not being visited for a period of time, WordPress’ inner clock gets sort of slow. In that case it takes an extra server-side cron job to regularly call http://your-site.tld/wp-cron.php and tell WordPress what time it is.
+  
+A simple way to find out whether WP Cron works as it should on your site is to create a new post and set its publishing date to some point in the future, i.e. 10 minutes from now. Then leave your site (that’s important), come back after 11 minutes and check whether your scheduled post has been published. If not, you’re very likely to have an issue with WP Cron.
+
+= Yuk! It says: “ERROR: No destination correctly defined for backup!” =
+
+That means a backup job has started, but BackWPup doens’t know where to store the backup files. Please cancel the running job and re-edit its configuration. There should be a Tab “To: …” in your backup job’s configuration. Have you set a backup target correctly? 
+
+= A backup job has started, but nothing seems to be happening—not even when I re-start it manually. =
+
+**Solution #1**
+
+* Open BackWPup->Settings
+* Go to the Informations tab.
+* Find *Server self connect:* in the left column.
+* If it says something like *(401) Authorisation required* in the right column, go to the Network tab and set the username and password for server-side authentication.
+* Try again starting the backup job.
+
+**Solution #2**
+
+* Open wp-config.php and find the line where it says `if ( !defined('ABSPATH') )`.
+* Somewhere before that line add this: `define( 'ALTERNATE_WP_CRON', true );`
+
+**Solution #3**
+
+Not really a solution, but a way to identify the real problem: see remarks on WP Cron at the top.
+
+= I get this error message: `The HTTP response test get a error "Connection time-out"` =
+
+BackWPup performs a simple HTTP request to the server itself every time you click `run now` or whenever a backup job starts automatically. The HTTP response test message could mean:
+
+* Your host does not allow *loop back connections*. (If you know what `WP_ALTERNATE_CRON` is, try it.)
+* Your WordPress root directory or backup directory requires authetification. Set username and password in Settings->Network.
+* The Server can’t resolve its own hostname.
+* A plugin or theme is blocking the request. 
+* Other issues related to your individual server and/or WordPress configuration.
+
+
+= I get a fatal error: `Can not create folder: […]/wp-content/backwpup-[…]-logs in […]/wp-content/plugins/backwpup/inc/class-job.php …` =
+Please set CHMOD 775 on the /wp-content/ directory and refresh the BackWPup dashboard. If that doesn’t help, try CHMOD 777. You can revert it to 755 once BackWPup has created its folder.
+
+
+= I don’t see an option to configure Dropbox, S3 or other destinations. =
+If you don’t see those options in the Add new job->General tab, it is most likely your server running a PHP version below 5.3.
+
+
+= Backup jobs are running forever! =
+Almost all web hosts have limited allowed script execution time on their servers. As a consequence, BackWPup might be “interrupted” in its job execution when executing the job takes longer than script execution is allowed for by the server (i.e. when the job requires to add a lot of files to a ZIP archive). Whenever BackWPup’s execution is stopped by the server, it waits 5 minutes before it tries to restart the job. If it is stopped again, it waits another five minutes. Those interruptions can then add up to what looks like 20-40 minutes of execution while really most of it is waiting time for a job to be restarted.
+
+A remedy in this case can be splitting a large file backup into smaller chunks. For example, create one backup job for your WordPress installation, but exclude /wp-content/. Create another job for /wp-content/. If your site has a lot of uploaded photos, maybe even go further, exclude /uploads/ from your /wp-content/ backup and create a third job for /uploads/.
+
+
+= How do I restore a backup? =
+Up to now, there is no feature in BackWPup to restore a backup. You can follow [these instructions from the WordPress Codex](http://codex.wordpress.org/Restoring_Your_Database_From_Backup) or [this tutorial (also Codex)](http://codex.wordpress.org/WordPress_Backups) for more detailed information on cPanel, Plesk, vDeck and others.
+
+
+= When I edit a job the Files tab loads forever. =
+Go to Settings->General and disable “Display folder sizes on files tab if job edited”. Calculating folder sizes can take a while on sites with many folders.
+
+= I generated a list of my installed plugins, but it’s hard to read. =
+Try opening the text file in an editor software like Notepad++ (Windows) or TextMate (Mac) to preserve line-breaks.
+
+= My web host notified me BackWPup was causing an inacceptable server load! =
+Go to Settings->Jobs and try a different option for “Reduce server load”.
+
+
+= Can I cancel a running backup job via FTP? =
+
+Yes. Go to your BackWPup temp directory and find a file named `backwpup-xyz-working.php` where “xyz” is a random string of numbers and characters. Delete that file to cancel the currently running backup job.
+
+
+= Can I move the temp directory to a different location? =
+
+Yes. You need to have writing access to the wp-config.php file (usually residing in the root directory of your WordPress installation). 
+
+* Open wp-config.php and find the line where it says `if ( !defined('ABSPATH') )`. 
+* Somewhere *before* that line add this: `define( 'WP_TEMP_DIR', '/absolute/path/to/wp/your/temp-dir' );`
+* Replace `/absolute/path/to/wp/` with the absolute path of your WordPress installation and `your/temp-dir` with the path to your new temp directory.
+* Save the file.
+
+
+= What do those placeholders in file names stand for? =
+
+* %d = Two digit day of the month, with leading zeros
+* %j = Day of the month, without leading zeros
+* %m = Day of the month, with leading zeros
+* %n = Representation of the month (without leading zeros)
+* %Y = Four digit representation for the year
+* %y = Two digit representation of the year
+* %a = Lowercase ante meridiem (am) and post meridiem (pm)
+* %A = Uppercase ante meridiem (AM) and post meridiem (PM)
+* %B = [Swatch Internet Time](http://en.wikipedia.org/wiki/Swatch_Internet_Time)
+* %g = Hour in 12-hour format, without leading zeros
+* %G = Hour in 24-hour format, without leading zeros
+* %h = Hour in 12-hour format, with leading zeros
+* %H = Hour in 24-hour format, with leading zeros
+* %i = Two digit representation of the minute
+* %s = Two digit representation of the second
+* %u = Two digit representation of the microsecond
+* %U = [UNIX timestamp](http://www.php.net/manual/en/function.time.php) (seconds since January 1 1970 00:00:00 GMT)
 
 == Screenshots ==
-1. Job Page
-2. Working Job
-3. Logs Page
-4. Backups Manage Page
+
+1. Working job and jobs overview
+2. Job creation/edit
+3. Displaying logs
+4. Manage backup archives
+5. Dashboard
+
+== Upgrade Notice ==
+= After an upgrade from version 2 =
+
+Please check all settings after the update:
+
+* Dropbox authentication must be done again
+* SugarSync authentication must be done again
+* S3 Settings
+* Google Storage is now in S3
+* Check all your passwords
+
+== Installation ==
+
+1. Download the BackWPup plugin.
+2. Decompress the ZIP file and upload the contents of the archive into `/wp-content/plugins/`.
+3. Activate the plugin through the 'Plugins' menu in WordPress
+
 
 == Changelog ==
-= 2.1.17 =
-* Changed name of sav button to prevent false css.
-* added autocomplte off to some input fields.
-* cheange api domain for google storage
-* Updated AWS lib to 1.5.17.1
-
-= 2.1.16 =
-* Dropbox chunking will done in temp again.
-* uses stream for compression
-* Metaboxes can't disabled by the screen options
-* Set mail charset
-* Handling for Dropbox 503 errors
-* removed oauth bypass Google Analytics by Yoast
-* updatet AWS lib to 1.5.15
-* bug fixes
-
-= 2.1.15 =
-* Fixed FTP folder bug
-* Dropbox chunking will done in memory not in temp
-
-= 2.1.14 =
-* removed calling home function
-* fixed missing ' in mysql dump
-* now lager than 150MB uploads to Dropbox with there Beta API
-* fixed bug in progress updates
-* fixed problem with ftp dir can not empty
-* Updated AWS lib to 1.5.11
-
-= 2.1.13 =
-* tweaked Gstorage upload thx Kevin
-* fixed bug in xml file generation
-* changed base64 function to prevent false positive massages from scanners
-* removed executeable files from MS Azure SDK
-* changed Dropbox oAuth see https://www.dropbox.com/developers/blog/20
-* removed BackWPup Cron service
-* changed authentication method for SugarSync please re login
-
-= 2.1.12 =
-* always check existing .htaccess in log/temp/backup folder
-* set tmp folder to plugindir/tmp
-* removed input_filter function
-* fixed problem with mb_string funktion on job start
-* reduced needed memory for FTP upload.
-* Updated Google Storage Url's
-* Updated AWS lib to 1.5.8.1
-
-= 2.1.11 =
-* fixed bug in contextual help
-* Updated AWS lib to 1.5.6
-* changes for WordPress 3.4
-
-= 2.1.10 =
-* typo fix
-* add robots noindex,nofollow in log header
-* trigger job start errors
-* Updated AWS lib to 1.5.3
-* added support for help functions
-
-= 2.1.9 =
-* bypass Google Analytics by Yoast oauth
-* improved working displaying
-
-= 2.1.8 =
-* Updated AWS lib to 1.5.2
-* Security improvements
-* Updated MS Azure to 4.1.0
-* Updated RSC lib to 1.7.10
-* Updatet oAuth lib for Dropbox
-* increased memory on db dump
-
-= 2.1.7 =
-* New Logo
-* Fixed not displayed save button
-* Updated AWS lib to 1.5.0
-* some tweaks
-
-= 2.1.6 =
-* fixed Dropbox with no path problem
-* fixed Dropbox path with witespace
-* Updated AWS lib to 1.4.5
-* 2. fix for security vulnerability
-
-= 2.1.5 =
-* Updated AWS lib to 1.4.4
-* use my own dropbox lib again and chaned it to new api
-* Fixed security vulnerability
-* some littel fixes
-
-= 2.1.4 =
-* correct some values on job copy/export
-* fixed warning on dropbox upload.
-* WP cron Job only set is a job activated
-* now a manualy job starts with ajax is 'define('ALTERNATE_WP_CRON', true);'
-* removed runtime settings
-* send log mails with full text
-* added aditional checks for job running
-* Updated AWS lib to 1.4.0.1
-
-= 2.1.3 =
-* Preformance improvment
-* Uses now dropbox-php.com lib (ver. 0.4.2)
-* Updated AWS lib to 1.4.0
-* changed Plugin activation function, because on update or upload activate is not called
-* bug fixes
-
-= 2.1.2 =
-* removed http class, makes to many problems
-
-= 2.1.1 =
-* Fiexd problem with translation
-* Don't display dashboard Wigets on Mulitsite for not super amdins
-* Some improvements for Multisite
-* Updated AWS lib to 1.3.7
-* Google Storage uses now AWS lib
-* Added http basic autentication support
-* now DB jobs uses new not selected tabels too
-* bug fixes
-
-= 2.1.0 =
-* No more sessions and curl needed
-* Respect open_basdir for temp folder
-* Dropbox changes, better uploads, but needs many memory
-* Added Multiseite support (only for Network Admin)
-* Uses now �WP_TEMP_DIR� for getting temp folder
-* Updated AWS lib to 1.3.6
-* Job runs now in UTC time. Time outputs will convert.
-* Many languge strings changed for better translation
-* Fixed double job run in same time
-* Removed cache prevention for cron to resolve problems with W3 Total Cache
-* Readded Support for WordPress 3.1
-
-= 2.0.3 =
-* Reimplemt deletion of backups in a folder
-* Hopfuly fix of 'temp is not writeable'
-* Fixed 'Black Screen'
-* more error output on XML export
-* satus on pcl zip create is back and use off the wordpress class
-
-= 2.0.2 =
-* fixed bug Class 'ZipArchive' not found now
-* ficed bug in chnge logfile folder
-* replase spaces bei _ in dropboxfolder
-* some more bug fixes
-
-= 2.0.1 =
-* Zip file creation now faster agin but no stat output
-* serverl bug fixes
-
-= 2.0.0 =
-* PHP Sessions, curl and PHP version 5.2.4 required!
-* Wordpress 3.2 required!
-* Using the system temp dir now
-* Updated AWS lib to 1.3.5
-* Updated RSC lib to 1.7.9
-* Updated MS Azure lib to 3.0.0
-* Added Google storage as destination
-* Reworked GUI (WordPress Dropboxes, working screen options, ....)
-* Complete new job working ot of Wordpress (less memory,automatic restart,...)
-* Added easyer job sheduling selection
-
-= 1.7.8 =
-* Updated AWS SDK to ver.1.3.5 for Amazon S3
-* some extra outputs on job start
-* resart Script execution time on many job operations.
-* some changes too prevent cache addons
-* prevent job run twice on same time on background
-
-= 1.7.7 =
-* cleanup brocken buckupfiels on job start
-
-= 1.7.6 =
-* fix problem with a losing sql connection on job end
-
-= 1.7.5 =
-* fix problems in cron calculation
-
-= 1.7.4 =
-* jobs not longer work ever... max. time is 5 min.
-* hopfuly fix for dropbox upload
-* fix dropbox auth deletion
-* fixed bug in Sugarsync qouta
-
-= 1.7.3 =
-* Fixed Dropbox PLAINTEXT signatre
-* Updated pod
-* Added/updated German translation (thx David Decker)
-
-= 1.7.2 =
-* try to disable Cache plugins for working job
-* more dropbox improvements
-* fixed Curl error on WP-Export
-* fixed dashbord wigedt shown for all users
-* bug fixes
-
-= 1.7.1 =
-* Bugfix on make new jobs
-* Bugfix on job run with dbdump
-* Bugfix on Backup Bulk actions
-
-= 1.7.0 =
-* Improved Dropbox referer handling
-* Sycurity fix (thanks to Phil Taylor - Sense of Security)
-* Added SugarSync support
-* general improvements
-* bug fixes
-
-= 1.6.2 =
-* Dropbox improvements and bug fixes
-
-= 1.6.1 =
-* Now use web OAuth login for DropBox! Best thanks to Tijs Verkoyen for his great DropBox class.
-* Only DropBox OAuth tokens are saved!
-* Check DropBox Quota/Upload Filesize on Job run
-* fixed bug in .tar with file/folder names longer than 100 chars
-* changed user capability back to '10' when working with WP lower than 3.0
-* bug fixes for old WP versions
-* English text updates! Best thanks to Marcy Capron.
-* general improvements
-* bug fixes
-
-= 1.6.0 =
-* new DropBox class to use all functions (download, delete, list)
-* added useful links in job edit page
-* renamed functions.php to resolve problems arising from other plugins
-* general improvements
-
-= 1.5.5 =
-* Updated AWS SDK to ver.1.2.6 for Amazon S3
-* Added AWS Region "Northeast" (Japan)
-* Added Microsoft Azure (Blob) as backup destination
-* bug fixes
-
-= 1.5.2 =
-* changes for user checking
-* removed plugin init action
-
-= 1.5.1 =
-* changed user capability from '10' to 'export'
-* Updated AWS SDK to ver.1.2.5 for Amazon S3
-
-= 1.5.0 =
-* use AWS SDK ver.1.2.4 now for Amazon S3
-* Update Rackspase cloud files to ver.1.7.6
-* Added job setting import/export
-* Download link for last backup in jobs tab
-* Link for last log in jobs tab
-* Logs can now be compressed
-* Backup destinations can now be disabled (see help)
-* Bug fixes and improvements
-
-= 1.4.1 =
-* DropBox changes
-* fixed problem on send log with email
-* Security fix (thanks Massa Danilo)
-
-= 1.4.0 =
-* make SSL-FTP as option
-* added DropBox support (zlli)
-
-= 1.3.6 =
-* long file list no longer displayed in logs.
-* Added option to see detailed file list
-* removed FTP Alloc command
-* set FTP normal mode if passive mode disabled
-* remove FTP helper function and use FTP PHP functions
-* spend file list 2MB free memory
-
-= 1.3.5 =
-* fixed problem with folder include
-* added option to deactivate FTP passive mode
-* fixed bug for parsing errors because PHP 5 move PHP 5 functions in a seperate file
-
-= 1.3.4 =
-* fixed warning in send mail
-* bug fixes
-
-= 1.3.3 =
-* fixed bug with clear only displayed
-* fixed bug with Parse Error for some PHP versions
-
-= 1.3.2 =
-* added changable backup file prefix
-* bug fixes
-
-= 1.3.1 =
-* added file and DB size information
-* removed "LOCK TABLE" in sql dumps
-* fixed bug in automatic job abortion
-* fixed bug in ABSPATH if it '/'
-* fixed bug in save settings
-* fixed bugs if no jobs exists
-* added link to clear running jobs
-
-= 1.3.0 =
-* added S3 new region codes for bucket creation
-* added S3 REDUCED REDUNDANCY support on backups
-* jobs will be aborted after 10 min. and can't run twice
-* use curl for xml dump and copy if curl not works
-* increased min. PHP version to 5.2.0, because then all works
-* use linux cron based scheduling times
-* added rackspacecloud.com support
-* use WP 3.1 table creation
-* added plugin checks for folder and new scheduling
-
-= 1.2.1 =
-* fixed "Wrong parameter count for array_unique()" for old php version
-* added php version to log header
-* added mysql version to log header
-
-= 1.2.0 =
-* Backup file size now in log file
-* Paged Logs Table
-* added Backup Archives Page
-* Grammar fixes
-* Bug fixes
-
-= 1.1.1 =
-* fixed "S3 lib not found" bug again.
-* improved reschedule on activation problem.
-
-= 1.1.0 =
-* added function to check/update job settings
-* added no Ajax bucket list to job page
-* changed error handling a bit and remove PHP errors that can't handled
-* fixed problem with not compiled --enable-memory-limit in PHP
-* removed setting for memory limit use WP filter and default now (256M)
-* now a time limit of 5 mins. is set again for job execution but it will be reseted on every message. (prevent never ending jobs.)
-* added a shutdown function if __destruct not called for job
-* added more flexible Backup file selection
-
-= 1.0.10 =
-* fix  "Undefined index: dbshortinsert"
-
-= 1.0.9 =
-* change s3 class to hide warnings
-* add option to make MySQL INSERTs shorter (smaller dump file size.)
-* add requirements checks
-* Ajaxed S3 bucket selection in job settings
-* add S3 Bucket can made in job settings
-
-= 1.0.8 =
-* fix temp backup file not deleted if no destination folder
-* some folder fixes
-* removed some not used code
-
-= 1.0.7 =
-* added button in Help
-* Fixed bug on S3 file deletion
-* get files form S3 now faster for file deletion
-
-= 1.0.6 =
-* fixed false massage an send mail with backup
-* removed test code for blank screen and fixed it!
-
-= 1.0.5 =
-* some ABSPATH changes
-
-= 1.0.4 =
-* fixed bugs in DB restore
-* use WP functions to get Plugin dirs
-
-= 1.0.3 =
-* hopefully fixed a cache problem on run now
-
-= 1.0.2 =
-* fixed bug for file excludes
-
-= 1.0.1 =
-* fixed bug for https
-
-= 1.0.0 =
-* now WordPress Exports to XML can made
-* new backup files formats tar, tar.gz, tar.bz2
-* all job types can be created in one job
-* added PHP zip extension support (use PclZip only if not supported)
-* removed PclZip trace code
-* fixed time display and schedule bugs
-* added some security
-* Maintenance Mode on MySQL Operations
-* new Design on some Pages
-
-= 0.8.1 =
-* use global var instead of constant for log file
-* PCLZip Trace included with setting for log Level
-
-= 0.8.0 =
-* Fixed not working default settings on settings page
-* create .htaccess on Apache and index.html on other Webserver
-* fixed global for $wp_version
-* set max execution time to 0 for unlimited
-* use WP function to generate options tables
-* Backup file list and zip creation changes
-* Added support for Amazon S3
-* Only works with PHP 5 now
-* Complete rewrite of job as PHP5 class
-* PHP errors now in backup log
-* Log now in files
-
-= 0.7.2 =
-* make FTP any more robust
-* increased memory for Zip Files
-* make date with date_i18n
-
-= 0.7.1 =
-* FTP Connection test changes
-* no Errors in Log for FTP ALLO command.
-
-= 0.7.0 =
-* set ftp Connection timeout to 10 sec
-* fix bug for DB tables exclude
-* DB Backup in MySQL Client encoding now
-* Fixed missing ; in DB Backup
-* Added tool DB Restore with automatic Blog URL/Path change
-
-= 0.6.5 =
-* Prevent direct file loading
-* job working in iFrame
-* colored logs
-* HTML fixes
-* spell check
-
-= 0.6.4 =
-* New option to delete old logs
-* Backup file deletion separated form logs deletion
-* make dashboard widget smaller
-* added massages
-* bug fixes
-
-= 0.6.3 =
-* use ftp_row for login and other commands
-* Add option to send only email on errors
-* Internal structure changes
-* Add option to disable WP-Cron and use host's cron
-* bug fixes
-
-= 0.6.2 =
-* Added setting for memory_limit if needed
-* Added setting for Max. Script execution time
-* Added job option to make Max file size for sending via mail
-* bug fixes and little improvements
-
-= 0.6.1 =
-* Added setting for send email type.
-* Optimize memory usage again
-* Fixed Bug that kept cron from working
-
-= 0.6.0 =
-* Add Dashboard Widget
-* Add Database Check
-* Add Backup file transfer to FTP Server
-* Save log files in own database table
-* Optimize Memory usage
-* Optimize File system access
-* DB dump with own function
-* fixed some Bugs
-
-= 0.5.5 =
-* removed log files. Log now stored in Database
-
-= 0.5.0 =
-* Initial release
+= Version 3.0.6 =
+* Fixed: Massages on empty DB prefix
+* Fixed: Bug in cron calculation
+* Improved: Dropbox upload so that it can continuing on next try
+
+= Version 3.0.5 =
+* Changed: Display only normal messages on progress bars
+* Changed: Detection of multisite blog upload folder
+* Changed: Backups list for destination file will not cached.
+* Changed: Reduced files of AWS SDK to the only needed.
+* Fixed: Side load braking if no folder permissions
+* Fixed: Multiple backups deletion on backups page not working
+* Fixed: DB optimize and check not only use WP tables if selected
+* Fixed: File deletion on Dropbox if folder name has a space
+* Fixed: False scheduling time in some timezones
+* Removed: Option for excluding file, cache, temp folders. Can done with file/folder exclusion too.
+* Added: Option to restart the job on archive creation if a size of files reached
+* Added: Option to set Zip method (PclZip or ZipArchive)
+* Improved: Performance if PclZip used.
+* Updated: AWS SDK to Version 1.6.1
+* Updated: AWS SDK to Version 2.2.0 (PHP 5.3.3+)
+
+= Version 3.0.4 =
+* Changed: default settings for 'Restart on every main step' and 'Reduce server load' to disabled
+* Fixed: Settings not correctly set to default
+* Fixed: mysqli::get_charset() undefined method
+* Fixed: Settings not saved correctly
+* Fixed: Abort on MySQL Functions Backup
+* Improved: MySQLi connection
+* Added: Server connection test on run now.
+* Added: S3 AWS SDK 1.6.0 for PHP lower than 5.3.3
+
+= Version 3.0.3 =
+* Improved: Archive creation performance
+* Fixed: Problem with S3 Prefix
+* Fixed: warnings on excluded folders
+* Fixed: message from putenv
+* Fixed: not working downloads
+* Changed: removed fancybox and uses thickbox because plugin compatibility
+* Added: folder checking on run now
+
+= Version 3.0.2 =
+* Fixed: Warnings on job edit tab files
+* Fixed: folder name on temp cleanup in cron
+* Fixed: Setting charset on sql backup
+* Fixed: DB Connection on database backup if hostname has a port
+* Fixed: Call undefined function apc_clear_cache()
+* Fixed: wp-content selected folders not excluded
+* Added: Deactivation off multi part upload for S3 Services
+* Added: fallback for mysql_ping()
+* Added: Options for email senders name
+* Changed: 5 minutes cron steps back
+* Removed: Flashing admin bar icon
+* Updated: OpenCloud API to Version 1.4.1
+
+= Version 3.0 =
+* Added: Jobs can now be started with an external link or per command line
+* Added: Backups can now be compressed with gz or bzip2
+* Added: All file names can now be adjusted
+* Added: MySQL dump supports now views
+* Added: Settings for access control per capability and role
+* Added: Save a list of installed Plugins
+* Added: Support for WP-CLI
+* Improved: Job edit page with tabs
+* Improved: Settings page with tabs
+* Improved: Database dump now uses mysqli PHP extension for better performance
+* Improved: ZIP archives are now created with PHP Zip if available
+* Improved: All passwords are now stored encrypted in database
+* Improved: wp-cron job start mechanism
+* Improved: Job start mechanism not longer uses URL in plugin directory
+* Improved: Use `temp` directory in uploads or set it with `WP_TEMP_DIR`
+* Changed: Mailing backup archives now with SwiftMailer
+* Changed: Job process now back in the WordPress environment
+* Changed: License changed to GPLv3
+* Changed: Rewrote almost the complete code base to use classes with auto-loading
+* Changed: Logs are now displayed with fancybox
+* Updated: AWS SDK v2.1.2 (PHP 5.3.3)
+* Updated: OpenCloud SDK to v1.3 (PHP 5.3)
+* Updated: Windows Azure SDK v0.3.1_2011-08 (PHP 5.3.2)
+* Removed: serialized job export
+* Removed: tools section - not needed anymore
+* Removed: Dashboard widgets are now on the BackWPup plugin dashboard
+* Fixed: many, many minor bugs
+
+= Version 3.0 Pro =
+
+* Wizards
+* Export jobs and settings as XML
+* Synchronization of files to backup with destination (filename and size checked)
+* Wizard to import jobs and settings from XML
+* Database dump can backup other MySQL databases
+* Database dump can use `mysqldump` command on commend line
+* Database dump can create XML files (phpMyAdmin schema)
+* Use your own API keys for Dropbox and SugarSync
+* Premium Support
+* Automatic updates

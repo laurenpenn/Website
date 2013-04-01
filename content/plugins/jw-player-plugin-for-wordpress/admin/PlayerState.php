@@ -1,7 +1,7 @@
 <?php
 
 define("JW_SETUP_DESC", sprintf(__("The JW Player&trade; is used to deliver video content through your WordPress website.  For more information please visit <a href=http://www.longtailvideo.com/%s target=_blank>LongTail Video</a>.", 'jw-player-plugin-for-wordpress'), JW_PLAYER_GA_VARS));
-define("JW_SETUP_EDIT_PLAYERS", __("<strong>Optional:</strong> This section allows you to create custom players. It is possible to configure flashvars, skins and plugins.", 'jw-player-plugin-for-wordpress'));
+define("JW_SETUP_EDIT_PLAYERS", __("This section allows you to create custom players. It is possible to configure flashvars, skins and plugins.", 'jw-player-plugin-for-wordpress'));
 define("JW_LICENSED", __("To obtain a licensed player, please purchase a license from LongTail Video.", 'jw-player-plugin-for-wordpress'));
 
 /**
@@ -99,8 +99,8 @@ class PlayerState extends AdminState {
       </script>
 
       <h2>JW Player Setup</h2>
-      <p><span><?php echo JW_SETUP_DESC; ?></span><p>
-      <?php if (file_exists(LongTailFramework::getPrimaryPlayerPath())) { ?>
+      <p><span><?php echo JW_SETUP_EDIT_PLAYERS; ?></span><p>
+      <?php /* Please upgrade to JWP6! if (file_exists(LongTailFramework::getPrimaryPlayerPath())) { ?>
         <form name="<?php echo LONGTAIL_KEY . "upgrade_form" ?>" method="post" action="admin.php?page=jwplayer-update">
           <?php $version = get_option(LONGTAIL_KEY . "version"); ?>
           <?php $alternate = get_option(LONGTAIL_KEY . "player_location_enable"); ?>
@@ -164,7 +164,7 @@ class PlayerState extends AdminState {
           <span><?php _e("<strong>Current Player:</strong> Version Unknown ", 'jw-player-plugin-for-wordpress'); ?></span>
           <input class="button-secondary" type="submit" name="Update_Player" value="<?php _e("Click Here to Reinstall", 'jw-player-plugin-for-wordpress'); ?>" />
         </form>
-      <?php } ?>
+      <?php } */?>
       <form name="<?php echo LONGTAIL_KEY . "form" ?>" method="post" action="">
       <div id="poststuff">
         <div id="post-body">
@@ -176,7 +176,6 @@ class PlayerState extends AdminState {
                   <tr valign="top">
                     <td>
                       <div>
-                        <p><span><?php echo JW_SETUP_EDIT_PLAYERS; ?></span></p>
                           <table class="widefat" cellspacing="0">
                             <thead>
                               <tr>

@@ -13,9 +13,9 @@ function _get_style_options()
  * AddThis replacement for kses
  *
  */
-function addthis_kses($string)
+function addthis_kses($string, $customstyles)
 {
-    global $allowedposttags;
+	global $allowedposttags;
     $mytags = $allowedposttags;
     $mytags['a'][ 'gplusonesize' ] = array();
     $mytags['a'][ 'gplusonecount' ]= array();
@@ -60,7 +60,8 @@ function addthis_kses($string)
     $new_string = preg_replace( $post_pattern, $pretags, $new_temp_string);
     // Add in our %s so that the url and title get added properly
 
-
+    $new_string = substr_replace($new_string, $customstyles, 4, 0);
+    
     return $new_string;
 }
 /**

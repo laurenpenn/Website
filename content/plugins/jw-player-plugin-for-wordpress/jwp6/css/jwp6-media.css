@@ -1,0 +1,181 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 1.4em;
+}
+
+a {
+    color: #21759B;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #D54E21;
+    text-decoration: underline;
+}
+
+ul.tabs {
+    height: 35px;
+    background: #F9F9F9;
+    border-bottom: solid 1px #DFDFDF;
+    padding: 0 20px;
+}
+
+ul.tabs li {
+    height:17px;
+    margin: 6px 1px 0 1px;
+    padding: 6px;
+    float: left;
+}
+
+ul.tabs li.active {
+    margin: 6px 0 0 0;
+    border: solid 1px #dfdfdf;
+    border-bottom: none;
+    background: #fff;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+#media-upload-header ul li.active a {
+    color: #D54E21;
+}
+
+#wrapper {
+    padding: 20px;
+}
+
+h1 {
+    color: #464646;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
+    font-size: 23px;
+    font-weight: normal;
+    line-height: 29px;
+    padding: 0 15px 4px 40px;
+    margin: 0;
+    text-shadow: white 0 1px 0;
+    background: transparent url(../img/ltv-curve.png) no-repeat 0 0;
+}
+
+h2 {
+    color: #333;
+    font-size: 1.17em;
+    font-weight: bold;
+    margin: 15px 0;
+    padding-top: 15px;
+    border-top: solid 1px #dfdfdf;
+}
+
+p {
+    margin: 10px 0;
+}
+
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+div.notice {
+    margin: 10px 0;
+    padding: 5px;
+    background: #ffffe0;
+    border: solid 1px #e6db55;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+div.hidden {
+    display: none;
+}
+
+div.select {
+    margin: 10px 0;
+}
+
+div.submit {
+    margin: 15px 0;
+    padding-top: 15px;
+    border-top: solid 1px #dfdfdf;
+}
+
+p.info {
+    font-size: 12px;
+    font-style: italic;
+    color: #666;
+}
+
+button.button-primary, a.button-primary {
+    border-color: #298CBA;
+    font-size: 13px;
+    color: white;
+    background: #21759B;
+    text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0;
+    padding: 5px 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+input {
+    width: 45%;
+    padding: 6px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: solid 1px #aaa;
+}
+
+
+

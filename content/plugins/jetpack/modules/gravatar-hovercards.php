@@ -4,6 +4,7 @@
  * Module Description: Show a pop-up business card of your users' gravatar profiles in comments.
  * Sort Order: 8
  * First Introduced: 1.1
+ * Requires Connection: No
  */
 
 define( 'GROFILES__CACHE_BUSTER', gmdate( 'YM' ) . 'aa' ); // Break CDN cache, increment when gravatar.com/js/gprofiles.js changes
@@ -141,7 +142,7 @@ function grofiles_get_avatar( $avatar, $author ) {
 		if ( false !== strpos( $author, '@' ) ) {
 			grofiles_gravatars_to_append( $author );
 		} else {
-			if ( $user = get_userdatabylogin( $author ) )
+			if ( $user = get_user_by( 'slug', $author ) )
 				grofiles_gravatars_to_append( $user->ID );
 		}
 	} else if ( isset( $author->comment_type ) ) {

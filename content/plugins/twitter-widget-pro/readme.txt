@@ -3,8 +3,8 @@ Contributors: aaroncampbell, PeteMall, range, saracannon
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9993090
 Tags: twitter, widget, feed
 Requires at least: 3.0
-Tested up to: 3.5
-Stable tag: 2.4.1
+Tested up to: 3.6
+Stable tag: 2.5.3
 
 A widget that properly handles twitter feeds, including parsing @username, #hashtags, and URLs into links.
 
@@ -42,6 +42,8 @@ page.  The simplest form of this would be `[twitter-widget username="yourTwitter
 The simplest form of this would be `[twitter-widget username="yourTwitterUsername"]`
 However, there are more things you can control.
 
+* username - A Twitter username to pull a feed of Tweets from.  The user needs to be authenticated.
+* list - A Twitter list id owned by one of the users you've authenticated.
 * before_widget - This is inserted before the widget.
 * after_widget - This is inserted after the widget, and is often used to close tags opened in before_widget
 * before_title - This is inserted before the title and defults to <h2>
@@ -130,6 +132,18 @@ Aparently the database queries required to display the friends feed was causing 
 
 == Upgrade Notice ==
 
+= 2.5.3 =
+Another SSL verification fix and add Twitter List support to shortcodes
+
+= 2.5.2 =
+Fixes hashtag links, ignoring of retweets, and SSL verification
+
+= 2.5.1 =
+Fix potential conflict with other oAuth plugins
+
+= 2.5.0 =
+Upgrade to the new Twitter API and add support for lists
+
 = 2.4.1 =
 Better support for hashtags with international characters & new German translation
 
@@ -173,6 +187,25 @@ Fixes an issue with the intents and follow settings not being saved
 Fewer "could not connect to Twitter" messages, new links (reply, retweet, favorite), new follow button, and avatar fixes
 
 == Changelog ==
+
+= 2.5.3 =
+* Don't force verification of Twitter's SSL certificate
+* Add support for Twitter Lists in shortcodes
+
+= 2.5.2 =
+* Don't force verification of Twitter's SSL certificate
+* Fix empty admin notice
+* Fix bug with retweets not being ignored
+* Fix hashtag links
+
+= 2.5.1 =
+* Rename OAuthUtil class to twpOAuthUtil
+* Don't use 'account/verify_credentials' as it has a very low limit
+
+= 2.5.0 =
+* Use the new Twitter API with oAuth
+* Adds support for lists
+* No longer supports non-https Twitter requests (Twitter API requirement)
 
 = 2.4.1 =
 * Make sure hashtags are parsed UTF-8

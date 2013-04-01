@@ -1,46 +1,11 @@
 <?php
 
 /**
- * Register a connection between two post types.
+ * Register a connection type.
  *
- * This creates the appropriate meta box in the admin edit screen.
- *
- * Takes the following parameters, as an associative array:
- *
- * - 'name' - string A unique identifier for this connection type.
- *
- * - 'from' - string|array The first end of the connection.
- *
- * - 'from_query_vars' - array Additional query vars to pass to WP_Query. Default: none.
- *
- * - 'to' - string|array The second end of the connection.
- *
- * - 'to_query_vars' - array Additional query vars to pass to WP_Query. Default: none.
- *
- * - 'fields' - array( key => Title ) Metadata fields editable by the user. Default: none.
- *
- * - 'cardinality' - string How many connection can each post have: 'one-to-many', 'many-to-one' or 'many-to-many'. Default: 'many-to-many'
- *
- * - 'duplicate_connections' - bool Whether to allow more than one connection between the same two posts. Default: false.
- *
- * - 'self_connections' - bool Whether to allow a post to connect to itself. Default: false.
- *
- * - 'sortable' - bool|string Whether to allow connections to be ordered via drag-and-drop. Can be 'from', 'to', 'any' or false. Default: false.
- *
- * - 'title' - string|array The box's title. Default: 'Connected {$post_type}s'
- *
- * - 'from_labels' - array Additional labels for the admin box (optional)
- *
- * - 'to_labels' - array Additional labels for the admin box (optional)
- *
- * - 'reciprocal' - bool For indeterminate connections: True means all connections are displayed in a single box. False means 'from' connections are shown in one box and 'to' connections are shown in another box. Default: false.
- *
- * - 'admin_box' - bool|string|array Whether and where to show the admin connections box.
- *
- * - 'can_create_post' - bool Whether to allow post creation via the connection box. Default: true.
+ * @link https://github.com/scribu/wp-posts-to-posts/wiki/p2p_register_connection_type
  *
  * @param array $args
- *
  * @return bool|object False on failure, P2P_Connection_Type instance on success.
  */
 function p2p_register_connection_type( $args ) {
@@ -76,6 +41,9 @@ function p2p_register_connection_type( $args ) {
 		if ( isset( $args['context'] ) )
 			$args['admin_box']['context'] = _p2p_pluck( $args, 'context' );
 	}
+
+	if ( !isset( $args['admin_box'] ) )
+		$args['admin_box'] = 'any';
 
 	$ctype = P2P_Connection_Type_Factory::register( $args );
 
@@ -126,35 +94,35 @@ function p2p_connection_exists( $p2p_type, $args = array() ) {
  * @return array
  */
 function p2p_get_connections( $p2p_type, $args = array() ) {
-	extract( wp_parse_args( $args, array(
+	$args = wp_parse_args( $args, array(
 		'direction' => 'from',
 		'from' => 'any',
 		'to' => 'any',
 		'fields' => 'all',
-	) ), EXTR_SKIP );
+	) );
 
 	$r = array();
 
-	foreach ( _p2p_expand_direction( $direction ) as $direction ) {
-		$args = array( $from, $to );
+	foreach ( _p2p_expand_direction( $args['direction'] ) as $direction ) {
+		$dirs = array( $args['from'], $args['to'] );
 
 		if ( 'to' == $direction ) {
-			$args = array_reverse( $args );
+			$dirs = array_reverse( $dirs );
 		}
 
-		if ( 'object_id' == $fields )
-			$field = ( 'to' == $direction ) ? 'p2p_from' : 'p2p_to';
+		if ( 'object_id' == $args['fields'] )
+			$fields = ( 'to' == $direction ) ? 'p2p_from' : 'p2p_to';
 		else
-			$field = $fields;
+			$fields = $args['fields'];
 
 		$r = array_merge( $r, _p2p_get_connections( $p2p_type, array(
-			'from' => $args[0],
-			'to' => $args[1],
-			'fields' => $field
+			'from' => $dirs[0],
+			'to' => $dirs[1],
+			'fields' => $fields
 		) ) );
 	}
 
-	if ( 'count' == $fields )
+	if ( 'count' == $args['fields'] )
 		return array_sum( $r );
 
 	return $r;
@@ -164,27 +132,25 @@ function p2p_get_connections( $p2p_type, $args = array() ) {
 function _p2p_get_connections( $p2p_type, $args = array() ) {
 	global $wpdb;
 
-	extract( $args, EXTR_SKIP );
-
 	$where = $wpdb->prepare( 'WHERE p2p_type = %s', $p2p_type );
 
 	foreach ( array( 'from', 'to' ) as $key ) {
-		if ( 'any' == $$key )
+		if ( 'any' == $args[ $key ] )
 			continue;
 
-		if ( empty( $$key ) )
+		if ( empty( $args[ $key ] ) )
 			return array();
 
-		$value = scbUtil::array_to_sql( _p2p_normalize( $$key ) );
+		$value = scbUtil::array_to_sql( _p2p_normalize( $args[ $key ] ) );
 
 		$where .= " AND p2p_$key IN ($value)";
 	}
 
-	switch ( $fields ) {
+	switch ( $args['fields'] ) {
 	case 'p2p_id':
 	case 'p2p_from':
 	case 'p2p_to':
-		$sql_field = $fields;
+		$sql_field = $args['fields'];
 		break;
 	case 'count':
 		$sql_field = 'COUNT(*)';
@@ -225,34 +191,34 @@ function p2p_get_connection( $p2p_id ) {
 function p2p_create_connection( $p2p_type, $args ) {
 	global $wpdb;
 
-	extract( wp_parse_args( $args, array(
+	$args = wp_parse_args( $args, array(
 		'direction' => 'from',
 		'from' => false,
 		'to' => false,
 		'meta' => array()
-	) ), EXTR_SKIP );
+	) );
 
-	list( $from ) = _p2p_normalize( $from );
-	list( $to ) = _p2p_normalize( $to );
+	list( $from ) = _p2p_normalize( $args['from'] );
+	list( $to ) = _p2p_normalize( $args['to'] );
 
 	if ( !$from || !$to )
 		return false;
 
-	$args = array( $from, $to );
+	$dirs = array( $from, $to );
 
-	if ( 'to' == $direction ) {
-		$args = array_reverse( $args );
+	if ( 'to' == $args['direction'] ) {
+		$dirs = array_reverse( $dirs );
 	}
 
 	$wpdb->insert( $wpdb->p2p, array(
 		'p2p_type' => $p2p_type,
-		'p2p_from' => $args[0],
-		'p2p_to' => $args[1]
+		'p2p_from' => $dirs[0],
+		'p2p_to' => $dirs[1]
 	) );
 
 	$p2p_id = $wpdb->insert_id;
 
-	foreach ( $meta as $key => $value )
+	foreach ( $args['meta'] as $key => $value )
 		p2p_add_meta( $p2p_id, $key, $value );
 
 	do_action( 'p2p_created_connection', $p2p_id );
@@ -350,29 +316,10 @@ function p2p_distribute_connected( $items, $connected, $prop_name ) {
 		$indexed_list[ $item->ID ] = $item;
 	}
 
-	$groups = p2p_triage_connected( $connected );
+	$groups = p2p_list_cluster( $connected, '_p2p_get_other_id' );
 
 	foreach ( $groups as $outer_item_id => $connected_items ) {
 		$indexed_list[ $outer_item_id ]->$prop_name = $connected_items;
 	}
-}
-
-function p2p_triage_connected( $connected ) {
-	$groups = array();
-
-	foreach ( $connected as $inner_item ) {
-		if ( $inner_item->ID == $inner_item->p2p_from ) {
-			$outer_item_id = $inner_item->p2p_to;
-		} elseif ( $inner_item->ID == $inner_item->p2p_to ) {
-			$outer_item_id = $inner_item->p2p_from;
-		} else {
-			trigger_error( "Corrupted data for item $inner_item->ID", E_USER_WARNING );
-			continue;
-		}
-
-		$groups[ $outer_item_id ][] = $inner_item;
-	}
-
-	return $groups;
 }
 

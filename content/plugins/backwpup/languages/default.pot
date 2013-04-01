@@ -1,0 +1,4396 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: BackWPup v3.0-alpha-4\n"
+"POT-Creation-Date: 2013-01-31 12:17+0100\n"
+"PO-Revision-Date: 2013-01-31 12:23+0100\n"
+"Last-Translator: Birgit Olzem <coachbirgit@gmail.com>\n"
+"Language-Team: INPSYDE <info@inspyde.com>\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e;_;gettext;gettext_noop;__ngettext:1,2;_n:1,2;"
+"__ngettext_noop:1,2;_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: ../inc/class-admin.php:95 ../inc/class-help.php:24
+msgid "http://marketpress.com/product/backwpup/"
+msgstr ""
+
+#: ../inc/class-admin.php:95 ../inc/class-help.php:24
+#: ../inc/features/class-documentation.php:149
+#: ../inc/features/class-documentation.php:156
+#: ../inc/features/class-features.php:113
+msgid "Documentation"
+msgstr ""
+
+#: ../inc/class-admin.php:96 ../inc/class-help.php:22
+msgid "http://marketpress.com/news/"
+msgstr ""
+
+#: ../inc/class-admin.php:96 ../inc/class-help.php:23
+msgid "Support"
+msgstr ""
+
+#: ../inc/class-admin.php:107 ../inc/class-adminbar.php:58
+msgid "BackWPup"
+msgstr ""
+
+#: ../inc/class-admin.php:108 ../inc/class-page-backwpup.php:24
+msgid "BackWPup Dashboard"
+msgstr ""
+
+#: ../inc/class-admin.php:108
+msgid "Dashboard"
+msgstr ""
+
+#: ../inc/class-admin.php:121 ../inc/class-adminbar.php:80
+msgid "Jobs"
+msgstr ""
+
+#: ../inc/class-admin.php:132
+msgid "Add New Job"
+msgstr ""
+
+#: ../inc/class-admin.php:144 ../inc/class-adminbar.php:96
+#: ../inc/class-page-backups.php:371 ../inc/class-page-logs.php:282
+msgid "Logs"
+msgstr ""
+
+#: ../inc/class-admin.php:155 ../inc/class-adminbar.php:104
+msgid "Backups"
+msgstr ""
+
+#: ../inc/class-admin.php:166
+msgid "Settings"
+msgstr ""
+
+#: ../inc/class-admin.php:211 ../inc/class-admin.php:217
+msgid "Cheating Huh?"
+msgstr ""
+
+#: ../inc/class-admin.php:248
+msgid "Jobs overview"
+msgstr ""
+
+#: ../inc/class-admin.php:248 ../inc/class-page-jobs.php:141
+msgid "Run now"
+msgstr ""
+
+#: ../inc/class-adminbar.php:65
+msgid "See Working!"
+msgstr ""
+
+#: ../inc/class-adminbar.php:71
+msgid "Abort!"
+msgstr ""
+
+#: ../inc/class-adminbar.php:88
+msgid "Add New"
+msgstr ""
+
+#: ../inc/class-adminbar.php:112 ../inc/class-page-backwpup.php:35
+#: ../inc/features/class-features.php:101
+#: ../inc/features/class-page-wizard.php:239
+msgid "Wizards"
+msgstr ""
+
+#: ../inc/class-adminbar.php:146
+msgid "Run Now"
+msgstr ""
+
+#: ../inc/class-cron.php:53 ../inc/class-job.php:928
+#: ../inc/class-page-jobs.php:360
+msgid "ERROR:"
+msgstr ""
+
+#: ../inc/class-cron.php:53
+msgid "Aborted, because 2 hours no progress!"
+msgstr ""
+
+#: ../inc/class-cron.php:84 ../inc/class-job.php:1140
+#, php-format
+msgid "[%3$s] BackWPup log %1$s: %2$s"
+msgstr ""
+
+#: ../inc/class-cron.php:84 ../inc/class-job.php:1136
+msgid "ERROR"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:15
+#: ../inc/features/class-destination-dropbox.php:15
+msgid "Dropbox"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:16
+#: ../inc/features/class-destination-dropbox.php:16
+msgid "Backup to Dropbox"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:61
+#: ../inc/class-destination-dropbox.php:75
+#: ../inc/features/class-destination-dropbox.php:67
+#: ../inc/features/class-destination-dropbox.php:140
+#: ../inc/features/class-destination-dropbox.php:154
+msgid "Dropbox authentication complete!"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:64
+#: ../inc/class-destination-dropbox.php:78
+#: ../inc/class-destination-dropbox.php:99
+#: ../inc/class-destination-dropbox.php:113
+#: ../inc/class-destination-dropbox.php:287
+#: ../inc/class-destination-dropbox.php:336
+#: ../inc/features/class-destination-dropbox.php:70
+#: ../inc/features/class-destination-dropbox.php:90
+#: ../inc/features/class-destination-dropbox.php:143
+#: ../inc/features/class-destination-dropbox.php:157
+#: ../inc/features/class-destination-dropbox.php:178
+#: ../inc/features/class-destination-dropbox.php:192
+#: ../inc/features/class-destination-dropbox.php:399
+#: ../inc/features/class-destination-dropbox.php:448
+#: ../inc/features/class-destination-dropbox.php:563
+#, php-format
+msgid "Dropbox API: %s"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:81
+#: ../inc/features/class-destination-dropbox.php:73
+#: ../inc/features/class-destination-dropbox.php:160
+msgid "Wrong Token for Dropbox authentication received!"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:117
+#: ../inc/features/class-destination-dropbox.php:196
+msgid "Login"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:121
+#: ../inc/features/class-destination-dropbox.php:98
+#: ../inc/features/class-destination-dropbox.php:200
+msgid "Authenticate"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:123
+#: ../inc/features/class-destination-dropbox.php:97
+#: ../inc/features/class-destination-dropbox.php:202
+msgid "Not authenticated!"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:123
+#: ../inc/features/class-destination-dropbox.php:99
+#: ../inc/features/class-destination-dropbox.php:202
+msgid "Create Account"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:124
+#: ../inc/features/class-destination-dropbox.php:203
+msgid "Authenticate (Sandbox)"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:125
+#: ../inc/features/class-destination-dropbox.php:204
+msgid "Authenticate (full Dropbox)"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:127
+#: ../inc/class-destination-sugarsync.php:74
+#: ../inc/features/class-destination-dropbox.php:105
+#: ../inc/features/class-destination-dropbox.php:206
+#: ../inc/features/class-destination-sugarsync.php:71
+#: ../inc/features/class-destination-sugarsync.php:146
+msgid "Authenticated!"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:128
+#: ../inc/features/class-destination-dropbox.php:207
+msgid "Reauthenticate (Sandbox)"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:129
+#: ../inc/features/class-destination-dropbox.php:208
+msgid "Reauthenticate (full Dropbox)"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:136
+#: ../inc/class-destination-folder.php:49 ../inc/class-destination-ftp.php:77
+#: ../inc/class-destination-msazure.php:97
+#: ../inc/class-destination-sugarsync.php:111
+#: ../inc/features/class-destination-dropbox.php:215
+#: ../inc/features/class-destination-folder.php:79
+#: ../inc/features/class-destination-ftp.php:115
+#: ../inc/features/class-destination-msazure.php:132
+#: ../inc/features/class-destination-sugarsync.php:183
+msgid "Backup settings"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:140
+#: ../inc/features/class-destination-dropbox.php:219
+msgid "Folder in Dropbox"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:146
+#: ../inc/class-destination-folder.php:59 ../inc/class-destination-ftp.php:87
+#: ../inc/class-destination-msazure.php:107
+#: ../inc/class-destination-rsc.php:115 ../inc/class-destination-s3.php:183
+#: ../inc/class-destination-sugarsync.php:121
+#: ../inc/features/class-destination-dropbox.php:225
+#: ../inc/features/class-destination-folder.php:89
+#: ../inc/features/class-destination-ftp.php:125
+#: ../inc/features/class-destination-msazure.php:142
+#: ../inc/features/class-destination-rsc.php:167
+#: ../inc/features/class-destination-s3.php:250
+#: ../inc/features/class-destination-sugarsync.php:193
+msgid "File Deletion"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:152
+#: ../inc/class-destination-folder.php:65 ../inc/class-destination-ftp.php:93
+#: ../inc/class-destination-msazure.php:113
+#: ../inc/class-destination-rsc.php:121 ../inc/class-destination-s3.php:189
+#: ../inc/class-destination-sugarsync.php:127
+#: ../inc/features/class-destination-dropbox.php:114
+#: ../inc/features/class-destination-dropbox.php:231
+#: ../inc/features/class-destination-folder.php:63
+#: ../inc/features/class-destination-folder.php:95
+#: ../inc/features/class-destination-ftp.php:131
+#: ../inc/features/class-destination-msazure.php:73
+#: ../inc/features/class-destination-msazure.php:148
+#: ../inc/features/class-destination-rsc.php:90
+#: ../inc/features/class-destination-rsc.php:173
+#: ../inc/features/class-destination-s3.php:151
+#: ../inc/features/class-destination-s3.php:256
+#: ../inc/features/class-destination-sugarsync.php:199
+msgid "Number of files to hold in folder."
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:152
+#: ../inc/class-destination-folder.php:65 ../inc/class-destination-ftp.php:93
+#: ../inc/class-destination-msazure.php:113
+#: ../inc/class-destination-rsc.php:121 ../inc/class-destination-s3.php:189
+#: ../inc/class-destination-sugarsync.php:127
+#: ../inc/features/class-destination-dropbox.php:114
+#: ../inc/features/class-destination-dropbox.php:231
+#: ../inc/features/class-destination-folder.php:63
+#: ../inc/features/class-destination-folder.php:95
+#: ../inc/features/class-destination-ftp.php:131
+#: ../inc/features/class-destination-msazure.php:73
+#: ../inc/features/class-destination-msazure.php:148
+#: ../inc/features/class-destination-rsc.php:90
+#: ../inc/features/class-destination-rsc.php:173
+#: ../inc/features/class-destination-s3.php:151
+#: ../inc/features/class-destination-s3.php:256
+#: ../inc/features/class-destination-sugarsync.php:199
+msgid "Oldest files will be deleted first. 0 = no deletion"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:247
+#: ../inc/features/class-destination-dropbox.php:359
+#, php-format
+msgid "%d. Try to sending backup file to Dropbox..."
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:255
+#: ../inc/features/class-destination-dropbox.php:367
+#: ../inc/features/class-destination-dropbox.php:476
+#, php-format
+msgid "Authed with Dropbox from %s"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:260
+#: ../inc/features/class-destination-dropbox.php:372
+msgid "No free space left on Dropbox!!!"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:265
+#: ../inc/features/class-destination-dropbox.php:377
+#: ../inc/features/class-destination-dropbox.php:480
+#, php-format
+msgid "%s free on Dropbox"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:269
+#: ../inc/features/class-destination-dropbox.php:381
+msgid "Upload to Dropbox now started... "
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:275
+#: ../inc/class-destination-msazure.php:259
+#: ../inc/class-destination-s3.php:438
+#: ../inc/class-destination-sugarsync.php:287
+#: ../inc/features/class-destination-dropbox.php:387
+#: ../inc/features/class-destination-msazure.php:336
+#: ../inc/features/class-destination-s3.php:574
+#: ../inc/features/class-destination-sugarsync.php:405
+#, php-format
+msgid "Backup transferred to %s"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:279
+#: ../inc/features/class-destination-dropbox.php:391
+msgid "Uploaded file size and local file size not the same!!!"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:281
+#: ../inc/features/class-destination-dropbox.php:393
+#, php-format
+msgid "Error on transfer backup to Dropbox: %s"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:327
+#: ../inc/features/class-destination-dropbox.php:439
+#, php-format
+msgid "Error on delete file on Dropbox: %s"
+msgstr ""
+
+#: ../inc/class-destination-dropbox.php:330
+#: ../inc/features/class-destination-dropbox.php:442
+#, php-format
+msgid "One file deleted on Dropbox"
+msgid_plural "%d files deleted on Dropbox"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../inc/class-destination-folder.php:15 ../inc/class-page-backups.php:226
+#: ../inc/features/class-destination-folder.php:15
+msgid "Folder"
+msgstr ""
+
+#: ../inc/class-destination-folder.php:16
+#: ../inc/features/class-destination-folder.php:16
+msgid "Backup to Folder"
+msgstr ""
+
+#: ../inc/class-destination-folder.php:53
+#: ../inc/features/class-destination-folder.php:83
+msgid "Folder to store the backups in"
+msgstr ""
+
+#: ../inc/class-destination-folder.php:211
+#: ../inc/features/class-destination-folder.php:265
+#, php-format
+msgid "One backup file deleted"
+msgid_plural "%d backup files deleted"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../inc/class-destination-ftp.php:15
+#: ../inc/features/class-destination-ftp.php:15
+msgid "FTP"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:16
+#: ../inc/features/class-destination-ftp.php:16
+msgid "Backup to FTP"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:48
+#: ../inc/features/class-destination-ftp.php:86
+msgid "FTP Server and login"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:52
+#: ../inc/features/class-destination-ftp.php:90
+msgid "FTP Server"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:53
+#: ../inc/features/class-destination-ftp.php:91
+#: ../inc/features/class-jobtype-dbdump.php:131
+msgid "Host:"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:56 ../inc/class-destination-mail.php:129
+#: ../inc/features/class-destination-ftp.php:49
+#: ../inc/features/class-destination-ftp.php:94
+#: ../inc/features/class-destination-mail.php:179
+msgid "Port:"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:62 ../inc/class-destination-rsc.php:58
+#: ../inc/features/class-destination-ftp.php:100
+#: ../inc/features/class-destination-rsc.php:110
+msgid "Username"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:69
+#: ../inc/features/class-destination-ftp.php:107
+msgid "Password"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:81
+#: ../inc/features/class-destination-ftp.php:119
+msgid "Folder to store files"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:97 ../inc/class-destination-rsc.php:125
+#: ../inc/class-destination-sugarsync.php:131
+#: ../inc/features/class-destination-dropbox.php:235
+#: ../inc/features/class-destination-folder.php:68
+#: ../inc/features/class-destination-folder.php:99
+#: ../inc/features/class-destination-ftp.php:135
+#: ../inc/features/class-destination-msazure.php:78
+#: ../inc/features/class-destination-msazure.php:152
+#: ../inc/features/class-destination-rsc.php:95
+#: ../inc/features/class-destination-rsc.php:177
+#: ../inc/features/class-destination-s3.php:156
+#: ../inc/features/class-destination-s3.php:260
+#: ../inc/features/class-destination-sugarsync.php:203
+msgid "Do not delete files on sync to destination!"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:103
+#: ../inc/features/class-destination-ftp.php:141
+msgid "FTP Specific settings"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:107
+#: ../inc/features/class-destination-ftp.php:145
+msgid "Timeout for FTP connection"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:111 ../inc/class-page-jobs.php:223
+#: ../inc/class-page-logs.php:206 ../inc/class-page-settings.php:336
+#: ../inc/features/class-destination-ftp.php:149
+msgid "sec."
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:115
+#: ../inc/features/class-destination-ftp.php:153
+msgid "SSL-FTP Connection"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:119
+#: ../inc/features/class-destination-ftp.php:157
+msgid "Use explicit SSL-FTP Connection."
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:124
+#: ../inc/features/class-destination-ftp.php:162
+msgid "FTP Passive mode"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:128
+#: ../inc/features/class-destination-ftp.php:166
+msgid "Use FTP Passive mode."
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:204
+#: ../inc/features/class-destination-ftp.php:271
+msgid "Login failure!"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:227
+#: ../inc/features/class-destination-ftp.php:294
+#, php-format
+msgid "%d. Try to sending backup file to a FTP Server..."
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:233
+#: ../inc/features/class-destination-ftp.php:300
+#, php-format
+msgid "Connected by explicit SSL-FTP to Server: %s"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:235
+#: ../inc/features/class-destination-ftp.php:302
+#, php-format
+msgid "Can not connect by explicit SSL-FTP to Server: %s"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:241
+#: ../inc/features/class-destination-ftp.php:308
+msgid "PHP function to connect with explicit SSL-FTP to server not exists!"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:249
+#: ../inc/features/class-destination-ftp.php:316
+#, php-format
+msgid "Connected to FTP server: %s"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:251
+#: ../inc/features/class-destination-ftp.php:318
+#, php-format
+msgid "Can not connect to FTP server: %s"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:258 ../inc/class-destination-ftp.php:266
+#: ../inc/class-destination-ftp.php:277 ../inc/class-destination-ftp.php:313
+#: ../inc/features/class-destination-ftp.php:325
+#: ../inc/features/class-destination-ftp.php:333
+#: ../inc/features/class-destination-ftp.php:344
+#: ../inc/features/class-destination-ftp.php:380
+#, php-format
+msgid "FTP Client command: %s"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:260 ../inc/class-destination-ftp.php:264
+#: ../inc/class-destination-ftp.php:268 ../inc/class-destination-ftp.php:280
+#: ../inc/class-destination-ftp.php:282 ../inc/class-destination-ftp.php:316
+#: ../inc/class-destination-ftp.php:318 ../inc/class-destination-ftp.php:322
+#: ../inc/class-destination-ftp.php:324
+#: ../inc/features/class-destination-ftp.php:327
+#: ../inc/features/class-destination-ftp.php:331
+#: ../inc/features/class-destination-ftp.php:335
+#: ../inc/features/class-destination-ftp.php:347
+#: ../inc/features/class-destination-ftp.php:349
+#: ../inc/features/class-destination-ftp.php:383
+#: ../inc/features/class-destination-ftp.php:385
+#: ../inc/features/class-destination-ftp.php:389
+#: ../inc/features/class-destination-ftp.php:391
+#, php-format
+msgid "FTP Server reply: %s"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:282
+#: ../inc/features/class-destination-ftp.php:349
+msgid "Error getting SYSTYPE"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:292
+#: ../inc/features/class-destination-ftp.php:359
+#, php-format
+msgid "FTP Folder \"%s\" created!"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:296
+#: ../inc/features/class-destination-ftp.php:363
+#, php-format
+msgid "FTP Folder \"%s\" can not created!"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:306
+#: ../inc/features/class-destination-ftp.php:373
+#, php-format
+msgid "FTP current folder is: %s"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:316
+#: ../inc/features/class-destination-ftp.php:383
+msgid "Entering Passive Mode"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:318
+#: ../inc/features/class-destination-ftp.php:385
+msgid "Can not Entering Passive Mode"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:322
+#: ../inc/features/class-destination-ftp.php:389
+msgid "Entering Normal Mode"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:324
+#: ../inc/features/class-destination-ftp.php:391
+msgid "Can not Entering Normal Mode"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:328
+#: ../inc/features/class-destination-ftp.php:395
+msgid "Upload to FTP now started ... "
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:337
+#: ../inc/features/class-destination-ftp.php:404
+msgid "Can not transfer backup to FTP server!"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:343
+#: ../inc/features/class-destination-ftp.php:410
+#, php-format
+msgid "Backup transferred to FTP server: %s"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:386
+#: ../inc/features/class-destination-ftp.php:453
+#, php-format
+msgid "Can not delete \"%s\" on FTP server!"
+msgstr ""
+
+#: ../inc/class-destination-ftp.php:390
+#: ../inc/features/class-destination-ftp.php:457
+#, php-format
+msgid "One file deleted on FTP Server"
+msgid_plural "%d files deleted on FTP Server"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../inc/class-destination-mail.php:21
+#: ../inc/features/class-destination-mail.php:21
+msgid "Mail"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:22
+#: ../inc/features/class-destination-mail.php:22
+msgid "Backup to Mail"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:65
+#: ../inc/features/class-destination-mail.php:71
+#: ../inc/features/class-destination-mail.php:115
+msgid "E-Mail-Address"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:68
+#: ../inc/features/class-destination-mail.php:74
+#: ../inc/features/class-destination-mail.php:118
+msgid "E-mail address"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:72
+#: ../inc/features/class-destination-mail.php:78
+#: ../inc/features/class-destination-mail.php:122
+msgid "E-Mail-Address where the Backups send to."
+msgstr ""
+
+#: ../inc/class-destination-mail.php:76 ../inc/class-destination-mail.php:78
+#: ../inc/features/class-destination-mail.php:82
+#: ../inc/features/class-destination-mail.php:84
+#: ../inc/features/class-destination-mail.php:126
+#: ../inc/features/class-destination-mail.php:128
+msgid "Send test mail"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:83
+#: ../inc/features/class-destination-mail.php:89
+#: ../inc/features/class-destination-mail.php:133
+msgid "Send mail settings"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:86
+#: ../inc/features/class-destination-mail.php:92
+#: ../inc/features/class-destination-mail.php:136
+msgid "Max. file size"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:87
+#: ../inc/features/class-destination-mail.php:93
+#: ../inc/features/class-destination-mail.php:137
+msgid "MB"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:88
+#: ../inc/features/class-destination-mail.php:94
+#: ../inc/features/class-destination-mail.php:138
+msgid "Max. file size where mail send with. 0 = unlimited"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:92
+#: ../inc/features/class-destination-mail.php:98
+#: ../inc/features/class-destination-mail.php:142
+msgid "Sender email"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:96
+#: ../inc/features/class-destination-mail.php:102
+#: ../inc/features/class-destination-mail.php:146
+msgid "Sender E-Mail-Address"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:100
+#: ../inc/features/class-destination-mail.php:150
+msgid "Send mail method"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:104
+#: ../inc/features/class-destination-mail.php:154
+msgid "Use Blog settings"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:105
+#: ../inc/features/class-destination-mail.php:155
+msgid "PHP: mail()"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:106
+#: ../inc/features/class-destination-mail.php:156
+msgid "Sendmail"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:107
+#: ../inc/features/class-destination-mail.php:157
+msgid "SMTP"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:110
+#: ../inc/features/class-destination-mail.php:160
+msgid ""
+"- Use Blog settings: gets the settings form blog. -PHP mail(): needs many "
+"PHP memory"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:115
+#: ../inc/features/class-destination-mail.php:165
+msgid "Sendmail path"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:124
+#: ../inc/features/class-destination-mail.php:174
+msgid "SMTP hostname"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:136
+#: ../inc/features/class-destination-mail.php:186
+msgid "SMTP secure connection"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:140 ../inc/class-destination-s3.php:202
+#: ../inc/class-jobtype-dbdump.php:74 ../inc/class-jobtype-dbdump.php:121
+#: ../inc/class-jobtype-wpexp.php:68 ../inc/class-jobtype-wpplugin.php:55
+#: ../inc/class-page-backwpup.php:110 ../inc/class-page-backwpup.php:154
+#: ../inc/features/class-destination-mail.php:190
+#: ../inc/features/class-destination-s3.php:273
+#: ../inc/features/class-jobtype-dbdump.php:169
+#: ../inc/features/class-jobtype-dbdump.php:235
+#: ../inc/features/class-jobtype-wpexp.php:88
+#: ../inc/features/class-jobtype-wpplugin.php:64
+msgid "none"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:141
+#: ../inc/features/class-destination-mail.php:191
+msgid "SSL"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:142
+#: ../inc/features/class-destination-mail.php:192
+msgid "TLS"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:148
+#: ../inc/features/class-destination-mail.php:198
+msgid "SMTP username"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:156
+#: ../inc/features/class-destination-mail.php:206
+msgid "SMTP password"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:237
+#: ../inc/features/class-destination-mail.php:301
+#, php-format
+msgid "%d. Try to sending backup with mail..."
+msgstr ""
+
+#: ../inc/class-destination-mail.php:242
+#: ../inc/features/class-destination-mail.php:306
+msgid "Backup archive too big for sending by mail!"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:249
+#: ../inc/features/class-destination-mail.php:313
+#, php-format
+msgid "Sending mail to %s ..."
+msgstr ""
+
+#: ../inc/class-destination-mail.php:321
+#: ../inc/features/class-destination-mail.php:385
+#, php-format
+msgid "BackWPup archive from %1$s: %2$s"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:324
+#: ../inc/features/class-destination-mail.php:388
+#, php-format
+msgid "Backup archive: %s"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:338 ../inc/class-destination-mail.php:456
+#: ../inc/features/class-destination-mail.php:402
+#: ../inc/features/class-destination-mail.php:520
+msgid "Error on sending mail!"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:344 ../inc/class-destination-mail.php:458
+#: ../inc/features/class-destination-mail.php:408
+#: ../inc/features/class-destination-mail.php:522
+msgid "Mail sent."
+msgstr ""
+
+#: ../inc/class-destination-mail.php:440
+#: ../inc/features/class-destination-mail.php:504
+msgid "BackWPup archive sending TEST Message"
+msgstr ""
+
+#: ../inc/class-destination-mail.php:443
+#: ../inc/features/class-destination-mail.php:507
+msgid ""
+"If this message arrives you the sending of Backup archives with Mail should "
+"normally works."
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:23
+#: ../inc/features/class-destination-msazure.php:23
+msgid "MS Azure"
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:24
+#: ../inc/features/class-destination-msazure.php:24
+msgid "Backup to Microsoft Azure (Blob)"
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:55
+#: ../inc/features/class-destination-msazure.php:90
+msgid "MS Azure Access Keys"
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:59
+#: ../inc/features/class-destination-msazure.php:94
+msgid "Account Name"
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:66 ../inc/class-destination-s3.php:134
+#: ../inc/features/class-destination-msazure.php:101
+#: ../inc/features/class-destination-s3.php:201
+msgid "Access Key"
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:74
+#: ../inc/features/class-destination-msazure.php:109
+msgid "Blob Container"
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:78 ../inc/class-destination-rsc.php:86
+#: ../inc/features/class-destination-msazure.php:113
+#: ../inc/features/class-destination-rsc.php:138
+msgid "Container selection"
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:90 ../inc/class-destination-rsc.php:98
+#: ../inc/features/class-destination-msazure.php:125
+#: ../inc/features/class-destination-rsc.php:150
+msgid "Create a new container"
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:101
+#: ../inc/features/class-destination-msazure.php:136
+msgid "Folder in container"
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:149
+#: ../inc/features/class-destination-msazure.php:188
+#: ../inc/features/class-destination-msazure.php:225
+#, php-format
+msgid "MS Azure container \"%s\" created."
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:152
+#: ../inc/features/class-destination-msazure.php:191
+#: ../inc/features/class-destination-msazure.php:228
+#, php-format
+msgid "MS Azure container create: %s"
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:231
+#: ../inc/features/class-destination-msazure.php:308
+#, php-format
+msgid "%d. Try sending backup to a Microsoft Azure (Blob)..."
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:248
+#: ../inc/features/class-destination-msazure.php:325
+#: ../inc/features/class-destination-msazure.php:418
+#, php-format
+msgid "MS Azure container \"%s\" not exists!"
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:252
+#: ../inc/features/class-destination-msazure.php:329
+#: ../inc/features/class-destination-msazure.php:422
+#, php-format
+msgid "Connected to MS Azure container \"%s\""
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:256
+#: ../inc/features/class-destination-msazure.php:333
+msgid "Upload to MS Azure now started... "
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:300
+#: ../inc/features/class-destination-msazure.php:377
+#, php-format
+msgid "One file deleted on Microsoft Azure container"
+msgid_plural "%d files deleted on Microsoft Azure container"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../inc/class-destination-msazure.php:306
+#: ../inc/features/class-destination-msazure.php:383
+#: ../inc/features/class-destination-msazure.php:482
+#, php-format
+msgid "Microsoft Azure API: %s"
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:396
+#: ../inc/features/class-destination-msazure.php:579
+msgid "Missing Account Name!"
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:398
+#: ../inc/features/class-destination-msazure.php:581
+msgid "Missing Access Key!"
+msgstr ""
+
+#: ../inc/class-destination-msazure.php:402
+#: ../inc/features/class-destination-msazure.php:585
+msgid "No Container found!"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:23
+#: ../inc/features/class-destination-rsc.php:23
+msgid "RSC"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:24
+#: ../inc/features/class-destination-rsc.php:24
+msgid "Backup to Rackspace Cloud Files"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:54
+#: ../inc/features/class-destination-rsc.php:106
+msgid "Rack Space Cloud Keys"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:65
+#: ../inc/features/class-destination-rsc.php:117
+msgid "API Key"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:73
+#: ../inc/features/class-destination-rsc.php:125
+msgid "Select region"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:77 ../inc/class-destination-rsc.php:79
+#: ../inc/features/class-destination-rsc.php:68
+#: ../inc/features/class-destination-rsc.php:129
+#: ../inc/features/class-destination-rsc.php:131
+msgid "Rackspace Cloud Files Region"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:80
+#: ../inc/features/class-destination-rsc.php:69
+#: ../inc/features/class-destination-rsc.php:132
+msgid "Dallas (DFW)"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:81
+#: ../inc/features/class-destination-rsc.php:70
+#: ../inc/features/class-destination-rsc.php:133
+msgid "Chicago (ORD)"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:105 ../inc/class-destination-s3.php:173
+#: ../inc/features/class-destination-rsc.php:157
+#: ../inc/features/class-destination-s3.php:240
+msgid "S3 Backup settings"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:109 ../inc/class-destination-s3.php:177
+#: ../inc/features/class-destination-rsc.php:161
+#: ../inc/features/class-destination-s3.php:244
+msgid "Folder in bucket"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:167
+#: ../inc/features/class-destination-rsc.php:221
+#: ../inc/features/class-destination-rsc.php:267
+#, php-format
+msgid "Rackspace Cloud container \"%s\" created."
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:171 ../inc/class-destination-rsc.php:287
+#: ../inc/class-destination-rsc.php:315 ../inc/class-destination-rsc.php:362
+#: ../inc/features/class-destination-rsc.php:225
+#: ../inc/features/class-destination-rsc.php:271
+#: ../inc/features/class-destination-rsc.php:387
+#: ../inc/features/class-destination-rsc.php:415
+#: ../inc/features/class-destination-rsc.php:462
+#: ../inc/features/class-destination-rsc.php:496
+#: ../inc/features/class-destination-rsc.php:569
+#, php-format
+msgid "Rackspace Cloud API: %s"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:268
+#: ../inc/features/class-destination-rsc.php:368
+#, php-format
+msgid "%d. Try to sending backup file to Rackspace cloud..."
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:284
+#: ../inc/features/class-destination-rsc.php:384
+#: ../inc/features/class-destination-rsc.php:493
+#, php-format
+msgid "Connected to Rackspace cloud files container %s"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:296
+#: ../inc/features/class-destination-rsc.php:396
+msgid "Upload to Rackspace cloud now started ... "
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:305
+#: ../inc/features/class-destination-rsc.php:405
+msgid "Backup File transferred to RSC://"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:309
+#: ../inc/features/class-destination-rsc.php:409
+msgid "Can not transfer backup to Rackspace cloud."
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:356
+#: ../inc/features/class-destination-rsc.php:456
+#, php-format
+msgid "One file deleted on Rackspace cloud container"
+msgid_plural "%d files deleted on Rackspace cloud container"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../inc/class-destination-rsc.php:474
+#: ../inc/features/class-destination-rsc.php:681
+msgid "Missing Username!"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:476
+#: ../inc/features/class-destination-rsc.php:683
+msgid "Missing API Key!"
+msgstr ""
+
+#: ../inc/class-destination-rsc.php:480
+#: ../inc/features/class-destination-rsc.php:687
+msgid "No Container's found!"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:30 ../inc/class-destination-s3.php:101
+#: ../inc/features/class-destination-s3.php:30
+#: ../inc/features/class-destination-s3.php:168
+msgid "S3 Service"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:31
+#: ../inc/features/class-destination-s3.php:31
+msgid "Backup to a S3 Service"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:105
+#: ../inc/features/class-destination-s3.php:172
+msgid "Select a S3 service"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:107
+#: ../inc/features/class-destination-s3.php:109
+#: ../inc/features/class-destination-s3.php:174
+msgid "Amazon S3 Region"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:108
+#: ../inc/features/class-destination-s3.php:110
+#: ../inc/features/class-destination-s3.php:175
+msgid "Amazon S3: US Standard"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:109
+#: ../inc/features/class-destination-s3.php:111
+#: ../inc/features/class-destination-s3.php:176
+msgid "Amazon S3: US West (Northern California)"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:110
+#: ../inc/features/class-destination-s3.php:112
+#: ../inc/features/class-destination-s3.php:177
+msgid "Amazon S3: US West (Oregon)"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:111
+#: ../inc/features/class-destination-s3.php:113
+#: ../inc/features/class-destination-s3.php:178
+msgid "Amazon S3: EU (Ireland)"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:112
+#: ../inc/features/class-destination-s3.php:114
+#: ../inc/features/class-destination-s3.php:179
+msgid "Amazon S3: Asia Pacific (Tokyo)"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:113
+#: ../inc/features/class-destination-s3.php:115
+#: ../inc/features/class-destination-s3.php:180
+msgid "Amazon S3: Asia Pacific (Singapore)"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:114
+#: ../inc/features/class-destination-s3.php:116
+#: ../inc/features/class-destination-s3.php:181
+msgid "Amazon S3: Asia Pacific (Sydney)"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:115
+#: ../inc/features/class-destination-s3.php:117
+#: ../inc/features/class-destination-s3.php:182
+msgid "Amazon S3: South America (Sao Paulo)"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:116
+#: ../inc/features/class-destination-s3.php:118
+#: ../inc/features/class-destination-s3.php:183
+msgid "Amazon S3: GovCloud (US)"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:117
+#: ../inc/features/class-destination-s3.php:119
+#: ../inc/features/class-destination-s3.php:184
+msgid "Google Storage (Interoperable Access)"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:118
+#: ../inc/features/class-destination-s3.php:120
+#: ../inc/features/class-destination-s3.php:185
+msgid "Hosteurope Cloud Storage"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:123
+#: ../inc/features/class-destination-s3.php:190
+msgid "Or a S3 Server url"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:130
+#: ../inc/features/class-destination-s3.php:197
+msgid "S3 Access Keys"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:141
+#: ../inc/features/class-destination-s3.php:208
+msgid "Secret Key"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:149
+#: ../inc/features/class-destination-s3.php:216
+msgid "S3 Bucket"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:153
+#: ../inc/features/class-destination-s3.php:220
+msgid "Bucket selection"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:166
+#: ../inc/features/class-destination-s3.php:233
+msgid "Create a new Bucket"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:195
+#: ../inc/features/class-destination-s3.php:266
+msgid "Amazon Specific settings"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:199 ../inc/class-destination-s3.php:201
+#: ../inc/features/class-destination-s3.php:270
+#: ../inc/features/class-destination-s3.php:272
+msgid "Amazon: Storage Class"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:203
+#: ../inc/features/class-destination-s3.php:274
+msgid "Reduced Redundancy"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:208
+#: ../inc/features/class-destination-s3.php:279
+msgid "Server Side Encryption"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:212
+#: ../inc/features/class-destination-s3.php:283
+msgid "Save Files Server Side Encrypted (AES256)"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:265
+#: ../inc/features/class-destination-s3.php:339
+#: ../inc/features/class-destination-s3.php:401
+#, php-format
+msgid "Bucket %1$s in %2$s created."
+msgstr ""
+
+#: ../inc/class-destination-s3.php:267
+#: ../inc/features/class-destination-s3.php:341
+#: ../inc/features/class-destination-s3.php:403
+#, php-format
+msgid "Bucket %s could not created."
+msgstr ""
+
+#: ../inc/class-destination-s3.php:269
+#: ../inc/features/class-destination-s3.php:343
+#: ../inc/features/class-destination-s3.php:405
+#, php-format
+msgid " %s is not a valid bucket name."
+msgstr ""
+
+#: ../inc/class-destination-s3.php:311 ../inc/class-destination-s3.php:427
+#: ../inc/class-destination-s3.php:447 ../inc/class-destination-s3.php:505
+#: ../inc/features/class-destination-s3.php:447
+#: ../inc/features/class-destination-s3.php:563
+#: ../inc/features/class-destination-s3.php:583
+#: ../inc/features/class-destination-s3.php:641
+#: ../inc/features/class-destination-s3.php:781
+#, php-format
+msgid "S3 Service API: %s"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:377
+#: ../inc/features/class-destination-s3.php:513
+#, php-format
+msgid "%d. Try to sending backup file to S3 Service..."
+msgstr ""
+
+#: ../inc/class-destination-s3.php:390
+#: ../inc/features/class-destination-s3.php:526
+#: ../inc/features/class-destination-s3.php:672
+#, php-format
+msgid "Connected to S3 Bucket \"%1$s\" from \"%3$s\" in %2$s"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:393
+#: ../inc/features/class-destination-s3.php:529
+#: ../inc/features/class-destination-s3.php:675
+#, php-format
+msgid "S3 Bucket \"%s\" not exists!"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:399
+#: ../inc/features/class-destination-s3.php:535
+msgid "Upload to S3 Service now started... "
+msgstr ""
+
+#: ../inc/class-destination-s3.php:443
+#: ../inc/features/class-destination-s3.php:579
+#, php-format
+msgid "Can not transfer backup to S3! (%1$d) %2$s"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:495
+#: ../inc/features/class-destination-s3.php:631
+#, php-format
+msgid "Can not delete backup on %s"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:499
+#: ../inc/features/class-destination-s3.php:635
+#, php-format
+msgid "One file deleted on S3 Bucket"
+msgid_plural "%d files deleted on S3 Bucket"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../inc/class-destination-s3.php:610
+#: ../inc/features/class-destination-s3.php:884
+msgid "Missing access key!"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:612
+#: ../inc/features/class-destination-s3.php:886
+msgid "Missing secret access key!"
+msgstr ""
+
+#: ../inc/class-destination-s3.php:616
+#: ../inc/features/class-destination-s3.php:890
+msgid "No bucket found!"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:17
+#: ../inc/features/class-destination-sugarsync.php:17
+msgid "SugarSync"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:18
+#: ../inc/features/class-destination-sugarsync.php:18
+msgid "Backup to SugarSync"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:47
+#: ../inc/features/class-destination-sugarsync.php:119
+msgid "Sugarsync Login"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:53
+#: ../inc/class-destination-sugarsync.php:72
+#: ../inc/features/class-destination-sugarsync.php:125
+#: ../inc/features/class-destination-sugarsync.php:144
+msgid "Authentication"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:55
+#: ../inc/features/class-destination-sugarsync.php:56
+#: ../inc/features/class-destination-sugarsync.php:127
+msgid "E-mail address:"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:59
+#: ../inc/class-page-settings.php:285
+#: ../inc/features/class-destination-ftp.php:57
+#: ../inc/features/class-destination-sugarsync.php:59
+#: ../inc/features/class-destination-sugarsync.php:131
+#: ../inc/features/class-jobtype-dbdump.php:137
+msgid "Password:"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:65
+#: ../inc/class-destination-sugarsync.php:146
+#: ../inc/features/class-destination-sugarsync.php:64
+#: ../inc/features/class-destination-sugarsync.php:137
+#: ../inc/features/class-destination-sugarsync.php:216
+#: ../inc/features/class-destination-sugarsync.php:263
+msgid "Sugarsync authenticate!"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:67
+#: ../inc/class-destination-sugarsync.php:162
+#: ../inc/features/class-destination-sugarsync.php:66
+#: ../inc/features/class-destination-sugarsync.php:139
+#: ../inc/features/class-destination-sugarsync.php:232
+#: ../inc/features/class-destination-sugarsync.php:279
+msgid "Create Sugarsync Account"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:76
+#: ../inc/class-destination-sugarsync.php:158
+#: ../inc/features/class-destination-sugarsync.php:73
+#: ../inc/features/class-destination-sugarsync.php:148
+#: ../inc/features/class-destination-sugarsync.php:228
+#: ../inc/features/class-destination-sugarsync.php:275
+msgid "Delete Sugarsync authentication!"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:82
+#: ../inc/features/class-destination-sugarsync.php:154
+msgid "SgarSync Root"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:86
+#: ../inc/features/class-destination-sugarsync.php:158
+msgid "Sync folder selection"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:94
+#: ../inc/features/class-destination-sugarsync.php:82
+#: ../inc/features/class-destination-sugarsync.php:166
+msgid "No Syncfolders found!"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:115
+#: ../inc/features/class-destination-sugarsync.php:187
+msgid "Folder in root"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:258
+#: ../inc/features/class-destination-sugarsync.php:376
+#, php-format
+msgid "%d. Try to sending backup to SugarSync..."
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:265
+#: ../inc/features/class-destination-sugarsync.php:383
+#, php-format
+msgid "Authed to SugarSync with Nick %s"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:268
+#: ../inc/features/class-destination-sugarsync.php:386
+msgid "No free space left on SugarSync!!!"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:274
+#: ../inc/features/class-destination-sugarsync.php:392
+#, php-format
+msgid "%s free on SugarSync"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:281
+#: ../inc/features/class-destination-sugarsync.php:399
+msgid "Upload to SugarSync now started... "
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:290
+#: ../inc/features/class-destination-sugarsync.php:408
+msgid "Can not transfer backup to SugarSync!"
+msgstr ""
+
+#: ../inc/class-destination-sugarsync.php:328
+#: ../inc/features/class-destination-sugarsync.php:446
+#, php-format
+msgid "One file deleted on SugarSync folder"
+msgid_plural "%d files deleted on SugarSync folder"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../inc/class-destination-sugarsync.php:334
+#: ../inc/features/class-destination-sugarsync.php:452
+#, php-format
+msgid "SugarSync API: %s"
+msgstr ""
+
+#: ../inc/class-destinations.php:20
+#, php-format
+msgid "Backup to %s"
+msgstr ""
+
+#: ../inc/class-frontend.php:63
+#: ../inc/features/class-wizard-systemtest.php:166
+#: ../inc/features/class-wizard-systemtest.php:175
+msgid "Response Test O.K."
+msgstr ""
+
+#: ../inc/class-help.php:15
+msgid "Plugin Info"
+msgstr ""
+
+#: ../inc/class-help.php:17
+msgid ""
+"BackWPup comes with ABSOLUTELY NO WARRANTY. This is free software, and you "
+"are welcome to redistribute it under certain conditions."
+msgstr ""
+
+#: ../inc/class-help.php:20
+msgid "For more information:"
+msgstr ""
+
+#: ../inc/class-help.php:22
+msgid "News"
+msgstr ""
+
+#: ../inc/class-help.php:23
+msgid "http://marketpress.com/support/"
+msgstr ""
+
+#: ../inc/class-install.php:205
+msgid "BackWPup Admin"
+msgstr ""
+
+#: ../inc/class-install.php:218
+msgid "BackWPup jobs checker"
+msgstr ""
+
+#: ../inc/class-install.php:231
+msgid "BackWPup jobs helper"
+msgstr ""
+
+#: ../inc/class-job.php:209
+msgid "Create archive"
+msgstr ""
+
+#: ../inc/class-job.php:245
+msgid "Job End"
+msgstr ""
+
+#: ../inc/class-job.php:253
+#, php-format
+msgid "BackWPup log for %1$s from %2$s at %3$s"
+msgstr ""
+
+#: ../inc/class-job.php:270
+#, php-format
+msgid ""
+"[INFO] BackWPup version %1$s; WordPress version %3$s; Copyright %2$s %4$s"
+msgstr ""
+
+#: ../inc/class-job.php:271
+msgid ""
+"[INFO] This program comes with ABSOLUTELY NO WARRANTY. This is free "
+"software, and you are welcome to redistribute it under certain conditions."
+msgstr ""
+
+#: ../inc/class-job.php:272
+#, php-format
+msgid "[INFO] BackWPup job: %1$s; %2$s"
+msgstr ""
+
+#: ../inc/class-job.php:274
+msgid "[INFO] BackWPup cron:"
+msgstr ""
+
+#: ../inc/class-job.php:276
+msgid "[INFO] BackWPup job started from wp-cron"
+msgstr ""
+
+#: ../inc/class-job.php:278
+msgid "[INFO] BackWPup job started manually"
+msgstr ""
+
+#: ../inc/class-job.php:280
+msgid "[INFO] BackWPup job started from external url"
+msgstr ""
+
+#: ../inc/class-job.php:282
+msgid "[INFO] BackWPup job started form commandline"
+msgstr ""
+
+#: ../inc/class-job.php:283
+msgid "[INFO] PHP ver.:"
+msgstr ""
+
+#: ../inc/class-job.php:284
+#, php-format
+msgid "[INFO] Maximum script execution time is %1$d sec."
+msgstr ""
+
+#: ../inc/class-job.php:285
+#, php-format
+msgid "[INFO] MySQL ver.: %s"
+msgstr ""
+
+#: ../inc/class-job.php:288
+#, php-format
+msgid "[INFO] curl ver.: %1$s; %2$s"
+msgstr ""
+
+#: ../inc/class-job.php:290
+#, php-format
+msgid "[INFO] Temp folder is: %s"
+msgstr ""
+
+#: ../inc/class-job.php:291
+#, php-format
+msgid "[INFO] Logfile folder is: %s"
+msgstr ""
+
+#: ../inc/class-job.php:292
+#, php-format
+msgid "[INFO] Backup type is: %s"
+msgstr ""
+
+#: ../inc/class-job.php:294
+#, php-format
+msgid "[INFO] Backup file is: %s"
+msgstr ""
+
+#: ../inc/class-job.php:307
+msgid "No destination defined for backup!!! Please correct job settings"
+msgstr ""
+
+#: ../inc/class-job.php:415 ../inc/class-job.php:416 ../inc/class-job.php:484
+#: ../inc/class-job.php:485 ../inc/class-job.php:532
+msgid "Wrong BackWPup JobID"
+msgstr ""
+
+#: ../inc/class-job.php:420 ../inc/class-job.php:421 ../inc/class-job.php:490
+#: ../inc/class-job.php:538
+msgid "Log folder not exists or is not writable for BackWPup"
+msgstr ""
+
+#: ../inc/class-job.php:424 ../inc/class-job.php:425 ../inc/class-job.php:494
+#: ../inc/class-job.php:543
+msgid "Temp folder not exists or is not writable for BackWPup"
+msgstr ""
+
+#: ../inc/class-job.php:430 ../inc/class-job.php:431
+msgid "No BackWPup job running"
+msgstr ""
+
+#: ../inc/class-job.php:434 ../inc/class-job.php:435 ../inc/class-job.php:498
+#: ../inc/class-job.php:499 ../inc/class-job.php:550
+msgid "A BackWPup job already running"
+msgstr ""
+
+#: ../inc/class-job.php:489
+msgid "Log folder not exists or is not writable"
+msgstr ""
+
+#: ../inc/class-job.php:493
+msgid "Temp folder not exists or is not writable"
+msgstr ""
+
+#: ../inc/class-job.php:615
+msgid "Job restart terminated, because job runs!"
+msgstr ""
+
+#: ../inc/class-job.php:620
+msgid "Job restart due to inactivity for more than 5 min."
+msgstr ""
+
+#: ../inc/class-job.php:623
+#, php-format
+msgid "Second process is running, but old job runs! Start type is %s"
+msgstr ""
+
+#: ../inc/class-job.php:670
+msgid "Step aborted has too many tries!"
+msgstr ""
+
+#: ../inc/class-job.php:777
+#, php-format
+msgid "Signal %d send to script!"
+msgstr ""
+
+#: ../inc/class-job.php:792
+#, php-format
+msgid "%d. Script stop! Will started again."
+msgstr ""
+
+#: ../inc/class-job.php:821
+#, php-format
+msgid "Please use a other folder: %1$s"
+msgstr ""
+
+#: ../inc/class-job.php:828
+#, php-format
+msgid "Can not create folder: %1$s"
+msgstr ""
+
+#: ../inc/class-job.php:836
+#, php-format
+msgid "Folder \"%1$s\" not writable"
+msgstr ""
+
+#: ../inc/class-job.php:861
+#, php-format
+msgid "Exception caught in %1$s: %2$s"
+msgstr ""
+
+#: ../inc/class-job.php:919
+msgid "WARNING:"
+msgstr ""
+
+#: ../inc/class-job.php:932
+msgid "DEPRECATED:"
+msgstr ""
+
+#: ../inc/class-job.php:935
+msgid "STRICT NOTICE:"
+msgstr ""
+
+#: ../inc/class-job.php:938
+msgid "RECOVERABLE ERROR:"
+msgstr ""
+
+#: ../inc/class-job.php:1062
+#, php-format
+msgid "One old log deleted"
+msgid_plural "%d old logs deleted"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../inc/class-job.php:1067
+#, php-format
+msgid "Job done in %s sec."
+msgstr ""
+
+#: ../inc/class-job.php:1129
+msgid "SUCCESSFUL"
+msgstr ""
+
+#: ../inc/class-job.php:1132
+msgid "WARNING"
+msgstr ""
+
+#: ../inc/class-job.php:1176
+msgid "Set Blog to maintenance mode"
+msgstr ""
+
+#: ../inc/class-job.php:1185
+msgid "Cannot set Blog to maintenance mode! .maintenance is not writable!"
+msgstr ""
+
+#: ../inc/class-job.php:1190
+msgid "Set Blog to normal mode"
+msgstr ""
+
+#: ../inc/class-job.php:1220
+#, php-format
+msgid "Memory increased from %1$s to %2$s"
+msgstr ""
+
+#: ../inc/class-job.php:1222
+#, php-format
+msgid "Can not increase memory limit is %1$s"
+msgstr ""
+
+#: ../inc/class-job.php:1486
+#, php-format
+msgid "File \"%s\" is not readable!"
+msgstr ""
+
+#: ../inc/class-job.php:1488
+#, php-format
+msgid "Link \"%s\" not followed"
+msgstr ""
+
+#: ../inc/class-job.php:1510
+#, php-format
+msgid "%d. Trying to create backup zip archive..."
+msgstr ""
+
+#: ../inc/class-job.php:1515
+#, php-format
+msgid "Can not create backup zip archive: %d!"
+msgstr ""
+
+#: ../inc/class-job.php:1524 ../inc/class-job.php:1543
+#, php-format
+msgid "Can not add \"%s\" to zip archive!"
+msgstr ""
+
+#: ../inc/class-job.php:1536
+#, php-format
+msgid "Can not add dir \"%s\" to zip archive!"
+msgstr ""
+
+#: ../inc/class-job.php:1552 ../inc/class-job.php:1612
+msgid "(ER_MULTIDISK) Multi-disk zip archives not supported"
+msgstr ""
+
+#: ../inc/class-job.php:1554 ../inc/class-job.php:1614
+msgid "(ER_RENAME) Renaming temporary file failed"
+msgstr ""
+
+#: ../inc/class-job.php:1556 ../inc/class-job.php:1616
+msgid "(ER_CLOSE) Closing zip archive failed"
+msgstr ""
+
+#: ../inc/class-job.php:1558 ../inc/class-job.php:1618
+msgid "(ER_SEEK) Seek error"
+msgstr ""
+
+#: ../inc/class-job.php:1560 ../inc/class-job.php:1620
+msgid "(ER_READ) Read error"
+msgstr ""
+
+#: ../inc/class-job.php:1562 ../inc/class-job.php:1622
+msgid "(ER_WRITE) Write error"
+msgstr ""
+
+#: ../inc/class-job.php:1564 ../inc/class-job.php:1624
+msgid "(ER_CRC) CRC error"
+msgstr ""
+
+#: ../inc/class-job.php:1566 ../inc/class-job.php:1626
+msgid "(ER_ZIPCLOSED) Containing zip archive was closed"
+msgstr ""
+
+#: ../inc/class-job.php:1568 ../inc/class-job.php:1628
+msgid "(ER_NOENT) No such file"
+msgstr ""
+
+#: ../inc/class-job.php:1570 ../inc/class-job.php:1630
+msgid "(ER_EXISTS) File already exists"
+msgstr ""
+
+#: ../inc/class-job.php:1572 ../inc/class-job.php:1632
+msgid "(ER_OPEN) Can't open file"
+msgstr ""
+
+#: ../inc/class-job.php:1574 ../inc/class-job.php:1634
+msgid "(ER_TMPOPEN) Failure to create temporary file"
+msgstr ""
+
+#: ../inc/class-job.php:1576 ../inc/class-job.php:1636
+msgid "(ER_ZLIB) Zlib error"
+msgstr ""
+
+#: ../inc/class-job.php:1578 ../inc/class-job.php:1638
+msgid "(ER_MEMORY) Malloc failure"
+msgstr ""
+
+#: ../inc/class-job.php:1580 ../inc/class-job.php:1640
+msgid "(ER_CHANGED) Entry has been changed"
+msgstr ""
+
+#: ../inc/class-job.php:1582 ../inc/class-job.php:1642
+msgid "(ER_COMPNOTSUPP) Compression method not supported"
+msgstr ""
+
+#: ../inc/class-job.php:1584 ../inc/class-job.php:1644
+msgid "(ER_EOF) Premature EOF"
+msgstr ""
+
+#: ../inc/class-job.php:1586 ../inc/class-job.php:1646
+msgid "(ER_INVAL) Invalid argument"
+msgstr ""
+
+#: ../inc/class-job.php:1588 ../inc/class-job.php:1648
+msgid "(ER_NOZIP) Not a zip archive"
+msgstr ""
+
+#: ../inc/class-job.php:1590 ../inc/class-job.php:1650
+msgid "(ER_INTERNAL) Internal error"
+msgstr ""
+
+#: ../inc/class-job.php:1592 ../inc/class-job.php:1652
+msgid "(ER_INCONS) Zip archive inconsistent"
+msgstr ""
+
+#: ../inc/class-job.php:1594 ../inc/class-job.php:1654
+msgid "(ER_REMOVE) Can't remove file"
+msgstr ""
+
+#: ../inc/class-job.php:1596 ../inc/class-job.php:1656
+msgid "(ER_DELETED) Entry has been deleted"
+msgstr ""
+
+#: ../inc/class-job.php:1597 ../inc/class-job.php:1657
+#, php-format
+msgid "Zip returns status: %s"
+msgstr ""
+
+#: ../inc/class-job.php:1660 ../inc/class-job.php:1703
+msgid "Backup zip archive created"
+msgstr ""
+
+#: ../inc/class-job.php:1671
+#, php-format
+msgid "%d. Trying to create backup zip (PclZip) archive..."
+msgstr ""
+
+#: ../inc/class-job.php:1684 ../inc/class-job.php:1697
+#, php-format
+msgid "Zip archive add error: %s"
+msgstr ""
+
+#: ../inc/class-job.php:1711
+#, php-format
+msgid "%1$d. Trying to create %2$s archive file..."
+msgstr ""
+
+#: ../inc/class-job.php:1747
+#, php-format
+msgid "%s archive created"
+msgstr ""
+
+#: ../inc/class-job.php:1751
+#, php-format
+msgid "Archive size is %s"
+msgstr ""
+
+#: ../inc/class-job.php:1752
+#, php-format
+msgid "%1$d Files with %2$s in Archive"
+msgstr ""
+
+#: ../inc/class-job.php:1779
+#, php-format
+msgid "File name \"%1$s\" to long to save correctly in %2$s archive!"
+msgstr ""
+
+#: ../inc/class-job.php:1781
+#, php-format
+msgid "File path \"%1$s\" to long to save correctly in %2$s archive!"
+msgstr ""
+
+#: ../inc/class-job.php:1789 ../inc/class-job.php:1790
+msgid "Unknown"
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:12
+#: ../inc/features/class-jobtype-dbcheck.php:12
+msgid "DB Check"
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:13
+#: ../inc/features/class-jobtype-dbcheck.php:13
+msgid "Check database tables"
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:43
+#: ../inc/features/class-jobtype-dbcheck.php:40
+#: ../inc/features/class-jobtype-dbcheck.php:89
+msgid "Settings for database check"
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:47 ../inc/class-jobtype-dbcheck.php:50
+#: ../inc/class-jobtype-dboptimize.php:48
+#: ../inc/class-jobtype-dboptimize.php:51
+#: ../inc/features/class-jobtype-dbcheck.php:44
+#: ../inc/features/class-jobtype-dbcheck.php:47
+#: ../inc/features/class-jobtype-dbcheck.php:93
+#: ../inc/features/class-jobtype-dbcheck.php:96
+#: ../inc/features/class-jobtype-dbdump.php:84
+#: ../inc/features/class-jobtype-dbdump.php:87
+#: ../inc/features/class-jobtype-dboptimize.php:45
+#: ../inc/features/class-jobtype-dboptimize.php:48
+#: ../inc/features/class-jobtype-dboptimize.php:81
+#: ../inc/features/class-jobtype-dboptimize.php:84
+msgid "Only WordPress tables"
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:54
+#: ../inc/features/class-jobtype-dbcheck.php:51
+#: ../inc/features/class-jobtype-dbcheck.php:100
+msgid "Check only WordPress Database tables"
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:59 ../inc/class-jobtype-dbcheck.php:62
+#: ../inc/class-jobtype-dbdump.php:98 ../inc/class-jobtype-dbdump.php:101
+#: ../inc/class-jobtype-dboptimize.php:60
+#: ../inc/class-jobtype-dboptimize.php:63
+#: ../inc/features/class-jobtype-dbcheck.php:56
+#: ../inc/features/class-jobtype-dbcheck.php:59
+#: ../inc/features/class-jobtype-dbcheck.php:105
+#: ../inc/features/class-jobtype-dbcheck.php:108
+#: ../inc/features/class-jobtype-dbdump.php:96
+#: ../inc/features/class-jobtype-dbdump.php:99
+#: ../inc/features/class-jobtype-dbdump.php:190
+#: ../inc/features/class-jobtype-dbdump.php:193
+#: ../inc/features/class-jobtype-dboptimize.php:57
+#: ../inc/features/class-jobtype-dboptimize.php:60
+#: ../inc/features/class-jobtype-dboptimize.php:93
+#: ../inc/features/class-jobtype-dboptimize.php:96
+msgid "Maintenance mode"
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:66
+#: ../inc/features/class-jobtype-dbcheck.php:63
+#: ../inc/features/class-jobtype-dbcheck.php:112
+msgid "Activate Maintenance mode on table check"
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:71 ../inc/class-jobtype-dbcheck.php:74
+#: ../inc/features/class-jobtype-dbcheck.php:68
+#: ../inc/features/class-jobtype-dbcheck.php:71
+#: ../inc/features/class-jobtype-dbcheck.php:117
+#: ../inc/features/class-jobtype-dbcheck.php:120
+msgid "Repair"
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:78
+#: ../inc/features/class-jobtype-dbcheck.php:75
+#: ../inc/features/class-jobtype-dbcheck.php:124
+msgid "Try to repair def. table"
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:110
+#: ../inc/features/class-jobtype-dbcheck.php:167
+#, php-format
+msgid "%d. Try for database check..."
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:145
+#: ../inc/features/class-jobtype-dbcheck.php:202
+#, php-format
+msgid "Table %1$s is a View. Not checked."
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:150
+#: ../inc/features/class-jobtype-dbcheck.php:207
+#, php-format
+msgid "Table %1$s is not a MyISAM/InnoDB table. Not checked."
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:157 ../inc/class-jobtype-dbcheck.php:159
+#: ../inc/class-jobtype-dbcheck.php:161
+#: ../inc/features/class-jobtype-dbcheck.php:214
+#: ../inc/features/class-jobtype-dbcheck.php:216
+#: ../inc/features/class-jobtype-dbcheck.php:218
+#, php-format
+msgid "Result of table check for %1$s is: %2$s"
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:167 ../inc/class-jobtype-dbcheck.php:169
+#: ../inc/class-jobtype-dbcheck.php:171
+#: ../inc/features/class-jobtype-dbcheck.php:224
+#: ../inc/features/class-jobtype-dbcheck.php:226
+#: ../inc/features/class-jobtype-dbcheck.php:228
+#, php-format
+msgid "Result of table repair for %1$s is: %2$s"
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:177
+#: ../inc/features/class-jobtype-dbcheck.php:234
+msgid "Database check done!"
+msgstr ""
+
+#: ../inc/class-jobtype-dbcheck.php:180
+#: ../inc/features/class-jobtype-dbcheck.php:237
+msgid "No tables to check"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:12
+#: ../inc/features/class-jobtype-dbdump.php:12
+msgid "DB Dump"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:13
+#: ../inc/features/class-jobtype-dbdump.php:13
+msgid "Database backup"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:14
+msgid "Creates a .sql database dump file"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:67
+#: ../inc/features/class-jobtype-dbdump.php:80
+#: ../inc/features/class-jobtype-dbdump.php:119
+msgid "Settings for database dump"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:71
+#: ../inc/features/class-jobtype-dbdump.php:166
+msgid "Tables to dump"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:73
+#: ../inc/features/class-jobtype-dbdump.php:168
+msgid "all"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:105
+#: ../inc/features/class-jobtype-dbdump.php:103
+#: ../inc/features/class-jobtype-dbdump.php:197
+msgid "Activate Maintenance mode on database dump"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:110
+#: ../inc/features/class-jobtype-dbdump.php:224
+msgid "Dumpfile name"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:118
+#: ../inc/features/class-jobtype-dbdump.php:232
+msgid "Dumpfile compression"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:123 ../inc/class-jobtype-dbdump.php:125
+#: ../inc/class-jobtype-wpexp.php:70 ../inc/class-jobtype-wpexp.php:72
+#: ../inc/class-jobtype-wpplugin.php:57 ../inc/class-jobtype-wpplugin.php:59
+#: ../inc/features/class-jobtype-dbdump.php:237
+#: ../inc/features/class-jobtype-dbdump.php:239
+#: ../inc/features/class-jobtype-wpexp.php:90
+#: ../inc/features/class-jobtype-wpexp.php:92
+#: ../inc/features/class-jobtype-wpplugin.php:66
+#: ../inc/features/class-jobtype-wpplugin.php:68
+msgid "GZip"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:127 ../inc/class-jobtype-dbdump.php:129
+#: ../inc/class-jobtype-wpexp.php:74 ../inc/class-jobtype-wpexp.php:76
+#: ../inc/class-jobtype-wpplugin.php:61 ../inc/class-jobtype-wpplugin.php:63
+#: ../inc/features/class-jobtype-dbdump.php:241
+#: ../inc/features/class-jobtype-dbdump.php:243
+#: ../inc/features/class-jobtype-wpexp.php:94
+#: ../inc/features/class-jobtype-wpexp.php:96
+#: ../inc/features/class-jobtype-wpplugin.php:70
+#: ../inc/features/class-jobtype-wpplugin.php:72
+msgid "BZip2"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:171
+#: ../inc/features/class-jobtype-dbdump.php:477
+#, php-format
+msgid "%d. Try for database dump..."
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:191
+#: ../inc/features/class-jobtype-dbdump.php:497
+#: ../inc/features/class-jobtype-dbdump.php:853
+#, php-format
+msgid "Can not connect to MySQL Database %1$d: %2$s"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:197
+#: ../inc/features/class-jobtype-dbdump.php:503
+#: ../inc/features/class-jobtype-dbdump.php:859
+#, php-format
+msgid "Connected to database %1$s on %2$s"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:202 ../inc/class-jobtype-dbdump.php:216
+#: ../inc/class-jobtype-dbdump.php:275 ../inc/class-jobtype-dbdump.php:294
+#: ../inc/class-jobtype-dbdump.php:311
+#: ../inc/features/class-jobtype-dbdump.php:508
+#: ../inc/features/class-jobtype-dbdump.php:522
+#: ../inc/features/class-jobtype-dbdump.php:583
+#: ../inc/features/class-jobtype-dbdump.php:602
+#: ../inc/features/class-jobtype-dbdump.php:619
+#: ../inc/features/class-jobtype-dbdump.php:864
+#: ../inc/features/class-jobtype-dbdump.php:878
+#: ../inc/features/class-jobtype-dbdump.php:927
+#: ../inc/features/class-jobtype-dbdump.php:944
+#: ../inc/features/class-jobtype-dbdump.php:985
+#, php-format
+msgid "Database error %1$s for query %2$s"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:223
+#: ../inc/features/class-jobtype-dbdump.php:529
+msgid "No tables to dump"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:267
+#: ../inc/features/class-jobtype-dbdump.php:575
+#, php-format
+msgid "Dump database view \"%s\""
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:286
+#: ../inc/features/class-jobtype-dbdump.php:594
+#, php-format
+msgid "Dump database table \"%s\""
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:387
+#: ../inc/features/class-jobtype-dbdump.php:695
+#: ../inc/features/class-jobtype-dbdump.php:809
+#, php-format
+msgid "Added database dump \"%1$s\" with %2$s to backup file list"
+msgstr ""
+
+#: ../inc/class-jobtype-dbdump.php:390
+#: ../inc/features/class-jobtype-dbdump.php:698
+#: ../inc/features/class-jobtype-dbdump.php:812
+msgid "Database dump done!"
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:12
+#: ../inc/features/class-jobtype-dboptimize.php:12
+msgid "DB Optimize"
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:13
+#: ../inc/features/class-jobtype-dboptimize.php:13
+msgid "Optimize database tables"
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:44
+#: ../inc/features/class-jobtype-dboptimize.php:41
+#: ../inc/features/class-jobtype-dboptimize.php:77
+msgid "Settings for database optimization"
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:55
+#: ../inc/features/class-jobtype-dboptimize.php:52
+#: ../inc/features/class-jobtype-dboptimize.php:88
+msgid "Optimize only WordPress Database tables"
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:67
+#: ../inc/features/class-jobtype-dboptimize.php:64
+#: ../inc/features/class-jobtype-dboptimize.php:100
+msgid "Activate Maintenance mode on table optimize"
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:73
+#: ../inc/class-jobtype-dboptimize.php:76
+#: ../inc/features/class-jobtype-dboptimize.php:106
+#: ../inc/features/class-jobtype-dboptimize.php:109
+msgid "Table types to optimize"
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:80
+#: ../inc/features/class-jobtype-dboptimize.php:113
+msgid "Optimize MyISAM Tables"
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:81
+#: ../inc/features/class-jobtype-dboptimize.php:114
+msgid "Optimize will done with OPTIMIZE TABLE `table\"` "
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:85
+#: ../inc/features/class-jobtype-dboptimize.php:118
+msgid "Optimize InnoDB tables"
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:86
+#: ../inc/features/class-jobtype-dboptimize.php:119
+msgid "Optimize will done with ALTER TABLE `table` ENGINE=InnoDB "
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:113
+#: ../inc/features/class-jobtype-dboptimize.php:156
+#, php-format
+msgid "%d. Try for database optimize..."
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:145
+#: ../inc/features/class-jobtype-dboptimize.php:188
+#, php-format
+msgid "Views can't optimize! View %1$s"
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:152
+#: ../inc/class-jobtype-dboptimize.php:154
+#: ../inc/class-jobtype-dboptimize.php:156
+#: ../inc/features/class-jobtype-dboptimize.php:195
+#: ../inc/features/class-jobtype-dboptimize.php:197
+#: ../inc/features/class-jobtype-dboptimize.php:199
+#, php-format
+msgid "Result of MyISAM table optimize for %1$s is: %2$s"
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:161
+#: ../inc/features/class-jobtype-dboptimize.php:204
+#, php-format
+msgid "InnoDB Table %1$s optimize done"
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:164
+#: ../inc/features/class-jobtype-dboptimize.php:207
+#, php-format
+msgid "%2$s table %1$s not optimized"
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:169
+#: ../inc/features/class-jobtype-dboptimize.php:212
+msgid "Database optimize done!"
+msgstr ""
+
+#: ../inc/class-jobtype-dboptimize.php:173
+#: ../inc/features/class-jobtype-dboptimize.php:216
+msgid "No tables to optimize"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:12 ../inc/features/class-jobtype-file.php:12
+msgid "Files"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:13 ../inc/features/class-jobtype-file.php:13
+msgid "File backup"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:55 ../inc/features/class-jobtype-file.php:80
+msgid "Blog Folders to Backup:"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:60 ../inc/features/class-jobtype-file.php:85
+msgid "root"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:65 ../inc/class-jobtype-file.php:89
+#: ../inc/class-jobtype-file.php:113 ../inc/class-jobtype-file.php:134
+#: ../inc/class-jobtype-file.php:158 ../inc/features/class-jobtype-file.php:90
+#: ../inc/features/class-jobtype-file.php:114
+#: ../inc/features/class-jobtype-file.php:138
+#: ../inc/features/class-jobtype-file.php:159
+#: ../inc/features/class-jobtype-file.php:183
+msgid "Exclude:"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:84 ../inc/features/class-jobtype-file.php:109
+msgid "Content"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:108 ../inc/class-jobtype-wpplugin.php:12
+#: ../inc/features/class-jobtype-file.php:133
+#: ../inc/features/class-jobtype-wpplugin.php:12
+msgid "Plugins"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:129
+#: ../inc/features/class-jobtype-file.php:154
+msgid "Themes"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:153
+#: ../inc/features/class-jobtype-file.php:178
+msgid "Blog uploads"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:178
+#: ../inc/features/class-jobtype-file.php:203
+msgid "Don't backup folder with backup, cache, or temp in its name."
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:183
+#: ../inc/features/class-jobtype-file.php:208
+msgid "Don't backup thumbnails in blog uploads folder"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:188
+#: ../inc/features/class-jobtype-file.php:213
+msgid ""
+"Backup wp-config.php, robots.txt, .htaccess, .htpasswd and favicon.ico form "
+"root if it not selected"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:190
+#: ../inc/features/class-jobtype-file.php:215
+msgid "Include folders to backup:"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:191 ../inc/class-jobtype-file.php:196
+#: ../inc/features/class-jobtype-file.php:216
+#: ../inc/features/class-jobtype-file.php:221
+msgid "Example:"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:195
+#: ../inc/features/class-jobtype-file.php:220
+msgid "Exclude files/folders from backup:"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:273
+#: ../inc/features/class-jobtype-file.php:326
+#, php-format
+msgid "%d. Try to make list of folder to backup...."
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:358 ../inc/class-jobtype-file.php:364
+#: ../inc/class-jobtype-file.php:370 ../inc/class-jobtype-file.php:376
+#: ../inc/class-jobtype-file.php:382 ../inc/class-jobtype-file.php:388
+#: ../inc/features/class-jobtype-file.php:411
+#: ../inc/features/class-jobtype-file.php:417
+#: ../inc/features/class-jobtype-file.php:423
+#: ../inc/features/class-jobtype-file.php:429
+#: ../inc/features/class-jobtype-file.php:435
+#: ../inc/features/class-jobtype-file.php:441
+#, php-format
+msgid "Added \"%s\" to backup file list"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:393
+#: ../inc/features/class-jobtype-file.php:446
+msgid "No Folder to backup"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:395
+#: ../inc/features/class-jobtype-file.php:448
+#, php-format
+msgid "%1$d Folders to backup"
+msgstr ""
+
+#: ../inc/class-jobtype-file.php:433
+#: ../inc/features/class-jobtype-file.php:486
+#, php-format
+msgid "Folder \"%s\" is not readable!"
+msgstr ""
+
+#: ../inc/class-jobtype-wpexp.php:12
+#: ../inc/features/class-jobtype-wpexp.php:12
+msgid "XML export"
+msgstr ""
+
+#: ../inc/class-jobtype-wpexp.php:13
+#: ../inc/features/class-jobtype-wpexp.php:13
+msgid "WordPress XML export"
+msgstr ""
+
+#: ../inc/class-jobtype-wpexp.php:50
+#: ../inc/features/class-jobtype-wpexp.php:50
+#: ../inc/features/class-jobtype-wpexp.php:70
+msgid "What to export:"
+msgstr ""
+
+#: ../inc/class-jobtype-wpexp.php:52
+#: ../inc/features/class-jobtype-wpexp.php:52
+#: ../inc/features/class-jobtype-wpexp.php:72
+msgid "All content"
+msgstr ""
+
+#: ../inc/class-jobtype-wpexp.php:53
+#: ../inc/features/class-jobtype-wpexp.php:53
+#: ../inc/features/class-jobtype-wpexp.php:73
+msgid "Posts"
+msgstr ""
+
+#: ../inc/class-jobtype-wpexp.php:54
+#: ../inc/features/class-jobtype-wpexp.php:54
+#: ../inc/features/class-jobtype-wpexp.php:74
+msgid "Pages"
+msgstr ""
+
+#: ../inc/class-jobtype-wpexp.php:62
+#: ../inc/features/class-jobtype-wpexp.php:82
+msgid "Filename for the WP export file:"
+msgstr ""
+
+#: ../inc/class-jobtype-wpexp.php:67 ../inc/class-jobtype-wpplugin.php:54
+#: ../inc/features/class-jobtype-wpexp.php:87
+#: ../inc/features/class-jobtype-wpplugin.php:63
+msgid "Compression:"
+msgstr ""
+
+#: ../inc/class-jobtype-wpexp.php:100
+#: ../inc/features/class-jobtype-wpexp.php:132
+#, php-format
+msgid "%d. Try to make a WordPress Export to XML file..."
+msgstr ""
+
+#: ../inc/class-jobtype-wpexp.php:124
+#: ../inc/features/class-jobtype-wpexp.php:156
+#, php-format
+msgid "Added XML export \"%1$s\" with %2$s to backup file list"
+msgstr ""
+
+#: ../inc/class-jobtype-wpplugin.php:13
+#: ../inc/features/class-jobtype-wpplugin.php:13
+msgid "Installed plugins list"
+msgstr ""
+
+#: ../inc/class-jobtype-wpplugin.php:49
+#: ../inc/features/class-jobtype-wpplugin.php:58
+msgid "Filename for export a list of installed plugins:"
+msgstr ""
+
+#: ../inc/class-jobtype-wpplugin.php:87
+#: ../inc/features/class-jobtype-wpplugin.php:107
+#, php-format
+msgid "%d. Try to generate a file with installed Plugin names..."
+msgstr ""
+
+#: ../inc/class-jobtype-wpplugin.php:114
+#: ../inc/features/class-jobtype-wpplugin.php:134
+msgid "All plugins information:"
+msgstr ""
+
+#: ../inc/class-jobtype-wpplugin.php:116
+#: ../inc/features/class-jobtype-wpplugin.php:136
+#, php-format
+msgid "from %s"
+msgstr ""
+
+#: ../inc/class-jobtype-wpplugin.php:118
+#: ../inc/features/class-jobtype-wpplugin.php:138
+msgid "Active plugins:"
+msgstr ""
+
+#: ../inc/class-jobtype-wpplugin.php:124
+#: ../inc/features/class-jobtype-wpplugin.php:144
+msgid "Inactive plugins:"
+msgstr ""
+
+#: ../inc/class-jobtype-wpplugin.php:136
+#: ../inc/features/class-jobtype-wpplugin.php:156
+#, php-format
+msgid "Added plugin list file \"%1$s\" with %2$s to backup file list"
+msgstr ""
+
+#: ../inc/class-option.php:112
+msgid "New"
+msgstr ""
+
+#: ../inc/class-page-backups.php:153
+msgid "No Files found. (List will be generated on next backup)"
+msgstr ""
+
+#: ../inc/class-page-backups.php:162 ../inc/class-page-backups.php:286
+#: ../inc/class-page-jobs.php:63 ../inc/class-page-jobs.php:137
+#: ../inc/class-page-logs.php:97 ../inc/class-page-logs.php:179
+msgid "Delete"
+msgstr ""
+
+#: ../inc/class-page-backups.php:185
+msgid "Change Destination"
+msgstr ""
+
+#: ../inc/class-page-backups.php:225
+msgid "File"
+msgstr ""
+
+#: ../inc/class-page-backups.php:227 ../inc/class-page-logs.php:112
+msgid "Size"
+msgstr ""
+
+#: ../inc/class-page-backups.php:228 ../inc/class-page-backwpup.php:82
+#: ../inc/class-page-backwpup.php:83 ../inc/class-page-backwpup.php:119
+#: ../inc/class-page-backwpup.php:120
+msgid "Time"
+msgstr ""
+
+#: ../inc/class-page-backups.php:286
+msgid ""
+"You are about to delete this Backup Archive. \n"
+"  'Cancel' to stop, 'OK' to delete."
+msgstr ""
+
+#: ../inc/class-page-backups.php:288 ../inc/class-page-jobs.php:230
+#: ../inc/class-page-logs.php:180
+msgid "Download"
+msgstr ""
+
+#: ../inc/class-page-backups.php:303
+msgid "?"
+msgstr ""
+
+#: ../inc/class-page-backups.php:331 ../inc/class-page-backups.php:343
+#: ../inc/class-page-editjob.php:44 ../inc/class-page-jobs.php:327
+msgid "No rights!"
+msgstr ""
+
+#: ../inc/class-page-backups.php:365 ../inc/class-page-editjob.php:31
+#: ../inc/class-page-jobs.php:399 ../inc/class-page-logs.php:277
+#: ../inc/class-page-settings.php:15 ../inc/features/class-page-wizard.php:12
+msgid "Overview"
+msgstr ""
+
+#: ../inc/class-page-backups.php:367
+msgid ""
+"Here you see a list of backup files. Change the destination to jobname:"
+"destination to become a list of backups from other destinations and jobs. "
+"Then you can delete or download backup files. <br />NOTE: The lists will be "
+"only generated on backup jobs to reduce traffic."
+msgstr ""
+
+#: ../inc/class-page-backups.php:416
+msgid "BackWPup Manage Backups"
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:27
+msgid "Welcome to BackWPup"
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:28
+msgid ""
+"BackWPup is a genius solution for your backups. You can schedule backup "
+"plans with a wizard. \n"
+"The backup files can be used to save your whole installation incl. /wp-"
+"content/ and push them to an external Backup Service, \n"
+"if you don´t want to save the backups on the same server. With the single "
+"backup .zip file you are able to restore an installation. "
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:31
+msgid ""
+"At first set up a job, what you want to save. You can use the wizards or the "
+"expertmode. Please note: the plugin author gives no warranty for your data. "
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:57 ../inc/features/class-page-wizard.php:262
+msgid "Start wizard"
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:67
+msgid "First steps ..."
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:70
+msgid "Test the installation"
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:71
+msgid "Create a Job"
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:72
+msgid "Run the created job"
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:73
+msgid "Check the log of the job"
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:80
+msgid "Next scheduled jobs"
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:82 ../inc/class-page-backwpup.php:83
+#: ../inc/class-page-backwpup.php:119 ../inc/class-page-backwpup.php:120
+#: ../inc/class-page-logs.php:108 ../inc/class-page-settings.php:107
+msgid "Job"
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:97
+#, php-format
+msgid "working since %d sec."
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:99 ../inc/class-page-jobs.php:458
+msgid "Abort"
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:106
+msgid "Edit Job"
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:117
+msgid "Last logs"
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:119 ../inc/class-page-backwpup.php:120
+msgid "Result"
+msgstr ""
+
+#: ../inc/class-page-backwpup.php:142 ../inc/class-page-logs.php:187
+#, php-format
+msgid "%d ERROR"
+msgid_plural "%d ERRORS"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../inc/class-page-backwpup.php:144 ../inc/class-page-logs.php:189
+#, php-format
+msgid "%d WARNING"
+msgid_plural "%d WARNINGS"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../inc/class-page-backwpup.php:146 ../inc/class-page-logs.php:191
+msgid "O.K."
+msgstr ""
+
+#: ../inc/class-page-editjob.php:177
+#, php-format
+msgid "Changes for job <i>%s</i> saved."
+msgstr ""
+
+#: ../inc/class-page-editjob.php:310
+msgid ""
+"Working as <a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank"
+"\">Cron</a> schedule:"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:319
+#, php-format
+msgid "ATTENTION: Job runs every %d mins.!"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:325
+#, php-format
+msgid "ATTENTION: Job runs every %d hours.!"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:329
+msgid "ATTENTION: Can't calculate cron!"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:332
+msgid "Next runtime:"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:370 ../inc/class-page-settings.php:107
+msgid "General"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:370
+msgid "Schedule"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:385
+#, php-format
+msgid "To: %s"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:418
+msgid "The name of this job"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:422
+msgid "Job name"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:430
+msgid "What did the job do"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:434 ../inc/class-page-editjob.php:437
+#: ../inc/features/class-wizard-job.php:235
+msgid "Job tasks"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:453
+msgid "Backup file creation settings"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:458 ../inc/class-page-editjob.php:461
+#: ../inc/features/class-wizard-job.php:361
+#: ../inc/features/class-wizard-job.php:364
+msgid "Backup type"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:466 ../inc/features/class-wizard-job.php:368
+msgid "Sync file by file to destination"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:470 ../inc/features/class-wizard-job.php:372
+msgid "Create a backup archive"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:476
+msgid "Archive Name"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:480
+msgid ""
+"Replaced will be %d, %j, %m, %n, %Y, %y, %a, %A, %B, %g, %G, %h, %H, %i, %s, "
+"%u, %U with the same values as the PHP <a href=\"http://www.php.net/manual/"
+"en/function.date.php\">date()</a> function prarmater (without the %)."
+msgstr ""
+
+#: ../inc/class-page-editjob.php:491 ../inc/class-page-editjob.php:494
+msgid "Archive Formart"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:497 ../inc/class-page-editjob.php:499
+#: ../inc/features/class-wizard-job.php:381
+#: ../inc/features/class-wizard-job.php:383
+msgid "Zip"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:497 ../inc/features/class-wizard-job.php:381
+msgid ""
+"PHP Zip functions will be used if available (memory lees). Else PCLZip Class "
+"will used."
+msgstr ""
+
+#: ../inc/class-page-editjob.php:499 ../inc/class-page-editjob.php:504
+#: ../inc/class-page-editjob.php:508 ../inc/features/class-wizard-job.php:383
+#: ../inc/features/class-wizard-job.php:388
+#: ../inc/features/class-wizard-job.php:392
+msgid "Disabled because missing PHP function."
+msgstr ""
+
+#: ../inc/class-page-editjob.php:500 ../inc/features/class-wizard-job.php:384
+msgid "Tar"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:500 ../inc/features/class-wizard-job.php:384
+msgid "Tar (fast and memory less)"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:502 ../inc/class-page-editjob.php:504
+#: ../inc/features/class-wizard-job.php:386
+#: ../inc/features/class-wizard-job.php:388
+msgid "Tar GZip"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:502 ../inc/features/class-wizard-job.php:386
+msgid "A tared and GZipped archive (fast and memory less)"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:506 ../inc/class-page-editjob.php:508
+#: ../inc/features/class-wizard-job.php:390
+#: ../inc/features/class-wizard-job.php:392
+msgid "Tar BZip2"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:506 ../inc/features/class-wizard-job.php:390
+msgid "A tared and BZipped archive (fast and memory less)"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:514 ../inc/features/class-wizard-job.php:406
+msgid "Where to store the files"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:518 ../inc/class-page-editjob.php:521
+#: ../inc/class-page-jobs.php:78 ../inc/features/class-wizard-job.php:54
+#: ../inc/features/class-wizard-job.php:409
+msgid "Destinations"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:537
+msgid "Send log to E-mail Address"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:541
+msgid "E-mail Address"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:545
+msgid "Leave empty for don't sending log"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:549 ../inc/class-page-editjob.php:552
+msgid "When to send"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:556
+msgid "Send mail with log only on errors on job execution."
+msgstr ""
+
+#: ../inc/class-page-editjob.php:567
+msgid "Schedule start setting"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:571 ../inc/class-page-editjob.php:574
+msgid "Start job"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:579
+msgid "only manually"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:583
+msgid "with WordPress Cron"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:590
+msgid "with a link"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:591
+msgid "start link"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:593
+msgid "Copy the \"start link\" to get the link for external start with a link."
+msgstr ""
+
+#: ../inc/class-page-editjob.php:599
+msgid "from commandline"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:600
+msgid "get start script"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:605
+msgid "Schedule execution time"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:609 ../inc/class-page-editjob.php:612
+msgid "Scheduler type"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:617
+msgid "basic"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:621
+msgid "advanced"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:650 ../inc/class-page-editjob.php:718
+#: ../inc/features/class-wizard-job.php:286
+msgid "Scheduler"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:655 ../inc/class-page-jobs.php:77
+#: ../inc/class-page-logs.php:109 ../inc/features/class-wizard-job.php:291
+msgid "Type"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:660 ../inc/features/class-wizard-job.php:296
+msgid "Hour"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:663 ../inc/features/class-wizard-job.php:299
+msgid "Minute"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:667 ../inc/features/class-wizard-job.php:303
+msgid "monthly"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:669 ../inc/features/class-wizard-job.php:305
+msgid "on"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:679 ../inc/features/class-wizard-job.php:315
+msgid "weekly"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:681 ../inc/class-page-editjob.php:788
+#: ../inc/features/class-wizard-job.php:317
+msgid "Sunday"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:682 ../inc/class-page-editjob.php:789
+#: ../inc/features/class-wizard-job.php:318
+msgid "Monday"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:683 ../inc/class-page-editjob.php:790
+#: ../inc/features/class-wizard-job.php:319
+msgid "Tuesday"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:684 ../inc/class-page-editjob.php:791
+#: ../inc/features/class-wizard-job.php:320
+msgid "Wednesday"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:685 ../inc/class-page-editjob.php:792
+#: ../inc/features/class-wizard-job.php:321
+msgid "Thursday"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:686 ../inc/class-page-editjob.php:793
+#: ../inc/features/class-wizard-job.php:322
+msgid "Friday"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:687 ../inc/class-page-editjob.php:794
+#: ../inc/features/class-wizard-job.php:323
+msgid "Saturday"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:697 ../inc/features/class-wizard-job.php:333
+msgid "daily"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:707 ../inc/features/class-wizard-job.php:343
+msgid "hourly"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:721
+msgid "Minutes: "
+msgstr ""
+
+#: ../inc/class-page-editjob.php:723 ../inc/class-page-editjob.php:736
+#: ../inc/class-page-editjob.php:748 ../inc/class-page-editjob.php:762
+#: ../inc/class-page-editjob.php:784
+msgid "Any (*)"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:733
+msgid "Hours:"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:746
+msgid "Day of Month:"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:760
+msgid "Month:"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:766
+msgid "January"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:767
+msgid "February"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:768
+msgid "March"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:769
+msgid "April"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:770
+msgid "May"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:771
+msgid "June"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:772
+msgid "July"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:773
+msgid "Augest"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:774
+msgid "September"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:775
+msgid "October"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:776
+msgid "November"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:777
+msgid "December"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:782
+msgid "Day of Week:"
+msgstr ""
+
+#: ../inc/class-page-editjob.php:818 ../inc/class-page-settings.php:421
+msgid "Save Changes"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:54
+msgid "No Jobs."
+msgstr ""
+
+#: ../inc/class-page-jobs.php:75 ../inc/class-page-settings.php:386
+#: ../inc/class-page-settings.php:387 ../inc/class-page-settings.php:401
+#: ../inc/class-page-settings.php:402
+msgid "ID"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:76
+msgid "Job Name"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:79
+msgid "Next Run"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:80
+msgid "Last Run"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:135
+msgid "Edit"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:136
+msgid "Copy"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:188
+msgid "Not needed or set"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:196
+#, php-format
+msgid "Running since: %s sec."
+msgstr ""
+
+#: ../inc/class-page-jobs.php:205
+msgid "Not scheduled!"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:209
+msgid "Inactive"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:212
+msgid "<a href=\"http://wikipedia.org/wiki/Cron\" target=\"_blank\">Cron</a>:"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:223
+msgid "Runtime:"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:226
+msgid "None"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:230
+msgid "Download last Backup"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:235 ../inc/class-page-settings.php:107
+msgid "Log"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:282
+msgid "Copy of"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:333
+#, php-format
+msgid "Job \"%s\" is started."
+msgstr ""
+
+#: ../inc/class-page-jobs.php:360
+msgid "Aborted by user!"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:389
+msgid "Job will be terminated."
+msgstr ""
+
+#: ../inc/class-page-jobs.php:401
+msgid ""
+"Here can see some information about the jobs. How many can be switched with "
+"the view button. Also you can manage the jobs and abort working. With the "
+"links you have direct access to the last log or download."
+msgstr ""
+
+#: ../inc/class-page-jobs.php:437
+msgid "BackWPup Jobs"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:454
+#, php-format
+msgid "Job currently working: %s"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:455
+msgid "Warnings:"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:456
+msgid "Errors:"
+msgstr ""
+
+#: ../inc/class-page-jobs.php:457
+msgid "Display working log"
+msgstr ""
+
+#: ../inc/class-page-logs.php:89
+msgid "No Logs."
+msgstr ""
+
+#: ../inc/class-page-logs.php:110
+msgid "Backup/Log Date/Time"
+msgstr ""
+
+#: ../inc/class-page-logs.php:111
+msgid "Status"
+msgstr ""
+
+#: ../inc/class-page-logs.php:113
+msgid "Runtime"
+msgstr ""
+
+#: ../inc/class-page-logs.php:177
+msgid "View"
+msgstr ""
+
+#: ../inc/class-page-logs.php:200
+msgid "only Log"
+msgstr ""
+
+#: ../inc/class-page-logs.php:278
+msgid ""
+"Here you can manage the log files of the jobs. You can download, view, or "
+"delete them."
+msgstr ""
+
+#: ../inc/class-page-logs.php:336
+msgid "BackWPup Logs"
+msgstr ""
+
+#: ../inc/class-page-settings.php:64
+msgid "No Rights!"
+msgstr ""
+
+#: ../inc/class-page-settings.php:94
+msgid "Settings saved"
+msgstr ""
+
+#: ../inc/class-page-settings.php:107
+msgid "Network"
+msgstr ""
+
+#: ../inc/class-page-settings.php:107
+msgid "API Keys"
+msgstr ""
+
+#: ../inc/class-page-settings.php:107
+msgid "Information"
+msgstr ""
+
+#: ../inc/class-page-settings.php:124 ../inc/class-page-settings.php:128
+#: ../inc/class-page-settings.php:131
+msgid "Admin Bar"
+msgstr ""
+
+#: ../inc/class-page-settings.php:125
+msgid "Will you see BackWPup in the WordPress Admin Bar?"
+msgstr ""
+
+#: ../inc/class-page-settings.php:136
+msgid "Show BackWPup Links in Admin Bar."
+msgstr ""
+
+#: ../inc/class-page-settings.php:141 ../inc/class-page-settings.php:144
+msgid "Protect Folders"
+msgstr ""
+
+#: ../inc/class-page-settings.php:149
+msgid ""
+"Protect BackWPup folders ( Temp, Log and Backups ) with .htaccess and index."
+"php"
+msgstr ""
+
+#: ../inc/class-page-settings.php:162
+msgid "Here you can set Logfile related options."
+msgstr ""
+
+#: ../inc/class-page-settings.php:165
+msgid "Log file Folder"
+msgstr ""
+
+#: ../inc/class-page-settings.php:173
+msgid "Max. Log Files in Folder"
+msgstr ""
+
+#: ../inc/class-page-settings.php:178
+msgid "Oldest files will deleted first."
+msgstr ""
+
+#: ../inc/class-page-settings.php:182 ../inc/class-page-settings.php:185
+msgid "Compression"
+msgstr ""
+
+#: ../inc/class-page-settings.php:190
+msgid "Gzip Log files!"
+msgstr ""
+
+#: ../inc/class-page-settings.php:199
+msgid "Here you can set Job related options."
+msgstr ""
+
+#: ../inc/class-page-settings.php:203
+msgid "Max. retry´s for job steps"
+msgstr ""
+
+#: ../inc/class-page-settings.php:211 ../inc/class-page-settings.php:214
+msgid "Restart on every main step"
+msgstr ""
+
+#: ../inc/class-page-settings.php:219
+msgid "Restart the job on every main step on a working job"
+msgstr ""
+
+#: ../inc/class-page-settings.php:220
+msgid ""
+"The job will be restated on every main step to prevent run in a execution "
+"time out. Not working on cmd run and if ALTERNATE_WP_CRON defined."
+msgstr ""
+
+#: ../inc/class-page-settings.php:227
+msgid "Key for start jobs external with a URL"
+msgstr ""
+
+#: ../inc/class-page-settings.php:232
+#, php-format
+msgid "A unique key is: %s"
+msgstr ""
+
+#: ../inc/class-page-settings.php:233
+msgid ""
+"empty = deactivated. Will be used for, that nobody else can use the job "
+"start URLs."
+msgstr ""
+
+#: ../inc/class-page-settings.php:237 ../inc/class-page-settings.php:240
+msgid "No Translation"
+msgstr ""
+
+#: ../inc/class-page-settings.php:245
+msgid "No Translation for job so that the log is in English"
+msgstr ""
+
+#: ../inc/class-page-settings.php:251 ../inc/class-page-settings.php:254
+msgid "Reduce Server load"
+msgstr ""
+
+#: ../inc/class-page-settings.php:258
+msgid "disabled"
+msgstr ""
+
+#: ../inc/class-page-settings.php:259
+msgid "minimum"
+msgstr ""
+
+#: ../inc/class-page-settings.php:260
+msgid "medium"
+msgstr ""
+
+#: ../inc/class-page-settings.php:261
+msgid "maximal"
+msgstr ""
+
+#: ../inc/class-page-settings.php:273
+msgid "Autentication"
+msgstr ""
+
+#: ../inc/class-page-settings.php:274
+msgid ""
+"Is your blog behind a http basic authentication (.htaccess)? Only then you "
+"must set the username and password for authentication to get jobs working."
+msgstr ""
+
+#: ../inc/class-page-settings.php:277
+#: ../inc/features/class-destination-ftp.php:53
+#: ../inc/features/class-destination-rsc.php:61
+msgid "Username:"
+msgstr ""
+
+#: ../inc/class-page-settings.php:304
+msgid "System Information"
+msgstr ""
+
+#: ../inc/class-page-settings.php:306 ../inc/class-page-settings.php:307
+msgid "Setting of"
+msgstr ""
+
+#: ../inc/class-page-settings.php:306 ../inc/class-page-settings.php:307
+msgid "Value"
+msgstr ""
+
+#: ../inc/class-page-settings.php:309
+msgid "WordPress Version"
+msgstr ""
+
+#: ../inc/class-page-settings.php:311
+msgid "BackWPup Version"
+msgstr ""
+
+#: ../inc/class-page-settings.php:311
+msgid "http://marketpress.com"
+msgstr ""
+
+#: ../inc/class-page-settings.php:311
+msgid "Get pro."
+msgstr ""
+
+#: ../inc/class-page-settings.php:313
+msgid "BackWPup Pro Version"
+msgstr ""
+
+#: ../inc/class-page-settings.php:317
+msgid "PHP Version"
+msgstr ""
+
+#: ../inc/class-page-settings.php:319
+msgid "MySQL Version"
+msgstr ""
+
+#: ../inc/class-page-settings.php:322 ../inc/class-page-settings.php:326
+msgid "cURL Version"
+msgstr ""
+
+#: ../inc/class-page-settings.php:323
+msgid "cURL SSL Version"
+msgstr ""
+
+#: ../inc/class-page-settings.php:326
+msgid "unavailable"
+msgstr ""
+
+#: ../inc/class-page-settings.php:328
+msgid "Server"
+msgstr ""
+
+#: ../inc/class-page-settings.php:329
+msgid "Operating System"
+msgstr ""
+
+#: ../inc/class-page-settings.php:330
+msgid "PHP SAPI"
+msgstr ""
+
+#: ../inc/class-page-settings.php:331
+msgid "Current PHP user"
+msgstr ""
+
+#: ../inc/class-page-settings.php:333 ../inc/class-page-settings.php:338
+#: ../inc/class-page-settings.php:342
+msgid "On"
+msgstr ""
+
+#: ../inc/class-page-settings.php:333 ../inc/class-page-settings.php:340
+#: ../inc/class-page-settings.php:344
+msgid "Off"
+msgstr ""
+
+#: ../inc/class-page-settings.php:334
+msgid "Safe Mode"
+msgstr ""
+
+#: ../inc/class-page-settings.php:336
+msgid "Max. execution time"
+msgstr ""
+
+#: ../inc/class-page-settings.php:338 ../inc/class-page-settings.php:340
+msgid "Alternative WP Cron"
+msgstr ""
+
+#: ../inc/class-page-settings.php:342 ../inc/class-page-settings.php:344
+msgid "Disable WP Cron"
+msgstr ""
+
+#: ../inc/class-page-settings.php:346 ../inc/class-page-settings.php:348
+msgid "CHMOD Dir"
+msgstr ""
+
+#: ../inc/class-page-settings.php:350
+msgid "Server Time"
+msgstr ""
+
+#: ../inc/class-page-settings.php:351
+msgid "Blog Time"
+msgstr ""
+
+#: ../inc/class-page-settings.php:352
+msgid "Blog Timezone"
+msgstr ""
+
+#: ../inc/class-page-settings.php:353
+msgid "Blog Time offset"
+msgstr ""
+
+#: ../inc/class-page-settings.php:353
+#, php-format
+msgid "%s hours"
+msgstr ""
+
+#: ../inc/class-page-settings.php:354
+msgid "Blog language"
+msgstr ""
+
+#: ../inc/class-page-settings.php:355
+msgid "MySQL Client encoding"
+msgstr ""
+
+#: ../inc/class-page-settings.php:356
+msgid "Blog charset"
+msgstr ""
+
+#: ../inc/class-page-settings.php:358
+msgid "PHP Memory limit"
+msgstr ""
+
+#: ../inc/class-page-settings.php:359
+msgid "WP Memory limit"
+msgstr ""
+
+#: ../inc/class-page-settings.php:360
+msgid "Memory in use"
+msgstr ""
+
+#: ../inc/class-page-settings.php:366
+msgid "Disabled PHP Functions:"
+msgstr ""
+
+#: ../inc/class-page-settings.php:371
+msgid "Loaded PHP Extensions:"
+msgstr ""
+
+#: ../inc/class-page-settings.php:384 ../inc/features/class-wizard-job.php:38
+msgid "Job Types"
+msgstr ""
+
+#: ../inc/class-page-settings.php:386 ../inc/class-page-settings.php:387
+#: ../inc/class-page-settings.php:401 ../inc/class-page-settings.php:402
+msgid "Name"
+msgstr ""
+
+#: ../inc/class-page-settings.php:386 ../inc/class-page-settings.php:387
+#: ../inc/class-page-settings.php:401 ../inc/class-page-settings.php:402
+msgid "Version"
+msgstr ""
+
+#: ../inc/class-page-settings.php:386 ../inc/class-page-settings.php:387
+#: ../inc/class-page-settings.php:401 ../inc/class-page-settings.php:402
+msgid "Author"
+msgstr ""
+
+#: ../inc/class-page-settings.php:399
+msgid "Job Destinations"
+msgstr ""
+
+#: ../inc/features/class-auto-update.php:344
+#: ../inc/features/class-auto-update.php:359
+msgid "Your license for the plugin "
+msgstr ""
+
+#: ../inc/features/class-auto-update.php:350
+msgid ""
+"You are currently using a valid key for this plugin. You are able to renew "
+"the key in the MarketPress Dashboard. Or if you want to add an other valid "
+"code use the form below."
+msgstr ""
+
+#: ../inc/features/class-auto-update.php:365
+#, php-format
+msgid ""
+"You are currently using a valid key for this plugin. You are able to renew "
+"the key below or you can delete the key by <a href=\"%s\">clicking here</a>."
+msgstr ""
+
+#: ../inc/features/class-auto-update.php:372
+msgid "License Key"
+msgstr ""
+
+#: ../inc/features/class-auto-update.php:375
+msgid "Activate"
+msgstr ""
+
+#: ../inc/features/class-auto-update.php:544
+msgid "The License has been deleted."
+msgstr ""
+
+#: ../inc/features/class-auto-update.php:551
+msgid "Plugin successfully activated."
+msgstr ""
+
+#: ../inc/features/class-auto-update.php:558
+msgid "The entered license key is wrong."
+msgstr ""
+
+#: ../inc/features/class-auto-update.php:565
+msgid ""
+"You have reached the limit of urls. Please update your license at <a href="
+"\"http://marketpress.com\">marketpress.com</a>."
+msgstr ""
+
+#: ../inc/features/class-auto-update.php:572
+msgid ""
+"Something went wrong. Please try again later or contact the <a href=\"http://"
+"marketpress.com/support/\">marketpress team</a>."
+msgstr ""
+
+#: ../inc/features/class-auto-update.php:579
+msgid ""
+"Due to a wrong license you are not allowed to activate this plugin. Please "
+"update your license at <a href=\"http://marketpress.com\">marketpress.com</"
+"a>."
+msgstr ""
+
+#: ../inc/features/class-destination-dropbox.php:96
+#: ../inc/features/class-destination-dropbox.php:104
+#: ../inc/features/class-destination-sugarsync.php:70
+msgid "Login:"
+msgstr ""
+
+#: ../inc/features/class-destination-dropbox.php:106
+msgid "Reauthenticate"
+msgstr ""
+
+#: ../inc/features/class-destination-dropbox.php:108
+#: ../inc/features/class-destination-sugarsync.php:97
+msgid "Folder:"
+msgstr ""
+
+#: ../inc/features/class-destination-dropbox.php:116
+#: ../inc/features/class-destination-ftp.php:75
+#: ../inc/features/class-destination-sugarsync.php:108
+msgid "Do not delete files on sync destination!"
+msgstr ""
+
+#: ../inc/features/class-destination-dropbox.php:468
+#, php-format
+msgid "%d. Try to Sync files to Dropbox..."
+msgstr ""
+
+#: ../inc/features/class-destination-dropbox.php:483
+msgid "Getting files list from Dropbox"
+msgstr ""
+
+#: ../inc/features/class-destination-dropbox.php:488
+msgid "Upload changed files to Dropbox"
+msgstr ""
+
+#: ../inc/features/class-destination-dropbox.php:498
+#, php-format
+msgid "File %s uploaded to Dropbox"
+msgstr ""
+
+#: ../inc/features/class-destination-dropbox.php:513
+#, php-format
+msgid "Extra File %s Uploaded to Dropbox"
+msgstr ""
+
+#: ../inc/features/class-destination-dropbox.php:523
+msgid "Delete not existing files on Dropbox"
+msgstr ""
+
+#: ../inc/features/class-destination-dropbox.php:538
+#, php-format
+msgid "Folder %s deleted on Dropbox"
+msgstr ""
+
+#: ../inc/features/class-destination-dropbox.php:556
+#, php-format
+msgid "File %s deleted on Dropbox"
+msgstr ""
+
+#: ../inc/features/class-destination-folder.php:56
+msgid "Full Path to folder for Backup Files:"
+msgstr ""
+
+#: ../inc/features/class-destination-folder.php:284
+#, php-format
+msgid "%d. Try to Sync files to Folder ..."
+msgstr ""
+
+#: ../inc/features/class-destination-folder.php:287
+msgid "Getting files list from folder"
+msgstr ""
+
+#: ../inc/features/class-destination-folder.php:292
+msgid "Copy changed files to Folder"
+msgstr ""
+
+#: ../inc/features/class-destination-folder.php:305
+#, php-format
+msgid "File %s copied"
+msgstr ""
+
+#: ../inc/features/class-destination-folder.php:316
+msgid "Delete not existing files in Folder"
+msgstr ""
+
+#: ../inc/features/class-destination-folder.php:319
+#, php-format
+msgid "Extra File %s copied"
+msgstr ""
+
+#: ../inc/features/class-destination-folder.php:330
+#, php-format
+msgid "File %s deleted in folder"
+msgstr ""
+
+#: ../inc/features/class-destination-folder.php:382
+#, php-format
+msgid "Empty folder %s deleted"
+msgstr ""
+
+#: ../inc/features/class-destination-ftp.php:45
+msgid "Hostname:"
+msgstr ""
+
+#: ../inc/features/class-destination-ftp.php:61
+msgid "Folder on Server:"
+msgstr ""
+
+#: ../inc/features/class-destination-ftp.php:67
+msgid "Max. backup files in FTP folder:"
+msgstr ""
+
+#: ../inc/features/class-destination-ftp.php:71
+#: ../inc/features/class-destination-sugarsync.php:103
+msgid "(Oldest files will be deleted first.)"
+msgstr ""
+
+#: ../inc/features/class-destination-msazure.php:54
+msgid "Account Name:"
+msgstr ""
+
+#: ../inc/features/class-destination-msazure.php:56
+#: ../inc/features/class-destination-s3.php:126
+msgid "Access Key:"
+msgstr ""
+
+#: ../inc/features/class-destination-msazure.php:58
+#: ../inc/features/class-destination-rsc.php:72
+msgid "Container:"
+msgstr ""
+
+#: ../inc/features/class-destination-msazure.php:65
+#: ../inc/features/class-destination-rsc.php:81
+msgid "Create Container:"
+msgstr ""
+
+#: ../inc/features/class-destination-msazure.php:67
+msgid "Folder in Container:"
+msgstr ""
+
+#: ../inc/features/class-destination-msazure.php:400
+#, php-format
+msgid "%d. Try sync files with Microsoft Azure (Blob)..."
+msgstr ""
+
+#: ../inc/features/class-destination-msazure.php:427
+msgid "Getting files list from MS Azure"
+msgstr ""
+
+#: ../inc/features/class-destination-msazure.php:441
+msgid "Upload changed files to MS Azure"
+msgstr ""
+
+#: ../inc/features/class-destination-msazure.php:450
+#, php-format
+msgid "File %s Uploaded to MS Azure"
+msgstr ""
+
+#: ../inc/features/class-destination-msazure.php:463
+#, php-format
+msgid "Extra file %s uploaded to MS Azure"
+msgstr ""
+
+#: ../inc/features/class-destination-msazure.php:472
+msgid "Delete not existing files on MS Azure"
+msgstr ""
+
+#: ../inc/features/class-destination-msazure.php:475
+#, php-format
+msgid "File %s deleted on MS Azure"
+msgstr ""
+
+#: ../inc/features/class-destination-rsc.php:64
+msgid "API Key:"
+msgstr ""
+
+#: ../inc/features/class-destination-rsc.php:83
+msgid "Folder in container:"
+msgstr ""
+
+#: ../inc/features/class-destination-rsc.php:479
+#, php-format
+msgid "%d. Try to Sync files to Rackspace cloud..."
+msgstr ""
+
+#: ../inc/features/class-destination-rsc.php:503
+msgid "Getting files list from Rackspace Cloud"
+msgstr ""
+
+#: ../inc/features/class-destination-rsc.php:514
+msgid "Upload changed files to Rackspace Cloud"
+msgstr ""
+
+#: ../inc/features/class-destination-rsc.php:528
+#, php-format
+msgid "File %s Uploaded to Rackspace Cloud"
+msgstr ""
+
+#: ../inc/features/class-destination-rsc.php:548
+#, php-format
+msgid "Extra file %s uploaded to Rackspace Cloud"
+msgstr ""
+
+#: ../inc/features/class-destination-rsc.php:558
+msgid "Delete not existing files on Rackspace Cloud"
+msgstr ""
+
+#: ../inc/features/class-destination-rsc.php:562
+#, php-format
+msgid "File %s deleted on Rackspace Cloud"
+msgstr ""
+
+#: ../inc/features/class-destination-s3.php:108
+msgid "Select a S3 service:"
+msgstr ""
+
+#: ../inc/features/class-destination-s3.php:121
+msgid "Dream Host Cloud Storage"
+msgstr ""
+
+#: ../inc/features/class-destination-s3.php:123
+msgid "or set a S3 Server url:"
+msgstr ""
+
+#: ../inc/features/class-destination-s3.php:129
+msgid "Secret Key:"
+msgstr ""
+
+#: ../inc/features/class-destination-s3.php:132
+msgid "Bucket:"
+msgstr ""
+
+#: ../inc/features/class-destination-s3.php:142
+msgid "New Bucket:"
+msgstr ""
+
+#: ../inc/features/class-destination-s3.php:144
+msgid "Folder in bucket:"
+msgstr ""
+
+#: ../inc/features/class-destination-s3.php:659
+#, php-format
+msgid "%d. Try to Sync files to S3 Service..."
+msgstr ""
+
+#: ../inc/features/class-destination-s3.php:682
+msgid "Getting files list from S3"
+msgstr ""
+
+#: ../inc/features/class-destination-s3.php:729
+msgid "Upload changed files to S3"
+msgstr ""
+
+#: ../inc/features/class-destination-s3.php:741
+#, php-format
+msgid "File %s Uploaded to S3"
+msgstr ""
+
+#: ../inc/features/class-destination-s3.php:758
+#, php-format
+msgid "Extra file %s uploaded to S3"
+msgstr ""
+
+#: ../inc/features/class-destination-s3.php:767
+msgid "Delete not existing files on S3"
+msgstr ""
+
+#: ../inc/features/class-destination-s3.php:774
+#, php-format
+msgid "File %s deleted on S3"
+msgstr ""
+
+#: ../inc/features/class-destination-sugarsync.php:75
+msgid "Root:"
+msgstr ""
+
+#: ../inc/features/class-destination-sugarsync.php:100
+msgid "Max. backup files in folder:"
+msgstr ""
+
+#: ../inc/features/class-documentation.php:186
+msgid "Loading Menu ..."
+msgstr ""
+
+#: ../inc/features/class-documentation.php:226
+#: ../inc/features/class-documentation.php:322
+msgid "Could not connect to remote host. Please try again later."
+msgstr ""
+
+#: ../inc/features/class-documentation.php:272
+#: ../inc/features/class-documentation.php:280
+msgid "Loading Content ..."
+msgstr ""
+
+#: ../inc/features/class-export-jobs.php:12
+#: ../inc/features/class-export-jobs.php:23
+msgid "Export"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:14
+msgid "Creates a database dump file (.sql, .xml)"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:91
+msgid "Dump only WordPress Database tables"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:123
+msgid "Database connection"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:127
+msgid "Use WordPress database connection."
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:134
+msgid "User:"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:141
+msgid "Charset:"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:153
+msgid "Database:"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:202
+msgid "Dump type"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:205
+msgid "SQL (PHP)"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:209
+msgid "SQL (System: mysqldump)"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:210
+msgid "XML (phpMyAdmin schema)"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:215
+msgid "Path to <i>mysqldump</i> file"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:220
+msgid "Path to the mysqldump file so that a dump can made with it."
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:719
+#, php-format
+msgid "%d. Try for MySQL System dump..."
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:786
+#, php-format
+msgid "Exec: %s"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:793
+msgid "Compressing file..."
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:796
+msgid "Problem on Compressing file"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:800
+msgid "Compressing done."
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:830
+#, php-format
+msgid "%d. Try for database XML dump..."
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:885
+msgid "No tables for XML dump"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:922
+#, php-format
+msgid "Dump database create view \"%s\""
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:939
+#, php-format
+msgid "Dump database create table \"%s\""
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:979
+#, php-format
+msgid "Dump table \"%s\" data"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:1048
+#, php-format
+msgid "Added database XML dump \"%1$s\" with %2$s to backup file list"
+msgstr ""
+
+#: ../inc/features/class-jobtype-dbdump.php:1051
+msgid "Database XML dump done!"
+msgstr ""
+
+#: ../inc/features/class-jobtype-file.php:54
+msgid "Backup WordPress Main Files"
+msgstr ""
+
+#: ../inc/features/class-jobtype-file.php:58
+msgid "Backup Blog content folder"
+msgstr ""
+
+#: ../inc/features/class-jobtype-file.php:62
+msgid "Backup Blog Plugins"
+msgstr ""
+
+#: ../inc/features/class-jobtype-file.php:66
+msgid "Backup Blog Themes"
+msgstr ""
+
+#: ../inc/features/class-jobtype-file.php:70
+msgid "Backup Blog uploads folder"
+msgstr ""
+
+#: ../inc/features/class-jobtype-wpplugin.php:49
+msgid "Nothing to configure"
+msgstr ""
+
+#: ../inc/features/class-page-wizard.php:141
+#: ../inc/features/class-page-wizard.php:336
+#: ../inc/features/class-page-wizard.php:367
+msgid "Next >"
+msgstr ""
+
+#: ../inc/features/class-page-wizard.php:154
+#: ../inc/features/class-page-wizard.php:332
+msgid "< Previous"
+msgstr ""
+
+#: ../inc/features/class-page-wizard.php:167
+#: ../inc/features/class-page-wizard.php:341
+msgid "Cancel"
+msgstr ""
+
+#: ../inc/features/class-page-wizard.php:344
+msgid "Back"
+msgstr ""
+
+#: ../inc/features/class-settings-apikeys.php:28
+msgid "Dropbox API Keys"
+msgstr ""
+
+#: ../inc/features/class-settings-apikeys.php:29
+msgid ""
+"If you would set you own Dropbox API Keys you can do it her. You need only "
+"the key pear where you would to auth for. Leave empty for default."
+msgstr ""
+
+#: ../inc/features/class-settings-apikeys.php:32
+msgid "Full Dropbox App key:"
+msgstr ""
+
+#: ../inc/features/class-settings-apikeys.php:40
+msgid "Full Dropbox App secret:"
+msgstr ""
+
+#: ../inc/features/class-settings-apikeys.php:48
+msgid "Sandbox App key:"
+msgstr ""
+
+#: ../inc/features/class-settings-apikeys.php:56
+msgid "Sandbox App secret:"
+msgstr ""
+
+#: ../inc/features/class-settings-apikeys.php:69
+msgid "SugarSync API Keys"
+msgstr ""
+
+#: ../inc/features/class-settings-apikeys.php:70
+msgid ""
+"If you would set you own SugarSync API Keys you can do it her. Leave empty "
+"to for default."
+msgstr ""
+
+#: ../inc/features/class-settings-apikeys.php:73
+msgid "Access Key ID:"
+msgstr ""
+
+#: ../inc/features/class-settings-apikeys.php:81
+msgid "Private Access Key:"
+msgstr ""
+
+#: ../inc/features/class-settings-apikeys.php:88
+msgid "App ID:"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:9
+msgid "Wizard to setup a BackWPup job"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:10
+msgid "Configure a ...."
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:38
+msgid "Select what the job has to do."
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:52
+msgid "Archive Settings"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:52
+msgid "Settings for the Backup Archive"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:54
+msgid "Select where to store the Backup file."
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:64
+#: ../inc/features/class-wizard-job.php:280
+msgid "Scheduling"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:64
+msgid "When to start the job"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:232
+msgid "What have the job to do?"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:233
+msgid "Select the points, what you want to save to your backup"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:283
+#: ../inc/features/class-wizard-job.php:284
+msgid "Activate scheduling"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:376
+msgid "Select a compression type for the backup archive"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:378
+msgid "Archive compression type"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:569
+#, php-format
+msgid "Wizard: %1$s"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:588
+#, php-format
+msgid "New job with Name %s generated."
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:600
+msgid "Create Job"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:624
+msgid "Configure all self"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:629
+msgid "Database Backup and XML Export (Daily)"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:646
+msgid "All Files Backup"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:661
+msgid "Uploads Backup"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:676
+msgid "Needed Files Backup Plugins as List only"
+msgstr ""
+
+#: ../inc/features/class-wizard-job.php:692
+msgid "Database Check and Optimization (Weekly)"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:11
+msgid "XML job import"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:12
+msgid "Wizard for Importing BackWPup Jobs from XML File"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:29
+#: ../inc/features/class-wizard-jobimport.php:84
+msgid "Import"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:46
+msgid "Import File"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:46
+msgid "Upload XML Job File for Import"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:47
+msgid "Select what to Import"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:47
+msgid "Select with job should Imported or Overwritten."
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:62
+msgid ""
+"Howdy! Upload your BackWPup job XML export file and we&#8217;ll import the "
+"jobs into BackWPup."
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:64
+msgid "Choose a file from your computer:"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:64
+#, php-format
+msgid "Maximum size: %s"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:77
+msgid "Import Jobs"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:80
+msgid "Import Type"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:80
+msgid "No Import"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:82
+msgid "Overwrite"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:82
+msgid "Append"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:92
+msgid "Import Config"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:95
+msgid "Import BackWPup configuration"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:113
+msgid ""
+"File is empty. Please upload something more substantial. This error could "
+"also be caused by uploads being disabled in your php.ini or by post_max_size "
+"being defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:128
+#, php-format
+msgid ""
+"The export file could not be found at <code>%s</code>. It is likely that "
+"this was caused by a permissions problem."
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:135
+msgid "Sorry, there has been an phrase error."
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:142
+#, php-format
+msgid ""
+"This Export file (version %s) may not be supported by this version of the "
+"importer."
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:148
+msgid "This is not a BackWPup XML File"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:210
+#, php-format
+msgid "Job %1$s with id %2$d imported"
+msgstr ""
+
+#: ../inc/features/class-wizard-jobimport.php:218
+msgid "BackWPup config imported"
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:11
+msgid "System Test"
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:12
+msgid "Wizard to test if BackWPup can work properly"
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:29
+msgid "Run tests"
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:47
+msgid "Environment"
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:47
+msgid "System Environment"
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:60
+msgid "Testing if BackWPup can work without problems."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:91
+#, php-format
+msgid ""
+"You must have WordPress Version 3.2 or higher to use these Plugin. You have "
+"Version %s."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:96
+msgid ""
+"You must have PHP Version 5.2.5 or higher to use these Plugin. You have "
+"Version $s."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:100
+msgid ""
+"It is recommend that you use a PHP Version above 5.3.2 to have full Plugin "
+"functionality. You have Version $s."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:105
+#, php-format
+msgid ""
+"You must have installed MySQLi Extension and MySQL Server Version 5.0.7 or "
+"higher to use these Plugin. You have Version %s."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:110
+msgid ""
+"You must have installed the PHP cURL extension to use these Plugin with full "
+"functionality."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:115
+msgid ""
+"It is recommend to have installed the PHP ZIP extension for better Archiving "
+"in Zip files."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:120
+msgid ""
+"It is recommend to have installed the PHP GZ extension for use Archiving in "
+"tar.gz files."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:125
+msgid ""
+"It is recommend to have installed the PHP bzip2 extension for use Archiving "
+"in tar.bz2 files."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:130
+msgid "Safe Mode is on must be disabled."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:135
+msgid ""
+"It is recommend to have installed the PHP FTP extension for use FTP backup "
+"destination."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:142
+#, php-format
+msgid "Temp folder %s not writeable. Please him the write permissions."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:146
+#, php-format
+msgid ""
+"Temp folder %s not exist and can't created. Please create it and give him "
+"write permissions."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:153
+#, php-format
+msgid "Logs folder %s not writeable. Please him the write permissions."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:157
+#, php-format
+msgid ""
+"Logs folder %s not exist and can't created. Please create it and give him "
+"write permissions."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:168
+#, php-format
+msgid ""
+"The HTTP response test get a error \"%s\". For best functionality it must "
+"work without error."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:172
+#, php-format
+msgid ""
+"The HTTP response test get a false http status (%s). For best functionality "
+"it must retrieve (200)."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:176
+#, php-format
+msgid ""
+"The HTTP response gives back the false body \"%s\". For best functionality "
+"it must get the correct."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:189
+msgid ""
+"WP-Cron seems to bee not working. But it is needed for making scheduled jobs."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:194
+msgid "All test passed without error."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:197
+msgid ""
+"There is no error, but some warnings. BackWPup works mostly but with "
+"limitations."
+msgstr ""
+
+#: ../inc/features/class-wizard-systemtest.php:200
+msgid "There are errors Please correct them, else BackWPup can't work."
+msgstr ""
+
+#: ../inc/features/class-wizards.php:12
+#, php-format
+msgid "Wizard for %s"
+msgstr ""
+
+#: ../inc/features/class-wizards.php:38
+msgid "No steps"
+msgstr ""
+
+#: ../inc/features/class-wizards.php:38
+msgid "Wizard Method for get steps not overwritten!"
+msgstr ""
+
+#: ../inc/features/class-wizards.php:72
+msgid "Wizard Method for page not overwritten!"
+msgstr ""
+
+#: ../inc/features/class-wizards.php:98
+msgid "Wizard Method for execute not overwritten!"
+msgstr ""
+
+#: ../inc/features/class-wizards.php:119
+msgid "Close"
+msgstr ""

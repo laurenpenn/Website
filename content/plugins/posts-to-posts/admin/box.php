@@ -1,10 +1,5 @@
 <?php
 
-interface P2P_Field {
-	function get_title();
-	function render( $p2p_id, $item );
-}
-
 class P2P_Box {
 	private $ctype;
 
@@ -35,9 +30,15 @@ class P2P_Box {
 		if ( self::$enqueued_scripts )
 			return;
 
-		wp_enqueue_style( 'p2p-box', plugins_url( 'box.css', __FILE__ ), array(), P2P_PLUGIN_VERSION );
+		wp_enqueue_style( 'p2p-box', plugins_url( 'box.css', __FILE__ ),
+			array(), P2P_PLUGIN_VERSION );
 
-		wp_enqueue_script( 'p2p-box', plugins_url( 'box.js', __FILE__ ), array( 'jquery' ), P2P_PLUGIN_VERSION, true );
+		wp_register_script( 'mustache', plugins_url( 'mustache.js', __FILE__ ),
+			array(), '0.7.2', true );
+
+		wp_enqueue_script( 'p2p-box', plugins_url( 'box.js', __FILE__ ),
+			array( 'backbone', 'mustache' ), P2P_PLUGIN_VERSION, true );
+
 		wp_localize_script( 'p2p-box', 'P2PAdmin', array(
 			'nonce' => wp_create_nonce( P2P_BOX_NONCE ),
 			'spinner' => admin_url( 'images/wpspin_light.gif' ),
@@ -46,6 +47,19 @@ class P2P_Box {
 
 		self::$enqueued_scripts = true;
 
+		add_action( 'admin_footer', array( __CLASS__, 'add_templates' ) );
+	}
+
+	static function add_templates() {
+		self::add_template( 'tab-list' );
+		self::add_template( 'table-row' );
+	}
+
+	private static function add_template( $slug ) {
+		echo html( 'script', array(
+			'type' => 'text/html',
+			'id' => "p2p-template-$slug"
+		), file_get_contents( dirname( __FILE__ ) . "/templates/$slug.html" ) );
 	}
 
 	function render( $post ) {
@@ -60,6 +74,7 @@ class P2P_Box {
 			'attributes' => $this->render_data_attributes(),
 			'connections' => $this->render_connections_table( $post ),
 			'create-connections' => $this->render_create_connections( $post ),
+			'help' => isset( $this->labels->help ) ? $this->labels->help : ''
 		);
 
 		echo P2P_Mustache::render( 'box', $data );
@@ -115,7 +130,6 @@ class P2P_Box {
 		// Search tab
 		$tab_content = P2P_Mustache::render( 'tab-search', array(
 			'placeholder' => $this->labels->search_items,
-			'candidates' => $this->post_rows( $post->ID )
 		) );
 
 		$data['tabs'][] = array(
@@ -165,6 +179,7 @@ class P2P_Box {
 
 	protected function post_rows( $current_post_id, $page = 1, $search = '' ) {
 		$extra_qv = array_merge( self::$admin_box_qv, array(
+			'p2p:context' => 'admin_box_candidates',
 			'p2p:search' => $search,
 			'p2p:page' => $page,
 			'p2p:per_page' => 5
@@ -191,7 +206,6 @@ class P2P_Box {
 				'current-page' => number_format_i18n( $candidate->current_page ),
 				'total-pages' => number_format_i18n( $candidate->total_pages ),
 
-				'current-page-raw' => $candidate->current_page,
 				'total-pages-raw' => $candidate->total_pages,
 
 				'prev-inactive' => ( 1 == $candidate->current_page ) ? 'inactive' : '',
@@ -203,7 +217,7 @@ class P2P_Box {
 			);
 		}
 
-		return P2P_Mustache::render( 'tab-list', $data );
+		return $data;
 	}
 
 
@@ -280,11 +294,8 @@ class P2P_Box {
 	}
 
 	private function refresh_candidates() {
-		$rows = $this->post_rows( $_REQUEST['from'], $_REQUEST['paged'], $_REQUEST['s'] );
-
-		$results = compact( 'rows' );
-
-		die( json_encode( $results ) );
+		die( json_encode( $this->post_rows(
+			$_REQUEST['from'], $_REQUEST['paged'], $_REQUEST['s'] ) ) );
 	}
 
 	protected function can_create_post() {

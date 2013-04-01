@@ -1,4 +1,23 @@
 /* podpress.js | podPress - JS scripts for the frontend and the Admin Site */
+
+	/**
+	* podPress_https_check - checks whether the request is an https request and adjusts the protocol if necessary (will change only URLs with the siteurl at the begining)
+	* @package podPress
+	* @since 8.8.10.14
+	* @param String url - an full URL with protocol abbrevation
+	* @return String url - the URL with the protocol of the current request 
+	*/
+	function podPress_https_check(url) {
+		var siteurl_without_protocol = podPressBlogURL.match(/^https?:\/\//i, url);
+		var url_without_protocol = podPressBlogURL.replace(siteurl_without_protocol, '');
+		var siteurl_regexp = new RegExp( url_without_protocol, 'i' );
+		if ( -1 != url.search(siteurl_regexp) ) {
+			return url.replace(/^http:/i, window.location.protocol);
+		} else {
+			return url;
+	   	}
+	}
+
 	function podPressShowVideoPreview (strPlayerDiv, strMediaFile, numWidth, numHeight, strPreviewImg) {
 		var refPlayerDiv = document.getElementById('podPressPlayerSpace_'+strPlayerDiv);
 		if(refPlayerDiv == undefined) {
@@ -20,7 +39,7 @@
 		}	
 
 		var strResult = '';
-		strResult += '<div class="podPress_videoplayer_wrapper" style="width: '+String(Number(numWidth)+14)+'px; height: '+String(Number(numHeight)+50)+'px; padding:0px; margin:0px; display:block;"'+strOnclick+'>';
+		strResult += '<div class="podPress_videoplayer_wrapper" style="width: '+String(Number(numWidth)+14)+'px; height: '+String(Number(numHeight)+54)+'px; padding:0px; margin:0px; display:block;"'+strOnclick+'>';
 		strResult += '	<div class="podPress_videoplayer_toprow" style="display:block; width:100%; padding:0px; margin:0px;">';
 		strResult += '		<img src="'+podPressBackendURL+'images/vpreview_top_left.png" style="width:7px; height:27px; display:inline; float:left; border:0px; padding:0px; margin:0px;" alt=""/>';
 		strResult += '		<span style="height:27px; border:0px; display:block; float:left; padding:0px; margin:0px; width: '+numWidth+'px; text-align:center; background:url(\''+podPressBackendURL+'images/vpreview_top_background.png\'); background-repeat: repeat-x;"><img src="'+podPressBackendURL+'images/vpreview_top_middle.png" style="width:119px; height:27px padding:0px; margin:0px;  float:none; border:0px;" alt="" /></span>';
@@ -30,7 +49,7 @@
 		if (25 < Number(numHeight)) { // if the height value is smaller than 25 px then create a player preview without an cover or chapter image
 		strResult += '	<div class="podPress_videoplayer_middlerow" style="clear:left; width:100%; padding:0px; margin:0px;">';
 		strResult += '		<span style="width:7px; height:'+numHeight+'px; padding:0px; margin:0px; display:block; float:left; background:url(\''+podPressBackendURL+'images/vpreview_left_background.png\'); background-repeat:repeat-y;"></span>';
-		strResult += '		<img class="podPress_previewImage" src="'+strPreviewImg+'" style="width:'+numWidth+'px; height:'+numHeight+'px; padding:0px; margin:0px; border:0px; float:left; display:inline;" alt="previewImg"  id="podPress_previewImageIMG_'+strPlayerDiv+'" />';
+		strResult += '		<img class="podPress_previewImage" src="'+podPress_https_check(strPreviewImg)+'" style="width:'+numWidth+'px; height:'+numHeight+'px; padding:0px; margin:0px; border:0px; float:left; display:inline;" alt="previewImg"  id="podPress_previewImageIMG_'+strPlayerDiv+'" />';
 		strResult += '		<span style="width:7px; height:'+numHeight+'px; padding:0px; margin:0px; display:block; float:left; background:url(\''+podPressBackendURL+'images/vpreview_right_background.png\'); background-repeat:repeat-y;"></span>';
 		strResult += '	</div>';
 		}
@@ -109,6 +128,7 @@
 						var strMimeType = 'video/quicktime';
 						break;
 				}
+				strAutoStart = false;
 				numHeight = String(Number(numHeight)+ 18); // add up the height of the player controls
 				strResult = '<object class="podpress_player_object" classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" width="'+numWidth+'px" height="'+numHeight+'px" codebase="http://www.apple.com/qtactivex/qtplugin.cab">';
 				strResult += '	<param name="src" value="'+strMediaFile+'" />';
@@ -274,7 +294,7 @@
 				strResult += '<param name="menu" value="false" />';
 				strResult += '<param name="wmode" value="transparent" />';
 				strResult += '<param name="quality" value="high" />';
-				strResult += '<embed src="' + podPressBackendURL + 'players/' + podPressPlayerFile+ '" type="application/x-shockwave-flash" flashvars="playerID=audioplayer'+strPlayerDiv+localCopyPlayerOptions+'soundFile='+unescape(strMediaFile)+'" width="290" height="24" wmode="transparent"></embed>';
+				strResult += '<embed src="' + podPressBackendURL + 'players/' + podPressPlayerFile+ '" type="application/x-shockwave-flash" class="podpress_player_embed" flashvars="playerID=audioplayer'+strPlayerDiv+localCopyPlayerOptions+'soundFile='+unescape(strMediaFile)+'" width="290" height="24" wmode="transparent"></embed>';
 				strResult += '</object>';
 				if (podPressMP3PlayerWrapper) {
 					strResult += '</div></div>';
@@ -527,7 +547,7 @@
 		strResult += '<HTML xmlns="http://www.w3.org/1999/xhtml">\n';
 		strResult += '<HEAD>\n';
 		strResult += '<TITLE>'+windowName+' - Popup Player</TITLE>\n';
-		strResult += '<link rel="stylesheet" id="podpress_frontend_styles-css"  href="'+podPressBackendURL+'podpress.css" type="text/css" media="all" />\n';
+		strResult += '<link rel="stylesheet" id="podpress_frontend_styles-css"  href="'+podPressBackendURL+'style/podpress.css" type="text/css" media="all" />\n';
 		// WebKit supports since 525.x and Internet Explorer since 9.0 MP3 in the HTML 5 <audio> element.
 		if ( strExt == 'mp3' && podPressHTML5 == true && podPress_is_modern_ie() == true ) {
 			var is_modern_ie = true;
@@ -621,7 +641,7 @@
 		var realurl = document.getElementById('podPressPlayerSpace_' + strPlayerDiv + '_OrigURL').value;
 		if ( typeof podPressPT == 'boolean' && podPressPT == true ) {
 			realurl = realurl.replace(/^(https?:\/\/|http:\/\/)/, '');
-			realurl = 'http://www.podtrac.com/pts/redirect.mp3?' + realurl;
+			realurl = 'http://www.podtrac.com/pts/redirect.mp3/' + realurl;
 		} else if ( typeof podPressBK == 'string' && podPressBK != '' ) {
 			realurl = realurl.replace(/^http:\/\//, '');
 			realurl = 'http://media.blubrry.com/' + podPressBK + '/'+ realurl;
@@ -632,7 +652,7 @@
 	/** podPress_html5_count - counts how many times a media file was played (HTML5)
 	* @param mixed $url - the masked url
 	* @param mixed $id - the ID of the player element
-	*/	
+	*/
 	function podPress_html5_count(url, id) {
 		if ( typeof podPressHTML5sec == 'string' && podPressHTML5sec != '' ) { // if statistics are enabled then podPressHTML5sec exists and is an not-empty string 
 			var startTime = document.getElementById( id ).currentTime;

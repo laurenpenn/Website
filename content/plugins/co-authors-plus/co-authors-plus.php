@@ -3,9 +3,9 @@
 Plugin Name: Co-Authors Plus
 Plugin URI: http://wordpress.org/extend/plugins/co-authors-plus/
 Description: Allows multiple authors to be assigned to a post. This plugin is an extended version of the Co-Authors plugin developed by Weston Ruter.
-Version: 3.0.4
+Version: 3.0.5
 Author: Mohammad Jangda, Daniel Bachhuber, Automattic
-Copyright: 2008-2012 Shared and distributed between Mohammad Jangda, Daniel Bachhuber, Weston Ruter
+Copyright: 2008-2013 Shared and distributed between Mohammad Jangda, Daniel Bachhuber, Weston Ruter
 
 GNU General Public License, Free Software Foundation <http://creativecommons.org/licenses/GPL/2.0/>
 This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 */
 
-define( 'COAUTHORS_PLUS_VERSION', '3.0.4' );
+define( 'COAUTHORS_PLUS_VERSION', '3.0.5' );
 
 define( 'COAUTHORS_PLUS_PATH', dirname( __FILE__ ) );
 define( 'COAUTHORS_PLUS_URL', plugin_dir_url( __FILE__ ) );
@@ -512,6 +512,9 @@ class coauthors_plus {
 			if ( !empty( $query->query_vars['post_type'] ) && !is_object_in_taxonomy( $query->query_vars['post_type'], $this->coauthor_taxonomy ) )
 				return $join;
 
+			if ( empty( $this->having_terms ) )
+				return $join;
+
 			// Check to see that JOIN hasn't already been added. Props michaelingp and nbaxley
 			$term_relationship_join = " INNER JOIN {$wpdb->term_relationships} ON ({$wpdb->posts}.ID = {$wpdb->term_relationships}.object_id)";
 			$term_taxonomy_join = " INNER JOIN {$wpdb->term_taxonomy} ON ( {$wpdb->term_relationships}.term_taxonomy_id = {$wpdb->term_taxonomy}.term_taxonomy_id )";
@@ -889,6 +892,7 @@ class coauthors_plus {
 				'get' => 'all',
 				'number' => 10,
 			);
+		$args = apply_filters( 'coauthors_search_authors_get_terms_args', $args );
 		add_filter( 'terms_clauses', array( $this, 'filter_terms_clauses' ) );
 		$found_terms = get_terms( $this->coauthor_taxonomy, $args );
 		remove_filter( 'terms_clauses', array( $this, 'filter_terms_clauses' ) );

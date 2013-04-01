@@ -460,7 +460,7 @@ class LeagueManager
 	{
 		global $wpdb;
 		
-		$league = $wpdb->get_results( "SELECT `title`, `id`, `seasons`, `settings` FROM {$wpdb->leaguemanager} WHERE `id` = '".$league_id."' OR `title` = '".$league_id."'" );
+		$league = $wpdb->get_results( "SELECT `title`, `id`, `seasons`, `settings` FROM {$wpdb->leaguemanager} WHERE `id` = '".(int)$league_id."' OR `title` = '".$league_id."'" );
 		$league = $league[0];
 		$league->seasons = maybe_unserialize($league->seasons);
 		$league->settings = (array)maybe_unserialize($league->settings);

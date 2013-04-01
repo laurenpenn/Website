@@ -39,6 +39,7 @@ class addthis_post_metabox{
 
     function save_post($post_id)
     {
+    	global $post;
         if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
             return;
 
@@ -51,8 +52,9 @@ class addthis_post_metabox{
         }
         else
         {
+        	delete_post_meta($post_id, 'addthis_exclude');
             $custom_fields = get_post_custom($post_id);
-            if (! isset ($custom_fields['addthis_exclude'][0])  )
+            if (! isset ($custom_fields['addthis_exclude'][0]) && ($post->post_type=="post")  )
             {
                 add_post_meta($post_id, 'addthis_exclude', 'true');
             }

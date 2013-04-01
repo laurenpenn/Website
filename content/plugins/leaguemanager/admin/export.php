@@ -1,15 +1,14 @@
 <?php
-     if ( !current_user_can( 'manage_leagues' ) ) : 
+if ( !current_user_can( 'manage_leagues' ) ) : 
      echo '<p style="text-align: center;">'.__("You do not have sufficient permissions to access this page.").'</p>';
 else :
-
 ?>
 <div class="wrap narrow">
 	<h2><?php _e('LeagueManager Export', 'leaguemanager') ?></h2>
 	<p><?php _e( 'Here you can export teams and matches for a specific league.', 'leaguemanager' ) ?></p>
 	<p><?php _e('Once you&#8217;ve saved the download file, you can use the Import function on another WordPress blog to import this blog.'); ?></p>
-	
 	<form action="" method="post">
+	<?php wp_nonce_field( 'leaguemanager_export-datasets' ) ?>
 		<h3><?php _e('Options'); ?></h3>
 		<table class="form-table">
 		<tr>
@@ -37,4 +36,5 @@ else :
 		<p class="submit"><input type="submit" name="leaguemanager_export" value="<?php _e('Download File'); ?>" class="button" /></p>
 	</form>
 </div>
+
 <?php endif; ?>

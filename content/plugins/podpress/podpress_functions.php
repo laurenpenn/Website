@@ -43,7 +43,7 @@ License:
 	function podPress_siteurl($noDomain = false) {
 		if (!defined('PODPRESSSITEURL') || $noDomain) {
 			$result = '';
-			$urlparts = parse_url(get_option('siteurl'));
+			$urlparts = parse_url(site_url());
 			if(!$noDomain) {
 				if(empty($urlparts['scheme'])) {
 					$urlparts['scheme'] = 'http';
@@ -82,7 +82,7 @@ License:
 			}
 			return PODPRESSURL;
 		} else {
-			//~ $result = get_option('siteurl');
+			//~ $result = site_url();
 			//~ if(substr($result, -1, 1) != '/') {
 				//~ $result .= '/';
 			//~ }
@@ -563,6 +563,11 @@ License:
 	function podPress_feedButtons_control() {
 		GLOBAL $podPress, $wp_version, $wpdb;
 		$options = get_option('widget_podPressFeedButtons');
+		if ( TRUE == version_compare($wp_version, '2.7', '>=') AND TRUE == version_compare($wp_version, '2.8', '<')) {// for WP 2.7.x (because the plugins_url() worked differently in WP 2.7.x)
+			$plugins_url = plugins_url('podpress', __FILE__);
+		} else { 
+			$plugins_url = plugins_url('', __FILE__);
+		}
 		$newoptions = $options;
 		if ( isset($_POST['podPressFeedButtons-submit']) ) {
 			$newoptions['blog'] = isset($_POST['podPressFeedButtons-posts']);
@@ -739,7 +744,7 @@ License:
 								} else {
 									$feedbutton_checked = '';
 								}
-								echo '<input type="radio" name="podpressfeeds['.$feed['slug'].'][button]" id="'.$id_base.''.$i.'" value="'.$feedbutton.'"'.$feedbutton_checked.' /> <label for="'.$id_base.''.$i.'"><img src="'.PODPRESS_URL.'/images/'.$feedbutton.'" alt="" /></label><br />'."\n";
+								echo '<input type="radio" name="podpressfeeds['.$feed['slug'].'][button]" id="'.$id_base.''.$i.'" value="'.$feedbutton.'"'.$feedbutton_checked.' /> <label for="'.$id_base.''.$i.'"><img src="'.$plugins_url.'/images/'.$feedbutton.'" alt="" /></label><br />'."\n";
 								$i++;
 							}
 							if ( TRUE == isset($options['podpressfeeds'][$feed['slug']]['button']) AND 'custom' == $options['podpressfeeds'][$feed['slug']]['button'] ) {
@@ -808,10 +813,15 @@ License:
 	/* for WP < 2.8 only */
 	function podPress_feedButtons ($args) {
 		GLOBAL $podPress, $wp_version;
+		if ( TRUE == version_compare($wp_version, '2.7', '>=') AND TRUE == version_compare($wp_version, '2.8', '<')) {// for WP 2.7.x (because the plugins_url() worked differently in WP 2.7.x)
+			$plugins_url = plugins_url('podpress', __FILE__);
+		} else { 
+			$plugins_url = plugins_url('', __FILE__);
+		}
 		extract($args);
 		$options = get_option('widget_podPressFeedButtons');
 		if ( version_compare( $wp_version, '2.2', '>=' ) ) { // the rss.png is in wp_includes since WP 2.2 (this is only necessary until the required  WP version will be changed to e.g 2.3)
-			$feed_icon = '<img src="'.get_option('siteurl') . '/' . WPINC . '/images/rss.png" class="podpress_feed_icon" alt="" />';
+			$feed_icon = '<img src="'. site_url() . '/' . WPINC . '/images/rss.png" class="podpress_feed_icon" alt="" />';
 		} else {
 			$feed_icon = apply_filters('podpress_legacy_support_feed_icon', '');
 		}
@@ -856,9 +866,9 @@ License:
 						echo ' <li><a href="http://www.itunes.com/podcast?id='.$podPress->settings['iTunes']['FeedID'].'"';
 					}
 					if ( FALSE == empty($options['itunes_buttonurl']) ) {
-						echo ' title="'.__('Subscribe to the Podcast Feed with iTunes', 'podpress').'"><img src="'.$options['itunes_buttonurl'].'" class="podpress_feed_buttons" alt="'.__('Subscribe with iTunes', 'podpress').'" /></a></li>'."\n";
+						echo ' title="'.__('Subscribe to the Podcast Feed with iTunes', 'podpress').'"><img src="'.podpress_siteurl_is_ssl($options['itunes_buttonurl']).'" class="podpress_feed_buttons" alt="'.__('Subscribe with iTunes', 'podpress').'" /></a></li>'."\n";
 					} else {
-						echo ' title="'.__('Subscribe to the Podcast Feed with iTunes', 'podpress').'"><img src="'.podPress_url().'images/itunes.png" class="podpress_feed_buttons" alt="'.__('Subscribe with iTunes', 'podpress').'" /></a></li>'."\n";
+						echo ' title="'.__('Subscribe to the Podcast Feed with iTunes', 'podpress').'"><img src="'.$plugins_url.'/images/itunes.png" class="podpress_feed_buttons" alt="'.__('Subscribe with iTunes', 'podpress').'" /></a></li>'."\n";
 					}
 				}
 				
@@ -879,7 +889,7 @@ License:
 										$descr = __('Subscribe to this Feed with any feed reader', 'podpress');
 									}
 									if ( FALSE == empty($feed_options['buttonurl']) ) {
-										echo '	<li><a href="'.$feed_link.'" title="'.attribute_escape($descr).'"><img src="'.$feed_options['buttonurl'].'" class="podpress_feed_buttons" alt="'.attribute_escape(stripslashes($feed['name'])).'" /></a></li>'."\n";
+										echo '	<li><a href="'.$feed_link.'" title="'.attribute_escape($descr).'"><img src="'.podpress_siteurl_is_ssl($feed_options['buttonurl']).'" class="podpress_feed_buttons" alt="'.attribute_escape(stripslashes($feed['name'])).'" /></a></li>'."\n";
 									} else {
 										echo '	<li><a href="'.$feed_link.'" title="'.attribute_escape($descr).'">'.$feed_icon.' '.stripslashes($feed['name']).'</a></li>'."\n";
 									}
@@ -896,9 +906,9 @@ License:
 						$feedlink = get_bloginfo('rss2_url');
 					}
 					if ( FALSE == empty($options['posts_buttonurl']) ) {
-						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main RSS Feed with any feed reader', 'podpress').'"><img src="'.$options['posts_buttonurl'].'" class="podpress_feed_buttons" alt="'.__('Subscribe to the RSS Feed', 'podpress').'" /></a></li>'."\n";
+						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main RSS Feed with any feed reader', 'podpress').'"><img src="'.podpress_siteurl_is_ssl($options['posts_buttonurl']).'" class="podpress_feed_buttons" alt="'.__('Subscribe to the RSS Feed', 'podpress').'" /></a></li>'."\n";
 					} else {
-						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main RSS Feed with any feed reader', 'podpress').'"><img src="'.podPress_url().'images/feed_button-rss-blog.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the RSS Feed', 'podpress').'" /></a></li>'."\n";
+						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main RSS Feed with any feed reader', 'podpress').'"><img src="'.$plugins_url.'/images/feed_button-rss-blog.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the RSS Feed', 'podpress').'" /></a></li>'."\n";
 					}
 				}
 				if($options['comments']) {
@@ -908,9 +918,9 @@ License:
 						$feedlink = get_bloginfo('comments_rss2_url');
 					}
 					if ( FALSE == empty($options['comments_buttonurl']) ) {
-						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments RSS Feed with any feed reader', 'podpress').'"><img src="'.$options['comments_buttonurl'].'" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments RSS Feed', 'podpress').'" /></a></li>'."\n";
+						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments RSS Feed with any feed reader', 'podpress').'"><img src="'.podpress_siteurl_is_ssl($options['comments_buttonurl']).'" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments RSS Feed', 'podpress').'" /></a></li>'."\n";
 					} else {
-						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments RSS Feed with any feed reader', 'podpress').'"><img src="'.podPress_url().'images/feed_button-rss-comments.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments RSS Feed', 'podpress').'" /></a></li>'."\n";
+						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments RSS Feed with any feed reader', 'podpress').'"><img src="'.$plugins_url.'/images/feed_button-rss-comments.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments RSS Feed', 'podpress').'" /></a></li>'."\n";
 					}
 				}
 				if($options['entries-atom']) {
@@ -920,9 +930,9 @@ License:
 						$feedlink = get_bloginfo('atom_url');
 					}
 					if ( FALSE == empty($options['entries-atom_buttonurl']) ) {
-						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main ATOM Feed with any feed reader', 'podpress').'"><img src="'.$options['entries-atom_buttonurl'].'" class="podpress_feed_buttons" alt="'.__('Subscribe to the ATOM Feed', 'podpress').'" /></a></li>'."\n";
+						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main ATOM Feed with any feed reader', 'podpress').'"><img src="'.podpress_siteurl_is_ssl($options['entries-atom_buttonurl']).'" class="podpress_feed_buttons" alt="'.__('Subscribe to the ATOM Feed', 'podpress').'" /></a></li>'."\n";
 					} else {
-						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main ATOM Feed with any feed reader', 'podpress').'"><img src="'.podPress_url().'images/feed_button-atom-blog.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the ATOM Feed', 'podpress').'" /></a></li>'."\n";
+						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main ATOM Feed with any feed reader', 'podpress').'"><img src="'.$plugins_url.'/images/feed_button-atom-blog.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the ATOM Feed', 'podpress').'" /></a></li>'."\n";
 					}
 				}
 				if($options['comments-atom']) {
@@ -932,9 +942,9 @@ License:
 						$feedlink = get_bloginfo('comments_atom_url');
 					}
 					if ( FALSE == empty($options['comments-atom_buttonurl']) ) {
-						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments ATOM Feed with any feed reader', 'podpress').'"><img src="'.$options['comments-atom_buttonurl'].'" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments ATOM Feed', 'podpress').'" /></a></li>'."\n";
+						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments ATOM Feed with any feed reader', 'podpress').'"><img src="'.podpress_siteurl_is_ssl($options['comments-atom_buttonurl']).'" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments ATOM Feed', 'podpress').'" /></a></li>'."\n";
 					} else {
-						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments ATOM Feed with any feed reader', 'podpress').'"><img src="'.podPress_url().'images/feed_button-atom-comments.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments ATOM Feed', 'podpress').'" /></a></li>'."\n";
+						echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments ATOM Feed with any feed reader', 'podpress').'"><img src="'.$plugins_url.'/images/feed_button-atom-comments.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments ATOM Feed', 'podpress').'" /></a></li>'."\n";
 					}
 				}
 				if ( is_array($options['catcast']) AND FALSE == empty($options['catcast']) ) {
@@ -948,11 +958,11 @@ License:
 								} elseif ( TRUE == version_compare($wp_version, '2.9.3','<=') AND TRUE == version_compare($wp_version, '2.4','>') ) {
 									$cat_feed_link = get_category_feed_link($cat_id);
 								} else {
-									$cat_feed_link = get_option('siteurl').'/?feed=rss2&cat='.$cat_id;
+									$cat_feed_link = site_url().'/?feed=rss2&cat='.$cat_id;
 								}
 							}
 							if ( FALSE == empty($catcast_options['buttonurl']) ) {
-								echo '	<li><a href="'.$cat_feed_link.'" title="'.__('Subscribe to this Category RSS Feed with any feed reader', 'podpress').'"><img src="'.$catcast_options['buttonurl'].'" class="podpress_feed_buttons" alt="'.attributes_escape(sprintf(__('Category "%1$s" RSS Feed', 'podpress'), get_cat_name($cat_id))).'" /></a></li>'."\n";
+								echo '	<li><a href="'.$cat_feed_link.'" title="'.__('Subscribe to this Category RSS Feed with any feed reader', 'podpress').'"><img src="'.podpress_siteurl_is_ssl($catcast_options['buttonurl']).'" class="podpress_feed_buttons" alt="'.attributes_escape(sprintf(__('Category "%1$s" RSS Feed', 'podpress'), get_cat_name($cat_id))).'" /></a></li>'."\n";
 							} else {
 								echo '	<li><a href="'.$cat_feed_link.'" title="'.__('Subscribe to this Category RSS Feed with any feed reader', 'podpress').'">'.$feed_icon.' '.sprintf(__('Category "%1$s" RSS Feed', 'podpress'), get_cat_name($cat_id)).'</a></li>'."\n";
 							}
@@ -1037,7 +1047,7 @@ License:
 								} elseif ( TRUE == version_compare($wp_version, '2.9.3','<=') AND TRUE == version_compare($wp_version, '2.4','>') ) {
 									$cat_feed_link = get_category_feed_link($cat_id);
 								} else {
-									$cat_feed_link = get_option('siteurl').'/?feed=rss2&cat='.$cat_id;
+									$cat_feed_link = site_url().'/?feed=rss2&cat='.$cat_id;
 								}
 							}
 							echo '	<li><a href="'.$cat_feed_link.'" title="'.__('Subscribe to this Category RSS Feed with any feed reader', 'podpress').'">'.$feed_icon.' '.sprintf(__('Category "%1$s" RSS Feed', 'podpress'), get_cat_name($cat_id)).'</a></li>'."\n";
@@ -1160,7 +1170,12 @@ License:
 	
 	/* for WP < 2.8 only */
 	function podPress_xspfPlayer($args) {
-		GLOBAL $podPress, $blog_id;
+		GLOBAL $podPress, $blog_id, $wp_version;
+		if ( TRUE == version_compare($wp_version, '2.7', '>=') AND TRUE == version_compare($wp_version, '2.8', '<')) {// for WP 2.7.x (because the plugins_url() worked differently in WP 2.7.x)
+			$plugins_url = plugins_url('podpress', __FILE__);
+		} else { 
+			$plugins_url = plugins_url('', __FILE__);
+		}
 		extract($args);
 		$options = get_option('widget_podPressXspfPlayer');
 		if ( !isset($options['title']) ) {
@@ -1175,10 +1190,10 @@ License:
 			$options['PlayerWidth'] = 150; // min width
 		}
 		
-		$skin_variables_url = PODPRESS_OPTIONS_URL.'/xspf_options/variables';
+		$skin_variables_url = podpress_siteurl_is_ssl(PODPRESS_OPTIONS_URL.'/xspf_options/variables');
 		$skin_variables_dir = PODPRESS_OPTIONS_DIR.'/xspf_options/variables';
 		
-		$skin_file = PODPRESS_URL.'/podpress_xspfskinfile.php';
+		$skin_file = $plugins_url.'/podpress_xspfskinfile.php';
 
 		echo $before_widget."\n";
 		echo $before_title . $options['title'] . $after_title."\n";
@@ -1187,7 +1202,7 @@ License:
 				$options['SlimPlayerHeight'] = 30; // min height slim
 			}
 			if ( TRUE == defined('PODPRESS_XSPF_PLAYER_USE_CUSTOM_SKINFILE_'.$blog_id) AND TRUE == defined('PODPRESS_XSPF_SLIM_SKIN_URL_'.$blog_id) AND TRUE == defined('PODPRESS_XSPF_SLIM_SKIN_DIR_'.$blog_id) AND TRUE == is_readable(constant('PODPRESS_XSPF_SLIM_SKIN_DIR_'.$blog_id).'/skin_'.$blog_id.'_'.$options['PlayerWidth'].'x'.$options['SlimPlayerHeight'].'.xml') ) {
-				$skin_file = constant('PODPRESS_XSPF_SLIM_SKIN_URL_'.$blog_id).'/skin_'.$blog_id.'_'.$options['PlayerWidth'].'x'.$options['SlimPlayerHeight'].'.xml';
+				$skin_file = podpress_siteurl_is_ssl(constant('PODPRESS_XSPF_SLIM_SKIN_URL_'.$blog_id)).'/skin_'.$blog_id.'_'.$options['PlayerWidth'].'x'.$options['SlimPlayerHeight'].'.xml';
 			}
 			$skin_variables_url .= '_slim';
 			$skin_variables_dir .= '_slim';
@@ -1200,7 +1215,7 @@ License:
 					$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true&format='.$options['trackinfoformat'];
 				}
 			}
-			$data_string = PODPRESS_URL.'/players/xspf_jukebox/xspf_jukebox.swf?playlist_url='.(PODPRESS_URL.'/podpress_xspfplaylist.php').$variables;
+			$data_string = $plugins_url.'/players/xspf_jukebox/xspf_jukebox.swf?playlist_url='.($plugins_url.'/podpress_xspfplaylist.php').$variables;
 			$data_string = htmlspecialchars($data_string);
 			echo '<object type="application/x-shockwave-flash" classid="CLSID:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'.$options['PlayerWidth'].'" height="'.$options['PlayerHeight'].'" id="podpress_xspf_player_slim">'."\n";
 			$height = $options['SlimPlayerHeight'];
@@ -1209,7 +1224,7 @@ License:
 				$options['PlayerHeight'] = 100; // min height
 			}
 			if ( TRUE == defined('PODPRESS_XSPF_PLAYER_USE_CUSTOM_SKINFILE_'.$blog_id) AND TRUE == defined('PODPRESS_XSPF_SKIN_URL_'.$blog_id) AND TRUE == defined('PODPRESS_XSPF_SKIN_DIR_'.$blog_id) AND TRUE == is_readable(constant('PODPRESS_XSPF_SKIN_DIR_'.$blog_id).'/skin_'.$blog_id.'_'.$options['PlayerWidth'].'x'.$options['PlayerHeight'].'.xml') ) {
-				$skin_file = constant('PODPRESS_XSPF_SKIN_URL_'.$blog_id).'/skin_'.$blog_id.'_'.$options['PlayerWidth'].'x'.$options['PlayerHeight'].'.xml';
+				$skin_file = podpress_siteurl_is_ssl(constant('PODPRESS_XSPF_SKIN_URL_'.$blog_id)).'/skin_'.$blog_id.'_'.$options['PlayerWidth'].'x'.$options['PlayerHeight'].'.xml';
 			}
 			if ( TRUE === defined('PODPRESS_XSPF_USE_CUSTOM_VARIABLES_'.$blog_id) AND TRUE === constant('PODPRESS_XSPF_USE_CUSTOM_VARIABLES_'.$blog_id) AND TRUE == is_readable($skin_variables_dir.'/variables_'.$blog_id.'.txt')) {
 				$variables = '&skin_url='.$skin_file.'&loadurl='.$skin_variables_url.'/variables_'.$blog_id.'.txt';
@@ -1220,7 +1235,7 @@ License:
 					$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true&format='.$options['trackinfoformat'];
 				}
 			}
-			$data_string = PODPRESS_URL.'/players/xspf_jukebox/xspf_jukebox.swf?playlist_url='.(PODPRESS_URL.'/podpress_xspfplaylist.php').$variables;
+			$data_string = $plugins_url.'/players/xspf_jukebox/xspf_jukebox.swf?playlist_url='.($plugins_url.'/podpress_xspfplaylist.php').$variables;
 			$data_string = htmlspecialchars($data_string);
 			echo '<object type="application/x-shockwave-flash" classid="CLSID:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'.$options['PlayerWidth'].'" height="'.$options['PlayerHeight'].'" id="podpress_xspf_player">'."\n";
 			$height = $options['PlayerHeight'];
@@ -1261,9 +1276,10 @@ License:
 			/** @see WP_Widget::widget */
 			function widget($args, $instance) {
 				GLOBAL $podPress, $wp_version;
+				$plugins_url = plugins_url('', __FILE__);
 				extract( $args );
 				$title = apply_filters('widget_title', $instance['title']);
-				$feed_icon = '<img src="'.get_option('siteurl') . '/' . WPINC . '/images/rss.png" class="podpress_feed_icon" alt="" />';
+				$feed_icon = '<img src="'. site_url() . '/' . WPINC . '/images/rss.png" class="podpress_feed_icon" alt="" />';
 				echo $before_widget;
 				echo $before_title . $title . $after_title;
 				echo '<ul class="podpress_feed_buttons_list">'."\n";
@@ -1278,14 +1294,14 @@ License:
 								echo ' <li><a href="http://www.itunes.com/podcast?id='.$podPress->settings['iTunes']['FeedID'].'"';
 							}
 							if ( FALSE == empty($instance['itunes_buttonurl']) ) {
-								echo ' title="'.__('Subscribe to the Podcast Feed with iTunes', 'podpress').'"><img src="'.$instance['itunes_buttonurl'].'" class="podpress_feed_buttons" alt="'.__('Subscribe with iTunes', 'podpress').'" /></a></li>'."\n";
+								echo ' title="'.__('Subscribe to the Podcast Feed with iTunes', 'podpress').'"><img src="'.podpress_siteurl_is_ssl($instance['itunes_buttonurl']).'" class="podpress_feed_buttons" alt="'.__('Subscribe with iTunes', 'podpress').'" /></a></li>'."\n";
 							} else {
-								echo ' title="'.__('Subscribe to the Podcast Feed with iTunes', 'podpress').'"><img src="'.podPress_url().'images/itunes.png" class="podpress_feed_buttons" alt="'.__('Subscribe with iTunes', 'podpress').'" /></a></li>'."\n";
+								echo ' title="'.__('Subscribe to the Podcast Feed with iTunes', 'podpress').'"><img src="'.$plugins_url.'/images/itunes.png" class="podpress_feed_buttons" alt="'.__('Subscribe with iTunes', 'podpress').'" /></a></li>'."\n";
 							}
 						}
 						
 						// podPress feeds:
-						if ( is_array($instance['podpressfeeds']) AND FALSE == empty($instance['podpressfeeds']) ) {
+						if ( isset($instance['podpressfeeds']) AND is_array($instance['podpressfeeds']) AND FALSE == empty($instance['podpressfeeds']) ) {
 							foreach ($instance['podpressfeeds'] as $feed_slug => $feed_options) {
 								if ( 'yes' === $feed_options['use'] AND is_array($podPress->settings['podpress_feeds']) ) {
 									foreach ( $podPress->settings['podpress_feeds'] AS $feed ) {
@@ -1301,7 +1317,7 @@ License:
 												$descr = __('Subscribe to this Feed with any feed reader', 'podpress');
 											}
 											if ( FALSE == empty($feed_options['buttonurl']) ) {
-												echo '	<li><a href="'.$feed_link.'" title="'.esc_attr($descr).'"><img src="'.$feed_options['buttonurl'].'" class="podpress_feed_buttons" alt="'.esc_attr(stripslashes($feed['name'])).'" /></a></li>'."\n";
+												echo '	<li><a href="'.$feed_link.'" title="'.esc_attr($descr).'"><img src="'.podpress_siteurl_is_ssl($feed_options['buttonurl']).'" class="podpress_feed_buttons" alt="'.esc_attr(stripslashes($feed['name'])).'" /></a></li>'."\n";
 											} else {
 												echo '	<li><a href="'.$feed_link.'" title="'.esc_attr($descr).'">'.$feed_icon.' '.stripslashes($feed['name']).'</a></li>'."\n";
 											}
@@ -1318,9 +1334,9 @@ License:
 								$feedlink = get_bloginfo('rss2_url');
 							}
 							if ( FALSE == empty($instance['posts_buttonurl']) ) {
-								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main RSS Feed with any feed reader', 'podpress').'"><img src="'.$instance['posts_buttonurl'].'" class="podpress_feed_buttons" alt="'.__('Subscribe to the RSS Feed', 'podpress').'" /></a></li>'."\n";
+								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main RSS Feed with any feed reader', 'podpress').'"><img src="'.podpress_siteurl_is_ssl($instance['posts_buttonurl']).'" class="podpress_feed_buttons" alt="'.__('Subscribe to the RSS Feed', 'podpress').'" /></a></li>'."\n";
 							} else {
-								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main RSS Feed with any feed reader', 'podpress').'"><img src="'.podPress_url().'images/feed_button-rss-blog.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the RSS Feed', 'podpress').'" /></a></li>'."\n";
+								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main RSS Feed with any feed reader', 'podpress').'"><img src="'.$plugins_url.'/images/feed_button-rss-blog.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the RSS Feed', 'podpress').'" /></a></li>'."\n";
 							}
 						}
 						if($instance['comments']) {
@@ -1330,9 +1346,9 @@ License:
 								$feedlink = get_bloginfo('comments_rss2_url');
 							}
 							if ( FALSE == empty($instance['comments_buttonurl']) ) {
-								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments RSS Feed with any feed reader', 'podpress').'"><img src="'.$instance['comments_buttonurl'].'" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments RSS Feed', 'podpress').'" /></a></li>'."\n";
+								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments RSS Feed with any feed reader', 'podpress').'"><img src="'.podpress_siteurl_is_ssl($instance['comments_buttonurl']).'" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments RSS Feed', 'podpress').'" /></a></li>'."\n";
 							} else {
-								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments RSS Feed with any feed reader', 'podpress').'"><img src="'.podPress_url().'images/feed_button-rss-comments.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments RSS Feed', 'podpress').'" /></a></li>'."\n";
+								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments RSS Feed with any feed reader', 'podpress').'"><img src="'.$plugins_url.'/images/feed_button-rss-comments.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments RSS Feed', 'podpress').'" /></a></li>'."\n";
 							}
 						}
 						if($instance['entries-atom']) {
@@ -1342,9 +1358,9 @@ License:
 								$feedlink = get_bloginfo('atom_url');
 							}
 							if ( FALSE == empty($instance['entries-atom_buttonurl']) ) {
-								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main ATOM Feed with any feed reader', 'podpress').'"><img src="'.$instance['entries-atom_buttonurl'].'" class="podpress_feed_buttons" alt="'.__('Subscribe to the ATOM Feed', 'podpress').'" /></a></li>'."\n";
+								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main ATOM Feed with any feed reader', 'podpress').'"><img src="'.podpress_siteurl_is_ssl($instance['entries-atom_buttonurl']).'" class="podpress_feed_buttons" alt="'.__('Subscribe to the ATOM Feed', 'podpress').'" /></a></li>'."\n";
 							} else {
-								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main ATOM Feed with any feed reader', 'podpress').'"><img src="'.podPress_url().'images/feed_button-atom-blog.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the ATOM Feed', 'podpress').'" /></a></li>'."\n";
+								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the main ATOM Feed with any feed reader', 'podpress').'"><img src="'.$plugins_url.'/images/feed_button-atom-blog.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the ATOM Feed', 'podpress').'" /></a></li>'."\n";
 							}
 						}
 						if($instance['comments-atom']) {
@@ -1354,12 +1370,12 @@ License:
 								$feedlink = get_bloginfo('comments_atom_url');
 							}
 							if ( FALSE == empty($instance['comments-atom_buttonurl']) ) {
-								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments ATOM Feed with any feed reader', 'podpress').'"><img src="'.$instance['comments-atom_buttonurl'].'" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments ATOM Feed', 'podpress').'" /></a></li>'."\n";
+								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments ATOM Feed with any feed reader', 'podpress').'"><img src="'.podpress_siteurl_is_ssl($instance['comments-atom_buttonurl']).'" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments ATOM Feed', 'podpress').'" /></a></li>'."\n";
 							} else {
-								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments ATOM Feed with any feed reader', 'podpress').'"><img src="'.podPress_url().'images/feed_button-atom-comments.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments ATOM Feed', 'podpress').'" /></a></li>'."\n";
+								echo '	<li><a href="'.$feedlink.'" title="'.__('Subscribe to the comments ATOM Feed with any feed reader', 'podpress').'"><img src="'.$plugins_url.'/images/feed_button-atom-comments.png" class="podpress_feed_buttons" alt="'.__('Subscribe to the comments ATOM Feed', 'podpress').'" /></a></li>'."\n";
 							}
 						}
-						if ( is_array($instance['catcast']) AND FALSE == empty($instance['catcast']) ) {
+						if ( isset($instance['catcast']) AND is_array($instance['catcast']) AND FALSE == empty($instance['catcast']) ) {
 							foreach ($instance['catcast'] as $cat_id => $catcast_options) {
 								if ( 'yes' === $catcast_options['use'] ) {
 									if ( FALSE == empty($catcast_options['altfeedurl']) ) {
@@ -1372,7 +1388,7 @@ License:
 										}
 									}
 									if ( FALSE == empty($catcast_options['buttonurl']) ) {
-										echo '	<li><a href="'.$cat_feed_link.'" title="'.__('Subscribe to this Category RSS Feed with any feed reader', 'podpress').'"><img src="'.$catcast_options['buttonurl'].'" class="podpress_feed_buttons" alt="'.esc_attr(sprintf(__('Category "%1$s" RSS Feed', 'podpress'), get_cat_name($cat_id))).'" /></a></li>'."\n";
+										echo '	<li><a href="'.$cat_feed_link.'" title="'.__('Subscribe to this Category RSS Feed with any feed reader', 'podpress').'"><img src="'.podpress_siteurl_is_ssl($catcast_options['buttonurl']).'" class="podpress_feed_buttons" alt="'.esc_attr(sprintf(__('Category "%1$s" RSS Feed', 'podpress'), get_cat_name($cat_id))).'" /></a></li>'."\n";
 									} else {
 										echo '	<li><a href="'.$cat_feed_link.'" title="'.__('Subscribe to this Category RSS Feed with any feed reader', 'podpress').'">'.$feed_icon.' '.sprintf(__('Category "%1$s" RSS Feed', 'podpress'), get_cat_name($cat_id)).'</a></li>'."\n";
 									}
@@ -1527,7 +1543,12 @@ License:
 
 			/** @see WP_Widget::form */
 			function form($instance) {
-				GLOBAL $podPress, $wpdb;
+				GLOBAL $podPress, $wpdb, $wp_version;
+				if ( TRUE == version_compare($wp_version, '2.7', '>=') AND TRUE == version_compare($wp_version, '2.8', '<')) {// for WP 2.7.x (because the plugins_url() worked differently in WP 2.7.x)
+					$plugins_url = plugins_url('podpress', __FILE__);
+				} else { 
+					$plugins_url = plugins_url('', __FILE__);
+				}
 				
 				// take over the old widget settings (of podPress 8.8.5.x widgets)
 				$old_widget_options = get_option('widget_podPressFeedButtons');
@@ -1662,7 +1683,7 @@ License:
 								} else {
 									$feedbutton_checked = '';
 								}
-								echo '<input type="radio" name="'.$this->get_field_name('podpressfeeds').'['.$feed['slug'].'][button]" id="'.$id_base.''.$i.'" value="'.$feedbutton.'"'.$feedbutton_checked.' /> <label for="'.$id_base.''.$i.'"><img src="'.PODPRESS_URL.'/images/'.$feedbutton.'" alt="'.$feedbutton.'" title="'.$feedbutton.'" /></label><br />'."\n";
+								echo '<input type="radio" name="'.$this->get_field_name('podpressfeeds').'['.$feed['slug'].'][button]" id="'.$id_base.''.$i.'" value="'.$feedbutton.'"'.$feedbutton_checked.' /> <label for="'.$id_base.''.$i.'"><img src="'.$plugins_url.'/images/'.$feedbutton.'" alt="'.$feedbutton.'" title="'.$feedbutton.'" /></label><br />'."\n";
 								$i++;
 							}
 							if ( TRUE == isset($instance['podpressfeeds'][$feed['slug']]['button']) AND 'custom' == $instance['podpressfeeds'][$feed['slug']]['button'] ) {
@@ -1796,7 +1817,12 @@ License:
 
 			/** @see WP_Widget::widget */
 			function widget($args, $instance) {
-				GLOBAL $podPress, $blog_id;
+				GLOBAL $podPress, $blog_id, $wp_version;
+				if ( TRUE == version_compare($wp_version, '2.7', '>=') AND TRUE == version_compare($wp_version, '2.8', '<')) {// for WP 2.7.x (because the plugins_url() worked differently in WP 2.7.x)
+					$plugins_url = plugins_url('podpress', __FILE__);
+				} else { 
+					$plugins_url = plugins_url('', __FILE__);
+				}
 				extract($args);
 				if (!isset($instance['title'])) {
 					$instance['title'] = __('Podcast Player', 'podpress');
@@ -1816,11 +1842,11 @@ License:
 				if (FALSE === $isset_podpress_xspf_widget_temp) {
 					update_option('podpress_xspf_widget_temp', $widget_id);
 				}
-				// podpress_xspf_widget_temp is going to be deleted from the db after the playlist has been loaded. (The XSPF loads the skin file before the playlist.)
 				
-				$skin_variables_url = PODPRESS_OPTIONS_URL.'/xspf_options/variables';
+				// podpress_xspf_widget_temp is going to be deleted from the db after the playlist has been loaded. (The XSPF loads the skin file before the playlist.)
+				$skin_variables_url = podpress_siteurl_is_ssl(PODPRESS_OPTIONS_URL.'/xspf_options/variables');
 				$skin_variables_dir = PODPRESS_OPTIONS_DIR.'/xspf_options/variables';
-				$skin_file = PODPRESS_URL.'/podpress_xspfskinfile.php';
+				$skin_file = $plugins_url.'/podpress_xspfskinfile.php';
 
 				echo $before_widget."\n";
 				echo $before_title . $title . $after_title."\n";
@@ -1835,7 +1861,7 @@ License:
 						}
 						
 						if ( TRUE == defined('PODPRESS_XSPF_PLAYER_USE_CUSTOM_SKINFILE_'.$blog_id) AND TRUE == defined('PODPRESS_XSPF_SLIM_SKIN_URL_'.$blog_id) AND TRUE == defined('PODPRESS_XSPF_SLIM_SKIN_DIR_'.$blog_id) AND TRUE == is_readable(constant('PODPRESS_XSPF_SLIM_SKIN_DIR_'.$blog_id).'/skin_'.$blog_id.'_'.$instance['PlayerWidth'].'x'.$instance['SlimPlayerHeight'].'.xml') ) {
-							$skin_file = constant('PODPRESS_XSPF_SLIM_SKIN_URL_'.$blog_id).'/skin_'.$blog_id.'_'.$instance['PlayerWidth'].'x'.$instance['SlimPlayerHeight'].'.xml';
+							$skin_file = podpress_siteurl_is_ssl(constant('PODPRESS_XSPF_SLIM_SKIN_URL_'.$blog_id)).'/skin_'.$blog_id.'_'.$instance['PlayerWidth'].'x'.$instance['SlimPlayerHeight'].'.xml';
 						}
 						
 						$skin_variables_url .= '_slim';
@@ -1849,7 +1875,7 @@ License:
 								$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true&format='.$instance['trackinfoformat'];
 							}
 						}
-						$data_string = PODPRESS_URL.'/players/xspf_jukebox/xspf_jukebox.swf?playlist_url='.(PODPRESS_URL.'/podpress_xspfplaylist.php').$variables;
+						$data_string = $plugins_url.'/players/xspf_jukebox/xspf_jukebox.swf?playlist_url='.($plugins_url.'/podpress_xspfplaylist.php').$variables;
 						$data_string = htmlspecialchars($data_string);
 						echo '<object type="application/x-shockwave-flash" classid="CLSID:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'.$instance['PlayerWidth'].'" height="'.$instance['SlimPlayerHeight'].'" id="podpress_xspf_player_slim">'."\n";
 						$height = $instance['SlimPlayerHeight'];
@@ -1859,7 +1885,7 @@ License:
 						}
 						
 						if ( TRUE == defined('PODPRESS_XSPF_PLAYER_USE_CUSTOM_SKINFILE_'.$blog_id) AND TRUE == defined('PODPRESS_XSPF_SKIN_URL_'.$blog_id) AND TRUE == defined('PODPRESS_XSPF_SKIN_DIR_'.$blog_id) AND TRUE == is_readable(constant('PODPRESS_XSPF_SKIN_DIR_'.$blog_id).'/skin_'.$blog_id.'_'.$instance['PlayerWidth'].'x'.$instance['PlayerHeight'].'.xml') ) {
-							$skin_file = constant('PODPRESS_XSPF_SKIN_URL_'.$blog_id).'/skin_'.$blog_id.'_'.$instance['PlayerWidth'].'x'.$instance['PlayerHeight'].'.xml';
+							$skin_file = podpress_siteurl_is_ssl(constant('PODPRESS_XSPF_SKIN_URL_'.$blog_id)).'/skin_'.$blog_id.'_'.$instance['PlayerWidth'].'x'.$instance['PlayerHeight'].'.xml';
 						}
 						if ( TRUE === defined('PODPRESS_XSPF_USE_CUSTOM_VARIABLES_'.$blog_id) AND TRUE === constant('PODPRESS_XSPF_USE_CUSTOM_VARIABLES_'.$blog_id) AND TRUE == is_readable($skin_variables_dir.'/variables_'.$blog_id.'.txt')) {
 							$variables = '&skin_url='.$skin_file.'&loadurl='.$skin_variables_url.'/variables_'.$blog_id.'.txt';
@@ -1870,7 +1896,7 @@ License:
 								$variables = '&skin_url='.$skin_file.'&autoload=true&autoplay=false&loaded=true&format='.$instance['trackinfoformat'];
 							}
 						}
-						$data_string = PODPRESS_URL.'/players/xspf_jukebox/xspf_jukebox.swf?playlist_url='.(PODPRESS_URL.'/podpress_xspfplaylist.php').$variables;
+						$data_string = $plugins_url.'/players/xspf_jukebox/xspf_jukebox.swf?playlist_url='.($plugins_url.'/podpress_xspfplaylist.php').$variables;
 						$data_string = htmlspecialchars($data_string);
 						echo '<object type="application/x-shockwave-flash" classid="CLSID:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'.$instance['PlayerWidth'].'" height="'.$instance['PlayerHeight'].'" id="podpress_xspf_player">'."\n";
 						$height = $instance['PlayerHeight'];
@@ -2205,16 +2231,12 @@ License:
 		return $lang_choice;
 	}
 	
-	function podPress_statsDownloadRedirect($requested = '##NOTSET##') {
+	function podPress_statsDownloadRedirect($requested = '##NOTSET##', $is_https = FALSE) {
 		GLOBAL $podPress;
-		//~ printphpnotices_var_dump('requested a:');
-		//~ printphpnotices_var_dump($requested);
 		if($requested == '##NOTSET##') {
 			$requested = parse_url($_SERVER['REQUEST_URI']);
 			$requested = $requested['path'];
 		}
-		//~ printphpnotices_var_dump('requested b:');
-		//~ printphpnotices_var_dump($requested);
 		$pos = 0;
 		if (is_404() || $pos = strpos($requested, 'podpress_trac')) {
 			if($pos == 0) {
@@ -2226,14 +2248,13 @@ License:
 			}
 			$requested = substr($requested, $pos);
 			$parts = explode('/', $requested);
-			//~ printphpnotices_var_dump($parts);
 			if(count($parts) == 4) {
-				podPress_processDownloadRedirect($parts[1], $parts[2], $parts[3], $parts[0]);
+				podPress_processDownloadRedirect($parts[1], $parts[2], $parts[3], $parts[0], $is_https);
 			}
 		}
 	}
 
-	function podPress_processDownloadRedirect($postID, $mediaNum, $filename, $method = '') {
+	function podPress_processDownloadRedirect($postID, $mediaNum, $filename, $method = '', $is_https = FALSE) {
 		GLOBAL $podPress, $wpdb;
 		$allowedMethods = array('feed', 'play', 'web');
 		$realURL = false;
@@ -2260,8 +2281,8 @@ License:
 		}
 
 		if(!$realURL) {
-			header('X-PodPress-Location: '.get_option('siteurl'));
-			header('Location: '.get_option('siteurl'));
+			header('X-PodPress-Location: '.site_url());
+			header('Location: '.site_url());
 			exit;
 		}
 		$badextensions = array('.smi', '.jpg', '.png', '.gif');
@@ -2277,6 +2298,10 @@ License:
 			$realSysPath = $podPress->TryToFindAbsFileName(str_replace('%20', ' ', $realURL));
 		}
 		$realURL = $podPress->convertPodcastFileNameToValidWebPath($realURL);
+
+		if (TRUE === $is_https) {
+			$realURL = podpress_siteurl_is_ssl($realURL);
+		}
 	
 		if ($podPress->settings['enable3rdPartyStats'] == 'PodTrac') {
 			$realURL = str_replace(array('ftp://', 'http://', 'https://'), '', $realURL);
@@ -2344,7 +2369,7 @@ License:
 		} elseif (class_exists(snoopy)) {
 			$client = new Snoopy();
 			$client->_fp_timeout = 10;
-			if (@$client->fetch('http://www.mightyseek.com/podpress_downloads/versioncheck.php?url='.get_option('siteurl').'&current='.PODPRESS_VERSION) === false) {
+			if (@$client->fetch('http://www.mightyseek.com/podpress_downloads/versioncheck.php?url='.site_url().'&current='.PODPRESS_VERSION) === false) {
 				return -1;
 			} else {
 				$remote = $client->results;

@@ -2,8 +2,8 @@
 Contributors: axelseaa
 Tags: expire, posts, pages, schedule
 Requires at least: 3.2
-Tested up to: 3.4
-Stable tag: 1.6.2
+Tested up to: 3.5.1
+Stable tag: 2.0.1
 
 Allows you to add an expiration date to posts which you can configure to either delete the post, change it to a draft, or update the 
 post categories.
@@ -46,6 +46,30 @@ This section describes how to install the plugin and get it working.
 3. Settings screen
 
 == Changelog ==
+
+**Version 2.0.1**
+
+* Removes old scheduled hook - this was not done completely in the 2.0.0 upgrade
+* Old option cleanup
+
+**Version 2.0.0**
+
+This is a major update of the core functions of this plugin.  All current plugins and settings should be upgraded to the new formats and work as expected.  Any posts currently schedule to be expirated in the future will be automatically upgraded to the new format.
+
+* New: Improved debug calls and logging
+* New: Added the ability to expire to a "private" post
+* New: Added the ability to expire by adding or removing categories.  The old way of doing things is now known as replacing categories
+* New: Revamped the expiration process - the plugin no longer runs on an minute, hourly, or other schedule.  Each expiration event schedules a unique event to run, conserving system resources and making things more efficient
+* New: The type of expiration event can be selected for each post, directly from the post editing screen
+* New: Ability to set defaults for each post type (including custom posts)
+* New: Renamed expiration-date meta value to _expiration-date
+* New: Revamped timezone handling to be more correct with WordPress standards and fix conflicts with other plugins
+* New: 'Expires' column on post display table now uses the default date/time formats set for the blog
+* Fix: Removed kses filter calls when then schedule task runs that was causing code entered as unfiltered_html to be removed
+* Fix: Updated some calls of date to now use date_i18n
+* Fix: Most (if not all) php error/warnings should be addressed
+* Fix: Updated wpdb calls in the debug class to use wpdb_prepare correctly
+* Fix: Changed menu capability option from "edit_plugin" to "manage_options"
 
 **Version 1.6.2**
 
@@ -149,6 +173,12 @@ NOTE: After upgrading, you may need to reset the cron schedules.  Following onsc
 * Initial Release
 
 == Upgrade Notice ==
+
+= 2.0.1 =
+Removes old scheduled hook - this was not done completely in the 2.0.0 upgrade
+
+= 2.0.0 =
+This is a major update of the core functions of this plugin.  All current plugins and settings should be upgraded to the new formats and work as expected.  Any posts currently schedule to be expirated in the future will be automatically upgraded to the new format.
 
 = 1.6.1 =
 Tweaked error messages, added option to allow user to select cron schedule and set default exiration duration

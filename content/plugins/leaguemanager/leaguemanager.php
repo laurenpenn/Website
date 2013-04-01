@@ -3,7 +3,7 @@
 Plugin Name: LeagueManager
 Plugin URI: http://wordpress.org/extend/plugins/leaguemanager/
 Description: Manage and present sports league results.
-Version: 3.8
+Version: 3.8.3
 Author: Kolja Schleich
 
 Copyright 2008-2009  Kolja Schleich  (email : kolja.schleich@googlemail.com)
@@ -524,11 +524,32 @@ class LeagueManagerLoader
 	}
 }
 
+/**
+ * Checks if a particular user has a role. 
+ * Returns true if a match was found.
+ *
+ * @param string $role Role name.
+ * @param int $user_id (Optional) The ID of a user. Defaults to the current user.
+ * @return boolean
+ *
+ * Put together by AppThemes (http://docs.appthemes.com/tutorials/wordpress-check-user-role-function/)
+ */
+/*function leaguemanager_check_user_role( $role, $user_id = null ) {
+ 
+    if ( is_numeric( $user_id ) )
+		$user = get_userdata( $user_id );
+    else
+        $user = wp_get_current_user();
+ 
+    if ( empty( $user ) )
+		return false;
+ 
+    return in_array( $role, (array) $user->roles );
+}*/
+ 
 // Run the Plugin
 global $lmLoader;
 $lmLoader = new LeagueManagerLoader();
-// export
 if ( isset($_POST['leaguemanager_export']) )
-	$lmLoader->adminPanel->export($_POST['league_id'], $_POST['mode']);
-
+	$lmLoader->adminPanel->export((int)$_POST['league_id'], $_POST['mode']); 
 ?>

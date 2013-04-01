@@ -55,7 +55,7 @@ License:
 	}
 
 	function podPress_rss2_ns() {
-		echo "\t".'xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"'."\n";
+		echo 'xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"'."\n";
 		echo "\t".'xmlns:media="http://search.yahoo.com/mrss/"'."\n";
 		//echo '"\t".xmlns:dtvmedia="http://participatoryculture.org/RSSModules/dtv/1.0"'."\n";
 	}
@@ -79,7 +79,7 @@ License:
 		$data = $podPress->settings['iTunes'];
 		$data['podcastFeedURL'] = $podPress->settings['podcastFeedURL'];
 		if (0 >= strlen(trim($data['author']))) {
-			if (0 < strlen($podPress->settings['iTunesAuthor'])) {
+			if (isset($podPress->settings['iTunesAuthor']) AND 0 < strlen($podPress->settings['iTunesAuthor'])) {
 				$data['author'] = stripslashes($podPress->settings['iTunesAuthor']);
 			} else {
 				$data['author'] = get_bloginfo('name');
@@ -95,7 +95,7 @@ License:
 		$data['admin_email'] = stripslashes(get_option('admin_email'));
 		$data['rss_ttl'] = get_option('rss_ttl');
 
-		if($podPress->settings['category_data']['categoryCasting'] == 'true') {
+		if ( (isset($podPress->settings['category_data']['categoryCasting']) AND 'true' == $podPress->settings['category_data']['categoryCasting']) ) {
 			$data['podcastFeedURL'] = $podPress->settings['category_data']['podcastFeedURL'];
 			if($podPress->settings['category_data']['iTunesNewFeedURL'] != '##Global##') {
 				$data['new-feed-url'] = $podPress->settings['category_data']['iTunesNewFeedURL'];
@@ -203,7 +203,7 @@ License:
 			echo '	<image>'."\n";
 			echo '		<url>'.$data['rss_image'].'</url>'."\n";
 			echo '		<title>'.get_bloginfo('name').'</title>'."\n";
-			echo '		<link>'.get_bloginfo('home').'</link>'."\n";
+			echo '		<link>'.site_url().'</link>'."\n";
 			echo '		<width>144</width>'."\n";
 			echo '		<height>144</height>'."\n";
 			echo '	</image>'."\n";
@@ -275,8 +275,14 @@ License:
 		return $content;
 	}
 	
+	/**
+	* podpress_post_is_password_protected - checks whether a password is required for the current post (with backward compatibility)
+	* @package podPress
+	* @since 8.8.10.3
+	* @return bool
+	*/	
 	function podpress_post_is_password_protected() {
-		GLOBAL $wp_version;
+		GLOBAL $post, $wp_version;
 		if ( TRUE === version_compare($wp_version, '2.7', '>=') ) {
 			if ( TRUE === post_password_required($post) ) {
 				$is_password_protected = TRUE;
@@ -285,7 +291,7 @@ License:
 			}
 		} else {
 			if ( !empty($post->post_password) ) { // if there's a password
-				if ( !isset($_COOKIE['wp-postpass_'.COOKIEHASH]) || $_COOKIE['wp-postpass_'.COOKIEHASH] != $post->post_password ) {  // and it doesn't match the cookie			if ( TRUE === post_password_required($post) ) {
+				if ( !isset($_COOKIE['wp-postpass_'.COOKIEHASH]) || $_COOKIE['wp-postpass_'.COOKIEHASH] != $post->post_password ) {  // and it doesn't match the cookie
 					$is_password_protected = TRUE;
 				} else {
 					$is_password_protected = FALSE;
@@ -307,6 +313,8 @@ License:
 			if ( FALSE === $is_password_protected ) {
 				echo $enclosureTag;
 			}
+global $podpress_is_itunessubtitle_or_summary;
+$podpress_is_itunessubtitle_or_summary = TRUE;
 			if ( $post->podPressPostSpecific['itunes:subtitle'] == '##PostExcerpt##' ) {
 				if ( TRUE === $is_password_protected ) {
 					$post->podPressPostSpecific['itunes:subtitle'] = __('This post is password protected.', 'podPress');
@@ -335,7 +343,7 @@ License:
 					}
 				break;
 				case '##PostContentShortened##' :
-					if ( post_password_required($post) ) {
+					if ( TRUE === $is_password_protected ) {
 						$post->podPressPostSpecific['itunes:summary'] = __('This post is password protected.', 'podPress');
 					} else {
 						if ( TRUE == version_compare($wp_version, '2.9', '>=') ) {
@@ -346,6 +354,7 @@ License:
 					}
 				break;
 			}
+$podpress_is_itunessubtitle_or_summary = FALSE;
 			
 			if ( FALSE == empty($post->podPressPostSpecific['itunes:summary']) ) {
 				echo '		<itunes:summary>'.podPress_strlimiter_end(podPress_feedSafeContent(stripslashes($post->podPressPostSpecific['itunes:summary']), FALSE, TRUE), 4000, '[...]', TRUE).'</itunes:summary>'."\n";
@@ -478,7 +487,13 @@ License:
 			$data['rss_license_url'] = $feed['license_url'];
 		}
 		
-		echo "\t".'<!-- podcast_generator="podPress/'.PODPRESS_VERSION.'" -->'."\n";
+		if (isset($podPress->settings['enableVersionInFeeds']) AND TRUE === $podPress->settings['enableVersionInFeeds'] ) {
+			if (isset($podPress->settings['disableVersionNumber']) AND TRUE === $podPress->settings['disableVersionNumber'] ) {
+				echo '	<!-- podcast_generator="podPress" -->'."\n";
+			} else {
+				echo '	<!-- podcast_generator="podPress/'.PODPRESS_VERSION.'" -->'."\n";
+			}
+		}
 		
 		echo "\t".'<logo>'.podPress_feedSafeContent($data['rss_image']).'</logo>'."\n";
 
@@ -513,7 +528,7 @@ License:
 	}
 
 	function podPress_xspf_playlist() {
-		GLOBAL $podPress, $more, $posts, $post, $m;
+		GLOBAL $podPress, $more, $posts, $post;
 		header('HTTP/1.0 200 OK');
 		header('Content-type: application/xspf+xml; charset=' . get_bloginfo('charset'), true);
 		header('Content-Disposition: attachment; filename="playlist.xspf"');
@@ -643,7 +658,7 @@ License:
 				if(isset($_GET['format']) && $_GET['format'] == $post->podPressMedia[$key]['ext']) {
 					$preferredFormat = true;
 				}
-				if ($post->podPressMedia[$key]['rss'] == 'on' || $post->podPressMedia[$key]['atom'] == 'on' || $preferredFormat === true || $ignore_incl_selection === TRUE ) {
+				if ( (isset($post->podPressMedia[$key]['rss']) AND $post->podPressMedia[$key]['rss'] == 'on') || (isset($post->podPressMedia[$key]['atom']) AND $post->podPressMedia[$key]['atom'] == 'on') || $preferredFormat === true || $ignore_incl_selection === TRUE ) {
 					if ($feedtype == 'atom' && ( $post->podPressMedia[$key]['atom'] == 'on' OR $preferredFormat === TRUE OR $ignore_incl_selection === TRUE) ) {
 						$post->podPressMedia[$key]['URI'] = $podPress->convertPodcastFileNameToWebPath($post->ID, $key, $post->podPressMedia[$key]['URI'], 'feed');
 						$result .= '<link rel="enclosure" type="'.$post->podPressMedia[$key]['mimetype'].'" href="'.$post->podPressMedia[$key]['URI'].'" length="'.$post->podPressMedia[$key]['size'].'" />'."\n";
@@ -690,7 +705,7 @@ License:
 
 						// $foundPreferred is the limiter for enclosures in RSS items
 						// $preferredFormat signals whether a file type filter is active or not
-						if ( $post->podPressMedia[$key]['rss'] == 'on' || $ignore_incl_selection === TRUE) {
+						if ( (isset($post->podPressMedia[$key]['rss']) AND $post->podPressMedia[$key]['rss'] == 'on') || $ignore_incl_selection === TRUE) {
 							if ( !$preferredFormat && $foundPreferred ) {
 								continue;
 							} elseif ( $preferredFormat ) {
@@ -736,7 +751,7 @@ License:
 	// This function prints the enclosure tags of the enclosure which were not added with podPress
 	function podPress_add_nonpodpress_enclosures($feedtype) {
 		GLOBAL $podPress, $post, $podpress_allowed_ext;
-		if ( post_password_required() ) { return; }
+		if ( podpress_post_is_password_protected() ) { return; }
 		foreach ( (array) get_post_custom() as $key => $val) {
 			if ($key == 'enclosure') {
 				foreach ( (array) $val as $enc ) {
@@ -784,7 +799,7 @@ License:
 		GLOBAL $podPress, $post;
 		$result = '';
 		$data = array();
-		if($podPress->settings['category_data']['categoryCasting'] == 'true' && is_array($podPress->settings['category_data']['iTunesCategory'])) {
+		if( (isset($podPress->settings['category_data']['categoryCasting']) AND 'true' == $podPress->settings['category_data']['categoryCasting']) && is_array($podPress->settings['category_data']['iTunesCategory'])) {
 			foreach ($podPress->settings['category_data']['iTunesCategory'] as $key=>$value) {
 				if($value == '##Global##') {
 					if(!empty($podPress->settings['iTunes']['category'][$key])) {
@@ -838,7 +853,7 @@ License:
 			if ( isset($podPress->settings['category_data']['categoryCasting']) AND empty($podPress->settings['category_data']['categoryCasting']) ) {
 				$podPress->settings['category_data']['categoryCasting'] = 'true';
 			}
-			if ( 'true' === $podPress->settings['category_data']['categoryCasting'] ) {
+			if ( isset($podPress->settings['category_data']['categoryCasting']) AND 'true' == $podPress->settings['category_data']['categoryCasting'] ) {
 				switch ($selection) {
 					case 'blogname' :
 						switch ($podPress->settings['category_data']['blognameChoice']) {
@@ -942,4 +957,3 @@ License:
 	function podPress_feedBlogRssImage ($input) {
 		return podPress_getCategoryCastingFeedData('rss_image', $input);
 	}
-?>

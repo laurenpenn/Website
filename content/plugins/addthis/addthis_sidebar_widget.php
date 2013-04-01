@@ -41,7 +41,6 @@ class AddThisSidebarWidget extends WP_Widget {
         printf(apply_filters('addthis_sidebar_style_output',  $addthis_new_styles[$instance['style']]['src']), '');
         
         echo $after_widget;
-    
     }
 
     /**

@@ -44,7 +44,7 @@ License:
 			if ( '0' == $current ) { // if no version number was in the db or if something is wrong with it.
 				$this->activate();
 			}
-
+			
 			// upgrade from a podPress version which is older than 8.8 to podPress v8.8
 			if ( TRUE === version_compare('8.8', $current, '>=') ) {
 				$this->do_legacy_upgrades($current);
@@ -56,8 +56,8 @@ License:
 			podPress_maybe_add_column($wpdb->prefix.'podpress_stats', 'completed', $create_table);
 			
 			// rename the post specific settings and the media meta keys. 
-			$wpdb->query( $wpdb->prepare( "UPDATE ".$wpdb->prefix."postmeta SET meta_key = '_podPressPostSpecific' WHERE meta_key = 'podPressPostSpecific'" ) );
-			$wpdb->query( $wpdb->prepare( "UPDATE ".$wpdb->prefix."postmeta SET meta_key = '_podPressMedia' WHERE meta_key = 'podPressMedia'" ) );
+			$wpdb->query( "UPDATE ".$wpdb->prefix."postmeta SET meta_key = '_podPressPostSpecific' WHERE meta_key = 'podPressPostSpecific'" );
+			$wpdb->query( "UPDATE ".$wpdb->prefix."postmeta SET meta_key = '_podPressMedia' WHERE meta_key = 'podPressMedia'" );
 			
 			if ( TRUE === version_compare('8.8.8', $current, '>') ) {
 				// remove the portectedMediaFile setting because it was and it is not in use and the option has been removed from the podPress general options in 8.8.8 (again) 
@@ -82,7 +82,38 @@ License:
 					podPress_update_option('podPress_config', $settings);
 				}
 			}
-			
+			if ( TRUE === version_compare('8.8.10.14', $current, '>') ) {
+				// During the 8.8.10 and 8.8.10.12 podPress collected the numbers with under two different file name versions and not under one name. 
+				// The file names results from the HTML5 players had a different encoding. The file have been encoed with rawurlencode() while all the file names of all other downloads have not been encoded with this function.
+				// For example: example(nr1).mp3 would have been saved as media = example(nr1).mp3 and media = example%28nr1%29.mp3
+				$result = $wpdb->get_results("SELECT COUNT(*) as rows FROM ".$wpdb->prefix."podpress_statcounts", ARRAY_A);
+				if ( FALSE === empty($result[0]) AND TRUE === isset($result[0]['rows']) AND 0 < intval($result[0]['rows']) ) {
+					// stats table exists and has entries
+					if ( function_exists('get_admin_url') ) {
+						$adminurl = get_admin_url(); // since WP 3.0
+					} elseif ( function_exists('admin_url') ) {
+						$adminurl = admin_url(); // since WP 2.6
+					} else {
+						$adminurl = site_url() . '/wp-admin';
+					}
+					$ppgeneralsettingsurl = trailingslashit($adminurl).'admin.php?page=podpress/podpress_general.php';
+					podpress_add_upgrade_status('podpress_update_statcounts_table', sprintf(__('<strong>Notice:</strong> The podPress upgrade is not complete. Please, <a href="%1$s">go to the General Settings page of podPress</a> to finish this process manually.', 'podPress'), $ppgeneralsettingsurl), '', Array('key'=>'enableStats', 'value' => TRUE));
+				}
+				$result = $wpdb->get_results("SELECT COUNT(*) as rows FROM ".$wpdb->prefix."podpress_stats", ARRAY_A);
+				if ( FALSE === empty($result[0]) AND TRUE === isset($result[0]['rows']) AND 0 < intval($result[0]['rows']) ) {
+					// stats table exists and has entries
+					if ( function_exists('get_admin_url') ) {
+						$adminurl = get_admin_url(); // since WP 3.0
+					} elseif ( function_exists('admin_url') ) {
+						$adminurl = admin_url(); // since WP 2.6
+					} else {
+						$adminurl = site_url() . '/wp-admin';
+					}
+					$ppgeneralsettingsurl = trailingslashit($adminurl).'admin.php?page=podpress/podpress_general.php';
+					podpress_add_upgrade_status('podpress_update_stats_table', sprintf(__('<strong>Notice:</strong> The podPress upgrade is not complete. Please, <a href="%1$s">go to the General Settings page of podPress</a> to finish this process manually.', 'podPress'), $ppgeneralsettingsurl), '', Array('key'=>'enableStats', 'value' => TRUE));
+				}
+			}
+
 			// update the version number in the db
 			$current = constant('PODPRESS_VERSION');
 			update_option('podPress_version', $current);

@@ -106,6 +106,72 @@ License:
 				echo '	<h2>'.__('General Settings', 'podpress').'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.mightyseek.com/podpress/#download" target="_new"><img src="http://www.mightyseek.com/podpress_downloads/versioncheck.php?current='.PODPRESS_VERSION.'" alt="'.__('Checking for updates... Failed.', 'podpress').'" border="0" /></a></h2>'."\n";
 			}
 			
+			
+			$is_stats_upgr = podPress_isset_upgrade_status('podpress_update_stats_table');
+			$is_statcounts_upgr = podPress_isset_upgrade_status('podpress_update_statcounts_table');
+			
+			if ( TRUE === $is_stats_upgr  OR TRUE === $is_statcounts_upgr ) {
+				$upgr_process_nr = '11092011';
+				
+				echo "\n".'		<div id="podpress_dialog_stats_upgr" title="'.attribute_escape(__('Finish the plugin upgrade and correct the download statistic:', 'podpress')).'" style="display:none;">'."\n";
+				
+				if ( defined('NONCE_KEY') AND is_string(constant('NONCE_KEY')) AND '' != trim(constant('NONCE_KEY')) ) {
+					$nonce_key = constant('NONCE_KEY');
+				} else {
+					$nonce_key = 'Af|F07*wC7g-+OX$;|Z5;R@Pi]ZgoU|Zex8=`?mO-Mdvu+WC6l=6<O^2d~+~U3MM';
+				}
+				$max_time = podPress_get_max_execution_time();
+				echo '<h2 id="podpress_upgr_header">'.sprintf(__('Upgrade of the data base table: %1$s','podpress'), 'wp_podpress_<span id="podpress_upgr_header_table_name"></span>');
+				if ( TRUE === $is_stats_upgr  AND TRUE === $is_statcounts_upgr ) {
+					echo '<div id="podpress_upgr_part_counter" style="float:right"><span id="podpress_upgr_part_counter_current">1</span> / <span id="podpress_upgr_part_counter_total">2</span></div>';
+				}
+				echo '</h2>';
+				echo '<p>';
+				echo '<strong>'.__('What is the reason for this upgrade?', 'podpress').'</strong><br />';
+				echo __('Some of the podPress versions since 8.8.10 have stored the download statistic results in some cases (if the file names contain <a href="http://en.wikipedia.org/wiki/Percent-encoding#Types_of_URI_characters" target="_blank" title="en.Wiki: persent-encoding">reserved URL characters</a>) with wrong encoded names in the data base. For instance: A file name with such reserved characters is <em>podcast(nr1).mp3</em>. It was possible that podPress had created an entry for <em>podcast(nr1).mp3</em> (with the brackets as they are) and one entry with a different encoding mechanism: <em>podcast%28nr1%29.mp3</em>. The problem is that only one of these entries would show up on the statistic result pages. But this upgrade will correct the entries in the wp_podpress_statcounts and wp_podpress_stats tables.', 'podpress');
+				echo '</p><p>';
+				echo '<strong>'.__('How it works and what you need to do', 'podpress').'</strong><br />';
+				echo __('(The statistic feature is deativated while this dialog is open.)', 'podpress').'<br />';
+				echo __('The upgrade of the statistics data base tables may require some time - probably more time than this part of the plugin is allowed to run at once. (The limit is called max_execution_time.) That is the reason why your help is needed to complete the process.', 'podpress');
+				echo __('Basically you need to start the process again as long as there are not upgraded rows left in the data base tables.', 'podpress');
+				echo '<br />'.__('You may choose the increment (number of rows which will be upgraded at once). You can speed up the process. But since the time which is needed to update a certain amount of rows may fluctuate depending on the usage of the web server of your blog, it is recommended to try a low increment value at first and increase it carefully.', 'podpress');
+				echo '</p>';
+				echo '<p>';
+				echo sprintf(__('In this case the max. execution time for the blog software is: %1$s seconds.', 'podpress'), '<span id="podpress_upgr_max_execution_time">'.number_format($max_time).'</span>')."\n";
+				echo '</p>';
+				echo '<p>';
+				echo sprintf(__('The time needed to correct %1$s rows in the data base: %2$s  seconds', 'podpress'), '<span id="podpress_upgr_used_increment">...</span>', '<span id="podpress_upgr_elapsed_time"></span>')."\n";
+				//~ echo '<br />'.sprintf(__('first increment: %1$s.', 'podpress'), '<span id="podpress_upgr_increment_limit_nr1">10</span>');
+				echo '</p>';
+				echo '<input type="hidden" id="podpress_ajax_nonce_key" value="'.attribute_escape(wp_create_nonce($nonce_key)).'" /> '."\n";
+				echo '<input type="hidden" id="podpress_upgr_process_nr" value="'.$upgr_process_nr.'" /> '."\n";
+				if ( TRUE === $is_stats_upgr ) {
+					echo '<input type="hidden" id="podpress_is_stats_upgr" value="true" /> '."\n";
+				} else {
+					echo '<input type="hidden" id="podpress_is_stats_upgr" value="false" /> '."\n";
+				}
+				if ( TRUE === $is_statcounts_upgr ) {
+					echo '<input type="hidden" id="podpress_is_statcounts_upgr" value="true" /> '."\n";
+				} else {
+					echo '<input type="hidden" id="podpress_is_statcounts_upgr" value="false" /> '."\n";
+				}
+				
+				echo '<div id="podPress_upgrade_form">';
+				echo '</div>'."\n";
+				
+				echo '<input type="hidden" name="podPress_upgrade_stats_table_Submit" value="'.__('correct the entries ...', 'podpress').' &raquo;" /> '."\n";
+				if ( TRUE === $is_stats_upgr AND TRUE === $is_statcounts_upgr ) {
+					echo '<input type="hidden" name="podPress_upgrade_statcounts_table_finished" value="'.__('finish the first part of the upgrade', 'podpress').' &raquo;" /> '."\n";
+					echo '<input type="hidden" name="podPress_upgrade_stats_table_finished" value="'.__('finish the upgrade', 'podpress').' &raquo;" /> '."\n";
+				} else {
+					echo '<input type="hidden" name="podPress_upgrade_statcounts_table_finished" value="'.__('finish the upgrade', 'podpress').' &raquo;" /> '."\n";
+					echo '<input type="hidden" name="podPress_upgrade_stats_table_finished" value="'.__('finish the upgrade', 'podpress').' &raquo;" /> '."\n";
+				}
+				echo '	</div>'."\n";
+			}
+		
+			
+			
 			echo '	<form method="post">'."\n";
 
 			if ( function_exists('wp_nonce_field') ) { // since WP 2.0.4
@@ -198,7 +264,7 @@ License:
 			} elseif ( function_exists('admin_url') ) {
 				$adminurl = admin_url(); // since WP 2.6
 			} else {
-				$adminurl = get_option( 'siteurl' ) . '/wp-admin';
+				$adminurl = site_url() . '/wp-admin';
 			}
 			$permalinksettingsurl = trailingslashit($adminurl).'options-permalink.php';
 			
@@ -266,14 +332,14 @@ License:
 			echo '				<li>'.sprintf(__('"Use WP Permalinks" (recommended) - Requires a non-default permalink structure (go to <a href="%1$s">Settings > Permalinks</a>). Activating any non-default permalink setting in Wordpress will create an <a href="http://en.wikipedia.org/wiki/.htaccess" target="_blank" title="en.Wikipedia: .htaccess">.htaccess</a> file (or <a href="http://en.wikipedia.org/wiki/Web.config" target="_blank" title="en.Wikipedia: Web.config">web.config</a> file on some web-servers) in the base directory of your blog which podpress needs to support tracking statistics. If enabling permalinks in Wordpress breaks your download links or results in a "File not found" error when using the media player, then you should look into using one of the other methods for tracking statistics.', 'podpress'), $permalinksettingsurl).'</li>';
 			echo '				<li>'.__('"Optional Files podpress_trac directory" - If you cannot use WP permalinks and you run <a href="http://en.wikipedia.org/wiki/Apache_HTTP_Server" target="_blank" title="en.Wikipedia: Apache HTTP Server">Apache</a>, this option may work (depending on the webserver configuration - see details below*). If you choose this option then you need to copy the folder podpress_trac/ including the two files (index.php and .htaccess) to the root folder of your blog. After copying these files the root folder should contain wp-config.php and four subdirectories; wp-admin, wp-content, wp-includes and podpress_trac. The podpress_trac folder contains an .htaccess file and an index.php file which enable podpress to resolve URLs of the media files which will be tracked by the statistics features in podPress. The copied folder and the files should be given the same filesystem permissions as the other folders and files in your WordPress install.<br />*If this method fails after copying the required files and setting the permissions it could be that your server is configured to ignore directory-level .htaccess files. Shared hosting users may need to contact their support to allow these files. If you are configuring your own Apache server the podpress_trac folder needs to have <code>AllowOverride FileInfo Options</code> or <code>AllowOverride All</code>. You can find the necessary configuration details here: <a href="http://httpd.apache.org/docs/2.0/mod/core.html#allowoverride" target="_blank">http://httpd.apache.org/docs/2.0/mod/core.html#allowoverride</a>.', 'podpress').'</li>';
 			echo '				<li>'.__('"Use download.mp3" - This is an alternative to using an .htaccess file. This is provided for sites which run webservers that do not use the .htaccess file for configuration, such as Microsoft Internet Information Server (IIS).<br />To use this option, you will need to configure your web server to process .mp3 files the same way it does .php files. This is only necessary for the podPress directory, so that the download.mp3 file will be processed as a .php file.<br />If you do not know the type or version of the webserver you are using you can retrieve the information by using WP plugins like <a href="http://wordpress.org/extend/plugins/wp-system-health/" target="_blank">WP System Health</a> or <a href="http://wordpress.org/extend/plugins/system-information/" target="_blank">System information</a>.', 'podpress').'</li>';
-			echo '				<ul>'."\n";
+			echo '				</ul>'."\n";
 			echo '				</td>'."\n";
 			echo '			</tr> '."\n";
 
 			echo '			<tr id="statsmethodtest" '.$showStatsOptions.'>'."\n";
 			echo '				<th><label for="statsmethodtest">'.__('Test the stat method', 'podpress').':</label></th>'."\n";
 			echo '				<td colspan="2">'."\n";
-			echo '					<input type="button" name="statTest" value="'.__('start the test', 'podpress').'" onclick="podPressTestStats(\''.get_bloginfo('home').'/podpress_trac/web/0/0/podPressStatTest.txt\')"/>'."\n"; // WP 3.0 compatible
+			echo '					<input type="button" name="statTest" value="'.__('start the test', 'podpress').'" onclick="podPressTestStats(\''.site_url().'/podpress_trac/web/0/0/podPressStatTest.txt\')"/>'."\n"; // WP 3.0 compatible
 			echo '					<input type="text" name="statTestResult" id="statTestResult" size="30" value="" readonly="readonly" />'."\n";
 			echo '				</td>'."\n";
 			echo '			</tr> '."\n";
@@ -302,7 +368,7 @@ License:
 			echo '				<li>'.__('"Counts Only" (recommended) - podPress counts only how many times a media was downloaded from the website, the feeds and how often the player of this file was started. Your media files should have unique file names. (The db table name is e.g. wp_podpress_statcounts.)', 'podpress').'</li>';
 			echo '				<li>'.__('"Full" - With this option podPress will log how many times a media was downloaded from the website, the feeds and how often the player of this file was started. It will also log on each download the ID of the post (or page), the IP address, the referrer, the browser type (User Agent) and the time of the download. Furthermore podPress parses the referer and user agent information and store the information in separate columns in the database.<br />Full includes also the posssibility to mark downloads on the basis of user agent names and IP addresses as downloads of <a href="http://en.wikipedia.org/wiki/Internet_bot" target="_blank" title="en.Wikipedia: Internet bot">Internets bots</a> and filter the statistic tables and graphs. (The db table name is e.g. wp_podpress_stats.) If you add more than one media file to a post (with podPress) then these files should have different file names.', 'podpress').'</li>';
 			echo '				<li>'.__('"Full+" (experimental) - If you would like to know all the information "Full" gives you and additionally whether a download has been completed or not. podPress can only try to find out whether a file transfer was complete, if the file is on the same server as your blog (if it is a local file for the script). If you add more than one media file to a post (with podPress) then these files should have different file names. In order to get the information whetehr a download was complete or not podPress (or at least a PHP script of podPress) needs to run during the whole download. But this may lead to problems if the file is relative big or the maximum execution time for PHP scripts is relative short on the server of your blog. If the time limit is reached the download stops. So if you are not allowed to change the max_execution_time setting of the PHP configuration on the server of your blog or if you are unsure what this all means then please use the "Full" method (as recommended).', 'podpress').'</li>';
-			echo '				<ul>'."\n";
+			echo '				</ul>'."\n";
 			echo '				'.__('Note that if you enable the statistics, the Counts Only counter counts always even if you choose Full or Full+ but not vice versa.', 'podpress')."\n";
 			echo '				</td>'."\n";
 			echo '			</tr> '."\n";
@@ -532,6 +598,41 @@ License:
 				} else {
 					echo '			<td colspan="2">'."\n";
 					echo '				<input type="checkbox" name="enablePremiumContent" id="enablePremiumContent" '; if($this->settings['enablePremiumContent']) { echo 'checked="checked"'; } echo " onclick=\"javascript: podPressShowHideRow('premiumPodcastingHelp'); podPressShowHideRow('premiumMethodWrapper'); podPressShowHideRow('premiumContentFakeEnclosureWrapper');\" />\n";
+					
+					// ntm: the following section is for a future version. It is a check for the modules which are required for the authorization process of the premium festure
+					//~ $loaded_extensions = get_loaded_extensions();
+					//~ $mod_auth_basic_available = FALSE;
+					//~ $mod_auth_digest_available = FALSE;
+					//~ $apache_modules = Array();
+					//~ if ( TRUE === is_array($loaded_extensions) ) {
+						//~ foreach ($loaded_extensions as $extension_name) {
+							//~ if ( FALSE !== stripos($extension_name, 'apache') ) {
+								//~ $apache_modules = apache_get_modules();
+								//~ if ( FALSE === is_array($apache_modules) ) {
+									//~ break;
+								//~ }
+								//~ if ( TRUE === in_array('mo_auth_basic', $apache_modules) ) {
+									//~ echo '				<p class="podpress_notice">'.__('mod_auth_basic is available', 'podpress').'</p>';
+									//~ $mod_auth_basic_available = TRUE;
+								//~ } else {
+									//~ echo '				<p class="podpress_error">'.__('mod_auth_basic is not available', 'podpress').'</p>';
+								//~ }
+								//~ if ( TRUE === in_array('mod_auth_digest', $apache_modules) ) {
+									//~ echo '				<p class="podpress_notice">'.__('mod_auth_digest is available', 'podpress').'</p>';
+									//~ $mod_auth_digest_available = TRUE;
+								//~ } else {
+									//~ echo '				<p class="podpress_error">'.__('mod_auth_digest is not available', 'podpress').'</p>';
+								//~ }
+								//~ break;
+							//~ }
+						//~ }
+					//~ }
+					//~ if ( FALSE === $mod_auth_basic_available OR FALSE === $mod_auth_digest_available ) {
+							//~ echo "				<p>all currently available Apache modules:<br />\n";
+							//~ echo implode(', ', $apache_modules);
+							//~ echo "				</p>\n";
+					//~ }
+					
 					//ntm: with the podPressShowHideRow('protectedMediaFilePathWrapper'); podPressShowHideRow('protectedMediaFilePathHelp');
 					//~ echo '				<input type="checkbox" name="enablePremiumContent" id="enablePremiumContent" '; if($this->settings['enablePremiumContent']) { echo 'checked="checked"'; } echo " onclick=\"javascript: podPressShowHideRow('premiumPodcastingHelp'); podPressShowHideRow('protectedMediaFilePathWrapper'); podPressShowHideRow('protectedMediaFilePathHelp'); podPressShowHideRow('premiumMethodWrapper'); podPressShowHideRow('premiumContentFakeEnclosureWrapper');\" />\n";
 					echo '			</td>'."\n";
@@ -830,8 +931,8 @@ License:
 			$all_plugins = get_plugins();
 			$podpress_version = $all_plugins[plugin_basename(dirname(__FILE__).'/podpress.php')]['Version'];
 			if ( TRUE == version_compare($podpress_version, '8.8.10', '>=') ) {
-				$nr_old_meta_keys_podPressMedia = intval($wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) as old_meta_keys FROM ".$wpdb->prefix."postmeta WHERE meta_key = 'podPressMedia'" )));
-				$nr_old_meta_keys_podPressPostSpecific = intval($wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) as old_meta_keys FROM ".$wpdb->prefix."postmeta WHERE meta_key = 'podPressPostSpecific'" )));
+				$nr_old_meta_keys_podPressMedia = intval($wpdb->get_var( "SELECT COUNT(*) as old_meta_keys FROM ".$wpdb->prefix."postmeta WHERE meta_key = 'podPressMedia'" ));
+				$nr_old_meta_keys_podPressPostSpecific = intval($wpdb->get_var( "SELECT COUNT(*) as old_meta_keys FROM ".$wpdb->prefix."postmeta WHERE meta_key = 'podPressPostSpecific'" ));
 				if ( ($nr_old_meta_keys_podPressMedia + $nr_old_meta_keys_podPressPostSpecific) > 0 ) {
 					echo '			<tr>'."\n";
 					echo '				<th><span class="podpress_error">'.__('old meta_key names detected', 'podpress').'</span></th>'."\n";
@@ -885,7 +986,11 @@ License:
 			echo '			<tr>'."\n";
 			echo '				<th><label for="donation_button">'.__('Donations Appreciated:', 'podpress').'</label></th>'."\n";
 			echo '				<td>'."\n";
-			echo '					<a id="donation_button" href="http://www.mightyseek.com/podpress_donate.php" title="'.__('Donation button of the original author of this project Dan Kuykendall (seek3r)', 'podpress').'" target="_blank"><img alt="'.__('Donation button of the original author of this project Dan Kuykendall (seek3r)', 'podpress').'" border="0" src="'.PODPRESS_URL.'/images/x-click-but04.gif" /></a>'."\n";
+			if ( TRUE == version_compare($wp_version, '2.7', '>=') AND TRUE == version_compare($wp_version, '2.8', '<')) {// for WP 2.7.x (because the plugins_url() worked differently in WP 2.7.x)
+			echo '					<a id="donation_button" href="http://www.mightyseek.com/podpress_donate.php" title="'.__('Donation button of the original author of this project Dan Kuykendall (seek3r)', 'podpress').'" target="_blank"><img alt="'.__('Donation button of the original author of this project Dan Kuykendall (seek3r)', 'podpress').'" border="0" src="'.plugins_url('podpress/images/x-click-but04.gif', __FILE__).'" /></a>'."\n";
+			} else { 
+			echo '					<a id="donation_button" href="http://www.mightyseek.com/podpress_donate.php" title="'.__('Donation button of the original author of this project Dan Kuykendall (seek3r)', 'podpress').'" target="_blank"><img alt="'.__('Donation button of the original author of this project Dan Kuykendall (seek3r)', 'podpress').'" border="0" src="'.plugins_url('images/x-click-but04.gif', __FILE__).'" /></a>'."\n";
+			}
 			echo '				</td>'."\n";
 			echo '				<td class="podpress_settings_description_cell">'.__('This project is a labor of love, feel no obligation what-so-ever to donate. For those that want to, here ya go.', 'podpress').' <span class="nonessential">('.__('Donation button of the original author of this project Dan Kuykendall (seek3r)', 'podpress').')</span></td>'."\n";
 			echo '			</tr> '."\n";
@@ -1023,6 +1128,7 @@ License:
 
 			if(isset($_POST['enablePremiumContent'])) {
 				$this->settings['enablePremiumContent'] = true;
+				$this->add_podpress_role();
 				if(is_object($GLOBALS['wp_rewrite'])
 					&& is_array($GLOBALS['wp_object_cache']) 
 					&& is_array($GLOBALS['wp_object_cache']['cache']) 
@@ -1184,8 +1290,8 @@ License:
 			
 			if ( TRUE == isset($_POST['podpress_add_underscore_to_old_meta_keys']) ) {
 				// rename the post specific settings and the media meta keys. 
-				$wpdb->query( $wpdb->prepare( "UPDATE ".$wpdb->prefix."postmeta SET meta_key = '_podPressPostSpecific' WHERE meta_key = 'podPressPostSpecific'" ) );
-				$wpdb->query( $wpdb->prepare( "UPDATE ".$wpdb->prefix."postmeta SET meta_key = '_podPressMedia' WHERE meta_key = 'podPressMedia'" ) );
+				$wpdb->query( "UPDATE ".$wpdb->prefix."postmeta SET meta_key = '_podPressPostSpecific' WHERE meta_key = 'podPressPostSpecific'" );
+				$wpdb->query( "UPDATE ".$wpdb->prefix."postmeta SET meta_key = '_podPressMedia' WHERE meta_key = 'podPressMedia'" );
 				
 				// update the version number in the db
 				$current = constant('PODPRESS_VERSION');
@@ -1198,9 +1304,9 @@ License:
 			
 			$result = podPress_update_option('podPress_config', $this->settings);
 			if ( FALSE !== $result ) {
-				$location = get_option('siteurl') . '/wp-admin/admin.php?page=podpress/podpress_general.php&updated=true';
+				$location = site_url() . '/wp-admin/admin.php?page=podpress/podpress_general.php&updated=true';
 			} else {
-				$location = get_option('siteurl') . '/wp-admin/admin.php?page=podpress/podpress_general.php&updated=false';
+				$location = site_url() . '/wp-admin/admin.php?page=podpress/podpress_general.php&updated=false';
 			}
 			header('Location: '.$location);
 			exit;

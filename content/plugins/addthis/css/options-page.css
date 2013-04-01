@@ -10,6 +10,7 @@ h3.page-title {
 ul.nav-tab-wrapper {
 	height: 57px;
 	border-bottom: 1px solid #ccc;
+	margin-bottom: 0;
 }
 ul.nav-tab-wrapper li:first-child {
 	margin-left: 10px;
@@ -19,7 +20,7 @@ ul.nav-tab-wrapper li {
 	border-bottom: none;
 	padding: 14px 24px;
 	margin: 0;
-	border-bottom: 1px solid #CCCCCC;
+	/*border-bottom: 1px solid #CCCCCC;*/
 }
 ul.nav-tab-wrapper li a{	
 	text-decoration:none;
@@ -37,6 +38,7 @@ ul.nav-tab-wrapper li.ui-tabs-selected{
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #fff;
 	padding-bottom: 13px;
+	height: 29px;
 }
 li.ui-tabs-active{
     -moz-border-radius: 5px 5px 0 0 !important;

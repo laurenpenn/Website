@@ -6,6 +6,7 @@
  * Sort Order: 11
  * First Introduced: 1.1
  * Major Changes In: 1.2
+ * Requires Connection: No
  */
 
 /**
@@ -35,8 +36,16 @@ function shortcode_new_to_old_params( $params, $old_format_support = false ) {
 }
 
 function jetpack_load_shortcodes() {
+	$shortcode_includes = array();
+	
 	foreach ( Jetpack::glob_php( dirname( __FILE__ ) . '/shortcodes' ) as $file ) {
-		include $file;
+		$shortcode_includes[] = $file;
+	}
+	
+	$shortcode_includes = apply_filters( 'jetpack_shortcodes_to_include', $shortcode_includes );
+	
+	foreach ( $shortcode_includes as $include ) {
+		include $include;
 	}
 }
 

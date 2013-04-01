@@ -452,7 +452,7 @@ function sharing_process_requests() {
 		}
 	}
 }
-add_action( 'template_redirect', 'sharing_process_requests' );
+add_action( 'template_redirect', 'sharing_process_requests', 9 );
 
 function sharing_display( $text = '' ) {
 	global $post, $wp_current_filter;
@@ -461,8 +461,20 @@ function sharing_display( $text = '' ) {
 		return $text;
 	}
 
+	// Don't output flair on excerpts
 	if ( in_array( 'get_the_excerpt', (array) $wp_current_filter ) ) {
 		return $text;
+	}
+
+	// Don't allow flair to be added to the_content more than once (prevent infinite loops)
+	$done = false;
+	foreach ( $wp_current_filter as $filter ) {
+		if ( 'the_content' == $filter ) {
+			if ( $done )
+				return $text;
+			else
+				$done = true;
+		}
 	}
 
 	// check whether we are viewing the front page and whether the front page option is checked

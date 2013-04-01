@@ -1,4 +1,6 @@
 jQuery(document).ready(function($) {   
+	$( "#config-error" ).hide();
+	$( "#share-error" ).hide();
     $( "#tabs" ).tabs();
     var thickDims, tbWidth, tbHeight; 
     thickDims = function() {
@@ -98,12 +100,12 @@ jQuery(document).ready(function($) {
    
     var show_above =  $('input[name="addthis_settings[show_above]"]');
     var show_below = $('input[name="addthis_settings[show_below]"]');
-    if ( show_above.prop('checked') != "undefined" && show_above.prop('checked') == true)
+    if ( $('#input[name="addthis_settings[show_above]"]').is(':checked'))
     {
         $('.above_option').toggleClass('hide');
     }
    
-    if ( show_below.prop('checked') != "undefined" && show_below.prop('checked') == true)
+    if ( $('#input[name="addthis_settings[show_below]"]').is(':checked'))
     {
         $('.below_option').toggleClass('hide');
     }
@@ -119,7 +121,7 @@ jQuery(document).ready(function($) {
 
     var aboveCustom = $('#above_custom_button'); 
     var aboveCustomShow = function(){
-        if ( aboveCustom.prop('checked') != 'undefined' &&  aboveCustom.prop('checked') == true)
+        if ( $('#above_custom_button').is(':checked'))
         {
             $('.above_option_custom').removeClass('hidden');
         }
@@ -130,7 +132,7 @@ jQuery(document).ready(function($) {
     };
     var belowCustom = $('#below_custom_button'); 
     var belowCustomShow = function(){
-        if ( belowCustom.prop('checked') != 'undefined' &&  belowCustom.prop('checked') == true)
+        if ( $('#below_custom_button').is(':checked'))
         {
             $('.below_option_custom').removeClass('hidden');
         }
@@ -142,7 +144,7 @@ jQuery(document).ready(function($) {
 
     var aboveCustomString = $('#above_custom_string'); 
     var aboveCustomStringShow = function(){
-        if ( aboveCustomString.prop('checked') != 'undefined' &&  aboveCustomString.prop('checked') == true)
+        if ( $('#above_custom_string').is(':checked'))
         {
             $('.above_custom_string_input').removeClass('hidden');
         }
@@ -153,7 +155,7 @@ jQuery(document).ready(function($) {
     };
     var belowCustomString = $('#below_custom_string'); 
     var belowCustomStringShow = function(){
-        if ( belowCustomString.attr('checked') != 'undefined' &&  belowCustomString.attr('checked') == true)
+        if ( $('#below_custom_string').is(':checked'))
         {
             $('.below_custom_string_input').removeClass('hidden');
         }
@@ -289,4 +291,73 @@ jQuery(document).ready(function($) {
             addthis_validation_message.next().hide();
        }
     });
+
+    $('#addthis-config-json').focusout(function() {
+    	var error = 0;
+		if ($('#addthis-config-json').val() != " ") {
+		    try {
+			var addthis_config_json = jQuery.parseJSON($('#addthis-config-json').val());
+		    }
+	      	    catch (e) {
+			$('#config-error').show();
+			error = 1;
+		    }
+		}
+		if (error == 0) {
+		    return true;
+		}
+		else {
+		    return false;
+		}
+    });
+    
+    $('#addthis-share-json').focusout(function() {
+    	var error = 0;
+    	if ($('#addthis-share-json').val() != " ") {
+		    try {
+		    	var addthis_share_json = jQuery.parseJSON($('#addthis-share-json').val());
+		    }
+	        catch (e) {
+	        	error = 1;
+		    }
+		}
+    	if (error == 0) {
+    		$('#share-error').hide();
+		    return true;
+		}
+		else {
+			$('#share-error').show();
+		    return false;
+		}
+    });
+    
+    $('#submit-button').click(function() {
+    	$('#config-error').hide();
+		$('#share-error').hide();
+		var error = 0;
+		if ($('#addthis-config-json').val() != " ") {
+		    try {
+			var addthis_config_json = jQuery.parseJSON($('#addthis-config-json').val());
+		    }
+	      	    catch (e) {
+			$('#config-error').show();
+			error = 1;
+		    }
+		}
+		if ($('#addthis-share-json').val() != " ") {
+		    try {
+			var addthis_share_json = jQuery.parseJSON($('#addthis-share-json').val());
+		    }
+	            catch (e) {
+			$('#share-error').show();
+			error = 1;
+		    }
+		}
+	        if (error == 0) {
+		    return true;
+		}
+		else {
+		    return false;
+		}
+     });
 });

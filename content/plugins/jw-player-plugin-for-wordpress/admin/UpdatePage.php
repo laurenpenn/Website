@@ -1,6 +1,11 @@
 <?php
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
+// JWP6_MIGRATION
+if ( isset($_POST['migrate_to_jwp6']) ) {
+  JWP6_Migrate::migrate();
+}
+
 define("DOWNLOAD_ERROR", "Download failed.");
 define("WRITE_ERROR", "Write failed");
 define("READ_ERROR", "Read failed");
@@ -12,6 +17,11 @@ define("SUCCESS", "Success");
 <div class="wrap">
 
 <?php
+
+// JWP6_MIGRATION
+if ( isset($_GET[JWP6 . 'hide_migration_notice']) ) {
+  JWP6_Migrate::hide_migration_notice();
+}
 
 if (isset($_POST["Non_commercial"]) || isset($_POST["Install"])) {
   download_state();
@@ -122,10 +132,17 @@ function player_upload() {
 
 function default_state() { ?>
   <h2><?php _e("JW Player Upgrade", 'jw-player-plugin-for-wordpress'); ?></h2>
-  <p><?php _e("Please note that the JW Player Plugin for WordPress currently supports only JW Player 5X versions of the player.  We are working hard to update the plugin to JW Player 6, and will notify you as soon as the plugin is updated.  In the meantime, we recommend sticking with JW Player 5.", 'jw-player-plugin-for-wordpress'); ?></p>
-  <p/> <?php
-  upload_section();
-  download_section();
+  <p/>
+  <div id="poststuff">
+  <?php
+  // JWP6_MIGRATION
+  JWP6_Migrate::migrate_section();
+  // Please upgrade to JWP6!
+  //upload_section();
+  //download_section();
+  ?>
+  </div>
+  <?php
 }
 
 function download_state() { ?>
@@ -262,39 +279,37 @@ function embed_demo_player($download = false) {
 
 function upload_section() { ?>
   <form name="<?php echo LONGTAIL_KEY . "form"; ?>" method="post" action="" enctype="multipart/form-data" onsubmit="return fileValidation();">
-    <div id="poststuff">
-      <div id="post-body">
-        <div id="post-body-content">
-          <div class="stuffbox">
-            <h3 class="hndle"><span><?php echo "Manually Upgrade"; ?></span></h3>
-            <div class="inside" style="margin: 10px;">
-              <script type="text/javascript">
-                function fileValidation() {
-                  var file = document.getElementById("file").value;
-                  var extension = file.substring(file.length - 4, file.length);
-                  if (extension === ".zip") {
-                    return true;
-                  } else {
-                    alert("File must be a Zip.");
-                    return false;
-                  }
+    <div id="post-body">
+      <div id="post-body-content">
+        <div class="stuffbox">
+          <h3 class="hndle"><span><?php echo "Manually Upgrade"; ?></span></h3>
+          <div class="inside" style="margin: 10px;">
+            <script type="text/javascript">
+              function fileValidation() {
+                var file = document.getElementById("file").value;
+                var extension = file.substring(file.length - 4, file.length);
+                if (extension === ".zip") {
+                  return true;
+                } else {
+                  alert("File must be a Zip.");
+                  return false;
                 }
-              </script>
-              <table class="form-table">
-                <tr>
-                  <td colspan="2">
-                    <p>
-                      <span><?php printf(__("Upload your own zip package. Use this to upgrade to the licensed version or to install a specific version of the player.  To obtain a licensed player, please purchase a license from <a href=\"https://www.longtailvideo.com/order/%s\" target=_blank>LongTail Video</a>.", 'jw-player-plugin-for-wordpress'), JW_PLAYER_GA_VARS); ?></span>
-                    </p>
-                    <p>
-                      <label for="file"><?php _("Install JW Player:"); ?></label>
-                      <input id="file" type="file" name="file" />
-                      <input class="button-secondary" type="submit" name="Commercial" value="<?php _e("Upload", 'jw-player-plugin-for-wordpress'); ?>" />
-                    </p>
-                  </td>
-                </tr>
-              </table>
-            </div>
+              }
+            </script>
+            <table class="form-table">
+              <tr>
+                <td colspan="2">
+                  <p>
+                    <span><?php printf(__("Upload your own zip package. Use this to upgrade to the licensed version or to install a specific version of the player.  To obtain a licensed player, please purchase a license from <a href=\"https://www.longtailvideo.com/order/%s\" target=_blank>LongTail Video</a>.", 'jw-player-plugin-for-wordpress'), JW_PLAYER_GA_VARS); ?></span>
+                  </p>
+                  <p>
+                    <label for="file"><?php _("Install JW Player:"); ?></label>
+                    <input id="file" type="file" name="file" />
+                    <input class="button-secondary" type="submit" name="Commercial" value="<?php _e("Upload", 'jw-player-plugin-for-wordpress'); ?>" />
+                  </p>
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
@@ -304,25 +319,23 @@ function upload_section() { ?>
 
 function download_section() { ?>
   <form name="<?php echo LONGTAIL_KEY . "form"; ?>" method="post" action="">
-    <div id="poststuff">
-      <div id="post-body">
-        <div id="post-body-content">
-          <div class="stuffbox">
-            <h3 class="hndle"><span><?php _e("Automatically Upgrade", 'jw-player-plugin-for-wordpress'); ?></span></h3>
-            <div class="inside" style="margin: 10px;">
-              <table class="form-table">
-                <tr>
-                  <td colspan="2">
-                    <p>
-                      <span><?php _e("Automatically download the latest Non-commercial version of the JW Player to your web server.", 'jw-player-plugin-for-wordpress'); ?></span>
-                    </p>
-                    <p>
-                      <input class="button-secondary" type="submit" name="Non_commercial" value="<?php _e("Install Latest JW Player", 'jw-player-plugin-for-wordpress'); ?>" />
-                    </p>
-                  </td>
-                </tr>
-              </table>
-            </div>
+    <div id="post-body">
+      <div id="post-body-content">
+        <div class="stuffbox">
+          <h3 class="hndle"><span><?php _e("Automatically Upgrade", 'jw-player-plugin-for-wordpress'); ?></span></h3>
+          <div class="inside" style="margin: 10px;">
+            <table class="form-table">
+              <tr>
+                <td colspan="2">
+                  <p>
+                    <span><?php _e("Automatically download the latest Non-commercial version of the JW Player to your web server.", 'jw-player-plugin-for-wordpress'); ?></span>
+                  </p>
+                  <p>
+                    <input class="button-secondary" type="submit" name="Non_commercial" value="<?php _e("Install Latest JW Player", 'jw-player-plugin-for-wordpress'); ?>" />
+                  </p>
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>

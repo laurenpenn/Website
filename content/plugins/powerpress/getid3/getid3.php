@@ -9,6 +9,14 @@
 //                                                            ///
 /////////////////////////////////////////////////////////////////
 
+// START Added for PowerPress
+if( function_exists('get_temp_dir') ) // If wordpress function is available, lets use it
+{
+	$temp_dir = get_temp_dir(); //  WordPress temp folder
+}
+else
+{ // END Added for PowerPress
+
 // attempt to define temp dir as something flexible but reliable
 $temp_dir = ini_get('upload_tmp_dir');
 if ($temp_dir && (!is_dir($temp_dir) || !is_readable($temp_dir))) {
@@ -47,6 +55,10 @@ if ($open_basedir) {
 if (!$temp_dir) {
 	$temp_dir = '*'; // invalid directory name should force tempnam() to use system default temp dir
 }
+
+} // Added for PowerPress
+
+
 // $temp_dir = '/something/else/';  // feel free to override temp dir here if it works better for your system
 define('GETID3_TEMP_DIR', $temp_dir);
 unset($open_basedir, $temp_dir);

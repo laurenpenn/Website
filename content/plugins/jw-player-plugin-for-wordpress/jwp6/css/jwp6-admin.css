@@ -1,0 +1,135 @@
+/* First let's resest all CSS, so we can start with a blank slate */
+
+#icon-jwp6-main {
+    background: transparent url(../img/ltv-curve.png) no-repeat 0 0;
+}
+
+#wpbody-content.jwp6 div.divider {
+    margin: 20px 0 30px 0;
+    padding: 0;
+    height: 0;
+    overflow: hidden;
+    border-top: solid 1px #DFDFDF;
+}
+
+#wpbody-content.jwp6 div.spacing {
+    margin: 20px;
+    height: 0;
+    overflow: hidden;
+}
+
+#wpbody-content.jwp6 td p.error {
+    color: #c00;
+}
+
+#wpbody-content.jwp6 form {
+    margin-bottom: 30px;
+}
+
+#wpbody-content.jwp6 table.form-table {
+    margin: 15px 0;
+}
+
+#wpbody-content.jwp6 table.player-table {
+    margin: 20px 0;
+}
+#wpbody-content.jwp6 table.player-table td {
+    height: 36px;
+    vertical-align: middle;
+    border-left: solid 1px #DFDFDF;
+}
+
+#wpbody-content.jwp6 table.player-table td:first-child {
+    border-left: none;
+}
+
+#wpbody-content.jwp6 td input.error,
+#wpbody-content.jwp6 td select.error,
+#wpbody-content.jwp6 td textarea.error {
+    border-color: #c00;
+}
+
+#wpbody-content.jwp6 td input.wide,
+#wpbody-content.jwp6 td select.wide,
+#wpbody-content.jwp6 td textarea.wide {
+    width: 75%;
+}
+
+#wpbody-content.jwp6 td input.small,
+#wpbody-content.jwp6 td select.small,
+#wpbody-content.jwp6 td textarea.small {
+    width: 50px;
+}
+
+#wpbody-content.jwp6 td input.right {
+    text-align: right;
+}
+
+#wpbody-content.jwp6 td.submit {
+    margin-top: 15px;
+}
+
+#jwp6-media-button {
+    display: inline-block;
+    margin: 0 0 0 10px;
+    text-indent: -9999px;
+    overflow: hidden;
+    width: 15px;
+    height: 15px;
+    background: transparent url(../img/wordpress.png) no-repeat 0 0;
+}
+
+#wpbody-content.jwp6 div.backlink {
+    float: right;
+    margin-top: -25px;
+}
+#wpbody-content.jwp6 div.backlink a {
+    text-decoration: none;
+}
+
+#wpbody-content.jwp6 div.tool-box ul li,
+#wpbody-content.jwp6 div.updated ul li {
+    padding: 2px 0 2px 12px;
+    list-style: disc inside;
+}
+
+div.jwp6_hr {
+    width: 100%;
+    height: 0;
+    margin: 10px 0;
+    overflow: hidden;
+    border-top: solid 1px #e5e5e5;
+    border-bottom: solid 1px #fff;
+}
+
+form.jwp6-media-form {
+    clear: both;
+}
+
+form.jwp6-media-35 {
+    padding: 15px;
+}
+
+form.jwp6-media-form table {
+    width: 95%;
+    margin: 15px 0;
+}
+
+form.jwp6-media-form table th {
+    font-weight: bold;
+    width: 80px;
+}
+
+form.jwp6-media-form table td.description {
+    font-style: italic;
+    color: #666;
+}
+
+form.jwp6-media-form p.first {
+    margin: 0 0 25px 0;
+}
+
+
+
+
+

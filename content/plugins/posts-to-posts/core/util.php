@@ -1,5 +1,20 @@
 <?php
 
+function p2p_list_cluster( $items, $callback ) {
+	$groups = array();
+
+	foreach ( $items as $item ) {
+		$key = $callback( $item );
+
+		if ( null === $key )
+			continue;
+
+		$groups[ $key ][] = $item;
+	}
+
+	return $groups;
+}
+
 /** @internal */
 function _p2p_expand_direction( $direction ) {
 	if ( !$direction )
@@ -105,5 +120,65 @@ function _p2p_first( $args ) {
 		return false;
 
 	return reset( $args );
+}
+
+/** @internal */
+function _p2p_get_other_id( $item ) {
+	if ( $item->ID == $item->p2p_from )
+		return $item->p2p_to;
+
+	if ( $item->ID == $item->p2p_to )
+		return $item->p2p_from;
+
+	trigger_error( "Corrupted data for item $inner_item->ID", E_USER_WARNING );
+}
+
+/** @internal */
+function _p2p_get_list( $args ) {
+	$ctype = p2p_type( $args['ctype'] );
+	if ( !$ctype ) {
+		trigger_error( sprintf( "Unregistered connection type '%s'.", $ctype ), E_USER_WARNING );
+		return '';
+	}
+
+	$directed = $ctype->find_direction( $args['item'] );
+	if ( !$directed )
+		return '';
+
+	$context = $args['context'];
+
+	$extra_qv = array(
+		'p2p:per_page' => -1,
+		'p2p:context' => $context
+	);
+
+	$connected = call_user_func( array( $directed, $args['method'] ), $args['item'], $extra_qv, 'abstract' );
+
+	switch ( $args['mode'] ) {
+	case 'inline':
+		$render_args = array(
+			'separator' => ', '
+		);
+		break;
+
+	case 'ol':
+		$render_args = array(
+			'before_list' => '<ol id="' . $ctype->name . '_list">',
+			'after_list' => '</ol>',
+		);
+		break;
+
+	case 'ul':
+	default:
+		$render_args = array(
+			'before_list' => '<ul id="' . $ctype->name . '_list">',
+			'after_list' => '</ul>',
+		);
+		break;
+	}
+
+	$render_args['echo'] = false;
+
+	return apply_filters( "p2p_{$context}_html", $connected->render( $render_args ), $connected, $directed, $args['mode'] );
 }
 

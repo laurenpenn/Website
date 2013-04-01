@@ -25,7 +25,7 @@ License:
 		// Global hardcoded settings
 		var $podcasttag_regexp = "/\[podcast:([^]]+)]/";
 		var $podcasttag = '[display_podcast]';
-		var $podtrac_url = 'http://www.podtrac.com/pts/redirect.mp3?';
+		var $podtrac_url = 'http://www.podtrac.com/pts/redirect.mp3/';
 		var $blubrry_url = 'http://media.blubrry.com/';
 		var $requiredadminrights = 'manage_categories';//'level_7';
 		var $realm = 'Premium Subscribers Content';
@@ -78,7 +78,7 @@ License:
 		// taken from wp_upload_dir() of WP 2.8.4 to keep up the compatibility of this podPress version with older WP version
 		// new in podPress since 8.8.5 beta 9
 		function upload_dir() {
-			$siteurl = get_option( 'siteurl' );
+			$siteurl = site_url();
 			$upload_path = get_option( 'upload_path' );
 			$upload_path = trim($upload_path);
 			if ( empty($upload_path) ) {
@@ -127,28 +127,8 @@ License:
 		// the version check and upgrade routine which runs also after the plugin activation
 		/*************************************************************/
 		function activate() {
-			GLOBAL $wpdb;
-			if (function_exists('get_role') AND function_exists('is_role')) {
-				if (FALSE === is_role('premium_subscriber')) {
-					add_role('premium_subscriber', 'Premium Subscriber', $caps);
-				}
-				if (TRUE === is_role('premium_subscriber')) {
-					$ps_role = get_role('premium_subscriber');
-					if (Null !== $ps_role AND !$ps_role->has_cap('premium_content')) {
-						$ps_role->add_cap('premium_content');
-					}
-					if(Null !== $ps_role AND !$ps_role->has_cap('read')) {
-						$ps_role->add_cap('read');
-					}
-				}
-				if (TRUE === is_role('administrator')) {
-					$role = get_role('administrator');
-					if (Null !== $role AND !$role->has_cap('premium_content')) {
-						$role->add_cap('premium_content');
-					}
-				}
-			}
 			
+			$this->add_podpress_role();
 			$this->createstatistictables();
 
 			if(function_exists('wp_cache_flush')) {
@@ -162,6 +142,36 @@ License:
 			}
 
 			//$this->checkSettings();
+		}
+		
+		/**
+		* add_podpress_role - adds a new role and capabilities
+		*
+		* @package podPress
+		* @since 8.8.10.14
+		*
+		*/
+		function add_podpress_role() {
+			if (TRUE === function_exists('get_role') AND TRUE === function_exists('add_role')) {
+				if (NULL === get_role('premium_subscriber')) {
+					$result = add_role('premium_subscriber', 'Premium Subscriber', $caps);
+				}
+				if (NULL !== get_role('premium_subscriber')) {
+					$ps_role = get_role('premium_subscriber');
+					if (Null !== $ps_role AND !$ps_role->has_cap('premium_content')) {
+						$ps_role->add_cap('premium_content');
+					}
+					if(Null !== $ps_role AND !$ps_role->has_cap('read')) {
+						$ps_role->add_cap('read');
+					}
+				}
+				if (NULL !== get_role('administrator')) {
+					$role = get_role('administrator');
+					if (Null !== $role AND !$role->has_cap('premium_content')) {
+						$role->add_cap('premium_content');
+					}
+				}
+			}
 		}
 
 		/**
@@ -346,10 +356,10 @@ License:
 
 			if(empty($this->settings['podcastFeedURL'])) {
 				if(podPress_WPVersionCheck('2.1')) {
-					//~ $this->settings['podcastFeedURL'] = get_option('siteurl').'/?feed=podcast';
+					//~ $this->settings['podcastFeedURL'] = site_url().'/?feed=podcast';
 					$this->settings['podcastFeedURL'] = get_feed_link('podcast');
 				} else {
-					$this->settings['podcastFeedURL'] = get_option('siteurl').'/?feed=rss2';
+					$this->settings['podcastFeedURL'] = site_url().'/?feed=rss2';
 				}
 			}
 
@@ -732,7 +742,9 @@ License:
 			$result['initialvolume'] = 70; // for 1Pixelout player (since podPress 8.8.5.2)
 			$result['buffer'] = 5; // for 1Pixelout player (since podPress 8.8.5.2)
 			$result['checkpolicy'] = 'no'; // for 1Pixelout player (since podPress 8.8.5.2)
-			
+			$result['animation'] = 'yes'; // for 1Pixelout player (since podPress 8.8.10.14)
+			$result['remaining'] = 'no'; // for 1Pixelout player (since podPress 8.8.10.14)
+		
 			// player settings which are no direct resp. JS parameters of the players
 			$result['overwriteTitleandArtist'] = 'no'; // for 1Pixelout player (since podPress 8.8.5.2)
 			$result['listenWrapper'] = false;
@@ -754,7 +766,7 @@ License:
 				} elseif ( strpos(substr($this->settings['mediaWebPath'], 0, 10), '://') ) {
 					$baseurl = $this->settings['mediaWebPath'];
 				} else {
-					$baseurl = get_option('siteurl').$this->settings['mediaWebPath'];
+					$baseurl = site_url().$this->settings['mediaWebPath'];
 				}
 				if ( substr($filename, -1, 1) != '/' ) {
 					$baseurl .= '/';
@@ -764,7 +776,8 @@ License:
 			return $url;
 		}
 
-		function convertPodcastFileNameToWebPath($postID, $mediaNum, $filename = '', $method = false){
+		function convertPodcastFileNameToWebPath($postID, $mediaNum, $filename = '', $method = false) {
+			global $wp_version;
 			$url = $this->convertPodcastFileNameToValidWebPath($filename);
 			if($method != false) {
 				if($this->settings['enableStats']) {
@@ -772,7 +785,11 @@ License:
 					if($this->settings['statMethod'] == 'download.mp3') {
 						$url = podPress_url().'download.mp3?'.$method.'='.$postID.'/'.$mediaNum.'/'.$filename_part;
 					} else {
-						$url = get_bloginfo('home').'/podpress_trac/'.$method.'/'.$postID.'/'.$mediaNum.'/'.$filename_part;
+						if (TRUE === version_compare($wp_version, '3.0', '<')) {
+							$url = get_bloginfo('home').'/podpress_trac/'.$method.'/'.$postID.'/'.$mediaNum.'/'.$filename_part;
+						} else {
+							$url = home_url().'/podpress_trac/'.$method.'/'.$postID.'/'.$mediaNum.'/'.$filename_part;
+						}
 					}
 				} elseif($this->settings['enable3rdPartyStats'] == 'Podtrac') {
 					$url = str_replace(array('ftp://', 'http://', 'https://'), '', $url);
@@ -819,8 +836,9 @@ License:
 				$uploadpath_san2 = str_replace("\\", "/", $uploadpath_san1);
 				$uploadpath_parts = explode('/', $uploadpath_san2);
 				
-				//$result= parse_url($url);
-				$home= get_bloginfo('home');
+				//~ $result= parse_url($url);
+				$home = preg_replace('/^https?/i', '', get_bloginfo('home'));
+				$url = preg_replace('/^https?/i', '', $url);
 				$result['path'] = str_replace($home, '', $url);
 				$urlpath_parts = explode('/', $result['path']);
 				$diff = array_diff($urlpath_parts, $uploadpath_parts);
@@ -828,7 +846,12 @@ License:
 				if (TRUE === file_exists($filename)) {
 					return $filename;
 				} else {
-					return false;
+					$filename = ABSPATH.ltrim($result['path'], '/');
+					if (TRUE === file_exists($filename)) {
+						return $filename;
+					} else {
+						return false;
+					}
 				}
 			} else {
 				return false;
@@ -846,7 +869,7 @@ License:
 		* @return mixed - TRUE if the folder exists and is writeable / FALSE or a string if there is a problem
 		*/
 		function checkWritableTempFileDir($returnMessages = FALSE) {
-			$siteurl = get_option('siteurl');
+			$siteurl = site_url();
 			if (file_exists($this->tempfilesystempath)) {
 				if(is_writable($this->tempfilesystempath)) {
 					if ($returnMessages) {
@@ -1024,6 +1047,7 @@ License:
 				if ( defined('PODPRESS_PODCASTSONLY') AND FALSE !== constant('PODPRESS_PODCASTSONLY') ) {
 					$input .= " AND ".$wpdb->prefix."postmeta.meta_key='_podPressMedia' ";
 				}
+				//~ printphpnotices_var_dump($input);		
 			}
 			return apply_filters('podpress_posts_where', $input);
 		}
@@ -1038,27 +1062,57 @@ License:
 		}
 
 		function insert_the_excerptplayer($content = '') {
-			GLOBAL $post;
 			$this->isexcerpt = true;
 			$content = $this->insert_content($content, TRUE);
 			return $content;
 		}
 
 		function insert_content($content = '', $is_the_excerpt = FALSE) {
-			GLOBAL $post, $podPressTemplateData, $podPressTemplateUnauthorizedData, $wpdb;
+			GLOBAL $post, $podPressTemplateData, $podPressTemplateUnauthorizedData, $wpdb, $wp_version, $podpress_is_itunessubtitle_or_summary, $podPress;
 			if ( !empty($post->post_password) ) { // if there's a password
-				if ( stripslashes($_COOKIE['wp-postpass_'.COOKIEHASH]) != $post->post_password ) {	// and it doesn't match the cookie
-					return $content;
+			//~ printphpnotices_var_dump('post has a password');
+			//~ printphpnotices_var_dump($_COOKIE['wp-postpass_'.COOKIEHASH]);
+			//~ printphpnotices_var_dump($post->post_password);
+				$cookiehash = stripslashes($_COOKIE['wp-postpass_'.COOKIEHASH]);
+			//~ printphpnotices_var_dump(wp_check_password($post->post_password, $cookiehash));
+				if ( TRUE === version_compare($wp_version, '2.5', '>=') ) {
+					if ( $cookiehash != $post->post_password AND FALSE === wp_check_password($post->post_password, $cookiehash) ) {	// and it doesn't match the cookie
+						return $content;
+					}
+				} else {
+					if ( $cookiehash != $post->post_password ) {	// and it doesn't match the cookie
+						return $content;
+					}
 				}
 			}
-			
+			//~ printphpnotices_var_dump(wp_check_password($post->ID));
 			if ( $this->isexcerpt === $is_the_excerpt  ) {
 				unset($this->tempcontentaddedto[$post->ID]);
 			}
 			$this->isexcerpt = FALSE;
+			
+			//~ if ( isset($podpress_is_itunessubtitle_or_summary) ) {
+				//~ printphpnotices_var_dump('podpress_is_itunessubtitle_or_summary exists');
+				//~ if ( TRUE === $podpress_is_itunessubtitle_or_summary ) {
+					//~ printphpnotices_var_dump('podpress_is_itunessubtitle_or_summary : TRUE');
+				//~ } else {
+					//~ printphpnotices_var_dump('podpress_is_itunessubtitle_or_summary : FALSE');
+				//~ }
+			//~ } else {
+				//~ printphpnotices_var_dump('podpress_is_itunessubtitle_or_summary does not exist');
+			//~ }
+
 			if ( isset($this->tempcontentaddedto[$post->ID]) ) {
 				if ( is_feed() ) {
-					return str_replace($this->podcasttag,'',$content);
+				//~ printphpnotices_var_dump('A:');
+				//~ printphpnotices_var_dump($print_podpress_elements_in_contentencoded);
+				//~ printphpnotices_var_dump(isset($podpress_is_itunessubtitle_or_summary));
+				//~ printphpnotices_var_dump($podpress_is_itunessubtitle_or_summary);
+					if ( FALSE === isset($podPress->settings['print_podpress_in_contentencoded']) OR FALSE === $podPress->settings['print_podpress_in_contentencoded'] OR (TRUE === isset($podpress_is_itunessubtitle_or_summary) AND TRUE === $podpress_is_itunessubtitle_or_summary) ) {
+						return str_replace($this->podcasttag,'',$content);
+					} else {
+						return $content;
+					}
 				} else {
 					return $content;
 				}
@@ -1067,7 +1121,13 @@ License:
 			}
 			
 			if ( is_feed() ) {
-				return str_replace($this->podcasttag, '', $content);
+				//~ printphpnotices_var_dump('B:');
+				//~ printphpnotices_var_dump($print_podpress_elements_in_contentencoded);
+				//~ printphpnotices_var_dump(isset($podpress_is_itunessubtitle_or_summary));
+				//~ printphpnotices_var_dump($podpress_is_itunessubtitle_or_summary);
+				if ( FALSE === isset($podPress->settings['print_podpress_in_contentencoded']) OR FALSE === $podPress->settings['print_podpress_in_contentencoded'] OR (TRUE === isset($podpress_is_itunessubtitle_or_summary) AND TRUE === $podpress_is_itunessubtitle_or_summary) ) {
+					return str_replace($this->podcasttag, '', $content);
+				}
 			}
 
 			if(!is_array($post->podPressMedia)) {
@@ -1255,6 +1315,7 @@ License:
 								//~ $post->podPressMedia[$key]['dimensionH'] = 30;
 								break;
 							case 'audio_ogg':
+							case 'audio_opus':
 							case 'audio_m4a':
 							case 'audio_mp4':
 							case 'audio_wma':
@@ -1319,6 +1380,7 @@ License:
 				return str_replace($this->podcasttag, $podPressContent, $content);
 			}
 		}
+		
 		
 		/**
 		* feed_excerpt_filter - a function to filter the excerpt content (mainly to remove the podPress shortcode which is not desired in feed elements)

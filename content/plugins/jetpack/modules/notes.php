@@ -4,6 +4,7 @@
  * Module Description: Monitor and manage your site's activity with Notifications in your Toolbar and on WordPress.com.
  * Sort Order: 1
  * First Introduced: 1.9
+ * Requires Connection: Yes
  */
 
 if ( !defined( 'JETPACK_NOTES__CACHE_BUSTER' ) ) define( 'JETPACK_NOTES__CACHE_BUSTER', JETPACK__VERSION . '-' . gmdate( 'oW' ) );
@@ -69,9 +70,50 @@ class Jetpack_Notifications {
 		return $url;
 	}
 
+	// return the major version of Internet Explorer the viewer is using or false if it's not IE
+	public static function get_internet_explorer_version() {
+		static $version;
+		if ( isset( $version ) ) {
+			return $version;
+		}
+
+		preg_match( '/MSIE (\d+)/', $_SERVER['HTTP_USER_AGENT'], $matches );
+		$version = empty( $matches[1] ) ? null : $matches[1];
+		if ( empty( $version ) || !$version ) {
+			return false;
+		}
+		return $version;
+	}
+
+	public static function current_browser_is_supported() {
+		static $supported;
+
+		if ( isset( $supported ) ) {
+			return $supported;
+		}
+
+		$ie_version = self::get_internet_explorer_version();
+		if ( false === $ie_version ) {
+			return $supported = true;
+		}
+
+		if ( $ie_version < 8 ) {
+			return $supported = false;
+		}
+
+		return $supported = true;
+	}
+
 	function action_init() {
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX )
+			return;
+		
 		if ( !has_filter( 'show_admin_bar', '__return_true' ) && !is_user_logged_in() )
 			return;
+
+		if ( !self::current_browser_is_supported() )
+			return;
+
 		add_action( 'admin_bar_menu', array( &$this, 'admin_bar_menu'), 120 );
 		add_action( 'wp_head', array( &$this, 'styles_and_scripts'), 120 );
 		add_action( 'admin_head', array( &$this, 'styles_and_scripts') );
@@ -125,7 +167,7 @@ class Jetpack_Notifications {
 		$wp_admin_bar->add_menu( array(
 			'id'     => 'notes',
 			'title'  => '<span id="wpnt-notes-unread-count" class="' . esc_attr( $classes ) . '">
-					<span class="noticon noticon-notification" /></span>
+					<span class="noticon noticon-notification"></span>
 					</span>',
 			'meta'   => array(
 				'html'  => '<div id="wpnt-notes-panel" style="display:none"><div class="wpnt-notes-panel-header"><span class="wpnt-notes-header">' . __('Notifications', 'jetpack') . '</span><span class="wpnt-notes-panel-link"></span></div></div>',

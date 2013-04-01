@@ -10,7 +10,7 @@
  * @copyright Copyright (c) 2012, Derek Herman
  * @since     2.0
  */
-
+    
 /**
  * Runs directly after the Theme Options are save.
  *
@@ -529,7 +529,7 @@ if ( ! function_exists( 'ot_import' ) ) {
       $file = isset( $_POST['import_xml'] ) ? esc_url( $_POST['import_xml'] ) : '';
       
       /* validate xml file */
-      if ( preg_match( "/(.xml)$/i", $file ) && class_exists( 'SimpleXMLElement' ) && function_exists( 'file_get_contents' ) ) {
+      if ( preg_match( "/(.xml)$/i", $file ) && class_exists( 'SimpleXMLElement' ) ) {
       
         $settings = ot_import_xml( $file );
         
@@ -566,7 +566,7 @@ if ( ! function_exists( 'ot_import' ) ) {
     if ( isset( $_POST['import_settings_nonce'] ) && wp_verify_nonce( $_POST['import_settings_nonce'], 'import_settings_form' ) ) {
 
       /* textarea value */
-      $textarea = isset( $_POST['import_settings'] ) ? unserialize( base64_decode( $_POST['import_settings'] ) ) : '';
+      $textarea = isset( $_POST['import_settings'] ) ? unserialize( ot_decode( $_POST['import_settings'] ) ) : '';
       
       /* default message */
       $message = 'failed';
@@ -590,7 +590,7 @@ if ( ! function_exists( 'ot_import' ) ) {
       $message = 'failed';
       
       /* textarea value */
-      $options = isset( $_POST['import_data'] ) ? unserialize( base64_decode( $_POST['import_data'] ) ) : '';
+      $options = isset( $_POST['import_data'] ) ? unserialize( ot_decode( $_POST['import_data'] ) ) : '';
       
       /* get settings array */
       $settings = get_option( 'option_tree_settings' );
@@ -635,7 +635,7 @@ if ( ! function_exists( 'ot_import' ) ) {
       $message = 'failed';
       
       /* textarea value */
-      $layouts = isset( $_POST['import_layouts'] ) ? unserialize( base64_decode( $_POST['import_layouts'] ) ) : '';
+      $layouts = isset( $_POST['import_layouts'] ) ? unserialize( ot_decode( $_POST['import_layouts'] ) ) : '';
       
       /* get settings array */
       $settings = get_option( 'option_tree_settings' );
@@ -651,7 +651,7 @@ if ( ! function_exists( 'ot_import' ) ) {
             if ( $key == 'active_layout' )
               continue;
               
-            $options = unserialize( base64_decode( $value ) );
+            $options = unserialize( ot_decode( $value ) );
             
             foreach( $settings['settings'] as $setting ) {
 
@@ -665,7 +665,7 @@ if ( ! function_exists( 'ot_import' ) ) {
             
             }
 
-            $layouts[$key] = base64_encode( serialize( $options ) );
+            $layouts[$key] = ot_encode( serialize( $options ) );
           
           }
         
@@ -674,7 +674,7 @@ if ( ! function_exists( 'ot_import' ) ) {
         /* update the option tree array */
         if ( isset( $layouts['active_layout'] ) ) {
         
-          update_option( 'option_tree', unserialize( base64_decode( $layouts[$layouts['active_layout']] ) ) );
+          update_option( 'option_tree', unserialize( ot_decode( $layouts[$layouts['active_layout']] ) ) );
           
         }
         
@@ -733,7 +733,14 @@ if ( ! function_exists( 'ot_import_xml' ) ) {
 
   function ot_import_xml( $file ) {
     
-    if ( $rawdata = @file_get_contents( $file ) ) {
+    $get_data = wp_remote_get( $file );
+    
+    if ( is_wp_error( $get_data ) )
+      return false;
+        
+    $rawdata = isset( $get_data['body'] ) ? $get_data['body'] : false;
+
+    if ( $rawdata ) {
       
       $section_count = 0;
       $settings_count = 0;
@@ -1186,8 +1193,48 @@ if ( ! function_exists( 'ot_save_settings' ) ) {
       
       /* is array: save & show success message */
       if ( is_array( $settings ) ) {
+        
+        // WPML unregister ID's that have been removed
+        if ( function_exists( 'icl_unregister_string' ) ) {
+          
+          $current = get_option( 'option_tree_settings' );
+          
+          if ( isset( $current['settings'] ) ) {
+            
+            // Empty ID array
+            $new_ids = array();
+            
+            // Build the IDs
+            foreach( $settings['settings'] as $setting ) {
+            
+              if ( $setting['id'] ) {
+              
+                $new_ids[] = $setting['id'];
+                
+              }
+              
+            }
+            
+            // Remove IDs from WPML
+            /*
+            foreach( $current['settings'] as $setting ) {
+            
+              if ( ! in_array( $setting['id'], $new_ids ) ) {
+
+                wpml_unregister_string( $setting['id'] );
+                
+              }
+              
+            }
+            */
+
+          }
+          
+        }
+        
         update_option( 'option_tree_settings', $settings );
         $message = 'success';
+        
       }
       
       /* redirect */
@@ -1353,7 +1400,7 @@ if ( ! function_exists( 'ot_modify_layouts' ) ) {
         /* add new and overwrite active layout */
         if ( isset( $layouts['_add_new_layout_'] ) && '' != $layouts['_add_new_layout_'] ) {
           $rebuild['active_layout'] = ot_sanitize_layout_id( $layouts['_add_new_layout_'] );
-          $rebuild[$rebuild['active_layout']] = base64_encode( serialize( get_option( 'option_tree' ) ) );
+          $rebuild[$rebuild['active_layout']] = ot_encode( serialize( get_option( 'option_tree' ) ) );
         }
         
         $first_layout = '';
@@ -1389,7 +1436,7 @@ if ( ! function_exists( 'ot_modify_layouts' ) ) {
       if ( count( $rebuild ) > 1 ) {
         
         /* rebuild the theme options */
-        $rebuild_option_tree = unserialize( base64_decode( $rebuild[$rebuild['active_layout']] ) );
+        $rebuild_option_tree = unserialize( ot_decode( $rebuild[$rebuild['active_layout']] ) );
         if ( is_array( $rebuild_option_tree ) ) {
           update_option( 'option_tree', $rebuild_option_tree );
         }
@@ -2411,7 +2458,7 @@ if ( ! function_exists( 'ot_insert_css_with_markers' ) ) {
       $markerdata = explode( "\n", implode( '', file( $filepath ) ) );
       
       /* can't write to the file return false */
-      if ( ! $f = @fopen( $filepath, 'w' ) )
+      if ( ! $f = ot_file_open( $filepath, 'w' ) )
         return false;
       
       $searching = true;
@@ -2430,16 +2477,16 @@ if ( ! function_exists( 'ot_insert_css_with_markers' ) ) {
           /* keep rewrite each line of CSS  */
           if ( $searching == true ) {
             if ( $n + 1 < count( $markerdata ) )
-              fwrite( $f, "{$markerline}\n" );
+              ot_file_write( $f, "{$markerline}\n" );
             else
-              fwrite( $f, "{$markerline}" );
+              ot_file_write( $f, "{$markerline}" );
           }
           
           /* found end marker write code */
           if ( $markerline == "/* END {$marker} */" ) {
-            fwrite( $f, "/* BEGIN {$marker} */\n" );
-            fwrite( $f, "{$insertion}\n" );
-            fwrite( $f, "/* END {$marker} */\n" );
+            ot_file_write( $f, "/* BEGIN {$marker} */\n" );
+            ot_file_write( $f, "{$insertion}\n" );
+            ot_file_write( $f, "/* END {$marker} */\n" );
             $searching = true;
             $foundit = true;
           }
@@ -2450,13 +2497,13 @@ if ( ! function_exists( 'ot_insert_css_with_markers' ) ) {
       
       /* nothing inserted, write code. DO IT, DO IT! */
       if ( ! $foundit ) {
-        fwrite( $f, "/* BEGIN {$marker} */\n" );
-        fwrite( $f, "{$insertion}\n" );
-        fwrite( $f, "/* END {$marker} */\n" );
+        ot_file_write( $f, "/* BEGIN {$marker} */\n" );
+        ot_file_write( $f, "{$insertion}\n" );
+        ot_file_write( $f, "/* END {$marker} */\n" );
       }
       
       /* close file */
-      fclose( $f );
+      ot_file_close( $f );
       return true;
     }
     
@@ -2498,7 +2545,7 @@ if ( ! function_exists( 'ot_remove_old_css' ) ) {
       $markerdata = explode( "\n", implode( '', file( $filepath ) ) );
       
       /* can't write to the file return false */
-      if ( ! $f = @fopen( $filepath, 'w' ) )
+      if ( ! $f = ot_file_open( $filepath, 'w' ) )
         return false;
       
       $searching = true;
@@ -2516,14 +2563,14 @@ if ( ! function_exists( 'ot_remove_old_css' ) ) {
           /* $searching is true, keep rewrite each line of CSS  */
           if ( $searching == true ) {
             if ( $n + 1 < count( $markerdata ) )
-              fwrite( $f, "{$markerline}\n" );
+              ot_file_write( $f, "{$markerline}\n" );
             else
-              fwrite( $f, "{$markerline}" );
+              ot_file_write( $f, "{$markerline}" );
           }
           
           /* found end marker delete old CSS */
           if ( $markerline == "/* END {$field_id} */" ) {
-            fwrite( $f, "" );
+            ot_file_write( $f, "" );
             $searching = true;
           }
           
@@ -2532,7 +2579,7 @@ if ( ! function_exists( 'ot_remove_old_css' ) ) {
       }
       
       /* close file */
-      fclose( $f );
+      ot_file_close( $f );
       return true;
       
     }
@@ -2982,7 +3029,7 @@ if ( ! function_exists( 'ot_contextual_help_view' ) ) {
  */
 if ( ! function_exists( 'ot_layouts_view' ) ) {
 
-  function ot_layout_view( $key, $data, $active_layout ) {
+  function ot_layout_view( $key, $data = '', $active_layout = '' ) {
   
     return '
     <div class="option-tree-setting">
@@ -2995,7 +3042,7 @@ if ( ! function_exists( 'ot_layouts_view' ) ) {
           <span class="icon trash-can">' . __( 'Delete', 'option-tree' ) . '</span>
         </a>
       </div>
-      <input type="hidden" name="option_tree_layouts[' . esc_attr( $key ) . ']" value="' . ( isset( $data ) ? $data : '' ) . '" />
+      <input type="hidden" name="option_tree_layouts[' . esc_attr( $key ) . ']" value="' . $data . '" />
     </div>';
     
   }
@@ -3463,6 +3510,102 @@ function ot_range( $start, $limit, $step = 1 ) {
   }
   
   return $range;
+}
+
+/**
+ * Helper function to return encoded strings
+ *
+ * @return    string
+ *
+ * @access    public
+ * @since     2.0.13
+ */
+function ot_encode( $value ) {
+
+  return base64_encode( $value );
+  
+}
+
+/**
+ * Helper function to return decoded strings
+ *
+ * @return    string
+ *
+ * @access    public
+ * @since     2.0.13
+ */
+function ot_decode( $value ) {
+
+  return base64_decode( $value );
+  
+}
+
+/**
+ * Helper function to open a file
+ *
+ * @access    public
+ * @since     2.0.13
+ */
+function ot_file_open( $handle, $mode ) {
+
+  @fopen( $handle, $mode );
+  
+}
+
+/**
+ * Helper function to close a file
+ *
+ * @access    public
+ * @since     2.0.13
+ */
+function ot_file_close( $handle ) {
+
+  fclose( $handle );
+  
+}
+
+/**
+ * Helper function to write to an open file
+ *
+ * @access    public
+ * @since     2.0.13
+ */
+function ot_file_write( $handle, $string ) {
+
+  fwrite( $handle, $string );
+  
+}
+
+/**
+ * Helper function to register a WPML string
+ *
+ * @access    public
+ * @since     2.0.14
+ */
+function wpml_register_string( $id, $value ) {
+
+  if ( function_exists( 'icl_register_string' ) ) {
+      
+    icl_register_string( 'OptionTree', $id, $value );
+      
+  }
+  
+}
+
+/**
+ * Helper function to unregister a WPML string
+ *
+ * @access    public
+ * @since     2.0.14
+ */
+function wpml_unregister_string( $id ) {
+
+  if ( function_exists( 'icl_unregister_string' ) ) {
+      
+    icl_unregister_string( 'OptionTree', $id );
+      
+  }
+  
 }
 
 /* End of file ot-functions-admin.php */

@@ -341,8 +341,8 @@ function podPressUpdateDimensions(VarNum, val) {
 	// this function updates the player preview on the editor pages
 	var valArray = String(val).split(':');
 	if (2 != valArray.length) {
-		valArray[0] = 320;
-		valArray[1] = 240;
+		valArray[0] = 320; //newMediaDefaults['dimensionW'];
+		valArray[1] = 240; //newMediaDefaults['dimensionH'];
 	} else {
 		var dim_x = Number(valArray[0].replace(/\D+/g, ''));
 		var dim_y = Number(valArray[1].replace(/\D+/g, ''));
@@ -443,7 +443,7 @@ function podPress_updateFeedSettings() {
 
 	podPress_set_AuthorPreview(document.getElementById('iTunesAuthor').value);
 
-	var iTunesImageURL = 'http://www.mightyseek.com/images/powered_by_podpress_large.png';
+	var iTunesImageURL = 'http://plugins.svn.wordpress.org/podpress/tags/8.8.10/images/powered_by_podpress_large.png';
 	if(document.getElementById('iTunesImage').value == '') {
 		if (document.getElementById('rss_image').value != '') {
 			iTunesImageURL = document.getElementById('rss_image').value;
@@ -452,7 +452,7 @@ function podPress_updateFeedSettings() {
 		iTunesImageURL = document.getElementById('iTunesImage').value;
 	}
 
-	podPress_set_PreviewImage(iTunesImageURL);
+	podPress_set_PreviewImage(podPress_https_check(iTunesImageURL));
 
 	var rsslanguageIDX = document.getElementById('rss_language').selectedIndex;
 	var rssLanguageParts = document.getElementById('rss_language').options[rsslanguageIDX].text.split("[");
@@ -469,20 +469,22 @@ function podPress_updateFeedSettings() {
 	podPress_set_CategoryPreview(cat);
 
 	if(document.getElementById('rss_image').value == '') {
-		document.getElementById('rss_imagePreview').src = 'http://www.mightyseek.com/images/powered_by_podpress.png';
+		document.getElementById('rss_imagePreview').src = 'http://plugins.svn.wordpress.org/podpress/tags/8.8.10/images/powered_by_podpress.png';
 	} else {
-		document.getElementById('rss_imagePreview').src = document.getElementById('rss_image').value;
+		document.getElementById('rss_imagePreview').src = podPress_https_check(document.getElementById('rss_image').value);
 	}
 
 	if(document.getElementById('iTunesImage').value == '') {
-		document.getElementById('iTunesImagePreview').src = 'http://www.mightyseek.com/images/powered_by_podpress_large.png';
+		document.getElementById('iTunesImagePreview').src = 'http://plugins.svn.wordpress.org/podpress/tags/8.8.10/images/powered_by_podpress_large.png';
 	} else {
-		document.getElementById('iTunesImagePreview').src = document.getElementById('iTunesImage').value;
+		document.getElementById('iTunesImagePreview').src = podPress_https_check(document.getElementById('iTunesImage').value);
 	}
 }
 
-function podPress_updateCategoryCasting(main_wp_version) {
+function podPress_updateCategoryCasting(main_wp_version, taxonomy) {
 	var main_wp_version = Number(main_wp_version);
+	if (typeof taxonomy == 'undefined') { taxonomy = 'category'; }
+	
 	if(document.getElementById('categoryCasting').checked == false) { 
 		document.getElementById('iTunesSpecificSettings').style.display='none'; 
 	} else {
@@ -493,8 +495,13 @@ function podPress_updateCategoryCasting(main_wp_version) {
 		var cat_name = document.forms['edittag'].name;
 		var cat_descr = document.forms['edittag'].description;
 	} else {
-		var cat_name = document.forms['editcat'].cat_name;
-		var cat_descr = document.forms['editcat'].category_description;
+		if ( 'category' == taxonomy) {
+			var cat_name = document.forms['editcat'].cat_name;
+			var cat_descr = document.forms['editcat'].category_description;
+		} else {
+			var cat_name = document.forms['edittag'].name;
+			var cat_descr = document.forms['edittag'].description;
+		}
 	}
 	if(document.getElementById('blognameChoice').value == 'Global') { 
 		podPress_set_blognamePreview(document.getElementById('global_blogname').value);
@@ -546,7 +553,7 @@ function podPress_updateCategoryCasting(main_wp_version) {
 		document.getElementById('iTunesAuthorEmailWrapper').style.display='none'; 
 	}
 
-	var iTunesImageURL = 'http://www.mightyseek.com/images/powered_by_podpress_large.png';
+	var iTunesImageURL = 'http://plugins.svn.wordpress.org/podpress/tags/8.8.10/images/powered_by_podpress_large.png';
 	if(document.getElementById('global_iTunesImage').value == '') {
 		if (document.getElementById('global_rss_image').value != '') {
 			iTunesImageURL = document.getElementById('global_rss_image').value;
@@ -564,23 +571,23 @@ function podPress_updateCategoryCasting(main_wp_version) {
 			iTunesImageURL = document.getElementById('iTunesImage').value;
 		}		
 	}
-	document.getElementById('iTunesPreviewImage').src = iTunesImageURL;
-	document.getElementById('YahooPreviewImage').src = iTunesImageURL;
+	document.getElementById('iTunesPreviewImage').src = podPress_https_check(iTunesImageURL);
+	document.getElementById('YahooPreviewImage').src = podPress_https_check(iTunesImageURL);
 
 	if(document.getElementById('iTunesImageChoice').value == 'Custom') {
 		document.getElementById('iTunesImageWrapper').style.display='';
-		document.getElementById('itunes_image_display').src = document.getElementById('iTunesImage').value;
+		document.getElementById('itunes_image_display').src = podPress_https_check(document.getElementById('iTunesImage').value);
 	} else {
 		document.getElementById('iTunesImageWrapper').style.display='none';
-		document.getElementById('itunes_image_display').src = document.getElementById('global_iTunesImage').value;
+		document.getElementById('itunes_image_display').src = podPress_https_check(document.getElementById('global_iTunesImage').value);
 	}
 
 	if(document.getElementById('rss_imageChoice').value == 'Custom') {
 		document.getElementById('rss_imageWrapper').style.display='';
-		document.getElementById('rss_image_Display').src = document.getElementById('rss_image').value;
+		document.getElementById('rss_image_Display').src = podPress_https_check(document.getElementById('rss_image').value);
 	} else {
 		document.getElementById('rss_imageWrapper').style.display='none';
-		document.getElementById('rss_image_Display').src = document.getElementById('global_rss_image').value;
+		document.getElementById('rss_image_Display').src = podPress_https_check(document.getElementById('global_rss_image').value);
 	}
 	if(document.getElementById('rss_copyrightChoice').value == 'Custom') { 
 		document.getElementById('rss_copyrightWrapper').style.display='';
@@ -644,11 +651,13 @@ function podPressAddMediaFile(showme, txtURI, txtURI_torrent, txttitle, txttype,
 	newMediaFileData['type'] = txttype;
 	newMediaFileData['size'] = txtsize;
 	newMediaFileData['duration'] = duration;
-	if(dimensionW == '') {
-		dimensionW = '320';
+	if( 0 >= Number(dimensionW) ) {
+		//dimensionW = newMediaDefaults['dimensionW'];
+		dimensionW = document.getElementById('podpress_mediadefault_dimensionW').value;
 	}
-	if(dimensionH == '') {
-		dimensionH = '240';
+	if( 0 > Number(dimensionH) ) {
+		//dimensionH = newMediaDefaults['dimensionH'];
+		dimensionH = document.getElementById('podpress_mediadefault_dimensionH').value;
 	}
 	newMediaFileData['dimensionW'] = dimensionW;
 	newMediaFileData['dimensionH'] = dimensionH;
@@ -847,19 +856,19 @@ function podPressAdjustMediaFieldsBasedOnType(VarNum) {
 	if (typeOfMedia == 'video_' || data['type'] == 'audio_m4a' || data['type'] == 'audio_mp4' || data['type'] == 'audio_wma' || data['type'] == 'audio_ogg') {
 		document.getElementById('podPressMediaPreviewImageWrapper_'+VarNum).style.display='';
 		document.getElementById('podPressMediaDimensionWrapper_'+VarNum).style.display='';
-		//alert('(1a)\n'+typeOfMedia+'\n'+'W: '+String(data['dimensionW'])+'\t'+ String(typeof data['dimensionW']) + '\n'+'H: '+String(data['dimensionH'])+'\t'+ String(typeof data['dimensionH'])+'\n');
 		if ('video_' == typeOfMedia) {
 			if ( 0 >= Number(data['dimensionW']) || 0 >= Number(data['dimensionH'])) {// this means: if nothing is saved then set the default values 
-				data['dimensionW'] = 320;
-				data['dimensionH'] = 240;
+				data['dimensionW'] = document.getElementById('podpress_mediadefault_dimensionW').value;
+				data['dimensionH'] = document.getElementById('podpress_mediadefault_dimensionH').value;
 			}
 		} else {
+			//~ alert(data['type']+': '+String(data['dimensionW']) + ' : ' + String(data['dimensionH']) + ' - '+String(newMediaDefaults['dimensionW']) + ' : ' + String(newMediaDefaults['dimensionH']));
 			if ( 0 >= Number(data['dimensionW']) || 0 > Number(data['dimensionH'])) {
-				data['dimensionW'] = 320;
+				data['dimensionW'] = document.getElementById('podpress_mediadefault_dimensionW').value;
 				data['dimensionH'] = 0;
 			}
+			//~ alert(data['type']+': '+String(data['dimensionW']) + ' : ' + String(data['dimensionH']));
 		}
-		//alert('(1.1a)\n'+typeOfMedia+'\n'+'W: '+String(data['dimensionW'])+'\t'+ String(typeof data['dimensionW']) + '\n'+'H: '+String(data['dimensionH'])+'\t'+ String(typeof data['dimensionH'])+'\n');
 		document.getElementById('podPressMedia_'+VarNum+'_dimensionW').value = data['dimensionW'];
 		document.getElementById('podPressMedia_'+VarNum+'_dimensionH').value = data['dimensionH'];
 		var dimensionsStr = String(document.getElementById('podPressMedia_'+VarNum+'_dimensionW').value)+':'+String(document.getElementById('podPressMedia_'+VarNum+'_dimensionH').value);
@@ -867,7 +876,6 @@ function podPressAdjustMediaFieldsBasedOnType(VarNum) {
 		if ( true == is_in[0] ) {
 			document.getElementById('podPressMedia_'+VarNum+'_dimensionList').selectedIndex = is_in[1];
 		}
-		//alert('(1b)\n'+typeOfMedia+'\n'+'W: '+String(document.getElementById('podPressMedia_'+VarNum+'_dimensionW').value) + '\n'+'H: '+String(document.getElementById('podPressMedia_'+VarNum+'_dimensionH').value)+'\ndata_W: '+String(data['dimensionW'])+'\ndata_H: '+String(data['dimensionH']));
 		//document.getElementById('podPressMedia_'+VarNum+'_id3tags_details_row').style.display = 'block';
 		document.getElementById('podPressMedia_'+VarNum+'_id3tags_details_row').style.visibility = 'visible';
 		podPressPreviewImageOnChange(VarNum, document.getElementById('podPressMedia_'+VarNum+'_previewImage').value);
@@ -879,11 +887,11 @@ function podPressAdjustMediaFieldsBasedOnType(VarNum) {
 		document.getElementById('podPressMediaDurationWrapper_'+VarNum).style.display='none'; 
 		document.getElementById('podPressMediaSizeWrapper_'+VarNum).style.display='none'; 
  		if ( 0 >= Number(data['dimensionW']) || 0 >= Number(data['dimensionH'])) { // this means: if nothing is saved then set the default values 
-			data['dimensionW'] = 320;
-			data['dimensionH'] = 240;
+			data['dimensionW'] = document.getElementById('podpress_mediadefault_dimensionW').value;
+			data['dimensionH'] = document.getElementById('podpress_mediadefault_dimensionH').value;
+			document.getElementById('podPressMedia_'+VarNum+'_dimensionW').value = data['dimensionW'];
+			document.getElementById('podPressMedia_'+VarNum+'_dimensionH').value = data['dimensionH'];
 		}
-		document.getElementById('podPressMedia_'+VarNum+'_dimensionW').value = data['dimensionW'];
-		document.getElementById('podPressMedia_'+VarNum+'_dimensionH').value = data['dimensionH'];
 		document.getElementById('podPressMedia_'+VarNum+'_id3tags_details_row').style.visibility = 'hidden';
 		podPressPreviewImageOnChange(VarNum, document.getElementById('podPressMedia_'+VarNum+'_previewImage').value);
 		podPressUpdateDimensions(VarNum, String(document.getElementById('podPressMedia_'+VarNum+'_dimensionW').value)+':'+String(document.getElementById('podPressMedia_'+VarNum+'_dimensionH').value));
@@ -928,6 +936,7 @@ function podPressDetectType(VarNum) {
 		case 'mp3': result = 'audio_mp3'; break
 		case 'ogg': result = 'audio_ogg'; break
 		case 'ogv': result = 'video_ogv'; break
+		case 'opus': result = 'audio_opus'; break
 		case 'm4a': result = 'audio_m4a'; break
 		case 'aa':  result = 'audio_aa'; break
 		case 'm3u': result = 'audio_m3u'; break
@@ -949,7 +958,7 @@ function podPressDetectType(VarNum) {
 		case 'youtube': result = 'embed_youtube'; break
 		default: result = 'misc_other';
 	}
-	document.getElementById('podPressMedia_'+VarNum+'_type').value=result; 	
+	document.getElementById('podPressMedia_'+VarNum+'_type').value=result;
 	podPressMediaFiles[VarNum]['type'] = result;
 	podPressAdjustMediaFieldsBasedOnType(VarNum);
 }

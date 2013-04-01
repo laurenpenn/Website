@@ -32,7 +32,7 @@ License:
 			$parts = explode('/', $_GET['web']);
 			podPress_processDownloadRedirect($parts[0], $parts[1], $parts[2], 'web');
 		} else {
-			header('Location: '.get_option('siteurl'));
+			header('Location: '.site_url());
 			exit;
 		}
 	}

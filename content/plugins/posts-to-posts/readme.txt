@@ -1,9 +1,9 @@
 === Posts 2 Posts ===
 Contributors: scribu, ciobi
 Tags: connections, custom post types, relationships, many-to-many, users
-Requires at least: 3.4
+Requires at least: 3.5
 Tested up to: 3.5
-Stable tag: 1.4.3
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,24 @@ Make sure your host is running PHP 5. The only foolproof way to do this is to ad
 5. Connection Types screen
 
 == Changelog ==
+
+= 1.5.2 =
+* fixed get_prev() and get_next()
+* introduced get_adjacent_items()
+* fixed admin column titles
+* made admin column titles show up before the post date. props luk3thomas
+* added 'help' key to 'from_labels' and 'to_labels' arrays. props tareq1988
+
+= 1.5.1 =
+* fix fatal error on activation. props benmay
+
+= 1.5 =
+* added [admin dropdowns](https://github.com/scribu/wp-posts-to-posts/wiki/Admin-dropdown-display)
+* fixed SQL error related to user connections
+* fixed 'labels' handling and added 'column_title' subkey
+* refactor metabox JavaScript using Backbone.js
+* lazy-load connection candidates, for faster page loads
+* lazy-load PHP classes using `spl_register_autoload()`
 
 = 1.4.3 =
 * various bug fixes
@@ -248,4 +266,3 @@ Make sure your host is running PHP 5. The only foolproof way to do this is to ad
 = 0.1 =
 * initial release
 * [more info](http://scribu.net/wordpress/posts-to-posts/p2p-0-1.html)
-

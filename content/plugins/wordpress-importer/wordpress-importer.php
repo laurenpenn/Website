@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/wordpress-importer/
 Description: Import posts, pages, comments, custom fields, categories, tags and more from a WordPress export file.
 Author: wordpressdotorg
 Author URI: http://wordpress.org/
-Version: 0.6
+Version: 0.6.1
 Text Domain: wordpress-importer
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
@@ -393,6 +393,8 @@ class WP_Import extends WP_Importer {
 	 * Doesn't create a new category if its slug already exists
 	 */
 	function process_categories() {
+		$this->categories = apply_filters( 'wp_import_categories', $this->categories );
+
 		if ( empty( $this->categories ) )
 			return;
 
@@ -437,6 +439,8 @@ class WP_Import extends WP_Importer {
 	 * Doesn't create a tag if its slug already exists
 	 */
 	function process_tags() {
+		$this->tags = apply_filters( 'wp_import_tags', $this->tags );
+
 		if ( empty( $this->tags ) )
 			return;
 
@@ -475,6 +479,8 @@ class WP_Import extends WP_Importer {
 	 * Doesn't create a term its slug already exists
 	 */
 	function process_terms() {
+		$this->terms = apply_filters( 'wp_import_terms', $this->terms );
+
 		if ( empty( $this->terms ) )
 			return;
 
@@ -522,11 +528,16 @@ class WP_Import extends WP_Importer {
 	 * Note that new/updated terms, comments and meta are imported for the last of the above.
 	 */
 	function process_posts() {
+		$this->posts = apply_filters( 'wp_import_posts', $this->posts );
+
 		foreach ( $this->posts as $post ) {
+			$post = apply_filters( 'wp_import_post_data_raw', $post );
+
 			if ( ! post_type_exists( $post['post_type'] ) ) {
 				printf( __( 'Failed to import &#8220;%s&#8221;: Invalid post type %s', 'wordpress-importer' ),
 					esc_html($post['post_title']), esc_html($post['post_type']) );
 				echo '<br />';
+				do_action( 'wp_import_post_exists', $post );
 				continue;
 			}
 
@@ -578,6 +589,9 @@ class WP_Import extends WP_Importer {
 					'post_type' => $post['post_type'], 'post_password' => $post['post_password']
 				);
 
+				$original_post_ID = $post['post_id'];
+				$postdata = apply_filters( 'wp_import_post_data_processed', $postdata, $post );
+
 				if ( 'attachment' == $postdata['post_type'] ) {
 					$remote_url = ! empty($post['attachment_url']) ? $post['attachment_url'] : $post['guid'];
 
@@ -597,6 +611,7 @@ class WP_Import extends WP_Importer {
 					$comment_post_ID = $post_id = $this->process_attachment( $postdata, $remote_url );
 				} else {
 					$comment_post_ID = $post_id = wp_insert_post( $postdata, true );
+					do_action( 'wp_import_insert_post', $post_id, $original_post_ID, $postdata, $post );
 				}
 
 				if ( is_wp_error( $post_id ) ) {
@@ -615,6 +630,11 @@ class WP_Import extends WP_Importer {
 			// map pre-import ID to local ID
 			$this->processed_posts[intval($post['post_id'])] = (int) $post_id;
 
+			if ( ! isset( $post['terms'] ) )
+				$post['terms'] = array();
+
+			$post['terms'] = apply_filters( 'wp_import_post_terms', $post['terms'], $post_id, $post );
+
 			// add categories, tags and other terms
 			if ( ! empty( $post['terms'] ) ) {
 				$terms_to_set = array();
@@ -627,11 +647,13 @@ class WP_Import extends WP_Importer {
 						$t = wp_insert_term( $term['name'], $taxonomy, array( 'slug' => $term['slug'] ) );
 						if ( ! is_wp_error( $t ) ) {
 							$term_id = $t['term_id'];
+							do_action( 'wp_import_insert_term', $t, $term, $post_id, $post );
 						} else {
 							printf( __( 'Failed to import %s %s', 'wordpress-importer' ), esc_html($taxonomy), esc_html($term['name']) );
 							if ( defined('IMPORT_DEBUG') && IMPORT_DEBUG )
 								echo ': ' . $t->get_error_message();
 							echo '<br />';
+							do_action( 'wp_import_insert_term_failed', $t, $term, $post_id, $post );
 							continue;
 						}
 					}
@@ -640,9 +662,15 @@ class WP_Import extends WP_Importer {
 
 				foreach ( $terms_to_set as $tax => $ids ) {
 					$tt_ids = wp_set_post_terms( $post_id, $ids, $tax );
+					do_action( 'wp_import_set_post_terms', $tt_ids, $ids, $tax, $post_id, $post );
 				}
 				unset( $post['terms'], $terms_to_set );
 			}
+
+			if ( ! isset( $post['comments'] ) )
+				$post['comments'] = array();
+
+			$post['comments'] = apply_filters( 'wp_import_post_comments', $post['comments'], $post_id, $post );
 
 			// add/update comments
 			if ( ! empty( $post['comments'] ) ) {
@@ -674,6 +702,7 @@ class WP_Import extends WP_Importer {
 							$comment['comment_parent'] = $inserted_comments[$comment['comment_parent']];
 						$comment = wp_filter_comment( $comment );
 						$inserted_comments[$key] = wp_insert_comment( $comment );
+						do_action( 'wp_import_insert_comment', $inserted_comments[$key], $comment, $comment_post_ID, $post );
 
 						foreach( $comment['commentmeta'] as $meta ) {
 							$value = maybe_unserialize( $meta['value'] );
@@ -686,10 +715,15 @@ class WP_Import extends WP_Importer {
 				unset( $newcomments, $inserted_comments, $post['comments'] );
 			}
 
+			if ( ! isset( $post['postmeta'] ) )
+				$post['postmeta'] = array();
+
+			$post['postmeta'] = apply_filters( 'wp_import_post_meta', $post['postmeta'], $post_id, $post );
+
 			// add/update post meta
-			if ( isset( $post['postmeta'] ) ) {
+			if ( ! empty( $post['postmeta'] ) ) {
 				foreach ( $post['postmeta'] as $meta ) {
-					$key = apply_filters( 'import_post_meta_key', $meta['key'] );
+					$key = apply_filters( 'import_post_meta_key', $meta['key'], $post_id, $post );
 					$value = false;
 
 					if ( '_edit_last' == $key ) {

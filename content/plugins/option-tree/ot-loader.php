@@ -3,7 +3,7 @@
  * Plugin Name: OptionTree
  * Plugin URI:  http://wp.envato.com
  * Description: Theme Options UI Builder for WordPress. A simple way to create & save Theme Options and Meta Boxes for free or premium themes.
- * Version:     2.0.12
+ * Version:     2.0.14
  * Author:      Derek Herman
  * Author URI:  http://valendesigns.com
  * License:     GPLv2
@@ -60,7 +60,7 @@ if ( ! class_exists( 'OT_Loader' ) ) {
       /**
        * Current Version number.
        */
-      define( 'OT_VERSION', '2.0.12' );
+      define( 'OT_VERSION', '2.0.14' );
       
       /**
        * For developers: Allow Unfiltered HTML in all the textareas.
@@ -178,9 +178,13 @@ if ( ! class_exists( 'OT_Loader' ) ) {
         $files[] = 'ot-ui-admin';
       }
       
+      // Temporary patch to fix PHP notice regression after Theme Check update
+      global $wp_query;
+      $wp_query->query_vars['option_tree'] = true;
+      
       /* require the files */
       foreach ( $files as $file ) {
-        require_once( OT_DIR . "includes/{$file}.php" );
+        load_template( OT_DIR . "includes/{$file}.php" );
       }
       
     }
@@ -198,14 +202,19 @@ if ( ! class_exists( 'OT_Loader' ) ) {
      */
     public function includes() {
       
+		
       $files = array( 
         'ot-functions',
         'ot-functions-deprecated'
       );
       
+      // Temporary patch to fix PHP notice regression after Theme Check update
+      global $wp_query;
+      $wp_query->query_vars['option_tree'] = true;
+      
       /* require the files */
       foreach ( $files as $file ) {
-        require_once( OT_DIR . "includes/{$file}.php" );
+        load_template( OT_DIR . "includes/{$file}.php" );
       }
       
     }
@@ -280,7 +289,7 @@ if ( ! class_exists( 'OT_Loader' ) ) {
       add_action( 'wp_ajax_add_setting', array( &$this, 'add_setting' ) );
       
       /* AJAX call to create a new contextual help */
-      add_action( 'wp_ajax_add_contextual_help', array( &$this, 'add_contextual_help' ) );
+      add_action( 'wp_ajax_add_the_contextual_help', array( &$this, 'add_the_contextual_help' ) );
       
       /* AJAX call to create a new choice */
       add_action( 'wp_ajax_add_choice', array( &$this, 'add_choice' ) );
@@ -350,7 +359,7 @@ if ( ! class_exists( 'OT_Loader' ) ) {
     /**
      * AJAX utility function for adding new contextual help content.
      */
-    public function add_contextual_help() {
+    public function add_the_contextual_help() {
       echo ot_contextual_help_view( $_REQUEST['name'], $_REQUEST['count'] );
       die();
     }
@@ -375,7 +384,7 @@ if ( ! class_exists( 'OT_Loader' ) ) {
      * AJAX utility function for adding a new list item.
      */
     public function add_list_item() {
-      ot_list_item_view( $_REQUEST['name'], $_REQUEST['count'], array(), $_REQUEST['post_id'], $_REQUEST['get_option'], unserialize( base64_decode( $_REQUEST['settings'] ) ), $_REQUEST['type'] );
+      ot_list_item_view( $_REQUEST['name'], $_REQUEST['count'], array(), $_REQUEST['post_id'], $_REQUEST['get_option'], unserialize( ot_decode( $_REQUEST['settings'] ) ), $_REQUEST['type'] );
       die();
     }
     
@@ -386,7 +395,7 @@ if ( ! class_exists( 'OT_Loader' ) ) {
    *
    * @since     2.0
    */
-  $ot_loader =& new OT_Loader();
+  $ot_loader = new OT_Loader();
 
 }
 

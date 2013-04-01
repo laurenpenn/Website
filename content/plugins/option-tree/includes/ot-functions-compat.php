@@ -57,7 +57,7 @@ if ( ! function_exists( 'compat_ot_import_from_files' ) ) {
     $has_layout = ( is_readable( $layout_file ) ) ? true : false;
     
     /* auto import XML file */
-    if ( $has_xml == true && ! get_option( 'option_tree_settings' ) && class_exists( 'SimpleXMLElement' ) && function_exists( 'file_get_contents' ) ) {
+    if ( $has_xml == true && ! get_option( 'option_tree_settings' ) && class_exists( 'SimpleXMLElement' ) ) {
     
       $settings = ot_import_xml( $xml_file );
       
@@ -70,10 +70,15 @@ if ( ! function_exists( 'compat_ot_import_from_files' ) ) {
     }
     
     /* auto import Data file */
-    if ( $has_data == true && ! get_option( 'option_tree' ) && function_exists( 'file_get_contents' ) ) {
-    
-      $rawdata = @file_get_contents( $data_file );
-      $options = unserialize( base64_decode( $rawdata ) );
+    if ( $has_data == true && ! get_option( 'option_tree' ) ) {
+      
+      $get_data = wp_remote_get( $data_file );
+      
+      if ( is_wp_error( $get_data ) )
+        return false;
+        
+      $rawdata = isset( $get_data['body'] ) ? $get_data['body'] : '';
+      $options = unserialize( ot_decode( $rawdata ) );
       
       /* get settings array */
       $settings = get_option( 'option_tree_settings' );
@@ -106,10 +111,15 @@ if ( ! function_exists( 'compat_ot_import_from_files' ) ) {
     }
     
     /* auto import Layout file */
-    if ( $has_layout == true && ! get_option( 'option_tree_layouts' ) && function_exists( 'file_get_contents' ) ) {
+    if ( $has_layout == true && ! get_option( 'option_tree_layouts' ) ) {
     
-      $rawdata = @file_get_contents( $layout_file );
-      $layouts = unserialize( base64_decode( $rawdata ) );
+      $get_data = wp_remote_get( $data_file );
+      
+      if ( is_wp_error( $get_data ) )
+        return false;
+        
+      $rawdata = isset( $get_data['body'] ) ? $get_data['body'] : '';
+      $layouts = unserialize( ot_decode( $rawdata ) );
       
       /* get settings array */
       $settings = get_option( 'option_tree_settings' );
@@ -125,7 +135,7 @@ if ( ! function_exists( 'compat_ot_import_from_files' ) ) {
             if ( $key == 'active_layout' )
               continue;
               
-            $options = unserialize( base64_decode( $value ) );
+            $options = unserialize( ot_decode( $value ) );
             
             foreach( $settings['settings'] as $setting ) {
 
@@ -139,7 +149,7 @@ if ( ! function_exists( 'compat_ot_import_from_files' ) ) {
             
             }
 
-            $layouts[$key] = base64_encode( serialize( $options ) );
+            $layouts[$key] = ot_encode( serialize( $options ) );
           
           }
         
@@ -148,7 +158,7 @@ if ( ! function_exists( 'compat_ot_import_from_files' ) ) {
         /* update the option tree array */
         if ( isset( $layouts['active_layout'] ) ) {
         
-          update_option( 'option_tree', unserialize( base64_decode( $layouts[$layouts['active_layout']] ) ) );
+          update_option( 'option_tree', unserialize( ot_decode( $layouts[$layouts['active_layout']] ) ) );
           
         }
         

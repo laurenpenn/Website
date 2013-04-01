@@ -1,0 +1,36 @@
+#wp-admin-bar-backwpup.menupop > .ab-item .ab-icon,
+#wp-admin-bar-backwpup.menupop > a > span .ab-icon {
+    background-image: url(../images/BackWPup20.png);
+    background-repeat: no-repeat;
+    position: relative;
+    /* for WP lower 3.3  */
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-top: 3px;
+	margin-right:5px;
+	background-position:top center;
+}
+#wp-admin-bar-backwpup.menupop.hover > .ab-item .ab-icon,
+#wp-admin-bar-backwpup.menupop.hover > a > span .ab-icon:hover {
+	background-image: url(../images/BackWPup20.png);
+    background-repeat: no-repeat;
+	background-position:bottom center;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    #wp-admin-bar-backwpup.menupop > .ab-item .ab-icon,
+	#wp-admin-bar-backwpup.menupop > a > span .ab-icon {
+        background-image: url(../images/BackWPup20_2x.png);
+        background-repeat: no-repeat;
+        background-size: 20px 40px;
+		background-position:top center;
+        position: relative;
+    }
+	#wp-admin-bar-backwpup.menupop.hover > .ab-item .ab-icon,
+	#wp-admin-bar-backwpup.menupop.hover > a > span .ab-icon:hover {
+		background-image: url(../images/BackWPup20_2x.png);
+		background-repeat: no-repeat;
+		background-position:bottom center;
+	}
+}

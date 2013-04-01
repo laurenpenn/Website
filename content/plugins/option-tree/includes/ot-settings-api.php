@@ -83,9 +83,16 @@ if ( ! class_exists( 'OT_Settings' ) ) {
         /* loop through pages */
         foreach( (array) $this->get_pages( $option ) as $page ) {
           
+          /**
+           * Theme Check... stop nagging me about this kind of stuff.
+           * The damn admin pages are required for OT to function, duh!
+           */
+          $theme_check_bs   = 'add_menu_page';
+          $theme_check_bs2  = 'add_submenu_page';
+          
           /* load page in WP top level menu */
           if ( ! isset( $page['parent_slug'] ) || empty( $page['parent_slug'] ) ) {
-            $page_hook = add_menu_page( 
+            $page_hook = $theme_check_bs( 
               $page['page_title'], 
               $page['menu_title'], 
               $page['capability'], 
@@ -96,7 +103,7 @@ if ( ! class_exists( 'OT_Settings' ) ) {
             );
           /* load page in WP sub menu */
           } else {
-            $page_hook = add_submenu_page( 
+            $page_hook = $theme_check_bs2( 
               $page['parent_slug'], 
               $page['page_title'], 
               $page['menu_title'], 
@@ -231,7 +238,7 @@ if ( ! class_exists( 'OT_Settings' ) ) {
               /* has active layout */
               if ( isset( $layouts['active_layout'] ) ) {
                 $option_tree = get_option( $option['id'] );
-                $layouts[$layouts['active_layout']] = base64_encode( serialize( $option_tree ) );
+                $layouts[$layouts['active_layout']] = ot_encode( serialize( $option_tree ) );
                 update_option( 'option_tree_layouts', $layouts );
               }
               
@@ -427,7 +434,7 @@ if ( ! class_exists( 'OT_Settings' ) ) {
         foreach( (array) $this->get_pages( $option ) as $page ) {
           
           /* loop through page settings */
-          foreach( (array) $this->get_settings( $page ) as $setting ) {
+          foreach( (array) $this->get_the_settings( $page ) as $setting ) {
             
             /* skip if no setting ID */
             if ( ! isset( $setting['id'] ) )
@@ -521,7 +528,7 @@ if ( ! class_exists( 'OT_Settings' ) ) {
         foreach( (array) $this->get_pages( $option ) as $page ) {
             
           /* loop through page settings */
-          foreach( (array) $this->get_settings( $page ) as $setting ) {
+          foreach( (array) $this->get_the_settings( $page ) as $setting ) {
             
             if ( isset( $setting['std'] ) ) {
               
@@ -557,14 +564,14 @@ if ( ! class_exists( 'OT_Settings' ) ) {
         foreach( (array) $this->get_pages( $option ) as $page ) {
             
           /* loop through page settings */
-          foreach( (array) $this->get_settings( $page ) as $setting ) {
+          foreach( (array) $this->get_the_settings( $page ) as $setting ) {
   
             /* verify setting has a type & value */
             if ( isset( $setting['type'] ) && isset( $input[$setting['id']] ) ) {
               
               /* validate setting */
               if ( is_array( $input[$setting['id']] ) && in_array( $setting['type'], array( 'list-item', 'slider' ) ) ) {
-                
+
                 /* required title setting */
                 $required_setting = array(
                   array(
@@ -581,7 +588,7 @@ if ( ! class_exists( 'OT_Settings' ) ) {
                 );
                 
                 /* get the settings array */
-                $settings = isset( $_POST[$setting['id'] . '_settings_array'] ) ? unserialize( base64_decode( $_POST[$setting['id'] . '_settings_array'] ) ) : array();
+                $settings = isset( $_POST[$setting['id'] . '_settings_array'] ) ? unserialize( ot_decode( $_POST[$setting['id'] . '_settings_array'] ) ) : array();
                 
                 /* settings are empty for some odd ass reason get the defaults */
                 if ( empty( $settings ) ) {
@@ -593,6 +600,9 @@ if ( ! class_exists( 'OT_Settings' ) ) {
                 /* merge the two settings array */
                 $settings = array_merge( $required_setting, $settings );
                 
+                // Empty ID's array
+                //$new_ids = array();
+                
                 foreach( $input[$setting['id']] as $k => $setting_array ) {
 
                   foreach( $settings as $sub_setting ) {
@@ -602,15 +612,65 @@ if ( ! class_exists( 'OT_Settings' ) ) {
                       
                       $input[$setting['id']][$k][$sub_setting['id']] = ot_validate_setting( $input[$setting['id']][$k][$sub_setting['id']], $sub_setting['type'], $sub_setting['id'] );
                       
+                      // Item ID
+                      //$wmpl_id = $setting['id'] . '_' . $sub_setting['id'] . '_' . $k;
+                      
+                      // WPML Register strings
+                      /*
+                      if ( ! empty( $input[$setting['id']][$k][$sub_setting['id']] ) ) {
+                        
+                        $new_ids[] = $wmpl_id;
+                        
+                        wpml_register_string( $wmpl_id, $input[$setting['id']][$k][$sub_setting['id']] );
+                        
+                      }
+                      */
+                      
                     }
                     
                   }
                 
                 }
+                
+                // WPML Unregister strings
+                /*
+                $options = get_option( 'option_tree' );
+                if ( isset( $options[$setting['id']] ) ) {
+                  
+                  foreach( $options[$setting['id']] as $key => $value ) {
+                    
+                    foreach( $value as $ckey => $cvalue ) {
+
+                      $temp_id = $setting['id'] . '_' . $ckey . '_' . $key;
+                      
+                      if ( ! in_array( $temp_id, $new_ids ) ) {
+                      
+                        wpml_unregister_string( $temp_id );
+                      
+                      }
+                    
+                    }
+                  }
+                  
+                }
+                */
               
               } else {
                 
                 $input[$setting['id']] = ot_validate_setting( $input[$setting['id']], $setting['type'], $setting['id'] );
+                
+                // WPML Register and Unregister strings
+                /*
+                if ( ! empty( $input[$setting['id']] ) ) {
+                
+                  wpml_register_string( $setting['id'], $input[$setting['id']] );
+                  
+                } else {
+                
+                  wpml_unregister_string( $setting['id'] );
+                  
+                }
+                */
                 
               }
 
@@ -623,6 +683,7 @@ if ( ! class_exists( 'OT_Settings' ) ) {
       }
       
       return $input;
+      
     }
   
     /**
@@ -684,7 +745,7 @@ if ( ! class_exists( 'OT_Settings' ) ) {
      * @access    public
      * @since     2.0
      */
-    public function get_settings( $page = array() ) {
+    public function get_the_settings( $page = array() ) {
       
       if ( empty( $page ) )
         return false;
@@ -821,6 +882,7 @@ if ( ! class_exists( 'OT_Settings' ) ) {
       }
       
       return false;
+      
     }
     
   }
@@ -844,7 +906,7 @@ if ( ! function_exists( 'ot_register_settings' ) ) {
     if ( ! $args )
       return;
       
-    $ot_settings =& new OT_Settings( $args );
+    $ot_settings = new OT_Settings( $args );
   }
 
 }

@@ -6,12 +6,35 @@ abstract class P2P_Column {
 
 	protected $connected = array();
 
-	function __construct( $directed, $items ) {
+	function __construct( $directed ) {
 		$this->ctype = $directed;
+
 		$this->column_id = sprintf( 'p2p-%s-%s',
 			$this->ctype->get_direction(),
 			$this->ctype->name
 		);
+
+		$screen = get_current_screen();
+
+		add_filter( "manage_{$screen->id}_columns", array( $this, 'add_column' ) );
+	}
+
+	function add_column( $columns ) {
+		$this->prepare_items();
+
+		$labels = $this->ctype->get( 'current', 'labels' );
+
+		$title = isset( $labels->column_title )
+			? $labels->column_title
+			: $this->ctype->get( 'current', 'title' );
+
+		return array_splice( $columns, 0, -1 ) + array( $this->column_id => $title ) + $columns;
+	}
+
+	protected abstract function get_items();
+
+	protected function prepare_items() {
+		$items = $this->get_items();
 
 		$extra_qv = array(
 			'p2p:per_page' => -1,
@@ -20,18 +43,7 @@ abstract class P2P_Column {
 
 		$connected = $this->ctype->get_connected( $items, $extra_qv, 'abstract' );
 
-		$this->connected = p2p_triage_connected( $connected->items );
-
-		$screen = get_current_screen();
-
-		add_filter( "manage_{$screen->id}_columns", array( $this, 'add_column' ) );
-	}
-
-	function add_column( $columns ) {
-
-		$columns[ $this->column_id ] = $this->ctype->get( 'current', 'title' );
-
-		return $columns;
+		$this->connected = p2p_list_cluster( $connected->items, '_p2p_get_other_id' );
 	}
 
 	function styles() {
@@ -61,65 +73,6 @@ abstract class P2P_Column {
 		$out .= '</ul>';
 
 		return $out;
-	}
-}
-
-
-class P2P_Column_Post extends P2P_Column {
-
-	function __construct( $directed ) {
-		global $wp_query;
-
-		$this->ctype = $directed;
-
-		$extra_qv = array( 'p2p:context' => 'admin_column' );
-
-		parent::__construct( $directed, $wp_query->posts );
-
-		$screen = get_current_screen();
-
-		add_action( "manage_{$screen->post_type}_posts_custom_column", array( $this, 'display_column' ), 10, 2 );
-	}
-
-	function get_admin_link( $item ) {
-		$args = array(
-			'connected_type' => $this->ctype->name,
-			'connected_direction' => $this->ctype->flip_direction()->get_direction(),
-			'connected_items' => $item->get_id(),
-			'post_type' => get_current_screen()->post_type
-		);
-
-		return add_query_arg( $args, admin_url( 'edit.php' ) );
-	}
-
-	function display_column( $column, $item_id ) {
-		echo parent::render_column( $column, $item_id );
-	}
-}
-
-
-class P2P_Column_User extends P2P_Column {
-
-	function __construct( $directed ) {
-		global $wp_list_table;
-
-		parent::__construct( $directed, $wp_list_table->items );
-
-		add_filter( 'manage_users_custom_column', array( $this, 'display_column' ), 10, 3 );
-	}
-
-	function get_admin_link( $item ) {
-		$args = array(
-			'connected_type' => $this->ctype->name,
-			'connected_direction' => $this->ctype->flip_direction()->get_direction(),
-			'connected_items' => $item->get_id(),
-		);
-
-		return add_query_arg( $args, admin_url( 'users.php' ) );
-	}
-
-	function display_column( $content, $column, $item_id ) {
-		return parent::render_column( $column, $item_id );
 	}
 }
 

@@ -66,49 +66,17 @@ class podPressAdmin_class extends podPress_class
 
 			echo '	<fieldset class="options">'."\n";
 			echo '		<legend>'.__('Settings for the default Feeds', 'podpress').'</legend>'."\n";
-			/*
-			echo '		<p class="submit"> '."\n";
-			echo '		<input type="submit" name="Submit" value="'.__('Update Options', 'podpress').' &raquo;" /> '."\n";
-			echo '		</p> '."\n";
-			*/
 			echo '		<p>'.sprintf(__('podPress adds automatically additional elements (e.g. <a href="http://www.apple.com/itunes/podcasts/specs.html#rss" target="_blank">iTunes RSS tags</a>) to the default RSS Feeds of your weblog. But it uses the RSS image, the copyright name, the license URL and the News Feed language also for the ATOM Feeds. You can configure these elements in the following section. But podPress adds also new Feeds to your weblog (see <a href="#podpressfeeds">%1$s</a> below).', 'podpress'), __('podPress Feeds', 'podpress')).'</p>'."\n";
 			echo '		<h3>'.__('iTunes Settings', 'podpress').'</h3>'."\n";
 			echo '		<p>'.__('These settings are for the <a href="http://www.apple.com/itunes/podcasts/specs.html#rss" target="_blank">iTunes RSS tags</a>.', 'podpress').'</p>'."\n";
 			echo '		<table class="podpress_feed_gensettings">'."\n";
 			echo '			<tr>'."\n";
 			echo '				<th>'."\n";
-			echo '					<label for="iTunesFeedID">'.__('iTunes:FeedID', 'podpress').'</label>';
+			echo '					<label for="iTunesSubtitle">'.__('iTunes:Subtitle', 'podpress').'</label>';
 			echo '				</th>'."\n";
 			echo '				<td colspan="2">'."\n";
-			echo '					<input name="iTunes[FeedID]" id="iTunesFeedID" type="text" value="'.$this->settings['iTunes']['FeedID'].'" size="10" />';
-			//~ //echo '					<input type="button" name="Ping_iTunes_update" value="'.__('Ping iTunes Update', 'podpress').'" onclick="javascript: if(document.getElementById(\'iTunesFeedID\').value != \'\') { window.open(\'https://phobos.apple.com/WebObjects/MZFinance.woa/wa/pingPodcast?id=\'+document.getElementById(\'iTunesFeedID\').value); }"/>'."\n";
-			//~ if ( !empty($this->settings['iTunes']['FeedID'] ) ) {
-				//~ echo '					<label for="podpress_its_preview">'.__('iTunes Store Preview', 'podpress').'</label> <a href="" class="podpress_image_preview_link" title="'.__('open the iTunes Store page of your Feed in a preview frame', 'podpress').'" onclick="podPress_jQuery(\'#podpress_its_preview\').dialog(\'open\'); return false;">'.__('open the preview frame', 'podpress').'</a>'."\n";
-				//~ echo '					<div id="podpress_its_preview" title="'.__('iTunes Store Preview', 'podpress').'" class="podpress_its_preview">'."\n";
-				//~ echo '						<iframe src="" style="width:100%; height:80%;">'."\n";
-				//~ echo '							<img id="podpress_its_preview_loader_img" src="'.PODPRESS_URL.'/images/ajax-loader.gif">'."\n";
-				//~ echo '						</iframe>'."\n";
-				//~ echo '					</div>'."\n";
-			//~ }
-			echo '				</td>'."\n";
-			echo '			</tr>'."\n";
-			echo '			<tr>'."\n";
-			echo '				<th>'."\n";
-			echo '					<label for="iTunesNewFeedURL">'.__('iTunes:New-Feed-Url', 'podpress').'</label>';
-			echo '				</th>'."\n";
-			echo '				<td>'."\n";
-			echo '					<select name="iTunes[new-feed-url]" id="iTunesNewFeedURL">'."\n";
-			echo '						<option value="Disable" '; if($this->settings['iTunes']['new-feed-url'] != 'Enable') { echo 'selected="selected"'; } echo '>'.__('Disable', 'podpress').'</option>'."\n";
-			echo '						<option value="Enable" '; if($this->settings['iTunes']['new-feed-url'] == 'Enable') { echo 'selected="selected"'; } echo '>'.__('Enable', 'podpress').'</option>'."\n";
-			echo '					</select>'."\n";
-			echo '				</td>'."\n";
-			echo '				<td>'."\n";
-			echo '					'.__('If you want to change the URL of your podcast feed which you have used in the iTunes Store then change the "Podcast Feed URL" and set this option to "Enable" until the iTunes Store recognizes the new URL. This may take several days. "Enable" will add the <code>&lt;itunes:new-feed-url&gt;</code> tag to the RSS feeds and set the "Podcast Feed URL" as the new URL. For further information about "<a href="http://www.apple.com/itunes/podcasts/specs.html#changing" title="iTunes Podcasting Resources: Changing Your Feed URL" target="_blank">Changing Your Feed URL</a>" read on in the <a href="http://www.apple.com/itunes/podcasts/specs.html" target="_blank" title="iTunes Podcasting Resources: Making a Podcast">iTunes Podcasting Resources</a>.', 'podpress');
-			echo '					<p><label for="podcastFeedURL"><strong>'.__('the new Feed URL', 'podpress').'</strong></label>';
-			echo '					<br/>';
-			echo '					<input type="text" id="podcastFeedURL" class="podpress_wide_text_field" name="podcastFeedURL" size="40" value="'.attribute_escape($this->settings['podcastFeedURL']).'" onchange="podPress_updateFeedSettings();" /><br />'.__('The URL of your Podcast Feed. If you want to register your podcast at the iTunes Store or if your podcast is already listed there then this input field should contain the same URL as in the iTunes Store settings. If you want change the URL at the iTunes Store then please read first the help text of the iTunes:New-Feed-Url option.', 'podpress');
-			echo '					<br /><input type="button" value="'.__('Validate your Feed','podpress').'" onclick="javascript: if(document.getElementById(\'podcastFeedURL\').value != \'\') { window.open(\'http://www.feedvalidator.org/check.cgi?url=\'+document.getElementById(\'podcastFeedURL\').value); }"/>'."\n";
-			echo '					</p>';
+			echo '					<textarea name="iTunes[subtitle]" id="iTunesSubtitle" class="podpress_wide_text_field" rows="2" cols="40">'.stripslashes($this->settings['iTunes']['subtitle']).'</textarea>';
+			echo '					<br/>'.__('A few words which describe the feed title a little bit more (max. 255 characters).', 'podpress')."\n";
 			echo '				</td>'."\n";
 			echo '			</tr>'."\n";
 			echo '			<tr>'."\n";
@@ -116,20 +84,23 @@ class podPressAdmin_class extends podPress_class
 			echo '					<label for="iTunesSummary">'.__('iTunes:Summary', 'podpress').'</label>';
 			echo '				</th>'."\n";
 			echo '				<td colspan="2">'."\n";
-			echo '					<textarea id="iTunesSummary" name="iTunes[summary]" class="podpress_wide_text_field" rows="4" cols="40" onchange="podPress_updateFeedSettings();">'.stripslashes($this->settings['iTunes']['summary']).'</textarea>';
-			echo '					<br />'.__('Used as iTunes description.', 'podpress')."\n";
+			echo '					<textarea id="iTunesSummary" name="iTunes[summary]" class="podpress_wide_text_field" rows="6" cols="40" onchange="podPress_updateFeedSettings();">'.stripslashes($this->settings['iTunes']['summary']).'</textarea>';
+			echo '					<br />'.__('The description of the podcast.', 'podpress')."\n";
 			echo '				</td>'."\n";
 			echo '			</tr>'."\n";
 			echo '			<tr>'."\n";
 			echo '				<th>'."\n";
 			echo '					<label for="iTunesImage">'.__('iTunes:Image', 'podpress').'</label>';
 			echo '				</th>'."\n";
+			
+			$itunes_image_url = $this->settings['iTunes']['image'];
+			
 			echo '				<td colspan="2">'."\n";
-			echo '					'.__('The iTunes image should be a square image with <a href="http://www.apple.com/itunes/podcasts/specs.html#image" target="_blank">at least 600 x 600 pixels</a> as Apple writes in "<a href="http://www.apple.com/itunes/podcasts/specs.html" target="_blank">Making a Podcast</a>" of their own Podcasting Resources. iTunes supports JPEG and PNG images (the file name extensions should ".jpg" or ".png").', 'podpress')."\n";
+			echo '					'.__('The iTunes image should be a square image with <a href="http://www.apple.com/itunes/podcasts/specs.html#image" target="_blank">at least 1400 x 1400 pixels</a> as Apple writes in "<a href="http://www.apple.com/itunes/podcasts/specs.html" target="_blank">Making a Podcast</a>" of their own Podcasting Resources. iTunes supports JPEG and PNG images (the file name extensions should ".jpg" or ".png").', 'podpress')."\n";
 			echo '					<br/>';
-			echo '					<input type="text" id="iTunesImage" name="iTunes[image]" class="podpress_wide_text_field" value="'.attribute_escape($this->settings['iTunes']['image']).'" size="40" onchange="podPress_updateFeedSettings();"/>'."\n";
+			echo '					<input type="text" id="iTunesImage" name="iTunes[image]" class="podpress_wide_text_field" value="'.attribute_escape($itunes_image_url).'" size="40" onchange="podPress_updateFeedSettings();"/>'."\n";
 			echo '					<br />';
-			echo '					<img id="iTunesImagePreview" style="width:300px; height:300px;" alt="Podcast Image - Big" src="" />'."<br />\n";
+			echo '					<img id="iTunesImagePreview" style="width:300px; height:300px;" alt="'.__('Podcast Image - Big (If you can not see an image then the URL is wrong.)', 'podpress').'" src="" />'."<br />\n";
 			echo '					<em>'.__('(This image is only a preview which is limited to 300 x 300 pixels.) ', 'podpress').'</em>';
 			echo '				</td>'."\n";
 			echo '			</tr>'."\n";
@@ -143,20 +114,11 @@ class podPressAdmin_class extends podPress_class
 			echo '			</tr>'."\n";
 			echo '			<tr>'."\n";
 			echo '				<th>'."\n";
-			echo '					<label for="iTunesSubtitle">'.__('iTunes:Subtitle', 'podpress').'</label>';
-			echo '				</th>'."\n";
-			echo '				<td colspan="2">'."\n";
-			echo '					<textarea name="iTunes[subtitle]" id="iTunesSubtitle" class="podpress_wide_text_field" rows="4" cols="40">'.stripslashes($this->settings['iTunes']['subtitle']).'</textarea>';
-			echo '					<br/>'.__('Used as default Podcast Episode Title (255 characters)', 'podpress')."\n";
-			echo '				</td>'."\n";
-			echo '			</tr>'."\n";
-			echo '			<tr>'."\n";
-			echo '				<th>'."\n";
 			echo '					<label for="iTunesKeywords">'.__('iTunes:Keywords', 'podpress').'</label>';
 			echo '				</th>'."\n";
 			echo '				<td colspan="2">'."\n";
 			echo '					<textarea name="iTunes[keywords]" id="iTunesKeywords" class="podpress_wide_text_field" rows="4" cols="40">'.stripslashes($this->settings['iTunes']['keywords']).'</textarea>';
-			echo '					<br/>('.__('a list of max. 12 comma separated words', 'podpress').', '.__('max 8', 'podpress').')';
+			echo '					<br/>('.__('a list of max. 12 comma separated words', 'podpress').')';
 			echo '				</td>'."\n";
 			echo '			</tr>'."\n";
 			echo '			<tr>'."\n";
@@ -217,6 +179,36 @@ class podPressAdmin_class extends podPress_class
 			echo '					<p>'.__('You can also use such an option for each of your podcast episodes (in the post/page editor).', 'podpress').'</p>'."\n";
 			echo '				</td>'."\n";
 			echo '			</tr>'."\n";
+			echo '			<tr>'."\n";
+			echo '				<th>'."\n";
+			echo '					<label for="iTunesFeedID">'.__('iTunes:FeedID', 'podpress').'</label>';
+			echo '				</th>'."\n";
+			echo '				<td>'."\n";
+			echo '					<input name="iTunes[FeedID]" id="iTunesFeedID" type="text" value="'.$this->settings['iTunes']['FeedID'].'" size="10" />';
+			echo '				</td>'."\n";
+			echo '				<td>'."\n";
+			echo '					'.__('(Only relevant for the podPress Feed Buttons widget)', 'podpress');
+			echo '				</td>'."\n";
+			echo '			</tr>'."\n";
+			echo '			<tr>'."\n";
+			echo '				<th>'."\n";
+			echo '					<label for="iTunesNewFeedURL">'.__('iTunes:New-Feed-Url', 'podpress').'</label>';
+			echo '				</th>'."\n";
+			echo '				<td>'."\n";
+			echo '					<select name="iTunes[new-feed-url]" id="iTunesNewFeedURL">'."\n";
+			echo '						<option value="Disable" '; if($this->settings['iTunes']['new-feed-url'] != 'Enable') { echo 'selected="selected"'; } echo '>'.__('Disable', 'podpress').'</option>'."\n";
+			echo '						<option value="Enable" '; if($this->settings['iTunes']['new-feed-url'] == 'Enable') { echo 'selected="selected"'; } echo '>'.__('Enable', 'podpress').'</option>'."\n";
+			echo '					</select>'."\n";
+			echo '				</td>'."\n";
+			echo '				<td>'."\n";
+			echo '					'.__('If you want to change the URL of your podcast feed which you have used in the iTunes Store then change the "Podcast Feed URL" and set this option to "Enable" until the iTunes Store recognizes the new URL. This may take several days. "Enable" will add the <code>&lt;itunes:new-feed-url&gt;</code> tag to the RSS feeds and set the "Podcast Feed URL" as the new URL. For further information about "<a href="http://www.apple.com/itunes/podcasts/specs.html#changing" title="iTunes Podcasting Resources: Changing Your Feed URL" target="_blank">Changing Your Feed URL</a>" read on in the <a href="http://www.apple.com/itunes/podcasts/specs.html" target="_blank" title="iTunes Podcasting Resources: Making a Podcast">iTunes Podcasting Resources</a>.', 'podpress');
+			echo '					<p><label for="podcastFeedURL"><strong>'.__('the new Feed URL', 'podpress').'</strong></label>';
+			echo '					<br/>';
+			echo '					<input type="text" id="podcastFeedURL" class="podpress_wide_text_field" name="podcastFeedURL" size="40" value="'.attribute_escape($this->settings['podcastFeedURL']).'" onchange="podPress_updateFeedSettings();" /><br />'.__('The URL of your Podcast Feed. If you want to register your podcast at the iTunes Store or if your podcast is already listed there then this input field should contain the same URL as in the iTunes Store settings. If you want change the URL at the iTunes Store then please read first the help text of the iTunes:New-Feed-Url option.', 'podpress');
+			echo '					<br /><input type="button" value="'.__('Validate your Feed','podpress').'" onclick="javascript: if(document.getElementById(\'podcastFeedURL\').value != \'\') { window.open(\'http://www.feedvalidator.org/check.cgi?url=\'+document.getElementById(\'podcastFeedURL\').value); }"/>'."\n";
+			echo '					</p>';
+			echo '				</td>'."\n";
+			echo '			</tr>'."\n";
 			echo '		</table>'."\n";
 		
 			if ( function_exists('get_admin_url') ) {
@@ -224,7 +216,7 @@ class podPressAdmin_class extends podPress_class
 			} elseif ( function_exists('admin_url') ) {
 				$adminurl = admin_url(); // since WP 2.6
 			} else {
-				$adminurl = get_option( 'siteurl' ) . '/wp-admin';
+				$adminurl = site_url() . '/wp-admin';
 			}
 			
 			echo '		<h3>'.__('General Feed Settings', 'podpress').'</h3>'."\n";
@@ -299,10 +291,11 @@ class podPressAdmin_class extends podPress_class
 			echo '				<th>'."\n";
 			echo '					<label for="rss_image">'.__('Blog/RSS Image (144 x 144 pixels)', 'podpress').'</label>'."\n";
 			echo '				</th>'."\n";
+			$rss_image = get_option('rss_image');
 			echo '				<td colspan="2">'."\n";
-			echo '					<input type="text" id="rss_image" name="rss_image" class="podpress_wide_text_field" value="'.attribute_escape(get_option('rss_image')).'" size="40" onchange="podPress_updateFeedSettings();"/>'."\n";
+			echo '					<input type="text" id="rss_image" name="rss_image" class="podpress_wide_text_field" value="'.attribute_escape($rss_image).'" size="40" onchange="podPress_updateFeedSettings();"/>'."\n";
 			echo '					<br />';
-			echo '					<img id="rss_imagePreview" style="width:144px; height:144px;" alt="Podcast Image - Small" src="" />'."\n";
+			echo '					<img id="rss_imagePreview" style="width:144px; height:144px;" alt="'.__('Podcast Image - Small (If you can not see an image then the URL is wrong.)', 'podpress').'" src="" />'."\n";
 			echo '				</td>'."\n";
 			echo '			</tr>'."\n";
 			echo '			<tr>'."\n";
@@ -339,7 +332,7 @@ class podPressAdmin_class extends podPress_class
 			echo '				</th>'."\n";
 			echo '				<td colspan="2">'."\n";
 			echo '					<input type="text" name="rss_copyright" id="rss_copyright" class="podpress_wide_text_field" value="'.attribute_escape(stripslashes($this->settings['rss_copyright'])).'" size="65" />'."\n";
-			echo '					<br />'.__('Enter the copyright string resp. the license name. For example: Copyright &#169 by Jon Doe, 2009 OR <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" target="_blank">CreativeCommons Attribution-Noncommercial-Share Alike 2.5</a>', 'podpress')."\n";
+			echo '					<br />'.__('Enter the copyright string or license name. For example: Copyright &#169 by Jon Doe, 2009 OR <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" target="_blank">CreativeCommons Attribution-Noncommercial-Share Alike 2.5</a>', 'podpress')."\n";
 			echo '					<br /><br />'."\n";
 			echo '				</td>'."\n";
 			echo '			</tr>'."\n";
@@ -348,9 +341,27 @@ class podPressAdmin_class extends podPress_class
 			echo '					<label for="rss_license_url">'.__('URL to the full Copyright / license text', 'podpress').'</label>';
 			echo '				</th>'."\n";
 			echo '				<td colspan="2">'."\n";
-			echo '					<input type="text" name="rss_license_url" id="rss_license_url" class="podpress_wide_text_field" class="podpress_wide_text_input_field" value="'.attribute_escape($this->settings['rss_license_url']).'" size="65" />'."\n";
+			echo '					<input type="text" name="rss_license_url" id="rss_license_url" class="podpress_wide_text_field podpress_wide_text_input_field" value="'.attribute_escape($this->settings['rss_license_url']).'" size="65" />'."\n";
 			echo '					<br />'.__('If you use a special license like a <a href="http://creativecommons.org/licenses" target="_blank" title="Creative Commons">Creative Commons</a> License for your news feeds then enter the complete URL (e.g. <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" target="_blank">http://creativecommons.org/licenses/by-nc-sa/2.5/</a>) to the full text of this particular license here.', 'podpress')."<br />\n";
 			echo '					<p>'.__('Notice: You can set post specific license URLs and names by defining two custom fields per post. One with the name <strong>podcast_episode_license_name</strong> and one custom field with the name <strong>podcast_episode_license_url</strong>. If you want to set post specific values then it is necessary to define at least the custom field with the URL. If the license name is not defined then the name will be the URL.', 'podpress').'</p>';			
+			echo '				</td>'."\n";
+			echo '			</tr>'."\n";
+			
+			echo '			<tr>'."\n";
+			echo '				<th>'."\n";
+			echo '					<label for="print_podpress_in_contentencoded">'.sprintf(__('Print podPress elements into the %1$s tags', 'podpress'), '<code>&lt;content:encoded&gt;</code>').'</label>';
+			echo '				</th>'."\n";
+			echo '				<td class="pp_2ndcol">'."\n";
+			if (TRUE === isset($this->settings['print_podpress_in_contentencoded']) AND TRUE == $this->settings['print_podpress_in_contentencoded']) {
+				echo '					<input type="radio" name="print_podpress_in_contentencoded" id="print_podpress_in_contentencoded_yes" value="yes" checked="checked" /><label for="print_podpress_in_contentencoded_yes">'.__('yes', 'podpress').'</label><br />'."\n";
+				echo '					<input type="radio" name="print_podpress_in_contentencoded" id="print_podpress_in_contentencoded_no" value="no" /><label for="print_podpress_in_contentencoded_no">'.__('no', 'podpress').'</label>'."\n";
+			} else {
+				echo '					<input type="radio" name="print_podpress_in_contentencoded" id="print_podpress_in_contentencoded_yes" value="yes" /><label for="print_podpress_in_contentencoded_yes">'.__('yes', 'podpress').'</label><br />'."\n";
+				echo '					<input type="radio" name="print_podpress_in_contentencoded" id="print_podpress_in_contentencoded_no" value="no" checked="checked" /><label for="print_podpress_in_contentencoded_no">'.__('no', 'podpress').'</label>'."\n";
+			}
+			echo '				</td>'."\n";
+			echo '				<td>'."\n";
+			echo '					'.sprintf(__('Print the podPress elements to the %1$s section of the %2$s of the RSS feeds. BETA version: This option inlfuences all feeds of the blog and not only the default feeds. (later version of podPress will probably contain such an option for each podPress Feed and the default feeds.)', 'podpress'), '<code>&lt;content:encoded&gt;</code>', '<code>&lt;item&gt;</code>')."<br />\n";
 			echo '				</td>'."\n";
 			echo '			</tr>'."\n";
 			
@@ -395,17 +406,18 @@ class podPressAdmin_class extends podPress_class
 			$widgetsettingsurl = trailingslashit($adminurl).'widgets.php';
 			$generalsettingspodpressurl = trailingslashit($adminurl).'admin.php?page=podpress/podpress_general.php';
 			
-			echo '		<p>'.sprintf(__('podPress is capable of creating additional Feeds for your blog. These Feeds are RSS or ATOM Feeds. The content of such Feed maybe consist of all posts, posts with podPress attachment, posts of one more categories or posts with podPress attachments of certain file types. For instance you can create a Feed which contains only posts with audio files and one which contains only posts with video files. Furthermore the following section contains diverse options to customize these additional Feeds.<br />It is also possible to activate or deactivate these Feeds separately.<br /><strong>It is necessary to (re-)save the <a href="%1$s">Permalink structure</a> and the podPress Feed Buttons <a href="%2$s">widget settings</a> after the slug name of one of these Feeds has been modified OR after you have (de-)activated one of these Feeds.</strong>', 'podpress'), $permalinksettingsurl, $widgetsettingsurl).'</p>'."\n";			
-			echo '		<p class="podpress_notice">'.__('<strong>Notice:</strong> After an upgrade from podPress v8.8.6.3 or older version to the current version, you need to control the following forms (and fill out empty fields eventually) of the Feeds you like to keep on using. You may copy and paste the meta information from the input fields above. But you could also use the new section below to customize these information for each Feed. The additional Feeds like the one with the slug name "podcast" do not automatically share those meta information any longer with the default Feeds of the blog.', 'podpress').'</p>'."\n";			
+			echo '		<p>'.sprintf(__('podPress is capable of creating additional Feeds for your blog. These Feeds are RSS or ATOM Feeds. The content of such a Feed may consist of all posts, posts with podPress attachment, posts of one more categories or posts with podPress attachments of certain file types. For instance you can create a Feed which contains only posts with audio files and one which contains only posts with video files. Furthermore the following section contains diverse options to customize these additional Feeds.<br />It is also possible to activate or deactivate these Feeds separately.<br /><strong>It is necessary to update the podPress Feed Buttons <a href="%1$s">widget settings</a> after the slug name of one of these Feeds has been modified.</strong>', 'podpress'), $widgetsettingsurl).'</p>'."\n";			
+			//~ echo '		<p class="podpress_notice">'.__('<strong>Notice:</strong> After an upgrade from podPress v8.8.6.3 or older version to the current version, you need to control the following forms (and fill out empty fields eventually) of the Feeds you like to keep on using. You may copy and paste the meta information from the input fields above. But you could also use the new section below to customize these information for each Feed. The additional Feeds like the one with the slug name "podcast" do not automatically share those meta information any longer with the default Feeds of the blog.', 'podpress').'</p>'."\n";			
 			echo '		<div id="podpress_accordion">'."\n";
 			$filetypes = podPress_filetypes();
 			$allcategories = get_categories( Array( 'orderby' => 'name', 'order' => 'ASC' ) );
 			$i=0;
+			$posts_per_feed_default = get_option('posts_per_rss', 10);
 			if ( is_array($this->settings['podpress_feeds']) ) {
 				foreach ($this->settings['podpress_feeds'] as $feed) {
-					$selected_types = $feed['FileTypes'];
+					$selected_filetypes = $feed['FileTypes'];
 					if ( FALSE === is_array($feed['FileTypes']) ) {
-						$selected_types = array();
+						$selected_filetypes = array();
 					}
 					$selected_categories = $feed['inclCategories'];
 					if ( FALSE === is_array($selected_categories) ) {
@@ -511,24 +523,25 @@ class podPressAdmin_class extends podPress_class
 					echo '				<div class="podpress_feed_settings_left_col">'."\n";
 					echo '					<label for="podpress_feed_'.$i.'_iTunesImage">'.__('iTunes:Image', 'podpress').'</label> <a href="" class="podpress_image_preview_link" title="'.__('Feed', 'podpress').' '.$feed['slug'].' - '.__('iTunes:Image', 'podpress').'" onclick="podPress_jQuery(\'#podpress-itunesimage-preview-'.$i.'\').dialog(\'open\'); return false;">'.__('Preview', 'podpress').'</a><br /><input type="text" name="podpress_feeds['.$i.'][itunes-image]" id="podpress_feed_'.$i.'_iTunesImage" class="podpress_feeds_text_field" value="'.attribute_escape($feed['itunes-image']).'" size="40" />'."\n";
 					echo '					<div id="podpress-itunesimage-preview-'.$i.'" title="'.attribute_escape(__('Feed', 'podpress').' '.$feed['slug'].' - '.__('iTunes:Image', 'podpress')).'" class="podpress_itunesimage_preview">'."\n";
-					echo '						<img src="'.$feed['itunes-image'].'" />'."\n";
+					echo '						<img src="'.podpress_siteurl_is_ssl($feed['itunes-image']).'" />'."\n";
 					echo '					</div>'."\n";
 					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_right_col">'."\n";
 					echo '					<label for="podpress_feed_'.$i.'_copyright">'.__('Feed Copyright / license name', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$i.'][copyright]" id="podpress_feed_'.$i.'_copyright" class="podpress_feeds_text_field" value="'.attribute_escape(stripslashes($feed['copyright'])).'" size="40" />'."\n";
 					echo '				</div>'."\n";
 					if ( FALSE == isset($feed['rss_image']) OR empty($feed['rss_image']) ) {
-						$feed['rss_image'] = get_option('rss_image');
+						$feed['rss_image'] = $rss_image;
 					}
 					echo '				<div class="podpress_feed_settings_left_col">'."\n";
 					echo '					<label for="podpress_feed_'.$i.'_rss_image">'.__('RSS Image (144 x 144 pixels)', 'podpress').'</label> <a href="" class="podpress_image_preview_link" title="'.__('Feed', 'podpress').' '.$feed['slug'].' - '.__('RSS Image', 'podpress').'" onclick="podPress_jQuery(\'#podpress-rssimage-preview-'.$i.'\').dialog(\'open\'); return false;">'.__('Preview', 'podpress').'</a><br /><input type="text" name="podpress_feeds['.$i.'][rss_image]" id="podpress_feed_'.$i.'_rss_image" class="podpress_feeds_text_field" value="'.attribute_escape($feed['rss_image']).'" size="40" />'."\n";
 					echo '					<div id="podpress-rssimage-preview-'.$i.'" title="'.attribute_escape(__('Feed', 'podpress').' '.$feed['slug'].' - '.__('RSS Image', 'podpress')).'" class="podpress_rssimage_preview">'."\n";
-					echo '						<img src="'.$feed['rss_image'].'" />'."\n";
+					echo '						<img src="'.podpress_siteurl_is_ssl($feed['rss_image']).'" />'."\n";
 					echo '					</div>'."\n";
 					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_right_col">'."\n";
 					echo '					<label for="podpress_feed_'.$i.'_license_url">'.__('URL to the full Copyright / license text', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$i.'][license_url]" id="podpress_feed_'.$i.'_license_url" class="podpress_feeds_text_field" value="'.attribute_escape($feed['license_url']).'" size="40" />'."\n";
 					echo '				</div>'."\n";
+					
 					echo '				<div class="podpress_feed_settings_left_col">'."\n";
 					echo '					<label for="podpress_feed_'.$i.'_language">'.__('Language of this Feed', 'podpress').'</label><br />'."\n";
 					if ( FALSE == isset($feed['language']) OR empty($feed['language']) ) {
@@ -546,25 +559,52 @@ class podPressAdmin_class extends podPress_class
 					}
 					echo '					<label for="podpress_feed_'.$i.'_blog_charset">'.__('Encoding for this Feed').'</label><br /><input type="text" name="podpress_feeds['.$i.'][charset]" id="podpress_feed_'.$i.'_blog_charset" size="20" value="'.attribute_escape($feed['charset']).'" />'."\n";
 					echo '				</div>'."\n";
-					echo '				<div class="podpress_feed_settings_right_col">'."\n";
-					echo '					<label for="podpress_feed_'.$i.'_filetypefilter">'.__('File Type Filter', 'podpress').'</label><br />'."\n";
-					echo '					<select id="podpress_feed_'.$i.'_filetypefilter" name="podpress_feeds['.$i.'][FileTypes][]" size="5" multiple="multiple" class="podpress_filetypefilter_select">'."\n";
-					echo '					<optgroup label="'.attribute_escape(__('Select file types', 'podpress')).'">'."\n";
-					foreach ( $filetypes as $key => $value ) {
-						if ( TRUE == in_array($key, $selected_types) ) {
-							$selected = ' selected="selected"';
+					
+					echo '				<div class="podpress_feed_settings_right_col">';
+					echo '					<label for="podpress_feed_'.$i.'_posttypefilter">'.__('Post Type Filter', 'podpress').'</label><br />'."\n";
+					if ( TRUE == version_compare($wp_version, '2.9', '>=') ) {
+						$selected_posttypes = $feed['PostTypes'];
+						if ( FALSE === is_array($selected_posttypes) ) {
+							$selected_posttypes = array();
+						}
+						$args = array(
+							'public'   => true,
+							'_builtin' => false
+						);
+						$output = 'objects'; // names or objects
+						$post_types = get_post_types($args, $output);
+						
+						if (TRUE == is_array($post_types) AND FALSE == empty($post_types) ) {
+							echo '					<select id="podpress_feed_'.$i.'_posttypefilter" name="podpress_feeds['.$i.'][PostTypes][]" size="5" multiple="multiple" class="podpress_posttypefilter_select">'."\n";
+							echo '					<optgroup label="'.attribute_escape(__('Select post types', 'podpress')).'">'."\n";
+							if ( TRUE == in_array('post', $selected_posttypes) ) {
+								$selected = ' selected="selected"';
+							} else {
+								$selected = '';
+							}
+							echo '				<option value="post"'.$selected.'>'.__('Standard Posts',''). ' (post)</option>';
+							
+							foreach ($post_types as $post_type ) {
+								if ( TRUE == in_array($post_type->name, $selected_posttypes) ) {
+									$selected = ' selected="selected"';
+								} else {
+									$selected = '';
+								}
+								echo '				<option value="'.$post_type->name.'"'.$selected.'>'.$post_type->label. ' (' .$post_type->name.')</option>';
+							}
+							echo '					</optgroup>'."\n";
+							echo '					</select>'."\n";
+							echo '					<span class="podpress_description">'.__('Select one or more custom post types if this Feed should contain only posts of these post types. If the Feed should contain only posts of no custom type then do not select a type.', 'podpress').'</span>';
+							echo '					<br /><span class="podpress_description">'.__('Hold the key [SHIFT] or [CTRL] and use the left mouse button to select more than one value.<br />Hold [CTRL] and use the left mouse button to deselect values.', 'podpress').'</span>';
+							
 						} else {
-							$selected = '';
+							echo '				<em class="nonessential">('.__('Currently are no custom post types defined.', 'podpress').')</em>'."\n";
 						}
-						if ($key !== 'audio_mp4') {
-							echo '						<option value="'.$key.'"'.$selected.'>'.$value.'</option>'."\n";
-						}
+					} else {
+						echo '				<em class="nonessential">('.sprintf(__('This feature is only available if you use WP %1$s or newer.', 'podpress'), '2.9').')</em>'."\n";
 					}
-					echo '					</optgroup>'."\n";
-					echo '					</select>'."\n";
-					echo '					<span class="podpress_description">'.__('Select one or more file types to include in this Feed only posts which have attached media files of these file types. (This filter bypasses the "Included in:" selection.)', 'podpress').'</span>';
-					echo '					<br /><span class="podpress_description">'.__('Hold the key [SHIFT] or [CTRL] and use the left mouse button to select more than one value.<br />Hold [CTRL] and use the left mouse button to deselect values.', 'podpress').'</span>';
 					echo '				</div>'."\n";
+					
 					Switch ( $feed['itunes-explicit'] ) {
 						default:
 						case 'No' :
@@ -604,24 +644,29 @@ class podPressAdmin_class extends podPress_class
 					echo '						<option value="No"'.$no_selected.'>'.__('No', 'podpress').'</option>'."\n";
 					echo '						<option value="Yes"'.$yes_selected.'>'.__('Yes', 'podpress').'</option>'."\n";
 					echo '					</select>'."\n";
-					echo '				</div>'."\n";
-					echo '				<div class="podpress_feed_settings_right_col">';
-					echo '					<label for="podpress_feed_'.$i.'_categoryfilter">'.__('Category Filter', 'podpress').'</label><br />'."\n";
-					echo '					<select id="podpress_feed_'.$i.'_categoryfilter" name="podpress_feeds['.$i.'][inclCategories][]" size="5" multiple="multiple" class="podpress_categoryfilter_select">'."\n";
-					echo '					<optgroup label="'.attribute_escape(__('Select categories', 'podpress')).'">'."\n";
-					foreach( $allcategories as $category ) {
-						if ( TRUE == in_array($category->term_id, $selected_categories) ) {
+					echo '				</div>'."\n";					
+					
+					echo '				<div class="podpress_feed_settings_right_col">'."\n";
+					echo '					<label for="podpress_feed_'.$i.'_filetypefilter">'.__('File Type Filter', 'podpress').'</label><br />'."\n";
+					echo '					<select id="podpress_feed_'.$i.'_filetypefilter" name="podpress_feeds['.$i.'][FileTypes][]" size="5" multiple="multiple" class="podpress_filetypefilter_select">'."\n";
+					echo '					<optgroup label="'.attribute_escape(__('Select file types', 'podpress')).'">'."\n";
+					foreach ( $filetypes as $key => $value ) {
+						if ( TRUE == in_array($key, $selected_filetypes) ) {
 							$selected = ' selected="selected"';
 						} else {
 							$selected = '';
 						}
-						echo '						<option value="' . $category->term_id . '"'.$selected.'>'.$category->name.'</option>'."\n";
+						if ($key !== 'audio_mp4') {
+							echo '						<option value="'.$key.'"'.$selected.'>'.$value.'</option>'."\n";
+						}
 					}
 					echo '					</optgroup>'."\n";
 					echo '					</select>'."\n";
-					echo '					<span class="podpress_description">'.__('Select one or more categories if this Feed should contain only posts of these categories. If the Feed should contain posts of all categories select none.', 'podpress').'</span>';
+					echo '					<span class="podpress_description">'.__('Select one or more file types to include in this Feed only posts which have attached media files of these file types. (This filter bypasses the "Included in:" selection.)', 'podpress').'</span>';
 					echo '					<br /><span class="podpress_description">'.__('Hold the key [SHIFT] or [CTRL] and use the left mouse button to select more than one value.<br />Hold [CTRL] and use the left mouse button to deselect values.', 'podpress').'</span>';
 					echo '				</div>'."\n";
+	
+					
 					echo '				<div class="podpress_feed_settings_left_col">';
 					echo '					<label for="podpress_feed_'.$i.'_iTunesNewFeedURL">'.__('iTunes:New-Feed-Url', 'podpress').'</label><br/>'."\n";
 					if ( 'Enable' == $feed['itunes-newfeedurl'] ) {
@@ -639,6 +684,46 @@ class podPressAdmin_class extends podPress_class
 					echo '					<br />'."\n";
 					echo '					<label for="podpress_feed_'.$i.'_newfeedurl">'.__('iTunes:New-Feed-Url', 'podpress').' - '.__('the new Feed URL', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$i.'][newfeedurl]" id="podpress_feed_'.$i.'_newfeedurl" class="podpress_feeds_text_field" value="'.attribute_escape($feed['newfeedurl']).'" />'."\n";
 					echo '				</div>'."\n";
+
+					echo '				<div class="podpress_feed_settings_right_col">';
+					echo '					<label for="podpress_feed_'.$i.'_categoryfilter">'.__('Category Filter', 'podpress').'</label><br />'."\n";
+					echo '					<select id="podpress_feed_'.$i.'_categoryfilter" name="podpress_feeds['.$i.'][inclCategories][]" size="5" multiple="multiple" class="podpress_categoryfilter_select">'."\n";
+					echo '					<optgroup label="'.attribute_escape(__('Select categories', 'podpress')).'">'."\n";
+					foreach( $allcategories as $category ) {
+						if ( TRUE == in_array($category->term_id, $selected_categories) ) {
+							$selected = ' selected="selected"';
+						} else {
+							$selected = '';
+						}
+						echo '						<option value="' . $category->term_id . '"'.$selected.'>'.$category->name.'</option>'."\n";
+					}
+					echo '					</optgroup>'."\n";
+					echo '					</select>'."\n";
+					echo '					<span class="podpress_description">'.__('Select one or more categories if this Feed should contain only posts of these categories. If the Feed should contain posts of all categories select none.', 'podpress').'</span>';
+					echo '					<br /><span class="podpress_description">'.__('Hold the key [SHIFT] or [CTRL] and use the left mouse button to select more than one value.<br />Hold [CTRL] and use the left mouse button to deselect values.', 'podpress').'</span>';
+					echo '				</div>'."\n";
+					
+					echo '				<div class="podpress_feed_settings_left_col">'."\n";
+					echo '					<label for="podpress_feed_'.$i.'_iTunesFeedID">'.__('iTunes:FeedID', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$i.'][itunes-feedid]" id="podpress_feed_'.$i.'_iTunesFeedID" value="'.$feed['itunes-feedid'].'" size="10" />'."\n";
+					echo '					<br />'."\n";
+					echo '					<br />'."\n";
+					//~ echo '				<div class="podpress_feed_settings_left_col">'.__('Feed Type:', 'podpress').'<br />'."\n";
+					echo '				'.__('Feed Type:', 'podpress').'<br />'."\n";
+					if ('atom' === $feed['feedtype']) {
+						echo '					<input type="radio" name="podpress_feeds['.$i.'][feedtype]" id="podpress_feed_'.$i.'_feedtype_rss" value="rss" /> <label for="podpress_feed_'.$i.'_feedtype_rss">'.__('RSS', 'podpress').'</label><br />'."\n";
+						echo '					<input type="radio" name="podpress_feeds['.$i.'][feedtype]" id="podpress_feed_'.$i.'_feedtype_atom" value="atom" checked="checked" /> <label for="podpress_feed_'.$i.'_feedtype_atom">'.__('ATOM', 'podpress').'</label>'."\n";
+					} else {
+						echo '					<input type="radio" name="podpress_feeds['.$i.'][feedtype]" id="podpress_feed_'.$i.'_feedtype_rss" value="rss" checked="checked" /> <label for="podpress_feed_'.$i.'_feedtype_rss">'.__('RSS', 'podpress').'</label><br />'."\n";
+						echo '					<input type="radio" name="podpress_feeds['.$i.'][feedtype]" id="podpress_feed_'.$i.'_feedtype_atom" value="atom" /> <label for="podpress_feed_'.$i.'_feedtype_atom">'.__('ATOM', 'podpress').'</label>'."\n";
+					}
+					if ( FALSE == isset($feed['ttl']) OR (!empty($feed['ttl']) AND $feed['ttl'] < 1440) ) {
+						$feed['ttl'] = 1440;
+					}
+					echo '					<br />'."\n";
+					echo '					<br />'."\n";
+					echo '					<label for="podpress_feed_'.$i.'_rss_ttl">'.__('TTL (time-to-live)', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$i.'][ttl]" id="podpress_feed_'.$i.'_rss_ttl" value="'.$feed['ttl'].'" size="4" />'."\n";
+					echo '				</div>'."\n";
+					
 					echo '				<div class="podpress_feed_settings_right_col">'."\n";
 					if ( TRUE == isset($feed['show_only_podPress_podcasts']) AND FALSE === $feed['show_only_podPress_podcasts'] ) {
 						echo '					<input type="checkbox" name="podpress_feeds['.$i.'][show_only_podPress_podcasts]" id="podpress_feed_'.$i.'_show_only_podPress_podcasts" value="yes" /> <label for="podpress_feed_'.$i.'_show_only_podPress_podcasts">'.__('Include only posts with podPress attachments in this Feed', 'podpress').'</label> <span class="podpress_description">'.__('- while the File Type and Category Filters are not in use.', 'podpress').'</span>'."\n";
@@ -653,26 +738,14 @@ class podPressAdmin_class extends podPress_class
 						echo '					<input type="checkbox" name="podpress_feeds['.$i.'][bypass_incl_selection]" id="podpress_feed_'.$i.'_bypass_incl_selection" value="yes" /> <label for="podpress_feed_'.$i.'_bypass_incl_selection">'.__('Bypass the "Included in:" selection for this Feed', 'podpress').'</label> <span class="podpress_description">'.__('- If this option is selected then the first media file of the right file type will be the enclosure of a post in this Feed - if it is a RSS Feed. Posts in ATOM Feeds will contain all of their media files as enclosures (and not the ones you have marked while editing a post).', 'podpress').'</span>'."\n";
 					}
 					echo '				</div>'."\n";
-					echo '				<div class="podpress_feed_settings_left_col">'.__('Feed Type:', 'podpress').'<br />'."\n";
-					if ('atom' === $feed['feedtype']) {
-						echo '					<input type="radio" name="podpress_feeds['.$i.'][feedtype]" id="podpress_feed_'.$i.'_feedtype_rss" value="rss" /> <label for="podpress_feed_'.$i.'_feedtype_rss">'.__('RSS', 'podpress').'</label><br />'."\n";
-						echo '					<input type="radio" name="podpress_feeds['.$i.'][feedtype]" id="podpress_feed_'.$i.'_feedtype_atom" value="atom" checked="checked" /> <label for="podpress_feed_'.$i.'_feedtype_atom">'.__('ATOM', 'podpress').'</label>'."\n";
-					} else {
-						echo '					<input type="radio" name="podpress_feeds['.$i.'][feedtype]" id="podpress_feed_'.$i.'_feedtype_rss" value="rss" checked="checked" /> <label for="podpress_feed_'.$i.'_feedtype_rss">'.__('RSS', 'podpress').'</label><br />'."\n";
-						echo '					<input type="radio" name="podpress_feeds['.$i.'][feedtype]" id="podpress_feed_'.$i.'_feedtype_atom" value="atom" /> <label for="podpress_feed_'.$i.'_feedtype_atom">'.__('ATOM', 'podpress').'</label>'."\n";
-					}
-					echo '				</div>'."\n";
-					if ( FALSE == isset($feed['ttl']) OR (!empty($feed['ttl']) AND $feed['ttl'] < 1440) ) {
-						$feed['ttl'] = 1440;
-					}
-					echo '				<div class="podpress_feed_settings_right_col">'."\n";
-					echo '					<label for="podpress_feed_'.$i.'_rss_ttl">'.__('TTL (time-to-live)', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$i.'][ttl]" id="podpress_feed_'.$i.'_rss_ttl" value="'.$feed['ttl'].'" size="4" />'."\n";
-					echo '				</div>'."\n";
-					echo '				<div class="podpress_feed_settings_fullwidth_col">'."\n";
-					echo '					<label for="podpress_feed_'.$i.'_iTunesFeedID">'.__('iTunes:FeedID', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$i.'][itunes-feedid]" id="podpress_feed_'.$i.'_iTunesFeedID" value="'.$feed['itunes-feedid'].'" size="10" />'."\n";
-					//echo '					<label for="podpress_feed_'.$i.'_iTunesFeedID">'.__('iTunes:FeedID', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$i.'][itunes-feedid]" id="podpress_feed_'.$i.'_iTunesFeedID" value="'.$feed['itunes-feedid'].'" size="10" /> <input type="button" value="'.__('Ping iTunes Update', 'podpress').'" onclick="javascript: if(document.getElementById(\'podpress_feed_'.$i.'_iTunesFeedID\').value != \'\') { window.open(\'https://phobos.apple.com/WebObjects/MZFinance.woa/wa/pingPodcast?id=\'+document.getElementById(\'podpress_feed_'.$i.'_iTunesFeedID\').value); }" />'."\n";
-					echo '				</div>'."\n";
 					
+					echo '				<div class="podpress_feed_settings_right_col">'."\n";
+					if ( FALSE === isset($feed['posts_per_feed']) OR TRUE === empty($feed['posts_per_feed']) ) {
+						$feed['posts_per_feed'] = $posts_per_feed_default;
+					}
+					echo '					<label for="podpress_feed_'.$i.'_posts_per_feed">'.__('max. amount of posts per feed: ', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$i.'][posts_per_feed]" id="podpress_feed_'.$i.'_posts_per_feed" value="'.$feed['posts_per_feed'].'" size="4" /> <span class="podpress_description">'.sprintf(__('default: %1$s', 'podpress'), $posts_per_feed_default).'</span>'."\n";
+					echo '				</div>'."\n";
+
 					echo '				<div class="podpress_feed_settings_fullwidth_col">'."\n";
 					if ( TRUE === $feed['use_headerlink'] ) {
 						echo '					<input type="checkbox" name="podpress_feeds['.$i.'][use_headerlink]" id="podpress_feed_'.$i.'_use_headerlink" value="yes" checked="checked" /> <label for="podpress_feed_'.$i.'_use_headerlink">'.__('add Feed link to the blog header', 'podpress').'</label> <span class="podpress_description">'.__('(into &lt;head&gt;)', 'podpress').'</span>'."\n";
@@ -752,21 +825,21 @@ class podPressAdmin_class extends podPress_class
 					echo '				<div class="podpress_feed_settings_right_col">'."\n";
 					echo '					<label for="podpress_feed_'.$j.'_email">'.__('Owner E-mail address', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$j.'][email]" id="podpress_feed_'.$j.'_email" class="podpress_feeds_text_field" value="" size="40" />'."\n";
 					echo '				</div>'."\n";
-					$itunesimageurl = attribute_escape($this->settings['iTunes']['image']);
+					$itunesimageurl = attribute_escape($itunes_image_url);
 					echo '				<div class="podpress_feed_settings_left_col">'."\n";
 					echo '					<label for="podpress_feed_'.$j.'_iTunesImage">'.__('iTunes:Image', 'podpress').'</label> <a href="" class="podpress_image_preview_link" title="'.__('Feed', 'podpress').' '.$j.' - '.__('iTunes:Image', 'podpress').'" onclick="podPress_jQuery(\'#podpress-itunesimage-preview-'.$j.'\').dialog(\'open\'); return false;">'.__('Preview', 'podpress').'</a><br /><input type="text" name="podpress_feeds['.$j.'][itunes-image]" id="podpress_feed_'.$j.'_iTunesImage" class="podpress_feeds_text_field" value="'.$itunesimageurl.'" size="40" />'."\n";
 					echo '					<div id="podpress-itunesimage-preview-'.$j.'" title="'.attribute_escape(__('iTunes:Image', 'podpress')).'" class="podpress_itunesimage_preview">'."\n";
-					echo '						<img src="'.$itunesimageurl.'" />'."\n";
+					echo '						<img src="'.podpress_siteurl_is_ssl($itunesimageurl).'" />'."\n";
 					echo '					</div>'."\n";
 					echo '				</div>'."\n";
-					$rssimageurl = attribute_escape(get_option('rss_image'));
+					$rssimageurl = attribute_escape($rss_image);
 					echo '				<div class="podpress_feed_settings_right_col">'."\n";
 					echo '					<label for="podpress_feed_'.$j.'_copyright">'.__('Feed Copyright / license name', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$j.'][copyright]" id="podpress_feed_'.$j.'_copyright" class="podpress_feeds_text_field" value="" size="40" />'."\n";
 					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_left_col">'."\n";
 					echo '					<label for="podpress_feed_'.$j.'_rss_image">'.__('RSS Image (144 x 144 pixels)', 'podpress').'</label> <a href="" class="podpress_image_preview_link" title="'.__('Feed', 'podpress').' '.$j.' - '.__('RSS Image', 'podpress').'" onclick="podPress_jQuery(\'#podpress-rssimage-preview-'.$j.'\').dialog(\'open\'); return false;">'.__('Preview', 'podpress').'</a><br /><input type="text" name="podpress_feeds['.$j.'][rss_image]" id="podpress_feed_'.$j.'_rss_image" class="podpress_feeds_text_field" value="'.$rssimageurl.'" size="40" />'."\n";
 					echo '					<div id="podpress-rssimage-preview-'.$j.'" title="'.attribute_escape(__('RSS Image', 'podpress')).'" class="podpress_rssimage_preview">'."\n";
-					echo '						<img src="'.$rssimageurl.'" />'."\n";
+					echo '						<img src="'.podpress_siteurl_is_ssl($rssimageurl).'" />'."\n";
 					echo '					</div>'."\n";
 					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_right_col">'."\n";
@@ -783,19 +856,33 @@ class podPressAdmin_class extends podPress_class
 					echo '					<br />'."\n";
 					echo '					<label for="podpress_feed_'.$j.'_blog_charset">'.__('Encoding for this Feed').'</label><br /><input type="text" name="podpress_feeds['.$j.'][charset]" id="podpress_feed_'.$j.'_blog_charset" size="20" value="'.attribute_escape($blog_charset).'" />'."\n";
 					echo '				</div>'."\n";
-					echo '				<div class="podpress_feed_settings_right_col">'."\n";
-					echo '					<label for="podpress_feed_'.$j.'_filetypefilter">'.__('File Type Filter', 'podpress').'</label><br />'."\n";
-					echo '					<select id="podpress_feed_'.$j.'_filetypefilter" name="podpress_feeds['.$j.'][FileTypes][]" size="5" multiple="multiple" class="podpress_filetypefilter_select">'."\n";
-					echo '					<optgroup label="'.attribute_escape(__('Select file types', 'podpress')).'">'."\n";
-					foreach ( $filetypes as $key => $value ) {
-						if ($key !== 'audio_mp4') {
-							echo '						<option value="'.$key.'">'.$value.'</option>'."\n";
+					echo '				<div class="podpress_feed_settings_right_col">';
+					echo '					<label for="podpress_feed_'.$i.'_posttypefilter">'.__('Post Type Filter', 'podpress').'</label><br />'."\n";
+					if ( TRUE == version_compare($wp_version, '2.9', '>=') ) {
+						$args = array(
+							'public'   => true,
+							'_builtin' => false
+						);
+						$output = 'objects'; // names or objects
+						$post_types = get_post_types($args, $output);
+						if (TRUE == is_array($post_types) AND FALSE == empty($post_types) ) {
+							echo '					<select id="podpress_feed_'.$j.'_posttypefilter" name="podpress_feeds['.$j.'][PostTypes][]" size="5" multiple="multiple" class="podpress_posttypefilter_select">'."\n";
+							echo '					<optgroup label="'.attribute_escape(__('Select post types', 'podpress')).'">'."\n";
+							echo '						<option value="post">'.__('Standard Posts',''). ' (post)</option>';
+							foreach ($post_types as $post_type ) {
+								echo '						<option value="'.$post_type->name.'">'.$post_type->label. ' (' .$post_type->name.')</option>';
+							}
+							echo '					</optgroup>'."\n";
+							echo '					</select>'."\n";
+							echo '					<span class="podpress_description">'.__('Select one or more custom post types if this Feed should contain only posts of these post types. If the Feed should contain only posts of no custom type then do not select a type.', 'podpress').'</span>';
+							echo '					<br /><span class="podpress_description">'.__('Hold the key [SHIFT] or [CTRL] and use the left mouse button to select more than one value.<br />Hold [CTRL] and use the left mouse button to deselect values.', 'podpress').'</span>';
+							
+						} else {
+							echo '				<em class="nonessential">('.__('Currently are no custom post types defined.', 'podpress').')</em>'."\n";
 						}
+					} else {
+						echo '				<em class="nonessential">('.sprintf(__('This feature is only available if you use WP %1$s or newer.', 'podpress'), '2.9').')</em>'."\n";
 					}
-					echo '					</optgroup>'."\n";
-					echo '					</select>'."\n";
-					echo '					<span class="podpress_description">'.__('Select one or more file types to include in this Feed only posts which have attached media files of these file types. (This filter bypasses the "Included in:" selection.)', 'podpress').'</span>';
-					echo '					<br /><span class="podpress_description">'.__('Hold the key [SHIFT] or [CTRL] and use the left mouse button to select more than one value.<br />Hold [CTRL] and use the left mouse button to deselect values.', 'podpress').'</span>';
 					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_left_col">';
 					echo '					<label for="podpress_feed_'.$j.'_iTunesExplicit">'.__('iTunes:Explicit', 'podpress').'</label><br/>';
@@ -812,6 +899,30 @@ class podPressAdmin_class extends podPress_class
 					echo '						<option value="Yes">'.__('Yes', 'podpress').'</option>'."\n";
 					echo '					</select>'."\n";
 					echo '				</div>'."\n";
+					echo '				<div class="podpress_feed_settings_right_col">'."\n";
+					echo '					<label for="podpress_feed_'.$j.'_filetypefilter">'.__('File Type Filter', 'podpress').'</label><br />'."\n";
+					echo '					<select id="podpress_feed_'.$j.'_filetypefilter" name="podpress_feeds['.$j.'][FileTypes][]" size="5" multiple="multiple" class="podpress_filetypefilter_select">'."\n";
+					echo '					<optgroup label="'.attribute_escape(__('Select file types', 'podpress')).'">'."\n";
+					foreach ( $filetypes as $key => $value ) {
+						if ($key !== 'audio_mp4') {
+							echo '						<option value="'.$key.'">'.$value.'</option>'."\n";
+						}
+					}
+					echo '					</optgroup>'."\n";
+					echo '					</select>'."\n";
+					echo '					<span class="podpress_description">'.__('Select one or more file types to include in this Feed only posts which have attached media files of these file types. (This filter bypasses the "Included in:" selection.)', 'podpress').'</span>';
+					echo '					<br /><span class="podpress_description">'.__('Hold the key [SHIFT] or [CTRL] and use the left mouse button to select more than one value.<br />Hold [CTRL] and use the left mouse button to deselect values.', 'podpress').'</span>';
+					echo '				</div>'."\n";
+					echo '				<div class="podpress_feed_settings_left_col">'."\n";
+					echo '					<label for="podpress_feed_'.$j.'_iTunesNewFeedURL">'.__('iTunes:New-Feed-Url', 'podpress').'</label><br />'."\n";
+					echo '					<select name="podpress_feeds['.$j.'][itunes-newfeedurl]" id="podpress_feed_'.$j.'_iTunesNewFeedURL">'."\n";
+					echo '						<option value="Disable" selected="selected">'.__('Disable', 'podpress').'</option>'."\n";
+					echo '						<option value="Enable">'.__('Enable', 'podpress').'</option>'."\n";
+					echo '					</select>'."\n";
+					echo '					<br />'."\n";
+					echo '					<br />'."\n";
+					echo '					<label for="podpress_feed_'.$j.'_newfeedurl">'.__('iTunes:New-Feed-Url - the new Feed URL', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$j.'][newfeedurl]" id="podpress_feed_'.$j.'_newfeedurl" class="podpress_feeds_text_field" value="" />'."\n";
+					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_right_col">';
 					echo '					<label for="podpress_feed_'.$j.'_categoryfilter">'.__('Category Filter', 'podpress').'</label><br />'."\n";
 					echo '					<select id="podpress_feed_'.$j.'_categoryfilter" name="podpress_feeds['.$j.'][inclCategories][]" size="5" multiple="multiple" class="podpress_categoryfilter_select">'."\n";
@@ -825,14 +936,15 @@ class podPressAdmin_class extends podPress_class
 					echo '					<span class="podpress_description">'.__('Hold the key [SHIFT] or [CTRL] and use the left mouse button to select more than one value.<br />Hold [CTRL] and use the left mouse button to deselect values.', 'podpress').'</span>';
 					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_left_col">'."\n";
-					echo '					<label for="podpress_feed_'.$j.'_iTunesNewFeedURL">'.__('iTunes:New-Feed-Url', 'podpress').'</label><br />'."\n";
-					echo '					<select name="podpress_feeds['.$j.'][itunes-newfeedurl]" id="podpress_feed_'.$j.'_iTunesNewFeedURL">'."\n";
-					echo '						<option value="Disable" selected="selected">'.__('Disable', 'podpress').'</option>'."\n";
-					echo '						<option value="Enable">'.__('Enable', 'podpress').'</option>'."\n";
-					echo '					</select>'."\n";
+					echo '					<label for="podpress_feed_'.$j.'_iTunesFeedID">'.__('iTunes:FeedID', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$j.'][itunes-feedid]" id="podpress_feed_'.$j.'_iTunesFeedID" value="" size="10" />'."\n";
 					echo '					<br />'."\n";
 					echo '					<br />'."\n";
-					echo '					<label for="podpress_feed_'.$j.'_newfeedurl">'.__('iTunes:New-Feed-Url - the new Feed URL', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$j.'][newfeedurl]" id="podpress_feed_'.$j.'_newfeedurl" class="podpress_feeds_text_field" value="" />'."\n";
+					echo '					'.__('Feed Type:', 'podpress').'<br />'."\n";
+					echo '					<input type="radio" name="podpress_feeds['.$j.'][feedtype]" id="podpress_feed_'.$j.'_feedtype_rss" value="rss" checked="checked" /> <label for="podpress_feed_'.$j.'_feedtype_rss">'.__('RSS', 'podpress').'</label><br />'."\n";
+					echo '					<input type="radio" name="podpress_feeds['.$j.'][feedtype]" id="podpress_feed_'.$j.'_feedtype_atom" value="atom" /> <label for="podpress_feed_'.$j.'_feedtype_atom">'.__('ATOM', 'podpress').'</label>'."\n";
+					echo '					<br />'."\n";
+					echo '					<br />'."\n";
+					echo '					<label for="podpress_feed_'.$j.'_rss_ttl">'.__('TTL (time-to-live)', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$j.'][ttl]" id="podpress_feed_'.$j.'_rss_ttl" value="1440" size="4" />'."\n";
 					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_right_col">'."\n";
 					echo '					<input type="checkbox" name="podpress_feeds['.$j.'][show_only_podPress_podcasts]" id="podpress_feed_'.$j.'_show_only_podPress_podcasts" value="yes" checked="checked" /> <label for="podpress_feed_'.$j.'_show_only_podPress_podcasts">'.__('Include only posts with podPress attachments in this Feed', 'podpress').'</label> <span class="podpress_description">'.__('- while the File Type and Category Filters are not in use.', 'podpress').'</span>'."\n";
@@ -840,16 +952,8 @@ class podPressAdmin_class extends podPress_class
 					echo '					<br />'."\n";
 					echo '					<input type="checkbox" name="podpress_feeds['.$j.'][bypass_incl_selection]" id="podpress_feed_'.$j.'_bypass_incl_selection" value="yes" /> <label for="podpress_feed_'.$j.'_bypass_incl_selection">'.__('Bypass the "Included in:" selection for this Feed', 'podpress').'</label> <span class="podpress_description">'.__('- If this option is selected then the first media file of the right file type will be the enclosure of a post in this Feed - if it is a RSS Feed. Posts in ATOM Feeds will contain all of their media files as enclosures (and not the ones you have marked while editing a post).', 'podpress').'</span>'."\n";
 					echo '				</div>'."\n";
-					echo '				<div class="podpress_feed_settings_left_col">'.__('Feed Type:', 'podpress').'<br />'."\n";
-					echo '					<input type="radio" name="podpress_feeds['.$j.'][feedtype]" id="podpress_feed_'.$j.'_feedtype_rss" value="rss" checked="checked" /> <label for="podpress_feed_'.$j.'_feedtype_rss">'.__('RSS', 'podpress').'</label><br />'."\n";
-					echo '					<input type="radio" name="podpress_feeds['.$j.'][feedtype]" id="podpress_feed_'.$j.'_feedtype_atom" value="atom" /> <label for="podpress_feed_'.$j.'_feedtype_atom">'.__('ATOM', 'podpress').'</label>'."\n";
-					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_right_col">'."\n";
-					echo '					<label for="podpress_feed_'.$j.'_rss_ttl">'.__('TTL (time-to-live)', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$j.'][ttl]" id="podpress_feed_'.$j.'_rss_ttl" value="1440" size="4" />'."\n";
-					echo '				</div>'."\n";
-					echo '				<div class="podpress_feed_settings_fullwidth_col">'."\n";
-					echo '					<label for="podpress_feed_'.$j.'_iTunesFeedID">'.__('iTunes:FeedID', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$j.'][itunes-feedid]" id="podpress_feed_'.$j.'_iTunesFeedID" value="" size="10" />'."\n";
-					//echo '					<label for="podpress_feed_'.$j.'_iTunesFeedID">'.__('iTunes:FeedID', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$j.'][itunes-feedid]" id="podpress_feed_'.$j.'_iTunesFeedID" value="" size="10" /> <input type="button" value="'.__('Ping iTunes Update', 'podpress').'" onclick="javascript: if(document.getElementById(\'podpress_feed_'.$j.'_iTunesFeedID\').value != \'\') { window.open(\'https://phobos.apple.com/WebObjects/MZFinance.woa/wa/pingPodcast?id=\'+document.getElementById(\'podpress_feed_'.$j.'_iTunesFeedID\').value); }" />'."\n";
+					echo '					<label for="podpress_feed_'.$j.'_posts_per_feed">'.__('max. amount of posts per feed: ', 'podpress').'</label><br /><input type="text" name="podpress_feeds['.$j.'][posts_per_feed]" id="podpress_feed_'.$j.'_posts_per_feed" value="'.$posts_per_feed_default.'" size="4" /> <span class="podpress_description">'.sprintf(__('default: %1$s', 'podpress'), $posts_per_feed_default).'</span>'."\n";
 					echo '				</div>'."\n";
 					echo '				<div class="podpress_feed_settings_fullwidth_col">'."\n";
 					echo '					<input type="checkbox" name="podpress_feeds['.$j.'][use_headerlink]" id="podpress_feed_'.$j.'_use_headerlink" value="yes" /> <label for="podpress_feed_'.$j.'_use_headerlink">'.__('add Feed link to the blog header', 'podpress').'</label> <span class="podpress_description">'.__('(into &lt;head&gt;)', 'podpress').'</span>'."\n";
@@ -869,6 +973,7 @@ class podPressAdmin_class extends podPress_class
 		} // end of settings_feed_edit function
 		
 		function settings_feed_save() {
+			GLOBAL $wp_rewrite;
 			if ( function_exists('check_admin_referer') ) {
 				check_admin_referer('podPress_feed_settings_nonce');
 			}
@@ -903,6 +1008,7 @@ class podPressAdmin_class extends podPress_class
 
 			if(isset($_POST['rss_language'])) { podPress_update_option('rss_language', htmlspecialchars(strip_tags(trim($_POST['rss_language'])), ENT_QUOTES, $blog_charset));	}
 			if(isset($_POST['rss_ttl'])) { podPress_update_option('rss_ttl', intval(preg_replace('/[^0-9]/', '', $_POST['rss_ttl'])));	}
+			
 			if(isset($_POST['rss_image'])) { podPress_update_option('rss_image', htmlspecialchars(strip_tags(trim($_POST['rss_image'])), ENT_QUOTES, $blog_charset));	}
 
 			if(isset($_POST['rss_category'])) {
@@ -914,6 +1020,10 @@ class podPressAdmin_class extends podPress_class
 			if(isset($_POST['rss_license_url'])) {
 				$this->settings['rss_license_url'] = clean_url($_POST['rss_license_url'], array('http', 'https'), 'db');
 			}
+			if ( isset($_POST['print_podpress_in_contentencoded']) AND 'yes' == $_POST['print_podpress_in_contentencoded'] ) {
+				$this->settings['print_podpress_in_contentencoded'] = TRUE;
+			}
+			
 			//~ if( isset($_POST['protectFeed']) AND 'yes' == strtolower($_POST['protectFeed']) ) {
 				//~ $this->settings['protectFeed'] = 'Yes';
 			//~ } else {
@@ -985,6 +1095,11 @@ class podPressAdmin_class extends podPress_class
 						$this->settings['podpress_feeds'][$i]['license_url'] = clean_url($feed['license_url'], array('http', 'https'), 'db');
 						$this->settings['podpress_feeds'][$i]['language'] = htmlspecialchars(strip_tags(trim($feed['language'])), ENT_QUOTES, $blog_charset);
 						$this->settings['podpress_feeds'][$i]['charset'] = htmlspecialchars(strip_tags(trim($feed['charset'])), ENT_QUOTES, $blog_charset);
+						if ( FALSE == is_array($feed['PostTypes']) ) {
+							$this->settings['podpress_feeds'][$i]['PostTypes'] = Array();
+						} else {
+							$this->settings['podpress_feeds'][$i]['PostTypes'] = $feed['PostTypes'];
+						}
 						if ( FALSE == is_array($feed['FileTypes']) ) {
 							$this->settings['podpress_feeds'][$i]['FileTypes'] = Array();
 						} else {
@@ -1025,6 +1140,11 @@ class podPressAdmin_class extends podPress_class
 							$feed['ttl'] = 1440;
 						}
 						$this->settings['podpress_feeds'][$i]['ttl'] = $feed['ttl'];
+						$feed['posts_per_feed'] = intval(preg_replace('/[^0-9]/', '', $feed['posts_per_feed']));
+						if ( 1 >= $feed['posts_per_feed'] ) {
+							$feed['posts_per_feed'] = 1;
+						}
+						$this->settings['podpress_feeds'][$i]['posts_per_feed'] = $feed['posts_per_feed'];
 						$this->settings['podpress_feeds'][$i]['itunes-feedid'] = htmlspecialchars(strip_tags(trim($feed['itunes-feedid'])), ENT_QUOTES, $blog_charset);
 						if ( isset($feed['itunes-block']) AND 'Yes' === $feed['itunes-block'] ) {
 							$this->settings['podpress_feeds'][$i]['itunes-block'] = 'Yes';
@@ -1047,15 +1167,32 @@ class podPressAdmin_class extends podPress_class
 			} else {
 				$report = 'no_podpress_feeds_send';
 			}
+			
+			//~ if ( function_exists('add_feed') ) {
+				//~ if ( is_array($this->settings['podpress_feeds']) AND FALSE == empty($this->settings['podpress_feeds']) ) {
+					//~ foreach ($this->settings['podpress_feeds'] as $feed) {
+						//~ if ( TRUE === $feed['use'] AND FALSE == empty($feed['slug']) ) {
+							//~ add_feed($feed['slug'], 'podPress_do_dyn_podcast_feed');
+						//~ }
+					//~ }
+				//~ }
+				//~ add_feed('playlist.xspf', 'podPress_do_feed_xspf');
+				//~ printphpnotices_var_dump('podpress_admin_feed_class.php ---------------');
+				
+				//~ add_action('admin_init', function() {
+					//~ printphpnotices_var_dump('podPress adding feeds and flush rules');
+					//~ $wp_rewrite->flush_rules();}
+				//~ );
+			//~ }
 
 			$result = podPress_update_option('podPress_config', $this->settings);
 			if ( FALSE !== $result ) {
-				$location = get_option('siteurl') . '/wp-admin/admin.php?page=podpress/podpress_feed.php&updated=true'.'&debugreport='.$report;
+				$location = site_url() . '/wp-admin/admin.php?page=podpress/podpress_feed.php&updated=true'.'&debugreport='.$report;
 			} else {
-				$location = get_option('siteurl') . '/wp-admin/admin.php?page=podpress/podpress_feed.php&updated=false'.'&debugreport='.$report;
+				$location = site_url() . '/wp-admin/admin.php?page=podpress/podpress_feed.php&updated=false'.'&debugreport='.$report;
 			}
 			header('Location: '.$location);
-			exit;
+			//~ exit;
 		}
 	}
 ?>

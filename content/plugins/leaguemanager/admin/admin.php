@@ -1401,6 +1401,30 @@ class LeagueManagerAdminPanel extends LeagueManager
 	
 	
 	/**
+	 * Checks if a particular user has a role. 
+	 * Returns true if a match was found.
+	 *
+	 * @param string $role Role name.
+	 * @param int $user_id (Optional) The ID of a user. Defaults to the current user.
+	 * @return bool
+	 *
+	 * put together by AppThemes (http://docs.appthemes.com/tutorials/wordpress-check-user-role-function/)
+	 */
+	function checkUserRole( $role, $user_id = null ) {
+	 
+		if ( is_numeric( $user_id ) )
+			$user = get_userdata( $user_id );
+		else
+			$user = wp_get_current_user();
+	 
+		if ( empty( $user ) )
+			return false;
+	 
+		return in_array( $role, (array) $user->roles );
+	}
+
+
+	/**
 	 * export league data
 	 *
 	 * @param int $league_id
@@ -1411,20 +1435,21 @@ class LeagueManagerAdminPanel extends LeagueManager
 	{
 		global $leaguemanager;
 		
-		$this->league_id = $league_id;
-		$this->league = $leaguemanager->getLeague($league_id);
-		$filename = sanitize_title($this->league->title)."-".$mode."_".date("Y-m-d").".csv";
-		
-		if ( 'teams' == $mode )
-			$contents = $this->exportTeams();
-		elseif ( 'matches' ==  $mode )
-			$contents = $this->exportMatches();
-		
-		
-		header('Content-Type: text/csv');
-    		header('Content-Disposition: inline; filename="'.$filename.'"');
-		echo $contents;
-		exit();
+		//if ( $this->checkUserRole('leagues') ) {
+			$this->league_id = (int)$league_id;
+			$this->league = $leaguemanager->getLeague(this->league_id);
+			$filename = sanitize_title($this->league->title)."-".$mode."_".date("Y-m-d").".csv";
+			
+			if ( 'teams' == $mode )
+				$contents = $this->exportTeams();
+			elseif ( 'matches' ==  $mode )
+				$contents = $this->exportMatches();
+			
+			header('Content-Type: text/csv');
+			header('Content-Disposition: inline; filename="'.$filename.'"');
+			echo $contents;
+			exit();
+		//}
 	}
 	
 	
