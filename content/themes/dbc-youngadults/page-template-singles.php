@@ -37,7 +37,7 @@ get_header(); // Loads the header.php template. ?>
 		<div id="row">
 			
 			<div class="three columns">
-				<a href="<?php echo site_url(); ?>/grow/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/button-grow.png" alt="Grow" /></a>
+				<a href="<?php echo site_url(); ?>/grow-ysbf/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/button-grow.png" alt="Grow" /></a>
 			</div>
 			
 			<div class="three columns">
