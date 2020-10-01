@@ -1,4 +1,4 @@
-# Denton Bible Church Website
+# Denton Bible Church Website :A good project
 
 **[Read the Documentation](https://github.com/Denton-Bible-Church/Website/wiki)** | **[How to Contribute](CONTRIBUTING.md)** | **[Workflow](https://github.com/Denton-Bible-Church/Website/wiki/Workflow)**
 
